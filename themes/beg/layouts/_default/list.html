@@ -1,0 +1,24 @@
+{{ define "title" }}{{ if not .IsHome }}{{ .Title }} - {{ end }}{{ end }}
+
+{{ define "main" }}
+<div class="row">
+    <div class="col-md-8">
+
+        <!--TODO:カテゴリ表示時、等のヘッダー。いるのかこれ？-->
+        {{ if not .IsHome }}
+        <div class="page_header">{{ .Title }}</div>
+        {{ end }}
+
+        <ul class="article_list">
+            {{ range (.Paginate .Data.Pages).Pages }}
+            <li>{{ .Render "li" }}</li>
+            {{ end }}
+        </ul>
+        {{ partial "pagination.html" . }}
+    </div>
+
+    <div class="col-md-4">
+        {{ partial "sidebar.html" . }}
+    </div>
+</div>
+{{ end }}

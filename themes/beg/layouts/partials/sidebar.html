@@ -1,0 +1,33 @@
+<aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        <!--TODO:ここに私についての記事リンクを設置-->
+        <div class="img-center"><a class="author_img_area" href="{{ .Site.BaseURL }}information/introduction/"><img class="author_img" src="{{ .Site.BaseURL }}img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前:Seiya Asahina</p>
+        <p>一言:主にサーバーサイドで活動しています。</p>
+    </section>
+
+    <!--この辺にGitHubのリンクとかTwitterのリンクとか作れば良いかも。-->
+
+    {{ range $key, $value := .Site.Taxonomies }}
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">{{ $key | singularize | humanize }}</div>
+        <!--TODO:ここはinline blockでpaddingを指定してボタン化させるべき-->
+
+        {{ range $value.ByCount }}
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="{{ $.Site.BaseURL}}{{ $key }}/{{ .Name | urlize }}">{{ .Name }}</a>
+        </span>
+        {{ end }}
+    </section>
+    {{ end }}
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        {{ range first 10 .Site.RegularPages }}
+        <a class="news_link" href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ end }}
+    </section>
+
+</aside>

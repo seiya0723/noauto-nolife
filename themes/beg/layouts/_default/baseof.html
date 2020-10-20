@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        <!--partialディレクトリ内のmeta.htmlを読み込む-->
+        {{ partial "meta.html" . }}
+        <link href="{{ .Site.BaseURL }}img/favicon.ico" rel="icon">
+
+        <link href="{{ .Site.BaseURL }}css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ .Site.BaseURL }}css/bootstrap-grid.css"> 
+
+        <title>{{ block "title" . }}{{ end }}{{ .Site.Title }}</title>
+        {{ block "meta" . }}{{ end }}
+        <link href="{{ .Site.BaseURL }}css/styles.css" rel="stylesheet">
+        {{ range .Site.Params.custom_css }}
+            <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
+        {{ end }}
+
+        {{ template "_internal/google_analytics.html" . }}
+
+        <!--ここにアドセンス-->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({
+                  google_ad_client: "ca-pub-6442436013540142",
+                  enable_page_level_ads: true
+             });
+        </script>
+        <!--ここにアドセンス-->
+
+    </head>
+
+    <body>
+        {{ if ne (getenv "HUGO_ENV") "DEV" }}
+        {{ end }}
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+            <p class="header_description">WEBとかAIとかLinux関係をひたすら書く備忘録系ブログ</p>
+        </header>
+
+        <main class="main_area">
+            {{ block "main" . }}{{ end }}
+        </main>
+
+        <footer class="footer_area">
+            <p>{{ with .Site.Copyright }}{{ . | safeHTML }}{{ else }}&copy; {{ .Site.Title }}{{ end }}</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

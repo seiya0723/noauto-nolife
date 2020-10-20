@@ -1,0 +1,35 @@
+{{ define "title" }}{{ .Title }} - {{ end }}
+
+{{ define "meta" }}
+{{ partial "single_meta.html" . }}
+{{ partial "single_json_ld.html" . }}
+{{ end }}
+
+{{ define "main" }}
+<div class="row">
+    <div class="col-md-8">
+        
+        <!--TODO:パンくずリスト。もっと簡略化するべきでは？-->
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="{{ .Site.BaseURL }}">HOME</a></li>
+                {{ with .Section }}
+                <li><a href="{{ $.Site.BaseURL }}{{ . | urlize }}/">{{ . }}</a></li>
+                {{ end }}
+                <li class="active">{{ .Title }}</li>
+            </ol>
+        </nav>
+        
+        {{ .Render "summary" }}
+        
+        <!--
+            {{ template "_internal/disqus.html" . }}
+        -->
+    </div>
+
+    <div class="col-md-4">
+        {{ partial "sidebar.html" . }}
+    </div>
+</div>
+{{ end }}

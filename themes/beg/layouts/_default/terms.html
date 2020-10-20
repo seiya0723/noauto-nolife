@@ -1,0 +1,29 @@
+{{ define "title" }}{{ .Title }} - {{ end }}
+
+{{ define "main" }}
+<div class="row">
+
+    <div class="col-md-8">
+        
+        <header>
+            <h1>{{ .Title }}</h1>
+        </header>
+        
+        <section class="terms_area">
+            {{ $data := .Data }}
+            {{ range $key, $value := .Data.Terms }}
+            <a class="terms_link" href="{{ $.Site.BaseURL }}{{ $data.Plural }}/{{ $key | urlize }}">
+                <div class="row">
+                    <div class="col-8 terms_key">{{ $key }}</div> 
+                    <div class="col-4 terms_value">{{ len $value }} 記事</div>
+                </div>
+            </a>
+            {{ end }}
+        </section>
+    </div>
+    <div class="col-md-4">
+        {{ partial "sidebar.html" . }}
+    </div>
+</div>
+{{ end }}
+

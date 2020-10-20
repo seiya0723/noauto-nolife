@@ -1,0 +1,29 @@
+---
+title: "{{ replace .Name "-" " " | title }}"
+date: {{ .Date }}
+draft: false
+thumbnail: "images/django.png"
+categories: [ "others" ]
+tags: [ "","","" ]
+---
+
+<!-- Emmet用の雛形
+##目次と見出しを表示させる##
+(ul>(li>a[href="#chapter$"])*10)+(h2#chapter$*10)
+##内部リンクを表示させる##
+p{【内部リンク】}>a[href=/post/{{ replace .Name "-" " " | title }}/]{記事タイトル}
+##画像を貼る##
+div.img-center>img[src=/images/{{ replace .Name "-" " " | title }}001.jpg alt=test]
+##テーブルを作る(改良の余地あり)##
+table>(thead>tr>th{オプション}+th{機能})(tbody>(tr>th+th)*3)
+###赤字で囲む
+<span style="color:#ff0000"></span>
+##コマンド記事用のテンプレート
+(ul>(li>a[href="#chapter1"]{コマンドの使用方法})+(li>a[href="#chapter2"]{活用例})+(li>a[href="#chapter3"]{結論})+(li>a[href="#chapter4"]{関連記事}))+(h2#chapter1{コマンドの使用方法}+p{コマンドの書式は以下のようになっています。}+(pre>code{ls [オプション] [ディレクトリ]})+(p*2)+(table>(thead>tr>th{オプション}+th{機能})+(tbody>(tr>th+th)*10))+(p*4))+(h2#chapter2{活用例}+p*5)+(h2#chapter3{結論}+(p*3))+(h2#chapter4{関連記事}+((h3+(p{【内部リンク】}>a[href=/post/{{ replace .Name "-" " " | title }}/]{記事タイトル})+(p*2))+(h3+(p{【内部リンク】}>a[href=/post/{{ replace .Name "-" " " | title }}/]{記事タイトル})+(p*2))))
+##プログラム記事用のテンプレート
+(ul>(li>a[href="#chapter1"]{プログラムの概要})+(li>a[href="#chapter2"]{実際に動かしてみる})+(li>a[href="#chapter3"]{メリットとデメリット})+(li>a[href="#chapter4"]{結論})+(li>a[href="#chapter5"]{関連記事}))+(h2#chapter1{プログラムの概要}+(h3{フローチャート図}+(div.img-center>img[src=/images/{{ replace .Name "-" " " | title }}001.jpg alt=フローチャート図])+(p*2)+h3{ソースコード}+(pre>code))+h3{このプログラムの解説}+(p*3))+h3{工夫したところ}+(p*3))+h3{動作環境}+(ul>li*3)+(h2#chapter2{実際に動かしてみる})+(p*3)+(div.img-center>img[src=/images/{{ replace .Name "-" " " | title }}001.jpg alt=test])+(p*3)+(h2#chapter3{メリットとデメリット}+h3{メリット}+(p*3)+h3{デメリット}+(p*3))+h2#chapter4{結論}+(p*3)+(h2#chapter5{関連記事}+((h3+(p{【内部リンク】}>a[href=/post/{{ replace .Name "-" " " | title }}/]{記事タイトル})+(p*2))+(h3+(p{【内部リンク】}>a[href=/post/{{ replace .Name "-" " " | title }}/]{記事タイトル})+(p*2))))
+##TIPS記事のテンプレート
+(ul>(li>a[href="#chapter1"]{問題})+(li>a[href="#chapter2"]{解決策})+(li>a[href="#chapter3"]{結論})+(li>a[href="#chapter4"]{関連記事}))+(h2#chapter1{問題}+(div.img-center>img[src=/images/{{ replace .Name "-" " " | title }}001.jpg alt=test])+(p*2))+(h2#chapter2{解決策}+(div.img-center>img[src=/images/{{ replace .Name "-" " " | title }}001.jpg alt=test])+(p*5))+(h2#chapter3{結論}+(p*3))+(h2#chapter4{関連記事}+((h3+(p{【内部リンク】}>a[href=/post/{{ replace .Name "-" " " | title }}/]{記事タイトル})+(p*2))+(h3+(p{【内部リンク】}>a[href=/post/{{ replace .Name "-" " " | title }}/]{記事タイトル})+(p*2))))
+-->
+
+
