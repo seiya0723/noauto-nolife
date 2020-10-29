@@ -8,6 +8,8 @@ tags: [ "django","tips","初心者向け" ]
 ---
 
 
+『このページを表示するにはフォームデータを再度送信する必要があります。フォームデータを再送信すると以前実行した検索、投稿や注文などの処理が繰り返されます。』 
+
 POST文を実行した直後に更新ボタンを押すと、こんなふうに表示される時。こういうときはリダイレクトすればOK。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-24 17-30-27.png" alt="フォーム再送のダイアログ"></div>
@@ -24,7 +26,6 @@ redirectをimport。POST文のreturnにredirect関数を返せばいいだけ。
     #POST文のreturnがrenderになっている場合、redirectに書き換える。redirectの引数はurls.pyで定義したnameに準拠。
     #return render(request,"todo/index.html",context)
     return redirect("todo:index")
-
 
 
 ## 結論
