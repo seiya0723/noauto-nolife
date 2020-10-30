@@ -2,7 +2,7 @@
 title: "SQLiteの操作方法【テーブル一覧表示、SQLなど】"
 date: 2020-10-26T13:51:50+09:00
 draft: false
-thumbnail: "images/noimage.jpg"
+thumbnail: "images/sqlite.jpg"
 categories: [ "database" ]
 tags: [ "スタートアップシリーズ","sqlite","システム管理" ]
 ---
