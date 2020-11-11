@@ -1,7 +1,7 @@
 ---
 title: "シェルの標準入出力と標準エラー出力の取り扱いについて"
 date: 2018-12-11T15:15:02+09:00
-draft: false
+draft: true
 thumbnail: "images/command.jpg"
 categories: [ "command" ]
 tags: [ "bash" ]

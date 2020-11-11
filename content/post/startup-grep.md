@@ -1,7 +1,7 @@
 ---
 title: "grepコマンドの使い方と活用例について"
 date: 2018-10-07T12:34:59+09:00
-draft: false
+draft: true
 thumbnail: "images/command.jpg"
 categories: ["command"]
 tags: [ "スタートアップシリーズ","ファイル検索", "正規表現","作業効率化" ]

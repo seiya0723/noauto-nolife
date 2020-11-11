@@ -1,7 +1,7 @@
 ---
 title: "vimプラグインのemmetとsurroundのインストール方法と使い方【NeoBundleは不要】"
 date: 2019-01-11T19:19:12+09:00
-draft: false
+draft: true
 thumbnail: "images/vim.jpg"
 categories: [ "others" ]
 tags: [ "vim", "作業効率化" ]

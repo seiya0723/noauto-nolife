@@ -1,7 +1,7 @@
 ---
 title: "UbuntuにSSHでリモートログインする方法【パスワード認証+公開鍵認証+scpコマンド】"
 date: 2018-09-20T18:22:19+09:00
-draft: false
+draft: true
 thumbnail: "images/ubuntu.jpg"
 categories: ["network"]
 tags: [ "Ubuntu", "SSH", "遠隔操作","システム管理","Linux" ]

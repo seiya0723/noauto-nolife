@@ -1,7 +1,7 @@
 ---
 title: "cronの基本的な使い方と活用例について"
 date: 2018-12-09T16:10:13+09:00
-draft: false
+draft: true
 thumbnail: "images/20181206003.jpg"
 categories: [ "command" ]
 tags: [ "スタートアップシリーズ","cron", "定時処理", "作業効率化","自動化","システム管理" ]

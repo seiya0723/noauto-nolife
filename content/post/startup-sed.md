@@ -1,7 +1,7 @@
 ---
 title: "sedコマンドの使い方と活用例"
 date: 2018-12-12T16:35:53+09:00
-draft: false
+draft: true
 thumbnail: "images/command.jpg"
 categories: [ "command" ]
 tags: [ "スタートアップシリーズ","Linux","作業効率化", "テキスト編集" ]

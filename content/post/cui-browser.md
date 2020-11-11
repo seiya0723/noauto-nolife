@@ -1,7 +1,7 @@
 ---
 title: "【w3m】CUIで動くウェブブラウザの紹介【Lynx】"
 date: 2018-10-04T11:28:01+09:00
-draft: false
+draft: true
 thumbnail: "images/20181004002.jpg"
 categories: [ "others" ]
 tags: [ "Ubuntu", "セキュリティ", "ブラウザ" ]

@@ -1,5 +1,5 @@
 ---
-title: "Djangoで開発中、データベースへ初期データを入力する"
+title: "Djangoで開発中、データベースへ初期データを入力する【loaddata】"
 date: 2020-10-24T18:12:29+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -36,9 +36,9 @@ Seleniumで入力作業を自動化する方法もあるが、わざわざそん
 `bbs/fixture/data.json`に下記を記入。`fixture`ディレクトリは存在しないので作る。
 
     [
-        {"model":"bbs.Topic","pk":"1","fields":{ "name":"タロウ","comment":"こんにちは" }}, 
-        {"model":"bbs.Topic","pk":"2","fields":{ "name":"Mike","comment":"Hi" }}, 
-        {"model":"bbs.Topic","pk":"3","fields":{ "name":"hanako","comment":"どうも" }}
+        {"model":"bbs.Topic","pk":1,"fields":{ "name":"タロウ","comment":"こんにちは" }}, 
+        {"model":"bbs.Topic","pk":2,"fields":{ "name":"Mike","comment":"Hi" }}, 
+        {"model":"bbs.Topic","pk":3,"fields":{ "name":"hanako","comment":"どうも" }}
     ]
 
 数値型はダブルクオーテーション不要な点に注意。続いて、下記コマンドを実行する
@@ -64,5 +64,9 @@ DBが変わるたびに格納しているデータが消える。このように
 
 とは言えYAMLはインデントで記述しなければならない点から、矩形選択からの一括入力ができない点は要注意。
 
+
+一応、DjangoではDBに格納されているデータをダンプ(バックアップ)することができる。それがこれ。
+
+【関連記事】[DjangoでDBに格納したデータをダンプ(バックアップ)させる【dumpdata】](/post/django-dumpdata/)
 
 
