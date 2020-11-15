@@ -7,9 +7,9 @@ categories: [ "web" ]
 tags: [ "django","スタートアップシリーズ","初心者向け" ]
 ---
 
-公式のDjangoチュートリアルではよくわからない方に捧げます。
+公式のDjangoチュートリアルではよくわからない方に捧げる
 
-対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTML/CSS/JSの基本構文を把握済みとします。
+対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTML/CSS/JSの基本構文を把握済みとする。
 
 ## 流れ
 
@@ -27,7 +27,7 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 1. 開発用サーバーを起動する(3分)
 
 
-初心者向けの記事につき、forms.pyのバリデーション、デプロイ、DB設定、Ajaxなどは割愛します。
+初心者向けの記事につき、forms.pyのバリデーション、デプロイ、DB設定、Ajaxなどは割愛する。
 
 また、views.pyはクラスベースのビューを採用。
 
@@ -37,7 +37,7 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
     cd startup_bbs
     django-admin startproject config .
 
-予めディレクトリを作っておき、その状態で`django-admin startproject config .`を実行することでsettings.pyやurls.py等の設定ファイルをconfigディレクトリ内に収めることができます。
+予めディレクトリを作っておき、その状態で`django-admin startproject config .`を実行することで`settings.py`や`urls.py`等の設定ファイルをconfigディレクトリ内に収めることが可能。
 
 ## アプリを作る(5分)
 
@@ -48,9 +48,9 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
 ## settings.pyの書き換え(5分)
 
-冒頭、に下記を追加
+冒頭に下記を追加
 
-import os
+    import os
 
 INSTALLED_APPSに下記を追加
 
