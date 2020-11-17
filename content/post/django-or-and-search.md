@@ -33,8 +33,6 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
     
         def get(self, request, *args, **kwargs):
             
-            search_word = ""
-    
             if "search" in request.GET:
     
                 #(1)キーワードが空欄もしくはスペースのみの場合、ページにリダイレクト
@@ -53,7 +51,6 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
     
                 #(4)作ったクエリを実行
                 data        = Product.objects.filter(query)
-                search_word = search
             else:
                 data    = Product.objects.all()
     
@@ -90,4 +87,4 @@ https://docs.djangoproject.com/en/3.1/topics/db/queries/#complex-lookups-with-q
 
 ## ソースコード
 
-
+https://github.com/seiya0723/simple_ecsite

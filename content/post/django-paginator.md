@@ -37,8 +37,6 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
     
         def get(self, request, *args, **kwargs):
         
-            search_word = ""
-    
             if "search" in request.GET:
     
                 if request.GET["search"] == "" or request.GET["search"].isspace():
@@ -53,7 +51,6 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
     
                 #.order_byメソッドで並び替えしないと、paginatorでWARNINGが出る。
                 data        = Product.objects.filter(query).order_by("id")
-                search_word = search
             else:
                 data    = Product.objects.all().order_by("id")
     
@@ -189,4 +186,4 @@ https://stackoverflow.com/questions/2047622/how-to-paginate-django-with-other-ge
 
 ## ソースコード
 
-
+https://github.com/seiya0723/simple_ecsite
