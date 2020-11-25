@@ -74,7 +74,7 @@ LANGUAGE_CODE、TIME_ZONEを下記に変更
     
     urlpatterns = [
         path('admin/', admin.site.urls),
-        path('', include("bbs.urls"), name="bbs"),
+        path('', include("bbs.urls")),
     ]
 
 `bbs/urls.py`を作成、内容は下記

@@ -37,7 +37,7 @@ Djangoの環境構築、プロジェクトの作成等は割愛します。
 
 プロジェクト直下のurls.pyである、`config/urls.py`を修正。下記を追加。
 
-     path('', include("search.urls"),name="search"),
+     path('', include("search.urls")),
 
 アプリディレクトリ内のurls.pyに当たる、`search/urls.py`を作成。
 
