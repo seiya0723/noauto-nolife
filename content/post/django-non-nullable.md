@@ -55,7 +55,13 @@ DBにデータが格納されている状態で、モデルフィールドを追
 
 <div class="img-center"><img src="/images/Screenshot from 2020-11-18 09-05-39.png" alt="現在の日時が指定された"></div>
 
-一方で、常にdefault値を指定する場合は、2を選んでmodels.pyのフィールドにdefault属性を指定する。
+一方で、常に`default`値を指定する場合は、2を選んで`models.py`のフィールドに`default`属性を指定する。`DatetimeField`の場合、下記のように`default`を指定する。
+
+    from django.utils import timezone
+    dt      = models.DateTimeField(verbose_name="投稿日",default=timezone.now)
+
+実行するときに値が変わる、メソッドの`timezone.now()`ではなく、その関数そのものを意味する属性値の`timezone.now`を指定する。`timezone`は`django.utils`の中に含まれているので、冒頭でインポートさせる。
+
 
 ## 結論
 
