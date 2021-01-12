@@ -61,7 +61,9 @@ DBの設定関係をスキップするため、SQLiteを使用する。プロジ
 
 ## ルーティングを作る(4分)
 
-どこのURLにアクセスした時、なんの処理をするかをまとめるためのルーティングを書く。もともとあった、Routeはコメントアウトして新たに2行追加する。
+どこのURLにアクセスした時、なんの処理をするかをまとめるためのルーティングを書く。その場所が`routes/web.php`である。
+
+もともとあった、Routeはコメントアウトして新たに2行追加する。
 
     /*
     Route::get('/', function () {
@@ -73,11 +75,11 @@ DBの設定関係をスキップするため、SQLiteを使用する。プロジ
 
 ## コントローラーを作る(5分)
 
-続いて、コントローラーを作る。下記コマンドを実行、PagesControllerを作成する。スペルミスにご注意。
+続いて、コントローラーを作る。下記コマンドを実行、`PagesController`を作成する。スペルミスにご注意。
 
     php artisan make:controller PagesController
 
-上記コマンドで`app/Http/Controllers/`にPagesController.phpが作られる。これを編集する。
+上記コマンドで`app/Http/Controllers/PagesController.php`が作られる。これを編集する。
 
     <?php
     
