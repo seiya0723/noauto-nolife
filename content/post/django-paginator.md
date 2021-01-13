@@ -1,5 +1,5 @@
 ---
-title: "Djangoでページネーションを実装する方法【django.core.paginator】"
+title: "Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】"
 date: 2020-11-11T17:57:49+09:00
 draft: false
 thumbnail: "images/django.jpg"
