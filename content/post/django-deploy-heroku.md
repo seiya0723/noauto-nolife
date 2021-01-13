@@ -17,6 +17,12 @@ pycharm等の統合開発環境を使用していて、仮想環境が動いて�
 
 もし、仮想環境を使用していない場合、virtualenvを使って必要なライブラリをpipコマンドにてインストールする。
 
+## HerokuCLIをインストール
+
+https://devcenter.heroku.com/ja/articles/heroku-cli
+
+ここからインストールする。herokuコマンドを実行して、デプロイ先のサーバーでマイグレーション等の操作を行うためにある。
+
 
 ## Heroku側の設定
 
@@ -128,7 +134,11 @@ requirements.txtにて控えを用意する。
 
 gunicorn(ウェブサーバーとDjangoをつなげるライブラリ)の設定を施す。下記コマンドを実行する。
 
-echo "eb: gunicorn config.wsgi:application --log-file -" > Procfile
+    echo "web: gunicorn config.wsgi:application --log-file -" > Procfile
+
+サーバー起動用のファイルを作る。
+
+    web: python manage.py runserver 0.0.0.0:5000 > Procfile.windows
 
 
 ## いざデプロイ
@@ -159,7 +169,6 @@ Herokuのデプロイ先とローカルリポジトリを関連付ける。
 ターミナルに表示されるページにアクセスする。アプリがスリープ中の場合、復帰しないといけないため、ブラウザに表示されるまでに1分程度かかる。エラーではない。
 
 
-
 ## デプロイ後の設定
 
 DBを使用するタイプのウェブアプリであればデプロイ後にマイグレーションの実行する必要がある。
@@ -173,12 +182,18 @@ DBを使用するタイプのウェブアプリであればデプロイ後にマ
 
 繰り返しになるが、静的ファイル配信のコマンドである、`collectstatic`はHerokuではやらなくていい。whitenoiseを使っているから。
 
+## 動かないときの対策
+
+設定はしっかりしているのに、エラーが出てしまう場合、下記コマンドを実行してDoneが表示されれば正常に設定が再読込され、動くようになる。
+
+    heroku ps:scale web=1
+
 
 ## 結論
 
 Herokuデプロイでつまずく最大の原因は、余計なものをsettings.pyに書いてしまうこと。
 
-特にHerokuはストレージがないので、メディアファイルの扱いをsettings.pyに書くともれなく500エラーが返ってくる。ファイルのアップロード関係のウェブアプリを作る予定であれば、別途S3等の外部クラウドストレージを用意してあげましょう。
+特にHerokuにはストレージがないので、メディアファイルの扱いをsettings.pyに書くともれなく500エラーが返ってくる。ファイルのアップロード関係のウェブアプリを作る予定であれば、別途S3等の外部クラウドストレージを用意してあげましょう。
 
 それからwhitenoiseの位置にも注意。INSTALLED_APPSの順序間違えると動かない。
 
@@ -187,4 +202,6 @@ Herokuデプロイでつまずく最大の原因は、余計なものをsettings
 requirements.txtの記述にも注意が必要。pip freezeコマンドを忘れずに。
 
 ちなみにこの方法だと別途管理サイト(admin)のCSSを用意してあげる必要がある。[Django公式のGitHub](https://github.com/django/django)からDLして設置すればよろし。
+
+
 
