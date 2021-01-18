@@ -8,7 +8,6 @@ tags: [ "ajax","django","上級者向け" ]
 ---
 
 
-
 ウェブアプリケーションでAjax(非同期通信)が使えるようになれば、ページ内の一部の要素のみを更新させることができる。
 
 それすなわち、
@@ -23,6 +22,11 @@ tags: [ "ajax","django","上級者向け" ]
 Ajaxの実装は実質templatesとviews.pyの編集のみと非常にシンプル。ただ、資料が限定されているため、一定の事前知識が求められる点に注意。
 
 今回は https://github.com/seiya0723/startup_bbs をAjax対応に修正させる。
+
+ちなみに、本記事のコードをRestful化したものは下記を参考に。
+
+[【Restful】DjangoでAjax(jQuery)を実装する方法【Django REST Framework使用】](/post/django-ajax-restful/)
+
 
 ## CSRFトークン送信用スクリプト
 

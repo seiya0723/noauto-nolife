@@ -250,8 +250,14 @@ Ajaxリクエストを処理するビュー、JSONデータの解析及びバリ
 <div class="img-center"><img src="/images/Screenshot from 2020-12-08 09-10-10.png" alt=""></div>
 
 
+## 関連記事
+
+この多対多のアプリに画像を送信する場合は下記を参考に。
+
+[DRF(Django REST Framework)+Ajax(jQuery)で画像とファイルをアップロードする方法](/post/drf-ajax-fileupload/)
+
+
 ## ソースコード
 
 https://github.com/seiya0723/django_m2m_restful
-
 

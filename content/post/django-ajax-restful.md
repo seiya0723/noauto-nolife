@@ -1,5 +1,5 @@
 ---
-title: "DjangoでAjax(jQuery)を実装する方法【Django REST Framework使用】"
+title: "【Restful】DjangoでAjax(jQuery)を実装する方法【Django REST Framework使用】"
 date: 2020-11-10T14:01:19+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -329,6 +329,20 @@ Django REST Frameworkにより、Ajaxで動くウェブアプリを容易に構�
 また、開発の規模が大きくなっても分業が可能。ログもとても綺麗で見やすい。
 
 ちなみに、DELETEメソッドを送信したから対象が削除されるのではなく、ビューの処理によって削除される点に注意。つまりDELETEメソッドを指定しても、ビューの処理によっては普通にDBにデータを突っ込んだりできるということ(※途方もなくややこしいことになるから、メソッド通りの処理を書くことを推奨)
+
+
+## 関連記事
+
+Restful化した後、Ajaxで画像やファイル等のアップロードを行う場合は下記を参考にしたい。
+
+[DRF(Django REST Framework)+Ajax(jQuery)で画像とファイルをアップロードする方法](/post/drf-ajax-fileupload/)
+
+
+多対多のリレーションを含む場合でも同様にRestful化が可能。ロングポーリングもセットで行えば、ほぼリアルタイムで業務上のデータを閲覧できる。
+
+[Djangoで多対多のリレーションを含むデータをAjax(jQuery)+DRFで送信させる](/post/django-m2m-restful/)
+
+
 
 ## ソースコード
 
