@@ -3,7 +3,7 @@ title: "Djangoでデフォルト数値型のid(主キー)からUUID型にする�
 date: 2020-12-24T16:42:59+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","PostgreSQL" ]
 ---
 

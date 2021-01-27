@@ -3,7 +3,7 @@ title: "Djangoで多対多のリレーションをテンプレートで表示す
 date: 2020-11-27T17:20:39+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","初心者向け" ]
 ---
 

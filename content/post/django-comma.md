@@ -3,7 +3,7 @@ title: "Djangoで数値のカンマ区切りを実装させる"
 date: 2020-10-24T16:48:33+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips" ]
 ---
 

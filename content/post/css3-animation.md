@@ -3,7 +3,7 @@ title: "CSS3を使用した簡単アニメーションの実装【transitionとt
 date: 2020-10-29T15:37:51+09:00
 draft: false
 thumbnail: "images/css3.jpg"
-categories: [ "web" ]
+categories: [ "フロントサイド" ]
 tags: [ "css3","tips","初心者向け","ウェブデザイン" ]
 ---
 

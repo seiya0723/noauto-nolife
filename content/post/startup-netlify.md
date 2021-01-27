@@ -3,7 +3,7 @@ title: "Netlifyと静的サイトジェネレーターHUGOで1ヶ月約100円で
 date: 2020-10-22T14:28:18+09:00
 draft: false
 thumbnail: "images/hugo.jpg"
-categories: [ "web" ]
+categories: [ "web全般" ]
 tags: [ "スタートアップシリーズ","netlify","静的サイトジェネレーター","HUGO" ]
 ---
 

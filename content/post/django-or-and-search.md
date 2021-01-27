@@ -3,7 +3,7 @@ title: "Djangoでスペース区切りでOR検索、AND検索をする方法【d
 date: 2020-11-11T17:56:10+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","初心者向け" ]
 ---
 

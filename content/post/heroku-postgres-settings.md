@@ -3,7 +3,7 @@ title: "Herokuのデータベース(herokupostgres)の実装と設定方法【Ho
 date: 2020-11-05T12:05:07+09:00
 draft: false
 thumbnail: "images/heroku.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "heroku","postgresql" ]
 ---
 

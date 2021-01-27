@@ -3,7 +3,7 @@ title: "DjangoでYou are Trying to add a non-nullable fieldと表示されたと
 date: 2020-11-18T08:23:05+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","初心者向け" ]
 ---
 

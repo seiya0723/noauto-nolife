@@ -3,7 +3,7 @@ title: "【地理空間情報】GeoDjangoの実装方法【PostGIS+PostgreSQL+�
 date: 2020-10-21T16:46:02+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "スタートアップシリーズ","django","geodjango","マッピング","上級者向け" ]
 ---
 

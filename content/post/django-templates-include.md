@@ -3,7 +3,7 @@ title: "Django Templates Language(DTL)でincludeを実行する時に引数も�
 date: 2020-12-24T16:51:03+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "Django","tips","初心者向け" ]
 ---
 

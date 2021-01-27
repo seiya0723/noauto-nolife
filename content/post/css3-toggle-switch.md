@@ -3,7 +3,7 @@ title: "CSS3でiOS風のトグルスイッチを作る方法【transition+checkb
 date: 2020-10-29T15:37:36+09:00
 draft: false
 thumbnail: "images/css3.jpg"
-categories: [ "web" ]
+categories: [ "フロントサイド" ]
 tags: [ "css3","tips","初心者向け","ウェブデザイン" ]
 ---
 

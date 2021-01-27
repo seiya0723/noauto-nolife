@@ -3,7 +3,7 @@ title: "CSS3だけで実装できるアコーディオン【checkbox+transition�
 date: 2020-10-29T17:12:50+09:00
 draft: false
 thumbnail: "images/css3.jpg"
-categories: [ "web" ]
+categories: [ "フロントサイド" ]
 tags: [ "css3","tips","ウェブデザイン" ]
 ---
 

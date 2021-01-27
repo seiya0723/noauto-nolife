@@ -3,7 +3,7 @@ title: "DjangoをLinux(Ubuntu)サーバーにデプロイする方法【Nginx+Po
 date: 2020-10-26T11:16:29+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","ubuntu","デプロイ","PostgreSQL","nginx" ]
 ---
 

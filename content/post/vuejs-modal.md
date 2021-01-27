@@ -3,7 +3,7 @@ title: "Vue.jsでモーダルダイアログを作る"
 date: 2021-01-18T14:36:28+09:00
 draft: false
 thumbnail: "images/vuejs.jpg"
-categories: [ "web" ]
+categories: [ "フロントサイド" ]
 tags: [ "JavaScript","初心者向け","ウェブデザイン","vue.js" ]
 ---
 

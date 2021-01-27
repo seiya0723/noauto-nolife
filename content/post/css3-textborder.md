@@ -3,7 +3,7 @@ title: "【CSS3】文字に縁取りを加えて視認性UPさせる方法【tex
 date: 2020-10-29T16:42:03+09:00
 draft: false
 thumbnail: "images/css3.jpg"
-categories: [ "web" ]
+categories: [ "フロントサイド" ]
 tags: [ "ウェブデザイン","tips" ]
 ---
 

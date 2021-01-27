@@ -3,7 +3,7 @@ title: "Djangoで開発中、データベースへ初期データを入力する
 date: 2020-10-24T18:12:29+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","json" ]
 ---
 

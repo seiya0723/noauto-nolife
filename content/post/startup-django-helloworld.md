@@ -3,7 +3,7 @@ title: "DjangoでHelloWorld【HttpResponse及びレンダリング】"
 date: 2020-11-16T08:50:24+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","初心者向け","スタートアップシリーズ" ]
 ---
 

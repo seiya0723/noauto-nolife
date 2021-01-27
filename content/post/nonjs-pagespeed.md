@@ -3,7 +3,7 @@ title: "JavaScriptほぼ不使用のサイトを作ってGoogle PageSpeed Insigh
 date: 2020-10-22T16:27:53+09:00
 draft: false
 thumbnail: "images/hugo.jpg"
-categories: [ "web" ]
+categories: [ "web全般" ]
 tags: [ "静的サイトジェネレーター","HUGO","netlify","JavaScript" ]
 ---
 

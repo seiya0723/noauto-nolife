@@ -3,7 +3,7 @@ title: "DjangoでAjax(jQuery)を実装する方法【非同期通信】【Restfu
 date: 2020-11-05T12:05:15+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "ajax","django","上級者向け" ]
 ---
 

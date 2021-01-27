@@ -3,7 +3,7 @@ title: "【Restful】DjangoでAjax(jQuery)を実装する方法【Django REST Fr
 date: 2020-11-10T14:01:19+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "Django","Ajax","Restful","上級者向け" ]
 ---
 

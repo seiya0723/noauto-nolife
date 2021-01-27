@@ -3,7 +3,7 @@ title: "【CSS3】スクロール時に奥行きを感じる背景(background)�
 date: 2020-10-29T16:39:03+09:00
 draft: false
 thumbnail: "images/css3.jpg"
-categories: [ "web" ]
+categories: [ "フロントサイド" ]
 tags: [ "css3","html5","tips","初心者向け" ]
 ---
 

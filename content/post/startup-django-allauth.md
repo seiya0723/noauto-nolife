@@ -3,7 +3,7 @@ title: "【メール認証】Django-allauthの実装方法とテンプレート�
 date: 2020-10-24T16:32:35+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "スタートアップシリーズ","django","allauth","セキュリティ","認証" ]
 ---
 

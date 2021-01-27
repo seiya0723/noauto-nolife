@@ -3,7 +3,7 @@ title: "fontawesomeの実装と利用例のまとめ"
 date: 2020-10-29T16:48:13+09:00
 draft: false
 thumbnail: "images/fontawesome.jpg"
-categories: [ "web" ]
+categories: [ "フロントサイド" ]
 tags: [ "ウェブデザイン","スタートアップシリーズ","初心者向け" ]
 ---
 

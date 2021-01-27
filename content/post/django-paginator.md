@@ -3,7 +3,7 @@ title: "Djangoでページネーションを実装する方法【django.core.pag
 date: 2020-11-11T17:57:49+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","初心者向け" ]
 ---
 

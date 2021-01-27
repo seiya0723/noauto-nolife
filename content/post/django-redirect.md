@@ -3,7 +3,7 @@ title: "Djangoで『このページを表示するにはフォームデータを
 date: 2020-10-24T17:22:29+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","初心者向け" ]
 ---
 

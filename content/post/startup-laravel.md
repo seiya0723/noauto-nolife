@@ -3,7 +3,7 @@ title: "Laravelビギナーが30分で掲示板アプリを作る方法"
 date: 2020-10-26T15:13:33+09:00
 draft: false
 thumbnail: "images/laravel.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "スタートアップシリーズ","laravel","php","初心者向け" ]
 ---
 

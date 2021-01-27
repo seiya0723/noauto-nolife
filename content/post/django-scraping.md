@@ -3,7 +3,7 @@ title: "DjangoにPythonスクレイピングを実装した簡易検索エンジ
 date: 2020-10-24T12:25:17+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","スクレイピング","BeautifulSoup","初心者向け" ]
 ---
 

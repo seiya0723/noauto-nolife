@@ -3,7 +3,7 @@ title: "Djangoで画像及びファイルをアップロードする方法"
 date: 2020-11-05T15:30:14+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","上級者向け","セキュリティ" ]
 ---
 

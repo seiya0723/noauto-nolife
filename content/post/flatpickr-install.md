@@ -3,7 +3,7 @@ title: "【日付入力】flatpickrの実装方法(ロケール日本語化、�
 date: 2020-12-24T16:37:31+09:00
 draft: false
 thumbnail: "images/Screenshot from 2021-01-18 10-36-24.png"
-categories: [ "web" ]
+categories: [ "フロントサイド" ]
 tags: [ "ウェブデザイン","JavaScript","初心者向け" ]
 ---
 

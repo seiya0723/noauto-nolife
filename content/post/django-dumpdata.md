@@ -3,7 +3,7 @@ title: "DjangoでDBに格納したデータをダンプ(バックアップ)さ�
 date: 2020-11-05T14:38:34+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","tips","json" ]
 ---
 

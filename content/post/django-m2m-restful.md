@@ -3,7 +3,7 @@ title: "Djangoで多対多のリレーションを含むデータをAjax(jQuery)
 date: 2020-12-01T17:17:52+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","restful","ajax","上級者向け","css3","html5","JavaScript" ]
 ---
 

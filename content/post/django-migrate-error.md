@@ -3,7 +3,7 @@ title: "Djangoのマイグレーションのエラー時の対処法"
 date: 2020-11-05T08:46:39+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","postgresql","sqlite","初心者向け" ]
 ---
 

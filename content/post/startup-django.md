@@ -3,7 +3,7 @@ title: "Djangoビギナーが40分で掲示板アプリを作る方法"
 date: 2020-10-20T14:20:34+09:00
 draft: false
 thumbnail: "images/django.jpg"
-categories: [ "web" ]
+categories: [ "サーバーサイド" ]
 tags: [ "django","スタートアップシリーズ","初心者向け" ]
 ---
 
