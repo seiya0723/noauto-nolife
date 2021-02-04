@@ -2,7 +2,7 @@
 title: "【Nginx】1MB以上のファイルアップロードが出来ない場合の対処法"
 date: 2021-01-26T17:27:37+09:00
 draft: false
-thumbnail: "images/noimage.jpg"
+thumbnail: "images/nginx.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "ウェブサーバー","Nginx" ]
 ---
@@ -12,7 +12,7 @@ tags: [ "ウェブサーバー","Nginx" ]
 これはなぜか。ウェブサーバーの設定に施されたデフォルトのファイルアップロード上限容量が原因である。
 
 
-## Nginxの場合の対策
+## 対策
 
 
 `/etc/nginx/sites-available/`の中にあるサーバー起動用の設定ファイルを編集することで対処できる
@@ -50,4 +50,8 @@ tags: [ "ウェブサーバー","Nginx" ]
             client_max_body_size 100M;
     }
 
+
+## 結論
+
+デプロイ後の問題は色々あるが、サーバー側のセキュリティ問題もあるので、開発したウェブアプリだけでなくサーバーの問題も視野に入れて運用、保守を行うと良いだろう。
 
