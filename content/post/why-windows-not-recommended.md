@@ -1,7 +1,7 @@
 ---
 title: "なぜ、WindowsでのWEB開発はオススメできないのか？【問題と代替案・解決策】"
 date: 2021-02-05T08:31:00+09:00
-draft: false
+draft: true
 thumbnail: "images/noimage.jpg"
 categories: [ "web全般" ]
 tags: [ "コラム","初心者向け","Ubuntu" ]
