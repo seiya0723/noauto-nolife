@@ -24,14 +24,26 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
 ユーザーIDとパスワードを使用した認証方法の実装は簡単。
 
 
-まずは`settings.py`を編集する。SITE_ID、ログイン後、ログアウト後のリダイレクト先を指定する。
+まずは`settings.py`を編集する。`SITE_ID`、ログイン後、ログアウト後のリダイレクト先を指定する。
 
     #django-allauth関係。django.contrib.sitesで使用するSITE_IDを指定する
     SITE_ID = 1
     #django-allauthログイン時とログアウト時のリダイレクトURL
     LOGIN_REDIRECT_URL = '/'
     ACCOUNT_LOGOUT_REDIRECT_URL = '/'
-    
+
+`INSTALLED_APPS`にも下記を追加する。
+
+    INSTALLED_APPS = [
+
+        # 省略 
+
+        'django.contrib.sites', # ←追加
+        'allauth', # ←追加
+        'allauth.account', # ←追加
+        'allauth.socialaccount', # ←追加
+        
+    ]
 
 プロジェクト直下の`urls.py`に下記を追加する。
 
@@ -42,7 +54,6 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
 <div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-38-58.png" alt="ユーザーIDとパスワードによる認証画面"></div>
 
 デフォルトの状態だとHTMLしか表示されていないので、別途装飾が必要な点に注意。(方法は後述)
-
 
 ## メールアドレスとパスワードを使用した認証方法の実装
 
@@ -102,7 +113,6 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
 ログイン画面で、下記画像が表示されれば成功。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-44-06.png" alt="メールアドレスを使用した認証方式"></div>
-
 
 ちなみに、SendgridのアカウントのIDとパスワードを入力した状態でアカウント登録をすれば、本当にメールを送信することができる。
 
