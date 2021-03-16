@@ -128,6 +128,30 @@ UUID実装用のライブラリをcomposerからインストール。
         }
     }
 
+
+モデルも下記のようにUUID対応のモデルを継承して作るようにする。
+
+    <?php
+    
+    namespace App;
+    
+    #use Illuminate\Database\Eloquent\Model;
+    use GoldSpecDigital\LaravelEloquentUUID\Database\Eloquent\Model;
+    
+    class Memo extends Model
+    {
+        protected $fillable = [
+            "body","color"
+        ];
+    
+    }
+    
+
+
+
+
+
+
 ## 結論
 
 ユーザーモデルにも数値型かつオートインクリメントのIDが指定されているので、UUIDを実装したい場合は、上記手続きを忘れないように実行するべし。

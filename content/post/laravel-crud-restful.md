@@ -370,3 +370,5 @@ laravelには『Web職人のためのフレームワーク』というキャッ�
 
 とは言え、Djangoよりも自由度が高く、編集と作成の日時がまとめて指定できる`timestamps()`は良いと思った。
 
+だが、timestamp型はデプロイするときにMySQLを使うと[2038年問題](https://ja.wikipedia.org/wiki/2038%E5%B9%B4%E5%95%8F%E9%A1%8C)を引き起こしてしまう。Laravelのデプロイ時にはDBはMySQLではなく、PostgreSQLを使いましょう。
+
