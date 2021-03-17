@@ -137,7 +137,7 @@ Djangoで動画をアップロードする時、ffmpegなどを使ってサム�
 後は、送信ボタンを押した時、作ったサムネイルを画像ファイル化して、フォームオブジェクトに入れ込み、サーバーに送信させれば良いだけ。
 
 
-<div class="img-center"><img src="/home/akagi/.GitHub/HUGO/noauto_nolife/static/images/Screenshot from 2021-03-17 08-22-19.png" alt="動画のサムネイルを指定できた"></div>
+<div class="img-center"><img src="/images/Screenshot from 2021-03-17 08-22-19.png" alt="動画のサムネイルを指定できた"></div>
 
 
 ## 結論
