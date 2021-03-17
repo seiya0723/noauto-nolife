@@ -2,7 +2,7 @@
 title: "CSS3とHTML5だけでタブを作り、複数のページを表示させる【JS不要】"
 date: 2021-03-17T08:54:24+09:00
 draft: false
-thumbnail: "images/css3.jpg"
+thumbnail: "images/Screenshot from 2021-03-17 09-17-26.png"
 categories: [ "フロントサイド" ]
 tags: [ "css3","html5","tips","初心者向け" ]
 ---
