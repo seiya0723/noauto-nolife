@@ -33,9 +33,9 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 
 ## settings.pyとurls.pyの追記
 
-ファイルをアップロードするには、アップロード先となるディレクトリを指定して、それからアップロードしたファイルを公開するにはパスを指定しなければならない。
+ファイルをアップロードするには、アップロード先となるディレクトリを指定して、それからアップロードしたファイルを公開するにはパスを指定しなければならない。そのためにも、まずは`settings.py`と`config/urls.py`に追記する。
 
-そのためにも、まずはsettings.pyとconfig/urls.pyに追記する。以下、settings.pyに書き込む。
+以下、`settings.py`に書き込む。
 
     MEDIA_URL   = "/media/"
     if DEBUG:
@@ -49,7 +49,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 
     127.0.0.1:8000/media/test.png
 
-仮に`MEDIA_URL`が`"mediafile"`の場合はこうなる。
+仮に`MEDIA_URL`が`"/mediafile/"`の場合はこうなる。
 
     127.0.0.1:8000/mediafile/test.png
 
