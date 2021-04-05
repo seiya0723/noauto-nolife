@@ -23,6 +23,8 @@ settings.pyの任意の場所に下記のコードを記述する。
     EMAIL_BACKEND       = "sendgrid_backend.SendgridBackend"
     SENDGRID_API_KEY    = "ここにsendgridのAPIkeyを記述する"
 
+    SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
 これで[Django-allauthのメール認証](/post/startup-django-allauth/)も動く。
 
 ## 素のPythonに実装する方法
