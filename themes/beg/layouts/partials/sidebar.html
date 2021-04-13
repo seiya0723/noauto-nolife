@@ -10,6 +10,15 @@
 
     <!--この辺にGitHubのリンクとかTwitterのリンクとか作れば良いかも。-->
 
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_result"></div>
+    </section>
+
+
+
     {{ range $key, $value := .Site.Taxonomies }}
     <section class="sidebar_panel">
         <div class="sidebar_panel_title">{{ $key | singularize | humanize }}</div>
