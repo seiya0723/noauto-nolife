@@ -20,6 +20,7 @@ tags: [ "laravel","Restful","初心者向け","php" ]
 1. Restful対応コントローラーを作る
 1. ルーティングの設定
 1. モデル定義とマイグレーション実行
+1. リクエストを作る
 1. ビューを作る
 1. コントローラーの修正
 1. タイムゾーンの修正
@@ -132,6 +133,59 @@ tags: [ "laravel","Restful","初心者向け","php" ]
 
     php artisan migrate
 
+
+## リクエストを作る
+
+ユーザーから受け取ったリクエストをバリデーション(検証)して、DBに格納させるか否かを判定する。それがLaravelのリクエスト。下記コマンドを実行してリクエストを作る。
+
+    php artisan make:request CreateTopicRequest
+
+続いて、`app/Http/Requests/CreateTopicRequest.php`を下記のように編集
+
+    <?php
+    
+    namespace App\Http\Requests;
+    
+    use Illuminate\Foundation\Http\FormRequest;
+    
+    class CreateTopicRequest extends FormRequest
+    {
+        /**
+         * Determine if the user is authorized to make this request.
+         *
+         * @return bool
+         */
+        public function authorize()
+        {
+            #↓trueに書き換える
+            return true;
+        }
+    
+        /**
+         * Get the validation rules that apply to the request.
+         *
+         * @return array
+         */
+        public function rules()
+        {
+            return [
+                'name'      => 'required|max:15',
+                'content'   => 'required|max:2000',
+            ];
+        }
+        public function messages() {
+            return [
+                'name.required'     => '名前を入力してください',
+                'name.max'          => '名前は15文字でお願いします。',
+                'content.required'  => 'コメントを入力してください',
+                'content.max'       => 'コメントは2000文字でお願いします。',
+            ];
+        }
+    }
+
+バリデーション対象とバリデーションルール、バリデーション失敗したときのメッセージが表示される。
+
+
 ## ビューを作る
 
 Restful化に対応させるため、作る必要のあるビューが5つある。ただ、今回はテンプレートの継承機能を使うので、1ファイル当たりのコード行数は30行程度。
@@ -199,6 +253,14 @@ Restful化に対応させるため、作る必要のあるビューが5つある
     
     @section("main")
 
+    @if( count($errors) )
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    @endif
+
     <form class="" action="{{ route('topics.store') }}" method="POST">
         {{ csrf_field() }}
         <input class="form-control" type="text" name="name" placeholder="名前">
@@ -209,6 +271,7 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 
 `create`は新しいトピックを作るフォーム。`input`タグ等の`name`属性はマイグレーションフィールドで定義したカラムに基づいている。
 
+ここでバリデーションに失敗したときのメッセージを表示させている。
 
 続いて、`resource/views/show.blade.php`を作る。こちらも`base`を継承して作っている。
 
@@ -235,6 +298,14 @@ Restful化に対応させるため、作る必要のあるビューが5つある
     @extends("base")
     
     @section("main")
+
+    @if( count($errors) )
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    @endif
     
     @forelse($topics as $topic )
     <form action="{{ route('topics.update',$topic->id) }}" method="POST">
@@ -252,6 +323,8 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 
 その名の通り、編集用のフォーム。`method_field("PUT")`はフォーム送信時HTTPリクエストのPUTメソッドを使用してリクエストを送る指定をしている。
 
+作成時と同様に入力値にエラーがあった時、エラー文を表示させている。
+
 これで一通りのビューは完成した。後はこのビューに値を入れるコントローラーを修正していく。
 
 ## コントローラーの修正
@@ -262,6 +335,7 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 
     use Illuminate\Http\Request;
     use App\Topic;
+    use App\Http\Requests\CreateTopicRequest;
 
     class TopicsController extends Controller
     {
@@ -276,7 +350,7 @@ Restful化に対応させるため、作る必要のあるビューが5つある
         {
             return view("create");
         }
-        public function store(Request $request)
+        public function store(CreateTopicRequest $request)
         {
             Topic::create($request->all());
 
@@ -296,7 +370,7 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 
             return view("edit",$context);
         }
-        public function update(Request $request, $id)
+        public function update(CreateTopicRequest $request, $id)
         {
             $topic  = Topic::find($id);
             $topic->name    = $request->name;
@@ -319,10 +393,9 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 
 `Topic::latest()->get();`はDBからデータを全て抜き取り、最新が上になるように並び替える。間に`where()`メソッドが入ることで、絞り込みができる。`find()`メソッドに`$id`を指定することで一意に特定もできる。
 
-`Topic::create($request->all());`はリクエストとして受け取ったデータを全て`create()`メソッドに入れる。これで指定した内容でトピックを作ることができる。
+`create`及び`update`はリクエストのバリデーションを経由しているので、不適切な値であればフォーム入力欄にそのままエラー文が表示される仕組みになっている。
 
 モデルのメソッドには、`save()`メソッド、`delete()`メソッドが用意されている。それぞれ、指定した値でデータを保存、削除することができる。
-
 
 `route("topics.index")`は名前解決によって、`topics`を意味する。`route/web.php`に定義した内容に基づいている。`Route::resource("/topics", "TopicsController");`のみだが、`resource()`メソッドにより、下記の名前とURIが対応付けられているのだ。
 
@@ -345,14 +418,11 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 
 ## タイムゾーンの修正
 
-
 最後に、日付の問題を解決するため、`config/app.php`のタイムゾーンを修正する。
 
     'timezone' => 'Asia/Tokyo',
 
-これで日本に設定できた。
-
-
+これで日本時間に設定できた。
 
 ## 実際に動かしてみる
 

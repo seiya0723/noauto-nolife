@@ -219,7 +219,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
     
             {% for content in data %}
             <div class="my-2">
-                <img class="img-fluid" src="{% url 'upload:index' %}media/{{ content.photo }}" alt="投稿された画像">
+                <img class="img-fluid" src="/media/{{ content.photo }}" alt="投稿された画像">
             </div>
             {% endfor %}
         
@@ -253,7 +253,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
         
             {% for content in data %}
             <div class="my-2">
-                <a href="{% url 'upload:index' %}media/{{ content.document }}">{{ content.document }}</a>
+                <a href="/media/{{ content.document }}">{{ content.document }}</a>
             </div>
             {% endfor %}
     
