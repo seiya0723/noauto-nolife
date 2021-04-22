@@ -8,7 +8,7 @@ generate="./static/data/search.js"
 
 #下書きではないものを選び、そのタイトル行を抜き取って、test.jsへリダイレクト生成
 
-grep -l "draft: false" $target | xargs grep "^title:" > $generate
+grep -l "draft: false" $target | xargs grep -m1 "^title:" > $generate
 
 #中央のタイトルを消してキーを指定。
 
