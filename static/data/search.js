@@ -45,8 +45,6 @@ const SEARCH_LIST = [
 { "link": "/post/flatpickr-install/", "title" : "【日付入力】flatpickrの実装方法(ロケール日本語化、日時入力対応化)" }, 
 { "link": "/post/heroku-postgres-settings/", "title" : "Herokuのデータベース(herokupostgres)の実装と設定方法【Hobby-Plan】" }, 
 { "link": "/post/hugo-js-search-system/", "title" : "HUGOにシェルスクリプトとJavaScriptの記事検索機能を実装させる" }, 
-{ "link": "/post/hugo-js-search-system.md:    grep -l "draft: false" $target | xargs grep "title:" > $generate
-{ "link": "/post/hugo-js-search-system.md:    sed -i -e "s//", "title" :/\/\", \"title\" :/g" $generate
 { "link": "/post/javascript-cookie/", "title" : "JavascriptからCookieを扱う【動画の設定音量の記録と読み込み】" }, 
 { "link": "/post/jquery-autocomplete/", "title" : "jQueryでオートコンプリート(入力補正)を実装させる【表記ゆれ対策にも有効】" }, 
 { "link": "/post/jquery-to-javascript/", "title" : "jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】" }, 
@@ -77,6 +75,7 @@ const SEARCH_LIST = [
 { "link": "/post/startup-laravel/", "title" : "Laravelビギナーが30分で掲示板アプリを作る方法" }, 
 { "link": "/post/startup-netlify/", "title" : "Netlifyと静的サイトジェネレーターHUGOで1ヶ月約100円でブログ運営をする方法【独自ドメイン使用】" }, 
 { "link": "/post/startup-npm-install/", "title" : "Ubuntu18.04にnode.jsとnpm、vue-cliをインストールする" }, 
+{ "link": "/post/startup-postgresql/", "title" : "PostgreSQLインストールから、ユーザーとDBを作る" }, 
 { "link": "/post/startup-sqlite3/", "title" : "SQLiteの操作方法【テーブル一覧表示、SQLなど】" }, 
 { "link": "/post/vuejs-modal/", "title" : "Vue.jsでモーダルダイアログを作る" }, 
 { "link": "/post/vuejs-todo-crud/", "title" : "Vue.jsでTODOを作る【CRUD】" }, 
