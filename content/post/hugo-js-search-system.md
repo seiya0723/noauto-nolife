@@ -27,7 +27,7 @@ tags: [ "JavaScript","シェルスクリプト","hugo","静的サイトジェネ
     
     #下書きではないものを選び、そのタイトル行を抜き取ってリダイレクト生成
     
-    grep -l "draft: false" $target | xargs grep "title:" > $generate
+    grep -l "draft: false" $target | xargs grep "^title:" > $generate
     
     #中央のタイトルを消してキーを指定。
     
@@ -63,6 +63,11 @@ tags: [ "JavaScript","シェルスクリプト","hugo","静的サイトジェネ
 <div class="img-center"><img src="/images/Screenshot from 2021-04-13 09-02-50.png" alt="search.jsの中身"></div>
 
 この定数を読み取り、検索させる。
+
+【※2021年4月22日追記】
+
+`grep`で`title:`を抜き取る時、行の初めを意味する`^`が抜けていたため、本記事のコードまで抜き取られ、結果生成されるJSが構文エラーになってしまう問題があったので、修正しました。これでも行初めに`title:`と書くと誤って抜き取られる問題があるため、後々さらに修正する予定。
+
 
 ## 検索を行うJavaScriptとHTML
 
