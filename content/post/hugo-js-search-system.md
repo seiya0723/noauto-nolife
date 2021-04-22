@@ -7,7 +7,6 @@ categories: [ "フロントサイド" ]
 tags: [ "JavaScript","シェルスクリプト","hugo","静的サイトジェネレーター" ]
 ---
 
-
 タイトルの通り。
 
 静的サイトジェネレーターのHUGOはサーバーサイドのスクリプトが存在しない(全てフロント言語)。そのため、検索機能を実装させるとなると、検索対象と検索機能の全てをフロントに記述する必要がある。フロントで完結する検索機能に必要になるのが、JavaScript。
@@ -27,7 +26,7 @@ tags: [ "JavaScript","シェルスクリプト","hugo","静的サイトジェネ
     
     #下書きではないものを選び、そのタイトル行を抜き取ってリダイレクト生成
     
-    grep -l "draft: false" $target | xargs grep "^title:" > $generate
+    grep -l "draft: false" $target | xargs grep -m1 "^title:" > $generate
     
     #中央のタイトルを消してキーを指定。
     
