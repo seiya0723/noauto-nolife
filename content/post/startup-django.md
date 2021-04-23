@@ -193,9 +193,6 @@ views.pyはクライアントから受け取ったデータをDBに保存した�
             posted  = Topic( comment = request.POST["comment"] )
             posted.save()
 
-            data    = Topic.objects.all()
-            context = { "data":data }
-
             return redirect("bbs:index")
 
     index   = BbsView.as_view()
