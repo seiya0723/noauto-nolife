@@ -4,7 +4,7 @@ date: 2021-02-13T14:01:48+09:00
 draft: false
 thumbnail: "images/laravel.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Laravel","Heroku","初心者向け" ]
+tags: [ "Laravel","Heroku","初心者向け","デプロイ","PostgreSQL" ]
 ---
 
 LaravelをHerokuにデプロイする。DBにはHerokuPostgresを使用する。

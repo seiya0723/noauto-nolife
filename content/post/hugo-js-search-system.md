@@ -4,7 +4,7 @@ date: 2021-04-13T08:18:45+09:00
 draft: false
 thumbnail: "images/hugo.jpg"
 categories: [ "フロントサイド" ]
-tags: [ "JavaScript","シェルスクリプト","hugo","静的サイトジェネレーター" ]
+tags: [ "JavaScript","bash","シェルスクリプト","hugo","静的サイトジェネレーター" ]
 ---
 
 タイトルの通り。
