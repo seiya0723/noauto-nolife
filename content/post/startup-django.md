@@ -52,15 +52,15 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
     import os
 
-INSTALLED_APPSに下記を追加
+`INSTALLED_APPS`に下記を追加
 
     'bbs.apps.BbsConfig',
 
-TEMPLATESのDIRSに下記を追加
+`TEMPLATES`の`DIRS`に下記を追加
 
     os.path.join(BASE_DIR,"templates")
 
-LANGUAGE_CODE、TIME_ZONEを下記に変更
+`LANGUAGE_CODE`、`TIME_ZONE`を下記に変更
 
     LANGUAGE_CODE = 'ja'
     TIME_ZONE = 'Asia/Tokyo'
@@ -113,7 +113,6 @@ LANGUAGE_CODE、TIME_ZONEを下記に変更
    
 こういうときは-pオプション使えば楽。templates/bbs/index.htmlを作る。下記をそのままコピペでOK
 
-
     <!DOCTYPE html>
     <html lang="ja">
     <head>
@@ -131,9 +130,9 @@ LANGUAGE_CODE、TIME_ZONEを下記に変更
                 <input type="submit" value="送信">
             </form>
     
-            {% for content in data %}
+            {% for topic in topics %}
             <div class="border">
-                {{ content.comment }}
+                {{ topic.comment }}
             </div>
             {% endfor %}
     
@@ -161,9 +160,9 @@ LANGUAGE_CODE、TIME_ZONEを下記に変更
 
 ## マイグレーション実行(2分)
 
-models.pyで定義したフィールドはマイグレーションを実行して、DBに格納先のテーブルを作る。この時、settings.pyのINSTALL_APPSに含まれていないものはマイグレーションされない点に注意。
+`models.py`で定義したフィールドはマイグレーションを実行して、DBに格納先のテーブルを作る。この時、`settings.py`の`INSTALL_APPS`に含まれていないものはマイグレーションされない点に注意。
 
-    python3 manage.py makemigration
+    python3 manage.py makemigrations
     python3 manage.py migrate
 
 マイグレーションが完了すると下記画像のようになる。
@@ -172,7 +171,7 @@ models.pyで定義したフィールドはマイグレーションを実行し�
 
 ## views.pyでDBへアクセス(5分)
 
-views.pyはクライアントから受け取ったデータをDBに保存したり、DBからデータを抜き取ってページに表示させなければならない。故に、下記の様にviews.pyを書き換える。
+`views.py`はクライアントから受け取ったデータをDBに保存したり、DBからデータを抜き取ってページに表示させなければならない。故に、下記の様に`views.py`を書き換える。
 
     from django.shortcuts import render,redirect
 
@@ -183,8 +182,8 @@ views.pyはクライアントから受け取ったデータをDBに保存した�
 
         def get(self, request, *args, **kwargs):
 
-            data    = Topic.objects.all()
-            context = { "data":data }
+            topics  = Topic.objects.all()
+            context = { "topics":topics }
 
             return render(request,"bbs/index.html",context)
 
@@ -196,7 +195,6 @@ views.pyはクライアントから受け取ったデータをDBに保存した�
             return redirect("bbs:index")
 
     index   = BbsView.as_view()
-
 
 
 ## 開発用サーバーを起動する(3分)
