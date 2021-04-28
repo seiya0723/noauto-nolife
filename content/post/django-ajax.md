@@ -1,5 +1,5 @@
 ---
-title: "DjangoでAjax(jQuery)を実装する方法【非同期通信】【Restful不使用版】"
+title: "DjangoでAjax(jQuery)を実装する方法【非同期通信】【DRF不使用版】"
 date: 2020-11-05T12:05:15+09:00
 draft: false
 thumbnail: "images/django.jpg"
