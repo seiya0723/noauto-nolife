@@ -111,10 +111,17 @@ HTMLを書き込むため、書き込む際にはユーザーから受け取っ�
 
     //↓以下に書き換え
     
-    var button  = document.querySelector(".button");
+    //単一要素にイベント設定する場合はこちら
+    var button  = document.querySelector("#button");
     button.addEventListener( "click", function(){ console.log("clicked"); } );
 
-一旦セレクタで要素のオブジェクトを作った後、`.addEventListener( [発火条件], function(){ [処理] })`メソッドを実行してイベントリスナをセットする。
+    //複数要素にイベント設定する場合はこちら
+    var button  = document.querySelectorAll(".button");
+    for (let b of button){
+        b.addEventListener( "click", function(){ console.log("clicked"); } );
+    }
+
+一旦セレクタで要素のオブジェクトを作った後、`.addEventListener( [発火条件], function(){ [処理] })`メソッドを実行してイベントリスナをセットする。クラス名など複数ヒットする場合はforループでそれぞれイベントをセットする。
 
 - 参照: https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener
 
