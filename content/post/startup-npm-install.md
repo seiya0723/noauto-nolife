@@ -4,7 +4,7 @@ date: 2021-03-11T16:10:55+09:00
 draft: false
 thumbnail: "images/vuejs.jpg"
 categories: [ "フロントサイド" ]
-tags: [ "javascript","node.js","npm","スタートアップ","vue.js" ]
+tags: [ "javascript","node.js","npm","スタートアップシリーズ","vue.js" ]
 ---
 
 ## 環境
