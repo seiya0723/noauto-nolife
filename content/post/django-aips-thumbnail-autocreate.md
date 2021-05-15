@@ -137,7 +137,7 @@ tags: [ "django","上級者向け" ]
     
             #upload_to、settings内にあるMEDIA_ROOTを読み取り、そこに画像ファイルを保存。
             from django.conf import settings
-            path            = Document.file.field.upload_to
+            path            = Document.thumbnail.field.upload_to # ←予めmediaディレクトリにthumbnailディレクトリを作る
             thumbnail_path  = path + str(document.id) + ".png"
             full_path       = settings.MEDIA_ROOT + "/" + thumbnail_path 
     

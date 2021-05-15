@@ -1,5 +1,5 @@
 ---
-title: "Django-allauthでカスタムユーザーモデルを実装させる"
+title: "Djangoにカスタムユーザーモデルを実装させる【AbstractUserとallauth】"
 date: 2020-12-14T16:28:15+09:00
 draft: false
 thumbnail: "images/django.jpg"

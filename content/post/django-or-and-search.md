@@ -13,7 +13,7 @@ tags: [ "django","tips","初心者向け" ]
 
 Djangoのモデルオブジェクトで検索しようとすると、こうなる。
 
-    Model.objects.filter(title__contain="Django UUIDFields 使い方")
+    Model.objects.filter(title__contains="Django UUIDFields 使い方")
 
 これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示)
 
