@@ -43,7 +43,7 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
 下記コマンドでbbsアプリを作る。
 
-    python3 ./manage.py startapp bbs
+    python3 manage.py startapp bbs
 
 
 ## settings.pyの書き換え(5分)
@@ -103,15 +103,24 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
     index   = BbsView.as_view()
 
 
-上記views.pyはGET文を受け取ったら、`bbs/index.html`のレンダリングをする。とは言え、templatesの`bbs/index.html`はまだ存在しないので次の項目で作成する。
+上記`views.py`はGET文を受け取ったら、`templates/bbs/index.html`のレンダリングをするという意味。`urls.py`から呼び出される`views.index`は`BbsView.as_view()`、即ち`BbsView`の処理のことである。
+
+`render()`にはレンダリング対象のHTMLを指定する。とは言え、`templates/bbs/index.html`はまだ存在しないので次の項目で作成する。
+
+`*args`、`**kwargs`についての詳細は下記を参考に。
+
+[DjangoやPythonにおける\*argsと\*\*kwargsとは何か](/post/django-args-kwargs/)
+
 
 ## templatesでHTMLの作成(5分)
 
-まず、プロジェクトディレクトリ直下にtemplatesディレクトリを作る。続いてbbsディレクトリを作る
+まず、プロジェクトディレクトリ直下に`templates`ディレクトリを作る。続いて`bbs`ディレクトリを作る
 
     mkdir -p templates/bbs/
    
-こういうときは-pオプション使えば楽。templates/bbs/index.htmlを作る。下記をそのままコピペでOK
+こういうときは`mkdir`コマンドの`-p`オプション使うことで、2階層以上のディレクトリを一気に作れる。
+
+続いて`templates/bbs/index.html`を作る。下記をそのままコピペでOK。
 
     <!DOCTYPE html>
     <html lang="ja">
@@ -158,9 +167,13 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
             return self.comment
 
 
+テーブル名は`topic`、そのテーブルの中に文字列型のデータを格納するフィールド、即ち`models.CharField()`の`comment`を定義する。
+
+テーブルの主キーは数値型かつオートインクリメントの`id`が、`models.Model`を継承した時点で付与されている。だから特別な理由(数値型ではない主キーを指定したいなど)を除き、あえて`id`まで定義する必要はない。
+
 ## マイグレーション実行(2分)
 
-`models.py`で定義したフィールドはマイグレーションを実行して、DBに格納先のテーブルを作る。この時、`settings.py`の`INSTALL_APPS`に含まれていないものはマイグレーションされない点に注意。
+`models.py`で定義したフィールドはマイグレーションを実行して、DBに格納先のテーブルを作る。この時、`settings.py`の`INSTALL_APPS`に含まれていないものはマイグレーションを実行してもマイグレーションファイルが生成されない点に注意。
 
     python3 manage.py makemigrations
     python3 manage.py migrate
@@ -196,6 +209,14 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
     index   = BbsView.as_view()
 
+`models.py`の中にある`Topic`クラスを`import`する。これでDBへデータの読み書きができるようになる。
+
+`get`メソッドでは全データの参照、`post`メソッドではクライアントから受け取ったデータをDBへ書き込んでいる。
+
+`post`メソッドではデータを書き込んだ後、`get`メソッドへリダイレクトしている。このリダイレクトをする時、`bbs/urls.py`に書いた`app_name`と`name`を組み合わせてURLを逆引きし、リダイレクト先を指定している。
+
+    redirect("[app_name]:[name]")
+
 
 ## 開発用サーバーを起動する(3分)
 
@@ -205,8 +226,7 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
 上記コマンドを実行した後、 http://127.0.0.1:8000/ にアクセスする。下記のような画面が表示されれば成功。
 
-
-<div class="img-center"><img src="/images/Screenshot from 2020-10-20 16-07-52.png" alt=""></div>
+<div class="img-center"><img src="/images/Screenshot from 2020-10-20 16-07-52.png" alt="簡易掲示板の完成"></div>
 
 ## ソースコードDL先
 
