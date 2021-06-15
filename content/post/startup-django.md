@@ -41,33 +41,41 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
 ## アプリを作る(5分)
 
-下記コマンドでbbsアプリを作る。
+下記コマンドでbbsアプリを作る。(※Windowsの場合、`python3`ではなく`python`コマンドを使う)
 
     python3 manage.py startapp bbs
 
 
 ## settings.pyの書き換え(5分)
 
-冒頭に下記を追加
+冒頭に下記を追加。バージョンによってはすでに追加されている場合もある。
 
     import os
 
-`INSTALLED_APPS`に下記を追加
+`INSTALLED_APPS`の最後に`'bbs.apps.BbsConfig',`を追加。`bbs`ディレクトリ内にある`apps.py`の`BbsConfig`クラスを読み込むという意味。これを忘れるとマイグレーションが反映されない問題が起こるので注意。
 
-    'bbs.apps.BbsConfig',
+    INSTALLED_APPS  = [
 
-`TEMPLATES`の`DIRS`に下記を追加
+        ## 省略 ##
+    
+    
+        'bbs.apps.BbsConfig',
+    ]
 
-    os.path.join(BASE_DIR,"templates")
+`TEMPLATES`の`DIRS`に下記を追加。プロジェクト直下の`templates`ディレクトリを`TEMPLATES`として設定するという意味。
 
-`LANGUAGE_CODE`、`TIME_ZONE`を下記に変更
+    'DIRS': [ os.path.join(BASE_DIR,"templates") #←追加 ],
+
+`LANGUAGE_CODE`、`TIME_ZONE`を下記に変更。日本時間で日本語を指定。
 
     LANGUAGE_CODE = 'ja'
     TIME_ZONE = 'Asia/Tokyo'
 
+
+
 ## urls.pyでURLの指定(5分)
 
-`config/urls.py`を下記に修正
+`config/urls.py`を下記に修正。トップページにアクセスした時、`bbs`ディレクトリ内の`urls.py`を参照する
 
     from django.contrib import admin
     from django.urls import path,include
@@ -77,7 +85,7 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
         path('', include("bbs.urls")),
     ]
 
-`bbs/urls.py`を作成、内容は下記
+`bbs/urls.py`を作成、内容は下記。トップページにアクセスした時、`views.py`の`index`を呼び出す。
 
     from django.urls import path
     from . import views
@@ -110,7 +118,6 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 `*args`、`**kwargs`についての詳細は下記を参考に。
 
 [DjangoやPythonにおける\*argsと\*\*kwargsとは何か](/post/django-args-kwargs/)
-
 
 ## templatesでHTMLの作成(5分)
 
@@ -149,6 +156,8 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
     </body>
     </html>
 
+DTL(Django Template Language)を使用し、`for`文でデータを並べる。Pythonの`for`文と違って、インデント構文ではなく、`endfor`を使用することで`for`文の終端を示す。
+
 
 ## models.pyでフィールドの定義(5分)
 
@@ -165,7 +174,6 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
     
         def __str__(self):
             return self.comment
-
 
 テーブル名は`topic`、そのテーブルの中に文字列型のデータを格納するフィールド、即ち`models.CharField()`の`comment`を定義する。
 
