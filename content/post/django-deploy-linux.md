@@ -41,7 +41,9 @@ DjangoをLinuxサーバーにデプロイできれば、クラウドとは違っ
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-28 15-48-59.png" alt="PostgreSQL正常稼働"></div>
 
-PostgreSQLにおいては、別途Django側からアクセス為にユーザーとパスワードを決める必要がある。
+PostgreSQLにおいては、別途Django側からアクセス為にユーザーとパスワードを決める必要がある。PostgreSQLの操作方法等に関しては下記を参照
+
+[PostgreSQLインストールから、ユーザーとDBを作る](/post/startup-postgresql/)
 
 ## settings.pyの修正
 

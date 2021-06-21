@@ -1,7 +1,7 @@
 ---
 title: "【保存版】Ubuntu18.04をインストールした後に真っ先にやる16の設定"
 date: 2019-01-12T14:57:56+09:00
-draft: true
+draft: false
 thumbnail: "images/ubuntu.jpg"
 categories: [ "others" ]
 tags: [ "Ubuntu", "作業効率化","Linux" ]

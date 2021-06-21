@@ -46,6 +46,11 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
                 #(3)クエリを作る
                 query       = Q()
                 for word in search_list:
+
+                    #空欄の場合は次のループへ
+                    if word == "":
+                        continue
+
                     #TIPS:AND検索の場合は&を、OR検索の場合は|を使用する。
                     query &= Q(name__contains=word)
     
