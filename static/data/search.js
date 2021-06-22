@@ -1,5 +1,5 @@
 const SEARCH_LIST = [
-{ "link": "/post/django-m2m-usermodel-follow/", "title" : "【Django】カスタムユーザーモデルでブロック機能を実装させる【ManyToManyFieldでユーザーモデル自身を指定】" }, 
+{ "link": "/post/django-m2m-usermodel/", "title" : "【Django】カスタムユーザーモデルでユーザーブロック機能を実装させる【ManyToManyFieldでユーザーモデル自身を指定】" }, 
 { "link": "/post/python-brackets/", "title" : "Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプルとリスト】" }, 
 { "link": "/post/django-custom-user-model-allauth-bbs/", "title" : "【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】" }, 
 { "link": "/post/django-custom-user-model-uuid/", "title" : "DjangoでUUIDを主キーとしたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】" }, 
