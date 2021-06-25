@@ -176,16 +176,12 @@ PostgreSQLにおいては、別途Django側からアクセス為にユーザー�
     STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
     STATIC_ROOT = '/var/www/{}/static'.format(PROJECT_NAME)
     
-    STATIC = "/var/www/{}/static".format(PROJECT_NAME)
-    
     MEDIA_URL   = "/media/"
     if DEBUG:
         MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
     else:
         MEDIA_ROOT  = "/var/www/{}/media".format(PROJECT_NAME)
     
-    MEDIA = "/var/www/{}/media".format(PROJECT_NAME)
-
 
 以下、解説。
 
@@ -217,7 +213,11 @@ PostgreSQLの操作時に必要になるユーザー名とパスワードを入�
 
 PostgreSQLのアクセスにはpsycopgが必要になるためpipコマンドでインストールさせておく。
 
-pip install psycopg
+    sudo pip3 install psycopg2
+
+上記コマンドが正常に動作しない場合は、下記コマンドを実行してから実行する
+
+    sudo apt install libpq-dev python3-dev
 
 
 ### 静的ファイル、メディアファイルの指定
@@ -241,20 +241,22 @@ scpコマンドが使えない場合は、USBメモリなどを使用して、�
 
 デプロイ先のUbuntuで下記コマンドを実行。ライブラリをインストールさせる。
 
-    sudo pip3 install django-environ gunicorn
+    sudo pip3 install django django-environ gunicorn
 
 その他、必要になるライブラリを適宜追加でインストールさせる。
+
+    sudo pip3 install django-allauth 
 
 
 ### virtualenvを使用している場合
 
 まずプロジェクトディレクトリに移動したあと、下記コマンドを実行する。
 
-    pip freeze > requirements.txt
+    sudo pip3 freeze > requirements.txt
 
 requirements.txtなどに必要になるライブラリが全て記録される。その上でサーバーにプロジェクト一式をコピーした上、下記コマンドを実行、ライブラリをインストールさせる
 
-    pip install -r requirements.txt
+    sudo pip3 install -r requirements.txt
 
 ## 静的ファイルを公開ディレクトリに配置
 
@@ -266,7 +268,6 @@ requirements.txtなどに必要になるライブラリが全て記録される�
 プロジェクトのディレクトリの所有者はDjangoのプロジェクトが配置されている場所の所有者に当たるユーザーの名前、グループはwww-dataを指定する。
 
     sudo chown ユーザー名:www-data /var/www/プロジェクト名
-
 
 続いて、下記コマンドを実行して静的ファイルの配信を行う。
 
@@ -291,7 +292,7 @@ requirements.txtなどに必要になるライブラリが全て記録される�
     [Service]
     User        = ユーザー名
     Group       = www-data
-    WorkingDirectory    = /home/ユーザー名/Documents/django/プロジェクト名
+    WorkingDirectory    = /home/ユーザー名/Documents/プロジェクト名
     ExecStart           = /usr/local/bin/gunicorn \
                             --bind unix:/run/gunicorn/プロジェクト名.sock \
                             config.wsgi:application
@@ -327,7 +328,9 @@ systemdにサービスを管理登録する
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-29 14-56-18.png" alt="正常にsystemdが動いている"></div>
 
+もしActive:failedなどが表示されれば、併記されているエラー文から該当箇所を修正し、下記コマンドを実行してリロードする。
 
+    sudo systemctl daemon-reload
 
 
 
@@ -354,8 +357,12 @@ systemdにサービスを管理登録する
             include proxy_params;
             proxy_pass http://unix:/run/gunicorn/プロジェクト名.sock;
         }   
+
+        client_max_body_size 100M;
     }
-    
+
+末端の`client_max_body_size`の値はお好みで。デフォルトでは1MB程度しかアップロードできないので、ファイルアップロード系ウェブアプリの場合は指定必須。
+
 mediaとstaticはSTATIC_URL、MEDIA_URLに対応したURIである。
 
 availableで作ったnginxの設定ファイルは、enabledにシンボリックリンクを作ることで有効化出来る。以下のコマンドを実行して設定ファイルを有効化させる
@@ -367,6 +374,12 @@ availableで作ったnginxの設定ファイルは、enabledにシンボリッ�
     sudo unlink /etc/nginx/sites-enabled/default
     sudo nginx -t
     sudo systemctl reload nginx
+
+## マイグレーション
+
+DBを使用しているタイプのウェブアプリであれば、PostgreSQLへのマイグレーションを忘れなく。
+
+    python3 manage.py migrate
 
 
 ## 動作チェック
