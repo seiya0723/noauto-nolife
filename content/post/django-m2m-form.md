@@ -62,7 +62,7 @@ tags: [ "django","tips","html5","css3","上級者向け" ]
 送信するものは`Menu`だけとする場合、`forms.py`は以下のようになる。
 
     from django import forms 
-    from .models import Category,Allergy,Menu
+    from .models import Menu
     
     
     class MenuForm(forms.ModelForm):
