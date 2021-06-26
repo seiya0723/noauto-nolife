@@ -211,13 +211,17 @@ DEBUGモードを無効化しておかないと、エラーが出た時にウェ
 
 PostgreSQLの操作時に必要になるユーザー名とパスワードを入力する。
 
-PostgreSQLのアクセスにはpsycopgが必要になるためpipコマンドでインストールさせておく。
+PostgreSQLのアクセスにはpsycopgが必要になるためpip3コマンドでインストールさせておく。
 
     sudo pip3 install psycopg2
 
 上記コマンドが正常に動作しない場合は、下記コマンドを実行してから実行する
 
     sudo apt install libpq-dev python3-dev
+
+もし、pip3コマンドがないと言われたら、下記コマンドを実行してpip3コマンドを使えるようにする
+
+    sudo apt install python3-pip
 
 
 ### 静的ファイル、メディアファイルの指定
@@ -331,6 +335,10 @@ systemdにサービスを管理登録する
 もしActive:failedなどが表示されれば、併記されているエラー文から該当箇所を修正し、下記コマンドを実行してリロードする。
 
     sudo systemctl daemon-reload
+
+その上でプロジェクト名のサービスをリスタートさせる
+
+    sudo systemctl restart プロジェクト名
 
 
 
