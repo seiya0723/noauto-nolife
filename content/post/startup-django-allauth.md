@@ -49,11 +49,19 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
 
     path('accounts/', include('allauth.urls')),
 
-これだけでOK
+
+後はマイグレーションを実行する。
+
+    python3 manage.py migrate
+
+これだけでOK。http://127.0.0.1:8000/accounts/signup/ にアクセスする。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-38-58.png" alt="ユーザーIDとパスワードによる認証画面"></div>
 
-デフォルトの状態だとHTMLしか表示されていないので、別途装飾が必要な点に注意。(方法は後述)
+管理サイトなどにログインしている場合、上記のような表示にはならず、トップページにリダイレクトされる点に注意。予め管理サイトからはログアウトしておく。
+
+
+このようにデフォルトの状態だとHTMLしか表示されていないので、別途装飾が必要な点に注意。(方法は後述)
 
 ## メールアドレスとパスワードを使用した認証方法の実装
 
@@ -132,7 +140,6 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
     os.path.join(BASE_DIR, 'templates', 'allauth')
 
 後は、先程templatesに格納したHTMLファイルを修正していくだけ。ちなみに、メール送信時の文言も`templates/allauth/account/email/`から修正できる。
-
 
 ## 結論
 
