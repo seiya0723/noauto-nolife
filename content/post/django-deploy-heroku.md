@@ -23,12 +23,9 @@ https://devcenter.heroku.com/ja/articles/heroku-cli
 
 ここからインストールする。herokuコマンドを実行して、デプロイ先のサーバーでマイグレーション等の操作を行うためにある。
 
-
 ## Heroku側の設定
 
 予め[Herokuのアカウント](https://signup.heroku.com/jp)を作っておく。クレジットカード不要で必要なものはメールアドレスだけ。
-
-
 
 まずはHerokuアカウントからデプロイ先として指定するアプリを作る。ダッシュボードにアクセスすると下記画面が見える。右上のNEWをクリックする。
 
@@ -79,8 +76,7 @@ DBの使用に必要なユーザー名、DBの名前、パスワードなどが�
 
 ## settings.pyの設定
 
-下記に倣ってsettings.pyを書き換える。
-
+下記に倣ってsettings.pyを書き換える。DEBUGモードの無効化をお忘れなく。
 
     # DEBUGモードを無効化
     # DEBUG = True
@@ -90,8 +86,8 @@ DBの使用に必要なユーザー名、DBの名前、パスワードなどが�
     import django_heroku
     import dj_database_url
     
-    # ALLOWED_HOSTSにFQDN(www.から始まるホスト名)を入力
-    ALLOWED_HOSTS = [ 'www.hogehoge.herokuapp.com' ]
+    # ALLOWED_HOSTSにホスト名)を入力
+    ALLOWED_HOSTS = [ 'hogehoge.herokuapp.com' ]
 
     # 静的ファイル配信ミドルウェア、whitenoiseを使用。※順番不一致だと動かないため下記をそのままコピーする。
     MIDDLEWARE = [
@@ -122,7 +118,6 @@ DBの使用に必要なユーザー名、DBの名前、パスワードなどが�
 
     # 静的ファイル(static)の存在場所を指定する。
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 
 settings.pyの修正を終えたら、pipコマンドでデプロイ後に必要になるライブラリをインストールさせる。
 
@@ -157,10 +152,11 @@ Herokuのデプロイ先とローカルリポジトリを関連付ける。
 
     heroku git:remote -a アプリの名前
 
-
+<!--
 デフォルトでは静的ファイルを再配置するcollectstaticコマンドがデプロイ後に自動実行されるようになっている。上記設定であればcollectstaticコマンドは自動実行しなくても良いので、下記コマンドを実行
 
     heroku config:set DISABLE_COLLECTSTATIC=1
+-->
 
 この状態で、デプロイする。下記コマンドを実行してherokuにプッシュ。`git push origin master `ではない点に注意。
 
@@ -173,7 +169,6 @@ Herokuのデプロイ先とローカルリポジトリを関連付ける。
 
 DBを使用するタイプのウェブアプリであればデプロイ後にマイグレーションの実行する必要がある。
 
-    heroku run python3 manage.py makemigrations
     heroku run python3 manage.py migrate
 
 初期データをインプットするのであれば下記コマンドも実行。
@@ -188,7 +183,6 @@ DBを使用するタイプのウェブアプリであればデプロイ後にマ
 
     heroku ps:scale web=1
 
-
 ## 結論
 
 Herokuデプロイでつまずく最大の原因は、余計なものをsettings.pyに書いてしまうこと。
@@ -201,7 +195,8 @@ Herokuデプロイでつまずく最大の原因は、余計なものをsettings
 
 requirements.txtの記述にも注意が必要。pip freezeコマンドを忘れずに。
 
+<!--
 ちなみにこの方法だと別途管理サイト(admin)のCSSを用意してあげる必要がある。[Django公式のGitHub](https://github.com/django/django)からDLして設置すればよろし。
-
+-->
 
 
