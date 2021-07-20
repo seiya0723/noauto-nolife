@@ -1,7 +1,7 @@
 ---
 title: "DjangoをAWSのEC2にデプロイする"
-date: 2021-07-12T09:45:32+09:00
-draft: true
+date: 2021-07-18T09:45:32+09:00
+draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "django","デプロイ","aws","上級者向け" ]
@@ -9,7 +9,7 @@ tags: [ "django","デプロイ","aws","上級者向け" ]
 
 Herokuとは違ってサーバーが日本にもあり、なおかつ課金すれば大型のウェブアプリでもインターネット上に公開できる、それがAWS。
 
-本記事ではAWSのウェブサーバー部のEC2、データベース部のRDS、ストレージ部のS3を使用し、画像アップロード可能な簡易掲示板をデプロイ工程を解説する。
+本記事ではAWSのEC2を使用し、画像アップロード可能な簡易掲示板をデプロイ工程を解説する。
 
 ## デプロイ対象のコード
 
@@ -44,7 +44,12 @@ https://github.com/seiya0723/django_fileupload
 1. PostgreSQLの設定
 1. プロジェクトディレクトリをscpでアップロード 
 1. settings.pyの書き換え
+1. systemdにgunicornの自動起動を指定
 1. Nginxの設定
+1. マイグレーション
+1. 静的ファイル配信
+1. インバウンドにHTTPアクセスの許可
+
 
 インスタンスを作ってSSHでログインするまでは、基本的に下記リンクに書かれたUbuntuへのデプロイと差異は殆ど無い。
 
@@ -158,6 +163,9 @@ PostgreSQLにて、DBとそのDBにアクセスするユーザーを作る。
 
 scpコマンドを実行し、Djangoのプロジェクトのディレクトリを任意の場所にアップロードする。今回は、[DjangoをLinux(Ubuntu)サーバーにデプロイする方法【Nginx+PostgreSQL】](/post/django-deploy-linux/)に倣って、`~/Documents/`に格納する。再帰的にアップロードする`-r`オプションをお忘れなく。(※`-ri`であり`-ir`ではない)
 
+また、プロジェクトのディレクトリ名を`django_fileupload`に改名している。
+
+
     scp -ri "seiya0723-aws.pem" ./django_fileupload/ ubuntu@ec2-35-72-7-226.ap-northeast-1.compute.amazonaws.com:~/Documents/
 
 再びSSHでEC2へログインし、先ほどアップロードしたディレクトリに移動して、仮想環境を作成し、有効にしておく。必要なライブラリをインストール。(※pycharm等ですでに手元で仮想環境を使っている場合、この工程はスキップする。)
@@ -169,7 +177,7 @@ scpコマンドを実行し、Djangoのプロジェクトのディレクトリ�
 
 ## settings.pyの書き換え
 
-`settings.py`の内容を書き換える。ALLOWED_HOSTSにパブリックIPv4のアドレスを書く。
+`settings.py`の内容を書き換える。`ALLOWED_HOSTS`にパブリックIPv4のアドレスを書く。
 
     """
     Django settings for config project.
@@ -202,7 +210,7 @@ scpコマンドを実行し、Djangoのプロジェクトのディレクトリ�
     #DEBUG = True
     DEBUG = False
     
-    #↓EC2のパブリックIPv4アドレスを入力
+    #↓EC2のパブリックIPv4アドレスを入力(※DNSではない)
     ALLOWED_HOSTS = [ "" ]
     
     # Application definition
@@ -308,9 +316,19 @@ scpコマンドを実行し、Djangoのプロジェクトのディレクトリ�
     if DEBUG:
         MEDIA_ROOT          = os.path.join(BASE_DIR, "media")
     else:
-        #↓は一般的なLinuxサーバーにデプロイする場合のパス。クラウドにデプロイする場合、下記は要修正。
         MEDIA_ROOT          = "/var/www/{}/media".format(PROJECT_NAME)
     
+
+このsettings.pyの末端のstaticとmediaに書かれてある`/var/www/django_fileupload/`は存在しないので、作る必要がある。
+
+    sudo mkdir /var/www/django_fileupload/
+
+所有者とグループはrootになっているので、所有者はubuntu、グループはwww-dataに書き換える。
+
+    sudo chown ubuntu:www-data /var/www/django_fileupload/
+
+mediaとstaticまでは作る必要はない。Djangoが自動的に作ってくれる。
+
 
 続いて`conifg/local_settings.py`に下記を記入
 
@@ -327,30 +345,146 @@ scpコマンドを実行し、Djangoのプロジェクトのディレクトリ�
     }
 
 
+
+
+## systemdにgunicornの自動起動を指定
+
+
+先ほど仮想環境にインストールさせたgunicornを自動起動させるsystemdを書く。
+
+    [Unit]
+    Description=gunicorn daemon
+    After=network.target
+    
+    [Service]
+    User=ubuntu
+    Group=www-data
+    WorkingDirectory=/home/ubuntu/Documents/django_fileupload
+    ExecStart       =/home/ubuntu/Documents/django_fileupload/venv/bin/gunicorn --access-logfile - --workers 3 \
+                     --bind unix:/home/ubuntu/Documents/django_fileupload/django_fileupload.socket config.wsgi:application
+    
+    [Install]
+    WantedBy=multi-user.target
+
+プロジェクトの`wsgi.py`は`config`ディレクトリの中に`urls.py`や`settings.py`と含まれているので、`config.wsgi.application`になる点にご注意。
+
+仮想環境(`venv`)の場所は、プロジェクトディレクトリ(`django_fileupload`)にあるので、そちらに指定している。
+
+`systemd`のファイルはバックスラッシュ(`\`)を使うことで、改行することができる。セミコロン(`;`)を使うことでコメントアウトもできる。
+
+
+起動させ、自動起動を有効化させる。
+
+
+    sudo systemctl start gunicorn
+    sudo systemctl enable gunicorn
+
+この状態で、gunicornのステータスを確認する。
+
+    sudo systemctl status gunicorn
+
+下記の画像のように動いていればOK。
+
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-20 14-38-53.png" alt="gunicorn.serviceが動いている"></div>
+
+これで、DjangoとNginxをつなぐgunicornが動くようになった。次はNginxの設定である。
+
+
 ## Nginxの設定
 
-Nginxにプロジェクトディレクトリ、仮想環境の設定をして、Nginxを起動する。
+次のファイルを作成し、Nginxの設定ファイルを作る。
+
+    sudo vi /etc/nginx/sites-available/django_fileupload
+
+    server {
+        listen 80;
+        server_name 【ここにパブリックIPv4アドレスを記入(※DNSではない)】;
+    
+        location = /favicon.ico { access_log off; log_not_found off; }
+        location /static/ {
+            root /var/www/django_fileupload;
+        }
+        location /media/ {
+            root /var/www/django_fileupload;
+        }
+        location / {
+            include proxy_params;
+            proxy_pass http://unix:/home/ubuntu/Documents/django_fileupload/django_fileupload.socket;
+        }
+    
+        client_max_body_size 100M;
+    }
+
+パブリックIPv4アドレスを指定する。そして、末端には`client_max_body_size`を指定する。これはアップロードできるファイルの容量上限値。100MBまでアップロードできるように設定した。これがないと、1MBまでしかアップロードできない。
+
+`sites-enabled`にシンボリックリンクを作り、この設定を反映させる。
+
+    sudo ln -s /etc/nginx/sites-available/django_fileupload /etc/nginx/sites-enabled/
+
+デフォルト設定のシンボリックリンクは除外して、設定を再読込、nginxを再起動させる。
+
+    sudo unlink /etc/nginx/sites-enabled/default
+    sudo nginx -t
+    sudo systemctl reload nginx
+
+先ほどのgunicornと同様に、statusを確認して、動いていれば設定完了。
+
+    sudo systemctl status nginx
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-20 14-50-11.png" alt="Nginxが動いている。"></div>
+
+
+## マイグレーション
+
+マイグレーションを実行する。
+
+    python3 manage.py migrate
+
+これの実行を忘れていると、もれなくサーバーエラーが表示されてしまう。
+
+
+## 静的ファイル配信
+
+staticファイルを配信する、下記コマンドを実行
+    
+    python3 manage.py collectstatic
+
+このコマンドで予め作っておいた`/var/www/django_fileupload/`にstaticディレクトリが作られ、その中に静的ファイルがコピーされる。
+
+## インバウンドにHTTPアクセスの許可
+
+ダッシュボードの左カラムから、『ネットワーク&セキュリティ』の中にある『セキュリティグループ』をクリック。任意のセキュリティグループをクリックして、インバウンドルールタブの`Edit inbound rules`をクリック。
+
+ルールを追加して、タイプからHTTPを指定。ソースは自分のIPアドレスを指定する。
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-20 14-13-32.png" alt="自分の端末からHTTP通信を許可する。"></div>
+
+これで、今EC2のダッシュボードを表示している端末のみ、HTTPを使ってデプロイしたウェブアプリを見ることが許可される。
+
+
+もし、開発用サーバーを使いたい場合は、下記のようにカスタムTCPを選び、ポート番号は8000を指定して、ソースはマイIPを指定する。
+
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-20 14-23-34.png" alt="開発用サーバーのアクセスを許可する。"></div>
+
+そして、開発用サーバーを起動する時は下記のコマンドを使う。
+
+    python3 manage.py runserver 0.0.0.0:8000
+
+これで、下記のリンクへアクセスすると、開発用サーバーを起動した内容が表示される。
+
+    【パブリックIPv4アドレス(※DNSではない)】:8000
 
 
 
+## デプロイしたウェブアプリへアクセス。
 
+パブリックIPv4アドレスへアクセスすると、デプロイしたウェブアプリにアクセスできる。
 
+<div class="img-center"><img src="/images/Screenshot from 2021-07-20 15-19-32.png" alt="デプロイ"></div>
 
-
-
-
-
-
-div.img-center>img
-div.img-center>img
-div.img-center>img
-
-
-
-
-
-
-
+100MBまでのファイルのアップロードできる。
 
 
 
@@ -358,14 +492,21 @@ div.img-center>img
 
 ### 1:インスタンスを削除するには
 
-インスタンスを終了させる。その後、自動的に削除される。
+インスタンスを終了させる。その後、自動的に削除される。そのため、EC2を一時停止にしたい場合は、インスタンスを停止を選ぶ。
 
 https://qiita.com/shizen-shin/items/549087e77f1397bc1d92
+
+
+## 結論
+
+これでEC2へのデプロイができるようになるが、実際にサービスを一般公開するとなるとドメインを指定する必要があるだろう。ムームードメインなどからドメインを手に入れ、それを割り当てる。.comドメインなどであれば一年で1000〜2000円程度で手に入る。
+
+また、このEC2はストレージが8GBほどしか無く、膨大なデータの取扱いや、大容量ファイルの共有には不向きである。そこで、ストレージにはS3、データベースにはRDSを別途指定する必要がある。S3であれば12ヶ月間5GBまで無料、RDSであれば12ヶ月間無料になっている。
+
 
 
 ## 参照元
 
 https://qiita.com/tachibanayu24/items/b8d73cdfd4cbd42c5b1d
 
-
-
+https://qiita.com/Bashi50/items/d5bc47eeb9668304aaa2#10-gunicorn%E3%81%AE%E8%A8%AD%E5%AE%9A
