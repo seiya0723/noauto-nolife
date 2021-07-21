@@ -220,7 +220,7 @@ Ctrl+Dを押してログアウトをする。
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY  = "GENERATED KEY "
     try:
-        from .local_settings import *
+        from . import local_settings
     except ImportError:
         pass
     
