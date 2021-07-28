@@ -4,7 +4,7 @@ date: 2021-07-18T09:45:32+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","デプロイ","aws","上級者向け" ]
+tags: [ "django","デプロイ","AWS","EC2","上級者向け" ]
 ---
 
 Herokuとは違ってサーバーが日本にもあり、なおかつ課金すれば大型のウェブアプリでもインターネット上に公開できる、それがAWS。
