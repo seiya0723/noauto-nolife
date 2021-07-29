@@ -36,6 +36,10 @@ tags: [ "django","デプロイ","AWS","EC2","RDS","S3" ]
 
 ### セキュリティグループの設定(EC2からRDSへのアクセスを許可する)
 
+<!--TODO:ここで時間が経ったらセキュリティグループの許可対象が変わってEC2からRDSへのアクセスができなくなる。-->
+
+
+
 通常、ウェブアプリの全データが格納されているRDSは、EC2のみアクセスを許可するようにセキュリティを施さなければならない。
 
 もし、RDSのアクセスがEC2以外の全ての端末からもアクセスできてしまうと、ウェブアプリの全データはRDSのパスワードが特定され次第、即流出する。
@@ -320,13 +324,44 @@ settings.pyを正しく書いたらNginxを再起動する。
 
 ### Q1:アップロードしたファイルはS3へ送られるのですが、ウェブアプリ側からは見れません。
 
-上記設定で問題がない場合は、テンプレート側のパス設定に問題がある可能性があります。adminからファイルを確認して、表示させてみてください。
+上記設定で問題がない場合は、テンプレート側のパス設定に問題がある可能性があります。
 
-管理画面上にアップロードしたファイルが表示され、通常のウェブアプリ側からは表示されていない場合、それはテンプレートの問題でしょう。
+テンプレートは下記のように書き換えを行います。
 
+    <!--↓書き換え前-->
+
+    {% for content in data %}
+    <div class="my-2">
+        <img class="img-fluid" src="/media/{{ content.photo }}" alt="投稿された画像">
+    </div>
+    {% endfor %}
+
+    <!--↓書き換え後-->
+
+    {% for content in data %}
+    <div class="my-2">
+        <img class="img-fluid" src="{{ content.photo.url }}" alt="投稿された画像">
+    </div>
+    {% endfor %}
+
+`/var/www/プロジェクト名/media/`もしくはDEBUG中で`プロジェクト名/media/`を参照している場合は書き換え前でも問題なく動きますが、S3を参照する時、書き換え後のように書かないと正常に動作しません。
+
+参照元:https://docs.djangoproject.com/en/3.2/ref/models/fields/
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-29 16-53-27.png" alt="url属性を参照する。"></div>
+
+このようにImageField及びFileFieldのフィールド名にurl属性が付与されているので、それを参照します。これは`MEDIA_ROOT`などで指定した値を元に絶対パスを生成しているから動作します。先のS3の`settings.py`では`MEDIA_ROOT`が未指定でも、`django-storages`が生成するため同じようにS3宛の絶対パスで生成されます。
+
+ちなみに、[Djangoの管理サイトをカスタムする【全件表示、全フィールド表示、並び替え、画像表示、検索など】](/post/django-admin-custom/)では画像の参照は下記のようになっています。
+
+    #画像のフィールドはimgタグで画像そのものを表示させる
+    def format_photo(self,obj):
+        if obj.photo:
+            return format_html('<img src="{}" alt="画像" style="width:15rem">', obj.photo.url)
+
+そのため、上記リンクに倣って作っている場合、テンプレート側と違って管理サイトだけ正常に画像が表示されます。
+    
 <div class="img-center"><img src="/images/Screenshot from 2021-07-28 14-53-32.png" alt=""></div>
-
-
 
 ## 結論
 
@@ -336,7 +371,6 @@ settings.pyを正しく書いたらNginxを再起動する。
 
 
 ## 参照元
-
 
 https://www.kakiro-web.com/postgresql/postgresql-create-user.html
 
