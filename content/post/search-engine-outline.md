@@ -1,7 +1,7 @@
 ---
 title: "Djangoでさらに高度な検索エンジンを実装するには？【自然言語処理】"
 date: 2021-07-30T09:38:12+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","上級者向け","AI","自然言語処理","コラム" ]
