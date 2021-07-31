@@ -1,7 +1,8 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-deploy-heroku/", "title" : "DjangoをDEBUG=FalseでHerokuにデプロイする方法" }, 
+{ "link": "/post/search-engine-outline/", "title" : "Djangoでさらに高度な検索エンジンを実装するには？【自然言語処理】" }, 
 { "link": "/post/django-deploy-ec2-rds-s3/", "title" : "DjangoをEC2(Ubuntu)、RDS(PostgreSQL)、S3の環境にデプロイをする" }, 
 { "link": "/post/django-deploy-ec2/", "title" : "DjangoをAWSのEC2(Ubuntu)にデプロイする" }, 
-{ "link": "/post/django-deploy-heroku/", "title" : "DjangoをDEBUG=FalseでHerokuにデプロイする方法【静的ファイルの設定が肝】" }, 
 { "link": "/post/ubuntu-ssh/", "title" : "UbuntuにSSHでリモートログインする方法【パスワード認証+公開鍵認証+scpコマンド】" }, 
 { "link": "/post/startup-django-allauth/", "title" : "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】" }, 
 { "link": "/post/django-deploy-linux/", "title" : "DjangoをLinux(Ubuntu)サーバーにデプロイする方法【Nginx+PostgreSQL】" }, 

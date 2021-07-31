@@ -1,5 +1,5 @@
 ---
-title: "DjangoをDEBUG=FalseでHerokuにデプロイする方法【静的ファイルの設定が肝】"
+title: "DjangoをDEBUG=FalseでHerokuにデプロイする方法"
 date: 2020-10-26T11:16:34+09:00
 draft: false
 thumbnail: "images/django.jpg"
