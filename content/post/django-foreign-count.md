@@ -1,5 +1,5 @@
 ---
-title: "【Django】外部キーに対応したデータの個数を表示する【リプライ・コメント数の表示に有効】"
+title: "【Django】外部キーに対応したデータの個数をカウントして表示【リプライ・コメント数の表示に有効】【annotate+Count】"
 date: 2021-01-26T17:02:16+09:00
 draft: false
 thumbnail: "images/django.jpg"
