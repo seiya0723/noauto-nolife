@@ -1,5 +1,5 @@
 ---
-title: "【Django】admin.pyからカスタムアクションを追加する【crontab、BaseCommandが使えない場合の対処法】"
+title: "【Django】admin.pyからカスタムアクションを追加し、管理サイトから実行【crontab、BaseCommandが使えない場合の対処法】"
 date: 2021-06-14T17:33:41+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -21,35 +21,36 @@ tags: [ "django","上級者向け","システム管理" ]
 
 レコードが次々増えていくチャットサイトなどを運用するときに使う。本来であればこのような決まった処理はcrontabとBaseCommandの出番だが、手動でも操作できるようadmin.pyにアクションを追加しておく。
 
-from django.contrib import admin
-from .models import Topic
 
-LIMIT   = 5 
-
-class TopicAdmin(admin.ModelAdmin):
-
-    list_display    = [ "id","comment","dt" ]
-
-    actions         = [ "over_delete" ]
-
-    def over_delete(self, request, queryset):
-
-        #選択したレコードはquerysetオブジェクトに入るが、全件から削除を行う場合はquerysetオブジェクトは使わない。
-        #しかし、レコードを選択しないとアクションは発動しないので、何でも良いので何かを選択させる
-        topics  = Topic.objects.order_by("-dt")[LIMIT:]
-            
-        #TIPS:LIMITで絞り込んだ状態で.delete()メソッドは使えない
-        for topic in topics:
-            Topic.objects.filter(id=topic.id).delete()
-
-        print(topics)
-
-    over_delete.short_description   = "新着" + str(LIMIT) + "件だけ残して、それ以外は削除"
-    over_delete.allowed_permissions = ["delete"]
-    over_delete.acts_on_all = True
-
-
-admin.site.register(Topic,TopicAdmin)
+    from django.contrib import admin
+    from .models import Topic
+    
+    LIMIT   = 5 
+    
+    class TopicAdmin(admin.ModelAdmin):
+    
+        list_display    = [ "id","comment","dt" ]
+    
+        actions         = [ "over_delete" ]
+    
+        def over_delete(self, request, queryset):
+    
+            #選択したレコードはquerysetオブジェクトに入るが、全件から削除を行う場合はquerysetオブジェクトは使わない。
+            #しかし、レコードを選択しないとアクションは発動しないので、何でも良いので何かを選択させる
+            topics  = Topic.objects.order_by("-dt")[LIMIT:]
+                
+            #TIPS:LIMITで絞り込んだ状態で.delete()メソッドは使えない
+            for topic in topics:
+                Topic.objects.filter(id=topic.id).delete()
+    
+            print(topics)
+    
+        over_delete.short_description   = "新着" + str(LIMIT) + "件だけ残して、それ以外は削除"
+        over_delete.allowed_permissions = ["delete"]
+        over_delete.acts_on_all = True
+    
+    
+    admin.site.register(Topic,TopicAdmin)
 
 
 ちなみにモデルはこうなっている。[40分Django](/post/startup-django/)のモデルに投稿日を追加している。
