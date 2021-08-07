@@ -18,6 +18,11 @@ headタグ内に下記を追加する。
 
 これだけでOK。
 
+fontawesome CDN などで検索してくると、下記サイトが出てくるので、バージョンをチェックして最新版をコピペする。
+
+https://fontawesome.com/v5.15/how-to-use/customizing-wordpress/snippets/setup-cdn-webfont#load-all-styles
+
+
 ## 使い方
 
 fontawesomeのアイコン一覧が掲載されているページ( https://fontawesome.com/icons?d=gallery )からアイコンを選ぶ。無料版しか選べないので、サイドバーのFreeを予めクリックして絞り込むと見やすい。
