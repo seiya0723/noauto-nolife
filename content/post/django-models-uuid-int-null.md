@@ -1,5 +1,5 @@
 ---
-title: "Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するには`null=True`と`blank=True`のオプションを"
+title: "Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するにはnull=Trueとblank=Trueのオプションを"
 date: 2021-08-07T10:53:38+09:00
 draft: false
 thumbnail: "images/django.jpg"
