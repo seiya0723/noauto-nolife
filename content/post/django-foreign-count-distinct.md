@@ -44,4 +44,4 @@ Countの第一引数に外部キーで繋がっているモデルクラスの小
 
 https://stackoverflow.com/questions/13145254/django-annotate-count-with-a-distinct-field
 
-
+https://docs.djangoproject.com/en/3.2/topics/db/aggregation/#combining-multiple-aggregations
