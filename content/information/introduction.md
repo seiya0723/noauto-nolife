@@ -16,7 +16,7 @@ tags: [ "私について" ]
 
 |項目|内容|
 |:--:|:--|
-|名前|Asahina Seiya|
+|名前|S.Asahina|
 |居住地|広島県|
 |経験|2011年〜|
 |言語|HTML,CSS,JS(jQuery),Python(Django,Flask),PHP(laravel),その他(C,COBOL,JAVAなど)|

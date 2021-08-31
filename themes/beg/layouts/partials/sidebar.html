@@ -4,20 +4,17 @@
         <div class="sidebar_panel_title">Author</div>
         <!--TODO:ここに私についての記事リンクを設置-->
         <div class="img-center"><a class="author_img_area" href="{{ .Site.BaseURL }}information/introduction/"><img class="author_img" src="{{ .Site.BaseURL }}img/nautilus.jpg" alt="logo"></a></div>
-        <p>名前:Asahina Seiya</p>
-        <p>一言:昨日フロント。今日サーバーサイド。明日インフラ。</p>
+        <p>名前: {{ .Site.Params.Author }}</p>
+        <p>一言: {{ .Site.Params.Comments }}</p>
     </section>
 
     <!--この辺にGitHubのリンクとかTwitterのリンクとか作れば良いかも。-->
-
 
     <section>
         <div class="sidebar_panel_title">Search</div>
         <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
         <div id="search_result"></div>
     </section>
-
-
 
     {{ range $key, $value := .Site.Taxonomies }}
     <section class="sidebar_panel">
