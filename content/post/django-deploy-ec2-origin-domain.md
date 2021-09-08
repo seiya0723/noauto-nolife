@@ -83,7 +83,7 @@ ElasticIPを割り当てた後にEC2へアクセスする際には、EC2のパ�
 
 ただ、独自ドメインが使えるようになるまで小一時間程度かかるので、下記コマンドを実行して放置する。3分おきにSSHログインを試みるワンライナーコマンドである。適宜書き換えて使う。
 
-    while true; do ssh -i "seiya0723-test4.pem" ubuntu@seiya0723-20210905.xyz; date; sleep 3m; done
+    while true; do ssh -i "XXXXXXXXXXX.pem" ubuntu@独自ドメイン; date; sleep 3m; done
 
 一時間ほどかかったが無事ログインできた。
 
