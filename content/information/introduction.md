@@ -9,7 +9,6 @@ tags: [ "私について" ]
 
 ここはWEB、AI、Linux関係のことに特化して作られた技術ブログサイトです。
 
-
 ## 作者について
 
 <div class="img-center"><img src="/img/nautilus.jpg" alt=""></div>
@@ -19,6 +18,8 @@ tags: [ "私について" ]
 |名前|S.Asahina|
 |居住地|広島県|
 |経験|2011年〜|
-|言語|HTML,CSS,JS(jQuery),Python(Django,Flask),PHP(laravel),その他(C,COBOL,JAVAなど)|
-|やっている仕事|ウェブサイト・ウェブアプリ(業務用)の開発、PCの修理・改造等、プログラミング講師|
+|資格|ITパスポート(2012年6月),基本情報技術者(2013年春),応用情報技術者(2014年春)|
+|言語|HTML,CSS,JS(jQuery,Vue.js),Python(Django,Flask),PHP(laravel),その他(C,COBOL,JAVAなど)|
+|その他技術|Apache,Nginx,MySQL,PostgreSQL,Ubuntu,Raspberry Pi,Heroku,AWS(EC2,RDS,S3),その他(debian,CentOSなど)|
+|やっている仕事|ウェブサイト・ウェブアプリ(業務用)の開発・保守・運用、PCの修理・改造、プログラミング・システム開発講師、技術記事の寄稿|
 
