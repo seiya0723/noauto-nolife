@@ -1,5 +1,5 @@
 ---
-title: "【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 + Certificate Manager】"
+title: "【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 + Certificate Manager + ロードバランサ(ELB)】"
 date: 2021-09-05T15:32:11+09:00
 draft: false
 thumbnail: "images/aws.jpg"
