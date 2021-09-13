@@ -1,7 +1,7 @@
 ---
 title: "【Django+AWS】独自ドメインを割り当てHTTPS通信を実現した状態で、EC2(Ubuntu+Nginx)へデプロイする"
 date: 2021-09-13T08:19:27+09:00
-draft: true
+draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "django","上級者向け","セキュリティ","ec2","nginx" ]
