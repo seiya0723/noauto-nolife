@@ -1,7 +1,7 @@
 ---
 title: "DjangoをHeroku+Cloudinaryの環境にデプロイする"
-date: 2021-09-05T15:34:37+09:00
-draft: true
+date: 2021-09-13T15:34:37+09:00
+draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","Heroku","デプロイ" ]

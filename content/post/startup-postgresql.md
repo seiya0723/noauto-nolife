@@ -15,7 +15,7 @@ Ubuntuであれば、aptコマンドでインストール可能
 
     sudo apt install postgresql
 
-下記コマンドを打って、active(running)と表示されればOK
+下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可
 
     sudo systemctl status postgresql.service
 

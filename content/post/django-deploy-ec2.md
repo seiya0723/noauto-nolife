@@ -220,7 +220,7 @@ Ctrl+Dを押してログアウトをする。
     # SECURITY WARNING: keep the secret key used in production secret!
     SECRET_KEY  = "GENERATED KEY "
     try:
-        from . import local_settings
+        from .local_settings import *
     except ImportError:
         pass
     
@@ -347,7 +347,6 @@ Ctrl+Dを押してログアウトをする。
 
 mediaとstaticまでは作る必要はない。Djangoが自動的に作ってくれる。
 
-
 続いて`conifg/local_settings.py`に下記を記入
 
     SECRET_KEY  = "ジェネレートしたシークレットキーをここに書く"
@@ -361,8 +360,6 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
             'PORT': '',
         }
     }
-
-
 
 
 ## systemdにgunicornの自動起動を指定
