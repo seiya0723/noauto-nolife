@@ -44,7 +44,7 @@ Ubuntuのミラーアドレスの指定。これも特に何も指定せず、�
 
 <div class="img-center"><img src="/images/Screenshot from 2021-08-27_05.png" alt="ミラーアドレス"></div>
 
-インストールに使用するディスクの指定、ディスクの暗号化の指定。これも特に追加の指定はしない。そのままDoneを押す。
+インストールに使用するディスクの指定、ディスクのLVM設定(論理ボリュームマネージャー)。画像では、『Set up this disk as LVM group』のチェックが入っているが、チェックを外す。実機の場合チェックが入っていると、ブートに使用したUSBとHDDでストレージ容量が折半されてしまうので、必ずチェックを外す。Doneを押す。
 
 <div class="img-center"><img src="/images/Screenshot from 2021-08-27_06.png" alt="ディスクの指定"></div>
 
