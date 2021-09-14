@@ -141,7 +141,58 @@ crontabを定期実行する必要のあるものは定期実行しておく。L
 
     source ~/.bashrc
 
-先の設定であれば、`cdjango`と入力すれば、対応するcdコマンドが実行される。
+先の設定であれば、`cdjango`と入力すれば、対応するcdコマンドが実行される。他にも、メール送信をワンライナーで実行できるようにするなども良いだろう。
+
+下記はコマンド実行時に引数として件名と本文を指定できる。送信先はハードコードされていて、やや冗長ではあるがコピペですぐに使える。
+
+    #! /usr/bin/env python3
+    # -*- coding: utf-8 -*-
+    
+    import sys
+    import sendgrid
+    import os
+    from sendgrid.helpers.mail import *
+    
+    MAIL_FROM   = ""
+    FROM_PASS   = ""
+    MAIL_TO     = ""
+    
+    def send_mail(args):
+    
+        try:
+    
+            sg          = sendgrid.SendGridAPIClient(api_key=FROM_PASS)
+            from_email  = Email(MAIL_FROM)
+            to_email    = To(MAIL_TO)
+            subject     = args[1]
+            content     = Content("text/plain", args[2])
+            mail        = Mail(from_email, to_email, subject, content)
+            response    = sg.client.mail.send.post(request_body=mail.get())
+    
+            print("メールを送信しました。")
+            return True
+            
+        except:
+            print("メール送信に失敗しました。")
+            return False
+    
+    def main(args):
+    
+        if len(args) < 3:
+            for i in range(3-len(args)):
+                args.append("null")
+    
+        send_mail(args)
+    
+    if __name__ == "__main__":
+        try:
+            main(sys.argv)
+    
+        except KeyboardInterrupt:
+            print("\nprogram was ended.\n")
+            sys.exit()
+
+
 
 ## 結論
 
