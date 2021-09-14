@@ -15,8 +15,6 @@ tags: [ "laravel","上級者向け" ]
 
 ## 1対多のリレーションを作る
 
-
-
 Topicに対して、Commentを投稿できるようにする。まずは、Commentのモデルとマイグレーションファイルを作る
 
     php artisan make:model Comment --migration
