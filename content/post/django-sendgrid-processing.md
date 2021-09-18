@@ -86,5 +86,8 @@ tags: [ "django","sendgrid","システム管理" ]
 
 実践では、forループで回して、toを個別に指定するのが妥当かと思われる。
 
+ちなみにリスト型のtoに複数指定しても、送信先に併記されてしまうためCCと変わらない。メールアドレスを1つずつtoに仕込んでオブジェクトを作り、送信する必要がある。
+
+<div class="img-center"><img src="/images/Screenshot from 2021-09-16 17-31-07.png" alt="ToはCCと変わらない。"></div>
 
 
