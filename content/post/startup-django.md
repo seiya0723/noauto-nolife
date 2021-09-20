@@ -64,7 +64,12 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
 `TEMPLATES`の`DIRS`に下記を追加。プロジェクト直下の`templates`ディレクトリを`TEMPLATES`として設定するという意味。
 
-    'DIRS': [ os.path.join(BASE_DIR,"templates") #←追加 ],
+    #変更前
+    'DIRS': [],
+
+    #変更後
+    'DIRS': [ os.path.join(BASE_DIR,"templates") ],
+
 
 `LANGUAGE_CODE`、`TIME_ZONE`を下記に変更。日本時間で日本語を指定。
 
