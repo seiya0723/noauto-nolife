@@ -2,7 +2,7 @@
 title: "サーバーを本格的に運用するようになったらやること・守ること"
 date: 2021-09-14T06:54:42+09:00
 draft: false
-thumbnail: "images/ubuntu.jpg"
+thumbnail: "images/security.jpg"
 categories: [ "インフラ" ]
 tags: [ "スタートアップシリーズ","システム管理","セキュリティ" ]
 ---

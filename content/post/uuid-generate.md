@@ -2,9 +2,9 @@
 title: "UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】"
 date: 2021-09-19T18:14:00+09:00
 draft: false
-thumbnail: "images/ubuntu.jpg"
+thumbnail: "images/bash.jpg"
 categories: [ "インフラ" ]
-tags: [ "Ubuntu","セキュリティ","tips" ]
+tags: [ "Ubuntu","セキュリティ","tips","bash" ]
 ---
 
 Ubuntuであれば、下記コマンドを実行するだけで自動的にUUIDが生成される。

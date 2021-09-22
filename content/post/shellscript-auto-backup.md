@@ -2,7 +2,7 @@
 title: "リモートサーバーのデータを自動的にバックアップする方法論【scp+crontab】"
 date: 2021-09-19T18:12:35+09:00
 draft: false
-thumbnail: "images/ubuntu.jpg"
+thumbnail: "images/bash.jpg"
 categories: [ "インフラ" ]
 tags: [ "システム管理","ssh","django" ]
 ---

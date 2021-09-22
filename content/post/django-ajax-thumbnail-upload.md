@@ -4,9 +4,8 @@ date: 2021-03-01T15:03:31+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","JavaScript","上級者向け","ajax","restful" ]
+tags: [ "Django","JavaScript","上級者向け","ajax","restful","Canvas","Blob" ]
 ---
-
 
 Djangoで動画をアップロードする時、ffmpegなどを使ってサムネイルの自動生成を行うが、クライアントが自分で動画のサムネイルを指定したいときはこの限りではない。
 
@@ -135,7 +134,6 @@ Djangoで動画をアップロードする時、ffmpegなどを使ってサム�
 動画ファイルを選択すると、Blobを使ってVideoタグのsrc属性に動画を再生可能な形で指定される。その状態で真ん中のサムネイル指定ボタンを押すと、右側にCanvas要素にサムネイルが描画生成される。
 
 後は、送信ボタンを押した時、作ったサムネイルを画像ファイル化して、フォームオブジェクトに入れ込み、サーバーに送信させれば良いだけ。
-
 
 <div class="img-center"><img src="/images/Screenshot from 2021-03-17 08-22-19.png" alt="動画のサムネイルを指定できた"></div>
 

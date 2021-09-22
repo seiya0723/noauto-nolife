@@ -2,7 +2,7 @@
 title: "独自ドメインのサイトにreCAPTCHAを実装させる方法と理屈【ボット対策】"
 date: 2021-09-19T18:21:31+09:00
 draft: false
-thumbnail: "images/ubuntu.jpg"
+thumbnail: "images/security.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "セキュリティ","認証" ]
 ---
