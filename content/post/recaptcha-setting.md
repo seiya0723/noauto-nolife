@@ -1,5 +1,5 @@
 ---
-title: "独自ドメインのサイトにreCAPTCHAを実装させる方法と理屈【ボット対策】"
+title: "独自ドメインのサイトにreCAPTCHAを実装させる方法と仕組み【ボット対策】"
 date: 2021-09-19T18:21:31+09:00
 draft: false
 thumbnail: "images/security.jpg"
@@ -23,7 +23,7 @@ CAPTCHAとして特に名高いGoogleのreCAPTCHAを使用する。これで不�
 100万件までは無料で処理できるが、それ以上は課金されてしまう。
 
 
-## reCAPTCHAでボット対策ができる理屈
+## reCAPTCHAでボット対策ができる仕組み
 
 1. クライアントがreCAPTCHAの問題を解く
 1. reCAPTCHAの問題に正解した場合、Googleからコードが付与される

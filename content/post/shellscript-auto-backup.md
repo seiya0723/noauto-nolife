@@ -22,10 +22,9 @@ tags: [ "システム管理","ssh","django" ]
     00 *   * * *   ubuntu   cd ~/Document/django/ && python3 manage.py dumpdata [任意のアプリ] > data.json
     40 *   * * *   ubuntu   rm ~/Document/django/data.json
 
-
 任意の端末の`/etc/crontab`に以下の設定を施す。
 
-    20 *   * * *   user     scp [公開鍵] ubuntu@[リモートホストのIP]:~/Document/django/data.json ./
+    20 *   * * *   user     scp -i [公開鍵] ubuntu@[リモートホストのIP]:~/Document/django/data.json ./
 
 これで毎時0分になればリモートサーバーがDBのデータをバックアップ。毎時20分になれば、任意の端末がscpでデータをDL。毎時40分でリモートサーバーはデータを削除する。
     
