@@ -57,7 +57,7 @@ adminのビューに書いても良いが、Djangoの中に埋め込まれてい
     from django.conf import settings
     from django.http import HttpResponseForbidden
     
-    class AddNewsAttribute:
+    class AdminProtect:
         def __init__(self, get_response):
             self.get_response = get_response
     
@@ -85,6 +85,8 @@ adminのビューに書いても良いが、Djangoの中に埋め込まれてい
 
 
 DEBUGモードである間は、この管理サイトのIP除外は適用しないほうが良いだろう。なぜならローカルで開発している時、ローカルサーバー(runserver)がIPアドレスを判定しようにもローカルのIPアドレスなので必ず拒否されてしまうからだ。
+
+`settings.py`のMIDDLEWAREに上記クラスを追加して完了。
 
 ## 結論
 
