@@ -100,6 +100,8 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
         path('', views.index, name="index"),
     ]
 
+`app_name`と`name`は第一引数のURL(URI)を逆引きするために使うので、それぞれ1度決めたら変更しないほうが良い。
+
 ## views.pyで処理の定義(5分)
 
 まずはGET文を正常に処理させるように書く。`bbs/views.py`に下記を書き込む。
@@ -163,6 +165,7 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
 DTL(Django Template Language)を使用し、`for`文でデータを並べる。Pythonの`for`文と違って、インデント構文ではなく、`endfor`を使用することで`for`文の終端を示す。
 
+変数は`{{ 変数名 }}`で表現する。コメントを表示させる必要があるので、モデルオブジェクト変数`topic`の中の`comment`属性を参照する。よって、`{{ topic.comment }}`となる。
 
 ## models.pyでフィールドの定義(5分)
 
@@ -186,7 +189,9 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 
 ## マイグレーション実行(2分)
 
-`models.py`で定義したフィールドはマイグレーションを実行して、DBに格納先のテーブルを作る。この時、`settings.py`の`INSTALL_APPS`に含まれていないものはマイグレーションを実行してもマイグレーションファイルが生成されない点に注意。
+`models.py`で定義したフィールドはマイグレーションを実行して、DBに格納先のテーブルを作る。
+
+この時、`settings.py`の`INSTALL_APPS`に含まれていないものはマイグレーションを実行してもマイグレーションファイルが生成されない点に注意。
 
     python3 manage.py makemigrations
     python3 manage.py migrate
@@ -230,7 +235,6 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 
     redirect("[app_name]:[name]")
 
-
 ## 開発用サーバーを起動する(3分)
 
 開発用サーバーを起動させ、動作を確かめる。
@@ -240,6 +244,8 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 上記コマンドを実行した後、 http://127.0.0.1:8000/ にアクセスする。下記のような画面が表示されれば成功。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-20 16-07-52.png" alt="簡易掲示板の完成"></div>
+
+ちなみに、現状ではモデルクラスを使用して直接データを格納しているので、`models.py`で設定した2000文字を超過したり、空欄を入力されてしまう。これを防ぐため`forms.py`によるバリデーションを実装すると良い。
 
 ## ソースコードDL先
 
