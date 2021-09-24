@@ -1,5 +1,5 @@
 ---
-title: "Djangoで動画投稿時にサムネイルもセットでアップロードする【DRF+Ajax(jQuery)】"
+title: "Djangoで動画投稿時にサムネイルもセットでアップロードする【DRF+Ajax(jQuery)+canvas】"
 date: 2021-03-01T15:03:31+09:00
 draft: false
 thumbnail: "images/django.jpg"

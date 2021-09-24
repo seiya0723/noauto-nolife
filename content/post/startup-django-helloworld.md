@@ -32,7 +32,7 @@ Djangoのハローワールドは、やり方が何通りもある。
 
 ## 関数ベースのビューからHttpResponseを返したHelloWorld
 
-まず`プロジェクト名/urls.py(もしくはconfig/urls.py)`を以下のように編集する。
+まず`プロジェクト名/urls.py(もしくはconfig/urls.py)`を以下のように編集する。(※アプリ内にurls.pyを作ってパスを通す方法もあるが、今回はより簡単なconfigのurls.pyに直接書き込む)
 
     from django.contrib import admin
     from django.urls import path
@@ -56,7 +56,6 @@ homeディレクトリ内に`views.py`がある。ここに関数`index`を作�
     
     def index(request):
         return HttpResponse("ハローワールド")
-    
 
 この状態で、開発サーバーを起動する。
 
@@ -82,7 +81,7 @@ homeディレクトリ内に`views.py`がある。ここに関数`index`を作�
 
 django.viewsからViewを継承してクラスを定義している。多少回りくどいが、開発規模が大きくなるとクラスベースのビューが簡潔。
 
-`index   = IndexView.as_view()`によりクラスを関数化させ、`urls.py`から関数ベースのビューと同じように呼び出せるようにしている。
+`index   = IndexView.as_view()`によりビュークラスを関数化させ、`urls.py`から関数ベースのビューと同じように呼び出せるようにしている。
 
 この状態で開発サーバーを起動するとこうなる。
 
@@ -108,19 +107,6 @@ django.viewsからViewを継承してクラスを定義している。多少回�
     </body>
     </html>
 
-そして、settings.pyの`INSTALLED_APPS`の編集を行う。下記のように`'home'`を追加する。
-
-    INSTALLED_APPS = [ 
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-        'home',
-    ]
-
-
 ビューを編集する。先のテンプレートを呼び出し、レンダリングさせる。
 
     from django.shortcuts import render
@@ -130,12 +116,11 @@ django.viewsからViewを継承してクラスを定義している。多少回�
     
 `render`関数は、テンプレートをレンダリングすると共に、クライアントに対してレスポンスを返す。HttpResponseが単にレスポンスを返すのに対し、renderはテンプレートのレンダリングをした上でレスポンスを返す。
 
-レンダリングとはテンプレートに書かれてあるDTL(Django Template Language)を解釈し、クライアントがWebページとして閲覧できるようにすることを言う。
+レンダリングとはテンプレートに書かれてあるDTL(Django Template Language)を解釈し、クライアントがWebページとして閲覧できるようにすることを言う。HttpResponseで返却されるのはただの文字列であるが、renderはhtmlファイルを指定できる。
 
 開発サーバーを起動してブラウザを立ち上げるとこうなる。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-11-16 13-00-32.png" alt="ハローワールド"></div>
-
 
 ## クラスベースのビューからテンプレートレンダリングを返したHelloWorld
 
@@ -162,7 +147,6 @@ django.viewsからViewを継承してクラスを定義している。多少回�
 簡単に記述しようとすると、どうしても本格的に開発する時に書き直さないといけない。関数ベースのビュー、HttpResponseやアプリディレクトリ内にtemplatesを置く方法は大規模開発のときにはかえって回りくどくなってしまう。
 
 短期間で手法を習得しなければならない場合は、クラスベースのビューを使用し、templatesやstaticをプロジェクト直下に設置するよう設定を施したほうが良いかと。下記記事にその手法がある
-
 
 [Djangoビギナーが40分で掲示板アプリを作る方法](/post/startup-django/)
 
