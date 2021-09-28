@@ -1,7 +1,7 @@
 ---
 title: "【Django】canvasで描画した画像をAjax(jQuery)を使ってサーバーへ送信する【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】"
 date: 2021-09-28T07:25:39+09:00
-draft: false
+draft: true
 thumbnail: "images/js.jpg"
 categories: [ "フロントサイド" ]
 tags: [ "JavaScript","jQuery","canvas","Ajax","Django","上級者向け" ]
