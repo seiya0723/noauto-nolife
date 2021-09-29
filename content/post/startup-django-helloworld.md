@@ -28,11 +28,13 @@ Djangoのハローワールドは、やり方が何通りもある。
     - 関数ベースのビューからテンプレートレンダリングを返したHelloWorld
     - クラスベースのビューからテンプレートレンダリングを返したHelloWorld
 
-クラスベースのビューを使用した方法はオブジェクト指向の知識が必要である。
+ビューを作るには、関数ベースのビューとクラスベースのビューの2通りがある。
+
+関数ベースのビューは汎用性に乏しいものの実装が容易、クラスベースのビューは継承を使うことで再利用可能になりコーディングが楽になるが、オブジェクト指向の知識が必要である。
 
 ## 関数ベースのビューからHttpResponseを返したHelloWorld
 
-まず`プロジェクト名/urls.py(もしくはconfig/urls.py)`を以下のように編集する。(※アプリ内にurls.pyを作ってパスを通す方法もあるが、今回はより簡単なconfigのurls.pyに直接書き込む)
+まず`プロジェクト名/urls.py(もしくはconfig/urls.py)`を以下のように編集する。(※アプリ内に`urls.py`を作ってパスを通す方法もあるが、今回はより簡単な`config`の`urls.py`に直接書き込む)
 
     from django.contrib import admin
     from django.urls import path
@@ -44,13 +46,13 @@ Djangoのハローワールドは、やり方が何通りもある。
         path('', homeviews.index),
     ]
 
-意味は、homeアプリ内にある`views.py`をhomeviewsとして扱い、トップページ('')にアクセスしたら、homeviewsのindex関数を実行する
+意味は、`home`アプリ内にある`views.py`を`homeviews`として扱い、トップページ(`''`)にアクセスしたら、`homeviews`の`index`関数を実行するように指定している。`path`関数の引数として与える際に実行するわけではないので、`homeviews.index()`ではなく、`homeviews.index`である点に注意。
 
-homeアプリを作るには下記コマンドを実行する
+`home`アプリを作るには下記コマンドを実行する
 
     python3 manage.py startapp home
 
-homeディレクトリ内に`views.py`がある。ここに関数`index`を作る。`views.py`を下記のように編集する。
+`home`ディレクトリ内に`views.py`がある。ここに関数`index`を作る。`views.py`を下記のように編集する。
 
     from django.http import HttpResponse
     
@@ -79,7 +81,7 @@ homeディレクトリ内に`views.py`がある。ここに関数`index`を作�
     
     index   = IndexView.as_view()
 
-django.viewsからViewを継承してクラスを定義している。多少回りくどいが、開発規模が大きくなるとクラスベースのビューが簡潔。
+`django.views`から`View`を継承してクラスを定義している。多少回りくどいが、開発規模が大きくなるとクラスベースのビューが簡潔。さらに継承させることでシンプルにコードを書くことができる。
 
 `index   = IndexView.as_view()`によりビュークラスを関数化させ、`urls.py`から関数ベースのビューと同じように呼び出せるようにしている。
 
@@ -149,4 +151,5 @@ django.viewsからViewを継承してクラスを定義している。多少回�
 短期間で手法を習得しなければならない場合は、クラスベースのビューを使用し、templatesやstaticをプロジェクト直下に設置するよう設定を施したほうが良いかと。下記記事にその手法がある
 
 [Djangoビギナーが40分で掲示板アプリを作る方法](/post/startup-django/)
+
 
