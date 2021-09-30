@@ -4,7 +4,7 @@ date: 2021-09-25T10:34:37+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","Heroku","デプロイ" ]
+tags: [ "Django","Heroku","デプロイ","cloudinary" ]
 ---
 
 Herokuにはクレジットカードを登録することで、Cloudinaryというアドオンを利用することができる。これがHerokuのストレージとして運用可能。
