@@ -7,7 +7,6 @@ categories: [ "サーバーサイド" ]
 tags: [ "django","tips","初心者向け" ]
 ---
 
-
 Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-11-18 08-49-45.png" alt="NULL禁止フィールド追加が原因のエラー"></div>
@@ -30,7 +29,7 @@ Djangoのモデルにフィールドを追加して、さあマイグレーシ�
     2) Quit, and let me add a default in models.py
 
 - 1) 1度限りのデフォルト値を入れる
-- 2) 一旦`makemigrations`を中止して、models.pyに追加したフィールドにdefault属性を指定する
+- 2) 一旦`makemigrations`を中止して、models.pyに追加したフィールドにフィールドオプションのdefaultを指定する
 
 
 ## 対策
@@ -55,7 +54,7 @@ DBにデータが格納されている状態で、モデルフィールドを追
 
 <div class="img-center"><img src="/images/Screenshot from 2020-11-18 09-05-39.png" alt="現在の日時が指定された"></div>
 
-一方で、常に`default`値を指定する場合は、2を選んで`models.py`のフィールドに`default`属性を指定する。`DatetimeField`の場合、下記のように`default`を指定する。
+一方で、常に`default`値を指定する場合は、2を選んで`models.py`にフィールドオプションの`default`を指定する。`DatetimeField`の場合、下記のように`default`を指定する。
 
     from django.utils import timezone
     dt      = models.DateTimeField(verbose_name="投稿日",default=timezone.now)
