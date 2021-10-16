@@ -7,7 +7,6 @@ categories: [ "フロントサイド" ]
 tags: [ "ウェブデザイン","JavaScript","初心者向け" ]
 ---
 
-
 ウェブアプリを開発していると、避けて通ることができない日付もしくは日時入力。HTMLの`SELECT`タグを使用しても良いが、うるう年に対応させないといけないし、何よりユーザビリティに問題がある。
 
 そんな時、flatpickrを実装すれば、日時入力が非常に簡単になる。しかもjQueryに依存していないので、流行のvue.jsなどを使いたい場合にも有効。
@@ -35,7 +34,6 @@ tags: [ "ウェブデザイン","JavaScript","初心者向け" ]
     
         <input id="date" type="text" readonly>
         <input id="time" type="text" readonly>
-    
         <input id="dt" type="text" readonly>
     
     </body>
@@ -82,6 +80,15 @@ tags: [ "ウェブデザイン","JavaScript","初心者向け" ]
 
 ## 結論
 
-<div class="img-center"><img src="/images/Screenshot from 2021-01-18 10-36-24.png" alt="flatpickrを実装"></div>
+左側のテキストボックスは日付だけ、真ん中は時間だけ、右側は日付と時間の両方が指定できる。
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-16 14-12-37.png" alt=""></div>
+
+他にもflatpickrを使えば、特定の日付や時刻の指定を無効化できるので、営業時間外や定休日を予約できないようにすることができる。
+
+前もって営業時間外や定休日の日付をサーバーサイドからJavaScriptへ引き渡し、カレンダーを表示する時に指定するなどの方法がある。詳しくは下記参照元を確認する。
+
+- 参照元(英語): https://flatpickr.js.org/examples/
+- 参照元(日本語): https://tr.you84815.space/flatpickr/examples.html 
 
 
