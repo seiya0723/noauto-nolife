@@ -209,12 +209,160 @@ classにはBootstrapの削除ボタン風の装飾を割り当てた。こんな
 
 <div class="img-center"><img src="/images/Screenshot from 2021-10-17 16-23-30.png" alt="削除の実行"></div>
 
-
 ## 編集を実装させる
 
+投稿のバリデーションと、削除のurls.pyに倣うことで、編集が実現できる。
 
-近日公開
+まず、編集用のビューを作る。削除のビューと同様に、メソッドの引数としてpkを指定。ただし、今回は編集フォームを表示させるため、getメソッドを作っておく。
 
+    class BbsEditView(View):
+    
+        def get(self, request, pk, *args, **kwargs):
+
+            #TODO:編集するトピックの特定と編集ページのレンダリングをする
+
+            return redirect("bbs:index")
+    
+        def post(self, request, pk, *args, **kwargs):
+
+            #TODO:ここで編集の処理
+    
+            return redirect("bbs:index")
+    
+    edit    = BbsEditView.as_view()
+
+
+`bbs/urls.py`にて`views.edit`を呼び出す。下記のように書き換える。
+
+    from django.urls import path
+    from . import views
+    
+    app_name    = "bbs"
+    urlpatterns = [ 
+        path('', views.index, name="index"),
+        path('delete/<int:pk>/', views.delete, name="delete"),
+        path('edit/<int:pk>/', views.edit, name="edit"),
+    ]
+
+
+続いて、`templates/bbs/edit.html`を作る。中身は下記。
+
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>編集</title>
+    
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+    
+        <form action="{% url 'bbs:edit' topic.id %}" method="POST">
+            {% csrf_token %}
+            <textarea class="form-control" name="comment">{{ topic.comment }}</textarea>
+            <input type="submit" value="送信">
+        </form>
+    
+    </body>
+    </html>
+
+まず、formタグのaction属性。送信先を指定する時、pkがあるので、削除のときと同様に`topic.id`を指定する。`textarea`タグには、`{{ topic.comment }}`を入れ、編集前のコメントの状態を表示させている。
+
+この`templates/bbs/edit.html`を`BbsEditView`からレンダリング及び、編集処理を受け付けるため、再びビューの編集を行う。
+
+    class BbsEditView(View):
+    
+        def get(self, request, pk, *args, **kwargs):
+    
+            #編集対象を特定してレンダリング
+            topic   = Topic.objects.filter(id=pk).first()
+            context = { "topic":topic }
+    
+            return render(request,"bbs/edit.html",context)
+    
+        def post(self, request, pk, *args, **kwargs):
+    
+            #編集対象を特定
+            topic   = Topic.objects.filter(id=pk).first()
+            
+            #instanceに編集対象を指定して、request.POSTをバリデーション(※ これで編集対象の内容が書き換わる。もし、instanceが存在しない場合、新しく作られる。)
+            form    = TopicForm(request.POST,instance=topic)
+    
+            if form.is_valid():
+                print("バリデーションOK")
+                form.save()
+            else:
+                print("バリデーションNG")
+    
+            return redirect("bbs:index")
+    
+    edit    = BbsEditView.as_view()
+
+まず、getメソッド。編集対象を特定して、レンダリングしている。`BbsView`のgetメソッドと違って`.first()`で単一のレコードを返却している。これによりDTLの`for`でループしなくても良い。わかりやすいように複数形のtopicsではなく、単数形のtopicと名付けた。
+
+
+続いて、postメソッド。`TopicForm`で`request.POST`をバリデーションする時、`instance`というキーワード引数に特定した`topic`を指定することで、指定した`topic`を`request.POST`の内容に倣って編集を行うことができる。後は、投稿と同様にバリデーションを行い、フォームオブジェクトの`form`で`.save()`メソッドを実行すれば編集がDBに保存される。
+
+仮に、指定されたpkが存在しない場合、編集ではなく投稿扱いになる。
+
+最後に、`templates/bbs/index.html`にて、編集フォームを呼び出すリンクを設置する。
+
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+    	<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+    	<title>簡易掲示板</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+    
+        <main class="container">
+            <form method="POST">
+                {% csrf_token %}
+                <textarea class="form-control" name="comment"></textarea>
+                <input type="submit" value="送信">
+            </form>
+    
+            {% for topic in topics %}
+            <div class="border">
+                {{ topic.comment }}
+    
+                <form action="{% url 'bbs:delete' topic.id %}" method="POST">
+                    {% csrf_token %}
+                    <input class="btn btn-danger" type="submit" value="削除">
+                </form>
+    
+                <!--↓ここに編集のリンクを追加-->
+                <a class="btn btn-success" href="{% url 'bbs:edit' topic.id %}">編集</a>
+            </div>
+            {% endfor %}
+    
+        </main>
+    </body>
+    </html>
+
+動かすとこうなる。編集と削除のボタンが見える。
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-18 12-32-33.png" alt="編集ボタン"></div>
+
+編集のボタン(リンク)をクリックすると、編集ページに行く。
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-18 12-33-26.png" alt="編集ページ"></div>
+
+てきとうにテキストエリアの文字列を書き換え、送信ボタンを押すと、編集された事がわかる。一番上が編集された。
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-18 12-35-01.png" alt="編集された"></div>
 
 ## 結論
+
+本記事で編集と削除が実現できたが、これだと、自分が投稿したトピックでも、他の人が自由に削除・編集ができてしまう。
+
+自分が投稿したトピックは、自分しか削除と編集を許可しないのであれば、ユーザー認証とユーザーidとトピックを紐付ける1対多のフィールドの追加が必要になるだろう。
+
+ユーザー認証であれば、allauthを使えば簡単に実現できる。
+
+[【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】](/post/startup-django-allauth/)
+
 
