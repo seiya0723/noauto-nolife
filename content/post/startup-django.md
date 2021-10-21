@@ -305,6 +305,12 @@ https://github.com/seiya0723/startup_bbs
 
 [Djangoで画像及びファイルをアップロードする方法](/post/django-fileupload/)
 
+### canvasで描画した画像をAjaxで送信
+
+ブラウザで描画した絵をAjaxでアップロードする。Ajaxに加えcanvasの扱いなども解説されているため、とても難易度は高い。
+
+[【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】](/post/django-canvas-send-img-by-ajax/)
+
 ### トピックにカテゴリ選択やコメント投稿を実現させる。
 
 トピックを投稿した時に、カテゴリを選択したり、特定のトピックに対してコメントを投稿する場合は、モデルに1対多のフィールドを追加する必要がある。
