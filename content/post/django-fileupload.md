@@ -4,7 +4,7 @@ date: 2020-11-05T15:30:14+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","tips","上級者向け","セキュリティ" ]
+tags: [ "django","tips","セキュリティ" ]
 ---
 
 
@@ -219,7 +219,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
     
             {% for content in data %}
             <div class="my-2">
-                <img class="img-fluid" src="/media/{{ content.photo }}" alt="投稿された画像">
+                <img class="img-fluid" src="{{ content.photo.url }}" alt="投稿された画像">
             </div>
             {% endfor %}
         
@@ -253,7 +253,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
         
             {% for content in data %}
             <div class="my-2">
-                <a href="/media/{{ content.document }}">{{ content.document }}</a>
+                <a href="{{ content.document.url }}">{{ content.document }}</a>
             </div>
             {% endfor %}
     
@@ -281,7 +281,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 
 こんなふうになればOK。
 
-<div class="img-center"><img src="/images/Screenshot from 2020-11-11 16-34-49.png" alt="画像ファイルアップロード時の挙動"></div>
+<div class="img-center"><img src="/images/Screenshot from 2021-10-21 08-14-02.png" alt="画像ファイルアップロード時の挙動"></div>
 
 ファイルアップロードのページでは、pdfファイルのみ受け付ける。
 
@@ -305,6 +305,8 @@ python-magicはファイルヘッダのMIMEタイプを元に調べるため、�
 
 以上の点から、ファイルアップロードはフレームワークの知識だけでなく、セキュリティ的な知識の他に、インフラ関係の知識まで要求されるため、初学者であればデプロイに1日以上かかってしまう事は珍しくない。
 
+<!--
 ## ソースコード
 
 https://github.com/seiya0723/django_fileupload
+-->
