@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>インフラ on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/</link>
+    <description>Recent content in インフラ on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 30 Sep 2021 09:11:38 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CloudinaryでPDF等の画像や動画以外のファイルをアップロードし、共有する方法【blocked for delivery】</title>
+      <link>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</link>
+      <pubDate>Thu, 30 Sep 2021 09:11:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</guid>
+      <description>どうやらPDF等の画像や動画以外の一部のファイルは配信拒否されてしまうらしい。セキュリティ対策の一貫として行われているそうな。 しかし、PDFを共有する前提のウェブアプリであればただの足かせでしか無いし、ユーザー認証や管理者が管理をきちんとしていればセキュリティ的な事案はある程度は低減できる。 本記事ではCloudinaryを使用してPDFを配信する方法を記す。 対策 対策は至ってシンプル。Cloudin</description>
+    </item>
+    
+    <item>
+      <title>Nginxで特定IPアドレスのリクエストを拒否する</title>
+      <link>https://noauto-nolife.com/post/nginx-deny-ip-address/</link>
+      <pubDate>Tue, 28 Sep 2021 11:20:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-deny-ip-address/</guid>
+      <description>特定IPアドレスのリクエストを拒否したいのであれば、ロードバランサーやリバースプロキシなどのセキュリティ設定を書き換えれば済む話だが、環境によっては他のサービスなどに影響を及ぼす可能性もある。 そこで、Nginxの設定を書き換え、特定のサービスだけで特定のIPアドレスを使用したリクエストを拒否する方法をここに記す。 設定ファイルに追加する Nginxの設定ファイル( /etc/nginx/nginx.conf )に下記を追加する。 deny 192.168.XXX.XXX; /etc/n</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi Zeroに搭載したNginxの限界を試す【curlコマンド】</title>
+      <link>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</link>
+      <pubDate>Tue, 28 Sep 2021 10:20:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</guid>
+      <description>Raspberry Pi Zeroの性能は無料プランのEC2やHerokuとほぼ同じ。Raspberry Pi Zeroの限界を知れば、ある程度EC2やHerokuの限界が予測できる。今回はウェブサーバーとして仕立てたRaspberry Pi Zeroにcurlコマンドでリクエストを大量送信し、サーバーダウンするまでのデータをここに記す。 なお、この行為は自分が管理していないサーバーで行うと、普通にDos攻撃になってしまうので、宛先</description>
+    </item>
+    
+    <item>
+      <title>Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check-by-awk/</link>
+      <pubDate>Thu, 23 Sep 2021 13:51:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check-by-awk/</guid>
+      <description>Nginxのログはスペース区切りで送信元IPアドレス、アクセス対象のURLなどが書かれてある。これはスペース区切りで文字を扱うことができるawkコマンドと相性が良い。 本記事では、awkコマンドを使用して、特定の条件下のログを報告したり、ログの情報を見やすくさせる方法を記す。 awkコマンドを使用して、表示する情報を絞る 基本。 cat access.log | awk &#39;{print $1}&#39; これで送信元IPアドレス(スペース区切りで1番目のデータ)が表示</description>
+    </item>
+    
+    <item>
+      <title>Nginxのログをチェックする、ログの出力設定を変更する</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check/</link>
+      <pubDate>Tue, 21 Sep 2021 07:19:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check/</guid>
+      <description>事案が発生した時、まっさきに確認するべきがサーバーのログ。とりわけウェブサーバーのNginxのログ確認方法、設定方法をここに記す。 Nginxのログの見方 Nginxの設定ファイル(/etc/nginx/nginx.conf)にログのパスが書かれてある ## # Logging Settings ## access_log /var/log/nginx/access.log; error_log /var/log/nginx/error.log; ログは/var/log/nginx/access.logに保管されてある事がわかる。中身はこんな感じ。 左から順にこうなっている。 送信元</description>
+    </item>
+    
+    <item>
+      <title>UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】</title>
+      <link>https://noauto-nolife.com/post/uuid-generate/</link>
+      <pubDate>Sun, 19 Sep 2021 18:14:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/uuid-generate/</guid>
+      <description>Ubuntuであれば、下記コマンドを実行するだけで自動的にUUIDが生成される。 uuidgen 用途 秘匿する必要のあるページ(管理サイト等)にURLとして割り当てることで、総当たりでヒットされにくくなる。 UUIDが重複する確立は途方もなく低いので、他のセキュリティ対策ができない場合の代替案として有効であると思われる。 例えば、sedコマンドなどを使用して、Djangoのurls.pyから管理サイトを割り当てている</description>
+    </item>
+    
+    <item>
+      <title>リモートサーバーのデータを自動的にバックアップする方法論【scp&#43;crontab】</title>
+      <link>https://noauto-nolife.com/post/shellscript-auto-backup/</link>
+      <pubDate>Sun, 19 Sep 2021 18:12:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/shellscript-auto-backup/</guid>
+      <description>手順 crontabを使って、一定時間おきにリモートサーバーがバックアップを取る crontabを使って、一定時間おきに任意の端末がscpでリモートサーバーのバックアップファイルをDL crontabを使って、一定時間おきにリモートサーバーがバックアップしたデータを削除 方法 例えば、Djangoであればこうなる。 リモートサーバーの/etc/crontabに以下の設定を施す。 00 * * * * ubuntu cd ~/Document/django/ &amp;amp;&amp;amp; python3 manage.py dumpdata [任意の</description>
+    </item>
+    
+    <item>
+      <title>シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】</title>
+      <link>https://noauto-nolife.com/post/shellscript-server-checker/</link>
+      <pubDate>Sun, 19 Sep 2021 08:51:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/shellscript-server-checker/</guid>
+      <description>サーバーが応答不能になった時、すぐに対処できるよう、通知機能が欲しい。そういうときのシェルスクリプト。 pingで応答不能をチェックする #! /bin/bash while true ; do ping -c 1 192.168.11.99 rc=$? if [[ $rc -eq 0 ]] ; then echo &amp;quot;正常です&amp;quot; else echo &amp;quot;失敗しました&amp;quot; fi sleep 1 done 後は『正常です』『失敗しました』のいずれかに任意の処理を書き込む。 curlで応答不能をチェックする curlはHTTPのステータスコードも手に入るの</description>
+    </item>
+    
+    <item>
+      <title>サーバーを本格的に運用するようになったらやること・守ること</title>
+      <link>https://noauto-nolife.com/post/startup-server-manage/</link>
+      <pubDate>Tue, 14 Sep 2021 06:54:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-server-manage/</guid>
+      <description>圧倒的に人手不足な組織でありがちなのが、『開発とデプロイができるならサーバー管理もできるだろう』と言わんばかりに経験も無いのにサーバー管理まで任されること。 そんな時に一通りチェックしておくと良いものを列挙する。 事前対策編【予防・抑止】 OSにインストールされているパッケージのアップデート(更新) OSにインストールされているパッケージは問題がなければ定期的にアップデートしておく。 sudo apt update &amp;amp;&amp;amp; sudo apt -y upgrade &amp;amp;&amp;amp; sudo apt</description>
+    </item>
+    
+    <item>
+      <title>【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 &#43; Certificate Manager &#43; ロードバランサ(ELB)】</title>
+      <link>https://noauto-nolife.com/post/ec2-origin-domain-https/</link>
+      <pubDate>Sun, 05 Sep 2021 15:32:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ec2-origin-domain-https/</guid>
+      <description>タイトルの通り。 手順 EC2のインスタンスを作る セキュリティグループを書き換える ElasticIPを割り当てる Route53に独自ドメインを割り当てる SSHで独自ドメインでログインしてみる Certificate Managerとロードバランサを使ってHTTPS通信を実現させる EC2のインスタンスを作る まず、EC2のインスタンスを作る。インスタンスの作り方はDjangoをAWSのEC2(Ubuntu)にデプロイするに倣う。</description>
+    </item>
+    
+    <item>
+      <title>AWSでなるべくお金がかからないようにウェブアプリを運用する方法</title>
+      <link>https://noauto-nolife.com/post/aws-do-not-spend-money/</link>
+      <pubDate>Sun, 05 Sep 2021 11:45:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/aws-do-not-spend-money/</guid>
+      <description>気づいたらAWSの請求額が数百ドルを超えてた。ということはよくある。 そこで、なるべくお金がかからないように運用する方法を即効性がある運用編、開発編、セキュリティ編、その他編に分けて解説する。 運用編 基本的に運用編に書いてある内容を実践すれば、ほぼ課金されることはない。マウスクリックだけで簡単に実践できるので、ぜひともやっておきたい。 インスタンスを多重起動しない まず、前提としてEC2やRDS等のインス</description>
+    </item>
+    
+    <item>
+      <title>サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】</title>
+      <link>https://noauto-nolife.com/post/startup-ubuntu2004-server/</link>
+      <pubDate>Sat, 21 Aug 2021 17:39:30 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-ubuntu2004-server/</guid>
+      <description>デスクトップ版のUbuntuとサーバー版のUbuntuは完全に別物である。 デスクトップ版はGUIでラクラク固定IPアドレス設定できたり、作業しながらブラウザで検索できる一方で、サーバー版のUbuntuはただ無機質なターミナルが全画面を覆っているだけである。 本記事ではインストールからIPアドレスの固定化、bashの設定やタイムゾーン設定、別端末からSSHでログインするまでを解説する。 対象読者は、既に</description>
+    </item>
+    
+    <item>
+      <title>VirtualBoxにUbuntuをインストールする</title>
+      <link>https://noauto-nolife.com/post/virtualbox-ubuntu-install/</link>
+      <pubDate>Sat, 19 Jun 2021 16:49:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/virtualbox-ubuntu-install/</guid>
+      <description>作ったウェブアプリをデプロイする時、実機のLinuxサーバーでも良いが、VirtualBox上のLinux系OSのいずれかにデプロイして試験運用するのも良いだろう。 そこでその前段階としてVirtualBoxにUbuntuをインストールさせる。 用意する物 Ubuntuのisoファイル VirtualBoxのインストーラー(パッケージファイル) メモリ4GB以上の空きがあり、なおかつ20GB以上のストレージ</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQLインストールから、ユーザーとDBを作る</title>
+      <link>https://noauto-nolife.com/post/startup-postgresql/</link>
+      <pubDate>Fri, 16 Apr 2021 15:14:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-postgresql/</guid>
+      <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。 createuser --createdb --username=postgres --pwprompt [任意のユーザ</description>
+    </item>
+    
+    <item>
+      <title>SQLiteの操作方法【テーブル一覧表示、SQLなど】</title>
+      <link>https://noauto-nolife.com/post/startup-sqlite3/</link>
+      <pubDate>Mon, 26 Oct 2020 13:51:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-sqlite3/</guid>
+      <description>インストールと基本操作 Ubuntuであればaptコマンドで簡単にインストールできる。 sudo apt install sqlite3 ファイルの閲覧はsqlite3コマンドで実行できる。対象のsqlite3ファイルを指定するだけ。 sqlite3 db.sqlite3 テーブル一覧表示 テーブル一覧表示。 .table 基本的なSQL文 SELECT文。指定したテーブルを参照する。 SELECT カラム名 FROM テーブル名 INSERT文。指定したレコードを追加する。文字列型はダブルクオーテーションでくくる。数値</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにSSHでリモートログインする方法【パスワード認証&#43;公開鍵認証&#43;scpコマンド】</title>
+      <link>https://noauto-nolife.com/post/ubuntu-ssh/</link>
+      <pubDate>Thu, 20 Sep 2018 18:22:19 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-ssh/</guid>
+      <description>SSH（Secure Shell）とはネットワークに接続されている端末にリモートログインをするための技術のことを言います。 SSHにより直接端末を操作しなくても遠隔地から端末にログインを行い、コマンド入力で簡単に操作できるようになります。それだけでなく、SSHを使用した際にはネットワークを流れる通信がすべて暗号化されるようになるのです。SSHでは暗号化された通信経路を使用するので、通信経路が暗号化され</description>
+    </item>
+    
+  </channel>
+</rss>

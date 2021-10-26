@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>初心者向け on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/</link>
+    <description>Recent content in 初心者向け on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 21 Oct 2021 14:44:50 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</title>
+      <link>https://noauto-nolife.com/post/startup-web-application-framework/</link>
+      <pubDate>Thu, 21 Oct 2021 14:44:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-web-application-framework/</guid>
+      <description>DjangoやLaravel、Ruby on Rails等のウェブアプリケーションフレームワーク(以下、フレームワーク)を使うことで、効率的にウェブアプリの開発ができる。 しかし、前提となる知識をおろそかにしているようでは大したものは作れないし、問題だらけのウェブアプリを知らぬ間に世に出してしまうことになるだろう。 本記事ではフレームワークを扱う際に知っておきたい知識を記す。 ネットワーク ウェブが動く仕組み ま</description>
+    </item>
+    
+    <item>
+      <title>Djangoで投稿したデータに対して編集・削除を行う</title>
+      <link>https://noauto-nolife.com/post/django-models-delete-and-edit/</link>
+      <pubDate>Sun, 17 Oct 2021 10:44:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-delete-and-edit/</guid>
+      <description>40分簡易掲示板を元に、forms.pyにてモデルを継承したフォームクラスを作り、その上で削除と編集を実装させる。 前提(forms.pyにてモデルを継承したフォームクラスを作る) モデルを継承したフォームクラスの作り方は『【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】』を参照。 bbs/forms.pyを作る。内容は下記。 from django import forms from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [ &amp;quot;comment&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</title>
+      <link>https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/</link>
+      <pubDate>Thu, 14 Oct 2021 12:47:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/</guid>
+      <description>pandasでファイルの読み込み、演算、グラフ描画、ファイル書き込みの基本操作関係を記す。 前提 data.xlsx及びdata.csvの内容を下記とする。これをPythonのファイルと同じディレクトリに格納する。 ライブラリインストールのコマンドは下記。 pip install openpyxl pandas matplotlib pandasの使い方 CSVやエクセルのファイルをそのまま読み込んで分析できる。 ファイルの読み込み .read_csv()メソッドでCSVを読み</description>
+    </item>
+    
+    <item>
+      <title>【Django】テンプレートからstaticディレクトリに格納したCSSやJSを読み込む【静的ファイル】</title>
+      <link>https://noauto-nolife.com/post/django-static-file-settings/</link>
+      <pubDate>Mon, 11 Oct 2021 15:03:30 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-static-file-settings/</guid>
+      <description>Djangoビギナーが40分で掲示板アプリを作る方法では、Bootstrapのみ使用している。オリジナルの装飾を施したい場合、Djangoの静的ファイルの読み込みを使用するしか方法はない。 本記事では予め作っておいたCSSやJS等のファイルを読み込みする方法を記す。 settings.pyにて読み込みのパスを設定 settings.pyの末端にて、STATICFILES_DIRSを追加する。 # Static files (CSS, JavaScript, Images)</description>
+    </item>
+    
+    <item>
+      <title>Djangoで管理サイトを作る【admin.py】</title>
+      <link>https://noauto-nolife.com/post/django-admin/</link>
+      <pubDate>Tue, 05 Oct 2021 07:34:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin/</guid>
+      <description>Djangoではデフォルトで管理サイトというものが用意されている。 admin.pyに少し書き足して、管理ユーザーを作成するコマンドを打つだけで、簡単にデータの読み書きが実現できる。 ソースコードは40分Djangoから流用する。 admin.pyの編集 bbs/admin.pyを開いて下記のように編集する。 from django.contrib import admin from .models import Topic admin.site.register(Topic) モデルクラス、Topicをインポートして、adminに登録(register)す</description>
+    </item>
+    
+    <item>
+      <title>【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】</title>
+      <link>https://noauto-nolife.com/post/django-models-add-field/</link>
+      <pubDate>Tue, 05 Oct 2021 06:45:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-add-field/</guid>
+      <description>models.pyを操作していく上で難しいのが、フィールドの追加とマイグレーション。 特に、追加するフィールドによってはマイグレーションファイル作成時に警告が出ることがある。 本記事では警告が出る理由も含め、フィールドの追加方法も含めて解説する。ソースコードはDjangoビギナーが40分で掲示板アプリを作る方法を元にする。 デフォルト値ありのフィールドを追加する まず、安全なデフォルト値ありのフィールドを</description>
+    </item>
+    
+    <item>
+      <title>DjangoでHTTPリクエストのPOSTメソッドを送信する</title>
+      <link>https://noauto-nolife.com/post/django-post-request/</link>
+      <pubDate>Mon, 04 Oct 2021 07:54:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-post-request/</guid>
+      <description>DjangoでHelloWorld【HttpResponse及びレンダリング】にて、HelloWorldをやった人向け。本記事はビュークラスとテンプレートを使用した場合を想定して解説する。 DjangoでHTTPリクエストのPOSTメソッドを送信する。これにより、データをリクエストボディに含ませることが可能になり、HTTPSを実装すれば投稿内容の暗号化も可能になる。 手順 views.pyのビュークラス</description>
+    </item>
+    
+    <item>
+      <title>【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】</title>
+      <link>https://noauto-nolife.com/post/django-forms-validate/</link>
+      <pubDate>Wed, 29 Sep 2021 09:16:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-forms-validate/</guid>
+      <description>『Djangoビギナーが40分で掲示板アプリを作る方法』で作った簡易掲示板はクライアントから受け取った値のチェックを行っていない。 モデルでは投稿できるコメントは2000文字以内であり。入力必須となっているが、開発用のSQLiteはそこまで判定できない。故にこういうことが起こる。 MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組みになるが、それでは使用しているDBが何かク</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】コマンドからマイグレーションファイルを立ち上げる時、こうすればうまく行く【ワイルドカードとTabキー】</title>
+      <link>https://noauto-nolife.com/post/laravel-migrations-files-detect/</link>
+      <pubDate>Thu, 16 Sep 2021 14:55:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-migrations-files-detect/</guid>
+      <description>コマンドからマイグレーションファイルを立ち上げる時、わざわざ日付を手入力しながらやっていると、時間がかかりすぎる。 そこで、ワイルドカードとTabキーの補正を使うことで特定する。例えば、2014_10_12_000000_create_users_table.phpであれば vi ./database/migrations/*create_users* と打って、この状態でTabキーを押す。これで vi ./database/migrations/2014_10_12_000000_create_users_table.php こんなふうになる。もっとも、統合開発環境を使えば、マウスダブルクリックでこん</description>
+    </item>
+    
+    <item>
+      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプルとリスト】</title>
+      <link>https://noauto-nolife.com/post/python-brackets/</link>
+      <pubDate>Tue, 22 Jun 2021 15:12:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-brackets/</guid>
+      <description>Djangoの公式コードを流用したりしていると、よく見かける()を使ったコード。 これはタプルである。タプルはリスト型の[]と同じであるが、書き換えが不可能であるという点でリスト型とは異なる。 タプルを定義する時、下記のような書き方をしてしまうと、文字列型として判定されてしまう。 (&amp;quot;username&amp;quot;) タプルとして扱ってもらいたいのであれば、下記のように記述する。カンマを忘れずに。 (&amp;quot;username&amp;quot;,) タプルはリストと同様に扱えるので、後から</description>
+    </item>
+    
+    <item>
+      <title>Laravelで--resourceで作ったコントローラのルーティングを解体する</title>
+      <link>https://noauto-nolife.com/post/laravel-to-resource/</link>
+      <pubDate>Tue, 20 Apr 2021 16:26:25 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-to-resource/</guid>
+      <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると、ルーティングの書き換えは難しい。そこで、本記事は--resourceで作ったコントローラのルーティングをバラす。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); resource</description>
+    </item>
+    
+    <item>
+      <title>Laravelのプロジェクト名を書き換える</title>
+      <link>https://noauto-nolife.com/post/laravel-project-rename/</link>
+      <pubDate>Mon, 19 Apr 2021 08:37:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-project-rename/</guid>
+      <description>既存のLaravelのプロジェクトを、プロジェクト名だけ書き換えて編集する。 環境 Ubuntu 18.04 Laravel Framework 7.30.4 結論 下記コマンドでプロジェクトを作ったとする。 composer create-project --prefer-dist laravel/laravel [プロジェクト名] 上記コマンドで生成された[プロジェクト名]のディレクトリ名を書き換えれば良いだけの話である。 理屈 まず、プロジェクトを作った後、プロジェクトのディレクトリに移動して、下記コマンドを実行してもらいたい。 grep -rl &amp;quot;[プロジェクト名]&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQLインストールから、ユーザーとDBを作る</title>
+      <link>https://noauto-nolife.com/post/startup-postgresql/</link>
+      <pubDate>Fri, 16 Apr 2021 15:14:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-postgresql/</guid>
+      <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。 createuser --createdb --username=postgres --pwprompt [任意のユーザ</description>
+    </item>
+    
+    <item>
+      <title>JavascriptからCookieを扱う【動画の設定音量の記録と読み込み】</title>
+      <link>https://noauto-nolife.com/post/javascript-cookie/</link>
+      <pubDate>Tue, 13 Apr 2021 18:59:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-cookie/</guid>
+      <description>JavaScriptからCookieを扱う。これで、サイトのデータをユーザーのブラウザに保存できる。 Cookieにvideoタグで設定した音量情報を格納、読み込みするコード 実例を交えながら解説する。下記はvideoタグで指定した音量をCookieに記録する。 window.addEventListener(&amp;quot;load&amp;quot; , function (){ const video = document.querySelector(&amp;quot;video&amp;quot;); video.addEventListener(&amp;quot;volumechange&amp;quot;,(event) =&amp;gt; { document.cookie = &amp;quot;volume=&amp;quot; + decodeURIComponent(event.target.volume) + &amp;quot;;Path=/single;SameSite=strict&amp;quot;; }); set_video_volume(); }); function set_video_volume(){ let cookies = document.cookie; console.log(cookies); let cookiesArray = cookies.split(&#39;;&#39;); let volume = 0; for(let c of cookiesArray) { console.log(c); let cArray = c.split(&#39;=&#39;); if( cArray[0] === &amp;quot;volume&amp;quot;){ volume = Number(cArray[1]); console.log(volume); break; } } const video = document.querySelector(&amp;quot;video&amp;quot;); video.volume = volume; } Cookie</description>
+    </item>
+    
+    <item>
+      <title>Laravelに必要なPHP構文【if,for,function,class】</title>
+      <link>https://noauto-nolife.com/post/laravel-essential-php/</link>
+      <pubDate>Tue, 13 Apr 2021 17:46:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-essential-php/</guid>
+      <description>Laravelはフレームワークである。すでにコードが書かれており、それを読みながら追記していく必要がある。 そのため、Laravelによく出るPHP構文を知っておくと開発がスムーズに進む。本記事ではLaravelに必要なPHP構文をまとめて解説する。 if 基本のif文。ブーリアン型の判定が主である。 &amp;lt;?php $flag = True; if ($flag){ echo &amp;quot;True!!&amp;quot;; } else{ echo &amp;quot;False!!&amp;quot;; } Laravel実践では、コントローラがクライアントから受け取った値が存在するかチ</description>
+    </item>
+    
+    <item>
+      <title>Laravelの全体像、ファイル・ディレクトリごとの役割と関係性を俯瞰する</title>
+      <link>https://noauto-nolife.com/post/laravel-overview/</link>
+      <pubDate>Tue, 13 Apr 2021 16:05:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-overview/</guid>
+      <description>Laravelのプロジェクトを作ると、大量のファイルやディレクトリで溢れかえり、気後れしそうになる。 そこで本記事では開発をスムーズにするため、Laravelの全体像、とりわけよく使うファイル・ディレクトリの役割と関係を解説する。 Laravelの全体像 Laravelの全体像はこのようになっている。 流れ マイグレーションファイルに基づき、マイグレーション。DBのテーブルを作る クライアントがリクエストを送</description>
+    </item>
+    
+    <item>
+      <title>CSS3とHTML5だけでタブを作り、複数のページを表示させる【JS不要】</title>
+      <link>https://noauto-nolife.com/post/css3-tab-system/</link>
+      <pubDate>Wed, 17 Mar 2021 08:54:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-tab-system/</guid>
+      <description>例えば、こんなふうにタブでページを切り替えて表示させるフロント。 かつてはJSじゃないと成立しなかったが、今となっては、JS不要でCSS3とHTML5だけで再現できる。 コード まず、HTML。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;タブシステム&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;quot;tab_radio_1&amp;quot; class=&amp;quot;tab_radio&amp;quot; type=&amp;quot;radio&amp;quot; name=&amp;quot;tab_system&amp;quot;&amp;gt;&amp;lt;label class=&amp;quot;tab_label&amp;quot; for=&amp;quot;tab_radio_1&amp;quot;&amp;gt;タブ1&amp;lt;/label&amp;gt; &amp;lt;input id=&amp;quot;tab_radio_2&amp;quot; class=&amp;quot;tab_radio&amp;quot; type=&amp;quot;radio&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>【AWS】Cloud9使う時にすぐやる設定【bashrc、Django等】</title>
+      <link>https://noauto-nolife.com/post/cloud9-first-config/</link>
+      <pubDate>Tue, 16 Feb 2021 09:42:06 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/cloud9-first-config/</guid>
+      <description>Cloud9を使う時にやっておく設定をまとめる。 注意事項としてAWS、Cloud9はいずれも頻繁にバージョンアップを行っている仕様上、ここに書かれている情報では再現できない可能性がある。もし、Cloud9のバージョンアップによる不具合や動作不良などを気にされる場合は、ローカル環境に開発環境を構築すると良い。 Bashの設定関係 コマンド履歴に日時を表示させる ~/.bashrcを下記のように編集する。 export</description>
+    </item>
+    
+    <item>
+      <title>Ajax搭載したLaravelをHerokuにデプロイした時、405エラーが出る問題の解決【method not allowed】</title>
+      <link>https://noauto-nolife.com/post/laravel-heroku-405-error/</link>
+      <pubDate>Sat, 13 Feb 2021 14:07:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-heroku-405-error/</guid>
+      <description>Herokuにデプロイ後、Ajaxを使ったPOST文をサーバーサイドに送信しようとすると、405、即ちMethod Not Allowedがコンソールに表示される。 ルーティングには問題なくPOST文のメソッドは記述されているし、コントローラにも処理はある。何より開発サーバー上で問題なく動いていたものが、Herokuデプロイ後に動作しなくなるのはHeroku上の問題だと思い、あれこれやってみたが、一向にうま</description>
+    </item>
+    
+    <item>
+      <title>LaravelをHerokuにデプロイする【Heroku-postgresql使用】</title>
+      <link>https://noauto-nolife.com/post/laravel-heroku-deploy/</link>
+      <pubDate>Sat, 13 Feb 2021 14:01:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-heroku-deploy/</guid>
+      <description>LaravelをHerokuにデプロイする。DBにはHerokuPostgresを使用する。 本記事の対象読者はHerokuCLIはインストール済み、基本的なコマンドは習得済みとする。 流れ Herokuからアプリを作る HerokuPostgresを実装 起動用のProcfileを作る ローカルリポジトリとHerokuのリモートリポジトリの関連付け デプロイ 環境変数の設定を施す(多いのでシェルスクリプトを実装</description>
+    </item>
+    
+    <item>
+      <title>Laravelで主キーにUUIDを実装させる方法【laravel-eloquent-uuid】</title>
+      <link>https://noauto-nolife.com/post/laravel-uuid/</link>
+      <pubDate>Sat, 13 Feb 2021 13:45:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-uuid/</guid>
+      <description>主キーにUUIDを使用することで、デフォルトの連番で数値型のIDと違って予測されることがない。これはセキュリティ上、重要なことなのでなるべく開発初期段階で実装したい。 実装方法 UUID実装用のライブラリをcomposerからインストール。 composer require goldspecdigital/laravel-eloquent-uuid:^7.0 ユーザーモデルを書き換える。database/migrations/2014_10_12_000000_create_users_table.phpにて、下記</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】静的ファイルのディレクトリ作るときの注意点【publicのディレクトリ名で即404エラー】</title>
+      <link>https://noauto-nolife.com/post/laravel-public-dirname-caution/</link>
+      <pubDate>Mon, 08 Feb 2021 14:59:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-public-dirname-caution/</guid>
+      <description>Laravelで静的ファイルを作る時、アプリごとにCSSとJSを仕分けしたい場合がある。しかし、作るディレクトリ名を間違えれば、たちまち404エラーが出てしまう。 本記事ではLaravelの404エラーの原因のひとつであるパスの衝突について解説する。 Laravelで404エラーが起こる原因 例えば、ルーティングがこんな状態で Route::get(&#39;/&#39;, function () { return view(&#39;welcome&#39;); }); Route::resource(&amp;quot;/memo&amp;quot;,&amp;quot;MemoController&amp;quot;); memoというアプリを作ったとしよう。当然、memoアプリ内で</description>
+    </item>
+    
+    <item>
+      <title>Laravelでリクエストのバリデーションを行う</title>
+      <link>https://noauto-nolife.com/post/laravel-validate/</link>
+      <pubDate>Wed, 03 Feb 2021 08:14:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-validate/</guid>
+      <description>コードはLaravelで検索とページネーションを両立させる【ANDとOR検索も】から流用している。現状では不適切な値(文字数オーバー、未入力等)をサーバーに送信すると、そのまま例外処理が発生する。バリデーションを実装させ、例外ではなく前のページにリダイレクトさせる。 対象はlaravel 7.x。 方法は主に2種類ある。コントローラー上にバリデーション処理を設置する方法、フォームリクエストを生成してバリ</description>
+    </item>
+    
+    <item>
+      <title>Laravelで検索とページネーションを両立させる【ANDとOR検索も】</title>
+      <link>https://noauto-nolife.com/post/laravel-search-paginate/</link>
+      <pubDate>Tue, 02 Feb 2021 13:48:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-search-paginate/</guid>
+      <description>タイトルの通り。laravelにてAND検索とOR検索を実装させつつ、ページネーションも両立させる。コードはlaravelでCRUD簡易掲示板を作る【Restful】から流用している。 まずはAND検索とOR検索を実装させる 流れ的には、スペース区切りのキーワードを送信させ、それをコントロール側で区切り、クエリをビルドする。クエリをビルドする時、AND検索指定であれば、where()の追加、OR検索指</description>
+    </item>
+    
+    <item>
+      <title>Laravelで画像とファイルをアップロードする</title>
+      <link>https://noauto-nolife.com/post/laravel-fileupload/</link>
+      <pubDate>Mon, 01 Feb 2021 14:28:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-fileupload/</guid>
+      <description>タイトルの通り。単にアップロードするだけでなく、MIME属性に基づいたファイルのバリデーションを行い、セキュリティにも配慮する。 なお、本記事はLaravelで検索とページネーションを両立させる【ANDとOR検索も】からコードを流用している。 流れ テーブルに画像パス格納用カラムを追加してマイグレーション モデルに画像パス格納用カラムの名前を追加する バリデーション用のフォームリクエストを定義する コントロー</description>
+    </item>
+    
+    <item>
+      <title>laravelでCRUD簡易掲示板を作る【Restful】</title>
+      <link>https://noauto-nolife.com/post/laravel-crud-restful/</link>
+      <pubDate>Mon, 01 Feb 2021 13:11:30 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-crud-restful/</guid>
+      <description>リハビリがてらlaravelでCRUDに対応した簡易掲示板を作る。この記事の手順に沿ってやれば、45分もあれば作れる。 本記事ではlaravel 7.X系を使用している。 流れ プロジェクトを作る DBはSQliteを読み込むように設定する Restful対応コントローラーを作る ルーティングの設定 モデル定義とマイグレーション実行 リクエストを作る ビューを作る コントローラーの修正 タイムゾーンの修正 プロジェクトを作</description>
+    </item>
+    
+    <item>
+      <title>laravelで開発中、ログを表示させる</title>
+      <link>https://noauto-nolife.com/post/laravel-log/</link>
+      <pubDate>Mon, 01 Feb 2021 10:23:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-log/</guid>
+      <description>laravelではDjango(Python)のように処理の途中でprint()を実行してターミナルにログを表示させることはできない。代替として使用されるのがLogファサードを使用する方法である。 Logファサードを使用してログを表示させる 下記コードを任意の場所に書き込む。 \Log::debug(&amp;quot;ログ&amp;quot;); 内容は全てstorage/logs/laravel.log内に保存される</description>
+    </item>
+    
+    <item>
+      <title>Laravelのartisanコマンドのまとめ</title>
+      <link>https://noauto-nolife.com/post/laravel-artisan-command/</link>
+      <pubDate>Mon, 01 Feb 2021 08:07:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-artisan-command/</guid>
+      <description>laravelのartisanコマンドをよく使うと思われる順にまとめる。 開発用サーバーを立ち上げる php artisan serve ホスト名とポート番号の指定もできる。 php artisan serve --host=[ホスト名] --port=[ポート番号] コントローラーを作る php artisan make:controller [コントローラー名] &amp;ndash;resourceをつけると、Restful化もできる php artisan make:controller [コントローラー名] --resource モデルを作る php artisan make:model [モデル名] &amp;ndash;migratio</description>
+    </item>
+    
+    <item>
+      <title>DjangoやPythonにおける*argsと**kwargsとは何か</title>
+      <link>https://noauto-nolife.com/post/django-args-kwargs/</link>
+      <pubDate>Tue, 26 Jan 2021 17:07:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-args-kwargs/</guid>
+      <description>結論から言うと、*argsはキーワード未指定の引数のリスト、**kwargsはキーワードが指定された引数の辞書を手に入れるためのものである。 *argsはキーワード未指定の引数のリスト まずは、下記コードを参考にしたい。 #! /usr/bin/env python3 # -*- coding: utf-8 -*- import sys def main(name,*args): print(name) print(args) if __name__ == &amp;quot;__main__&amp;quot;: try: main(&amp;quot;Tom&amp;quot;,&amp;quot;Mike&amp;quot;,&amp;quot;Bob&amp;quot;) except KeyboardInterrupt: print(&amp;quot;\nprogram was ended.\n&amp;quot;) sys.exit() main()関数に3つの文字列の引数を与えている。&amp;quot;Tom&amp;quot;,&amp;quot;Mike&amp;quot;,&amp;quot;Bo</description>
+    </item>
+    
+    <item>
+      <title>【django-cleanup】画像等のファイルを自動的に削除する</title>
+      <link>https://noauto-nolife.com/post/django-cleanup/</link>
+      <pubDate>Tue, 26 Jan 2021 16:18:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-cleanup/</guid>
+      <description>例えば、Djangoの画像掲示板で削除をする時、ビューでレコードを削除すると同時に、レコードに紐付いた画像も同時に削除すると思う。その時、パスを抜き取り、os.remove()などを使用して画像を削除しているようでは、ビューの処理がどんどん増えていく。 Djangoでは、レコードに紐付いたファイルの削除処理記述の手間を減らしてくれるdjango-cleanupなるものがある。本記事ではその使用方法を</description>
+    </item>
+    
+    <item>
+      <title>Vue.jsでTODOを作る【CRUD】</title>
+      <link>https://noauto-nolife.com/post/vuejs-todo-crud/</link>
+      <pubDate>Tue, 26 Jan 2021 15:43:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vuejs-todo-crud/</guid>
+      <description>Codepenに掲載されていた偉い人のコードを元に、Todoを作ってみた。変数名がベストプラクティスとは異なる可能性があるため、あくまでもvue.jsの全体の機能確認用としている。 ソースコード まずはindex.html &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Vue.jsでTodo&amp;lt;/title&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;header class=&amp;quot;text-center&amp;quot; style=&amp;quot;background:orange;color:white;&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;Vue.jsでTodo&amp;lt;/h1</description>
+    </item>
+    
+    <item>
+      <title>Vue.jsでモーダルダイアログを作る</title>
+      <link>https://noauto-nolife.com/post/vuejs-modal/</link>
+      <pubDate>Mon, 18 Jan 2021 14:36:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vuejs-modal/</guid>
+      <description>jQueryであれば、モーダルダイアログを実装する時、対象の要素(DOM)を指定して、.show()と.hide()を行えば良いのでそれほど難しくはないが、vue.jsの場合はそうは行かない。 本記事ではvue.jsを使用したモーダルダイアログの実装方法をまとめる。 ソースコード 今回はモーダルダイアログの範囲外をクリックしたら閉じるように仕立てた。 まず、HTML。開発版のvue.jsのCDNを指定して</description>
+    </item>
+    
+    <item>
+      <title>Django Templates Language(DTL)でincludeを実行する時に引数も与える</title>
+      <link>https://noauto-nolife.com/post/django-templates-include/</link>
+      <pubDate>Thu, 24 Dec 2020 16:51:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-templates-include/</guid>
+      <description>Djangoでテンプレートファイルを分離させ、includeするときがある。複数の箇所で同じフォームを表示したりする時がそうだ。 ただ、フォームのIDをそれぞれの箇所で別々とする場合、引数を指定する必要がある。 結論 結論から言うと、こうなる。 {% include &amp;quot;[パス]&amp;quot; with [引数名]=[値] %} includeするhtmlのパスを指定した後、withを指定することで引数の指定が可能になる。指定した引</description>
+    </item>
+    
+    <item>
+      <title>【日付入力】flatpickrの実装方法(ロケール日本語化、日時入力対応化)</title>
+      <link>https://noauto-nolife.com/post/flatpickr-install/</link>
+      <pubDate>Thu, 24 Dec 2020 16:37:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/flatpickr-install/</guid>
+      <description>ウェブアプリを開発していると、避けて通ることができない日付もしくは日時入力。HTMLのSELECTタグを使用しても良いが、うるう年に対応させないといけないし、何よりユーザビリティに問題がある。 そんな時、flatpickrを実装すれば、日時入力が非常に簡単になる。しかもjQueryに依存していないので、流行のvue.jsなどを使いたい場合にも有効。 flatpickrの実装方法 まずHTML。flatp</description>
+    </item>
+    
+    <item>
+      <title>Djangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】</title>
+      <link>https://noauto-nolife.com/post/django-many-to-many/</link>
+      <pubDate>Fri, 27 Nov 2020 17:20:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-many-to-many/</guid>
+      <description>多対多のリレーションを作って、いざ表示させようとした時、普通に{{ content.allergy }}などと指定してしまうとこうなってしまう。 表示できていない。正しく指定するとこうなる。 コードの解説 結論から言うと、テンプレートでの表示に問題がある。下記のようにすると表示できる。 &amp;lt;td&amp;gt;{% for allergy in content.allergy.all %}{{ allergy }} {% endfor %}&amp;lt;/td&amp;gt; .all属性を使用しforループで並べる。 結論 多対多のリレーションはアレルギー表示や動画等のタグ表示、エンジニアの担当言語やスキル</description>
+    </item>
+    
+    <item>
+      <title>DjangoでYou are Trying to add a non-nullable fieldと表示されたときの対策【makemigrations】</title>
+      <link>https://noauto-nolife.com/post/django-non-nullable/</link>
+      <pubDate>Wed, 18 Nov 2020 08:23:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-non-nullable/</guid>
+      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコードはどうするか</description>
+    </item>
+    
+    <item>
+      <title>DjangoでHelloWorld【HttpResponse及びレンダリング】</title>
+      <link>https://noauto-nolife.com/post/startup-django-helloworld/</link>
+      <pubDate>Mon, 16 Nov 2020 08:50:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-helloworld/</guid>
+      <description>Djangoのハローワールドは、やり方が何通りもある。 普通のPythonであれば、 print(&amp;quot;HelloWorld&amp;quot;) ほぼこの一通りであるが、Djangoの場合は主にHttpResponseの他に、テンプレートをレンダリングして返す方法がある。 一般的な開発においてはテンプレートのレンダリングが主流である。しかし、Django初心者、フレームワーク未経験者には難度が高い。故に、本記事では難度の低いHttpResponseから解説する</description>
+    </item>
+    
+    <item>
+      <title>Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】</title>
+      <link>https://noauto-nolife.com/post/django-paginator/</link>
+      <pubDate>Wed, 11 Nov 2020 17:57:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-paginator/</guid>
+      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されないので、例えば検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態でページネーションを実装する術を解説する。 流れ views</description>
+    </item>
+    
+    <item>
+      <title>Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】</title>
+      <link>https://noauto-nolife.com/post/django-or-and-search/</link>
+      <pubDate>Wed, 11 Nov 2020 17:56:10 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-or-and-search/</guid>
+      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 結論 結論から言うと、コード(views.py)はこ</description>
+    </item>
+    
+    <item>
+      <title>Djangoのマイグレーションのエラー時の対処法</title>
+      <link>https://noauto-nolife.com/post/django-migrate-error/</link>
+      <pubDate>Thu, 05 Nov 2020 08:46:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-migrate-error/</guid>
+      <description>Djangoで開発を進めている時、マイグレーションのエラーにぶち当たるときがあるが、大抵はmigrationsディレクトリを編集していけばいいだけなので、それほど難しいものではない。 本記事ではmigrationsディレクトリ内のファイル編集を行うことで、マイグレーションのエラー時の対処法をまとめる。 サンプルコード まず、マイグレーションエラーの再現をするために、サンプルのコードを下記に公開した。プロ</description>
+    </item>
+    
+    <item>
+      <title>fontawesomeの実装と利用例のまとめ</title>
+      <link>https://noauto-nolife.com/post/startup-fontawesome/</link>
+      <pubDate>Thu, 29 Oct 2020 16:48:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-fontawesome/</guid>
+      <description>fontawesomeを使用することで、簡単なアイコンをページ内に使用することができる。無料の場合は制限があるが、CDNをheadタグ内に書き込めばいいので実装は簡単。 実装方法 headタグ内に下記を追加する。 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://use.fontawesome.com/releases/v5.1.0/css/all.css&amp;quot; integrity=&amp;quot;sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; これだけでOK。 fontawesome CDN などで検索してくると、下記サイトが出てくるので、バージョンをチェックして最新版をコピペする。 https://fontawesome.com/v5.15/how-to-use/customizing-wordpress/snippets/setup-cdn-webfont#load-all-styles 使い方 fontawesomeのアイコン一覧が掲載されているページ( https://fontawesome.com/icons?d=gallery</description>
+    </item>
+    
+    <item>
+      <title>【CSS3】スクロール時に奥行きを感じる背景(background)の作り方</title>
+      <link>https://noauto-nolife.com/post/css3-deep-bg/</link>
+      <pubDate>Thu, 29 Oct 2020 16:39:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-deep-bg/</guid>
+      <description>最近流行のスクロールしたら背景がスクロールせず、ページ全体に奥行きを感じることができるモダンデザインの背景を作る。 それほど難しくない。CSS習いたての初心者でも簡単に実装できるので、是非とも試してみたいところ。 奥行きのある背景の作り方 まず、HTML。bodyタグ内のみ記述する。 &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;fixed_bg bg_1&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;見出し&amp;lt;/h1&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;scroll_bg&amp;quot;&amp;gt; &amp;lt;p&amp;gt;コンテンツ&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;fixed_bg bg_2&amp;quot;&amp;gt; &amp;l</description>
+    </item>
+    
+    <item>
+      <title>CSS3で折りたたみ式のサイドバーを実装させる【checkbox&#43;transition&#43;position】</title>
+      <link>https://noauto-nolife.com/post/css3-sidebar/</link>
+      <pubDate>Thu, 29 Oct 2020 16:15:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-sidebar/</guid>
+      <description>モダンなサイトでよく見かける折りたたみ式のサイドバー。これはCSS3の知識さえあればすぐに実装できる。 HTML5+CSS3を使用した折りたたみ式サイドバー まず、HTML。headerがページタイトルとサイドバーを兼ねている。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;折りたたみ式右サイドバー&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;onload.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;header&amp;gt; &amp;lt;div class=&amp;quot;header&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;折りたたみ式右サイドバー</description>
+    </item>
+    
+    <item>
+      <title>CSS3を使用した簡単アニメーションの実装【transitionとtransform】</title>
+      <link>https://noauto-nolife.com/post/css3-animation/</link>
+      <pubDate>Thu, 29 Oct 2020 15:37:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-animation/</guid>
+      <description>CSS3のアニメーション関係の描画はanimationプロパティを使用しなくてもtransitionプロパティを使用すれば簡単に実装できる。 さらに、transformと組み合わせることで、傾きや回転まで自由自在。本記事ではレベルごとにアニメーションの作り方を解説していく。 対象読者はある程度のHTMLとCSSの基礎を身に着けている方、CSSにおける疑似要素(::beforeと::after)、擬似ク</description>
+    </item>
+    
+    <item>
+      <title>CSS3でiOS風のトグルスイッチを作る方法【transition&#43;checkbox】</title>
+      <link>https://noauto-nolife.com/post/css3-toggle-switch/</link>
+      <pubDate>Thu, 29 Oct 2020 15:37:36 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-toggle-switch/</guid>
+      <description>CSS3で実装されたtransitionと兄弟要素のセレクタを組み合わせることでiOS風のトグルスイッチは簡単に作れる。 何も装飾を施していないinputタグのチェックボックスは小さくて見づらいが、この装飾を施すことで、視覚的にも押すことができるスイッチであると認識できるし、押せる範囲が広がる。 iOS風のトグルスイッチの作り方 まずはHTML5から。 &amp;lt;div class=&amp;quot;ui_demo_area&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;ios_chk_01&amp;quot; class=&amp;quot;ui20-input_chk&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt;&amp;lt;label class=&amp;quot;ui20-ios_conf&amp;quot; for=&amp;quot;ios_chk_01&amp;quot;&amp;gt;&amp;lt;/label&amp;gt; &amp;lt;/div&amp;gt; 続いて、CSS3。 /* ios button */ .ui20-input_chk { display:none; }</description>
+    </item>
+    
+    <item>
+      <title>Laravelビギナーが30分で掲示板アプリを作る方法</title>
+      <link>https://noauto-nolife.com/post/startup-laravel/</link>
+      <pubDate>Mon, 26 Oct 2020 15:13:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-laravel/</guid>
+      <description>laravelはDjangoと違って初っ端から大量のファイルやディレクトリが表示され、気後れしそうになるが、編集する部分さえ分かれば大したことはない見掛け倒し。 PHPを中心に扱う現場ではlaravelのスキルが求められるのでウェブ屋になるのであれば、是非とも習得しておきたい。 対象読者はlaravelを既にPCにインストール済み、Linux系コマンド習得済み、PHP及びHTML/CSS/JSの基本構</description>
+    </item>
+    
+    <item>
+      <title>Djangoで『このページを表示するにはフォームデータを..』と言われたときの対処法</title>
+      <link>https://noauto-nolife.com/post/django-redirect/</link>
+      <pubDate>Sat, 24 Oct 2020 17:22:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-redirect/</guid>
+      <description>『このページを表示するにはフォームデータを再度送信する必要があります。フォームデータを再送信すると以前実行した検索、投稿や注文などの処理が繰り返されます。』 POST文を実行した直後に更新ボタンを押すと、こんなふうに表示される時。こういうときはリダイレクトすればOK。 views.pyを修正する redirectをimport。POST文のreturnにredirect関数を返せばいいだけ。 from django.shortcuts import redirect #P</description>
+    </item>
+    
+    <item>
+      <title>DjangoにPythonスクレイピングを実装した簡易検索エンジンの作り方【BeautifulSoup】</title>
+      <link>https://noauto-nolife.com/post/django-scraping/</link>
+      <pubDate>Sat, 24 Oct 2020 12:25:17 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-scraping/</guid>
+      <description>DjangoにPythonスクレイピングを実装させるだけで簡易的な検索エンジンを作ることができる。 しかも、モデルの定義は不要でビューとテンプレートだけなので初心者の演習におすすめ。 流れ Djangoの環境構築、プロジェクトの作成等は割愛します。 アプリを作る urls.pyを修正 views.pyを作る テンプレートを作る スクレイピングのコードを作る views.pyを修正 テンプレートを修正 開発サーバーを起動</description>
+    </item>
+    
+    <item>
+      <title>Djangoビギナーが40分で掲示板アプリを作る方法</title>
+      <link>https://noauto-nolife.com/post/startup-django/</link>
+      <pubDate>Tue, 20 Oct 2020 14:20:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django/</guid>
+      <description>公式のDjangoチュートリアルではよくわからない方に捧げる 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTML/CSS/JSの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHT</description>
+    </item>
+    
+  </channel>
+</rss>

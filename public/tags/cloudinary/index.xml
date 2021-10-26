@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloudinary on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/cloudinary/</link>
+    <description>Recent content in Cloudinary on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 30 Sep 2021 09:11:38 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/cloudinary/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CloudinaryでPDF等の画像や動画以外のファイルをアップロードし、共有する方法【blocked for delivery】</title>
+      <link>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</link>
+      <pubDate>Thu, 30 Sep 2021 09:11:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</guid>
+      <description>どうやらPDF等の画像や動画以外の一部のファイルは配信拒否されてしまうらしい。セキュリティ対策の一貫として行われているそうな。 しかし、PDFを共有する前提のウェブアプリであればただの足かせでしか無いし、ユーザー認証や管理者が管理をきちんとしていればセキュリティ的な事案はある程度は低減できる。 本記事ではCloudinaryを使用してPDFを配信する方法を記す。 対策 対策は至ってシンプル。Cloudin</description>
+    </item>
+    
+    <item>
+      <title>【Django】Heroku&#43;Cloudinaryの環境にアップロードしたファイルを参照する方法【MIMEとサイズ】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary-file-reference/</link>
+      <pubDate>Wed, 29 Sep 2021 15:45:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary-file-reference/</guid>
+      <description>クライアントがアップロードしたファイルをビュー側で参照するときがある。例えば、許可されていないMIMEのアップロード、ファイルサイズの確認など。 通常であれば、下記のようにすれば良い。 request.FILES[&amp;quot;document&amp;quot;] しかし、こんな参照をすると、Cloudinaryにはアップロードできてもファイルが壊れてしまう。PDF等の普通のファイルであれば問題はないが、mp4等の動画ファイルで発生している模様。 コード POSTメソッドだけ掲載。</description>
+    </item>
+    
+    <item>
+      <title>DjangoをHeroku&#43;Cloudinary(基本無料ストレージ)の環境にデプロイする【ウェブアプリのデモを一般公開したい場合などに】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary/</link>
+      <pubDate>Sat, 25 Sep 2021 10:34:37 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary/</guid>
+      <description>Herokuにはクレジットカードを登録することで、Cloudinaryというアドオンを利用することができる。これがHerokuのストレージとして運用可能。 一部はDjangoをDEBUG=FalseでHerokuにデプロイする方法と内容が重複しているため、そちらを読んだ人向けに書く。 アップロードするコードはDjangoで画像及びファイルをアップロードする方法より流用。テンプレートのsrc属性、hre</description>
+    </item>
+    
+  </channel>
+</rss>

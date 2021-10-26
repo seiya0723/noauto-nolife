@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>デプロイ on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/</link>
+    <description>Recent content in デプロイ on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 29 Sep 2021 15:45:48 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【Django】Heroku&#43;Cloudinaryの環境にアップロードしたファイルを参照する方法【MIMEとサイズ】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary-file-reference/</link>
+      <pubDate>Wed, 29 Sep 2021 15:45:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary-file-reference/</guid>
+      <description>クライアントがアップロードしたファイルをビュー側で参照するときがある。例えば、許可されていないMIMEのアップロード、ファイルサイズの確認など。 通常であれば、下記のようにすれば良い。 request.FILES[&amp;quot;document&amp;quot;] しかし、こんな参照をすると、Cloudinaryにはアップロードできてもファイルが壊れてしまう。PDF等の普通のファイルであれば問題はないが、mp4等の動画ファイルで発生している模様。 コード POSTメソッドだけ掲載。</description>
+    </item>
+    
+    <item>
+      <title>DjangoをHeroku&#43;Cloudinary(基本無料ストレージ)の環境にデプロイする【ウェブアプリのデモを一般公開したい場合などに】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary/</link>
+      <pubDate>Sat, 25 Sep 2021 10:34:37 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary/</guid>
+      <description>Herokuにはクレジットカードを登録することで、Cloudinaryというアドオンを利用することができる。これがHerokuのストレージとして運用可能。 一部はDjangoをDEBUG=FalseでHerokuにデプロイする方法と内容が重複しているため、そちらを読んだ人向けに書く。 アップロードするコードはDjangoで画像及びファイルをアップロードする方法より流用。テンプレートのsrc属性、hre</description>
+    </item>
+    
+    <item>
+      <title>DjangoをS3(AWS)ストレージ付きのHerokuにデプロイする</title>
+      <link>https://noauto-nolife.com/post/django-deploy-heroku-s3/</link>
+      <pubDate>Sat, 31 Jul 2021 15:59:46 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-heroku-s3/</guid>
+      <description>Herokuで画像などのファイルをアップロードしたい時、別途ストレージを用意する必要がある。 特に代表的なのがAWSのS3をストレージとする方法。 既に解説記事があるので、S3の設定関係はDjangoをEC2(Ubuntu)、RDS(PostgreSQL)、S3の環境にデプロイをするを参照。 コードはDjangoで画像及びファイルをアップロードする方法から流用する。 Herokuデプロイの詳しい流れは、D</description>
+    </item>
+    
+    <item>
+      <title>DjangoをEC2(Ubuntu)、RDS(PostgreSQL)、S3の環境にデプロイをする</title>
+      <link>https://noauto-nolife.com/post/django-deploy-ec2-rds-s3/</link>
+      <pubDate>Mon, 26 Jul 2021 17:59:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-ec2-rds-s3/</guid>
+      <description>DjangoをAWSのEC2(Ubuntu)にデプロイするの続編。EC2にデプロイした後、RDS、S3を使って、さらに大型のウェブアプリを動作させる。 本記事ではRDS(PostgreSQL)、S3のセットアップを中心に解説をする。基本的なEC2へのデプロイの流れは上記記事を確認するべし。 RDS(PostgreSQL)の設定 流れ ダッシュボードからRDSのインスタンス生成 セキュリティグループの設定(E</description>
+    </item>
+    
+    <item>
+      <title>DjangoをAWSのEC2(Ubuntu)にデプロイする</title>
+      <link>https://noauto-nolife.com/post/django-deploy-ec2/</link>
+      <pubDate>Sun, 18 Jul 2021 09:45:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-ec2/</guid>
+      <description>Herokuとは違ってサーバーが日本にもあり、なおかつ課金すれば大型のウェブアプリでもインターネット上に公開できる、それがAWS。 本記事ではAWSのEC2を使用し、画像アップロード可能な簡易掲示板をデプロイ工程を解説する。 デプロイ対象のコード ソースコードは以下。 https://github.com/seiya0723/django_fileupload 作り方は下記を参照。 Djangoで画像及びファイルをアップロードする方法 必要なもの クレジットカード AWSアカウント Djangoのsett</description>
+    </item>
+    
+    <item>
+      <title>LaravelをUbuntuにデプロイする【Nginx&#43;PostgreSQL】</title>
+      <link>https://noauto-nolife.com/post/laravel-ubuntu-deploy/</link>
+      <pubDate>Tue, 13 Apr 2021 19:09:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ubuntu-deploy/</guid>
+      <description>構成について タイトルの通り、下記構成にてデプロイを行う Laravel Framework 7.30.4 Ubuntu 18.04 nginx version: nginx/1.14.0 (Ubuntu) psql (PostgreSQL) 10.16 (Ubuntu 10.16-0ubuntu0.18.04.1) なぜPostgreSQLなのか？(MySQLではないのか？) MySQLは使わない。なぜなら、Laravelのtimestamp型とMySQLが組み合わさると2038年問題が発生するから。 コード側を合わせるという方法もあるが、今回はデプロイが主目的であるため、安全なPostgreSQLでデプロイする。 https://qiita.com/ucan-lab/items/99ee14ad6bb24614980c デプロイまでの流</description>
+    </item>
+    
+    <item>
+      <title>LaravelをHerokuにデプロイする【Heroku-postgresql使用】</title>
+      <link>https://noauto-nolife.com/post/laravel-heroku-deploy/</link>
+      <pubDate>Sat, 13 Feb 2021 14:01:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-heroku-deploy/</guid>
+      <description>LaravelをHerokuにデプロイする。DBにはHerokuPostgresを使用する。 本記事の対象読者はHerokuCLIはインストール済み、基本的なコマンドは習得済みとする。 流れ Herokuからアプリを作る HerokuPostgresを実装 起動用のProcfileを作る ローカルリポジトリとHerokuのリモートリポジトリの関連付け デプロイ 環境変数の設定を施す(多いのでシェルスクリプトを実装</description>
+    </item>
+    
+    <item>
+      <title>DjangoをDEBUG=FalseでHerokuにデプロイする方法</title>
+      <link>https://noauto-nolife.com/post/django-deploy-heroku/</link>
+      <pubDate>Mon, 26 Oct 2020 11:16:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-heroku/</guid>
+      <description>プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。 クラウドにインストールさせるライブラリの定義(requirements.txt) pycharm等の統合開発環境を使用していて、仮想環境が動いている場合(既にターミナルの左側に(venv)等の表示がされている場合)、下記コマンドを実行して、requirements.txtを生成する。 pip freeze &amp;gt; requirements.txt もし、仮想環境を使</description>
+    </item>
+    
+    <item>
+      <title>DjangoをLinux(Ubuntu)サーバーにデプロイする方法【Nginx&#43;PostgreSQL】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-linux/</link>
+      <pubDate>Mon, 26 Oct 2020 11:16:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-linux/</guid>
+      <description>DjangoをLinuxサーバーにデプロイできれば、クラウドとは違ってハードウェアの性能を余すこと無く使うことができる。 高度なAIを運用したり、それなりにセキュリティが求められるウェブアプリを運用する予定であれば実機のLinuxサーバーにデプロイしたほうが良い。 デプロイまでの流れ PostgreSQLとNginxのインストール settings.pyの修正 ホームディレクトリにプロジェクト一式を設置 必要</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+
+<link rel="canonical" href="https://noauto-nolife.com/post/startup-web-application-framework/">
+
+
+        <link href="https://noauto-nolife.com/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="https://noauto-nolife.com/css/bootstrap-grid.css"> 
+
+        <script src="https://noauto-nolife.com/data/search.js"></script>
+        <script src="https://noauto-nolife.com/js/script.js"></script>
+
+        <title>ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】 - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】 - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://noauto-nolife.com/post/startup-web-application-framework/">
+<meta property="og:image" content="https://noauto-nolife.com/images/Screenshot from 2021-10-22 13-56-36.png">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="https://noauto-nolife.com/post/startup-web-application-framework/">
+<meta name="twitter:title" content="ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】 - 自動化無しに生活無し">
+<meta name="twitter:image" content="https://noauto-nolife.com/images/Screenshot from 2021-10-22 13-56-36.png">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://noauto-nolife.com/"
+    },
+    "headline": "ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】 - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://noauto-nolife.com/images/Screenshot from 2021-10-22 13-56-36.png",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-10-21T14:44:50JST",
+    "dateModified": "2021-10-21T14:44:50JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://noauto-nolife.com/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="https://noauto-nolife.com/css/style.css" rel="stylesheet">
+        
+
+
+        
+
+        
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="https://noauto-nolife.com/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEBとかAIとかLinux関係をひたすら書く備忘録系ブログ</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="https://noauto-nolife.com/">HOME</a></li>
+                
+                <li><a href="https://noauto-nolife.com/post/">post</a></li>
+                
+                <li class="active">ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+        <li>投稿日時：<time datetime="2021-10-21T14:44:50JST">2021年10月21日 14時44分</time></li>
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/">初心者向け</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA/">スタートアップシリーズ</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/">ネットワーク</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9/">データベース</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/">セキュリティ</a>
+            
+        </li>
+        
+        
+    </ul>
+
+    <div class="img-center"><img src="https://noauto-nolife.com/images/Screenshot%20from%202021-10-22%2013-56-36.png" alt="thumbnail"></div>
+
+	<div class="article_body">
+
+<p>DjangoやLaravel、Ruby on Rails等のウェブアプリケーションフレームワーク(以下、フレームワーク)を使うことで、効率的にウェブアプリの開発ができる。</p>
+
+<p>しかし、前提となる知識をおろそかにしているようでは大したものは作れないし、問題だらけのウェブアプリを知らぬ間に世に出してしまうことになるだろう。</p>
+
+<p>本記事ではフレームワークを扱う際に知っておきたい知識を記す。</p>
+
+<h2 id="ネットワーク">ネットワーク</h2>
+
+<h3 id="ウェブが動く仕組み">ウェブが動く仕組み</h3>
+
+<p>まずウェブアプリケーション云々以前に、なぜウェブが動くのかというところから知る必要がある。</p>
+
+<p>ウェブはクライアントとサーバーという2つの役割によって成立している。ウェブサイトにアクセスする側がクライアント。クライアントにウェブサイトを表示させるための情報を提供しているのがサーバー。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-21 17-26-06.png" alt="ウェブサイトにおけるサーバーとクライアントの関係"></div>
+
+<p>サーバーはクライアントにウェブサイトを表示させるため、HTML、CSS、JavaScriptの情報を提供している。</p>
+
+<p>クライアントはウェブサイトを表示させる際、EdgeやChrome、Firefox等のブラウザを使ってサイトにアクセスしているが、このブラウザがサーバーから送られたHTML、CSS、JavaScriptを解釈し、ウェブサイトが正常に表示される。</p>
+
+<p>つまり、サーバー内にHTMLやCSS、JavaScriptなどの情報が保管されているということ。サーバーはクライアントの要求に応じて、保管されているデータを提供しているに過ぎない。</p>
+
+<p>とりわけ、このようにHTMLやCSS、JavaScript等のウェブに関わる情報を提供しているサーバーをウェブサーバーという。サーバーにも種類があり、ウェブサーバーの他に</p>
+
+<ul>
+<li>ファイルを共有するファイルサーバー</li>
+<li>メールを送受信するメールサーバー</li>
+<li>顧客情報などのデータを一元管理しているデータベースサーバー</li>
+<li>アクセスを代行するプロキシサーバー</li>
+<li>IPアドレスとドメイン名を関連付けるDNSサーバー</li>
+</ul>
+
+<p>など枚挙に暇がない。</p>
+
+<h3 id="フロントサイド言語とサーバーサイド言語">フロントサイド言語とサーバーサイド言語</h3>
+
+<p>ウェブサーバーを利用してウェブを開発する際にはフロントサイト言語とサーバーサイド言語の2つの種類の言語を扱う。</p>
+
+<p>フロントサイド言語とは、ブラウザ上で動くHTML、CSS、JavaScript等の言語のこと。単にフロントもしくはフロントサイド、フロント言語、フロント系などとも言う。サイトの見た目に関係する。ブラウザの開発ツールを起動すればHTML、CSS、JavaScriptの処理内容は全て確認・編集できる。</p>
+
+<p>一方で、サーバーサイド言語とはサーバー上で動くスクリプト言語のこと。PHP、Python、Ruby、Go、C#などがあり、いずれかひとつの言語が実行される。単にサーバーサイドなどとも言う。サーバー上で動く仕様上、クライアント側からは処理の内容は一切見えない。そのため、データベースへのアクセスなど機密性が求められる処理系は全てサーバーサイドに書く。</p>
+
+<p>つまり、ウェブサーバーではクライアントの要求によってはサーバーサイドが動き、その処理結果に応じて、フロントサイドの情報が提供されるということ。例えば、通販サイトなどで『〇〇さん、こんにちは』と表示されるが、『〇〇さん』はどこから来たのかと言うと、サーバーサイドの処理が発動し、顧客情報が保管されているデータベースへアクセスがされたから表示されているのだ。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-22 13-47-14.png" alt="サーバーサイドとフロントサイドの関係"></div>
+
+<h3 id="httpリクエストとレスポンス">HTTPリクエストとレスポンス</h3>
+
+<p>前項まで便宜的にサイトへアクセスと表現していたが、専門用語で言うとHTTPリクエストである(単にリクエストと言う場合もある)。クライアントのHTTPリクエストに対してサーバーがHTTPレスポンスを返す。</p>
+
+<p>HTTPリクエストには主に2種類がある。GETメソッドとPOSTメソッドである。それぞれGET文、POST文、あるいは単にGET、POSTなどとも呼ばれる。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-22 13-56-36.png" alt=""></div>
+
+<p>GETメソッドは主にサイトへのアクセス、検索やページ移動などで利用される。ネットサーフィンをしていると、URLの末尾に<code>?page=2</code>や<code>?page=5&amp;search=hoge</code>などが表示されたりすることがある。これをクエリストリング(クエリ文字列)、もしくはURLクエリパラメーター(URLパラメーター)などと言う。このクエリストリングの値に応じて、サーバーサイドで処理が行われる。例えば、<code>?page=2</code>であれば、サーバーサイドは<code>page</code>を参照して<code>2</code>を取り出し、2ページ目のデータを出力する。同様に<code>?search=hoge</code>であれば、サーバーサイドでは<code>hoge</code>で検索を行い、その結果を出力する。</p>
+
+<p>GETメソッドはURLにアクセスすることで発動するので、URLをシェアしたりブックマークすることで再度呼び出しを行うことができる。そのため、検索やページ移動などの処理は、URLが残り、再度呼び出し可能なGETメソッドで行うのが定石である。</p>
+
+<p>また、GETメソッドはリンクをクリックしたり、URLに直接アクセスする以外に、<code>form</code>タグを使用しても実行できる。下記がその例である。</p>
+
+<pre><code>&lt;form action=&quot;&quot; method=&quot;GET&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;search&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;検索する&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>GETメソッドを送信するため、<code>form</code>タグの<code>method</code>属性の値として<code>GET</code>を指定している(未指定でも可)。<code>name</code>属性がクエリストリングのキーになり、その<code>name</code>属性に書き込まれた内容が値になる。つまり、<code>name=&quot;search&quot;</code>のテキストボックスに<code>hoge</code>と入力して、『検索する』ボタンを押せば、クエリストリングは<code>?search=hoge</code>となる。</p>
+
+<p>その一方でPOSTメソッドはフォームを使用した投稿、通販サイトにおける注文など、1回限りのリクエストで利用される。下記のコードがPOSTメソッドを送信する<code>form</code>タグの例。</p>
+
+<pre><code>&lt;form action=&quot;&quot; method=&quot;POST&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;csrftoken&quot; value=&quot;XXXXXXXXXXXXX&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;comment&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;送信&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>POSTメソッドを実行しても、GETメソッドとは違ってURLにはクエリストリングは付かない。<code>name=&quot;comment&quot;</code>及び<code>name=&quot;csrftoken&quot;</code>はPOSTメソッドのパラメータはリクエストのボディに内包される。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-22 14-23-41.png" alt=""></div>
+
+<p>上記図のように、リクエストは送信元や送信先、メソッド等を指定するヘッダと、データを内包するボディ(ペイロードとも言う)の2つによって成り立っている。</p>
+
+<ul>
+<li>参照:<a href="https://ja.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP%E3%83%98%E3%83%83%E3%83%80%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89">https://ja.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP%E3%83%98%E3%83%83%E3%83%80%E3%83%95%E3%82%A3%E3%83%BC%E3%83%AB%E3%83%89</a></li>
+<li>参照:<a href="https://ja.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8">https://ja.wikipedia.org/wiki/Hypertext_Transfer_Protocol#HTTP%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8</a></li>
+</ul>
+
+<p>例えば、通販サイトで商品を購入する時、自分が購入した商品を第三者に知られないために暗号化の処理を施す必要がある。ただし、この暗号化の処理によって完全に暗号化されるのはリクエストのボディだけ。ヘッダも一部は暗号化はされるが、リクエスト送信先であるURLは暗号化されない。もしURLにクエリストリングが含まれていた場合、その内容は第三者に丸見え。</p>
+
+<p>だから、秘匿する必要があるデータはクエリストリングやURLに含めてはいけない。注文処理や投稿などは秘匿する必要があるので、値がリクエストボディに内包され、暗号化できるPOSTメソッドで送信を行う。</p>
+
+<p>また、POSTメソッドはGETメソッドとは違い、URLにアクセスして再度実行されるものではないので、注文など1回限りのリクエストで利用する。</p>
+
+<h3 id="ipアドレスとドメイン名">IPアドレスとドメイン名</h3>
+
+<p>IPアドレスはネットワークに接続されている全ての端末に割り当てられている。PCであれ、スマホであれ、タブレットであれ、ルーターやIoT機器であれ、ネットワークに接続した時点でIPアドレスが与えられる。このIPアドレスを元にサーバーへアクセスが行われる。</p>
+
+<p>IPアドレス、とりわけIPv4は、4つの区切りで表記される。それぞれの区切りを第1〜第4オクテットと呼ぶ。オクテットの最大値は255、最小値は0であるため、IPアドレスは<code>0.0.0.0</code>から<code>255.255.255.255</code>までが実在する。そのため<code>100.200.300.400</code>などの、いずれかのオクテットが255を超過したIPアドレスは存在し得ない。</p>
+
+<!--ここにIPアドレスとDNSの図を-->
+
+<p>IPアドレスを指定すれば、ウェブサイトにもアクセスできる。しかし、一般的なウェブサイトにアクセスする時、このIPアドレスを直接指定してアクセスする事は難しいし、どこのサイトなのかよくわからない。そこで出てきたのがドメイン名。ドメイン名をIPアドレスと関連付けることで<code>google.com</code>や<code>yahoo.co.jp</code>等のドメイン名を指定してサイトにアクセスすることができる。これでユーザーはアクセスする前にどこのサイトかを把握できるし、覚えることもできる。</p>
+
+<p>このIPアドレスとドメイン名を関連付けているのが、DNS(ドメインネームシステム)という技術、そして、DNSを使用し、IPアドレスに対応したドメイン名をクライアントにレスポンスしているのがDNSサーバー。IPアドレスに対応したドメイン名を回答することを名前解決と言う。</p>
+
+<h2 id="データベース">データベース</h2>
+
+<p>データベースは一言で言ってしまえば、エクセルのようなもの。シートを選び、格子状のセルにデータを入れていく。</p>
+
+<p>ただ、エクセルと違う点は、主に</p>
+
+<ul>
+<li>入力するデータの形式が列ごとに決まっていること</li>
+<li>1行分を1レコード(1件分のデータ)として扱うこと</li>
+<li>SQLを使用してデータの読み書きを行うこと</li>
+<li>マクロや関数は使えない</li>
+</ul>
+
+<p>などがある。</p>
+
+<h3 id="データベースの仕組み">データベースの仕組み</h3>
+
+<p>データベースはテーブル(エクセルで言うシートみたいなもの)をまとめたもの。テーブルにデータを格納していく。縦の列はカラム(もしくはフィールド)、横の行はレコードと言う。レコード1つが1件分のデータである。</p>
+
+<p>カラムごとに入力するデータの形式は決まっている。金額のように数値しか入力を許してはいけないもの、配送日のように日付しか入力を許してはいけないものなど、それぞれのデータの形式に合わせて入力をする。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-22 14-31-41.png" alt="DBの仕組み"></div>
+
+<p>もし、予め指定されたデータの形式に沿っていないレコードを挿入しようとした場合、DB側がエラーを出す。このように列ごとに入力するデータ形式が、エクセルと違って厳格であるため、正しく計算処理が行われる。数値は数値、日付は日付、文字列は文字列、ブーリアン値はブーリアン値と厳格に決まっている。</p>
+
+<h3 id="sqlとは">SQLとは</h3>
+
+<p>SQLとは、データベースを動かすための言語である。DB上のデータの読み書きはSQLを使用して行われる。以下はSQLの例である</p>
+
+<pre><code>#topicテーブルから全てのカラムを参照する
+SELECT * FROM topic;
+
+#topicテーブルの中から、idが1のレコードを削除する
+DELETE FROM topic WHERE id = 1;
+</code></pre>
+
+<p>ただし、フレームワークではSQLを直接記述して、DBを操作する必要はない。安易にウェブアプリ上でSQLを実行してしまうと、後述のSQLインジェクションを引き起こしてしまう可能性があるからだ。</p>
+
+<p>そのため、SQLはそこまで重視して覚えなくても良い。あくまでもフレームワーク初心者の段階では。</p>
+
+<h2 id="セキュリティ">セキュリティ</h2>
+
+<p>最近のフレームワークはデフォルトでセキュリティ対策が行われており、何もしなくてもセキュリティ的な問題が発生することはない。</p>
+
+<p>とは言え、不適切な開発手法を採用していると、簡単に攻撃を許してしまう。だからこそ、具体的にどのような攻撃手法があり、どのようにしてフレームワーク側が対策をしているのかを知る必要がある。</p>
+
+<h3 id="xss-クロスサイトスクリプティング">XSS(クロスサイトスクリプティング)</h3>
+
+<p>本来であれば、<code>&lt;</code>や<code>&gt;</code>は通常エスケープ処理され、文字列として扱われるが、これがエスケープ処理されずHTMLとして解釈されるために通用する攻撃手法。</p>
+
+<p>下記図のように、通常は文字列として扱われる。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-22 14-34-55.png" alt=""></div>
+
+<p>しかしXSS脆弱性があると文字列ではなくHTMLとして解釈される。それ故、任意のJavaScriptを発動させることができる。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-22 14-35-09.png" alt=""></div>
+
+<p>これを悪用して、悪意のあるサイトに誘導されたり、ウイルス等のダウンロードが勝手に行われたりすることがある。何も知らずにやってきたサイトの訪問者が被害者になってしまうので、サイト開発者はくれぐれもこのような脆弱性を生み出さないようにしたいところだ。</p>
+
+<h3 id="sqlインジェクション">SQLインジェクション</h3>
+
+<p>SQLインジェクションとは、サーバーサイドの処理系でDBへアクセスする際、直接SQLを実行し、なおかつユーザーから受け取った値をエスケープ処理せずに、そのまま実行しているため発生する攻撃手法。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-22 14-57-21.png" alt=""></div>
+
+<p>上図のように、ユーザーが送信した内容がSQLの一部として解釈され、結果的に本来であればDB内の顧客情報を全てを表示させたり、削除させたりすることができる。通販サイトなどの個人情報を取り扱うサイトでSQLインジェクションが発生した場合、その被害は尋常ではないだろう。</p>
+
+<p>対策として、サーバーサイドの処理では『SQLを書かない』『SQLを実行しない』を徹底すること。もしどうしてもSQLを使いたいのであれば、前述の通りエスケープ処理を行い、特殊文字をSQLとして解釈されないようにする必要がある。</p>
+
+<p>最近のフレームワークではSQLに変わって、安全に利用できるORM(オブジェクトリレーショナルマッピング)というものがある。このORMはユーザーから受け取った値を自動的にエスケープして、SQLとして解釈されないようにDBへアクセスしてくれるので、特別なことをしなくてもSQLインジェクションの対策ができるのだ。</p>
+
+<p>フレームワークを始めてすぐの段階では、SQLインジェクション対策として、SQLではなくORMを使う。これは鉄則である。</p>
+
+<p>参照元:<a href="https://ja.wikipedia.org/wiki/SQL%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3">https://ja.wikipedia.org/wiki/SQL%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3</a></p>
+
+<h3 id="csrf-クロスサイトリクエストフォージェリ">CSRF(クロスサイトリクエストフォージェリ)</h3>
+
+<p>リクエストが送信された時にクライアントが使用していたサイトが、偽サイトなのか正規サイトなのか判定できないため、発生する攻撃手法。</p>
+
+<p>登場人物は3人。CSRF脆弱性のあるECサイト(以下、ECサイト)、悪意あるサイト(以下、悪サイト)、CSRF脆弱性のあるECサイトの顧客(以下、顧客)。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-22 15-03-52.png" alt=""></div>
+
+<p>以下流れ。</p>
+
+<ol>
+<li>予め顧客はECサイトにログインしておく</li>
+<li>悪サイトの運営者は、何らかの方法で顧客を悪意あるサイトに誘導する</li>
+<li>悪サイトではアクセスしたらすぐにJavaScriptが発動し、ECサイトへリクエストが送信される</li>
+<li>そのリクエストの内容は、悪サイトの運営者のアジトに換金性の高い商品を送る注文</li>
+<li>CSRF脆弱性のあるECサイトでは、悪サイトから勝手に送られたリクエストであることが判定できない</li>
+<li>結果、顧客は換金性の高い商品の代金を知らぬ間に支払わされる</li>
+<li>悪サイトの運営者は換金性の高い商品を換金、てきとうにマネーロンダリングして逃走</li>
+</ol>
+
+<p>つまり、ECサイトは悪サイトから送られたリクエストなのか、ECサイトから送られたリクエストなのか判定できないから、このように不正なリクエストが送られてしまうわけだ。</p>
+
+<p>これがクロスサイトリクエストフォージェリ(サイト横断リクエスト偽造)と言われる所以である。</p>
+
+<p>対策としてCSRFトークンを発行する。正規サイトにアクセスした時、送信元のIPアドレスとアクセスした日時に応じて、不規則な英数字で作られたトークンを付与する。このトークンはアクセスされるたびに再発行される上に、有効期限が付与されている。</p>
+
+<p>第三者がこのトークンを盗み見ることはできず、顧客が自分からトークンを教えない限り、理論上CSRFは発生することは無い。先の例だと、仮に悪サイトの運営者が自分でECサイトにアクセスして、CSRFトークンを手に入れたとしても、それは悪サイトの運営者のCSRFトークンであり、顧客のトークンではないため、CSRFトークンの検証に失敗、リクエストは拒否される。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-10-22 15-08-57.png" alt=""></div>
+
+<p>実際に、HTMLでは下記のように書く。</p>
+
+<pre><code>&lt;form action=&quot;&quot; method=&quot;POST&quot;&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;csrftoken&quot; value=&quot;XXXXXXXXXXXXX&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;comment&quot;&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;送信&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>フレームワークによって異なるが、テンプレートタグを記載することで、フレームワークがレンダリングする際に、</p>
+
+<pre><code>&lt;input type=&quot;hidden&quot; name=&quot;csrftoken&quot; value=&quot;XXXXXXXXXXXXX&quot;&gt;
+</code></pre>
+
+<p>のようなHTMLタグを自動で生成する。これがCSRFトークンとして機能する。valueの値は実際にはランダムの英数字が指定されており、更新ボタンを押すたびに値は切り替わる。予測不能で有効期限が定められているため、第三者がCSRFトークンを知ることはできない。これでCSRF対策ができる。</p>
+
+<p>CSRFの実例として、先ほどのECサイト以外にある。</p>
+
+<p>掲示板サイトでCSRF対策が疎かだと、全く関係のない人に犯罪予告等を掲示板に投稿させてしまうことができる。この事件は過去に発生しており、警察は投稿者のIPアドレスだけで事件の捜査をしていたので、誤認逮捕が多々あった。</p>
+
+<p>最近はログインも不要で、住所と電話番号、注文だけで送信できる出前サイトなどが流行しているようだが、ここでCSRF対策が疎かだと、全く関係のない人にニセの出前の注文を大量発注させ、店を混乱させることもできるだろう。その結果、店が営業妨害だと訴え、警察がこれまでと同様に送信元のIPアドレスだけで事件の捜査をすると、第二第三の誤認逮捕者が出てしまう。</p>
+
+<p>参照元:<a href="https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B5%E3%82%A4%E3%83%88%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%AA">https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%B5%E3%82%A4%E3%83%88%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B8%E3%82%A7%E3%83%AA</a></p>
+
+<h2 id="フレームワークの学習方法">フレームワークの学習方法</h2>
+
+<p>最後にフレームワークの学習方法を記す。</p>
+
+<h3 id="コンポーネントごとの役割を知る">コンポーネントごとの役割を知る</h3>
+
+<p>フレームワークはプロジェクト内の複数のファイルが集まって、ひとつの大きなウェブアプリを作り上げる。</p>
+
+<p>ファイルにはそれぞれ役割が与えられている。この特定の役割に関連したファイル、及びファイルの集まりのことをコンポーネントと言う。フレームワークの開発ではコンポーネントの役割に注目してコードを書く。</p>
+
+<p>フレームワークごとにコンポーネントの呼称や役割はやや異なるが、主なコンポーネントの役割として</p>
+
+<ul>
+<li>サーバー側の処理を一挙に担当する物</li>
+<li>データベースの構造を定義する物</li>
+<li>HTMLなどのブラウザに表示される物</li>
+<li>CSSやJavaScript、画像などを配信する物</li>
+<li>URLに対する処理を割り当てる物</li>
+</ul>
+
+<p>などがある。</p>
+
+<p>コンポーネントごとの役割を知り、役割に注目して開発をすることで、</p>
+
+<ul>
+<li>エラーの箇所がすぐにわかる</li>
+<li>機能を追加したい時、何を編集すればよいかわかる</li>
+<li>効率的な開発と保守ができる</li>
+</ul>
+
+<p>などのメリットがある。</p>
+
+<h3 id="エラーのパターンを知る">エラーのパターンを知る</h3>
+
+<p>フレームワークのエラーは通常のプログラミングと同様にパターンがある。ある程度のパターンを覚えてしまえば、解決策はすぐにわかる。</p>
+
+<p>前項のコンポーネントごとの役割を知り、エラーのパターンを知れば、自ずと何をすればよいかわかるだろう。</p>
+
+<p>フレームワークによって異なるが、代表的なエラーのパターンと原因は</p>
+
+<table>
+<thead>
+<tr>
+<th>エラー</th>
+<th>原因</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>HTMLファイル読み込みエラー</td>
+<td>レンダリング対象のHTMLのファイル名かパスが間違っている。</td>
+</tr>
+
+<tr>
+<td>404 NotFound</td>
+<td>リクエスト先のURLが登録されていない・間違っている</td>
+</tr>
+
+<tr>
+<td>csrf検証失敗</td>
+<td>POSTメソッド送信時にCSRFトークンが無い</td>
+</tr>
+
+<tr>
+<td>マイグレーションエラー</td>
+<td>手動でDBへアクセスしてテーブル等を削除した、マイグレーションファイルとDBの内容が食い違っている、日付フィールドに文字列型のデフォルト値を指定するなどの型問題など</td>
+</tr>
+
+<tr>
+<td>バリデーションがうまく行かない</td>
+<td>HTML側でname属性が指定されていない、バリデーション対象のフィールドが間違っているなど</td>
+</tr>
+</tbody>
+</table>
+
+<p>などがある。</p>
+
+<h3 id="市販の書籍-vs-英語で検索">市販の書籍 VS 英語で検索</h3>
+
+<p style="font-size:1.2rem;font-weight:bold;color:cyan;">結論:英語で検索</p>
+
+<p>昨今のプログラミングブームにより、初心者向けの書籍が大量に出版されるようになった。フレームワーク関係の書籍も同様に相次いで出版されている。</p>
+
+<p>しかし、その内容はいずれもお粗末で、中には前項で挙げたセキュリティ攻撃が発生しうる手法を、さも正しいやり方かのように平然と解説している悪質な本もある。表紙がそこそこ小綺麗で、定価3000円以上の値がついており、『超簡単』『超入門』等の謳い文句があるため一見期待できそうだが、何も知らない初学者の方は騙されて買わないように気をつけたいところだ。</p>
+
+<p>よって繰り返しになるが、学習の際には検索をしたほうが良い。とりわけ重要なのが、日本語ではなく<span style="font-weight:bold;color:cyan;">『英語で検索』</span>をすること。</p>
+
+<p>日本語で検索すると業者のサイトばかりヒットして、肝心な解決策がなかなか見つからない。一方で英語で検索をすれば、そういったサイトはヒットせず、すぐに解決策が見つかる。</p>
+
+<p>英語で検索をすると、検索の上位には公式のドキュメント、stackoverflow、GitHub、Qiitaなどが出てくるのでそちらを確認したほうが良いだろう。</p>
+</div>
+
+    
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-models-delete-and-edit/">Djangoで投稿したデータに対して編集・削除を行う<time class="relate_time">2021年10月17日 10時44分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/">【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】<time class="relate_time">2021年10月14日 12時47分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-static-file-settings/">【Django】テンプレートからstaticディレクトリに格納したCSSやJSを読み込む【静的ファイル】<time class="relate_time">2021年10月11日 15時03分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-admin/">Djangoで管理サイトを作る【admin.py】<time class="relate_time">2021年10月5日 07時34分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-models-add-field/">【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】<time class="relate_time">2021年10月5日 06時45分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/django-canvas-send-img-by-ajax/">前の投稿<br><span class="summary_pg">【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="https://noauto-nolife.com/information/introduction/"><img class="author_img" src="https://noauto-nolife.com/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: We are not your kind.</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_result"></div>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ai">ai</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%93%E3%83%A5%E3%83%BC">ビュー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+    </section>
+    
+
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-web-application-framework/">ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/">【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-delete-and-edit/">Djangoで投稿したデータに対して編集・削除を行う</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/">【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/css3-modal-dialog/">CSS3とHTML5だけでモーダルダイアログを作る【JS不要】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-model-objects-for-in-zip/">【Django】要素数が同じモデルオブジェクトをDTLで一緒にループして表示させる【.annotate()やモデルクラスにメソッドを追加などが通用しない場合の対策】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-static-file-settings/">【Django】テンプレートからstaticディレクトリに格納したCSSやJSを読み込む【静的ファイル】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-admin/">Djangoで管理サイトを作る【admin.py】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-add-field/">【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-post-request/">DjangoでHTTPリクエストのPOSTメソッドを送信する</a>
+        
+    </section>
+
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

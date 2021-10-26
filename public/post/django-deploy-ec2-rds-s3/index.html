@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+
+<link rel="canonical" href="https://noauto-nolife.com/post/django-deploy-ec2-rds-s3/">
+
+
+        <link href="https://noauto-nolife.com/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="https://noauto-nolife.com/css/bootstrap-grid.css"> 
+
+        <script src="https://noauto-nolife.com/data/search.js"></script>
+        <script src="https://noauto-nolife.com/js/script.js"></script>
+
+        <title>DjangoをEC2(Ubuntu)、RDS(PostgreSQL)、S3の環境にデプロイをする - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="DjangoをEC2(Ubuntu)、RDS(PostgreSQL)、S3の環境にデプロイをする - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://noauto-nolife.com/post/django-deploy-ec2-rds-s3/">
+<meta property="og:image" content="https://noauto-nolife.com/images/django.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="https://noauto-nolife.com/post/django-deploy-ec2-rds-s3/">
+<meta name="twitter:title" content="DjangoをEC2(Ubuntu)、RDS(PostgreSQL)、S3の環境にデプロイをする - 自動化無しに生活無し">
+<meta name="twitter:image" content="https://noauto-nolife.com/images/django.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://noauto-nolife.com/"
+    },
+    "headline": "DjangoをEC2(Ubuntu)、RDS(PostgreSQL)、S3の環境にデプロイをする - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://noauto-nolife.com/images/django.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-07-26T17:59:20JST",
+    "dateModified": "2021-07-26T17:59:20JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://noauto-nolife.com/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="https://noauto-nolife.com/css/style.css" rel="stylesheet">
+        
+
+
+        
+
+        
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="https://noauto-nolife.com/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEBとかAIとかLinux関係をひたすら書く備忘録系ブログ</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="https://noauto-nolife.com/">HOME</a></li>
+                
+                <li><a href="https://noauto-nolife.com/post/">post</a></li>
+                
+                <li class="active">DjangoをEC2(Ubuntu)、RDS(PostgreSQL)、S3の環境にデプロイをする</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">DjangoをEC2(Ubuntu)、RDS(PostgreSQL)、S3の環境にデプロイをする</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+        <li>投稿日時：<time datetime="2021-07-26T17:59:20JST">2021年7月26日 17時59分</time></li>
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">django</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/">デプロイ</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/aws/">AWS</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ec2/">EC2</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/rds/">RDS</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/s3/">S3</a>
+            
+        </li>
+        
+        
+    </ul>
+
+    <div class="img-center"><img src="https://noauto-nolife.com/images/django.jpg" alt="thumbnail"></div>
+
+	<div class="article_body">
+
+<p><a href="/post/django-deploy-ec2/">DjangoをAWSのEC2(Ubuntu)にデプロイする</a>の続編。EC2にデプロイした後、RDS、S3を使って、さらに大型のウェブアプリを動作させる。</p>
+
+<p>本記事ではRDS(PostgreSQL)、S3のセットアップを中心に解説をする。基本的なEC2へのデプロイの流れは上記記事を確認するべし。</p>
+
+<h2 id="rds-postgresql-の設定">RDS(PostgreSQL)の設定</h2>
+
+<h3 id="流れ">流れ</h3>
+
+<ol>
+<li>ダッシュボードからRDSのインスタンス生成</li>
+<li>セキュリティグループの設定(EC2からRDSへのアクセスを許可する)</li>
+<li>EC2へSSH接続、RDSへアクセスする</li>
+<li>settings.pyに設定を書き込む</li>
+<li>マイグレーションしてNginx再起動</li>
+</ol>
+
+<h3 id="ダッシュボードからrdsのインスタンス生成">ダッシュボードからRDSのインスタンス生成</h3>
+
+<p>まず、RDSへアクセスしてインスタンスを作る。データベースの作成をクリックし、</p>
+
+<p>データベースの制作方法は標準、エンジンのオプションはPostgreSQL、テンプレートは無料利用枠、マスターパスワードを指定し、それ以外はそのまま、データベースの作成をクリックする。</p>
+
+<p>下記画面が表示され、作成中から利用可能になればOK。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-28 14-19-01.png" alt="インスタンス生成"></div>
+
+<h3 id="セキュリティグループの設定-ec2からrdsへのアクセスを許可する">セキュリティグループの設定(EC2からRDSへのアクセスを許可する)</h3>
+
+<!--TODO:ここで時間が経ったらセキュリティグループの許可対象が変わってEC2からRDSへのアクセスができなくなる。-->
+
+<p>通常、ウェブアプリの全データが格納されているRDSは、EC2のみアクセスを許可するようにセキュリティを施さなければならない。</p>
+
+<p>もし、RDSのアクセスがEC2以外の全ての端末からもアクセスできてしまうと、ウェブアプリの全データはRDSのパスワードが特定され次第、即流出する。</p>
+
+<p>故にRDSにアクセスを許可するのは、EC2のみにしなければならない。これからその設定を施す。</p>
+
+<p>先ほど、制作したRDSのインスタンスをクリック。接続とセキュリティのタブから、VPCセキュリティグループのリンクをクリック</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-28 14-27-08.png" alt="インスタンスのセキュリティ設定"></div>
+
+<p>このセキュリティ設定のインバウンドルールを編集、このデータベースのインスタンスにアクセスしたい、EC2と同じセキュリティグループをソースに指定、</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-28 14-29-32.png" alt="インバウンドルールを設定、EC2側からのアクセスを許可する。"></div>
+
+<p>ルールを保存してセキュリティは設定完了。</p>
+
+<h3 id="ec2へssh接続-rdsへアクセスする">EC2へSSH接続、RDSへアクセスする</h3>
+
+<p>まず、EC2へSSHを使ってログインする。ログイン完了後、以下のコマンドを打って、RDSへpostgresユーザーとしてログインをする。この時、セキュリティグループの設定がうまく行っていない(EC2からRDSへのアクセスが許可されていない)場合、ログインに失敗する。</p>
+
+<pre><code>psql -h [エンドポイント] -p 5432 -U postgres
+</code></pre>
+
+<p>このpostgresのパスワードはRDSのインスタンスを作った時に指定したパスワードである。</p>
+
+<p>ここでログインしたときのターミナルはSQLのターミナルになっている。だから、<a href="/post/startup-postgresql/">PostgreSQLインストールから、ユーザーとDBを作る</a>に書かれてある下記のコマンドは通用しない。</p>
+
+<pre><code>#下記はSQLのターミナルには通用しない。
+#createuser --createdb --username=postgres --pwprompt [任意のユーザー名]
+#createdb [任意のDB名] --owner=[任意のユーザー名]
+</code></pre>
+
+<p>以下のSQLを実行して、[任意のユーザー]と[任意のDB名]を作成する。</p>
+
+<pre><code>CREATE ROLE [任意のユーザー名] LOGIN PASSWORD '[任意のユーザー名に対するパスワード]';
+ALTER ROLE [任意のユーザー名] WITH CREATEDB;
+
+#一旦Ctrl+Dでpostgresユーザーから抜け、下記コマンドで任意のユーザー名で入る
+
+psql -h [エンドポイント] -p 5432 -U [任意のユーザー名] postgres
+CREATE DATABASE [任意のDB名]
+
+#Ctrl+Dでログアウト、作ったDB名、作ったユーザー名でログインする。
+
+psql -h [エンドポイント] -p 5432 -U [任意のユーザー名] -d [任意のDB名]
+</code></pre>
+
+<p>先ほどのコマンドを真似て、Ctrl+Dでpostgresからログアウトした後、[任意のユーザー名]で再度ログインする。</p>
+
+<pre><code>psql -h [エンドポイント] -p 5432 -U [任意のユーザー名] -d [任意のDB名]
+</code></pre>
+
+<h3 id="settings-pyに設定を書き込む">settings.pyに設定を書き込む</h3>
+
+<p>先ほど制作したユーザー名及びパスワード、DB名をsettings.pyに記録する。</p>
+
+<pre><code>DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ここにDBの名前',
+        'USER': 'ここにユーザー名',
+        'PASSWORD':'ここにパスワード',
+        'HOST': 'ここにRDSのホスト名',
+        'PORT': 'ここにRDSへアクセスに使うポート番号',
+    }
+}
+</code></pre>
+
+<p>この状態でマイグレーションを行う。</p>
+
+<h3 id="マイグレーションしてnginx再起動">マイグレーションしてNginx再起動</h3>
+
+<p>仮想環境を使用する場合は予めアクティベートした上でマイグレーションを実行。</p>
+
+<pre><code>python3 manage.py migrate
+</code></pre>
+
+<p>Nginxを再起動する。</p>
+
+<pre><code>sudo systemctl restart nginx gunicorn
+</code></pre>
+
+<p>パブリックIPにアクセスするとこれまで投稿されたデータが表示されなくなる。これでRDSの実装は成功。(※ローカルのPostgreSQLからRDS上のPostgreSQLへDBが変わったから。)</p>
+
+<h3 id="q1-ec2に直にインストールしたpostgresqlから-rdsのpostgresqlにデータを移行するには">Q1:EC2に直にインストールしたPostgreSQLから、RDSのPostgreSQLにデータを移行するには？</h3>
+
+<p>前もって、サービスを一時停止することをユーザーに通知しておき、セキュリティ設定からインバウンドHTTPの許可を削除する。</p>
+
+<p>続いて、<code>dumpdata</code>コマンドを実行してDBの全データのバックアップを行い、新しいRDSの設定を施した上で、<code>loaddata</code>を実行する。</p>
+
+<pre><code>python3 manage.py dumpdata [アプリ名] &gt; backup.json
+
+#ここでRDSの設定を施し、settings.pyのDATABASESの設定を書き換える。
+
+python3 manage.py loaddata ./[アプリ名]/fixture/backup.json
+</code></pre>
+
+<p>詳しくは<a href="/post/django-loaddata/">loaddata</a>、<a href="/post/django-dumpdata/">dumpdata</a>について解説しているページを参照。</p>
+
+<p>ただし、データの移行前と移行後でモデルが書き換わっている場合、当然loaddataは失敗する。このデータ移行作業直前まではモデルの変更はしないようにするか、予め移行前のPostgreSQLにてマイグレーションをした上で作業を行う。</p>
+
+<h2 id="s3の設定">S3の設定</h2>
+
+<h3 id="流れ-1">流れ</h3>
+
+<ol>
+<li>S3のバケットを作る</li>
+<li>IAMを使ってS3へアクセスする際に必要になるキーを生成する</li>
+<li>boto3とdjango-stragesをインストール</li>
+<li>settings.pyにて設定を記入</li>
+<li>Nginxを再起動</li>
+</ol>
+
+<h3 id="s3のバケットを作る">S3のバケットを作る</h3>
+
+<p>まず、ストレージに当たるS3のバケットを作る。</p>
+
+<p>バケット名は任意、ウェブアプリ側から公開をするためパブリックアクセスをブロックのチェックを外す。他はそのままでバケットを作成する。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-28 14-37-05.png" alt="バケットを作成する。"></div>
+
+<p>これでストレージができあがった。</p>
+
+<h3 id="iamを使ってs3へアクセスする際に必要になるキーを生成する">IAMを使ってS3へアクセスする際に必要になるキーを生成する</h3>
+
+<p>ストレージのS3を作ってもウェブアプリがそこにアクセスするにはキーが必要になる。それがなければURLにアクセスして、マウスクリックでファイルをアップロードする普通のクラウドストレージに過ぎない。</p>
+
+<p>そこでIAMを作る。IAMを作ることでウェブアプリ側からS3へアップロードができるようになる。</p>
+
+<p>IAMのダッシュボードに行き、ユーザーを追加をクリック。ユーザー名は任意、アクセスの種類としてプログラムによるアクセスをチェックする。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-28 14-40-14.png" alt="IAMを作る"></div>
+
+<p>アクセス許可は既存のポリシーを直接アタッチを選択。s3FullAccessにチェックを入れる。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-28 14-42-05.png" alt="IAMの権限"></div>
+
+<p>タグ追加はしなくてもいい。確認したらユーザーの作成を実行する。作成を実行した後、パスワードとIDが表示されるので、スクリーンショットを取るなどして控えておく。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-28 14-43-29.png" alt="IAMのパスワードとID"></div>
+
+<h3 id="boto3とdjango-stragesをインストール">boto3とdjango-stragesをインストール</h3>
+
+<p>仮想環境をアクティベートした上で、下記コマンドを実行</p>
+
+<pre><code>pip install boto3
+pip install django-storages
+</code></pre>
+
+<p>バージョンは下記がインストールされた。</p>
+
+<pre><code>boto3==1.18.8
+django-storages==1.11.1
+</code></pre>
+
+<h3 id="settings-pyにて設定を記入">settings.pyにて設定を記入</h3>
+
+<p><code>INSTALLED_APPS</code>に<code>&quot;storages&quot;</code>を追加。末端に、MEDIAの設定を施す。</p>
+
+<p>今回、静的ファイルは通常のNginxの共有ディレクトリ(<code>/var/www/[プロジェクト名]</code>)を指定して、アップロードされたファイルと保存領域を分けている。</p>
+
+<pre><code>&quot;&quot;&quot;
+Django settings for config project.
+
+Generated by 'django-admin startproject' using Django 3.1.7.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/3.1/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/3.1/ref/settings/
+&quot;&quot;&quot;
+
+import os
+
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'シークレットキーを生成する。'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = [ &quot;ここにパブリックIPv4アドレスを&quot; ]
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    #====中略=====
+
+    'storages', #←追加
+
+]
+
+
+#==========中略=============
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/3.1/topics/i18n/
+
+LANGUAGE_CODE = 'ja'
+
+TIME_ZONE = 'Asia/Tokyo'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
+
+
+PROJECT_NAME    = os.path.basename(BASE_DIR)
+
+STATIC_URL      = '/static/'
+STATICFILES_DIRS    = [os.path.join(BASE_DIR, &quot;static&quot;)]
+
+if not DEBUG:
+    STATIC_ROOT         = &quot;/var/www/{}/static&quot;.format(PROJECT_NAME)
+
+&quot;&quot;&quot;&quot;
+MEDIA_URL       = &quot;/media/&quot;
+if DEBUG:
+    MEDIA_ROOT          = os.path.join(BASE_DIR, &quot;media&quot;)
+else:
+    MEDIA_ROOT          = &quot;/var/www/{}/media&quot;.format(PROJECT_NAME)
+
+&quot;&quot;&quot;
+
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+
+#下記を追加
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+AWS_ACCESS_KEY_ID = &quot;ここにアクセスキーのIDを入れる&quot; 
+AWS_SECRET_ACCESS_KEY = &quot;ここにアクセスキーを入れる。&quot;
+AWS_STORAGE_BUCKET_NAME = &quot;ここにバケットの名前を入れる&quot;
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+MEDIA_URL = S3_URL
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+</code></pre>
+
+<p>先ほどIAMで作ったアクセスキーのIDとキーを入力する。</p>
+
+<p>一部の解説サイトでは<code>DEFAULT_FILE_STORAGE</code>で指定している、参照するクラス名が古いものになっている場合がある(s3boto3がs3botoになっている等)。</p>
+
+<p>もしバージョンを確認して今回のものと不一致であれば、<a href="https://github.com/jschneier/django-storages/tree/7a672d437e4bb633f2737048f5b70a96c70bc611/storages">django-storagesのGitHub</a>から参照して適宜編集する。</p>
+
+<h3 id="nginxを再起動">Nginxを再起動</h3>
+
+<p>settings.pyを正しく書いたらNginxを再起動する。</p>
+
+<pre><code>sudo systemctl restart gunicorn nginx
+</code></pre>
+
+<p>これでウェブアプリ側からアップロードされたファイルがS3保管されるようになる。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-28 12-18-14.png" alt="Django側からアップロードされたファイルが保管される。"></div>
+
+<h3 id="q1-アップロードしたファイルはs3へ送られるのですが-ウェブアプリ側からは見れません">Q1:アップロードしたファイルはS3へ送られるのですが、ウェブアプリ側からは見れません。</h3>
+
+<p>上記設定で問題がない場合は、テンプレート側のパス設定に問題がある可能性があります。</p>
+
+<p>テンプレートは下記のように書き換えを行います。</p>
+
+<pre><code>&lt;!--↓書き換え前--&gt;
+
+{% for content in data %}
+&lt;div class=&quot;my-2&quot;&gt;
+    &lt;img class=&quot;img-fluid&quot; src=&quot;/media/{{ content.photo }}&quot; alt=&quot;投稿された画像&quot;&gt;
+&lt;/div&gt;
+{% endfor %}
+
+&lt;!--↓書き換え後--&gt;
+
+{% for content in data %}
+&lt;div class=&quot;my-2&quot;&gt;
+    &lt;img class=&quot;img-fluid&quot; src=&quot;{{ content.photo.url }}&quot; alt=&quot;投稿された画像&quot;&gt;
+&lt;/div&gt;
+{% endfor %}
+</code></pre>
+
+<p><code>/var/www/プロジェクト名/media/</code>もしくはDEBUG中で<code>プロジェクト名/media/</code>を参照している場合は書き換え前でも問題なく動きますが、S3を参照する時、書き換え後のように書かないと正常に動作しません。</p>
+
+<p>参照元:<a href="https://docs.djangoproject.com/en/3.2/ref/models/fields/">https://docs.djangoproject.com/en/3.2/ref/models/fields/</a></p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-29 16-53-27.png" alt="url属性を参照する。"></div>
+
+<p>このようにImageField及びFileFieldのフィールド名にurl属性が付与されているので、それを参照します。これは<code>MEDIA_ROOT</code>などで指定した値を元に絶対パスを生成しているから動作します。先のS3の<code>settings.py</code>では<code>MEDIA_ROOT</code>が未指定でも、<code>django-storages</code>が生成するため同じようにS3宛の絶対パスで生成されます。</p>
+
+<p>ちなみに、<a href="/post/django-admin-custom/">Djangoの管理サイトをカスタムする【全件表示、全フィールド表示、並び替え、画像表示、検索など】</a>では画像の参照は下記のようになっています。</p>
+
+<pre><code>#画像のフィールドはimgタグで画像そのものを表示させる
+def format_photo(self,obj):
+    if obj.photo:
+        return format_html('&lt;img src=&quot;{}&quot; alt=&quot;画像&quot; style=&quot;width:15rem&quot;&gt;', obj.photo.url)
+</code></pre>
+
+<p>そのため、上記リンクに倣って作っている場合、テンプレート側と違って管理サイトだけ正常に画像が表示されます。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-07-28 14-53-32.png" alt=""></div>
+
+<h2 id="結論">結論</h2>
+
+<p>これで動画共有サイト、ファイル共有サイトなどの大型のデータを取り扱うサービス展開ができるようになる。</p>
+
+<p>無料枠のEC2は8GB程度しか無いので、大容量ファイルのアップロードなどを行う場合は早めにS3やRDSを実装しておくと良いだろう。</p>
+
+<h2 id="参照元">参照元</h2>
+
+<p><a href="https://www.kakiro-web.com/postgresql/postgresql-create-user.html">https://www.kakiro-web.com/postgresql/postgresql-create-user.html</a></p>
+
+<p><a href="https://www.dbonline.jp/postgresql/connect/index2.html">https://www.dbonline.jp/postgresql/connect/index2.html</a></p>
+
+<p><a href="https://qiita.com/sand/items/b897aa47c304b7fbdcb5">https://qiita.com/sand/items/b897aa47c304b7fbdcb5</a></p>
+
+<p><a href="https://qiita.com/frosty/items/e793da61f9525d7afbe6">https://qiita.com/frosty/items/e793da61f9525d7afbe6</a></p>
+</div>
+
+    
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-models-delete-and-edit/">Djangoで投稿したデータに対して編集・削除を行う<time class="relate_time">2021年10月17日 10時44分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-model-objects-for-in-zip/">【Django】要素数が同じモデルオブジェクトをDTLで一緒にループして表示させる【.annotate()やモデルクラスにメソッドを追加などが通用しない場合の対策】<time class="relate_time">2021年10月13日 15時22分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-static-file-settings/">【Django】テンプレートからstaticディレクトリに格納したCSSやJSを読み込む【静的ファイル】<time class="relate_time">2021年10月11日 15時03分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-post-request/">DjangoでHTTPリクエストのPOSTメソッドを送信する<time class="relate_time">2021年10月4日 07時54分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-anti-scraping/">Djangoでスクレイピング対策をする【MIDDLEWAREでUA除外、ランダムでHTML構造変化等】<time class="relate_time">2021年10月2日 19時05分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/django-admin-custom-form/">次の投稿<br><span class="summary_pg">Djangoの管理サイトのフォームをカスタムする【forms.py】</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/django-deploy-ec2/">前の投稿<br><span class="summary_pg">DjangoをAWSのEC2(Ubuntu)にデプロイする</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="https://noauto-nolife.com/information/introduction/"><img class="author_img" src="https://noauto-nolife.com/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: We are not your kind.</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_result"></div>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ai">ai</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%93%E3%83%A5%E3%83%BC">ビュー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+    </section>
+    
+
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-web-application-framework/">ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/">【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-delete-and-edit/">Djangoで投稿したデータに対して編集・削除を行う</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/">【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/css3-modal-dialog/">CSS3とHTML5だけでモーダルダイアログを作る【JS不要】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-model-objects-for-in-zip/">【Django】要素数が同じモデルオブジェクトをDTLで一緒にループして表示させる【.annotate()やモデルクラスにメソッドを追加などが通用しない場合の対策】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-static-file-settings/">【Django】テンプレートからstaticディレクトリに格納したCSSやJSを読み込む【静的ファイル】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-admin/">Djangoで管理サイトを作る【admin.py】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-add-field/">【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-post-request/">DjangoでHTTPリクエストのPOSTメソッドを送信する</a>
+        
+    </section>
+
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

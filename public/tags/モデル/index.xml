@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>モデル on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E3%83%A2%E3%83%87%E3%83%AB/</link>
+    <description>Recent content in モデル on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 10 Sep 2021 11:21:51 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E3%83%A2%E3%83%87%E3%83%AB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【Django】SQLiteでも特定フィールドに対してのdistinctっぽい事(重複除去)を行う【通常はPostgreSQLのみ有効】</title>
+      <link>https://noauto-nolife.com/post/django-distinct-on-sqlite/</link>
+      <pubDate>Fri, 10 Sep 2021 11:21:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-distinct-on-sqlite/</guid>
+      <description>以下のクエリはPostgreSQLのみ有効。 Topic.objects.all().distinct(&amp;quot;comment&amp;quot;) このように.disitinct()に引数としてフィールド名を指定できるのは、PostgreSQLだけ。.values()を使う方法もあるが、モデルオブジェクトでなくなる時点で汎用性に乏しい。 そこで、重複するフィールドを除外したいのであれば、こうする。 topics = Topic.objects.all().order_by(&amp;quot;-dt&amp;quot;) d_list = [] n_list = [] for t in topics: if t.comment in d_list: continue d_list.append(t.comment) n_list.append(t) context[&amp;quot;topics&amp;quot;] = n_list これで重複するコメントを除外して新しいモデルオブジェクトの</description>
+    </item>
+    
+    <item>
+      <title>【Django】実行されるクエリを確認する【.query】</title>
+      <link>https://noauto-nolife.com/post/django-models-query/</link>
+      <pubDate>Thu, 02 Sep 2021 13:20:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-query/</guid>
+      <description>備忘録として。複雑なORMになった時、クエリを確認する時は、末尾に.query属性を使う。print文で出力できる。 print(Topic.objects.all().query) #出力結果 SELECT &amp;quot;topic&amp;quot;.&amp;quot;id&amp;quot;, &amp;quot;topic&amp;quot;.&amp;quot;comment&amp;quot; FROM &amp;quot;topic&amp;quot; 表示はされるものの、SQLが最適化されているわけではない点に注意。あくまでも挙動がおかしいときの確認用として。 【補足】生のSQLを実行する 出力した生のSQLを少しいじって実行させることもできる。SQLの末尾を示す;は不要。 Topic.objects.raw(&amp;quot;SELECT * FROM topic&amp;quot;) SQLインジェクションには十分注</description>
+    </item>
+    
+    <item>
+      <title>【Django】Windowを使ってレコードの累計値を計算して出力【売上の累計表示、小計(累積)表示などに有効】</title>
+      <link>https://noauto-nolife.com/post/django-models-window/</link>
+      <pubDate>Wed, 01 Sep 2021 18:23:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-window/</guid>
+      <description>日付でソートして売上を表示するとして、その日付になるまでの累計(累積)売上金額を表示したいとする。 そういう時はWindowを使えば、累計(累積)値を表示させることができる。 ソースコード 前回の月ごとに売上を表示するコードから流用。ビューとテンプレートの処理だけ書き換える。 from django.db.models import Sum,Window,F menus = Menu.objects.annotate(accumulate=Window(Sum(&amp;quot;amount&amp;quot;), order_by=[ F(&amp;quot;date&amp;quot;).desc(),F(&amp;quot;id&amp;quot;).asc() ] ) ).values(&amp;quot;id&amp;quot;,&amp;quot;name&amp;quot;,&amp;quot;date&amp;quot;,&amp;quot;amount&amp;quot;,&amp;quot;accumulate&amp;quot;).order_by(&amp;quot;-date&amp;quot;,&amp;quot;id&amp;quot;) 累積計算時(Windowの中)のorder_byとvaluesを実行した後のorder_byは揃えなければ</description>
+    </item>
+    
+    <item>
+      <title>【Django】年、月、日単位でデータをファイリングする時はTruncを使用する【月ごとの売上、個数などの出力に有効】</title>
+      <link>https://noauto-nolife.com/post/django-models-trunc/</link>
+      <pubDate>Wed, 01 Sep 2021 17:39:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-trunc/</guid>
+      <description>ブログなどでよくある、月別アーカイブ。経理でよくある、月ごとの売上記録、年ごとの収支。そういった計算をする時、annotateとTruncを使えば1行で出力できる。 ソースコード モデルがこんな感じ。 from django.db import models class Menu(models.Model): class Meta: db_table = &amp;quot;menu&amp;quot; name = models.CharField(verbose_name=&amp;quot;メニュー名&amp;quot;,max_length=2000) date = models.DateField(verbos</description>
+    </item>
+    
+  </channel>
+</rss>

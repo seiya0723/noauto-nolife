@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+
+<link rel="canonical" href="https://noauto-nolife.com/post/vuejs-todo-crud/">
+
+
+        <link href="https://noauto-nolife.com/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="https://noauto-nolife.com/css/bootstrap-grid.css"> 
+
+        <script src="https://noauto-nolife.com/data/search.js"></script>
+        <script src="https://noauto-nolife.com/js/script.js"></script>
+
+        <title>Vue.jsでTODOを作る【CRUD】 - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="Vue.jsでTODOを作る【CRUD】 - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://noauto-nolife.com/post/vuejs-todo-crud/">
+<meta property="og:image" content="https://noauto-nolife.com/images/vuejs.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="https://noauto-nolife.com/post/vuejs-todo-crud/">
+<meta name="twitter:title" content="Vue.jsでTODOを作る【CRUD】 - 自動化無しに生活無し">
+<meta name="twitter:image" content="https://noauto-nolife.com/images/vuejs.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://noauto-nolife.com/"
+    },
+    "headline": "Vue.jsでTODOを作る【CRUD】 - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://noauto-nolife.com/images/vuejs.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-01-26T15:43:20JST",
+    "dateModified": "2021-01-26T15:43:20JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://noauto-nolife.com/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="https://noauto-nolife.com/css/style.css" rel="stylesheet">
+        
+
+
+        
+
+        
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="https://noauto-nolife.com/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEBとかAIとかLinux関係をひたすら書く備忘録系ブログ</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="https://noauto-nolife.com/">HOME</a></li>
+                
+                <li><a href="https://noauto-nolife.com/post/">post</a></li>
+                
+                <li class="active">Vue.jsでTODOを作る【CRUD】</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">Vue.jsでTODOを作る【CRUD】</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+        <li>投稿日時：<time datetime="2021-01-26T15:43:20JST">2021年1月26日 15時43分</time></li>
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89/">フロントサイド</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/">初心者向け</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/vue.js/">vue.js</a>
+            
+        </li>
+        
+        
+    </ul>
+
+    <div class="img-center"><img src="https://noauto-nolife.com/images/vuejs.jpg" alt="thumbnail"></div>
+
+	<div class="article_body">
+
+<p>Codepenに掲載されていた偉い人のコードを元に、Todoを作ってみた。変数名がベストプラクティスとは異なる可能性があるため、あくまでもvue.jsの全体の機能確認用としている。</p>
+
+<h2 id="ソースコード">ソースコード</h2>
+
+<p>まずは<code>index.html</code></p>
+
+<pre><code>&lt;html lang=&quot;ja&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Vue.jsでTodo&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot; integrity=&quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&quot; crossorigin=&quot;anonymous&quot;&gt;
+
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.js&quot;&gt;&lt;/script&gt;
+
+    &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;header class=&quot;text-center&quot; style=&quot;background:orange;color:white;&quot;&gt;
+    &lt;h1&gt;Vue.jsでTodo&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;main class=&quot;container&quot; id=&quot;app&quot;&gt;
+    &lt;!--この部分にテンプレートが描画される。--&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/main&gt;
+
+&lt;!--一覧表示用テンプレート--&gt;
+&lt;template id=&quot;todo-list&quot;&gt;
+    &lt;div&gt;
+        &lt;div class=&quot;actions&quot;&gt;
+            &lt;router-link class=&quot;btn btn-secondary&quot; v-bind:to=&quot;{path: '/add-todo'}&quot;&gt;Add Todo&lt;/router-link&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;filters row&quot;&gt;
+            &lt;div class=&quot;form-group col-sm-3&quot;&gt;
+                &lt;input v-model=&quot;search_key&quot; class=&quot;form-control&quot; placeholder=&quot;キーワード検索&quot;&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;table class=&quot;table&quot;&gt;
+            &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Todo&lt;/th&gt;
+                &lt;th class=&quot;col-sm-2&quot;&gt;Actions&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+            &lt;tr v-for=&quot;todo in filtered_todos&quot;&gt;
+                &lt;td&gt;
+                    &lt;router-link v-bind:to=&quot;{name: 'todo', params: {todo_id: todo.id}}&quot;&gt;{{ todo.content }}&lt;/router-link&gt;
+                &lt;/td&gt;
+                &lt;td&gt;
+                    &lt;router-link class=&quot;btn btn-warning btn-xs&quot; v-bind:to=&quot;{name: 'todo-edit', params: {todo_id: todo.id}}&quot;&gt;Edit&lt;/router-link&gt;
+                    &lt;router-link class=&quot;btn btn-danger btn-xs&quot; v-bind:to=&quot;{name: 'todo-delete', params: {todo_id: todo.id}}&quot;&gt;Delete&lt;/router-link&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+
+&lt;!--追加用テンプレート--&gt;
+&lt;template id=&quot;add-todo&quot;&gt;
+    &lt;div&gt;
+        &lt;h2&gt;Add Todo&lt;/h2&gt;
+        &lt;form v-on:submit=&quot;create_todo&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;textarea class=&quot;form-control&quot; rows=&quot;5&quot; v-model=&quot;todo.content&quot; placeholder=&quot;ここにやることを書く&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Create&lt;/button&gt;
+            &lt;router-link class=&quot;btn btn-secondary&quot; v-bind:to=&quot;'/'&quot;&gt;Cancel&lt;/router-link&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+
+&lt;!--個別用テンプレート--&gt;
+&lt;template id=&quot;todo&quot;&gt;
+    &lt;div&gt;
+        &lt;h2&gt;{{ todo.content }}&lt;/h2&gt;
+        &lt;router-link v-bind:to=&quot;'/'&quot;&gt;Back to product list&lt;/router-link&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+
+&lt;!--編集用テンプレート--&gt;
+&lt;template id=&quot;update-todo&quot;&gt;
+    &lt;div&gt;
+        &lt;h2&gt;Edit product&lt;/h2&gt;
+        &lt;form v-on:submit=&quot;update_todo&quot;&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+                &lt;textarea class=&quot;form-control&quot; rows=&quot;3&quot; v-model=&quot;todo.content&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Save&lt;/button&gt;
+            &lt;router-link class=&quot;btn btn-default&quot; v-bind:to=&quot;'/'&quot;&gt;Cancel&lt;/router-link&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+
+&lt;!--削除用テンプレート--&gt;
+&lt;template id=&quot;delete-todo&quot;&gt;
+    &lt;div&gt;
+        &lt;h2&gt;『{{ todo.content }}』を削除しますか? &lt;/h2&gt;
+        &lt;form v-on:submit=&quot;delete_todo&quot;&gt;
+            &lt;p&gt;この操作は取り消せません。&lt;/p&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;btn btn-danger&quot;&gt;Delete&lt;/button&gt;
+            &lt;router-link class=&quot;btn btn-default&quot; v-bind:to=&quot;'/'&quot;&gt;Cancel&lt;/router-link&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>続いて、<code>script.js</code></p>
+
+<pre><code>window.addEventListener(&quot;load&quot; , function (){
+
+    var todos   = [
+        {id: 1, content: '買い物に行く'},
+        {id: 2, content: 'ガソリンを入れる'},
+        {id: 3, content: 'お金を下ろす'}
+    ];
+
+    function find_todo(id) {
+        return todos[find_todokey(id)];
+    };
+
+    function find_todokey(id) {
+        for (var key = 0; key &lt; todos.length; key++) {
+            if (todos[key].id == id) {
+                return key;
+            }
+        }
+    };
+
+    //一覧表示と検索
+    var List = Vue.extend({
+        template: '#todo-list',
+        data: function () {
+            return {todos: todos, search_key: ''};
+        },
+        computed: {
+            filtered_todos: function () {
+                return this.todos.filter(function (todo) {
+                    return this.search_key=='' || todo.content.indexOf(this.search_key) !== -1;
+                },this);
+            }
+        }
+    });
+
+    //個別表示
+    var Todo = Vue.extend({
+        template: &quot;#todo&quot;,
+        data: function(){
+            return { todo: find_todo(this.$route.params.todo_id) };
+        },
+    });
+
+
+    //追加
+    var AddTodo = Vue.extend({
+        template: '#add-todo',
+        data: function () {
+            return {todo: {content:''} };
+        },  
+        methods: {
+            create_todo: function() {
+                var todo = this.todo;
+                todos.push({
+                    id: Math.random().toString().split('.')[1],
+                    content: todo.content
+                }); 
+                router.push('/');
+            }    
+        }
+    });
+
+    //編集
+    var UpdateTodo = Vue.extend({
+        template: '#update-todo',
+        data: function () {
+            return { todo: find_todo(this.$route.params.todo_id) };
+        },
+        methods: {
+            update_todo: function () {
+                var todo = this.todo;
+                //TIPS:idとcontentをtodos[key]に代入する
+                todos[find_todokey(todo.id)] = {
+                    id      : todo.id,
+                    content : todo.content,
+                };
+                router.push('/');
+            }
+        }
+    });
+
+    //削除
+    var DeleteTodo  = Vue.extend({
+        template: &quot;#delete-todo&quot;,
+        data: function() { 
+            //routerで指定したtodo_idを元に、対象のTodoを絞り込む
+            //TIPS:$route.params.[属性値]でURLの値を抜き取る
+            return { todo: find_todo(this.$route.params.todo_id) };
+        },
+        methods: {
+            delete_todo: function() {
+                //TIPS:.splice()で対象要素のキーから1つを取り除く
+                todos.splice( find_todokey(this.$route.params.todo_id), 1);
+                router.push(&quot;/&quot;);
+            }
+        }
+    });
+
+
+    //ルーティング
+    var router = new VueRouter({routes:[
+        { path: '/', component: List},
+        { path: '/todo/:todo_id', component: Todo, name: 'todo'},
+        { path: '/add-todo', component: AddTodo},
+        { path: '/todo/:todo_id/delete', component: DeleteTodo, name: 'todo-delete'},
+        { path: '/todo/:todo_id/edit', component: UpdateTodo, name: 'todo-edit'},
+    ]});
+    app = new Vue({
+        router:router
+    }).$mount('#app')
+
+});
+</code></pre>
+
+<p>動かすとこうなる。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-01-27 14-44-59.png" alt="vue.jsで作られたTODOが表示されている"></div>
+
+<h2 id="コードの解説">コードの解説</h2>
+
+<p>まずhtml。<code>&lt;router-view&gt;&lt;/router-view&gt;</code>に<code>&lt;template&gt;&lt;/template&gt;</code>で定義した内容を、<code>VueRouter</code>で定義したルート情報に基づき、切り替え表示させている。</p>
+
+<pre><code>//ルーティング
+var router = new VueRouter({routes:[
+    { path: '/', component: List},
+    { path: '/todo/:todo_id', component: Todo, name: 'todo'},
+    { path: '/add-todo', component: AddTodo},
+    { path: '/todo/:todo_id/delete', component: DeleteTodo, name: 'todo-delete'},
+    { path: '/todo/:todo_id/edit', component: UpdateTodo, name: 'todo-edit'},
+]});
+app = new Vue({
+    router:router
+}).$mount('#app')
+</code></pre>
+
+<p>上から一覧表示、個別表示、Todoの追加、Todoの削除、Todoの編集を意味する。それぞれ同<code>script.js</code>内で定義したコンポーネントを呼び出し、<code>name</code>はパスを逆引きする為にある。</p>
+
+<p>コンポーネントとして定義されたのは5つ。<code>List</code>,<code>Todo</code>,<code>AddTodo</code>,<code>DeleteTodo</code>,<code>UpdateTodo</code>。<code>Vue.extend()</code>で定義されている。<code>Vue.extend()</code>の引数として定義されているオブジェクトには、対象となる要素を指定する<code>template</code>に加え、<code>data</code>と<code>methods</code>もしくは<code>computed</code>が定義されている。</p>
+
+<h3 id="dataについて">dataについて</h3>
+
+<p><code>data</code>は<code>function()</code>と関数で定義されているが、これはコンポーネントのオブジェクトごとにデータを独立させる為にある。もし関数として定義されていない場合、全てのインスタンス(オブジェクト)に同じ値が入ってしまうためである。<a href="https://jp.vuejs.org/v2/guide/components.html#data-%E3%81%AF%E9%96%A2%E6%95%B0%E3%81%A7%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93">vue.js公式でもコンポーネントにおいてはdataは関数でなければならない旨</a>が記されている。</p>
+
+<h3 id="methodsについて">methodsについて</h3>
+
+<p><code>methods</code>にはコンポーネントのインスタンス(オブジェクト)が実行できるメソッドを定義する。例えば、<code>AddTodo</code>ではメソッド名<code>create_todo</code>で<code>this.todo</code>(同インスタンスの<code>data</code>にて定義された<code>todo</code>、即ちHTMLから受け取ったデータを入れるインスタンス)をスクリプト冒頭で定義した<code>todos</code>に追加している。</p>
+
+<p>HTMLの追加用テンプレート(<code>#add-todo</code>)を見てみると、<code>v-on:submit=&quot;create_todo&quot;</code>と<code>v-model=&quot;todo.content&quot;</code>の2つの見慣れない属性が定義されている。これがフォーム送信時に<code>create_todo</code>というメソッドが実行され、<code>v-model</code>で定義した<code>todo.content</code>にやることが書かれる。メソッド実行時には<code>todo.content</code>を参照し、それを<code>todos</code>に追加されることでTodoの追加が成立しているのだ。後は、<code>router.push(&quot;/&quot;);</code>を実行することで、トップページにリダイレクトされる。</p>
+
+<h3 id="computedについて">computedについて</h3>
+
+<p><code>script.js</code>にて一覧表示と検索を行う<code>computed</code>には検索語に一致した内容を返却する仕組みになっている。<code>.filter()</code>メソッドは条件式に合致するデータの配列を新たに作るものである。そこに、<code>search_key</code>が当てられている。<code>search_key</code>が空欄であれば全てを表示。何か指定があれば合致するもの全てを返却する。その<code>search_key</code>は一覧表示用テンプレートにて<code>v-model=&quot;search_key&quot;</code>としてinputタグに指定されているため、同タグで入力が発生するたびに検索が機能する。</p>
+
+<p>しかし、ここで疑問が出てくる。<code>computed</code>と<code>methods</code>の違いはなんなのかと。<code>computed</code>はvue.jsにおいては算出プロパティと呼ばれている。算出プロパティはリアクティブな依存関係に基づきキャッシュされる特性がある。つまり、<code>data</code>に<code>todos</code>の配列をキャッシュしておくことで、同様の内容が呼び出された時、そのキャッシュを再利用することで高速化を図っている。これは<code>todos</code>の配列が増えれば増える度、キャッシュによる処理速度高速化の恩恵が得られる。もし、この検索処理がメソッドだった場合、<code>todos</code>の配列が変化していないにもかかわらず、メソッドが実行されるたびにデータがメモリに格納されて、配列データが大きければ大きいほど簡単にメモリリークする。</p>
+
+<p>しかし、<code>computed</code>に関しては<code>methods</code>で完全に代用できるので、vue.jsに慣れないうちは<code>methods</code>を使っていき、<code>methods</code>内で扱うデータがリアクティブなデータであると気づいたら<code>computed</code>に書き換えるように施したほうが余計なバグを生み出さなくて済むだろう。</p>
+
+<p><code>computed</code>と<code>methods</code>の違いに関しては<a href="https://jp.vuejs.org/v2/guide/computed.html#%E7%AE%97%E5%87%BA%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3-vs-%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89">公式</a>でも<a href="https://qiita.com/okerra/items/cda378436ed060e83a8c">qiita</a>でも解説がされている。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>vue.jsはコンポーネントと呼ばれる部品を作り、それに機能を持たせ組み合わせることで、ひとつのシステムを構築している。故にjQueryとは違って、開発時にJSとHTMLを行ったり来たりしなければならない。</p>
+
+<p>しかしこの構造のおかげで、HTMLを閲覧した時に、JS側でどのような処理が行われているか、JSを見なくてもわかる。それは保守性を高め、コードの可読性を容易にさせる点で優れているとvue.js公式に書かれてあるが。いかんせん、vue.jsの仕組みを理解するまでが難しい。</p>
+</div>
+
+    
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/startup-web-application-framework/">ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】<time class="relate_time">2021年10月21日 14時44分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/">【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】<time class="relate_time">2021年10月21日 07時25分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-models-delete-and-edit/">Djangoで投稿したデータに対して編集・削除を行う<time class="relate_time">2021年10月17日 10時44分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/">【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】<time class="relate_time">2021年10月14日 12時47分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-static-file-settings/">【Django】テンプレートからstaticディレクトリに格納したCSSやJSを読み込む【静的ファイル】<time class="relate_time">2021年10月11日 15時03分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/django-custom-template-tags/">次の投稿<br><span class="summary_pg">Djangoで埋め込みカスタムテンプレートタグを実装する方法</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/vuejs-modal/">前の投稿<br><span class="summary_pg">Vue.jsでモーダルダイアログを作る</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="https://noauto-nolife.com/information/introduction/"><img class="author_img" src="https://noauto-nolife.com/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: We are not your kind.</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_result"></div>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ai">ai</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%93%E3%83%A5%E3%83%BC">ビュー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+    </section>
+    
+
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-web-application-framework/">ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/">【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-delete-and-edit/">Djangoで投稿したデータに対して編集・削除を行う</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/">【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/css3-modal-dialog/">CSS3とHTML5だけでモーダルダイアログを作る【JS不要】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-model-objects-for-in-zip/">【Django】要素数が同じモデルオブジェクトをDTLで一緒にループして表示させる【.annotate()やモデルクラスにメソッドを追加などが通用しない場合の対策】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-static-file-settings/">【Django】テンプレートからstaticディレクトリに格納したCSSやJSを読み込む【静的ファイル】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-admin/">Djangoで管理サイトを作る【admin.py】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-add-field/">【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-post-request/">DjangoでHTTPリクエストのPOSTメソッドを送信する</a>
+        
+    </section>
+
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

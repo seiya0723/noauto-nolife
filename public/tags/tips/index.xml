@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tips on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/tips/</link>
+    <description>Recent content in Tips on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 13 Oct 2021 15:22:14 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【Django】要素数が同じモデルオブジェクトをDTLで一緒にループして表示させる【.annotate()やモデルクラスにメソッドを追加などが通用しない場合の対策】</title>
+      <link>https://noauto-nolife.com/post/django-model-objects-for-in-zip/</link>
+      <pubDate>Wed, 13 Oct 2021 15:22:14 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-model-objects-for-in-zip/</guid>
+      <description>例えば、マイリストフォルダに保存されている、マイリスト動画。マイリストフォルダの一覧を表示している時に、フォルダ内の動画のサムネイル1つを表示させたい時、どうやって再現させましょうかと言うのが今回の課題。 こういう時は、zipとlistを使用して対処する他に、生成されたモデルオブジェクトを加工することで対処する。 この方法を使えば、複雑なORMを考えたり、モデルクラスにメソッドを追加したりするなどを考</description>
+    </item>
+    
+    <item>
+      <title>Djangoで任意のHTTPレスポンス(ForbiddenやNotFoundなど)を返却する【HttpResponse subclasses】</title>
+      <link>https://noauto-nolife.com/post/django-http-response/</link>
+      <pubDate>Sat, 02 Oct 2021 18:56:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-http-response/</guid>
+      <description>あまり需要が無いかも知れないが、状況によっては手動でHTTPResponseを指定して返却したい場合もあるだろう。 本記事ではよく使用すると思われるレスポンスをまとめる。 HttpResponseBadRequest from django.http import HttpResponseBadRequest from django.views import View class BbsView(View): def get(self, request, *args, **kwargs): return HttpResponseBadRequest(&amp;quot;bad&amp;quot;) index = BbsView.as_view() リクエストの一部が欠落している場合など、クライアント側のエラーに表示させる。 HttpResponseNotFound from django.http import HttpResponseNotFound from django.views import View class BbsView(View): def get(self, request, *args, **kwargs): return HttpResponseNotFound(&amp;quot;not found&amp;quot;) index = BbsView.as_view() 引数内に入れた内容をクライアントのブラウザにHTMLとして表示させる コ</description>
+    </item>
+    
+    <item>
+      <title>【Django】Heroku&#43;Cloudinaryの環境にアップロードしたファイルを参照する方法【MIMEとサイズ】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary-file-reference/</link>
+      <pubDate>Wed, 29 Sep 2021 15:45:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary-file-reference/</guid>
+      <description>クライアントがアップロードしたファイルをビュー側で参照するときがある。例えば、許可されていないMIMEのアップロード、ファイルサイズの確認など。 通常であれば、下記のようにすれば良い。 request.FILES[&amp;quot;document&amp;quot;] しかし、こんな参照をすると、Cloudinaryにはアップロードできてもファイルが壊れてしまう。PDF等の普通のファイルであれば問題はないが、mp4等の動画ファイルで発生している模様。 コード POSTメソッドだけ掲載。</description>
+    </item>
+    
+    <item>
+      <title>Nginxで特定IPアドレスのリクエストを拒否する</title>
+      <link>https://noauto-nolife.com/post/nginx-deny-ip-address/</link>
+      <pubDate>Tue, 28 Sep 2021 11:20:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-deny-ip-address/</guid>
+      <description>特定IPアドレスのリクエストを拒否したいのであれば、ロードバランサーやリバースプロキシなどのセキュリティ設定を書き換えれば済む話だが、環境によっては他のサービスなどに影響を及ぼす可能性もある。 そこで、Nginxの設定を書き換え、特定のサービスだけで特定のIPアドレスを使用したリクエストを拒否する方法をここに記す。 設定ファイルに追加する Nginxの設定ファイル( /etc/nginx/nginx.conf )に下記を追加する。 deny 192.168.XXX.XXX; /etc/n</description>
+    </item>
+    
+    <item>
+      <title>UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】</title>
+      <link>https://noauto-nolife.com/post/uuid-generate/</link>
+      <pubDate>Sun, 19 Sep 2021 18:14:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/uuid-generate/</guid>
+      <description>Ubuntuであれば、下記コマンドを実行するだけで自動的にUUIDが生成される。 uuidgen 用途 秘匿する必要のあるページ(管理サイト等)にURLとして割り当てることで、総当たりでヒットされにくくなる。 UUIDが重複する確立は途方もなく低いので、他のセキュリティ対策ができない場合の代替案として有効であると思われる。 例えば、sedコマンドなどを使用して、Djangoのurls.pyから管理サイトを割り当てている</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】</title>
+      <link>https://noauto-nolife.com/post/laravel-database-regenerate/</link>
+      <pubDate>Sat, 18 Sep 2021 08:42:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-database-regenerate/</guid>
+      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 そこで、bashのaliasにdatabase.sqliteを探して削除、その後生成するワンライナーコマンドを登録すればよいと思い至った。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行すること</description>
+    </item>
+    
+    <item>
+      <title>【Django】settings.pyのSECRET_KEYを再発行(リジェネレート)する【alias登録で即生成・即実装からの再起動】</title>
+      <link>https://noauto-nolife.com/post/django-secret-key-regenerate/</link>
+      <pubDate>Fri, 17 Sep 2021 11:19:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-secret-key-regenerate/</guid>
+      <description>うっかり、SECRET_KEYをバージョン管理対象に含ませてしまった。このままではクラウドサーバーにデプロイしたSECRET_KEYが予測され、CSRFトークン等が機能不全になってしまう。 そんな時に備えておきたい、SECRET_KEYの再発行の方法を解説する。 ソースコード Qiitaより拝借。 from django.core.management.utils import get_random_secret_key secret_key = get_random_secret_key() text = &#39;SECRET_KEY = \&#39;{0}\&#39;&#39;.format(secret_key) print(text) 実行すると、 SECRET_KEY = &#39;07y^y0#_7b74jy)d6z0lu5*r$#azfyt1*1f+g1-3w+l@&amp;amp;hs^2!&#39; 等の文言が出てくる。 aliasに登録して、どこでも再発行できるよ</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】コマンドからマイグレーションファイルを立ち上げる時、こうすればうまく行く【ワイルドカードとTabキー】</title>
+      <link>https://noauto-nolife.com/post/laravel-migrations-files-detect/</link>
+      <pubDate>Thu, 16 Sep 2021 14:55:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-migrations-files-detect/</guid>
+      <description>コマンドからマイグレーションファイルを立ち上げる時、わざわざ日付を手入力しながらやっていると、時間がかかりすぎる。 そこで、ワイルドカードとTabキーの補正を使うことで特定する。例えば、2014_10_12_000000_create_users_table.phpであれば vi ./database/migrations/*create_users* と打って、この状態でTabキーを押す。これで vi ./database/migrations/2014_10_12_000000_create_users_table.php こんなふうになる。もっとも、統合開発環境を使えば、マウスダブルクリックでこん</description>
+    </item>
+    
+    <item>
+      <title>AWSでなるべくお金がかからないようにウェブアプリを運用する方法</title>
+      <link>https://noauto-nolife.com/post/aws-do-not-spend-money/</link>
+      <pubDate>Sun, 05 Sep 2021 11:45:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/aws-do-not-spend-money/</guid>
+      <description>気づいたらAWSの請求額が数百ドルを超えてた。ということはよくある。 そこで、なるべくお金がかからないように運用する方法を即効性がある運用編、開発編、セキュリティ編、その他編に分けて解説する。 運用編 基本的に運用編に書いてある内容を実践すれば、ほぼ課金されることはない。マウスクリックだけで簡単に実践できるので、ぜひともやっておきたい。 インスタンスを多重起動しない まず、前提としてEC2やRDS等のインス</description>
+    </item>
+    
+    <item>
+      <title>【Django】実行されるクエリを確認する【.query】</title>
+      <link>https://noauto-nolife.com/post/django-models-query/</link>
+      <pubDate>Thu, 02 Sep 2021 13:20:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-query/</guid>
+      <description>備忘録として。複雑なORMになった時、クエリを確認する時は、末尾に.query属性を使う。print文で出力できる。 print(Topic.objects.all().query) #出力結果 SELECT &amp;quot;topic&amp;quot;.&amp;quot;id&amp;quot;, &amp;quot;topic&amp;quot;.&amp;quot;comment&amp;quot; FROM &amp;quot;topic&amp;quot; 表示はされるものの、SQLが最適化されているわけではない点に注意。あくまでも挙動がおかしいときの確認用として。 【補足】生のSQLを実行する 出力した生のSQLを少しいじって実行させることもできる。SQLの末尾を示す;は不要。 Topic.objects.raw(&amp;quot;SELECT * FROM topic&amp;quot;) SQLインジェクションには十分注</description>
+    </item>
+    
+    <item>
+      <title>Djangoで中間テーブルありの多対多フィールドを使用したモデルに良いね・悪いねする【related_nameとカスタムユーザーモデル】</title>
+      <link>https://noauto-nolife.com/post/django-m2m-through-good-bad/</link>
+      <pubDate>Tue, 24 Aug 2021 13:03:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-m2m-through-good-bad/</guid>
+      <description>状況 以前作った、【Django】Reverse accessor for &amp;lsquo;Topic.good&amp;rsquo; clashes with reverse accessor for &amp;lsquo;Topic.user&amp;rsquo;.というエラーの対処【Topicに対する良いね、多対多中間フィールドあり】では、モデルはできあがっているものの、肝心のトピックに良いね悪いねするビューの処理、テンプレートの描画までは解説していない。 そこで、今回はトピックに良いね悪いねをする方法を解説する。 bbs/models.pyとuse</description>
+    </item>
+    
+    <item>
+      <title>CSS3とHTML5のタブシステムをtransitionでアニメーション表示に仕立てる</title>
+      <link>https://noauto-nolife.com/post/css3-tab-system-transition/</link>
+      <pubDate>Sat, 14 Aug 2021 12:05:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-tab-system-transition/</guid>
+      <description>CSS3とHTML5だけでタブを作り、複数のページを表示させる【JS不要】で作ったタブシステムは瞬間的に切り替わるので、少し野暮ったい。 他にアニメーションを多用したサイトであれば、タブシステムも同様にアニメーションを実装するべきかと思われる。そこで本記事ではその解説を行う。 タブシステムの基本形(改修) 従来型は、スマホ表示になると、折り返して表示していたので、横スクロールに仕立てる。 まずHTML。 &amp;lt;!DOCTYPE</description>
+    </item>
+    
+    <item>
+      <title>Djangoのモデルに独自メソッドを追加、テンプレートに表示【フィールド間の計算、他モデルの値の表示などに有効】</title>
+      <link>https://noauto-nolife.com/post/django-models-add-method-template-attribute/</link>
+      <pubDate>Sat, 07 Aug 2021 16:28:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-add-method-template-attribute/</guid>
+      <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.Integer</description>
+    </item>
+    
+    <item>
+      <title>DjangoでDBへデータ格納時(save)、削除時(delete)に処理を追加する【models.py、forms.py、serializer.pyのメソッドオーバーライド】</title>
+      <link>https://noauto-nolife.com/post/django-models-save-delete-override/</link>
+      <pubDate>Sat, 07 Aug 2021 16:20:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-save-delete-override/</guid>
+      <description>例えば、クライアントがお問い合わせフォームに入力して送信した時、DBに内容を保存すると同時に管理者に内容をメールで送信したい。そんなことは無いだろうか？ しかも、その保存のビューの処理が各所に分散していて、一つ一つ書いていくのが面倒な時。こういう時はモデルクラスのsaveメソッドを書き換える(オーバーライドする)ことで対処できる。 オーバーライドの方法 公式からコードを拝借。 models.pyにて、下記</description>
+    </item>
+    
+    <item>
+      <title>Djangoでマイグレーションした時、『Auto-created primary key used when not defining a primary key type』と警告される場合の対策</title>
+      <link>https://noauto-nolife.com/post/django-models-autofield-warnings/</link>
+      <pubDate>Sat, 31 Jul 2021 20:15:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-autofield-warnings/</guid>
+      <description>マイグレーションした時、下記のようなエラーが出る。 これは主キーを定義せず、自動的に作っているからである。 対策は下記をsettings.pyに追加するだけ。 DEFAULT_AUTO_FIELD=&#39;django.db.models.AutoField&#39; 結論 主キーをUUIDにしている場合、発生しない警告文である。 Django-allauth等のDjango用のライブラリを使っている場合も、ライブラリの中にモデルが埋まっており、対策をしない限り、このような警告文が出る。 参照元 https://stackoverflow.com/questions/66971594/auto-create-primary-key-used-when-not-defining-a-primary-key-type-warning-in-dja</description>
+    </item>
+    
+    <item>
+      <title>Djangoで主キーのリスト型を作り、合致するレコードを検索する【values_list &#43; filter】</title>
+      <link>https://noauto-nolife.com/post/django-id-list-filter/</link>
+      <pubDate>Sat, 31 Jul 2021 16:36:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-id-list-filter/</guid>
+      <description>例えば、複数のレコードのIDを検索して削除したい場合、下記のように記述する。 result = Topic.objects.filter(id__in=[1,2,3]) print(result) #idが1,2,3のデータが表示される。 これがリスト型のIDを使用したIN句である。 ちなみに、検索結果からIDのリストを作るには、下記のようにする。 result = list(Topic.objects.all().values_list(&amp;quot;id&amp;quot;,flat=True)) print(result) #[1, 2, 3, 4, 5, 6, 7, 8] idだけカラムを指定し、flat=Trueとすることで数値型のリストを作ることができる。 参照元 https://docs.djangoproject.com/en/3.2/ref/models/querysets/#in https://docs.djangoproject.com/en/3.2/ref/models/querysets/#values-list</description>
+    </item>
+    
+    <item>
+      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプルとリスト】</title>
+      <link>https://noauto-nolife.com/post/python-brackets/</link>
+      <pubDate>Tue, 22 Jun 2021 15:12:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-brackets/</guid>
+      <description>Djangoの公式コードを流用したりしていると、よく見かける()を使ったコード。 これはタプルである。タプルはリスト型の[]と同じであるが、書き換えが不可能であるという点でリスト型とは異なる。 タプルを定義する時、下記のような書き方をしてしまうと、文字列型として判定されてしまう。 (&amp;quot;username&amp;quot;) タプルとして扱ってもらいたいのであれば、下記のように記述する。カンマを忘れずに。 (&amp;quot;username&amp;quot;,) タプルはリストと同様に扱えるので、後から</description>
+    </item>
+    
+    <item>
+      <title>【Django】カスタムユーザーモデルでユーザーブロック機能を実装させる【ManyToManyFieldでユーザーモデル自身を指定】</title>
+      <link>https://noauto-nolife.com/post/django-m2m-usermodel/</link>
+      <pubDate>Mon, 21 Jun 2021 21:36:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-m2m-usermodel/</guid>
+      <description>本格的にSNS等のサービスを運用する時、必要になるのがユーザーフォロー(友達)やユーザーブロックの機能。理論上、いずれもユーザーとユーザーを多対多でつなぐことで実現できる。 今回はユーザーブロックの機能をカスタムユーザーモデルを使って再現する。 コードは【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】から流用している。 ユーザーモデル u</description>
+    </item>
+    
+    <item>
+      <title>【django】ManyToManyFieldでフィールドオプションthroughを指定、中間テーブルを詳細に定義する【登録日時など】</title>
+      <link>https://noauto-nolife.com/post/django-m2m-through/</link>
+      <pubDate>Mon, 21 Jun 2021 16:57:08 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-m2m-through/</guid>
+      <description>多対多のフィールドは、複数から1つを選ぶ1対多よりも使う機会が多いだろう。 飲食店が提供するメニューの食品アレルギー指定、複数のユーザーに対する通知、ユーザーに対するフォローやブロックの機能など。 DjangoではManyToManyFieldを定義した時、中間テーブルは自動的に作られる。そのため、そのままでは中間テーブルにレコードが挿入された時間などが記録できない。 自分で中間テーブルの中身を作りたい</description>
+    </item>
+    
+    <item>
+      <title>Djangoの管理サイト(admin)をカスタムする【全件表示、全フィールド表示、並び替え、画像表示、検索など】</title>
+      <link>https://noauto-nolife.com/post/django-admin-custom/</link>
+      <pubDate>Thu, 10 Jun 2021 12:30:46 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-custom/</guid>
+      <description>admin.pyはとても便利ではあるが、ただのadmin.site.register([モデルクラス])ではとても使いづらい。 特にそのままでは管理サイト内で画像を取り扱ったり、複数のデータを参照したり、検索や絞り込みしたりすることはできない。 そこで、管理サイトをカスタマイズして使いやすくさせる。 コード 元コードは、Djangoで画像及びファイルをアップロードする方法から流用した。以下のようにmode</description>
+    </item>
+    
+    <item>
+      <title>【django.core.paginator】一度に2ページ以上ジャンプできるように改良する【inclusion_tag()】</title>
+      <link>https://noauto-nolife.com/post/django-paginator-custom/</link>
+      <pubDate>Fri, 07 May 2021 09:50:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-paginator-custom/</guid>
+      <description>以前のページネーション実装記事では、検索とページのパラメーターの両立を行った。 しかし、このページネーションは1ページずつしか移動できない。つまり、1ページ目の状態から2ページ目に行くことはできても、3ページ目にジャンプすることはできないのだ。 そこでページネーションを改良させ、一度に2ページ以上ジャンプできるように改良する。 やりたいことと方法論の解説 やりたいこと 要するに、本記事でやりたいのはこういう</description>
+    </item>
+    
+    <item>
+      <title>Djangoでviews.pyからmodels.pyのフィールドオプションを参照する【verbose_name,upload_to】</title>
+      <link>https://noauto-nolife.com/post/django-reference-models-option/</link>
+      <pubDate>Tue, 04 May 2021 20:30:19 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-reference-models-option/</guid>
+      <description>需要ないかもだけど、備忘録として。 Video.thumbnail.field.upload_to つまり、 [モデルクラス].[フィールド名].field.[フィールドオプション] これで参照できる。 用途 FileFieldでアップロードした動画のサムネイル(ImageField)をviews.pyが自動生成する時、アップロード先のパスを指定する必要があるが、models.pyのフィールドオプションとして書いたupload_toと整合性を合わせるために、本記事で扱</description>
+    </item>
+    
+    <item>
+      <title>Djangoでmakemigrationsコマンドを実行しても、No changes detectedと言われる場合の対処法</title>
+      <link>https://noauto-nolife.com/post/django-makemigrations-not-applied/</link>
+      <pubDate>Wed, 28 Apr 2021 15:00:56 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-makemigrations-not-applied/</guid>
+      <description>Djangoでマイグレーションファイルを作る python3 manage.py makemigrations このコマンドを実行しても返ってくるのが、 No changes detected とされ、マイグレーションファイルが作られないことがある。当然この状態でmigrateコマンドを打ってもDBには反映されない。 そこで、本記事ではこの対処法について列挙する。 対処法1:settings.pyのINSTALLED_APPSに対象のアプリを追加 python3 manage.py makemigrations python3 manage.py migrate この2つのコマンドを打って、models</description>
+    </item>
+    
+    <item>
+      <title>Laravelで--resourceで作ったコントローラのルーティングを解体する</title>
+      <link>https://noauto-nolife.com/post/laravel-to-resource/</link>
+      <pubDate>Tue, 20 Apr 2021 16:26:25 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-to-resource/</guid>
+      <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると、ルーティングの書き換えは難しい。そこで、本記事は--resourceで作ったコントローラのルーティングをバラす。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); resource</description>
+    </item>
+    
+    <item>
+      <title>Laravelのプロジェクト名を書き換える</title>
+      <link>https://noauto-nolife.com/post/laravel-project-rename/</link>
+      <pubDate>Mon, 19 Apr 2021 08:37:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-project-rename/</guid>
+      <description>既存のLaravelのプロジェクトを、プロジェクト名だけ書き換えて編集する。 環境 Ubuntu 18.04 Laravel Framework 7.30.4 結論 下記コマンドでプロジェクトを作ったとする。 composer create-project --prefer-dist laravel/laravel [プロジェクト名] 上記コマンドで生成された[プロジェクト名]のディレクトリ名を書き換えれば良いだけの話である。 理屈 まず、プロジェクトを作った後、プロジェクトのディレクトリに移動して、下記コマンドを実行してもらいたい。 grep -rl &amp;quot;[プロジェクト名]&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>JavascriptからCookieを扱う【動画の設定音量の記録と読み込み】</title>
+      <link>https://noauto-nolife.com/post/javascript-cookie/</link>
+      <pubDate>Tue, 13 Apr 2021 18:59:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-cookie/</guid>
+      <description>JavaScriptからCookieを扱う。これで、サイトのデータをユーザーのブラウザに保存できる。 Cookieにvideoタグで設定した音量情報を格納、読み込みするコード 実例を交えながら解説する。下記はvideoタグで指定した音量をCookieに記録する。 window.addEventListener(&amp;quot;load&amp;quot; , function (){ const video = document.querySelector(&amp;quot;video&amp;quot;); video.addEventListener(&amp;quot;volumechange&amp;quot;,(event) =&amp;gt; { document.cookie = &amp;quot;volume=&amp;quot; + decodeURIComponent(event.target.volume) + &amp;quot;;Path=/single;SameSite=strict&amp;quot;; }); set_video_volume(); }); function set_video_volume(){ let cookies = document.cookie; console.log(cookies); let cookiesArray = cookies.split(&#39;;&#39;); let volume = 0; for(let c of cookiesArray) { console.log(c); let cArray = c.split(&#39;=&#39;); if( cArray[0] === &amp;quot;volume&amp;quot;){ volume = Number(cArray[1]); console.log(volume); break; } } const video = document.querySelector(&amp;quot;video&amp;quot;); video.volume = volume; } Cookie</description>
+    </item>
+    
+    <item>
+      <title>jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】</title>
+      <link>https://noauto-nolife.com/post/jquery-to-javascript/</link>
+      <pubDate>Tue, 13 Apr 2021 18:32:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-to-javascript/</guid>
+      <description>jQueryに依存したコードをそのままにするのは再利用性に欠け、開発効率にも関わる。そこで、今回はjQueryのコードを適宜javascriptに書き換える。 セレクタ まずは基本のセレクタ以下のように書き換える。 var test = $(&amp;quot;.test&amp;quot;); //↓以下に書き換え var test = document.querySelectorAll(&amp;quot;.test&amp;quot;); //←全ての.textクラスの要素を抜き取る var test = document.querySelector(&amp;quot;.test&amp;quot;); //←.testクラスの1番最初の要素を抜き取る jQueryが提供するメソッドや属性などは使用できなく</description>
+    </item>
+    
+    <item>
+      <title>CSS3とHTML5だけでタブを作り、複数のページを表示させる【JS不要】</title>
+      <link>https://noauto-nolife.com/post/css3-tab-system/</link>
+      <pubDate>Wed, 17 Mar 2021 08:54:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-tab-system/</guid>
+      <description>例えば、こんなふうにタブでページを切り替えて表示させるフロント。 かつてはJSじゃないと成立しなかったが、今となっては、JS不要でCSS3とHTML5だけで再現できる。 コード まず、HTML。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;タブシステム&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;quot;tab_radio_1&amp;quot; class=&amp;quot;tab_radio&amp;quot; type=&amp;quot;radio&amp;quot; name=&amp;quot;tab_system&amp;quot;&amp;gt;&amp;lt;label class=&amp;quot;tab_label&amp;quot; for=&amp;quot;tab_radio_1&amp;quot;&amp;gt;タブ1&amp;lt;/label&amp;gt; &amp;lt;input id=&amp;quot;tab_radio_2&amp;quot; class=&amp;quot;tab_radio&amp;quot; type=&amp;quot;radio&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>【Django】バッチ処理のOpenCVが撮影した画像をDBに保存する</title>
+      <link>https://noauto-nolife.com/post/django-batch-opencv/</link>
+      <pubDate>Tue, 16 Mar 2021 16:15:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-batch-opencv/</guid>
+      <description>Djangoのバッチ処理を実行し、DBにデータを格納させる。ただし、OpenCVで撮影した画像をDBに保存させる。本記事ではその手順を記す。 実行環境・やりたいこと 実行環境 Django 2.2以上 Ubuntu 18.04 やりたいこと 流れはだいたいこんな感じ OS起動時、バッチ処理がCrontabから実行される バッチ処理はOpenCVを使用し、撮影した画像を保存 保存した画像とコメントをDBに記録 1秒経ったら、2に戻る つまり、コマ撮りし</description>
+    </item>
+    
+    <item>
+      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法</title>
+      <link>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</link>
+      <pubDate>Sat, 20 Feb 2021 11:13:37 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</guid>
+      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 カスタムユーザーモデルを外部キーとして指定する まず、settings.pyに下記のような設定がされているとする。usersアプリのCustomUserクラスを指定している。 AUTH_USER_MODEL = &#39;users.CustomUser&#39; 続いて、任意のアプリのモデルを編集する。 from django.db import models from django.utils import timezone from django.conf</description>
+    </item>
+    
+    <item>
+      <title>Laravelで主キーにUUIDを実装させる方法【laravel-eloquent-uuid】</title>
+      <link>https://noauto-nolife.com/post/laravel-uuid/</link>
+      <pubDate>Sat, 13 Feb 2021 13:45:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-uuid/</guid>
+      <description>主キーにUUIDを使用することで、デフォルトの連番で数値型のIDと違って予測されることがない。これはセキュリティ上、重要なことなのでなるべく開発初期段階で実装したい。 実装方法 UUID実装用のライブラリをcomposerからインストール。 composer require goldspecdigital/laravel-eloquent-uuid:^7.0 ユーザーモデルを書き換える。database/migrations/2014_10_12_000000_create_users_table.phpにて、下記</description>
+    </item>
+    
+    <item>
+      <title>DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】</title>
+      <link>https://noauto-nolife.com/post/django-sendgrid/</link>
+      <pubDate>Fri, 12 Feb 2021 17:48:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-sendgrid/</guid>
+      <description>Sendgridのパスワードを使用したメール送信が廃止され、APIを使用した2段階認証が強制されるため、ここに対策を記す。本記事はDjango(Python)を対象とした対策について解説する。 django-sendgrid-v5のインストール APIを使用するために、pipにてdjango-sendgrid-v5をインストールさせる。 pip install django-sendgrid-v5 settings.pyにて設定を施す settings.pyの</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】静的ファイルのディレクトリ作るときの注意点【publicのディレクトリ名で即404エラー】</title>
+      <link>https://noauto-nolife.com/post/laravel-public-dirname-caution/</link>
+      <pubDate>Mon, 08 Feb 2021 14:59:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-public-dirname-caution/</guid>
+      <description>Laravelで静的ファイルを作る時、アプリごとにCSSとJSを仕分けしたい場合がある。しかし、作るディレクトリ名を間違えれば、たちまち404エラーが出てしまう。 本記事ではLaravelの404エラーの原因のひとつであるパスの衝突について解説する。 Laravelで404エラーが起こる原因 例えば、ルーティングがこんな状態で Route::get(&#39;/&#39;, function () { return view(&#39;welcome&#39;); }); Route::resource(&amp;quot;/memo&amp;quot;,&amp;quot;MemoController&amp;quot;); memoというアプリを作ったとしよう。当然、memoアプリ内で</description>
+    </item>
+    
+    <item>
+      <title>Laravelで検索とページネーションを両立させる【ANDとOR検索も】</title>
+      <link>https://noauto-nolife.com/post/laravel-search-paginate/</link>
+      <pubDate>Tue, 02 Feb 2021 13:48:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-search-paginate/</guid>
+      <description>タイトルの通り。laravelにてAND検索とOR検索を実装させつつ、ページネーションも両立させる。コードはlaravelでCRUD簡易掲示板を作る【Restful】から流用している。 まずはAND検索とOR検索を実装させる 流れ的には、スペース区切りのキーワードを送信させ、それをコントロール側で区切り、クエリをビルドする。クエリをビルドする時、AND検索指定であれば、where()の追加、OR検索指</description>
+    </item>
+    
+    <item>
+      <title>【Django】manage.pyコマンドを追加させる【バッチ処理、常駐プログラムなどに】</title>
+      <link>https://noauto-nolife.com/post/django-command-add/</link>
+      <pubDate>Mon, 01 Feb 2021 18:25:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-command-add/</guid>
+      <description>Djangoのmanage.pyにはコマンドを追加することができる。これを利用すれば、アプリディレクトリで定義したモデルをそのまま流用してDBにアクセスしたり、コマンド一発で複雑な処理を終わらせたり、バッチ処理として運用させることも簡単にできる。 manage.pyにコマンドを追加させる まず、任意のアプリディレクトリにmanagement/commands/ディレクトリを作る。 mkdir -p [アプリディレクト</description>
+    </item>
+    
+    <item>
+      <title>Laravelで画像とファイルをアップロードする</title>
+      <link>https://noauto-nolife.com/post/laravel-fileupload/</link>
+      <pubDate>Mon, 01 Feb 2021 14:28:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-fileupload/</guid>
+      <description>タイトルの通り。単にアップロードするだけでなく、MIME属性に基づいたファイルのバリデーションを行い、セキュリティにも配慮する。 なお、本記事はLaravelで検索とページネーションを両立させる【ANDとOR検索も】からコードを流用している。 流れ テーブルに画像パス格納用カラムを追加してマイグレーション モデルに画像パス格納用カラムの名前を追加する バリデーション用のフォームリクエストを定義する コントロー</description>
+    </item>
+    
+    <item>
+      <title>laravelで開発中、ログを表示させる</title>
+      <link>https://noauto-nolife.com/post/laravel-log/</link>
+      <pubDate>Mon, 01 Feb 2021 10:23:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-log/</guid>
+      <description>laravelではDjango(Python)のように処理の途中でprint()を実行してターミナルにログを表示させることはできない。代替として使用されるのがLogファサードを使用する方法である。 Logファサードを使用してログを表示させる 下記コードを任意の場所に書き込む。 \Log::debug(&amp;quot;ログ&amp;quot;); 内容は全てstorage/logs/laravel.log内に保存される</description>
+    </item>
+    
+    <item>
+      <title>DjangoやPythonにおける*argsと**kwargsとは何か</title>
+      <link>https://noauto-nolife.com/post/django-args-kwargs/</link>
+      <pubDate>Tue, 26 Jan 2021 17:07:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-args-kwargs/</guid>
+      <description>結論から言うと、*argsはキーワード未指定の引数のリスト、**kwargsはキーワードが指定された引数の辞書を手に入れるためのものである。 *argsはキーワード未指定の引数のリスト まずは、下記コードを参考にしたい。 #! /usr/bin/env python3 # -*- coding: utf-8 -*- import sys def main(name,*args): print(name) print(args) if __name__ == &amp;quot;__main__&amp;quot;: try: main(&amp;quot;Tom&amp;quot;,&amp;quot;Mike&amp;quot;,&amp;quot;Bob&amp;quot;) except KeyboardInterrupt: print(&amp;quot;\nprogram was ended.\n&amp;quot;) sys.exit() main()関数に3つの文字列の引数を与えている。&amp;quot;Tom&amp;quot;,&amp;quot;Mike&amp;quot;,&amp;quot;Bo</description>
+    </item>
+    
+    <item>
+      <title>【Django】外部キーに対応したデータの個数をカウントして表示【リプライ・コメント数の表示に有効】【annotate&#43;Count】</title>
+      <link>https://noauto-nolife.com/post/django-foreign-count/</link>
+      <pubDate>Tue, 26 Jan 2021 17:02:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-foreign-count/</guid>
+      <description>例えば、Djangoで掲示板サイトを作り、投稿した内容に対してリプライできる機能を付けたとする。そのリプライ数を一覧表示時に合わせて表示させる時、どうする？ 本記事では、上記のように一対多のリレーションが構築されている環境下で、多に該当するデータ数を計算して表示させる方法を解説する。 多のデータ数を計算してそれぞれ表示させる 下記のような、Topicに対してReplyができるモデルになっていたとする。 from</description>
+    </item>
+    
+    <item>
+      <title>【django-cleanup】画像等のファイルを自動的に削除する</title>
+      <link>https://noauto-nolife.com/post/django-cleanup/</link>
+      <pubDate>Tue, 26 Jan 2021 16:18:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-cleanup/</guid>
+      <description>例えば、Djangoの画像掲示板で削除をする時、ビューでレコードを削除すると同時に、レコードに紐付いた画像も同時に削除すると思う。その時、パスを抜き取り、os.remove()などを使用して画像を削除しているようでは、ビューの処理がどんどん増えていく。 Djangoでは、レコードに紐付いたファイルの削除処理記述の手間を減らしてくれるdjango-cleanupなるものがある。本記事ではその使用方法を</description>
+    </item>
+    
+    <item>
+      <title>Djangoで埋め込みカスタムテンプレートタグを実装する方法</title>
+      <link>https://noauto-nolife.com/post/django-custom-template-tags/</link>
+      <pubDate>Tue, 26 Jan 2021 15:55:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-template-tags/</guid>
+      <description>Djangoでデータの値に応じて文字列を返したい場合は、カスタムテンプレートタグを使用すれば良い。下記記事は、ページ移動と検索を両立させるため、文字列を返す、カスタムテンプレートタグを実装している。 Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】 しかし、データの値に応じてHTMLタグを返却するには、上記の方法では成立しない。safeフィル</description>
+    </item>
+    
+    <item>
+      <title>Django Templates Language(DTL)でincludeを実行する時に引数も与える</title>
+      <link>https://noauto-nolife.com/post/django-templates-include/</link>
+      <pubDate>Thu, 24 Dec 2020 16:51:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-templates-include/</guid>
+      <description>Djangoでテンプレートファイルを分離させ、includeするときがある。複数の箇所で同じフォームを表示したりする時がそうだ。 ただ、フォームのIDをそれぞれの箇所で別々とする場合、引数を指定する必要がある。 結論 結論から言うと、こうなる。 {% include &amp;quot;[パス]&amp;quot; with [引数名]=[値] %} includeするhtmlのパスを指定した後、withを指定することで引数の指定が可能になる。指定した引</description>
+    </item>
+    
+    <item>
+      <title>Djangoでデフォルト数値型のid(主キー)からUUID型にする【データ移行】</title>
+      <link>https://noauto-nolife.com/post/django-id-to-uuid/</link>
+      <pubDate>Thu, 24 Dec 2020 16:42:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-id-to-uuid/</guid>
+      <description>PostgreSQL等のDBサーバーで、1対多等のリレーションを組んだウェブアプリを作る時、Djangoのデフォルトの数値型のidではエラーが出てしまう。つまり、UUIDの使用は不可避。 しかし、既にデータがいくらか存在しているため、DB内のデータを全削除してUUIDにマイグレーションし直すのは不可能。困った。 こういう、数値型の主キーが割り当てられた既存データを保持したまま、UUID型の主キーに書き</description>
+    </item>
+    
+    <item>
+      <title>【Django】一対多、多対多のリレーションでforms.pyを使ったバリデーションとフォームを表示</title>
+      <link>https://noauto-nolife.com/post/django-m2m-form/</link>
+      <pubDate>Tue, 01 Dec 2020 16:03:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-m2m-form/</guid>
+      <description>本記事ではDjangoで一対多、多対多のリレーションを実装した上で、forms.pyを使用し、フォームをバリデーションする。 また、単にforms.pyからフォームのテンプレートを作るだけでなく、複数指定が要求されるフォームの作り方についても解説する。 コードはDjangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】から流用。 【1】forms.pyを使用したフォ</description>
+    </item>
+    
+    <item>
+      <title>Djangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】</title>
+      <link>https://noauto-nolife.com/post/django-many-to-many/</link>
+      <pubDate>Fri, 27 Nov 2020 17:20:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-many-to-many/</guid>
+      <description>多対多のリレーションを作って、いざ表示させようとした時、普通に{{ content.allergy }}などと指定してしまうとこうなってしまう。 表示できていない。正しく指定するとこうなる。 コードの解説 結論から言うと、テンプレートでの表示に問題がある。下記のようにすると表示できる。 &amp;lt;td&amp;gt;{% for allergy in content.allergy.all %}{{ allergy }} {% endfor %}&amp;lt;/td&amp;gt; .all属性を使用しforループで並べる。 結論 多対多のリレーションはアレルギー表示や動画等のタグ表示、エンジニアの担当言語やスキル</description>
+    </item>
+    
+    <item>
+      <title>DjangoでYou are Trying to add a non-nullable fieldと表示されたときの対策【makemigrations】</title>
+      <link>https://noauto-nolife.com/post/django-non-nullable/</link>
+      <pubDate>Wed, 18 Nov 2020 08:23:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-non-nullable/</guid>
+      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコードはどうするか</description>
+    </item>
+    
+    <item>
+      <title>DjangoでHelloWorld【HttpResponse及びレンダリング】</title>
+      <link>https://noauto-nolife.com/post/startup-django-helloworld/</link>
+      <pubDate>Mon, 16 Nov 2020 08:50:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-helloworld/</guid>
+      <description>Djangoのハローワールドは、やり方が何通りもある。 普通のPythonであれば、 print(&amp;quot;HelloWorld&amp;quot;) ほぼこの一通りであるが、Djangoの場合は主にHttpResponseの他に、テンプレートをレンダリングして返す方法がある。 一般的な開発においてはテンプレートのレンダリングが主流である。しかし、Django初心者、フレームワーク未経験者には難度が高い。故に、本記事では難度の低いHttpResponseから解説する</description>
+    </item>
+    
+    <item>
+      <title>Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】</title>
+      <link>https://noauto-nolife.com/post/django-paginator/</link>
+      <pubDate>Wed, 11 Nov 2020 17:57:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-paginator/</guid>
+      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されないので、例えば検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態でページネーションを実装する術を解説する。 流れ views</description>
+    </item>
+    
+    <item>
+      <title>Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】</title>
+      <link>https://noauto-nolife.com/post/django-or-and-search/</link>
+      <pubDate>Wed, 11 Nov 2020 17:56:10 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-or-and-search/</guid>
+      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 結論 結論から言うと、コード(views.py)はこ</description>
+    </item>
+    
+    <item>
+      <title>Djangoで画像及びファイルをアップロードする方法</title>
+      <link>https://noauto-nolife.com/post/django-fileupload/</link>
+      <pubDate>Thu, 05 Nov 2020 15:30:14 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-fileupload/</guid>
+      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 流れ 必要なライブラリのインストール settings.pyとurls.pyの追記 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール 今回はアップロード後のバリデーションを行うため、Pytho</description>
+    </item>
+    
+    <item>
+      <title>DjangoでDBに格納したデータをダンプ(バックアップ)させる【dumpdata】</title>
+      <link>https://noauto-nolife.com/post/django-dumpdata/</link>
+      <pubDate>Thu, 05 Nov 2020 14:38:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-dumpdata/</guid>
+      <description>以前、Djangoで開発中に初期データを入力する方法をしたが、Djangoではその逆も可能。 つまり、DBに既に格納されているデータをダンプ(バックアップ)する事ができる。それがこれ python3 manage.py dumpdata [アプリ名] &amp;gt; [アプリ名]/fixture/data.json 実際にやってみるとこうなる。 json形式でダンプされ、そのままでは改行が施されていないので、}},の次に改行を設置する。vimなら下記正規表現を実行 s/}},/}},\r/g 整</description>
+    </item>
+    
+    <item>
+      <title>CSS3だけで実装できるアコーディオン【checkbox&#43;transition】</title>
+      <link>https://noauto-nolife.com/post/css3-accordion/</link>
+      <pubDate>Thu, 29 Oct 2020 17:12:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-accordion/</guid>
+      <description>また、checkboxとtransitionのコンボネタ。それでyoutubeとかでよくあるアコーディオンを簡単に作ることができる。 アコーディオンの作り方 まず、HTML5。 &amp;lt;input id=&amp;quot;acd_1&amp;quot; class=&amp;quot;chkbox&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt; &amp;lt;label class=&amp;quot;acd_n_button&amp;quot; for=&amp;quot;acd_1&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;acd_n_button_title&amp;quot;&amp;gt;HTML+CSS&amp;lt;/div&amp;gt; &amp;lt;/label&amp;gt; &amp;lt;div class=&amp;quot;acd_n_body&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;p&amp;g</description>
+    </item>
+    
+    <item>
+      <title>jQueryでオートコンプリート(入力補正)を実装させる【表記ゆれ対策にも有効】</title>
+      <link>https://noauto-nolife.com/post/jquery-autocomplete/</link>
+      <pubDate>Thu, 29 Oct 2020 16:52:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-autocomplete/</guid>
+      <description>ウェブアプリを作って、ユーザーに何かを文字列を入力させる時、大抵表記ゆれが起こる。 例えば、JAと農業協同組合と農協、ラズパイとラズベリーパイとRaspberry Piとraspberry piなど。 このような表記ゆれを一度でも許すと、検索で引っかからなくなる。しかし、SELECTタグを使うと、項目が増えた時、選択に時間がかかりすぎる。 そこで、文字入力(入力補正)と選択が同時にできるオートコンプリートを</description>
+    </item>
+    
+    <item>
+      <title>【CSS3】文字に縁取りを加えて視認性UPさせる方法【text-shadow】</title>
+      <link>https://noauto-nolife.com/post/css3-textborder/</link>
+      <pubDate>Thu, 29 Oct 2020 16:42:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-textborder/</guid>
+      <description>背景色と文字色が近い場合、文字の縁取りをすることで、視認性を上げることができる。 あまり使うことは無いが、一応備忘録として。 縁取りの作り方 使用するのはtext-shadowだけ。下記のコードを任意の要素に指定すれば良いだけ。 text-shadow: skyblue 1px 1px 0, skyblue -1px -1px 0, skyblue -1px 1px 0, skyblue 1px -1px 0, skyblue 0px 1px 0, skyblue 0-1px 0, skyblue -1px 0 0, skyblue 1px 0 0; こんなふうに縁取りができる。 2pxの縁取りがしたい場合はこっち。 text-shadow: skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue 0px 2px, skyblue 2px 2px , skyblue -2px 2px, skyblue 2px -2px, skyblue -2px</description>
+    </item>
+    
+    <item>
+      <title>【CSS3】スクロール時に奥行きを感じる背景(background)の作り方</title>
+      <link>https://noauto-nolife.com/post/css3-deep-bg/</link>
+      <pubDate>Thu, 29 Oct 2020 16:39:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-deep-bg/</guid>
+      <description>最近流行のスクロールしたら背景がスクロールせず、ページ全体に奥行きを感じることができるモダンデザインの背景を作る。 それほど難しくない。CSS習いたての初心者でも簡単に実装できるので、是非とも試してみたいところ。 奥行きのある背景の作り方 まず、HTML。bodyタグ内のみ記述する。 &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;fixed_bg bg_1&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;見出し&amp;lt;/h1&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;scroll_bg&amp;quot;&amp;gt; &amp;lt;p&amp;gt;コンテンツ&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;fixed_bg bg_2&amp;quot;&amp;gt; &amp;l</description>
+    </item>
+    
+    <item>
+      <title>CSS3を使用した簡単アニメーションの実装【transitionとtransform】</title>
+      <link>https://noauto-nolife.com/post/css3-animation/</link>
+      <pubDate>Thu, 29 Oct 2020 15:37:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-animation/</guid>
+      <description>CSS3のアニメーション関係の描画はanimationプロパティを使用しなくてもtransitionプロパティを使用すれば簡単に実装できる。 さらに、transformと組み合わせることで、傾きや回転まで自由自在。本記事ではレベルごとにアニメーションの作り方を解説していく。 対象読者はある程度のHTMLとCSSの基礎を身に着けている方、CSSにおける疑似要素(::beforeと::after)、擬似ク</description>
+    </item>
+    
+    <item>
+      <title>CSS3でiOS風のトグルスイッチを作る方法【transition&#43;checkbox】</title>
+      <link>https://noauto-nolife.com/post/css3-toggle-switch/</link>
+      <pubDate>Thu, 29 Oct 2020 15:37:36 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-toggle-switch/</guid>
+      <description>CSS3で実装されたtransitionと兄弟要素のセレクタを組み合わせることでiOS風のトグルスイッチは簡単に作れる。 何も装飾を施していないinputタグのチェックボックスは小さくて見づらいが、この装飾を施すことで、視覚的にも押すことができるスイッチであると認識できるし、押せる範囲が広がる。 iOS風のトグルスイッチの作り方 まずはHTML5から。 &amp;lt;div class=&amp;quot;ui_demo_area&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;ios_chk_01&amp;quot; class=&amp;quot;ui20-input_chk&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt;&amp;lt;label class=&amp;quot;ui20-ios_conf&amp;quot; for=&amp;quot;ios_chk_01&amp;quot;&amp;gt;&amp;lt;/label&amp;gt; &amp;lt;/div&amp;gt; 続いて、CSS3。 /* ios button */ .ui20-input_chk { display:none; }</description>
+    </item>
+    
+    <item>
+      <title>Djangoで開発中、データベースへ初期データを入力する【loaddata】</title>
+      <link>https://noauto-nolife.com/post/django-loaddata/</link>
+      <pubDate>Sat, 24 Oct 2020 18:12:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-loaddata/</guid>
+      <description>Djangoで開発中にテストしたい時、デプロイ後に初期データを突っ込んで即公開したい時、どうしてもデータの入力作業が出てくる。 Seleniumで入力作業を自動化する方法もあるが、わざわざそんなことをしなくても初期データを突っ込む方法がある。それが python3 manage.py loaddata fixture/data.json models.pyに基づいたjsonファイルを作る まず、bbs/models.pyが下記のような状態だとする。 from django.db import models class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; name = model</description>
+    </item>
+    
+    <item>
+      <title>Djangoで『このページを表示するにはフォームデータを..』と言われたときの対処法</title>
+      <link>https://noauto-nolife.com/post/django-redirect/</link>
+      <pubDate>Sat, 24 Oct 2020 17:22:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-redirect/</guid>
+      <description>『このページを表示するにはフォームデータを再度送信する必要があります。フォームデータを再送信すると以前実行した検索、投稿や注文などの処理が繰り返されます。』 POST文を実行した直後に更新ボタンを押すと、こんなふうに表示される時。こういうときはリダイレクトすればOK。 views.pyを修正する redirectをimport。POST文のreturnにredirect関数を返せばいいだけ。 from django.shortcuts import redirect #P</description>
+    </item>
+    
+    <item>
+      <title>Djangoで数値のカンマ区切りを実装させる</title>
+      <link>https://noauto-nolife.com/post/django-comma/</link>
+      <pubDate>Sat, 24 Oct 2020 16:48:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-comma/</guid>
+      <description>在庫とかお金とか扱うウェブアプリだとカンマ区切りは必須。 JSに任せてもいいけど、結局正規表現になる上にユーザーに負担を強いるのはどうかと。 ということでDjango側でカンマ区切りを簡単に実装させる。 settings.pyの追記 INSTALLED_APPSに以下を追加。 &#39;django.contrib.humanize&#39;, 下記をINSTALLED_APPSの上に追加。これで3桁区切りになる。 NUMBER_GROUPING = 3 3桁区切りで表示させたいテンプレートの追記 htmlの冒</description>
+    </item>
+    
+  </channel>
+</rss>

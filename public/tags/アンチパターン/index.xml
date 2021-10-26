@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>アンチパターン on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/</link>
+    <description>Recent content in アンチパターン on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 07 Aug 2021 10:53:38 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するにはnull=Trueとblank=Trueのオプションを</title>
+      <link>https://noauto-nolife.com/post/django-models-uuid-int-null/</link>
+      <pubDate>Sat, 07 Aug 2021 10:53:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-uuid-int-null/</guid>
+      <description>タイトルの通り。 基本的な話として、blankとは空文字列のこと。だから文字列型扱いになる。一方でnullはPythonで言うとNoneであり、型は無い。 よってblank=Trueのフィールドオプションが許されるのは、CharField等の文字列型系のフィールドのみで、IntegerFieldやUUIDFieldには許されない。 と思われがちだが、それは半分誤解である。実は下記の指定は正しい。 dt = mo</description>
+    </item>
+    
+    <item>
+      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプルとリスト】</title>
+      <link>https://noauto-nolife.com/post/python-brackets/</link>
+      <pubDate>Tue, 22 Jun 2021 15:12:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-brackets/</guid>
+      <description>Djangoの公式コードを流用したりしていると、よく見かける()を使ったコード。 これはタプルである。タプルはリスト型の[]と同じであるが、書き換えが不可能であるという点でリスト型とは異なる。 タプルを定義する時、下記のような書き方をしてしまうと、文字列型として判定されてしまう。 (&amp;quot;username&amp;quot;) タプルとして扱ってもらいたいのであれば、下記のように記述する。カンマを忘れずに。 (&amp;quot;username&amp;quot;,) タプルはリストと同様に扱えるので、後から</description>
+    </item>
+    
+    <item>
+      <title>【Django】views.pyの事前処理 VS (埋め込み型)カスタムテンプレートタグ・フィルタ</title>
+      <link>https://noauto-nolife.com/post/django-custom-template-tags-vs-before-view-calc/</link>
+      <pubDate>Tue, 15 Jun 2021 03:08:14 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-template-tags-vs-before-view-calc/</guid>
+      <description>思考停止状態でカスタムテンプレートタグを作っているとき、ふと気づいた。 『これ、views.pyで事前に処理をしたほうが良いのではないか』と。 考察に至った背景 カスタムテンプレートタグは基本的にviews.pyがレンダリングをする段階で動作する。 つまりそれは、クライアントにレスポンスが届く直前であり、サーバーサイドが介入できる最後の処理である。 故に、『カスタムテンプレートタグを実行した後に、任意の処理</description>
+    </item>
+    
+    <item>
+      <title>【Slack風】モーダルダイアログ無し、ページ遷移無しで編集フォームを作る【JS不使用】</title>
+      <link>https://noauto-nolife.com/post/nomodal-edit-form/</link>
+      <pubDate>Sun, 25 Apr 2021 13:42:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nomodal-edit-form/</guid>
+      <description>投稿されたコンテンツを編集する時、編集フォームを表示するページに遷移したり、編集フォームをJSなどを使用してモーダルダイアログとして表示させることがある。こんなふうに。 しかし、これでは他のコンテンツを見ながらの編集ができない。それだけでなく、ページ遷移やダイアログ表示を行うとJSやサーバーサイドに負担がかかる。そこで、投稿したコンテンツを表示する場所を、編集フォームに切り替えるように仕立てる。こん</description>
+    </item>
+    
+    <item>
+      <title>Djangoのforms.pyが提供するフォームテンプレートは使わない</title>
+      <link>https://noauto-nolife.com/post/django-forms-temp-not-use/</link>
+      <pubDate>Tue, 13 Apr 2021 21:32:41 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-forms-temp-not-use/</guid>
+      <description>Djangoのforms.pyはユーザーから受け取った値のバリデーションだけでなく、フォームのテンプレートも提供してくれる。(widgetを使うなどしてクラス名やHTMLタグの指定ができる) しかし、私はこのforms.pyの提供するフォームのテンプレートは使わない。本記事ではその理由を列挙する 理由1:フロントサイドとサーバーサイドの分業問題 そもそも、テンプレートの開発はフロントサイド開発者のするこ</description>
+    </item>
+    
+  </channel>
+</rss>

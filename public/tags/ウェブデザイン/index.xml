@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ウェブデザイン on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/</link>
+    <description>Recent content in ウェブデザイン on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 14 Oct 2021 07:15:41 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CSS3とHTML5だけでモーダルダイアログを作る【JS不要】</title>
+      <link>https://noauto-nolife.com/post/css3-modal-dialog/</link>
+      <pubDate>Thu, 14 Oct 2021 07:15:41 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-modal-dialog/</guid>
+      <description>モーダルダイアログもとどのつまり、単なる表示非表示なので、HTMLとCSSだけで再現できる。 checkboxとlabelタグを使えば良いだけの話である。 ソースコード まずHTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;label class=&amp;quot;modal_label&amp;quot; for=&amp;quot;modal_chk&amp;quot;&amp;gt;新規作成&amp;lt;/label&amp;gt; &amp;lt;input id=&amp;quot;modal_chk&amp;quot; class=&amp;quot;modal_chk&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;modal_body&amp;quot;&amp;gt; &amp;lt;label class=&amp;quot;modal_bg&amp;quot; for=&amp;quot;modal_chk&amp;quot;&amp;gt;&amp;lt;/label&amp;gt; &amp;lt;div class=&amp;quot;modal_content&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 2つのlabelタグのfor属性はいずれもcheckboxのI</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】ボタン式の横スライダーを自作する【通販サイト・コンテンツ共有サイトなどに】</title>
+      <link>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</link>
+      <pubDate>Sun, 26 Sep 2021 03:09:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</guid>
+      <description>通販サイトなどでよくある。横スクロール型のスライダーを作る。slick.jsなどを使えば簡単に実現できるが、かえって複雑なので、自作した。 ソースコード HTML。jQueryを読み込み、別途JavaScriptとCSSを読み込む。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;!--jquery読み込み--&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;preview_control_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_frame&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;data_preview_content&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】HTML、CSS、JS合わせて100行以内でカルーセルを自作する【自動スライド】</title>
+      <link>https://noauto-nolife.com/post/javascript-carousel-origin/</link>
+      <pubDate>Tue, 31 Aug 2021 14:22:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-carousel-origin/</guid>
+      <description>カルーセルと言えば、slick.js等のライブラリがあるが、たかだか自動的にスライドするだけのシンプルなカルーセルをサイトの一部分に実装させるためだけにライブラリをインストールさせるのはやや大げさだ。 そこで、今回はカルーセルをjQueryを使用した上で自作する。書く必要のあるコードはHTMLが約30行、CSSが約20行、JSが約40行の合計100行足らずで実現できる。 ソースコードと解説 HTML。C</description>
+    </item>
+    
+    <item>
+      <title>video.jsを実装させ、コントローラをカスタムする【Brightcove Player】</title>
+      <link>https://noauto-nolife.com/post/js-video-controller/</link>
+      <pubDate>Wed, 09 Jun 2021 11:48:19 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/js-video-controller/</guid>
+      <description>通常、videoタグを使用する場合、controls属性を付与することで、動画の操作(再生、音量調整等)が可能なコントローラを表示できる。 しかし、再生速度の操作やコントローラの装飾関係を一から作っていくには時間がかかりすぎる。 そこで、videoタグの拡張が可能なvideo.jsというライブラリを実装させる。すでにAmazon等の大手サイトでも採用実績のある完成度の高いvideoタグ専用のjsライブ</description>
+    </item>
+    
+    <item>
+      <title>FontAwesomeや画像を選択できるプルダウンメニュー【JS不使用】</title>
+      <link>https://noauto-nolife.com/post/fontawesome-image-select/</link>
+      <pubDate>Sun, 25 Apr 2021 17:41:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/fontawesome-image-select/</guid>
+      <description>普通のselectタグの場合、画像やアイコンを表示させようとしてもうまく行かない。他にも、複数選択しないといけないとき、selectタグにmultiple属性を指定するだけでは操作が難しい。 そこで、画像とFontAwesomeが表示できて、なおかつ複数選択可能なプルダウンメニューを作ってみた。 ソースコード html5、いつものinputタグに、checkboxとradioを使っている。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>【Slack風】モーダルダイアログ無し、ページ遷移無しで編集フォームを作る【JS不使用】</title>
+      <link>https://noauto-nolife.com/post/nomodal-edit-form/</link>
+      <pubDate>Sun, 25 Apr 2021 13:42:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nomodal-edit-form/</guid>
+      <description>投稿されたコンテンツを編集する時、編集フォームを表示するページに遷移したり、編集フォームをJSなどを使用してモーダルダイアログとして表示させることがある。こんなふうに。 しかし、これでは他のコンテンツを見ながらの編集ができない。それだけでなく、ページ遷移やダイアログ表示を行うとJSやサーバーサイドに負担がかかる。そこで、投稿したコンテンツを表示する場所を、編集フォームに切り替えるように仕立てる。こん</description>
+    </item>
+    
+    <item>
+      <title>Djangoのforms.pyが提供するフォームテンプレートは使わない</title>
+      <link>https://noauto-nolife.com/post/django-forms-temp-not-use/</link>
+      <pubDate>Tue, 13 Apr 2021 21:32:41 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-forms-temp-not-use/</guid>
+      <description>Djangoのforms.pyはユーザーから受け取った値のバリデーションだけでなく、フォームのテンプレートも提供してくれる。(widgetを使うなどしてクラス名やHTMLタグの指定ができる) しかし、私はこのforms.pyの提供するフォームのテンプレートは使わない。本記事ではその理由を列挙する 理由1:フロントサイドとサーバーサイドの分業問題 そもそも、テンプレートの開発はフロントサイド開発者のするこ</description>
+    </item>
+    
+    <item>
+      <title>Vue.jsでモーダルダイアログを作る</title>
+      <link>https://noauto-nolife.com/post/vuejs-modal/</link>
+      <pubDate>Mon, 18 Jan 2021 14:36:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vuejs-modal/</guid>
+      <description>jQueryであれば、モーダルダイアログを実装する時、対象の要素(DOM)を指定して、.show()と.hide()を行えば良いのでそれほど難しくはないが、vue.jsの場合はそうは行かない。 本記事ではvue.jsを使用したモーダルダイアログの実装方法をまとめる。 ソースコード 今回はモーダルダイアログの範囲外をクリックしたら閉じるように仕立てた。 まず、HTML。開発版のvue.jsのCDNを指定して</description>
+    </item>
+    
+    <item>
+      <title>【日付入力】flatpickrの実装方法(ロケール日本語化、日時入力対応化)</title>
+      <link>https://noauto-nolife.com/post/flatpickr-install/</link>
+      <pubDate>Thu, 24 Dec 2020 16:37:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/flatpickr-install/</guid>
+      <description>ウェブアプリを開発していると、避けて通ることができない日付もしくは日時入力。HTMLのSELECTタグを使用しても良いが、うるう年に対応させないといけないし、何よりユーザビリティに問題がある。 そんな時、flatpickrを実装すれば、日時入力が非常に簡単になる。しかもjQueryに依存していないので、流行のvue.jsなどを使いたい場合にも有効。 flatpickrの実装方法 まずHTML。flatp</description>
+    </item>
+    
+    <item>
+      <title>Django-allauthのログインページの装飾を装飾する【テンプレートの追加】</title>
+      <link>https://noauto-nolife.com/post/django-allauth-loginpage/</link>
+      <pubDate>Wed, 11 Nov 2020 17:59:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-loginpage/</guid>
+      <description>django-allauthにより、比較的簡単に認証関係の機能を実装できる。だが、装飾まではサポートされていない。 このような殺風景なログイン画面が表示されてしまうのだ。これをそのままにして顧客に納品させるわけにはいかない。 本記事ではこのdjango-allauthのログインページを装飾させる方法を解説する。 Django-allauthのインストールとsettings.py、urls.pyの設定 まず</description>
+    </item>
+    
+    <item>
+      <title>CSS3だけで実装できるアコーディオン【checkbox&#43;transition】</title>
+      <link>https://noauto-nolife.com/post/css3-accordion/</link>
+      <pubDate>Thu, 29 Oct 2020 17:12:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-accordion/</guid>
+      <description>また、checkboxとtransitionのコンボネタ。それでyoutubeとかでよくあるアコーディオンを簡単に作ることができる。 アコーディオンの作り方 まず、HTML5。 &amp;lt;input id=&amp;quot;acd_1&amp;quot; class=&amp;quot;chkbox&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt; &amp;lt;label class=&amp;quot;acd_n_button&amp;quot; for=&amp;quot;acd_1&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;acd_n_button_title&amp;quot;&amp;gt;HTML+CSS&amp;lt;/div&amp;gt; &amp;lt;/label&amp;gt; &amp;lt;div class=&amp;quot;acd_n_body&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;p&amp;g</description>
+    </item>
+    
+    <item>
+      <title>fontawesomeの実装と利用例のまとめ</title>
+      <link>https://noauto-nolife.com/post/startup-fontawesome/</link>
+      <pubDate>Thu, 29 Oct 2020 16:48:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-fontawesome/</guid>
+      <description>fontawesomeを使用することで、簡単なアイコンをページ内に使用することができる。無料の場合は制限があるが、CDNをheadタグ内に書き込めばいいので実装は簡単。 実装方法 headタグ内に下記を追加する。 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://use.fontawesome.com/releases/v5.1.0/css/all.css&amp;quot; integrity=&amp;quot;sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; これだけでOK。 fontawesome CDN などで検索してくると、下記サイトが出てくるので、バージョンをチェックして最新版をコピペする。 https://fontawesome.com/v5.15/how-to-use/customizing-wordpress/snippets/setup-cdn-webfont#load-all-styles 使い方 fontawesomeのアイコン一覧が掲載されているページ( https://fontawesome.com/icons?d=gallery</description>
+    </item>
+    
+    <item>
+      <title>【CSS3】文字に縁取りを加えて視認性UPさせる方法【text-shadow】</title>
+      <link>https://noauto-nolife.com/post/css3-textborder/</link>
+      <pubDate>Thu, 29 Oct 2020 16:42:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-textborder/</guid>
+      <description>背景色と文字色が近い場合、文字の縁取りをすることで、視認性を上げることができる。 あまり使うことは無いが、一応備忘録として。 縁取りの作り方 使用するのはtext-shadowだけ。下記のコードを任意の要素に指定すれば良いだけ。 text-shadow: skyblue 1px 1px 0, skyblue -1px -1px 0, skyblue -1px 1px 0, skyblue 1px -1px 0, skyblue 0px 1px 0, skyblue 0-1px 0, skyblue -1px 0 0, skyblue 1px 0 0; こんなふうに縁取りができる。 2pxの縁取りがしたい場合はこっち。 text-shadow: skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue 0px 2px, skyblue 2px 2px , skyblue -2px 2px, skyblue 2px -2px, skyblue -2px</description>
+    </item>
+    
+    <item>
+      <title>CSS3で折りたたみ式のサイドバーを実装させる【checkbox&#43;transition&#43;position】</title>
+      <link>https://noauto-nolife.com/post/css3-sidebar/</link>
+      <pubDate>Thu, 29 Oct 2020 16:15:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-sidebar/</guid>
+      <description>モダンなサイトでよく見かける折りたたみ式のサイドバー。これはCSS3の知識さえあればすぐに実装できる。 HTML5+CSS3を使用した折りたたみ式サイドバー まず、HTML。headerがページタイトルとサイドバーを兼ねている。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;折りたたみ式右サイドバー&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;onload.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;header&amp;gt; &amp;lt;div class=&amp;quot;header&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;折りたたみ式右サイドバー</description>
+    </item>
+    
+    <item>
+      <title>CSS3を使用した簡単アニメーションの実装【transitionとtransform】</title>
+      <link>https://noauto-nolife.com/post/css3-animation/</link>
+      <pubDate>Thu, 29 Oct 2020 15:37:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-animation/</guid>
+      <description>CSS3のアニメーション関係の描画はanimationプロパティを使用しなくてもtransitionプロパティを使用すれば簡単に実装できる。 さらに、transformと組み合わせることで、傾きや回転まで自由自在。本記事ではレベルごとにアニメーションの作り方を解説していく。 対象読者はある程度のHTMLとCSSの基礎を身に着けている方、CSSにおける疑似要素(::beforeと::after)、擬似ク</description>
+    </item>
+    
+    <item>
+      <title>CSS3でiOS風のトグルスイッチを作る方法【transition&#43;checkbox】</title>
+      <link>https://noauto-nolife.com/post/css3-toggle-switch/</link>
+      <pubDate>Thu, 29 Oct 2020 15:37:36 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-toggle-switch/</guid>
+      <description>CSS3で実装されたtransitionと兄弟要素のセレクタを組み合わせることでiOS風のトグルスイッチは簡単に作れる。 何も装飾を施していないinputタグのチェックボックスは小さくて見づらいが、この装飾を施すことで、視覚的にも押すことができるスイッチであると認識できるし、押せる範囲が広がる。 iOS風のトグルスイッチの作り方 まずはHTML5から。 &amp;lt;div class=&amp;quot;ui_demo_area&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;ios_chk_01&amp;quot; class=&amp;quot;ui20-input_chk&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt;&amp;lt;label class=&amp;quot;ui20-ios_conf&amp;quot; for=&amp;quot;ios_chk_01&amp;quot;&amp;gt;&amp;lt;/label&amp;gt; &amp;lt;/div&amp;gt; 続いて、CSS3。 /* ios button */ .ui20-input_chk { display:none; }</description>
+    </item>
+    
+  </channel>
+</rss>

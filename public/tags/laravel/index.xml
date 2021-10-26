@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Laravel on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/laravel/</link>
+    <description>Recent content in Laravel on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 18 Sep 2021 11:11:14 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【Laravel】GitHubにプッシュする時.gitignoreに追加する必要のあるファイル、ディレクトリ</title>
+      <link>https://noauto-nolife.com/post/laravel-gitignore-add/</link>
+      <pubDate>Sat, 18 Sep 2021 11:11:14 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-gitignore-add/</guid>
+      <description>GitHubにプッシュする時、.gitignoreに追加する必要のあるファイル、ディレクトリをここにまとめる。 そんなものはどうでも良いから、もともとあったものと、追加したものを含めた完全版を見せてくれと思う人は、ページ末尾の結論へ。 対象に追加するべき、ファイル *.log *.sqlite .htaccess .logには開発用サーバーで動かしたログが残る。.sqliteは言わずもがなデータが残っている。 対象に追加するべき、ディレクトリ /storage /config /</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】</title>
+      <link>https://noauto-nolife.com/post/laravel-database-regenerate/</link>
+      <pubDate>Sat, 18 Sep 2021 08:42:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-database-regenerate/</guid>
+      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 そこで、bashのaliasにdatabase.sqliteを探して削除、その後生成するワンライナーコマンドを登録すればよいと思い至った。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行すること</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】コマンドからマイグレーションファイルを立ち上げる時、こうすればうまく行く【ワイルドカードとTabキー】</title>
+      <link>https://noauto-nolife.com/post/laravel-migrations-files-detect/</link>
+      <pubDate>Thu, 16 Sep 2021 14:55:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-migrations-files-detect/</guid>
+      <description>コマンドからマイグレーションファイルを立ち上げる時、わざわざ日付を手入力しながらやっていると、時間がかかりすぎる。 そこで、ワイルドカードとTabキーの補正を使うことで特定する。例えば、2014_10_12_000000_create_users_table.phpであれば vi ./database/migrations/*create_users* と打って、この状態でTabキーを押す。これで vi ./database/migrations/2014_10_12_000000_create_users_table.php こんなふうになる。もっとも、統合開発環境を使えば、マウスダブルクリックでこん</description>
+    </item>
+    
+    <item>
+      <title>Laravelで--resourceで作ったコントローラのルーティングを解体する</title>
+      <link>https://noauto-nolife.com/post/laravel-to-resource/</link>
+      <pubDate>Tue, 20 Apr 2021 16:26:25 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-to-resource/</guid>
+      <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると、ルーティングの書き換えは難しい。そこで、本記事は--resourceで作ったコントローラのルーティングをバラす。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); resource</description>
+    </item>
+    
+    <item>
+      <title>Laravelのプロジェクト名を書き換える</title>
+      <link>https://noauto-nolife.com/post/laravel-project-rename/</link>
+      <pubDate>Mon, 19 Apr 2021 08:37:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-project-rename/</guid>
+      <description>既存のLaravelのプロジェクトを、プロジェクト名だけ書き換えて編集する。 環境 Ubuntu 18.04 Laravel Framework 7.30.4 結論 下記コマンドでプロジェクトを作ったとする。 composer create-project --prefer-dist laravel/laravel [プロジェクト名] 上記コマンドで生成された[プロジェクト名]のディレクトリ名を書き換えれば良いだけの話である。 理屈 まず、プロジェクトを作った後、プロジェクトのディレクトリに移動して、下記コマンドを実行してもらいたい。 grep -rl &amp;quot;[プロジェクト名]&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>LaravelをUbuntuにデプロイする【Nginx&#43;PostgreSQL】</title>
+      <link>https://noauto-nolife.com/post/laravel-ubuntu-deploy/</link>
+      <pubDate>Tue, 13 Apr 2021 19:09:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ubuntu-deploy/</guid>
+      <description>構成について タイトルの通り、下記構成にてデプロイを行う Laravel Framework 7.30.4 Ubuntu 18.04 nginx version: nginx/1.14.0 (Ubuntu) psql (PostgreSQL) 10.16 (Ubuntu 10.16-0ubuntu0.18.04.1) なぜPostgreSQLなのか？(MySQLではないのか？) MySQLは使わない。なぜなら、Laravelのtimestamp型とMySQLが組み合わさると2038年問題が発生するから。 コード側を合わせるという方法もあるが、今回はデプロイが主目的であるため、安全なPostgreSQLでデプロイする。 https://qiita.com/ucan-lab/items/99ee14ad6bb24614980c デプロイまでの流</description>
+    </item>
+    
+    <item>
+      <title>Laravelで1対多、多対多のリレーションを作る【トピックに対してコメントの投稿、トピックタグの指定】</title>
+      <link>https://noauto-nolife.com/post/laravel-m2m-foreignkey/</link>
+      <pubDate>Tue, 13 Apr 2021 18:14:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-m2m-foreignkey/</guid>
+      <description>1対多、多対多のリレーションのウェブアプリのサンプルを作りつつ、方法を解説する。 状況 元にして作るアプリの状況を解説する 1対多のリレーションを作る Topicに対して、Commentを投稿できるようにする。そのために、1対多のリレーションを作る。 コメントのモデルの作成・トピックのモデルの編集 1対多のリレーションを作るため、まずは、Commentのモデルを作る。ついでに--migrationオプションを</description>
+    </item>
+    
+    <item>
+      <title>Laravelに必要なPHP構文【if,for,function,class】</title>
+      <link>https://noauto-nolife.com/post/laravel-essential-php/</link>
+      <pubDate>Tue, 13 Apr 2021 17:46:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-essential-php/</guid>
+      <description>Laravelはフレームワークである。すでにコードが書かれており、それを読みながら追記していく必要がある。 そのため、Laravelによく出るPHP構文を知っておくと開発がスムーズに進む。本記事ではLaravelに必要なPHP構文をまとめて解説する。 if 基本のif文。ブーリアン型の判定が主である。 &amp;lt;?php $flag = True; if ($flag){ echo &amp;quot;True!!&amp;quot;; } else{ echo &amp;quot;False!!&amp;quot;; } Laravel実践では、コントローラがクライアントから受け取った値が存在するかチ</description>
+    </item>
+    
+    <item>
+      <title>Laravelの全体像、ファイル・ディレクトリごとの役割と関係性を俯瞰する</title>
+      <link>https://noauto-nolife.com/post/laravel-overview/</link>
+      <pubDate>Tue, 13 Apr 2021 16:05:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-overview/</guid>
+      <description>Laravelのプロジェクトを作ると、大量のファイルやディレクトリで溢れかえり、気後れしそうになる。 そこで本記事では開発をスムーズにするため、Laravelの全体像、とりわけよく使うファイル・ディレクトリの役割と関係を解説する。 Laravelの全体像 Laravelの全体像はこのようになっている。 流れ マイグレーションファイルに基づき、マイグレーション。DBのテーブルを作る クライアントがリクエストを送</description>
+    </item>
+    
+    <item>
+      <title>Ajax搭載したLaravelをHerokuにデプロイした時、405エラーが出る問題の解決【method not allowed】</title>
+      <link>https://noauto-nolife.com/post/laravel-heroku-405-error/</link>
+      <pubDate>Sat, 13 Feb 2021 14:07:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-heroku-405-error/</guid>
+      <description>Herokuにデプロイ後、Ajaxを使ったPOST文をサーバーサイドに送信しようとすると、405、即ちMethod Not Allowedがコンソールに表示される。 ルーティングには問題なくPOST文のメソッドは記述されているし、コントローラにも処理はある。何より開発サーバー上で問題なく動いていたものが、Herokuデプロイ後に動作しなくなるのはHeroku上の問題だと思い、あれこれやってみたが、一向にうま</description>
+    </item>
+    
+    <item>
+      <title>LaravelをHerokuにデプロイする【Heroku-postgresql使用】</title>
+      <link>https://noauto-nolife.com/post/laravel-heroku-deploy/</link>
+      <pubDate>Sat, 13 Feb 2021 14:01:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-heroku-deploy/</guid>
+      <description>LaravelをHerokuにデプロイする。DBにはHerokuPostgresを使用する。 本記事の対象読者はHerokuCLIはインストール済み、基本的なコマンドは習得済みとする。 流れ Herokuからアプリを作る HerokuPostgresを実装 起動用のProcfileを作る ローカルリポジトリとHerokuのリモートリポジトリの関連付け デプロイ 環境変数の設定を施す(多いのでシェルスクリプトを実装</description>
+    </item>
+    
+    <item>
+      <title>Laravelで主キーにUUIDを実装させる方法【laravel-eloquent-uuid】</title>
+      <link>https://noauto-nolife.com/post/laravel-uuid/</link>
+      <pubDate>Sat, 13 Feb 2021 13:45:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-uuid/</guid>
+      <description>主キーにUUIDを使用することで、デフォルトの連番で数値型のIDと違って予測されることがない。これはセキュリティ上、重要なことなのでなるべく開発初期段階で実装したい。 実装方法 UUID実装用のライブラリをcomposerからインストール。 composer require goldspecdigital/laravel-eloquent-uuid:^7.0 ユーザーモデルを書き換える。database/migrations/2014_10_12_000000_create_users_table.phpにて、下記</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】静的ファイルのディレクトリ作るときの注意点【publicのディレクトリ名で即404エラー】</title>
+      <link>https://noauto-nolife.com/post/laravel-public-dirname-caution/</link>
+      <pubDate>Mon, 08 Feb 2021 14:59:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-public-dirname-caution/</guid>
+      <description>Laravelで静的ファイルを作る時、アプリごとにCSSとJSを仕分けしたい場合がある。しかし、作るディレクトリ名を間違えれば、たちまち404エラーが出てしまう。 本記事ではLaravelの404エラーの原因のひとつであるパスの衝突について解説する。 Laravelで404エラーが起こる原因 例えば、ルーティングがこんな状態で Route::get(&#39;/&#39;, function () { return view(&#39;welcome&#39;); }); Route::resource(&amp;quot;/memo&amp;quot;,&amp;quot;MemoController&amp;quot;); memoというアプリを作ったとしよう。当然、memoアプリ内で</description>
+    </item>
+    
+    <item>
+      <title>laravelでAjax(jQuery)を送信する【POST&#43;DELETE】</title>
+      <link>https://noauto-nolife.com/post/laravel-ajax/</link>
+      <pubDate>Thu, 04 Feb 2021 12:29:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ajax/</guid>
+      <description>タイトルの通り。laravelにAjax(jQuery)を送信する。コードはLaravelでリクエストのバリデーションを行うを元に作られている。 jQueryを読み込みCSRFトークンをAjax送信時に付せて送信させる まずAjax送信用にjQueryを読み込ませる。それからPOSTリクエストの場合、CSRF対策用のトークンもセットで送信しなければならない。故に、resources/views/bas</description>
+    </item>
+    
+    <item>
+      <title>Laravelでリクエストのバリデーションを行う</title>
+      <link>https://noauto-nolife.com/post/laravel-validate/</link>
+      <pubDate>Wed, 03 Feb 2021 08:14:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-validate/</guid>
+      <description>コードはLaravelで検索とページネーションを両立させる【ANDとOR検索も】から流用している。現状では不適切な値(文字数オーバー、未入力等)をサーバーに送信すると、そのまま例外処理が発生する。バリデーションを実装させ、例外ではなく前のページにリダイレクトさせる。 対象はlaravel 7.x。 方法は主に2種類ある。コントローラー上にバリデーション処理を設置する方法、フォームリクエストを生成してバリ</description>
+    </item>
+    
+    <item>
+      <title>Laravelで検索とページネーションを両立させる【ANDとOR検索も】</title>
+      <link>https://noauto-nolife.com/post/laravel-search-paginate/</link>
+      <pubDate>Tue, 02 Feb 2021 13:48:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-search-paginate/</guid>
+      <description>タイトルの通り。laravelにてAND検索とOR検索を実装させつつ、ページネーションも両立させる。コードはlaravelでCRUD簡易掲示板を作る【Restful】から流用している。 まずはAND検索とOR検索を実装させる 流れ的には、スペース区切りのキーワードを送信させ、それをコントロール側で区切り、クエリをビルドする。クエリをビルドする時、AND検索指定であれば、where()の追加、OR検索指</description>
+    </item>
+    
+    <item>
+      <title>Laravelで画像とファイルをアップロードする</title>
+      <link>https://noauto-nolife.com/post/laravel-fileupload/</link>
+      <pubDate>Mon, 01 Feb 2021 14:28:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-fileupload/</guid>
+      <description>タイトルの通り。単にアップロードするだけでなく、MIME属性に基づいたファイルのバリデーションを行い、セキュリティにも配慮する。 なお、本記事はLaravelで検索とページネーションを両立させる【ANDとOR検索も】からコードを流用している。 流れ テーブルに画像パス格納用カラムを追加してマイグレーション モデルに画像パス格納用カラムの名前を追加する バリデーション用のフォームリクエストを定義する コントロー</description>
+    </item>
+    
+    <item>
+      <title>laravelでCRUD簡易掲示板を作る【Restful】</title>
+      <link>https://noauto-nolife.com/post/laravel-crud-restful/</link>
+      <pubDate>Mon, 01 Feb 2021 13:11:30 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-crud-restful/</guid>
+      <description>リハビリがてらlaravelでCRUDに対応した簡易掲示板を作る。この記事の手順に沿ってやれば、45分もあれば作れる。 本記事ではlaravel 7.X系を使用している。 流れ プロジェクトを作る DBはSQliteを読み込むように設定する Restful対応コントローラーを作る ルーティングの設定 モデル定義とマイグレーション実行 リクエストを作る ビューを作る コントローラーの修正 タイムゾーンの修正 プロジェクトを作</description>
+    </item>
+    
+    <item>
+      <title>laravelで開発中、ログを表示させる</title>
+      <link>https://noauto-nolife.com/post/laravel-log/</link>
+      <pubDate>Mon, 01 Feb 2021 10:23:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-log/</guid>
+      <description>laravelではDjango(Python)のように処理の途中でprint()を実行してターミナルにログを表示させることはできない。代替として使用されるのがLogファサードを使用する方法である。 Logファサードを使用してログを表示させる 下記コードを任意の場所に書き込む。 \Log::debug(&amp;quot;ログ&amp;quot;); 内容は全てstorage/logs/laravel.log内に保存される</description>
+    </item>
+    
+    <item>
+      <title>Laravelのartisanコマンドのまとめ</title>
+      <link>https://noauto-nolife.com/post/laravel-artisan-command/</link>
+      <pubDate>Mon, 01 Feb 2021 08:07:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-artisan-command/</guid>
+      <description>laravelのartisanコマンドをよく使うと思われる順にまとめる。 開発用サーバーを立ち上げる php artisan serve ホスト名とポート番号の指定もできる。 php artisan serve --host=[ホスト名] --port=[ポート番号] コントローラーを作る php artisan make:controller [コントローラー名] &amp;ndash;resourceをつけると、Restful化もできる php artisan make:controller [コントローラー名] --resource モデルを作る php artisan make:model [モデル名] &amp;ndash;migratio</description>
+    </item>
+    
+    <item>
+      <title>laravelコマンドをUbuntuで実行可能にする方法</title>
+      <link>https://noauto-nolife.com/post/laravel-command-ubuntu/</link>
+      <pubDate>Thu, 28 Jan 2021 14:52:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-command-ubuntu/</guid>
+      <description>laravelで新しいプロジェクトを生成するとき、 composer create-project --prefer-dist laravel/laravel [プロジェクト名] このように実行するのだが、とても長い。 laravel new [プロジェクト名] そこで上記コマンドを実行しようとしてもlaravelコマンドがインストールされていないと言う。laravelコマンドを使えるようにするにはまずはcomposerからのインストールが必要。 composer global require &amp;quot;laravel/installer&amp;quot; そしてその上で、~/.bashrcにてパスを通す。~/.bashrcの</description>
+    </item>
+    
+    <item>
+      <title>Laravelビギナーが30分で掲示板アプリを作る方法</title>
+      <link>https://noauto-nolife.com/post/startup-laravel/</link>
+      <pubDate>Mon, 26 Oct 2020 15:13:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-laravel/</guid>
+      <description>laravelはDjangoと違って初っ端から大量のファイルやディレクトリが表示され、気後れしそうになるが、編集する部分さえ分かれば大したことはない見掛け倒し。 PHPを中心に扱う現場ではlaravelのスキルが求められるのでウェブ屋になるのであれば、是非とも習得しておきたい。 対象読者はlaravelを既にPCにインストール済み、Linux系コマンド習得済み、PHP及びHTML/CSS/JSの基本構</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>データベース on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9/</link>
+    <description>Recent content in データベース on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 21 Oct 2021 14:44:50 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</title>
+      <link>https://noauto-nolife.com/post/startup-web-application-framework/</link>
+      <pubDate>Thu, 21 Oct 2021 14:44:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-web-application-framework/</guid>
+      <description>DjangoやLaravel、Ruby on Rails等のウェブアプリケーションフレームワーク(以下、フレームワーク)を使うことで、効率的にウェブアプリの開発ができる。 しかし、前提となる知識をおろそかにしているようでは大したものは作れないし、問題だらけのウェブアプリを知らぬ間に世に出してしまうことになるだろう。 本記事ではフレームワークを扱う際に知っておきたい知識を記す。 ネットワーク ウェブが動く仕組み ま</description>
+    </item>
+    
+    <item>
+      <title>【Django】Windowを使ってレコードの累計値を計算して出力【売上の累計表示、小計(累積)表示などに有効】</title>
+      <link>https://noauto-nolife.com/post/django-models-window/</link>
+      <pubDate>Wed, 01 Sep 2021 18:23:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-window/</guid>
+      <description>日付でソートして売上を表示するとして、その日付になるまでの累計(累積)売上金額を表示したいとする。 そういう時はWindowを使えば、累計(累積)値を表示させることができる。 ソースコード 前回の月ごとに売上を表示するコードから流用。ビューとテンプレートの処理だけ書き換える。 from django.db.models import Sum,Window,F menus = Menu.objects.annotate(accumulate=Window(Sum(&amp;quot;amount&amp;quot;), order_by=[ F(&amp;quot;date&amp;quot;).desc(),F(&amp;quot;id&amp;quot;).asc() ] ) ).values(&amp;quot;id&amp;quot;,&amp;quot;name&amp;quot;,&amp;quot;date&amp;quot;,&amp;quot;amount&amp;quot;,&amp;quot;accumulate&amp;quot;).order_by(&amp;quot;-date&amp;quot;,&amp;quot;id&amp;quot;) 累積計算時(Windowの中)のorder_byとvaluesを実行した後のorder_byは揃えなければ</description>
+    </item>
+    
+    <item>
+      <title>【Django】年、月、日単位でデータをファイリングする時はTruncを使用する【月ごとの売上、個数などの出力に有効】</title>
+      <link>https://noauto-nolife.com/post/django-models-trunc/</link>
+      <pubDate>Wed, 01 Sep 2021 17:39:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-trunc/</guid>
+      <description>ブログなどでよくある、月別アーカイブ。経理でよくある、月ごとの売上記録、年ごとの収支。そういった計算をする時、annotateとTruncを使えば1行で出力できる。 ソースコード モデルがこんな感じ。 from django.db import models class Menu(models.Model): class Meta: db_table = &amp;quot;menu&amp;quot; name = models.CharField(verbose_name=&amp;quot;メニュー名&amp;quot;,max_length=2000) date = models.DateField(verbos</description>
+    </item>
+    
+    <item>
+      <title>【Django】同一人物による工作(再生数の水増しなど)をいかにして防ぐか、方法と対策【unique_together,Recaptcha,UA,IPアドレス等】</title>
+      <link>https://noauto-nolife.com/post/django-same-user-operate-prevent/</link>
+      <pubDate>Thu, 26 Aug 2021 12:24:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-same-user-operate-prevent/</guid>
+      <description>例えば、動画サイトを運営していて、動画の再生回数を記録する機能を実装したとする。 動画の検索で、再生数の多い順に並び替えて表示する機能が既にある場合、再生回数の水増しによって、全く面白くない動画が検索の上位に表示されるなどの問題が発生する。 それだけでなく、再生回数の水増しを放置してしまうと、ランキングも荒れ果て、結果的にユーザーが離反してしまう恐れもある。(※ただし、ランキングの集計方法によってある</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQLインストールから、ユーザーとDBを作る</title>
+      <link>https://noauto-nolife.com/post/startup-postgresql/</link>
+      <pubDate>Fri, 16 Apr 2021 15:14:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-postgresql/</guid>
+      <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。 createuser --createdb --username=postgres --pwprompt [任意のユーザ</description>
+    </item>
+    
+  </channel>
+</rss>

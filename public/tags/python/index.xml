@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/python/</link>
+    <description>Recent content in Python on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Tue, 22 Jun 2021 15:12:04 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプルとリスト】</title>
+      <link>https://noauto-nolife.com/post/python-brackets/</link>
+      <pubDate>Tue, 22 Jun 2021 15:12:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-brackets/</guid>
+      <description>Djangoの公式コードを流用したりしていると、よく見かける()を使ったコード。 これはタプルである。タプルはリスト型の[]と同じであるが、書き換えが不可能であるという点でリスト型とは異なる。 タプルを定義する時、下記のような書き方をしてしまうと、文字列型として判定されてしまう。 (&amp;quot;username&amp;quot;) タプルとして扱ってもらいたいのであれば、下記のように記述する。カンマを忘れずに。 (&amp;quot;username&amp;quot;,) タプルはリストと同様に扱えるので、後から</description>
+    </item>
+    
+    <item>
+      <title>SeleniumでFirefoxブラウザのプロファイルを読み込む【Recaptcha突破、Cookie&#43;アドオン読み込み】</title>
+      <link>https://noauto-nolife.com/post/selenium-read-profile/</link>
+      <pubDate>Mon, 29 Mar 2021 08:37:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/selenium-read-profile/</guid>
+      <description>めったに使うことのないSeleniumではあるが、いざ使おうとするとかなり手間取る。 特にログイン。Django等の管理サイトでログインする際にはパスとIDを控えておけば良いが、GoogleのRecaptchaとかボット対策をしていると当然突破できない。そこで予めブラウザでログインをしておいて、そのプロファイルを読み込めば良い。 プロファイルを読み込みするコード 下記コードをコピペすれば良いだけである。</description>
+    </item>
+    
+    <item>
+      <title>DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】</title>
+      <link>https://noauto-nolife.com/post/django-sendgrid/</link>
+      <pubDate>Fri, 12 Feb 2021 17:48:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-sendgrid/</guid>
+      <description>Sendgridのパスワードを使用したメール送信が廃止され、APIを使用した2段階認証が強制されるため、ここに対策を記す。本記事はDjango(Python)を対象とした対策について解説する。 django-sendgrid-v5のインストール APIを使用するために、pipにてdjango-sendgrid-v5をインストールさせる。 pip install django-sendgrid-v5 settings.pyにて設定を施す settings.pyの</description>
+    </item>
+    
+    <item>
+      <title>DjangoやPythonにおける*argsと**kwargsとは何か</title>
+      <link>https://noauto-nolife.com/post/django-args-kwargs/</link>
+      <pubDate>Tue, 26 Jan 2021 17:07:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-args-kwargs/</guid>
+      <description>結論から言うと、*argsはキーワード未指定の引数のリスト、**kwargsはキーワードが指定された引数の辞書を手に入れるためのものである。 *argsはキーワード未指定の引数のリスト まずは、下記コードを参考にしたい。 #! /usr/bin/env python3 # -*- coding: utf-8 -*- import sys def main(name,*args): print(name) print(args) if __name__ == &amp;quot;__main__&amp;quot;: try: main(&amp;quot;Tom&amp;quot;,&amp;quot;Mike&amp;quot;,&amp;quot;Bob&amp;quot;) except KeyboardInterrupt: print(&amp;quot;\nprogram was ended.\n&amp;quot;) sys.exit() main()関数に3つの文字列の引数を与えている。&amp;quot;Tom&amp;quot;,&amp;quot;Mike&amp;quot;,&amp;quot;Bo</description>
+    </item>
+    
+  </channel>
+</rss>

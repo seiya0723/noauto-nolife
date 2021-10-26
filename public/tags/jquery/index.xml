@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jquery on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/jquery/</link>
+    <description>Recent content in Jquery on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 21 Oct 2021 07:25:39 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</title>
+      <link>https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/</link>
+      <pubDate>Thu, 21 Oct 2021 07:25:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/</guid>
+      <description>例えば、チャットサイト、掲示板サイトでユーザーが描画したイラストを投稿できる形式にしたい時。 ユーザーが手元の端末でペイントツールを起動して画像を保存して、サイトに添付して貼り付けるのはやや面倒。それだけでなく、サイト独自のレギュレーション(お題に沿ってイラストを付け加える形式、指定された色しか使ってはいけないなど)がある場合、ユーザーのペイントツールでそれを強いるのは不可能に近い。 そこで、サイト上</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】ボタン式の横スライダーを自作する【通販サイト・コンテンツ共有サイトなどに】</title>
+      <link>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</link>
+      <pubDate>Sun, 26 Sep 2021 03:09:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</guid>
+      <description>通販サイトなどでよくある。横スクロール型のスライダーを作る。slick.jsなどを使えば簡単に実現できるが、かえって複雑なので、自作した。 ソースコード HTML。jQueryを読み込み、別途JavaScriptとCSSを読み込む。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;!--jquery読み込み--&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;preview_control_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_frame&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;data_preview_content&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】HTML、CSS、JS合わせて100行以内でカルーセルを自作する【自動スライド】</title>
+      <link>https://noauto-nolife.com/post/javascript-carousel-origin/</link>
+      <pubDate>Tue, 31 Aug 2021 14:22:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-carousel-origin/</guid>
+      <description>カルーセルと言えば、slick.js等のライブラリがあるが、たかだか自動的にスライドするだけのシンプルなカルーセルをサイトの一部分に実装させるためだけにライブラリをインストールさせるのはやや大げさだ。 そこで、今回はカルーセルをjQueryを使用した上で自作する。書く必要のあるコードはHTMLが約30行、CSSが約20行、JSが約40行の合計100行足らずで実現できる。 ソースコードと解説 HTML。C</description>
+    </item>
+    
+    <item>
+      <title>FormDataをformタグではなく、オブジェクトにキーと値をセットした上でAjax送信</title>
+      <link>https://noauto-nolife.com/post/javascript-formdata-obj-set/</link>
+      <pubDate>Sat, 14 Aug 2021 11:48:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-formdata-obj-set/</guid>
+      <description>タイトルの説明。 通常、Ajaxでサーバーにリクエストを送信する時、下記のようにFormDataクラスを使用して送信する。 let form_elem = &amp;quot;#form_area&amp;quot;; let data = new FormData( $(form_elem).get(0) ); let url = $(form_elem).prop(&amp;quot;action&amp;quot;); let method = $(form_elem).prop(&amp;quot;method&amp;quot;); $.ajax({ url: url, type: method, data: data, processData: false, contentType: false, dataType: &#39;json&#39; }).done( function(data, status, xhr ) { //Done }).fail( function(xhr, status, error) { //Fail }); しかし、送信したいデータがいつもこのようにformタグで囲まれているとも限らない。 そこで、FormDataクラスに引数を入れずにオブジェクトを作り、オブジェクトにキーと値をセットしてAja</description>
+    </item>
+    
+    <item>
+      <title>jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】</title>
+      <link>https://noauto-nolife.com/post/jquery-to-javascript/</link>
+      <pubDate>Tue, 13 Apr 2021 18:32:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-to-javascript/</guid>
+      <description>jQueryに依存したコードをそのままにするのは再利用性に欠け、開発効率にも関わる。そこで、今回はjQueryのコードを適宜javascriptに書き換える。 セレクタ まずは基本のセレクタ以下のように書き換える。 var test = $(&amp;quot;.test&amp;quot;); //↓以下に書き換え var test = document.querySelectorAll(&amp;quot;.test&amp;quot;); //←全ての.textクラスの要素を抜き取る var test = document.querySelector(&amp;quot;.test&amp;quot;); //←.testクラスの1番最初の要素を抜き取る jQueryが提供するメソッドや属性などは使用できなく</description>
+    </item>
+    
+    <item>
+      <title>laravelでAjax(jQuery)を送信する【POST&#43;DELETE】</title>
+      <link>https://noauto-nolife.com/post/laravel-ajax/</link>
+      <pubDate>Thu, 04 Feb 2021 12:29:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ajax/</guid>
+      <description>タイトルの通り。laravelにAjax(jQuery)を送信する。コードはLaravelでリクエストのバリデーションを行うを元に作られている。 jQueryを読み込みCSRFトークンをAjax送信時に付せて送信させる まずAjax送信用にjQueryを読み込ませる。それからPOSTリクエストの場合、CSRF対策用のトークンもセットで送信しなければならない。故に、resources/views/bas</description>
+    </item>
+    
+    <item>
+      <title>jQueryでオートコンプリート(入力補正)を実装させる【表記ゆれ対策にも有効】</title>
+      <link>https://noauto-nolife.com/post/jquery-autocomplete/</link>
+      <pubDate>Thu, 29 Oct 2020 16:52:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-autocomplete/</guid>
+      <description>ウェブアプリを作って、ユーザーに何かを文字列を入力させる時、大抵表記ゆれが起こる。 例えば、JAと農業協同組合と農協、ラズパイとラズベリーパイとRaspberry Piとraspberry piなど。 このような表記ゆれを一度でも許すと、検索で引っかからなくなる。しかし、SELECTタグを使うと、項目が増えた時、選択に時間がかかりすぎる。 そこで、文字入力(入力補正)と選択が同時にできるオートコンプリートを</description>
+    </item>
+    
+  </channel>
+</rss>
