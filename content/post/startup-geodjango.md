@@ -35,6 +35,22 @@ Ubuntu 18.04 LTS にて動作確認済み。
 
 ## PostgreSQLのインストール
 
+<!--
+
+    # PostgreSQL
+    sudo apt -y install postgresql-12
+    sudo apt -y install postgresql-client-12
+    sudo apt -y install postgresql-client-common postgresql-common 
+    sudo apt -y install postgresql-contrib
+    sudo apt -y install pgadmin3
+    sudo apt -y install postgresql-server-dev-12
+    # PostgreSQL for Python projects
+    #sudo apt install python-psycopg2
+    sudo apt -y install python3-psycopg2
+
+-->
+
+
     # PostgreSQL
     sudo apt install postgresql-10
     sudo apt install postgresql-client-10
@@ -50,7 +66,12 @@ Ubuntu 18.04 LTS にて動作確認済み。
 ## GEOS、GDAL、PROJ4、PostGISのインストール
 
 まずGEOSから。
+<!--
 
+下記を3.9,1でインストールし直し
+
+-->
+    
     cd /usr/local/ 
     sudo mkdir geos 
     sudo chown $USER geos 
@@ -87,6 +108,12 @@ PROJ4のインストール。
 
 
 PostGISのインストール。
+
+<!--
+
+    3.0.0でインストールし直し。
+
+-->
 
     sudo apt install libxml2-dev
     cd /usr/local/
@@ -203,8 +230,10 @@ admin.pyに下記を記入
 <div class="img-center"><img src="/images/Screenshot from 2020-10-21 15-41-38.png" alt=""></div>
 
 
+<!--
 ## ソースコード
 
 以下からDL可能。ただ、管理サイトからしかアクセスできないのでまだまだ改良が必要。それからシェープファイルが重すぎるので上記リンクから別途DL必要。
 
 https://github.com/seiya0723/startup-geodjango
+-->

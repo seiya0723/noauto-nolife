@@ -7,7 +7,6 @@ categories: [ "サーバーサイド" ]
 tags: [ "django","tips","セキュリティ" ]
 ---
 
-
 Djangoで画像やファイルをアップロードする方法をまとめる。
 
 ## 流れ
@@ -21,8 +20,6 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 1. マイグレーション
 1. 開発用サーバーの立ち上げ
 
-
-
 ## 必要なライブラリのインストール
 
 今回はアップロード後のバリデーションを行うため、Pythonのサードパーティー製ライブラリとして`Pillow`と`python-magic`を使用する
@@ -30,6 +27,9 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
     pip install Pillow
     pip install python-magic
 
+Pillowは画像を保存するために必要なライブラリ。画像の加工もできる。
+
+python-magicはアップロードされたファイルのMIME値を取得するためのライブラリ。MIMEとはファイルの種類のこと。このMIMEの値をチェックすることでアップロードされたファイルがPDFなのか、MP4なのか、EXEなのかなどを知ることができる。
 
 ## settings.pyとurls.pyの追記
 
@@ -73,7 +73,6 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 
 ファイルアップロード時の保存先と公開先の指定はこれでOK
 
-
 ## models.pyでフィールドの定義
 
 今回は、画像とファイルのアップロード機能を搭載させるため、下記のようになった。
@@ -100,9 +99,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 ## forms.pyでフォームを作る
 
     from django import forms
-    
     from .models import PhotoList,DocumentList
-    
     
     class PhotoListForm(forms.ModelForm):
     
@@ -116,7 +113,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
             model   = DocumentList
             fields  = ['document']
 
-モデルを継承して作っている。forms.py内でファイルの種類までバリデーションしようと思ったが、今回はビューで行うことにした。
+モデルを継承して作る。フィールドを指定するだけでいい。
 
 ## views.pyで受け取り処理
 
@@ -188,7 +185,8 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 
 画像ファイルの保存処理は`forms.py`から継承したオブジェクトに`request.POST`と`request.FILES`を代入。バリデーションを行い、`.save()`で保存する。`media`ディレクトリ内の`photo`ディレクトリに画像が保存されている。
 
-ファイルの保存処理にはpython-magicが使用されている。MIMEタイプを調べているので、拡張子偽装にも対応可能。
+ここでファイル保存時の処理として、python-magicを使用しMIMEを判定した上で保存をしている。`ALLOWED_MIME`にはリスト型で保存したいファイルのタイプ(今回はPDF)を指定する。
+
 
 ## templatesにフォームを設置
 
@@ -228,7 +226,6 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
     </body>
     </html>
     
-
 `templates/document.html`を作る。これがファイルアップロードページ。
 
     <!DOCTYPE html>
@@ -261,9 +258,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
     </body>
     </html>
 
-
 注意するべきことは、`form`タグ内に`enctype="multipart/form-data"`を指定すること。これを指定していないと、ファイルのアップロードができない。
-
 
 ## マイグレーション
 
@@ -272,6 +267,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
     python3 manage.py makemigrations
     python3 manage.py migrate 
 
+ここで、マイグレーション時に警告([You are Trying to add a non-nullable field](/post/django-non-nullable/))が出る場合、`ImageField`及び`FileField`はDB上は文字列型扱い(格納されているのはファイルパス)なので、`blank=True,default=""`のフィールドオプションを追加するか、1度限りのデフォルト値として任意の文字列を指定すると良いだろう。
 
 ## 開発用サーバーの立ち上げ
 

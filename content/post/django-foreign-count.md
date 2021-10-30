@@ -7,7 +7,6 @@ categories: [ "サーバーサイド" ]
 tags: [ "django","tips","上級者向け" ]
 ---
 
-
 例えば、Djangoで掲示板サイトを作り、投稿した内容に対してリプライできる機能を付けたとする。そのリプライ数を一覧表示時に合わせて表示させる時、どうする？
 
 本記事では、上記のように一対多のリレーションが構築されている環境下で、多に該当するデータ数を計算して表示させる方法を解説する。
@@ -81,4 +80,10 @@ tags: [ "django","tips","上級者向け" ]
 こういったことは全てDjangoの公式ドキュメントにも書かれてあるので参考にしたい。
 
 https://docs.djangoproject.com/en/3.1/topics/db/aggregation/#generating-aggregates-for-each-item-in-a-queryset
+
+### 注意:複数の外部キーに対応したフィールドの個数を取得する時
+
+このやり方では個数のカウントがおかしくなる。そこで、`distinct=True`とする。これで重複してカウントされることがなくなる。詳しくは下記を参照。
+
+[Djangoで複数の外部キーに対応したフィールドの個数をカウントする【annotate(Count)+DISTINCT】](/post/django-foreign-count-distinct/)
 
