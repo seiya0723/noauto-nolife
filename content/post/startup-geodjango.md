@@ -66,10 +66,9 @@ Ubuntu 18.04 LTS にて動作確認済み。
 ## GEOS、GDAL、PROJ4、PostGISのインストール
 
 まずGEOSから。
+
 <!--
-
 下記を3.9,1でインストールし直し
-
 -->
     
     cd /usr/local/ 
@@ -110,9 +109,7 @@ PROJ4のインストール。
 PostGISのインストール。
 
 <!--
-
     3.0.0でインストールし直し。
-
 -->
 
     sudo apt install libxml2-dev
