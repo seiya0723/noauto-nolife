@@ -55,7 +55,7 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
                     query &= Q(name__contains=word)
     
                 #(4)作ったクエリを実行
-                data        = Product.objects.filter(query)
+                data    = Product.objects.filter(query)
             else:
                 data    = Product.objects.all()
     
@@ -87,8 +87,6 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
 https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
 
 https://docs.djangoproject.com/en/3.1/topics/db/queries/#complex-lookups-with-q
-
-こういう込み入った事は公式ドキュメント読めば確実。それ以外は何も要らない。
 
 ## ソースコード
 

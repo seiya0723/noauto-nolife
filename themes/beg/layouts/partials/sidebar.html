@@ -13,7 +13,8 @@
     <section>
         <div class="sidebar_panel_title">Search</div>
         <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
-        <div id="search_result"></div>
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
     </section>
 
     {{ range $key, $value := .Site.Taxonomies }}

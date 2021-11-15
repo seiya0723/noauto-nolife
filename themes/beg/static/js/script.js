@@ -1,7 +1,10 @@
 window.addEventListener("load" , function (){
 
     let search_elem  = document.querySelector("#search");
-    search_elem.addEventListener("keydown", function(e){ if( e.keyCode === 13 ){ search(this.value); } });
+    //search_elem.addEventListener("keydown", function(e){ if( e.keyCode === 13 ){ search(this.value); } });
+
+    if (search_elem.value){ search(search_elem.value); }
+    search_elem.addEventListener("input", function(){ search(this.value); });
 
 });
 
@@ -12,9 +15,11 @@ function search(words){
 
     let words_list  = wl.filter( w => w !== "" );
     let result_elem = document.querySelector("#search_result");
+    let notice_elem = document.querySelector("#search_notice");
 
     if( words_list.length === 0 ){ 
         result_elem.innerHTML = "";
+        notice_elem.innerHTML = "";
         return false;
     }
 
@@ -37,7 +42,6 @@ function search(words){
         old_articles    = new_articles;
     }
 
-    
     //レンダリング
     let result  = "";
     for (let w of old_articles){
@@ -45,4 +49,11 @@ function search(words){
     }
 
     result_elem.innerHTML   = result;
+
+    //検索ヒット件数を表示
+    let amount      = old_articles.length;
+    if (amount > 0){ notice_elem.innerHTML   = String(amount) + "件ヒットしました"; }
+    else{ notice_elem.innerHTML   = "見つかりませんでした"; }
+
+
 }
