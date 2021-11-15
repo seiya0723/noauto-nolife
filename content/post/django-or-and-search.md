@@ -82,11 +82,24 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
 
 最後に(4)で作ったクエリを実行する。.filter()メソッドでOK
 
+
+## 結論
+
+ちなみに、実行されるクエリを確認したいのであれば
+
+    print(Product.objects.filter(query).query)
+
+このように`.query`を末尾に追加して、print文で表示される。詳しくは下記を参照。
+
+[【Django】実行されるクエリを確認する【.query】](/post/django-models-query/)
+
+
 ## 参考文献
 
 https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
 
 https://docs.djangoproject.com/en/3.1/topics/db/queries/#complex-lookups-with-q
+
 
 ## ソースコード
 
