@@ -1,6 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-osm-leaflet-mapping/", "title" : "DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る" }, 
 { "link": "/post/canvas-game-mdn-tutorial/", "title" : "MDNのcanvasゲーム(ブロック崩し)の仕組み解説とコード最適化【jQueryを使用してさらに短く】" }, 
-{ "link": "/post/django-osm-leaflet-mapping/", "title" : "Djangoでオープンストリートマップ(OSM)とleaflet.jsを使ってマッピングアプリを作る" }, 
+{ "link": "/post/django-or-and-search/", "title" : "Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】" }, 
 { "link": "/post/django-message-framework/", "title" : "DjangoのMessageFrameworkで投稿とエラーをフロント側に表示する" }, 
 { "link": "/post/vim-comment-settings/", "title" : "Vimのコメントの自動補完を無効化させる【JavaScriptやCSS、シェルスクリプトでコメントアウトした後、Enter押すと自動で出てくるアレ】" }, 
 { "link": "/post/django-request-get-and-post/", "title" : "【Django】formタグを使ってHTTPリクエストのGETメソッド、POSTメソッドを送信する" }, 
@@ -105,7 +106,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-m2m-through/", "title" : "【django】ManyToManyFieldでフィールドオプションthroughを指定、中間テーブルを詳細に定義する【登録日時など】" }, 
 { "link": "/post/virtualbox-ubuntu-install/", "title" : "VirtualBoxにUbuntuをインストールする" }, 
 { "link": "/post/ubuntu1804-settings/", "title" : "【保存版】Ubuntu18.04をインストールした後に真っ先にやる16の設定" }, 
-{ "link": "/post/django-or-and-search/", "title" : "Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】" }, 
 { "link": "/post/django-custom-template-tags-vs-before-view-calc/", "title" : "【Django】views.pyの事前処理 VS (埋め込み型)カスタムテンプレートタグ・フィルタ" }, 
 { "link": "/post/js-video-controller/", "title" : "video.jsを実装させ、コントローラをカスタムする【Brightcove Player】" }, 
 { "link": "/post/django-allauth-custom-urls/", "title" : "【Django】allauthのurls.pyをカスタムする【新規アカウント作成、パスワード変更処理の無効化など】" }, 
