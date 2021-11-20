@@ -1,5 +1,5 @@
 ---
-title: "Djangoで開発中、データベースへ初期データを入力する【loaddata】"
+title: "Djangoで開発中、データベースへ初期データを入力する【バックアップしたデータをloaddataコマンドでリストア】"
 date: 2020-10-24T18:12:29+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -7,13 +7,13 @@ categories: [ "サーバーサイド" ]
 tags: [ "django","tips","json" ]
 ---
 
-
 Djangoで開発中にテストしたい時、デプロイ後に初期データを突っ込んで即公開したい時、どうしてもデータの入力作業が出てくる。
 
 Seleniumで入力作業を自動化する方法もあるが、わざわざそんなことをしなくても初期データを突っ込む方法がある。それが
 
-    python3 manage.py loaddata fixture/data.json
+    python3 manage.py loaddata bbs/fixture/data.json
 
+このようにアプリディレクトリ内にfixtureディレクトリを作り、jsonのデータを指定して、リストアする
 
 ## models.pyに基づいたjsonファイルを作る
 

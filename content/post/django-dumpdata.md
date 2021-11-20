@@ -7,8 +7,7 @@ categories: [ "サーバーサイド" ]
 tags: [ "django","tips","json" ]
 ---
 
-
-以前、[Djangoで開発中に初期データを入力する方法]( /post/django-loaddata/ )をしたが、Djangoではその逆も可能。
+以前、[Djangoで開発中に初期データを入力する方法](/post/django-loaddata/)をしたが、Djangoではその逆も可能。
 
 つまり、DBに既に格納されているデータをダンプ(バックアップ)する事ができる。それがこれ
 
@@ -35,6 +34,6 @@ json形式でダンプされ、そのままでは改行が施されていない�
     python3 manage.py loaddata [アプリ名]/fixture/data.json
 
 
-【関連記事】[Djangoで開発中、データベースへ初期データを入力する【loaddata】](http://localhost:43210/post/django-loaddata/)
+【関連記事】[Djangoで開発中、データベースへ初期データを入力する【loaddata】](/post/django-loaddata/)
 
 
