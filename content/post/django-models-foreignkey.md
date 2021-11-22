@@ -17,7 +17,6 @@ tags: [ "Django","初心者向け" ]
 
 <div class="img-center"><img src="/images/Screenshot from 2021-10-29 21-45-13.png" alt=""></div>
 
-
 プロ野球チームは複数の選手を保有する。一方で、選手はどこかしらのチーム1つに所属する。間違ってもカープと巨人の両方に所属することはできない。
 
 この場合、球団側は1、選手側は多である。
@@ -88,11 +87,13 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 
 新たに`Category`モデルクラスを作る。そして、既存の`Topic`モデルクラスに`ForeignKey`フィールドを追加する。`ForeignKey`フィールドにはフィールドオプションとして、`on_delete`は必須なので指定する。今回指定した`models.CASCADE`はトピックに指定したカテゴリが削除された時、トピックもセットで削除すると言う意味。前項で説明したとおり、削除させずに残したりすることもできる。
 
-そして、これをマイグレーションする時、警告が出る。null禁止である`category`にはフィールドオプションの`default`がない。この対策は3通りある。
+そして、これをマイグレーションする時、警告が出る。null禁止である`category`にはフィールドオプションの`default`がない。この矛盾の対策は3通りある。
 
 - 【対策1】categoryフィールドにnull=Trueとblank=Trueのフィールドオプションを指定、未分類を許可する
 - 【対策2】migrationsディレクトリとdb.sqlite3を削除し、一からマイグレーションファイルを作り直し
 - 【対策3】migrationsディレクトリとdb.sqlite3を削除できない場合、1度限りのデフォルト値を入れる
+
+参照元:[DjangoでYou are Trying to add a non-nullable fieldと表示されたときの対策【makemigrations】](/post/django-non-nullable/)
 
 #### 【対策1】categoryフィールドにnull=Trueとblank=Trueのフィールドオプションを指定、未分類を許可する
 
@@ -190,9 +191,7 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     </body>
     </html>
 
-
 1対多で1つのカテゴリを選択する時は、このようにselectタグを使用すると良い。`option`タグの`value`属性にはidを指定しておく。
-
 
 後は、カテゴリを管理サイトから追加できる形式に仕立てる。admin.pyに下記を記入。
 
@@ -203,7 +202,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     admin.site.register(Topic)
 
 詳しくは[Djangoで管理サイトを作る【admin.py】](/post/django-admin/)を参照。
-    
 
 動かすとこうなる。
 
@@ -248,7 +246,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
         def __str__(self):
             return self.comment
-
 
 `Reply`モデルクラスが新たに作られた。この`Reply`モデルクラスの`ForeignKey`は`Topic`に繋がっている。つまり、リプライ対象の`Topic`のidを指定するのだ。
 
@@ -328,8 +325,7 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
     reply   = BbsReplyView.as_view()
 
-
-新しくBbsReplyViewを作った。ここで返信のフォームの表示、返信の投稿処理を行う。
+新しく`BbsReplyView`を作った。ここで返信のフォームの表示、返信の投稿処理を行う。
 
 引数としてpkを受け取っている。ビュークラスのメソッドに引数を指定する方法は、[削除と編集について解説している記事](/post/django-models-delete-and-edit/)を確認すると良いだろう。
 
@@ -402,7 +398,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 
 ついでに、`templates/bbs/index.html`に返信のリンクを載せる。
 
-
     <!DOCTYPE html>
     <html lang="ja">
     <head>
@@ -458,4 +453,8 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 また、1対多のリレーションを組むことで、トピック一覧表示時にコメント数を表示させることもできる。詳しくは下記記事を参照。
 
 [【Django】外部キーに対応したデータの個数をカウントして表示【リプライ・コメント数の表示に有効】【annotate+Count】](/post/django-foreign-count/)
+
+## ソースコード
+
+https://github.com/seiya0723/startup_bbs_foreignkey
 
