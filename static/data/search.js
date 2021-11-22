@@ -1,6 +1,8 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
+{ "link": "/post/django-loaddata/", "title" : "Djangoで開発中、データベースへ初期データを入力する【バックアップしたデータをloaddataコマンドでリストア】" }, 
+{ "link": "/post/django-dumpdata/", "title" : "DjangoでDBに格納したデータをダンプ(バックアップ)させる【dumpdata】" }, 
 { "link": "/post/django-osm-leaflet-mapping/", "title" : "DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る" }, 
-{ "link": "/post/canvas-game-mdn-tutorial/", "title" : "MDNのcanvasゲーム(ブロック崩し)の仕組み解説とコード最適化【jQueryを使用してさらに短く】" }, 
 { "link": "/post/django-or-and-search/", "title" : "Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】" }, 
 { "link": "/post/django-message-framework/", "title" : "DjangoのMessageFrameworkで投稿とエラーをフロント側に表示する" }, 
 { "link": "/post/vim-comment-settings/", "title" : "Vimのコメントの自動補完を無効化させる【JavaScriptやCSS、シェルスクリプトでコメントアウトした後、Enter押すと自動で出てくるアレ】" }, 
@@ -9,7 +11,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-models-do-not-set-table-name/", "title" : "【Django】複数のアプリを作る場合、models.pyのモデルクラスにテーブル名を指定するべきではない【重複問題】" }, 
 { "link": "/post/django-shell/", "title" : "Djangoのインタラクティブシェルを使う【python3 manage.py shell】" }, 
 { "link": "/post/startup-geodjango/", "title" : "【地理空間情報】GeoDjangoの実装方法【PostGIS+PostgreSQL+国土地理院データ】" }, 
-{ "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
 { "link": "/post/pycharm-config/", "title" : "Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法" }, 
 { "link": "/post/django-templates-language/", "title" : "【Django】開発を始める上で最初に覚えておいたほうがよい Django Templates Language(DTL)" }, 
 { "link": "/post/django-models-foreignkey/", "title" : "Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】" }, 
@@ -164,7 +165,6 @@ const SEARCH_LIST = [
 { "link": "/post/drf-ajax-fileupload/", "title" : "DRF(Django REST Framework)+Ajax(jQuery)で画像とファイルをアップロードする方法" }, 
 { "link": "/post/django-templates-include/", "title" : "Django Templates Language(DTL)でincludeを実行する時に引数も与える" }, 
 { "link": "/post/django-id-to-uuid/", "title" : "Djangoでデフォルト数値型のid(主キー)からUUID型にする【データ移行】" }, 
-{ "link": "/post/django-loaddata/", "title" : "Djangoで開発中、データベースへ初期データを入力する【loaddata】" }, 
 { "link": "/post/django-m2m-restful/", "title" : "Djangoで多対多のリレーションを含むデータをAjax(jQuery)+DRFで送信させる" }, 
 { "link": "/post/django-many-to-many/", "title" : "Djangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】" }, 
 { "link": "/post/django-migrate-error/", "title" : "Djangoのマイグレーションのエラー時の対処法" }, 
@@ -172,5 +172,4 @@ const SEARCH_LIST = [
 { "link": "/post/django-scraping/", "title" : "DjangoにPythonスクレイピングを実装した簡易検索エンジンの作り方【BeautifulSoup】" }, 
 { "link": "/post/django-ajax-restful/", "title" : "【Restful】DjangoでAjax(jQuery)を実装する方法【Django REST Framework使用】" }, 
 { "link": "/post/django-comma/", "title" : "Djangoで数値のカンマ区切りを実装させる" }, 
-{ "link": "/post/django-dumpdata/", "title" : "DjangoでDBに格納したデータをダンプ(バックアップ)させる【dumpdata】" }, 
 ];

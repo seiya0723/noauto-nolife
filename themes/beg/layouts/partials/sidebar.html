@@ -43,6 +43,18 @@
         {{ end }}
     </section>
 
+    {{/*
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Pickup</div>
+        <!--ここのPickUpの値がTrueであれば、表示するようにしたい。-->
+        {{ range .Site.RegularPages }}
+            {{ if .Title }}
+            <a class="news_link" href="{{ .Permalink }}">{{ .Title }}</a>
+            {{ end }}
+        {{ end }}
+    </section>
+    */}}
+
     <section class="sidebar_panel">
         <div class="sidebar_panel_title">Ad</div>
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"

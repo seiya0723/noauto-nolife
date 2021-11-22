@@ -22,6 +22,7 @@
 
 	<div class="article_body">{{ .Content }}</div>
 
+
 	<footer class="article_footer">
 		<header><div class="panel_title">スポンサーリンク</div></header>
 
@@ -38,6 +39,15 @@
              (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
 	</footer>
+
+    <div class="article_share_area">
+        <h2>シェアボタン</h2>
+        <a class="article_share_link link_twitter" target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/share?url={{ .URL | absURL }}&text={{ .Title }}">Twitter</a>
+        <a class="article_share_link link_line" target="_blank" rel="nofollow noopener noreferrer" href="https://social-plugins.line.me/lineit/share?url={{ .URL | absURL }}">LINEで送る</a>
+        <a class="article_share_link link_facebook" target="_blank" rel="nofollow noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u={{ .URL | absURL }}">Facebook</a>
+        <a class="article_share_link link_hatena" target="_blank" rel="nofollow noopener noreferrer" href="https://b.hatena.ne.jp/add?mode=confirm&url={{ .URL | absURL }}&title={{ .Title }}">はてなブログ</a>
+    </div>
+
 
 	</div>
 
