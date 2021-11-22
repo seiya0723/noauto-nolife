@@ -1,6 +1,6 @@
 ---
 title: "Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】"
-date: 2021-10-27T16:34:32+09:00
+date: 2021-11-21T16:34:32+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
