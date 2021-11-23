@@ -2,7 +2,7 @@
 title: "【Django】Ajaxを使ってOSMとLeaflet.jsでマーカーを配置させる"
 date: 2021-11-23T08:12:55+09:00
 draft: false
-thumbnail: "images/django.jpg"
+thumbnail: "images/Screenshot from 2021-11-23 09-48-56.png"
 categories: [ "サーバーサイド" ]
 tags: [ "django","ajax","マッピング","ウェブデザイン" ]
 ---
