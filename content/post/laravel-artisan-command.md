@@ -1,5 +1,5 @@
 ---
-title: "Laravelのartisanコマンドのまとめ"
+title: "Laravelのartisanコマンドのまとめ【開発用サーバー立ち上げ、コントローラやマイグレーションファイル等の作成、ルーティングの確認などに】"
 date: 2021-02-01T08:07:45+09:00
 draft: false
 thumbnail: "images/laravel.jpg"
@@ -71,7 +71,6 @@ laravelのartisanコマンドをよく使うと思われる順にまとめる。
 
 
 ## laravelのバージョン確認
-
 
     php artisan --version 
 

@@ -1,5 +1,5 @@
 ---
-title: "laravelで開発中、ログを表示させる"
+title: "laravelで開発中、ログを表示させる【エラー箇所の確認・デバッグ作業に】"
 date: 2021-02-01T10:23:55+09:00
 draft: false
 thumbnail: "images/laravel.jpg"

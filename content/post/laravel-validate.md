@@ -1,5 +1,5 @@
 ---
-title: "Laravelでリクエストのバリデーションを行う"
+title: "【Request】Laravelでリクエストのバリデーションを行う【不適切なデータのチェックに】"
 date: 2021-02-03T08:14:44+09:00
 draft: false
 thumbnail: "images/laravel.jpg"

@@ -1,5 +1,5 @@
 ---
-title: "Laravelのプロジェクト名を書き換える"
+title: "Laravelのプロジェクト名を書き換える【設定に依存していないのであれば、普通にディレクトリ名を書き換えるだけでOK】"
 date: 2021-04-19T08:37:27+09:00
 draft: false
 thumbnail: "images/laravel.jpg"
