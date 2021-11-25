@@ -1,5 +1,5 @@
 ---
-title: "Laravelの全体像、ファイル・ディレクトリごとの役割と関係性を俯瞰する"
+title: "Laravelの全体像、ファイル・ディレクトリごとの役割と関係性を俯瞰する【各コンポーネントごとに解説】"
 date: 2021-04-13T16:05:29+09:00
 draft: false
 thumbnail: "images/laravel.jpg"

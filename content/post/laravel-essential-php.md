@@ -1,12 +1,11 @@
 ---
-title: "Laravelに必要なPHP構文【if,for,function,class】"
-date: 2021-04-13T17:46:27+09:00
+title: "Laravelに必要なPHP構文【if,for,function,class,型変換、配列操作など】"
+date: 2021-11-13T17:46:27+09:00
 draft: false
 thumbnail: "images/laravel.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "laravel","php","初心者向け" ]
 ---
-
 
 Laravelはフレームワークである。すでにコードが書かれており、それを読みながら追記していく必要がある。
 
@@ -42,7 +41,6 @@ Laravel実践では、コントローラがクライアントから受け取っ�
         $string .= " " . $m; 
     }
     
-    
     echo $string;
     
 
@@ -50,14 +48,14 @@ Laravel実践では、コントローラがクライアントから受け取っ�
 
 再利用する処理は関数にまとめる。
 
-<?php
+    <?php
+    
+    function rect($width,$height){
+        return $width*$height;
+    }
+    
+    echo rect(4,5);
 
-
-function rect($width,$height){
-    return $width*$height;
-}
-
-echo rect(4,5);
 
 ## class
 
@@ -109,6 +107,69 @@ echo rect(4,5);
 属性とメソッドを定義するときはpublicをつける。オブジェクトから属性値、メソッドを参照するときは`->`を使う。
 
 
+## 型変換と型の確認
+
+型の確認にはgettypeを使う。
+
+    <?php
+    
+    $string = "test";
+    $number = 1;
+
+    echo gettype($string);
+    echo gettype($number);
+
+型の変換はこのようにする。
+
+    <?php
+    
+    $string = (Integer) "2";
+    $number = (string) 1;
+
+    echo gettype($string);
+    echo gettype($number);
+
+このように()を使い、中に型の指定をすることで変換ができる。
+
+
+## 配列操作
+
+    $students   = ["Tom","Bob","Mike"];
+
+    echo $students;
+    echo $students[1];
+
+添字なしだと全て表示、1を指定すると、Bobが出てくる。
+
+連想配列はこうなる。
+
+    $score["Tom"]   = 69;
+    $score["Bob"]   = 89;
+    $score["Mike"]  = 62;
+
+    echo $score;
+    echo $score["Bob"];
+
+数値ではなく、キーワードで指定をした上で値を手に入れる。
+
+配列の長さはcount()で測る。
+
+    echo count($students);
+    echo count($score);
+
+forループを使用して、配列の長さを指定するのではなく、foreachを使う。
+
+    foreach ($score as $value){
+        \Log::debug($value);
+    }
+
+    foreach ($score as $key => $value){
+        \Log::debug($key);
+        \Log::debug($value);
+    }
+
+キーも表示させたい場合はこのように書く。この方法はオブジェクトに対しても有効である。
+
 ## 結論
 
 こうして並べてみると、PHPの構文はRubyやPythonとかと違って独特。
@@ -122,6 +183,4 @@ echo rect(4,5);
 すぐに手を動かして覚えたい場合はこちらを。
 
 [Laravelビギナーが30分で掲示板アプリを作る方法](/post/startup-laravel/)
-
-
 

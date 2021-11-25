@@ -1,5 +1,5 @@
 ---
-title: "laravelでCRUD簡易掲示板を作る【Restful】"
+title: "初心者でもlaravelを使い、45分でCRUD簡易掲示板を作る【Restful対応】"
 date: 2021-02-01T13:11:30+09:00
 draft: false
 thumbnail: "images/laravel.jpg"
@@ -64,13 +64,35 @@ tags: [ "laravel","Restful","初心者向け","php" ]
 
 `resource()`メソッドを使用するだけでアクションとURIの対応付けをまとめてやってくれる。そのため`resource()`メソッドの第二引数に`@index`等のアクション名を指定する必要はない。
 
+ちなみに、この--resourceを実行することで、まとめて書かれたルーティング情報、分解して記述したい場合は、下記記事に倣って、このように書く。
+
+[Laravelで--resourceで作ったコントローラのルーティングを解体する](/post/laravel-to-resource/)
+
+
+    #Route::resource('/topics', 'TopicsController');
+    
+    # ↑と↓は等価
+    
+    Route::get('/topics', 'TopicsController@index')->name('topics.index');
+    Route::get('/topics/create', 'TopicsController@create')->name('topics.create');
+    Route::post('/topics', 'TopicsController@store')->name('topics.store');
+    Route::get('/topics/{id}', 'TopicsController@show')->name('topics.show');
+    Route::get('/topics/{id}/edit', 'TopicsController@edit')->name('topics.edit');
+    Route::put('/topics/{id}', 'TopicsController@update')->name('topics.update');
+    Route::delete('/topics/{id}', 'TopicsController@destroy')->name('topics.destroy');
+
+これは、VScodeのスニペットにも登録しておくと即変換ができて便利で良いだろう。VScodeのスニペット登録の方法は下記記事を参照。
+
+[VisualStudioCode(VScode)を使う前にやっておきたい設定と覚えておくと良い操作方法](/post/vscode-config/)
+
+
 ## モデル定義とマイグレーション実行
 
 下記コマンドを実行して、`Topic`モデルを作る。`--migration`コマンドでマイグレーションファイルも同時に作る。
 
     php artisan make:model Topic --migration
 
-まず、モデルの定義から。`apps/Topic.php`を下記のように編集する。
+まず、モデルの定義から。`app/Topic.php`を下記のように編集する。
 
     <?php
 
@@ -190,7 +212,7 @@ tags: [ "laravel","Restful","初心者向け","php" ]
 
 Restful化に対応させるため、作る必要のあるビューが5つある。ただ、今回はテンプレートの継承機能を使うので、1ファイル当たりのコード行数は30行程度。
 
-まず、`resource/views/base.blade.php`を作る。この`base`を継承して、残り4つのファイルを作る。
+まず、`resources/views/base.blade.php`を作る。この`base`を継承して、残り4つのファイルを作る。
 
     <!DOCTYPE html>
     <html lang="ja">
@@ -212,7 +234,7 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 
 ディレクティブの`@yield([任意の文字列])`を記述することで、その部分は継承したビューが自由に内容を追加することができる。例えば、上記`base`を継承した`index`が`@yield("main")`の部分にトップページである旨を表示させることが可能になる。
 
-`resource/views/index.blade.php`は下記のように記述する。
+`resources/views/index.blade.php`は下記のように記述する。
 
     @extends("base")
     
@@ -247,7 +269,7 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 削除ボタンの`method_field("DELETE")`はフォーム送信時HTTPリクエストのDELETEメソッドを使用してリクエストを送る指定をしている。
 
 
-続いて、`resource/views/create.blade.php`を作る。こちらも`base`を継承して作っている。
+続いて、`resources/views/create.blade.php`を作る。こちらも`base`を継承して作っている。
 
     @extends("base")
     
@@ -273,7 +295,7 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 
 ここでバリデーションに失敗したときのメッセージを表示させている。
 
-続いて、`resource/views/show.blade.php`を作る。こちらも`base`を継承して作っている。
+続いて、`resources/views/show.blade.php`を作る。こちらも`base`を継承して作っている。
 
     @extends("base")
     
@@ -293,7 +315,7 @@ Restful化に対応させるため、作る必要のあるビューが5つある
 
 `show`は個別ページを表示する。
 
-続いて、`resource/views/edit.blade.php`を作る。こちらも`base`を継承して作っている。
+続いて、`resources/views/edit.blade.php`を作る。こちらも`base`を継承して作っている。
 
     @extends("base")
     

@@ -1,5 +1,5 @@
 ---
-title: "Djangoで管理サイトを作る【admin.py】"
+title: "Djangoで管理サイトを作り、投稿されたデータの読み・書き・編集・削除を行う【admin.py】"
 date: 2021-10-05T07:34:27+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -54,7 +54,6 @@ Djangoではデフォルトで管理サイトというものが用意されて�
 <div class="img-center"><img src="/images/Screenshot from 2021-10-05 07-47-51.png" alt="Topicモデルクラスのデータが編集、追加等できる"></div>
 
 後は自由に追加や編集、削除、閲覧などができる。
-
 
 ## 結論
 
