@@ -83,6 +83,7 @@ IPアドレスを記録するので、`ipAddress()`を指定。後から追加�
 
 そこで、出てくるのが、`Request`の`prepareForValidation()`バリデーションをする前に、指定したクライアントから送られたデータを書き換えたり、追加したりする事ができる。
 
+
     <?php
     
     namespace App\Http\Requests;
@@ -99,12 +100,22 @@ IPアドレスを記録するので、`ipAddress()`を指定。後から追加�
         public function rules()
         {
             return [
+                'name'      => 'required|max:15',
+                'content'   => 'required|max:2000',
+                'ip'        => 'required',
+            ];
+        }
+    
+        public function messages() {
+            return [
                 'name.required'     => '名前を入力してください',
                 'name.max'          => '名前は15文字でお願いします。',
                 'content.required'  => 'コメントを入力してください',
                 'content.max'       => 'コメントは2000文字でお願いします。',
             ];
         }
+    
+    
     
         public function getIp(){
             foreach (array('HTTP_CLIENT_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_FORWARDED', 'HTTP_X_CLUSTER_CLIENT_IP', 'HTTP_FORWARDED_FOR', 'HTTP_FORWARDED', 'REMOTE_ADDR') as $key){
@@ -127,7 +138,15 @@ IPアドレスを記録するので、`ipAddress()`を指定。後から追加�
                 "ip" => $this->getIp(),
             ]);
         }
+    
+    
+    
     }
+
+
+
+
+
 
 IPアドレスの取得に関しては、[Stackoverflowからそのままコードを流用](https://stackoverflow.com/questions/33268683/how-to-get-client-ip-address-in-laravel-5)させていただいた。Laravel 5.x系以降であれば問題なく動作する模様。
 
