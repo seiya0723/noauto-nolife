@@ -257,5 +257,5 @@ ajaxを動作させるためには、JsonResponseを実行して辞書型を返�
 
 ## ソースコード
 
-
+https://github.com/seiya0723/map_bbs_ajax
 
