@@ -12,7 +12,6 @@ tags: [ "laravel","初心者向け","tips" ]
 
 なお、本記事は[Laravelで検索とページネーションを両立させる【ANDとOR検索も】](/post/laravel-search-paginate/)からコードを流用している。
 
-
 ## 流れ
 
 1. テーブルに画像パス格納用カラムを追加してマイグレーション
@@ -173,6 +172,35 @@ tags: [ "laravel","初心者向け","tips" ]
 続いて、`$request->file("img")`が`null`ではない場合。即ち、画像がアップロードされている場合画像の保存処理をする。`store()`メソッドは指定した引数の場所にファイルを保存することができる。ファイル名は保存する時にランダムな文字列を指定してくれるので重複の心配は無い。画像保存の後、保存先のパスが返ってくるので、`$filename`に入れる。そのファイル名(`basename($filename)`)を`$topic->img`に入れる。
 
 このように、コントローラでは画像を保存するため、これまでのように単に値をDBに記録するだけのモデルのファサード(`Topic::create($request->all())`)を使うことはできない点に注意。
+
+### 最適解
+
+allメソッドを使用することで、カラムが増えていったとしても対処できる。下記コードは先ほどのコントローラと等価。
+
+    /* 省略 */
+
+    use App\Http\Requests\CreateTopicRequest;
+
+    /* 省略 */
+
+    public function store(CreateTopicRequest $request)
+    {   
+        #リクエストを使ってバリデーションデータを全て入れる
+        $topic          = new Topic($request->all());
+
+        #画像があればストレージへ保存処理を行う。保存したファイルパスも記録する。
+        if ( $request->file("img") !== null ){
+            $topic->img = basename($request->file("img")->store("public/topics"));
+        }
+
+        #DBの保存処理
+        \Log::debug($topic);
+        $topic->save();
+
+        return redirect(route("topics.index"));
+    }
+
+これでモデルのカラムが増えていったとしても対処できる。保存場所は予め定数として定義しておくのが無難と思われる。
 
 ## ビューでフォームと画像を表示させる
 
