@@ -2,7 +2,7 @@
 title: "【Leaflet.js】地図をクリックしてマーカーを配置した時、古いマーカーを削除する"
 date: 2021-12-02T14:43:40+09:00
 draft: false
-thumbnail: "images/js.jpg"
+thumbnail: "images/leaflet.jpg"
 categories: [ "フロントサイド" ]
 tags: [ "leaflet.js","JavaScript" ]
 ---

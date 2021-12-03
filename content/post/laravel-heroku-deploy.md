@@ -77,7 +77,7 @@ Laravelのプロジェクトのディレクトリにて、Procfileを作るた�
 この構文でできる。そのため、以下のコマンドを順次実行していく。
 
     heroku config:set APP_DEBUG=false
-    heroku config:set APP_URL=[デプロイ先のサイトのURL]
+    heroku config:set APP_URL=[デプロイ先のサイトのドメイン名 ( Herokuのアプリ名が test-laravel なら、指定するのは test-laravel.herokuapp.com ) ]
     heroku config:set APP_KEY=[この部分は後述]
     heroku config:set DB_CONNECTION=pgsql
     heroku config:set DB_HOST=[Hostを入れる]

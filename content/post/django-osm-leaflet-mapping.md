@@ -4,7 +4,7 @@ date: 2021-11-15T17:57:22+09:00
 draft: false
 thumbnail: "images/Screenshot from 2021-11-16 08-47-12.png"
 categories: [ "サーバーサイド" ]
-tags: [ "django","マッピング","ウェブデザイン" ]
+tags: [ "django","マッピング","ウェブデザイン","leaflet.js" ]
 ---
 
 <span style="color:red;font-size:0.9rem;font-weight:bold;">※この方法はDjangoでなくても実現できる。</span>
