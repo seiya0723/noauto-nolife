@@ -1,5 +1,5 @@
 ---
-title: "【Django】テンプレートの継承(extends)を行い、共通する部分をひとつのHTMLにまとめる【簡易掲示板に折りたたみ式サイドバーを設置する】"
+title: "【Django】簡易掲示板に折りたたみ式サイドバーを実装させる【extends】"
 date: 2021-12-04T10:29:01+09:00
 draft: false
 thumbnail: "images/django.jpg"
