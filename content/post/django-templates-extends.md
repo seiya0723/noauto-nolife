@@ -2,9 +2,9 @@
 title: "【Django】簡易掲示板に折りたたみ式サイドバーを実装させる【extends】"
 date: 2021-12-04T10:29:01+09:00
 draft: false
-thumbnail: "images/django.jpg"
+thumbnail: "images/Screenshot from 2021-12-06 14-24-13.png"
 categories: [ "サーバーサイド" ]
-tags: [ "Django" ]
+tags: [ "Django","ウェブデザイン" ]
 ---
 
 テンプレートの継承を使うことで、複数のページに共通するHTMLをひとまとめにすることができる。
@@ -231,14 +231,11 @@ tags: [ "Django" ]
 
 `l_sidebar.html`で指定したテンプレートタグの`block`を指定してその中を書き込むことができる。
 
+<div class="img-center"><img src="/images/Screenshot from 2021-12-06 14-24-13.png" alt=""></div>
 
 
 ## ソースコード
 
-
 https://github.com/seiya0723/django_templates_extends
-
-
-
 
 
