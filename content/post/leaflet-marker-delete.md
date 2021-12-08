@@ -4,7 +4,7 @@ date: 2021-12-02T14:43:40+09:00
 draft: false
 thumbnail: "images/leaflet.jpg"
 categories: [ "フロントサイド" ]
-tags: [ "leaflet.js","JavaScript" ]
+tags: [ "leaflet.js","JavaScript","マッピング" ]
 ---
 
 以前紹介したLeaflet.js+OSMでマッピングアプリを作る記事

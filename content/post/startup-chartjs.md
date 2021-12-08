@@ -1,7 +1,7 @@
 ---
 title: "Chart.jsでグラフを描画する【JavaScript】"
 date: 2021-12-06T16:26:07+09:00
-draft: false
+draft: true
 thumbnail: "images/js.jpg"
 categories: [ "フロントサイド" ]
 tags: [ "javascript","ウェブデザイン","スタートアップシリーズ" ]

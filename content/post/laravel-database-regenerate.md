@@ -1,7 +1,7 @@
 ---
 title: "【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド+-exec評価式+alias】"
 date: 2021-09-18T08:42:15+09:00
-draft: false
+draft: true
 thumbnail: "images/laravel.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Laravel","tips","システム管理","bash","ubuntu" ]
@@ -20,4 +20,17 @@ tags: [ "Laravel","tips","システム管理","bash","ubuntu" ]
 2つ目は多分ありえないと思うが、カレントディレクトリの`database`ディレクトリの中にLaravelのプロジェクトを複数入れると、その中にあるdatabase.sqliteが全て削除されてしまう点である。
 
 削除と言うデリケートなコマンドを扱う以上、注意が必要。一応、インタラクティブシェル(削除するか確認する形式)にしたほうが良いかも知れない。
+
+
+
+<!--
+
+php artisan migrate:fresh
+
+これを実行すれば一発でテーブル削除とマイグレーションが実行される。
+
+予めシーダーを用意しておけば、データの復旧も簡単にできる。
+
+-->
+
 
