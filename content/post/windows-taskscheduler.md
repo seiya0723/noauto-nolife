@@ -56,14 +56,16 @@ Windowsキーを押して、『tasks』と入力すると出てくる
     test.py
     
     #開始オプション
-    C:\Users\[ユーザー名]\PycharmProjects\pythonProject\venv
+    C:\Users\[ユーザー名]\PycharmProjects\pythonProject\
 
+
+`test.py`は`C:\Users\[ユーザー名]\PycharmProjects\pythonProject\`の中に保存する。
 
 確認画面が出てくるので、完了を押す。
 
 <div class="img-center"><img src="/images/Screenshot from 2021-12-09 16-12-36.png" alt=""></div>
 
-すると、一覧に先ほど作ったタスクが登録される
+すると、一覧に先ほど作ったタスクが登録される。もしこの時点でテストで実行したい場合は、右クリックから実行を選ぶ。このテストで正常に動作していれば、定刻で作動する。
 
 <div class="img-center"><img src="/images/Screenshot from 2021-12-09 16-13-16.png" alt=""></div>
 
