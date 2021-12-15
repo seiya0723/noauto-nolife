@@ -37,3 +37,22 @@ json形式でダンプされ、そのままでは改行が施されていない�
 【関連記事】[Djangoで開発中、データベースへ初期データを入力する【loaddata】](/post/django-loaddata/)
 
 
+## 【注意】Windowsでdumpdataでバックアップしたjsonファイルのデータを、loaddataでリストアする場合【文字コード問題】
+
+Windowsでloaddataとdumpdataを使って、データのバックアップとリストアをする場合、下記のコマンドで実現できるが、
+
+    python manage.py dumpdata [アプリ名] > [アプリ名]/fixture/data.json
+    python manage.py loaddata [アプリ名]/fixture/data.json
+
+`loaddata`の実行に失敗する。
+
+Windowsではターミナルに出力される文字コードがUTF-8ではないため、dumpdataコマンドを実行してjsonファイルを作る際、UTF-8ではない文字コードで保存されてしまう。
+
+当然、そのjsonファイルをloaddataで読み込もうとしても文字コードエラーが出てしまうのだ。
+
+これを解決するには、上記のdumpdataのコマンドででバックアップを取った後、別のjsonファイルを作り、内容をコピペして保存。`loaddata`を実行して読み込みするファイルは別のjsonファイルの名前を指定する。
+
+このようにWindowsの場合に限り、dumpdataコマンドで作った後、手動で別ファイルに書き直す手間(UTF-8に変換する手間)が発生してしまうのだ。
+
+そのため、このコマンドの再現はLinux系OSもしくはMacOS系で行うと良いだろう。それらのOSはデフォルトでターミナルの文字コードはUTF-8としており、Windowsとは違って文字コードによる問題は発生し得ないからである。
+
