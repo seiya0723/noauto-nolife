@@ -1,5 +1,5 @@
 ---
-title: "初心者でもlaravelを使い、45分でCRUD簡易掲示板を作る【Restful対応】"
+title: "初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】"
 date: 2021-02-01T13:11:30+09:00
 draft: false
 thumbnail: "images/laravel.jpg"
@@ -7,11 +7,9 @@ categories: [ "サーバーサイド" ]
 tags: [ "laravel","Restful","初心者向け","php" ]
 ---
 
-
 リハビリがてらlaravelでCRUDに対応した簡易掲示板を作る。この記事の手順に沿ってやれば、45分もあれば作れる。
 
 本記事ではlaravel 7.X系を使用している。
-
 
 ## 流れ
 
@@ -380,8 +378,16 @@ Restful化に対応させるため、作る必要のあるビューが5つある
         }
         public function show($id)
         {
+            $context            = []; 
+            $context["topics"]  = Topic::where("id",$id)->get();
+
+            #HACK:↑と↓は等価。
+            #contextに仕込むモデルオブジェクトが増えるたび、context定義時の行数が増えるので、混乱を防ぐために↑のやり方のほうが良いかもしれない。
+
+            /*            
             $topics     = Topic::where("id",$id)->get();
             $context    = [ "topics" => $topics ];
+            */
 
             return view("show",$context);
         }
@@ -394,17 +400,34 @@ Restful化に対応させるため、作る必要のあるビューが5つある
         }
         public function update(CreateTopicRequest $request, $id)
         {
+
+            #編集処理のベストプラクティス
+            Topic::find($id)->update($request->all());
+
+            #HACK:このやり方ではモデルフィールドが増えると対処しきれない。
+            /*
             $topic  = Topic::find($id);
             $topic->name    = $request->name;
             $topic->content = $request->content;
             $topic->save();
+            */
 
             return redirect(route("topics.index"));
         }
         public function destroy($id)
         {
+
+            #削除のベストプラクティス
+            Topic::destroy($id);
+
+            #HACK:もっと短く書ける
+            #Topic::find($id)->delete();
+
+            #HACK:deleteメソッドはつなげ書いても良い。
+            /*
             $topic  = Topic::find($id);
             $topic->delete();
+            */
 
             return redirect(route("topics.index"));
         }

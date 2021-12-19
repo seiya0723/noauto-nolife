@@ -4,7 +4,7 @@ date: 2021-12-17T11:24:38+09:00
 draft: false
 thumbnail: "images/laravel.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "laravel","Heroku","デプロイ" ]
+tags: [ "laravel","Heroku","デプロイ","ubuntu" ]
 ---
 
 ## 経緯
@@ -106,7 +106,14 @@ Enterキーを押して続行。完了したら、次のコマンドを実行し
     php8.1-dba             php8.1-imagick         php8.1-mongodb         php8.1-raphf           php8.1-uopz            php8.1-zstd
     php8.1-decimal         php8.1-imap            php8.1-msgpack         php8.1-readline        php8.1-uploadprogress  
     php8.1-dev             php8.1-inotify         php8.1-mysql           php8.1-redis           php8.1-uuid            
-これでPHP8.1に対応した拡張パッケージをインストールする事ができる。
+
+これでPHP8.1に対応した拡張パッケージをインストールする事ができる。一応、開発時にはsqlite3を使用するので、下記コマンドを実行して、PHP側からsqlite3が使えるようにしておいたほうが良いだろう。
+
+    sudo apt install php8.1-sqlite3
+
+これでLaravel8.xでもsqlite3にマイグレーションできる。もしインストールされていなかったら、Sqlite3へのマイグレーション時に下記のようなエラーが出る。
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 15-58-42.png" alt=""></div>
 
 
 ## 再度Laravelプロジェクトを生成してHerokuにデプロイしてみる

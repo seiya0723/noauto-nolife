@@ -7,13 +7,11 @@ categories: [ "サーバーサイド" ]
 tags: [ "laravel","tips","初心者向け" ]
 ---
 
-
 タイトルの通り。laravelにてAND検索とOR検索を実装させつつ、ページネーションも両立させる。コードは[laravelでCRUD簡易掲示板を作る【Restful】](/post/laravel-crud-restful/)から流用している。
 
 ## まずはAND検索とOR検索を実装させる
 
 流れ的には、スペース区切りのキーワードを送信させ、それをコントロール側で区切り、クエリをビルドする。クエリをビルドする時、AND検索指定であれば、`where()`の追加、OR検索指定であれば`orwhere()`の追加を行う。
-
 
     public function index(Request $request)
     {   
