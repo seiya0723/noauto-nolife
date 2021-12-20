@@ -18,14 +18,14 @@ tags: [ "laravel","Heroku","デプロイ","cloudinary" ]
 
 ## 流れ
 
-1. composerを使用してcloudderをインストール
+1. composerを使用してcloudinaryをインストール
 1. config/app.phpの書き換え
 1. vendor/cloudinary-labs/cloudinary-laravel/config/cloudinary.php を /config/cloudinary.php にコピー
 1. .envにてCloudinaryのAPIキー等を入力
 1. コントローラ、ビューを書き換え
 1. デプロイ
 
-## composerを使用してcloudderをインストール
+## composerを使用してcloudinaryをインストール
 
     composer require cloudinary-labs/cloudinary-laravel
 
