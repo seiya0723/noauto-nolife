@@ -138,12 +138,18 @@ Topicに対して、Commentを投稿できるようにする。そのために�
     public function comment(CreateTopicRequest $request, $id)
     {
 
+        Comment::create(array_merge( $request->all(), ["topic_id"=>$id] ));
+
+        #↑と↓は等価
+
+        /*
         $comment  = new Comment;
 
         $comment->name      = $request->name;
         $comment->content   = $request->content;
         $comment->topic_id  = $id;
         $comment->save();
+        */
 
         \Log::debug("投稿完了");
 
