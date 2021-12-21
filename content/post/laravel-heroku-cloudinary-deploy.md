@@ -49,13 +49,13 @@ tags: [ "laravel","Heroku","デプロイ","cloudinary" ]
 
     php artisan vendor:publish --provider="CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider" --tag="cloudinary-laravel-config"
 
-## .envにてCloudinaryのAPIキー等を入力
+## CloudinaryのAPIキーをHerokuの環境変数へ入力
 
-    CLOUDINARY_API_KEY=
-    CLOUDINARY_API_SECRET=
-    CLOUDINARY_CLOUD_NAME=
+    heroku config:set CLOUDINARY_API_KEY=
+    heroku config:set CLOUDINARY_API_SECRET=
+    heroku config:set CLOUDINARY_CLOUD_NAME=
 
-CloudinaryのダッシュボードにかかれてあるAPIキー等を右辺に書き、.envを保存する。
+CloudinaryのダッシュボードにかかれてあるAPIキー等を右辺に書き、順次コマンドを実行する。CloudinaryのAPIキーは.envに書いても`.gitignore`に指定されているので効果はない。
 
 ## コントローラ、ビューを書き換え
 
