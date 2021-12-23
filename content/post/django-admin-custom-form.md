@@ -1,5 +1,5 @@
 ---
-title: "Djangoの管理サイトのフォームをカスタムする【forms.py】"
+title: "Djangoの管理サイト(admin)のフォームをforms.pyを使用してカスタムする【文字列入力フォームをtextareaタグで表現】"
 date: 2021-07-31T15:57:27+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -17,9 +17,7 @@ tags: [ "Django","上級者向け" ]
 
 改行もできなければ全体を確認することも困難な管理画面のフォームを使いたいと思う人はいない。だからこそ、ここでフォームをカスタムさせ、使いやすくさせる。
 
-
 ## forms.pyに管理画面で使う専用のフォームクラスを定義
-
 
 まずは管理画面で使う専用のフォームクラスを定義する。
 
@@ -33,7 +31,6 @@ tags: [ "Django","上級者向け" ]
             model   = Topic
             fields  = [ "title","comment","dt" ]
     
-
         comment     = forms.CharField(  widget  = forms.Textarea( attrs={ "maxlength":str(Topic.comment.field.max_length), } ),
                                         label   = Topic.comment.field.verbose_name 
                                         )
@@ -70,7 +67,6 @@ after
 
 <div class="img-center"><img src="/images/Screenshot from 2021-08-01 16-47-57.png" alt="テキストエリアが表示された。"></div>
 
-
 ## 結論
 
 これで管理サイトがさらに使いやすくなった。
@@ -78,3 +74,5 @@ after
 maxlength属性とlabelはモデルのフィールドオプションから参照する仕掛けにしておけば、モデルが書き換わっても即対応できる。
 
 ちなみに、今回のフォームクラスは`list_editable`で表示されるフォームとは関連していないので注意。
+
+
