@@ -1,15 +1,15 @@
 ---
-title: "【Django】年月検索と、年別、月別アーカイブを表示させる"
+title: "【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】"
 date: 2021-12-25T20:57:33+09:00
 draft: false
 thumbnail: "images/Screenshot from 2021-12-25 21-39-54.png"
 categories: [ "サーバーサイド" ]
-tags: [ "django" ]
+tags: [ "django","上級者向け" ]
 ---
 
 Djangoで月別アーカイブと年月計算を実装させる
 
-元となったコードは40分Django
+元となったコードは[40分Django](/post/startup-django/)にモデルへ投稿日を記録するフィールド(`dt`)を追加している。
 
 ## forms.py
 
@@ -28,8 +28,11 @@ Djangoで月別アーカイブと年月計算を実装させる
     class YearMonthForm(forms.Form):
         year    = forms.IntegerField()
         month   = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)])
-    
 
+
+モデルを継承しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。
+
+    
 ## views.py
 
 年月別アーカイブのリストを表示させる。
@@ -105,6 +108,9 @@ Djangoで月別アーカイブと年月計算を実装させる
     index   = BbsView.as_view()
 
 
+先ほどのフォームクラスのYearMonthFormで年月をバリデーション。正しく年月指定されていれば年月で検索をする。
+
+年月のリスト作成は最古から最新に向かって1ヶ月ずつずらす。それをリストにアペンドしていき、できあがった年月のリストをテンプレートでループさせる。
 
 ## index.html
 
@@ -145,7 +151,6 @@ Djangoで月別アーカイブと年月計算を実装させる
     </body>
     </html>
     
-    
 ## 動かすとこうなる。
 
 selectタグで表現することも可能だが、あえてリンクタグを箇条書きにさせた。
@@ -153,6 +158,12 @@ selectタグで表現することも可能だが、あえてリンクタグを�
 <div class="img-center"><img src="/images/Screenshot from 2021-12-25 21-39-54.png" alt="年月別表示"></div>
 
 Pythonの場合、pandasを使えば楽に実装できるが、他言語でも実現できるようあえてアルゴリズムを残した。
+
+## 結論
+
+複雑なアルゴリズムはともかく、年月別に集計してリンクを作りたいだけであれば、下記の記事でも実現はできる。
+
+[【Django】年、月、日単位でデータをファイリングする時はTruncを使用する【月ごとの売上、個数などの出力に有効】](/post/django-models-trunc/)
 
 ## ソースコード
 
