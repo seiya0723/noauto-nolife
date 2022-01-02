@@ -1,9 +1,9 @@
 ---
 title: "CentOS 7 をインストールした直後にやる設定"
-date: 2021-12-27T09:34:39+09:00
+date: 2022-02-27T09:34:39+09:00
 draft: false
 thumbnail: "images/centos.jpg"
-categories: [ "サーバーサイド" ]
+categories: [ "インフラ" ]
 tags: [ "centos","システム管理","スタートアップシリーズ" ]
 ---
 

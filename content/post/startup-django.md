@@ -76,6 +76,20 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
     LANGUAGE_CODE = 'ja'
     TIME_ZONE = 'Asia/Tokyo'
 
+### 【補足】Django 3.x以降の書き方
+
+Django 3.x以降から`os`モジュールではなく`pathlib`モジュールが使用されるようになった。そこで、その書き方に適した`TEMPLATES`の`DIRS`に改める。
+
+    #変更前
+    'DIRS': [],
+
+    #変更後
+    'DIRS': [ BASE_DIR / "templates" ],
+
+
+つまり、下記のように冒頭で定義された`BASE_DIR`にプロジェクトのディレクトリまでのフルパスが格納されているので、`/`で区切り、以降のパスを文字列で追加する。上記のリスト型の場合、通常のリスト型の値と同様に`,`で区切ることができる。
+
+    BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 ## urls.pyでURLの指定(5分)
