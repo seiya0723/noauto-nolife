@@ -39,7 +39,7 @@ tags: [ "ポートフォリオ","私について","django" ]
 
 <div class="img-center"><img src="/images/Screenshot from 2022-01-02 14-14-16.png" alt=""></div>
 
-### Ver 8.0
+### Ver 0.8
 
 - 一般公開
 
