@@ -1,5 +1,5 @@
 ---
-title: "【Django】Cookieをサーバーサイドで操作をする"
+title: "【Django】Cookieをサーバーサイドで操作する"
 date: 2022-01-03T16:32:07+09:00
 draft: false
 thumbnail: "images/django.jpg"
