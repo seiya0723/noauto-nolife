@@ -23,6 +23,8 @@ https://devcenter.heroku.com/ja/articles/heroku-cli
 
 ここからインストールする。herokuコマンドを実行して、デプロイ先のサーバーでマイグレーション等の操作を行うためにある。
 
+ちなみに、Windowsの場合、HerokuCLIをインストール直後にherokuコマンドを実行しようとしても、コマンドとして認識されない。そんな時は、PCを再起動するとherokuコマンドが使えるようになる。
+
 ## Heroku側の設定
 
 予め[Herokuのアカウント](https://signup.heroku.com/jp)を作っておく。クレジットカード不要で必要なものはメールアドレスだけ。

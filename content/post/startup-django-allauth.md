@@ -89,18 +89,30 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
     ACCOUNT_EMAIL_REQUIRED      = True
     
     
+    #===============SendgridAPIを使う場合この方法は通用しない。======================
+    """
     #ここにメール送信設定を入力する(Sendgridを使用する場合)
     EMAIL_BACKEND   = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST      = 'smtp.sendgrid.net'
     EMAIL_USE_TLS   = True
     EMAIL_PORT      = 587
     
-    
     #【超重要】メールのパスワードとメールアドレスの入力後、GitHubへのプッシュはダメ!!絶対!!不正アクセスされるよ!!
-    """
     EMAIL_HOST_USER     = ''
     EMAIL_HOST_PASSWORD = ''
     """
+    #===============SendgridAPIを使う場合この方法は通用しない。======================
+
+
+    #【加筆】2021年ぐらいにSendgridはユーザー名とパスワードによるメール送信を拒否するようになったため、上記のやり方は通用しない。下記にAPIキーを指定する
+    #詳細:https://noauto-nolife.com/post/django-sendgrid/
+
+    EMAIL_BACKEND       = "sendgrid_backend.SendgridBackend"
+    DEFAULT_FROM_EMAIL  = "ここにデフォルトの送信元メールアドレスを指定"
+
+    SENDGRID_API_KEY    = "ここにsendgridのAPIkeyを記述する"
+
+
     #DEBUGがTrueのとき、メールの内容は全て端末に表示させる
     if DEBUG:
         EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
