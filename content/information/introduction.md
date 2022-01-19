@@ -22,4 +22,5 @@ tags: [ "私について" ]
 |言語|HTML,CSS,JS(jQuery,Vue.js),Python(Django,Flask),PHP(laravel),その他(C,COBOL,JAVAなど)|
 |その他技術|Apache,Nginx,MySQL,PostgreSQL,Ubuntu,Raspberry Pi,Heroku,AWS(EC2,RDS,S3),その他(debian,CentOSなど)|
 |やっている仕事|ウェブサイト・ウェブアプリ(業務用)の開発・保守・運用、PCの修理・改造、プログラミング・システム開発講師、技術記事の寄稿|
+|免責事項|本ブログサイトに書かれている内容は、完全性・正当性等を保証する物は一切ありません。コードの実行は自己責任でお願いします。|
 
