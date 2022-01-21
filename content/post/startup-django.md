@@ -48,10 +48,6 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
 ## settings.pyの書き換え(5分)
 
-冒頭に下記を追加。バージョンによってはすでに追加されている場合もある。
-
-    import os
-
 `INSTALLED_APPS`の最後に`'bbs.apps.BbsConfig',`を追加。`bbs`ディレクトリ内にある`apps.py`の`BbsConfig`クラスを読み込むという意味。これを忘れるとマイグレーションが反映されない問題が起こるので注意。
 
     INSTALLED_APPS  = [
@@ -62,13 +58,42 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
         'bbs.apps.BbsConfig',
     ]
 
-`TEMPLATES`の`DIRS`に下記を追加。プロジェクト直下の`templates`ディレクトリを`TEMPLATES`として設定するという意味。
+`TEMPLATES`の`DIRS`にテンプレートのパスを追加。プロジェクト直下の`templates`ディレクトリをレンダリング対象のHTMLを格納するテンプレートとして扱うという意味。
 
     #変更前
-    'DIRS': [],
+    TEMPLATES = [ 
+        {   
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },  
+    ]
+
 
     #変更後
-    'DIRS': [ os.path.join(BASE_DIR,"templates") ],
+    TEMPLATES = [ 
+        {   
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [ BASE_DIR / "templates" ],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                ],
+            },
+        },  
+    ]
 
 
 `LANGUAGE_CODE`、`TIME_ZONE`を下記に変更。日本時間で日本語を指定。
@@ -76,20 +101,21 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
     LANGUAGE_CODE = 'ja'
     TIME_ZONE = 'Asia/Tokyo'
 
-### 【補足】Django 3.x以降の書き方
 
-Django 3.x以降から`os`モジュールではなく`pathlib`モジュールが使用されるようになった。そこで、その書き方に適した`TEMPLATES`の`DIRS`に改める。
+### 【補足】Django 2.x以前のパスの書き方
 
-    #変更前
-    'DIRS': [],
+Django 2.x以前ではosモジュールを使用する形式だったため、下記のように記述する。
 
-    #変更後
+    # 3.x以降の書き方
     'DIRS': [ BASE_DIR / "templates" ],
 
+    # 2.x以前の書き方
+    'DIRS': [ os.path.join(BASE_DIR,"templates") ],
 
-つまり、下記のように冒頭で定義された`BASE_DIR`にプロジェクトのディレクトリまでのフルパスが格納されているので、`/`で区切り、以降のパスを文字列で追加する。上記のリスト型の場合、通常のリスト型の値と同様に`,`で区切ることができる。
+3.x以降で使用されている、`pathlib`モジュールの場合、下記のように冒頭で定義された`BASE_DIR`にプロジェクトのディレクトリまでのフルパスが格納されているので、`/`で区切り、以降のパスを文字列で追加する。
 
     BASE_DIR = Path(__file__).resolve().parent.parent
+    BASE_DIR / "templates" #←これでプロジェクトディレクトリ直下のtemplatesディレクトリという意味になる。
 
 
 ## urls.pyでURLの指定(5分)
@@ -130,7 +156,6 @@ Django 3.x以降から`os`モジュールではなく`pathlib`モジュールが
             return render(request,"bbs/index.html")
     
     index   = BbsView.as_view()
-
 
 上記`views.py`はGET文を受け取ったら、`templates/bbs/index.html`のレンダリングをするという意味。`urls.py`から呼び出される`views.index`は`BbsView.as_view()`、即ち`BbsView`の処理のことである。
 
@@ -189,26 +214,50 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
     
     class Topic(models.Model):
     
+        comment     = models.CharField(verbose_name="コメント",max_length=2000)
+
+    
+このモデルをマイグレーション(後述)することで、DBへテーブルが作られる。DBはプロジェクト直下の`db.sqlite3`というファイル。このDB設定は`settings.py`のDATABASEから確認できる。
+
+このモデルをマイグレーションして作られるテーブルのテーブル名は`bbs_topic`、そのテーブルの中に文字列型のデータを格納するフィールド、即ち`models.CharField()`の`comment`を定義する。
+
+テーブルの主キーは数値型かつオートインクリメントの`id`が、`models.Model`を継承した時点で付与されている。だから特別な理由(数値型ではない主キーを指定したいなど)を除き、あえて`id`まで定義する必要はない。
+
+### 【補足1】テーブル名を明示的に指定するには`db_table`を書く。
+
+テーブル名は自動的に`[アプリ名]_[モデルクラス名(小文字)]`になるので、指定する必要はないが、あえて指定することもできる。
+
+    from django.db import models
+    
+    class Topic(models.Model):
+    
         class Meta:
             db_table = "topic"
+    
+        comment     = models.CharField(verbose_name="コメント",max_length=2000)
+
+
+ただし、このように明示的にテーブル名を指定する場合は、テーブル名の重複問題にも配慮する必要がある。
+
+詳しくは『[【Django】複数のアプリを作る場合、models.pyのモデルクラスにテーブル名を指定するべきではない【重複問題】](/post/django-models-do-not-set-table-name/)』を参考に。
+
+### 【補足2】Topic object (1) などと表示される場合は、strメソッドを追加する。
+
+マイグレーション後の話になるが、データを投稿してさあ中身を`print()`で出力してみようとすると、`Topic object (1)`などと表示され、投稿内容がわからない事がある。
+
+    from django.db import models
+    
+    class Topic(models.Model):
     
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
     
         def __str__(self):
             return self.comment
 
-テーブル名は`topic`、そのテーブルの中に文字列型のデータを格納するフィールド、即ち`models.CharField()`の`comment`を定義する。
 
-テーブルの主キーは数値型かつオートインクリメントの`id`が、`models.Model`を継承した時点で付与されている。だから特別な理由(数値型ではない主キーを指定したいなど)を除き、あえて`id`まで定義する必要はない。
+そういう場合、上記のようにstrメソッドをセットする。こうすることで投稿されたコメントが`print()`で出力され、どんなデータなのかわかりやすくなる。
 
-### 【補足その1】`db_table` は指定しなくてもよい
-
-今回は`db_table`を指定して、明示的にDBに作られるテーブル名を指定したが、実は`db_table`は指定しなくても自動的に命名してくれる。
-
-命名規則は、`[アプリ名]_[モデルクラス名(小文字)]`になるので、本件であれば、`bbs_topic`と名付けてくれる。次項のマイグレーションを実行後、SQLiteから`.table`コマンドを実行して確認すると良いだろう。
-
-詳しくは『[【Django】複数のアプリを作る場合、models.pyのモデルクラスにテーブル名を指定するべきではない【重複問題】](/post/django-models-do-not-set-table-name/)』を参考に。
-
+ちなみに、このstrメソッドの指定がないと、idの数値が表示される。例えばidが5のデータであれば、`Topic object (5)`となる。
 
 ## マイグレーション実行(2分)
 
