@@ -37,11 +37,33 @@ tags: [ "ポートフォリオ","私について","django" ]
 
 ## 更新履歴
 
-<div class="img-center"><img src="/images/Screenshot from 2022-01-02 14-14-16.png" alt=""></div>
 
-### Ver 0.8
+### 2022年1月2日 Ver 0.8 
 
 - 一般公開
+
+
+
+
+## スクリーンショット
+
+### トップページ
+
+<div class="img-center"><img src="/images/Screenshot from 2022-01-02 14-14-16.png" alt=""></div>
+
+### 動画ページ
+
+<div class="img-center"><img src="/images/Screenshot 2022-01-22 at 17-55-47 Element Tube.png" alt=""></div>
+
+### ランキングページ
+
+<div class="img-center"><img src="/images/Screenshot 2022-01-22 at 17-52-49 Element Tube.png" alt=""></div>
+
+### マイページ
+
+<div class="img-center"><img src="/images/Screenshot 2022-01-22 at 17-52-18 Element Tube.png" alt=""></div>
+
+
 
 ## ソースコード
 
