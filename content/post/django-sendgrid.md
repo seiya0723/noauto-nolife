@@ -15,7 +15,6 @@ APIを使用するために、pipにて`django-sendgrid-v5`をインストール
 
     pip install django-sendgrid-v5
 
-
 ## settings.pyにて設定を施す
 
 settings.pyの任意の場所に下記のコードを記述する。
@@ -27,9 +26,35 @@ settings.pyの任意の場所に下記のコードを記述する。
 
 これで[Django-allauthのメール認証](/post/startup-django-allauth/)も動く。
 
+## Djangoでメール送信をする
+
+先の項目をsettings.pyに格納し、例えば、viewsであれば下記のようにすればIndexViewにGETメソッドがリクエストされるたび、メールが送信される仕組みになる。
+
+    from django.shortcuts import render
+    from django.views import View
+
+
+    from django.core.mail import send_mail
+
+    class IndexView(View):
+    
+        def get(self, request, *args, **kwargs):
+    
+            subject = "ここに件名を入れる"
+            message = "ここに本文を入れる"
+    
+            from_email = huga@gmail.com
+            recipient_list = [ "hoge@gmail.com" ]
+            send_mail(subject, message, from_email, recipient_list)
+    
+            return render(request,"bbs/index.html")
+    
+    index   = IndexView.as_view()
+
+
 ## 素のPythonに実装する方法
 
-素のPythonにSendgridのAPIを実装するには`sendgrid`ライブラリをインストールする。
+Djangoではなく、素のPythonにSendgridのAPIを実装するには`sendgrid`ライブラリをインストールする。
 
     pip install sendgrid
 
