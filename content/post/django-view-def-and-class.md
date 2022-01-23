@@ -27,7 +27,6 @@ tags: [ "django","tips" ]
 
     from django.shortcuts import render,redirect
     
-    from django.views import View
     from .models import Topic
     from .forms import TopicForm
     
@@ -58,7 +57,7 @@ tags: [ "django","tips" ]
     from .models import Topic
     from .forms import TopicForm
     
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, *args, **kwargs):
     
@@ -76,7 +75,7 @@ tags: [ "django","tips" ]
     
             return redirect("bbs:index")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
 
 クラスベースのビューでは`.as_view()`を実行して、`urls.py`から呼び出せる形式にしなければならない。
 
@@ -86,7 +85,7 @@ tags: [ "django","tips" ]
 
 単純にページを表示させるだけであれば、TemplateViewを使用すれば良い。下記のようにcontextを追加させることもできる。
 
-    from django.shortcuts import render,redirect
+    from django.shortcuts import redirect
     from .models import Topic
     
     from django.views.generic import TemplateView
@@ -105,7 +104,7 @@ tags: [ "django","tips" ]
 
 しかし、これだけでは、POSTメソッドを受け付けてくれない。だから下記のようにIndexViewクラスにpostメソッドを追加する。これで投稿が実現できる。
 
-    from django.shortcuts import render,redirect
+    from django.shortcuts import redirect
     from .models import Topic
     
     from django.views.generic import TemplateView
@@ -136,6 +135,7 @@ tags: [ "django","tips" ]
 
 もし、条件が揃っていれば、単にモデルのデータを表示させるだけのページを作りたい場合、下記で済む。
 
+    from .models import Topic
     from django.views.generic import ListView
     
     class IndexView(ListView):
@@ -145,6 +145,7 @@ tags: [ "django","tips" ]
 
 ただし、大抵そうはならない。40分Djangoは投稿機能もあるし、テンプレートも`topic/topic_list.html`も作られていないので明示的に指定する必要がある。コンテキスト名も違うので、全て手動で指定しなければならない。
 
+    from .models import Topic
     from django.views.generic import ListView
     
     class IndexView(ListView):
@@ -176,6 +177,49 @@ tags: [ "django","tips" ]
 
 通常の`View`を使用して、それで短く完結しそうな内容であれば、`TemplateView`もしくは`ListView`等を使用していくのが妥当である。
 
+### クラスベースのビュー(DetailView)
+
+DetailViewは指定したモデルの内、1つ取り出して表示させる。これはurls.pyにて呼び出す時に引数を与えなければならない。
+
+    from django.urls import path
+    from . import views
+    
+    app_name    = "bbs"
+    urlpatterns = [
+        path('<int:pk>/', views.index, name="index"),
+    ]
+
+
+レンダリング対象のHTMLは`bbs/topic_detail.html`であるため事前に用意しておく必要がある。
+
+    from .models import Topic
+    from django.views.generic import DetailView
+    
+    class IndexView(DetailView):
+        model           = Topic
+    
+    index   = IndexView.as_view()
+
+メソッドやコンテキストのオーバーライドなどは前項のListViewと同様。こちらもViewで前もって作った上でこのDetailViewで足りるのであれば使う程度にとどめておいたほうが良いだろう。
+
+ちなみに、上記は下記と等価。
+
+    from django.shortcuts import render
+    
+    from django.views import View
+    from .models import Topic
+    
+    class IndexView(View):
+    
+        def get(self, request, pk, *args, **kwargs):
+    
+            context             = {}
+            context["objects"]  = Topic.objects.filter(id=pk).first()
+    
+            return render(request,"bbs/topic_detail.html",context)
+    
+    index   = IndexView.as_view()
+
 ## クラスベースのビューと関数ベースのビューの違い
 
 ### クラスベースのビューは継承が使える、関数ベースのビューは継承が使えない
@@ -197,7 +241,7 @@ tags: [ "django","tips" ]
 
         return context
     
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, *args, **kwargs):
             context = context()
@@ -213,7 +257,7 @@ tags: [ "django","tips" ]
     
             return redirect("bbs:index")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
 
 
 しかし、context関数が返却する内容は、実行するビューによっては異なる可能性も考えられる。例えば、特定ページではニュースだけでなく、閲覧しているページのコンテンツのカテゴリ一覧を集計して表示するとか。
@@ -271,7 +315,7 @@ DjangoRestFrameworkでも例外ではなく、関数ベースのビューの場�
 
 クラスベースのビューの場合、下記のように、メソッドの引数に指定する。
 
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, pk, *args, **kwargs):
     
@@ -289,7 +333,7 @@ DjangoRestFrameworkでも例外ではなく、関数ベースのビューの場�
     
             return redirect("bbs:index")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
 
 
 関数ベースのビューの場合、関数ベースのビューそのものに引数を入れる。
@@ -314,7 +358,7 @@ DjangoRestFrameworkでも例外ではなく、関数ベースのビューの場�
     
 書き換える場所が二箇所であるクラスベースのビューが一見、面倒なように見えるが、これはkwargsを使えば良いだろう。下記の場合でも問題なく動く。
 
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, *args, **kwargs):
     
@@ -332,7 +376,7 @@ DjangoRestFrameworkでも例外ではなく、関数ベースのビューの場�
     
             return redirect("bbs:index")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
 
 
 
