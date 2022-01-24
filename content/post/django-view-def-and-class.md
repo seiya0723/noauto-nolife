@@ -177,6 +177,9 @@ tags: [ "django","tips" ]
 
 通常の`View`を使用して、それで短く完結しそうな内容であれば、`TemplateView`もしくは`ListView`等を使用していくのが妥当である。
 
+参照元:https://docs.djangoproject.com/en/4.0/ref/class-based-views/generic-display/#listview
+
+
 ### クラスベースのビュー(DetailView)
 
 DetailViewは指定したモデルの内、1つ取り出して表示させる。これはurls.pyにて呼び出す時に引数を与えなければならない。
@@ -188,7 +191,6 @@ DetailViewは指定したモデルの内、1つ取り出して表示させる。
     urlpatterns = [
         path('<int:pk>/', views.index, name="index"),
     ]
-
 
 レンダリング対象のHTMLは`bbs/topic_detail.html`であるため事前に用意しておく必要がある。
 
@@ -214,11 +216,14 @@ DetailViewは指定したモデルの内、1つ取り出して表示させる。
         def get(self, request, pk, *args, **kwargs):
     
             context             = {}
-            context["objects"]  = Topic.objects.filter(id=pk).first()
+            context["object"]   = Topic.objects.filter(id=pk).first()
     
             return render(request,"bbs/topic_detail.html",context)
     
     index   = IndexView.as_view()
+
+参照元:https://docs.djangoproject.com/en/4.0/ref/class-based-views/generic-display/#detailview
+
 
 ## クラスベースのビューと関数ベースのビューの違い
 
