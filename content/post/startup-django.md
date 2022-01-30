@@ -149,15 +149,15 @@ Django 2.x以前ではosモジュールを使用する形式だったため、�
     from django.shortcuts import render
     from django.views import View
     
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, *args, **kwargs):
     
             return render(request,"bbs/index.html")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
 
-上記`views.py`はGET文を受け取ったら、`templates/bbs/index.html`のレンダリングをするという意味。`urls.py`から呼び出される`views.index`は`BbsView.as_view()`、即ち`BbsView`の処理のことである。
+上記`views.py`はGET文を受け取ったら、`templates/bbs/index.html`のレンダリングをするという意味。`urls.py`から呼び出される`views.index`は`IndexView.as_view()`、即ち`IndexView`の処理のことである。
 
 `render()`にはレンダリング対象のHTMLを指定する。とは言え、`templates/bbs/index.html`はまだ存在しないので次の項目で作成する。
 
@@ -281,7 +281,7 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
     from django.views import View
     from .models import Topic
 
-    class BbsView(View):
+    class IndexView(View):
 
         def get(self, request, *args, **kwargs):
 
@@ -297,7 +297,7 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 
             return redirect("bbs:index")
 
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
 
 `models.py`の中にある`Topic`クラスを`import`する。これでDBへデータの読み書きができるようになる。
 
