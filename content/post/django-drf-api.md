@@ -46,7 +46,7 @@ Serializerクラスのオブジェクトを返却することで、簡単にAPI�
             topics      = Topic.objects.all()
     
             #TopicSerializerを経由して、JSON形式に変換。モデルオブジェクト複数であればmany=Trueも指定する。
-            serializer  = TopicSerializer(data=topics, many=True)
+            serializer  = TopicSerializer(instance=topics, many=True)
     
             #ステータスコードは下記URLから選ぶ
             #https://www.django-rest-framework.org/api-guide/status-codes/
