@@ -116,6 +116,11 @@ settings.pyにて下記をセットしておく。Stripeの秘密鍵は.gitignor
     checkout    = CheckoutView.as_view()
 
 
+実践では成功した時、失敗したときのリダイレクト先は、直に書かず、`reverse_lazy`を使って逆引きをすれば良いだろう。
+
+https://docs.djangoproject.com/en/4.0/ref/urlresolvers/
+
+
 ### テンプレート
 
     <!DOCTYPE html>
