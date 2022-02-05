@@ -81,6 +81,10 @@ pullしてUbuntuのdockerイメージをDLする。GitHubと扱いが似てい�
 
     sudo docker stop [コンテナIDもしくはコンテナ名]
 
+## コンテナを起動させる
+
+    sudo docker start [コンテナIDもしくはコンテナ名]
+
 
 ## コンテナ・イメージを削除する
 

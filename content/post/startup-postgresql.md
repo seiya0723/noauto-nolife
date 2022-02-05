@@ -23,15 +23,17 @@ Ubuntuであれば、aptコマンドでインストール可能
 
     sudo -u postgres -i
 
-これでpostgresユーザーのターミナルになる。
+これでpostgresユーザーのターミナルになる。dockerを使用している場合は下記
 
-    createuser --createdb --username=postgres --pwprompt [任意のユーザー名]
+    su - postgres 
 
 ユーザーを作る。DB作成権限あり。パスワード入力を求められるので、任意のパスワードを入力。
 
-    createdb [任意のDB名] --owner=[任意のユーザー名]
+    createuser --createdb --username=postgres --pwprompt [任意のユーザー名]
 
 DBを作り、先ほど作ったユーザー名を所有者とする。
+
+    createdb [任意のDB名] --owner=[任意のユーザー名]
 
 postgresユーザーからログアウト(Ctrl+D)して、[任意のユーザー名]の扱う[任意のDB名]にアクセスする。先ほどのユーザー作成で指定したパスワードを入力するとログインできる。
 

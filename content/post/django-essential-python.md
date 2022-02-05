@@ -9,6 +9,62 @@ tags: [ "python","django","初心者向け" ]
 
 Djangoを始める前に知っておきたいPython構文をまとめる。
 
+## 型
+
+    #数値型
+    score   = 100
+
+    #文字列型
+    name    = "Taro"
+
+    #リスト型
+    numbers = [ 46,77,22 ]
+
+    #辞書型
+    topic   = { "id":1, "comment":"Hello" }
+
+    #辞書型のリスト
+    topics  = [ { "id":1, "comment":"Hello" },
+                { "id":2, "comment":"Hi" },
+                { "id":3, "comment":"こんにちは" },
+                { "id":4, "comment":"どうも" },
+                ]
+
+
+数値型は演算子(` + - * / `)のいずれかを使用して計算を行うことができる。ただし、数値型と文字列型での計算をすることはできない。
+
+    print(score + 100) # 200
+
+    print(score + name ) #エラー
+
+文字列型は、別の文字列型と`+`演算子を使うことで、文字列の連結をすることができる
+
+    print(name + "です。")  #Taroです。
+
+リスト型は添字を指定することで値を取り出すことができる。
+
+    print(numbers) # [ 46,77,22 ]
+    print(numbers[2]) # 22
+
+辞書型はキーを指定して、値を取り出すことができる。
+
+    print(topic["comment"]) # Hello
+
+辞書型のリストの場合、値を取り出すにはこうする。
+
+    print(topics[2]["comment"]) #こんにちは
+
+ただし、リスト型で添字を直接指定しての値の取り出しは、IndexErrorを招く結果になるので、実践では後述のfor文を使用して、1つずつ取り出す。
+
+    print(numbers[3]) #エラー
+
+    for number in numbers:
+        print(number)
+
+    for topic in topics:
+        print(topic["id"])
+        print(topic["comment"])
+    
 ## if文
 
     authenticated   = True
@@ -246,7 +302,6 @@ import文は別のPythonファイル、Pythonモジュール(ライブラリ)を
 Djangoは複数のPythonファイルを束ねたウェブアプリケーションフレームワークである。
 
 だからこそ、ライブラリのimportだけでなく、別のPythonファイルの読み込みが頻繁に行われる。
-
 
     from django.shortcuts import render,redirect
     
