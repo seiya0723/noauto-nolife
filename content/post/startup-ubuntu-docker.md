@@ -1,7 +1,7 @@
 ---
 title: "UbuntuでUbuntuのdockerイメージを作るまで"
 date: 2022-01-30T11:22:31+09:00
-draft: true
+draft: false
 thumbnail: "images/ubuntu.jpg"
 categories: [ "インフラ" ]
 tags: [ "Ubuntu","docker","スタートアップシリーズ" ]
@@ -95,5 +95,21 @@ pullしてUbuntuのdockerイメージをDLする。GitHubと扱いが似てい�
 
 ## コンテナからイメージを作る
 
+    sudo docker commit [コンテナID] [任意のイメージの名前] 
+
+後はこのイメージをdockerhub等を使用して配布するだけである。
+
+
+## コンテナとホストでファイルをやり取りする
+
+コンテナからホストへファイルを転送する。
+
+    sudo docker cp [転送したいローカルファイル] [コンテナID]:[転送先のファイルパス]
+
+ホストからコンテナへファイルを転送する
+
+    sudo docker cp [コンテナID]:[転送先のファイルパス] [転送したいローカルファイル]
+
+特に再帰的にコピーするオプションを付けなくても、ディレクトリごと指定してコピーすることができる。
 
 
