@@ -24,7 +24,7 @@ tags: [ "django","上級者向け" ]
     
     class Topic(models.Model):
     
-        deadline    = models.DateTimeField( verbose_name="期日", validators=[MinValueValidator(timezone.now)] )
+        deadline    = models.DateTimeField(verbose_name="期日", validators=[MinValueValidator(timezone.now)])
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
     
         def __str__(self):
@@ -93,6 +93,6 @@ forms.pyには、モデルを継承したフォームクラスを作る
 - [Djangoでpython3のsubprocessモジュールを使い、任意のコマンドをなるべく安全に配慮して実行させる](/post/django-secure-subprocess/)
 - [【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】](/post/django-year-month-search-and-list/)
 
-validatorsを使用すれば、他にも受け付ける値に正規表現などが利用できる。これで正確に電話番号や郵便番号、ISBNなどの入力ができる。
+validatorsを使用すれば、受け付ける値に正規表現などが利用できる。これで正確に電話番号や郵便番号、ISBNなどの入力ができる。
 
 
