@@ -6,10 +6,181 @@
     <description>Recent content in Tips on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 13 Oct 2021 15:22:14 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jan 2022 13:30:10 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</title>
+      <link>https://noauto-nolife.com/post/django-admin-save-method/</link>
+      <pubDate>Fri, 28 Jan 2022 13:30:10 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-save-method/</guid>
+      <description>Djangoの管理サイトでモデルの保存をした時、何か実行して欲しいものがあれば、saveメソッドのオーバーライドでは通用しない。 Adminクラスにsave_modelメソッドがあるので、それをオーバーライドして使う。 class MyAdminView(admin.ModelAdmin): def save_model(self, request, obj, form, change): super(MyAdminView, self).save_model(request, obj, form, change) 用途 管理サイトから作成・編集をして、保存した時に発動するので、以下の用途が考えられる。 通販サイトにて配送処理完了のブーリアン値を変更、それを判定して配送処理完</description>
+    </item>
+    
+    <item>
+      <title>【Django】ビュー関数とビュークラスの違い、一覧と使い方</title>
+      <link>https://noauto-nolife.com/post/django-view-def-and-class/</link>
+      <pubDate>Sat, 22 Jan 2022 17:39:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-view-def-and-class/</guid>
+      <description>ビュー関数とビュークラスの違い。 前提 (bbs/urls.py) config/urls.pyからアプリ(bbs)のurls.pyを読み込み、その中身は下記とする。 from django.urls import path from . import views app_name = &amp;quot;bbs&amp;quot; urlpatterns = [ path(&#39;&#39;, views.index, name=&amp;quot;index&amp;quot;), ] 構文 関数ベースのビュー from django.shortcuts import render,redirect from .models import Topic from .forms import TopicForm def index(request): if request.method == &amp;quot;GET&amp;quot;: topics = Topic.objects.all() context = { &amp;quot;topics&amp;quot;:topics } return render(request,&amp;quot;bbs/index.html&amp;quot;,context) elif request.method == &amp;quot;POST&amp;quot;: form = TopicForm(request.POST) if form.is_valid(): form.save() return redirect(&amp;quot;bbs:index&amp;quot;) メソッドをif文で分岐させる形式になっている。 クラスベースのビュー(View) from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm class IndexView(View): def get(self, request, *args, **kwargs): topics</description>
+    </item>
+    
+    <item>
+      <title>【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</title>
+      <link>https://noauto-nolife.com/post/django-error-messages-origin/</link>
+      <pubDate>Sun, 16 Jan 2022 17:57:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-error-messages-origin/</guid>
+      <description>forms.pyに書いたフォームクラスを使ってバリデーションを行った時、エラーメッセージの表示ができる。 print(forms.errors) 例えば、これで入力しなければならない場所を未入力で投稿した場合、 このフィールドは入力必須です とエラーが出てくる。やや堅めの文章であり、『フィールド』という単語はエンジニアであればまだしも、一般人はそれが何を意味しているのかわからないだろう。 そこでこの時に表示されるエラーメッセージを別のものに書</description>
+    </item>
+    
+    <item>
+      <title>mogrifyコマンドを使って画像を一括クロップ(トリミング)する</title>
+      <link>https://noauto-nolife.com/post/startup-mogrify/</link>
+      <pubDate>Fri, 07 Jan 2022 09:57:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-mogrify/</guid>
+      <description>下記コマンドで一括画像処理できる mogrify [出力先] -crop [幅]x[高さ]+[切り取り始めるx座標]+[切り取り始めるy座標] [入力元] 参照元:https://qiita.com/yoya/items/62879e6e03d5a70eed09</description>
+    </item>
+    
+    <item>
+      <title>【Django】ビュークラスの継承を使い、予めcontextを追加させる</title>
+      <link>https://noauto-nolife.com/post/django-add-context/</link>
+      <pubDate>Fri, 31 Dec 2021 08:29:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-add-context/</guid>
+      <description>クラスベースのビューであれば、継承をするだけで、継承関係にある全てのビューに同じ機能を追加できる。 どのページでも表示させるデータ(例えば、サイトのトップバーに表示するニュースなど)にも継承を使えば、予めの追加が実現できる。 以下は、40分Djangoにビュークラスの継承を行い、contextを追加するメソッドを呼び出せるようにしている。 from django.shortcuts import render,redirect from django.views import View from .models import Topic class ContextView(View): def context(self): context = {} context[&amp;quot;news&amp;quot;] = Topic.objects.order_by(&amp;quot;-id&amp;quot;)[:10] return context class BbsView(ContextView): def get(self, request, *args, **kwargs): context</description>
+    </item>
+    
+    <item>
+      <title>【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】</title>
+      <link>https://noauto-nolife.com/post/django-template-integer-for-loop/</link>
+      <pubDate>Tue, 21 Dec 2021 16:28:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-template-integer-for-loop/</guid>
+      <description>通常、DjangoTemplateLanguageのforループは数値型のループは許さない。ループが許されているのは、文字列型かリスト型、イテラブルなオブジェクトに限定される。 これを普通のPythonで表現するのであれば、こんな状態。 for content in contents: print(content) このcontentsに数値を入れることはできないのはPythonをやっていればわかる。しかし、とある方法を使えば数値のループは実現できる。 テンプレートタグw</description>
+    </item>
+    
+    <item>
+      <title>Laravelで.env(環境変数)に指定した値をチェックする方法【コントローラ・ビュー】</title>
+      <link>https://noauto-nolife.com/post/laravel-env-check/</link>
+      <pubDate>Tue, 21 Dec 2021 08:06:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-env-check/</guid>
+      <description>例えば、コントローラなどで開発段階とデプロイ後で処理を切り分けたい事がある。そういう時は、.env(環境変数)に指定した値を参照してif文で分岐させれば良い。 コントローラで環境変数に指定した値を確認する。 if ( env(&amp;quot;APP_DEBUG&amp;quot;) ){ \Log::debug(&amp;quot;APP_DEBUGはTrueです&amp;quot;); } else{ \Log::debug(&amp;quot;APP_DEBUGはFalseです&amp;quot;); } これで解決す</description>
+    </item>
+    
+    <item>
+      <title>Laravel 8.x系のroute/web.phpはこう書く【Target class [Controller Name] does not exist.】</title>
+      <link>https://noauto-nolife.com/post/laravel8-route-error/</link>
+      <pubDate>Mon, 20 Dec 2021 16:28:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel8-route-error/</guid>
+      <description>Laravel7.x系はサポートが切れているので早めにLaravel8.x系にしたいところ。 ルーティングの記法が変わっているので確認しましょう。 &amp;ndash;resourceの場合 こうする。 #7.x系以前の書き方。 #Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); #8.x系以降の書き方。 use App\Http\Controllers\TopicsController; Route::resource(&#39;/topics&#39;, TopicsController::class); 冒頭で予めコントローラをuseしておく。 コントローラのアクションと逆引き用の名前を指定する場合。 こうする。 #7.x系以前の書き方。 #Route::get(&#39;/topics&#39;, &#39;TopicsController@index&#39;)-&amp;gt;name(&#39;topics.index&#39;); #8.x系以降の</description>
+    </item>
+    
+    <item>
+      <title>Laravel8.xでページネーターのSVGの矢印がおかしいので修正する。</title>
+      <link>https://noauto-nolife.com/post/laravel8-paginator-svg/</link>
+      <pubDate>Mon, 20 Dec 2021 15:05:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel8-paginator-svg/</guid>
+      <description>問題だらけのLaravel8.xでまた問題が出てきた。ページネーションを普通に使うと、このようにSVGが狂っており、巨大化する。 修正 app/Providers/AppServiceProvider.phpにて下記のようにする。 &amp;lt;?php namespace App\Providers; use Illuminate\Support\ServiceProvider; use Illuminate\Pagination\Paginator; class AppServiceProvider extends ServiceProvider { /** * Register any application services. * * @return void */ public function register() { // } /** * Bootstrap any application services. * * @return void */ public function boot() { Paginator::useBootstrap(); } } これでLaravel7.x以前のBootstrapを使った普通のページネーション</description>
+    </item>
+    
+    <item>
+      <title>【DRF】Django Rest Frameworkでリスト型のバリデーションも行う【UUIDや文字列を格納したリスト型のバリデーションに】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-listfield/</link>
+      <pubDate>Tue, 14 Dec 2021 15:04:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-listfield/</guid>
+      <description>例えば、Ajaxを使用して複数選択削除を行いたい場合、idもしくはuuidのリスト型をサーバーサイドに送信することになるだろう。 そういう時、DjangoRESTFramework(以下DRF)のシリアライザを使用すると良いだろう。 UUIDを含むリスト型をバリデーションする #複数選択削除で利用 class UUIDListSerializer(serializers.Serializer): id_list = serializers.ListField( child=serializers.UUIDField() ) これで実現できる。 DjangoのFormクラスで実現させる場合。 リスト型で送られてくるデータの</description>
+    </item>
+    
+    <item>
+      <title>【Django】Modelクラス、Formクラス、もしくはSerializerクラスのsaveメソッドで保存した後、保存したモデルオブジェクトのIDを手に入れる方法【データ保存した後、関連するデータも追加したい場合】</title>
+      <link>https://noauto-nolife.com/post/django-forms-save-model-object-id/</link>
+      <pubDate>Sat, 11 Dec 2021 07:30:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-forms-save-model-object-id/</guid>
+      <description>例えば、グループとそれに所属するメンバーのデータを一気に新規作成するタイプのフォームを作った場合。 グループとメンバーは1対多の関係になっており、それぞれの新規作成を1回のリクエストで済ませる場合は、まずグループを新規作成、その後そのグループに紐付いたメンバーを新規作成する必要がある。 ここで問題になるのが、メンバーのフィールドの一部にグループのIDを記録しなければならないこと。こういう時、保存したグ</description>
+    </item>
+    
+    <item>
+      <title>【Django】requestオブジェクトからクライアントのUAやIPアドレス、CSRFCookieなどをチェック、テンプレート上に表示する。</title>
+      <link>https://noauto-nolife.com/post/django-request-meta/</link>
+      <pubDate>Sat, 11 Dec 2021 07:26:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-request-meta/</guid>
+      <description>すぐ忘れるので備忘録として。 テンプレートにユーザーのIPアドレス等を表示させたい場合、下記DTLを任意のテンプレートに書き込む。 {{ request.META }} これでリクエストに関連するデータが全て表示される。必要なデータを選び、例えばREMOTE_ADDRであれば {{ request.META.REMOTE_ADDR }} とすれば良い。</description>
+    </item>
+    
+    <item>
+      <title>サイトのアイコンを指定して、Favicon 404 NotFound問題を解決する【フリー素材使用】</title>
+      <link>https://noauto-nolife.com/post/favicon-404/</link>
+      <pubDate>Thu, 09 Dec 2021 11:53:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/favicon-404/</guid>
+      <description>F12キーを押してコンソールを開き、JavaScriptの挙動を確かめる時。目につくのが、favicon.ico NotFoundという赤字の警告。 この警告はサイトのアイコンを設定していないことによって発生する。つまり、このブログのようにアイコンを設定すれば、警告は出ないということだ。 アイコンを設定する。 HTMLのheadタグ内に下記を記入する。 &amp;lt;link href=&amp;quot;img/favicon.ico&amp;quot; rel=&amp;quot;icon&amp;quot;&amp;gt; まず、アイコンのファイル名は必ずfavicon.</description>
+    </item>
+    
+    <item>
+      <title>【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】</title>
+      <link>https://noauto-nolife.com/post/python-requests-post-method/</link>
+      <pubDate>Fri, 26 Nov 2021 17:03:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-requests-post-method/</guid>
+      <description>Pythonのrequestsライブラリはスクレイピング(GETメソッド)で使用されているが、それだけでなくテストとしてPOSTメソッドでデータを投稿する事ができる。 ただ、ここで問題になるのが、CSRFトークンの存在。CSRFトークンをセットしなければCSRF検証に失敗してしまい、データの投稿ができなくなる。 そこで、セッションを維持した状態でCSRFトークンをリクエストボディにセットし、データを送</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】マイグレーション時の『Cannot add a NOT NULL column with default value NULL』問題を対処する【エラー】</title>
+      <link>https://noauto-nolife.com/post/laravel-notnull-exception/</link>
+      <pubDate>Wed, 24 Nov 2021 16:49:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-notnull-exception/</guid>
+      <description>なぜ、このエラーが発生するのか。まず原因から解説する。 原因 要するにこういうこと。 追加しようとしているフィールド(カラム)がNull禁止でデフォルトが無い。しかし、フィールド(カラム)を追加する以上、どうしてもNullになってしまう。この矛盾をどうするかと言うのがこの問題。 この状況が発生する条件は下記。下記を全て満たすと発生する。 条件1:既存のテーブルにカラムを追加する 条件2:追加するカラムにカラム</description>
+    </item>
+    
+    <item>
+      <title>Vimのコメントの自動補完を無効化させる【JavaScriptやCSS、シェルスクリプトでコメントアウトした後、Enter押すと自動で出てくるアレ】</title>
+      <link>https://noauto-nolife.com/post/vim-comment-settings/</link>
+      <pubDate>Mon, 15 Nov 2021 07:39:25 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vim-comment-settings/</guid>
+      <description>例えばJavaScriptでコメントを書く時、 // と書く。だが、その後Enterキーを押すと // // こうなる。これがすごい鬱陶しい。 頼んでもいないのにコメント行が勝手に増えて行くのは、消す手間も同時に増えるということ。だから無効化させる。 環境 Ubuntu 18.04 VIM version 8.0.1453 下記プラグインを使っている状態 emmet.vim surround.vim コメントの自動補完を無効化する 通常、このようなコメントの自動補完を無効化させるには、下記コマンドを実行して無効化させる。</description>
+    </item>
+    
+    <item>
+      <title>DjangoのMessageFrameworkで投稿とエラーをフロント側に表示する</title>
+      <link>https://noauto-nolife.com/post/django-message-framework/</link>
+      <pubDate>Sun, 14 Nov 2021 18:53:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-message-framework/</guid>
+      <description>DjangoのMessageFrameworkを有効化させる まず、settings.pyのINSTALLED_APPSに &#39;django.contrib.messages&#39; が含まれているかどうかをチェック。Django 3.2であればデフォルトで書かれてある。 同じくMIDDLEWAREに &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;, &#39;django.contrib.messages.middleware.MessageMiddleware&#39; 上記2つが含まれている事を確認。SessionMiddlewareはMessageMiddlewareよりも前に書かれてある必要がある。これもデフォルトで書かれ</description>
+    </item>
+    
+    <item>
+      <title>Djangoのインタラクティブシェルを使う【python3 manage.py shell】</title>
+      <link>https://noauto-nolife.com/post/django-shell/</link>
+      <pubDate>Sat, 06 Nov 2021 09:30:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-shell/</guid>
+      <description>Djangoに含まれているライブラリを普通のPythonのインタラクティブシェルで動かそうとしても、manage.pyの環境変数やsettings.pyが無ければ動かない。 だから、Django関係のライブラリを試しに動かしたい時は、 python3 manage.py shell とする。 用途 Djangoに含まれるライブラリの動作検証 例えば、django.utils.timezoneなどはPythonのインタラクティブシェルでは動作しない。</description>
+    </item>
+    
+    <item>
+      <title>HUGOでSNS等のシェアリンク(シェアボタン)をブログ内に配置して、PVを増やす【Twitter、Facebook、はてなブログ、LINE】</title>
+      <link>https://noauto-nolife.com/post/share-link/</link>
+      <pubDate>Tue, 02 Nov 2021 16:16:21 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/share-link/</guid>
+      <description>HUGOでもシェアリンク(シェアボタン)を設置できる。HUGOのパラメータ変数を用意する必要があるので、慣れていないと難易度が高いが。 ソースコード 記事単一表示ページにて下記のHTMLを書く &amp;lt;div class=&amp;quot;article_share_area&amp;quot;&amp;gt; &amp;lt;h2&amp;gt;シェアボタン&amp;lt;/h2&amp;gt; &amp;lt;a class=&amp;quot;article_share_link link_twitter&amp;quot; target=&amp;quot;_blank&amp;quot; rel=&amp;quot;nofollow noopener noreferrer&amp;quot; href=&amp;quot;https://twitter.com/share?url={{ .URL | absURL }}&amp;amp;text={{ .Title }}&amp;quot;&amp;gt;Twitter&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;article_share_link link_line&amp;quot; target=&amp;quot;_blank&amp;quot; rel=&amp;quot;nofollow noopener noreferrer&amp;quot; href=&amp;quot;https://social-plugins.line.me/lineit/share?url={{ .URL | absURL }}&amp;quot;&amp;gt;LINEで送る&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;article_share_link link_facebook&amp;quot; target=&amp;quot;_blank&amp;quot; rel=&amp;quot;nofollow noopener noreferrer&amp;quot; href=&amp;quot;https://www.facebook.com/sharer/sharer.php?u={{ .URL | absURL }}&amp;quot;&amp;gt;Facebook&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;article_share_link link_hatena&amp;quot; target=&amp;quot;_blank&amp;quot; rel=&amp;quot;nofollow noopener noreferrer&amp;quot; href=&amp;quot;https://b.hatena.ne.jp/add?mode=confirm&amp;amp;url={{ .URL | absURL</description>
+    </item>
     
     <item>
       <title>【Django】要素数が同じモデルオブジェクトをDTLで一緒にループして表示させる【.annotate()やモデルクラスにメソッドを追加などが通用しない場合の対策】</title>
@@ -57,12 +228,12 @@
     </item>
     
     <item>
-      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】</title>
+      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】</title>
       <link>https://noauto-nolife.com/post/laravel-database-regenerate/</link>
       <pubDate>Sat, 18 Sep 2021 08:42:15 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/laravel-database-regenerate/</guid>
-      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 そこで、bashのaliasにdatabase.sqliteを探して削除、その後生成するワンライナーコマンドを登録すればよいと思い至った。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行すること</description>
+      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 プロジェクトのディレクトリで下記コマンドを実行する。 find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \; bashのaliasに登録すれば上記コマンドをさらに短くできる。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行するこ</description>
     </item>
     
     <item>
@@ -156,7 +327,7 @@
     </item>
     
     <item>
-      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプルとリスト】</title>
+      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプル型とリスト型】</title>
       <link>https://noauto-nolife.com/post/python-brackets/</link>
       <pubDate>Tue, 22 Jun 2021 15:12:04 +0900</pubDate>
       
@@ -224,11 +395,11 @@
       <pubDate>Tue, 20 Apr 2021 16:26:25 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/laravel-to-resource/</guid>
-      <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると、ルーティングの書き換えは難しい。そこで、本記事は--resourceで作ったコントローラのルーティングをバラす。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); resource</description>
+      <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると(注意:下記はLaravel7.x系のルーティング記法)、ルーティングの書き換えは難しい。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); そこで、本記事は--resourceで作</description>
     </item>
     
     <item>
-      <title>Laravelのプロジェクト名を書き換える</title>
+      <title>Laravelのプロジェクト名を書き換える【設定に依存していないのであれば、普通にディレクトリ名を書き換えるだけでOK】</title>
       <link>https://noauto-nolife.com/post/laravel-project-rename/</link>
       <pubDate>Mon, 19 Apr 2021 08:37:27 +0900</pubDate>
       
@@ -336,7 +507,7 @@
     </item>
     
     <item>
-      <title>laravelで開発中、ログを表示させる</title>
+      <title>laravelで開発中、ログを表示させる【エラー箇所の確認・デバッグ作業に】</title>
       <link>https://noauto-nolife.com/post/laravel-log/</link>
       <pubDate>Mon, 01 Feb 2021 10:23:55 +0900</pubDate>
       
@@ -525,12 +696,12 @@
     </item>
     
     <item>
-      <title>Djangoで開発中、データベースへ初期データを入力する【loaddata】</title>
+      <title>Djangoで開発中、データベースへ初期データを入力する【バックアップしたデータをloaddataコマンドでリストア】</title>
       <link>https://noauto-nolife.com/post/django-loaddata/</link>
       <pubDate>Sat, 24 Oct 2020 18:12:29 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-loaddata/</guid>
-      <description>Djangoで開発中にテストしたい時、デプロイ後に初期データを突っ込んで即公開したい時、どうしてもデータの入力作業が出てくる。 Seleniumで入力作業を自動化する方法もあるが、わざわざそんなことをしなくても初期データを突っ込む方法がある。それが python3 manage.py loaddata fixture/data.json models.pyに基づいたjsonファイルを作る まず、bbs/models.pyが下記のような状態だとする。 from django.db import models class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; name = model</description>
+      <description>Djangoで開発中にテストしたい時、デプロイ後に初期データを突っ込んで即公開したい時、どうしてもデータの入力作業が出てくる。 Seleniumで入力作業を自動化する方法もあるが、わざわざそんなことをしなくても初期データを突っ込む方法がある。それが python3 manage.py loaddata bbs/fixture/data.json このようにアプリディレクトリ内にfixtureディレクトリを作り、jsonのデータを指定して、リストアする models.pyに基づいたjsonファ</description>
     </item>
     
     <item>

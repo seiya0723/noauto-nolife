@@ -6,10 +6,64 @@
     <description>Recent content in スタートアップシリーズ on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 21 Oct 2021 14:44:50 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 03 Feb 2022 08:08:33 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Stripe】Djangoにクレジットカード決済機能を実装させる</title>
+      <link>https://noauto-nolife.com/post/startup-django-stripe/</link>
+      <pubDate>Thu, 03 Feb 2022 08:08:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-stripe/</guid>
+      <description>DjangoでECサイトや課金ゲームサイト等を展開しようと考えているのであれば、避けて通ることができないのがカード決済。 Stripeというカード決済代行会社を利用することで、決済処理を手軽に実装させることができる。 本記事ではその一例を紹介する。 共通設定 まず、stripeライブラリをインストールする pip install stripe settings.pyにて下記をセットしておく。Stripeの秘密鍵は.gitignoreに指定</description>
+    </item>
+    
+    <item>
+      <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
+      <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
+      <pubDate>Sun, 30 Jan 2022 11:22:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
+      <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
+    </item>
+    
+    <item>
+      <title>【openpyxl】PythonからExcelファイルを読み書きする</title>
+      <link>https://noauto-nolife.com/post/startup-openpyxl/</link>
+      <pubDate>Thu, 16 Dec 2021 16:31:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-openpyxl/</guid>
+      <description>Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。 ソースコード import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティブシートを選択(新規作成時に最初からあるシート) ws = wb.active #シート名を変更 ws.title = &amp;quot;領収書&amp;quot; #セルに値を入力していく import datetime ws[&amp;quot;A1&amp;quot;].value = &amp;quot;決済日&amp;quot; ws[&amp;quot;A2&amp;quot;].value = str(datetime.date.today()) ws[&amp;quot;B1&amp;quot;].value = &amp;quot;商品名&amp;quot; ws[&amp;quot;C1&amp;quot;].value</description>
+    </item>
+    
+    <item>
+      <title>VBAでHelloWorld、セルの色変え、計算などの基本操作をやってみる【LibreOffice】</title>
+      <link>https://noauto-nolife.com/post/startup-vba/</link>
+      <pubDate>Thu, 16 Dec 2021 09:52:21 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-vba/</guid>
+      <description>VBAで基本操作(セルの装飾、計算処理、ダイアログ表示など)を行う。今回はLibreOfficeで行っているが、MicroSoftOfficeなどでも再現はできる。 ハローワールド Sub hello_vba_world MsgBox(&amp;quot;Hello VBA World&amp;quot;) End Sub このマクロを任意のボタンなどに割り当てることで、『Hello VBA World』と書かれたダイアログが表示される。 セルの取得と計算処理 計算処理をするには、特定のセルの値を手に入れ変数に格納する必要がある。 変数の定義</description>
+    </item>
+    
+    <item>
+      <title>【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】</title>
+      <link>https://noauto-nolife.com/post/startup-chartjs/</link>
+      <pubDate>Thu, 09 Dec 2021 14:20:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-chartjs/</guid>
+      <description>インストールとチュートリアル 下記CDNをインストールする。 &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 続いて、グラフを表示させたい場所に下記、canvasタグを配置。 &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。 棒グラフ 公式から拝借。 実行させるJavaScriptが下記。 const ctx = document.getElementById(&#39;graph&#39;).getContext(&#39;2d&#39;); const myChart = new Chart(ctx, { type: &#39;bar&#39;, data: { labels: [&#39;Red&#39;, &#39;Blue&#39;, &#39;Yellow&#39;, &#39;Green&#39;, &#39;Purple&#39;, &#39;Orange&#39;], datasets: [{ label: &#39;# of Votes&#39;, data: [12, 19, 3, 5, 2, 3], backgroundColor: [ &#39;rgba(255, 99, 132, 0.2)&#39;, &#39;rgba(54, 162, 235, 0.2)&#39;, &#39;rgba(255, 206, 86, 0.2)&#39;, &#39;rgba(75, 192, 192, 0.2)&#39;, &#39;rgba(153, 102, 255, 0.2)&#39;, &#39;rgba(255, 159, 64, 0.2)&#39;</description>
+    </item>
+    
+    <item>
+      <title>Laravelビギナーが30分で掲示板アプリを作る方法</title>
+      <link>https://noauto-nolife.com/post/startup-laravel/</link>
+      <pubDate>Tue, 26 Oct 2021 15:13:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-laravel/</guid>
+      <description>laravelはDjangoと違って初っ端から大量のファイルやディレクトリが表示され、気後れしそうになるが、編集する部分さえ分かれば大したことはない見掛け倒し。 PHPを中心に扱う現場ではlaravelのスキルが求められるのでウェブ屋になるのであれば、是非とも習得しておきたい。 対象読者はlaravelを既にPCにインストール済み、Linux系コマンド習得済み、PHP及びHTML/CSS/JSの基本構</description>
+    </item>
     
     <item>
       <title>ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</title>
@@ -53,7 +107,7 @@
       <pubDate>Fri, 16 Apr 2021 15:14:58 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-postgresql/</guid>
-      <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。 createuser --createdb --username=postgres --pwprompt [任意のユーザ</description>
+      <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。dockerを使用して</description>
     </item>
     
     <item>
@@ -93,15 +147,6 @@
     </item>
     
     <item>
-      <title>Laravelビギナーが30分で掲示板アプリを作る方法</title>
-      <link>https://noauto-nolife.com/post/startup-laravel/</link>
-      <pubDate>Mon, 26 Oct 2020 15:13:33 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-laravel/</guid>
-      <description>laravelはDjangoと違って初っ端から大量のファイルやディレクトリが表示され、気後れしそうになるが、編集する部分さえ分かれば大したことはない見掛け倒し。 PHPを中心に扱う現場ではlaravelのスキルが求められるのでウェブ屋になるのであれば、是非とも習得しておきたい。 対象読者はlaravelを既にPCにインストール済み、Linux系コマンド習得済み、PHP及びHTML/CSS/JSの基本構</description>
-    </item>
-    
-    <item>
       <title>SQLiteの操作方法【テーブル一覧表示、SQLなど】</title>
       <link>https://noauto-nolife.com/post/startup-sqlite3/</link>
       <pubDate>Mon, 26 Oct 2020 13:51:50 +0900</pubDate>
@@ -125,7 +170,7 @@
       <pubDate>Thu, 22 Oct 2020 14:28:18 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-netlify/</guid>
-      <description>世間ではWordpressだとか有料版レンタルブログだとかで、一ヶ月に1000円以上かけてブログを運営している人も多々いますが、実際にはそこまでお金をかけなくてもブログ運営は可能です。 もっとも、運営者のスキルが要求されますが&amp;hellip;.。 方法 結論から言うと、静的サイトジェネレーターとGitHub、Netlify、それからムームドメインを使えばOKです。 静的サイトジェネレーターとは 静的サイトジ</description>
+      <description>世間ではWordpressだとか有料版レンタルブログだとかで、一ヶ月に1000円以上かけてブログを運営している人も多々いるが、実際にはそこまでお金をかけなくてもブログ運営は可能。 もっとも、運営者のスキルが要求されるが。 方法 結論から言うと、静的サイトジェネレーターとGitHub、Netlify、それからムームドメインを使う。 静的サイトジェネレーターとは 静的サイトジェネレーター(Static Site Gene</description>
     </item>
     
     <item>
@@ -143,7 +188,7 @@
       <pubDate>Tue, 20 Oct 2020 14:20:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-django/</guid>
-      <description>公式のDjangoチュートリアルではよくわからない方に捧げる 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTML/CSS/JSの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHT</description>
+      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHTMLの作成(5分</description>
     </item>
     
   </channel>

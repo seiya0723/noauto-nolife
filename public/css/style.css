@@ -41,9 +41,10 @@ pre code {
     color:#0fc;
 }
 p code {
+    display:inline-block;
     background:black;
     color:#0fc;
-    padding:0.25rem;
+    padding:0.1rem 0.25rem;
 }
 li code {
     background:black;
@@ -374,12 +375,16 @@ li code {
 .single ol{ margin-left:1.5rem; }
 .single h2 {background:orange;color:white;padding:0.25rem;text-shadow:2px 2px 2px gray;}
 .single h3 {color:white;border-left:solid 0.5rem orange;border-bottom:solid 0.2rem orange;padding:0.5rem}
-.single h4 {color:white;}
+.single h4 {color:white;border-left:double 0.75rem orange;padding:0.25rem 0.5rem;}
 .summary_pg {
     font-size:1rem;
 }
 .article_body {
     padding:1rem 0;
+}
+/* 長い英字URLを折り返す */
+.article_body a {
+    word-break:break-all;
 }
 
 .article_body table {
@@ -409,6 +414,59 @@ li code {
 .article_body a:visited { color:lightcyan; }
 .article_body a:visited:hover { color:skyblue; }
 */
+
+.article_share_area {
+    padding:0.5rem 0;
+}
+.article_share_link {
+    display:inline-block;
+    border:solid 0.2rem white;
+    border-radius:0.5rem;
+    padding:0.25rem 0.75rem;
+    margin:0.2rem;
+    color:white;
+    font-weight:bold;
+}
+.link_twitter {
+    border-color:#1DA1F2;
+    background:#1DA1F2;
+    transition:0.2s;
+}
+.link_line {
+    border-color:#00B900;
+    background:#00B900;
+    transition:0.2s;
+}
+.link_facebook {
+    border-color:#1DA1F2;
+    background:#1DA1F2;
+    transition:0.2s;
+}
+.link_hatena {
+    border-color:#5279E7;
+    background:#5279E7;
+    transition:0.2s;
+}
+.link_twitter:hover {
+    color:#1DA1F2;
+    background:white;
+    transition:0.2s;
+}
+.link_line:hover {
+    color:#00B900;
+    background:white;
+    transition:0.2s;
+}
+.link_facebook:hover {
+    color:#1DA1F2;
+    background:white;
+    transition:0.2s;
+}
+.link_hatena:hover {
+    color:#5279E7;
+    background:white;
+    transition:0.2s;
+}
 
 
 
@@ -573,4 +631,25 @@ li code {
         padding-right:5px;
         padding-left:5px;
     }
+}
+
+/* search */
+.search_notice {
+    font-size:0.9rem;
+}
+.search_result {
+    background:#212020;
+
+    margin:0.25rem 0;
+    padding:0.5rem 1rem;
+    max-height:20rem;
+    overflow-Y:auto;
+}
+.search_result > li{
+    /*
+    list-style:none;
+    */
+}
+.search_result > li > a:hover {
+    text-decoration:underline;
 }

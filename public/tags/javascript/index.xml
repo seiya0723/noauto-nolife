@@ -6,10 +6,55 @@
     <description>Recent content in Javascript on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 21 Oct 2021 07:25:39 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 23 Dec 2021 09:46:30 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>chart.jsでグラフ表示幅と高さを指定する。</title>
+      <link>https://noauto-nolife.com/post/chartjs-responsive-chart/</link>
+      <pubDate>Thu, 23 Dec 2021 09:46:30 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/chartjs-responsive-chart/</guid>
+      <description>まず、公式によると下記の方法ではchart.jsの横幅と高さ指定は通用しない。 &amp;lt;canvas id=&amp;quot;graph&amp;quot; height=&amp;quot;40vh&amp;quot; width=&amp;quot;80vw&amp;quot;&amp;gt; 他にもクラス名を指定して、そのクラス名に幅などの装飾を施す方法も通用しない。 対策 対策1:親要素でstyle属性にposition:relativeとwidth及びheightを合わせて指定する。 クラス名にCSSで装飾を施すのではなく、親要素のstyle属性に指定しなければうまく行かないので注意。 &amp;lt;div style=&amp;quot;position:relative;width:250px;height:250px;&amp;quot;&amp;gt; &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; 対策2:</description>
+    </item>
+    
+    <item>
+      <title>HTMLのformタグで送信(submit)をする際に、確認をとった上で送信を行う【onsubmit属性】</title>
+      <link>https://noauto-nolife.com/post/form-tags-onsubmit/</link>
+      <pubDate>Mon, 20 Dec 2021 15:21:08 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/form-tags-onsubmit/</guid>
+      <description>例えば、下記のような削除ボタンであれば、削除ボタンが押されると同時に削除が実行される。 &amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;POST&amp;quot;&amp;gt; &amp;lt;!--CSRF_token--&amp;gt; &amp;lt;input class=&amp;quot;btn btn-outline-danger&amp;quot; type=&amp;quot;submit&amp;quot; value=&amp;quot;削除&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; これでは間違えて押してしまった時に取り返しが付かない。 そこで下記のようにformタグにonsubmit属性を付与する。これで削除の送信前に確認をとった上で送信を行う事ができる。 &amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;POST&amp;quot; onsubmit=&amp;quot;if(confirm(&#39;本当に削除し</description>
+    </item>
+    
+    <item>
+      <title>【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】</title>
+      <link>https://noauto-nolife.com/post/startup-chartjs/</link>
+      <pubDate>Thu, 09 Dec 2021 14:20:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-chartjs/</guid>
+      <description>インストールとチュートリアル 下記CDNをインストールする。 &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 続いて、グラフを表示させたい場所に下記、canvasタグを配置。 &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。 棒グラフ 公式から拝借。 実行させるJavaScriptが下記。 const ctx = document.getElementById(&#39;graph&#39;).getContext(&#39;2d&#39;); const myChart = new Chart(ctx, { type: &#39;bar&#39;, data: { labels: [&#39;Red&#39;, &#39;Blue&#39;, &#39;Yellow&#39;, &#39;Green&#39;, &#39;Purple&#39;, &#39;Orange&#39;], datasets: [{ label: &#39;# of Votes&#39;, data: [12, 19, 3, 5, 2, 3], backgroundColor: [ &#39;rgba(255, 99, 132, 0.2)&#39;, &#39;rgba(54, 162, 235, 0.2)&#39;, &#39;rgba(255, 206, 86, 0.2)&#39;, &#39;rgba(75, 192, 192, 0.2)&#39;, &#39;rgba(153, 102, 255, 0.2)&#39;, &#39;rgba(255, 159, 64, 0.2)&#39;</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】オリジナルのアイコン画像を使用して、地図上に表示させる【飲食店のマッピングであれば食べ物の画像を使って視認性UP】</title>
+      <link>https://noauto-nolife.com/post/leaflet-marker-original-icon/</link>
+      <pubDate>Mon, 06 Dec 2021 06:51:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-marker-original-icon/</guid>
+      <description>Leaflet.jsをそのまま使うと、配置されるマーカーはどこにでもあるような普通のマーカーになる。 これでは、どれも同じマーカーなので、パッと見でなにを意味しているのかはわからない。 例えば、飲食店のレビューサイトを投稿するウェブアプリとして、寿司屋でも、ラーメン屋でも、カレー屋でも、皆同じ青色の普通のマーカーになってしまう。寿司屋であれば寿司っぽいアイコンを、ラーメン屋であればラーメンっぽいアイコ</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】地図をクリックしてマーカーを配置した時、古いマーカーを削除する</title>
+      <link>https://noauto-nolife.com/post/leaflet-marker-delete/</link>
+      <pubDate>Thu, 02 Dec 2021 14:43:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-marker-delete/</guid>
+      <description>以前紹介したLeaflet.js+OSMでマッピングアプリを作る記事 DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る では、2度以上地図をクリックすると、前にクリックして配置されたマーカーが残ってしまう問題があった。そこで、今回はこの古いマーカーを削除して、新しくクリックされた位置にマーカーを配置させる。 ソースコード 要するに、マーカーを配置したと</description>
+    </item>
     
     <item>
       <title>【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</title>

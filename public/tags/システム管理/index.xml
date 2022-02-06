@@ -6,10 +6,37 @@
     <description>Recent content in システム管理 on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 28 Sep 2021 11:20:12 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 04 Jan 2022 10:16:48 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Djangoでpython3のsubprocessモジュールを使い、任意のコマンドをなるべく安全に配慮して実行させる</title>
+      <link>https://noauto-nolife.com/post/django-secure-subprocess/</link>
+      <pubDate>Tue, 04 Jan 2022 10:16:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-secure-subprocess/</guid>
+      <description>ふと思った。 毎度毎度、SSHクライアントがインストールされている端末を起動させ、サーバーにログイン、コマンドで操作するめんどくささ、どうにかできないだろうかと。 ウェブアプリから任意のコマンドを実行することができれば、わざわざSSHを使わなくても、ブラウザだけで簡単にコマンドが実行できる。ただ、問題になってくるのがセキュリティ。 不適切なコマンドを実行されてしまうと、当然システムは壊れる。そこで、なる</description>
+    </item>
+    
+    <item>
+      <title>LaravelでSendgridを使ってメール送信【認証・通知に、ライブラリのインストールは不要】</title>
+      <link>https://noauto-nolife.com/post/laravel-sendgrid/</link>
+      <pubDate>Wed, 08 Dec 2021 16:42:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-sendgrid/</guid>
+      <description>特別なライブラリなどは必要ない。 流れ .envにてAPIキーなどを設定 make:mailコマンドでメールの雛形一式を作る メールのモデルを作る メールのテンプレートを作る 送信処理を実行する .envにてAPIキーなどを設定 まず、.envにてSendgridで手に入れたAPIキー等の情報を格納 MAIL_MAILER=smtp MAIL_HOST=smtp.sendgrid.net MAIL_PORT=587 MAIL_USERNAME=apikey MAIL_PASSWORD=[ここにSendgridで手に入れたAPIキーを記録する] MAIL_ENCRYPTION=tls MAIL_FROM_</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】IPアドレスを取得して、DBへ記録する【犯罪・不正利用の抑止、荒らし対策などに】</title>
+      <link>https://noauto-nolife.com/post/laravel-ipaddress/</link>
+      <pubDate>Wed, 24 Nov 2021 07:08:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ipaddress/</guid>
+      <description>クライアントのIPアドレスを記録できれば、認証が無くても犯罪行為の抑止につながるし、事案が発生してもすぐに対応できるだろう。 本記事ではLaravelにクライアントのIPアドレスを記録する方法を解説する。 コードは『初心者でもlaravelを使い、45分でCRUD簡易掲示板を作る【Restful対応】』から流用している。 IPアドレスのカラムを追加(モデル編集とマイグレーションファイル作成) まずマイグレ</description>
+    </item>
     
     <item>
       <title>Nginxで特定IPアドレスのリクエストを拒否する</title>
@@ -75,12 +102,12 @@
     </item>
     
     <item>
-      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】</title>
+      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】</title>
       <link>https://noauto-nolife.com/post/laravel-database-regenerate/</link>
       <pubDate>Sat, 18 Sep 2021 08:42:15 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/laravel-database-regenerate/</guid>
-      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 そこで、bashのaliasにdatabase.sqliteを探して削除、その後生成するワンライナーコマンドを登録すればよいと思い至った。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行すること</description>
+      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 プロジェクトのディレクトリで下記コマンドを実行する。 find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \; bashのaliasに登録すれば上記コマンドをさらに短くできる。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行するこ</description>
     </item>
     
     <item>

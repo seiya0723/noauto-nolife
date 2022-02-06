@@ -6,10 +6,145 @@
     <description>Recent content in 初心者向け on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 21 Oct 2021 14:44:50 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 21 Dec 2021 08:06:32 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Laravelで.env(環境変数)に指定した値をチェックする方法【コントローラ・ビュー】</title>
+      <link>https://noauto-nolife.com/post/laravel-env-check/</link>
+      <pubDate>Tue, 21 Dec 2021 08:06:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-env-check/</guid>
+      <description>例えば、コントローラなどで開発段階とデプロイ後で処理を切り分けたい事がある。そういう時は、.env(環境変数)に指定した値を参照してif文で分岐させれば良い。 コントローラで環境変数に指定した値を確認する。 if ( env(&amp;quot;APP_DEBUG&amp;quot;) ){ \Log::debug(&amp;quot;APP_DEBUGはTrueです&amp;quot;); } else{ \Log::debug(&amp;quot;APP_DEBUGはFalseです&amp;quot;); } これで解決す</description>
+    </item>
+    
+    <item>
+      <title>Djangoをやる前に知っておきたいPython構文【オブジェクト指向と別ファイル読み込みは特に重要】</title>
+      <link>https://noauto-nolife.com/post/django-essential-python/</link>
+      <pubDate>Sun, 19 Dec 2021 17:12:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-essential-python/</guid>
+      <description>Djangoを始める前に知っておきたいPython構文をまとめる。 型 #数値型 score = 100 #文字列型 name = &amp;quot;Taro&amp;quot; #リスト型 numbers = [ 46,77,22 ] #辞書型 topic = { &amp;quot;id&amp;quot;:1, &amp;quot;comment&amp;quot;:&amp;quot;Hello&amp;quot; } #辞書型のリスト topics = [ { &amp;quot;id&amp;quot;:1, &amp;quot;comment&amp;quot;:&amp;quot;Hello&amp;quot; }, { &amp;quot;id&amp;quot;:2, &amp;quot;comment&amp;quot;:&amp;quot;Hi&amp;quot; }, { &amp;quot;id&amp;quot;:3, &amp;quot;comment&amp;quot;:&amp;quot;こんにちは&amp;quot; }, { &amp;quot;id&amp;quot;:4, &amp;quot;comment&amp;quot;:&amp;quot;どうも&amp;quot; }, ] 数値型は演算子(+ - * /)のいずれかを使用して計算を行うことができ</description>
+    </item>
+    
+    <item>
+      <title>【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】</title>
+      <link>https://noauto-nolife.com/post/startup-chartjs/</link>
+      <pubDate>Thu, 09 Dec 2021 14:20:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-chartjs/</guid>
+      <description>インストールとチュートリアル 下記CDNをインストールする。 &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 続いて、グラフを表示させたい場所に下記、canvasタグを配置。 &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。 棒グラフ 公式から拝借。 実行させるJavaScriptが下記。 const ctx = document.getElementById(&#39;graph&#39;).getContext(&#39;2d&#39;); const myChart = new Chart(ctx, { type: &#39;bar&#39;, data: { labels: [&#39;Red&#39;, &#39;Blue&#39;, &#39;Yellow&#39;, &#39;Green&#39;, &#39;Purple&#39;, &#39;Orange&#39;], datasets: [{ label: &#39;# of Votes&#39;, data: [12, 19, 3, 5, 2, 3], backgroundColor: [ &#39;rgba(255, 99, 132, 0.2)&#39;, &#39;rgba(54, 162, 235, 0.2)&#39;, &#39;rgba(255, 206, 86, 0.2)&#39;, &#39;rgba(75, 192, 192, 0.2)&#39;, &#39;rgba(153, 102, 255, 0.2)&#39;, &#39;rgba(255, 159, 64, 0.2)&#39;</description>
+    </item>
+    
+    <item>
+      <title>サイトのアイコンを指定して、Favicon 404 NotFound問題を解決する【フリー素材使用】</title>
+      <link>https://noauto-nolife.com/post/favicon-404/</link>
+      <pubDate>Thu, 09 Dec 2021 11:53:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/favicon-404/</guid>
+      <description>F12キーを押してコンソールを開き、JavaScriptの挙動を確かめる時。目につくのが、favicon.ico NotFoundという赤字の警告。 この警告はサイトのアイコンを設定していないことによって発生する。つまり、このブログのようにアイコンを設定すれば、警告は出ないということだ。 アイコンを設定する。 HTMLのheadタグ内に下記を記入する。 &amp;lt;link href=&amp;quot;img/favicon.ico&amp;quot; rel=&amp;quot;icon&amp;quot;&amp;gt; まず、アイコンのファイル名は必ずfavicon.</description>
+    </item>
+    
+    <item>
+      <title>【Django】DTLのextendsとblockを使って、テンプレートを継承をする</title>
+      <link>https://noauto-nolife.com/post/django-templates-extends-and-block/</link>
+      <pubDate>Mon, 06 Dec 2021 07:48:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-templates-extends-and-block/</guid>
+      <description>DjangoTemplateLanguage(以下、DTL)のextendsとblockを使用することで、複数のページの共通部分を一箇所にまとめることができる。 例えば、BootstrapやjQueryの読み込み、サイトのヘッダーやサイドバー等の共通箇所を一箇所にまとめることで、編集時に一箇所だけ編集すればOK。 本記事ではextendsとblockを使用して、簡単なテンプレートの継承を行う。コードは</description>
+    </item>
+    
+    <item>
+      <title>【Django】ユーザーモデルと1対多のリレーションを組む方法【カスタムユーザーモデル不使用】</title>
+      <link>https://noauto-nolife.com/post/django-foreignkey-user/</link>
+      <pubDate>Sun, 05 Dec 2021 11:48:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-foreignkey-user/</guid>
+      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】CSSやJS等の静的ファイルを読み込む【public/static/】</title>
+      <link>https://noauto-nolife.com/post/laravel-static-files/</link>
+      <pubDate>Tue, 30 Nov 2021 10:26:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-static-files/</guid>
+      <description>静的ファイルの読み込みができれば、JSやCSSだけでなくサイトの画像を前もって用意することができる。 本記事では予めプロジェクトに配置したCSSやJSを読み込み、表示させる方法を解説する。 publicディレクトリ内にstaticディレクトリを作る まず、静的ファイル関係を記録するディレクトリを作成する。 Laravelにはpublicというディレクトリが用意されており、通常はそこにCSSやJS等を保管す</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】マイグレーション時の『Cannot add a NOT NULL column with default value NULL』問題を対処する【エラー】</title>
+      <link>https://noauto-nolife.com/post/laravel-notnull-exception/</link>
+      <pubDate>Wed, 24 Nov 2021 16:49:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-notnull-exception/</guid>
+      <description>なぜ、このエラーが発生するのか。まず原因から解説する。 原因 要するにこういうこと。 追加しようとしているフィールド(カラム)がNull禁止でデフォルトが無い。しかし、フィールド(カラム)を追加する以上、どうしてもNullになってしまう。この矛盾をどうするかと言うのがこの問題。 この状況が発生する条件は下記。下記を全て満たすと発生する。 条件1:既存のテーブルにカラムを追加する 条件2:追加するカラムにカラム</description>
+    </item>
+    
+    <item>
+      <title>VisualStudioCode(VScode)を使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/vscode-config/</link>
+      <pubDate>Tue, 23 Nov 2021 12:17:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vscode-config/</guid>
+      <description>比較的メジャーなVisualStudioCode(以下VScode)も、やはり初期状態のままでは使いづらい。 本記事では本格的にコードを書く前にやっておきたい設定を列挙する。 文字サイズを変更する まず文字サイズの変更。一番手っ取り早く文字を大きく表示させる方法として、VScode全体を拡大縮小することが有効。 VScodeのメニューバーから『表示』→『外観』→『拡大』もしくは『縮小』を選ぶ。もしくは、シ</description>
+    </item>
+    
+    <item>
+      <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】</title>
+      <link>https://noauto-nolife.com/post/django-models-foreignkey/</link>
+      <pubDate>Sun, 21 Nov 2021 16:34:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-foreignkey/</guid>
+      <description>1対多のリレーションを構築することができれば、トピックにカテゴリを指定したり、トピックに対してコメントを投稿することができる。 本記事はその方法を1対多の原理からDjangoのmodels.pyでの書き方まで記す。コードは『Djangoビギナーが40分で掲示板アプリを作る方法』から流用する。 1対多の仕組み 1対多とは、一言で言ってしまうと、プロ野球チームとチームに所属する選手の関係である。下記図をご覧</description>
+    </item>
+    
+    <item>
+      <title>Laravelに必要なPHP構文【if,for,function,class,型変換、配列操作など】</title>
+      <link>https://noauto-nolife.com/post/laravel-essential-php/</link>
+      <pubDate>Sat, 13 Nov 2021 17:46:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-essential-php/</guid>
+      <description>Laravelはフレームワークである。すでにコードが書かれており、それを読みながら追記していく必要がある。 そのため、Laravelによく出るPHP構文を知っておくと開発がスムーズに進む。本記事ではLaravelに必要なPHP構文をまとめて解説する。 if 基本のif文。ブーリアン型の判定が主である。 &amp;lt;?php $flag = True; if ($flag){ echo &amp;quot;True!!&amp;quot;; } else{ echo &amp;quot;False!!&amp;quot;; } Laravel実践では、コントローラがクライアントから受け取った値が存在するかチ</description>
+    </item>
+    
+    <item>
+      <title>【Django】formタグを使ってHTTPリクエストのGETメソッド、POSTメソッドを送信する</title>
+      <link>https://noauto-nolife.com/post/django-request-get-and-post/</link>
+      <pubDate>Fri, 12 Nov 2021 07:12:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-request-get-and-post/</guid>
+      <description>前提 DjangoでHelloWorld【HttpResponse及びレンダリング】ができた状態を前提として話を進める。 HTTPリクエストのGETメソッドの送信方法 用途は主に、検索がある。 まずindex.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;main class=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;GET&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;search&amp;quot; value=&amp;quot;{{ request.GET.search }}&amp;quot; placeholder=&amp;quot;キーワード&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;検索&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/main&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; form</description>
+    </item>
+    
+    <item>
+      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/pycharm-config/</link>
+      <pubDate>Thu, 04 Nov 2021 17:50:56 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
+      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
+    </item>
+    
+    <item>
+      <title>【Django】開発を始める上で最初に覚えておいたほうがよい Django Templates Language(DTL)</title>
+      <link>https://noauto-nolife.com/post/django-templates-language/</link>
+      <pubDate>Thu, 04 Nov 2021 08:25:53 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-templates-language/</guid>
+      <description>DjangoでHelloWorldを表示させた後、次にやることはDjango Templates Language(DTL)の習得。 DTLを使うことで、ビューから受け取った変数を表示させたり、条件分岐させたり、繰り返して同じ内容のHTMLを表示させたりすることができる。 Django Templates Language (DTL)とは 例えば、ログイン機能のあるサイトで、未ログインのユーザーにはログインページのリンクを表示、ログイン済みのユーザーにはマイページのリ</description>
+    </item>
+    
+    <item>
+      <title>Laravelビギナーが30分で掲示板アプリを作る方法</title>
+      <link>https://noauto-nolife.com/post/startup-laravel/</link>
+      <pubDate>Tue, 26 Oct 2021 15:13:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-laravel/</guid>
+      <description>laravelはDjangoと違って初っ端から大量のファイルやディレクトリが表示され、気後れしそうになるが、編集する部分さえ分かれば大したことはない見掛け倒し。 PHPを中心に扱う現場ではlaravelのスキルが求められるのでウェブ屋になるのであれば、是非とも習得しておきたい。 対象読者はlaravelを既にPCにインストール済み、Linux系コマンド習得済み、PHP及びHTML/CSS/JSの基本構</description>
+    </item>
     
     <item>
       <title>ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</title>
@@ -21,7 +156,7 @@
     </item>
     
     <item>
-      <title>Djangoで投稿したデータに対して編集・削除を行う</title>
+      <title>Djangoで投稿したデータに対して編集・削除を行う【urls.pyを使用してビューに数値型の引数を与える】</title>
       <link>https://noauto-nolife.com/post/django-models-delete-and-edit/</link>
       <pubDate>Sun, 17 Oct 2021 10:44:55 +0900</pubDate>
       
@@ -48,7 +183,7 @@
     </item>
     
     <item>
-      <title>Djangoで管理サイトを作る【admin.py】</title>
+      <title>Djangoで管理サイトを作り、投稿されたデータの読み・書き・編集・削除を行う【admin.py】</title>
       <link>https://noauto-nolife.com/post/django-admin/</link>
       <pubDate>Tue, 05 Oct 2021 07:34:27 +0900</pubDate>
       
@@ -93,7 +228,7 @@
     </item>
     
     <item>
-      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプルとリスト】</title>
+      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプル型とリスト型】</title>
       <link>https://noauto-nolife.com/post/python-brackets/</link>
       <pubDate>Tue, 22 Jun 2021 15:12:04 +0900</pubDate>
       
@@ -107,11 +242,11 @@
       <pubDate>Tue, 20 Apr 2021 16:26:25 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/laravel-to-resource/</guid>
-      <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると、ルーティングの書き換えは難しい。そこで、本記事は--resourceで作ったコントローラのルーティングをバラす。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); resource</description>
+      <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると(注意:下記はLaravel7.x系のルーティング記法)、ルーティングの書き換えは難しい。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); そこで、本記事は--resourceで作</description>
     </item>
     
     <item>
-      <title>Laravelのプロジェクト名を書き換える</title>
+      <title>Laravelのプロジェクト名を書き換える【設定に依存していないのであれば、普通にディレクトリ名を書き換えるだけでOK】</title>
       <link>https://noauto-nolife.com/post/laravel-project-rename/</link>
       <pubDate>Mon, 19 Apr 2021 08:37:27 +0900</pubDate>
       
@@ -125,7 +260,7 @@
       <pubDate>Fri, 16 Apr 2021 15:14:58 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-postgresql/</guid>
-      <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。 createuser --createdb --username=postgres --pwprompt [任意のユーザ</description>
+      <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。dockerを使用して</description>
     </item>
     
     <item>
@@ -138,16 +273,7 @@
     </item>
     
     <item>
-      <title>Laravelに必要なPHP構文【if,for,function,class】</title>
-      <link>https://noauto-nolife.com/post/laravel-essential-php/</link>
-      <pubDate>Tue, 13 Apr 2021 17:46:27 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-essential-php/</guid>
-      <description>Laravelはフレームワークである。すでにコードが書かれており、それを読みながら追記していく必要がある。 そのため、Laravelによく出るPHP構文を知っておくと開発がスムーズに進む。本記事ではLaravelに必要なPHP構文をまとめて解説する。 if 基本のif文。ブーリアン型の判定が主である。 &amp;lt;?php $flag = True; if ($flag){ echo &amp;quot;True!!&amp;quot;; } else{ echo &amp;quot;False!!&amp;quot;; } Laravel実践では、コントローラがクライアントから受け取った値が存在するかチ</description>
-    </item>
-    
-    <item>
-      <title>Laravelの全体像、ファイル・ディレクトリごとの役割と関係性を俯瞰する</title>
+      <title>Laravelの全体像、ファイル・ディレクトリごとの役割と関係性を俯瞰する【各コンポーネントごとに解説】</title>
       <link>https://noauto-nolife.com/post/laravel-overview/</link>
       <pubDate>Tue, 13 Apr 2021 16:05:29 +0900</pubDate>
       
@@ -210,7 +336,7 @@
     </item>
     
     <item>
-      <title>Laravelでリクエストのバリデーションを行う</title>
+      <title>【Request】Laravelでリクエストのバリデーションを行う【不適切なデータのチェックに】</title>
       <link>https://noauto-nolife.com/post/laravel-validate/</link>
       <pubDate>Wed, 03 Feb 2021 08:14:44 +0900</pubDate>
       
@@ -237,7 +363,7 @@
     </item>
     
     <item>
-      <title>laravelでCRUD簡易掲示板を作る【Restful】</title>
+      <title>初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】</title>
       <link>https://noauto-nolife.com/post/laravel-crud-restful/</link>
       <pubDate>Mon, 01 Feb 2021 13:11:30 +0900</pubDate>
       
@@ -246,7 +372,7 @@
     </item>
     
     <item>
-      <title>laravelで開発中、ログを表示させる</title>
+      <title>laravelで開発中、ログを表示させる【エラー箇所の確認・デバッグ作業に】</title>
       <link>https://noauto-nolife.com/post/laravel-log/</link>
       <pubDate>Mon, 01 Feb 2021 10:23:55 +0900</pubDate>
       
@@ -255,7 +381,7 @@
     </item>
     
     <item>
-      <title>Laravelのartisanコマンドのまとめ</title>
+      <title>Laravelのartisanコマンドのまとめ【開発用サーバー立ち上げ、コントローラやマイグレーションファイル等の作成、ルーティングの確認などに】</title>
       <link>https://noauto-nolife.com/post/laravel-artisan-command/</link>
       <pubDate>Mon, 01 Feb 2021 08:07:45 +0900</pubDate>
       
@@ -417,15 +543,6 @@
     </item>
     
     <item>
-      <title>Laravelビギナーが30分で掲示板アプリを作る方法</title>
-      <link>https://noauto-nolife.com/post/startup-laravel/</link>
-      <pubDate>Mon, 26 Oct 2020 15:13:33 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-laravel/</guid>
-      <description>laravelはDjangoと違って初っ端から大量のファイルやディレクトリが表示され、気後れしそうになるが、編集する部分さえ分かれば大したことはない見掛け倒し。 PHPを中心に扱う現場ではlaravelのスキルが求められるのでウェブ屋になるのであれば、是非とも習得しておきたい。 対象読者はlaravelを既にPCにインストール済み、Linux系コマンド習得済み、PHP及びHTML/CSS/JSの基本構</description>
-    </item>
-    
-    <item>
       <title>Djangoで『このページを表示するにはフォームデータを..』と言われたときの対処法</title>
       <link>https://noauto-nolife.com/post/django-redirect/</link>
       <pubDate>Sat, 24 Oct 2020 17:22:29 +0900</pubDate>
@@ -449,7 +566,7 @@
       <pubDate>Tue, 20 Oct 2020 14:20:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-django/</guid>
-      <description>公式のDjangoチュートリアルではよくわからない方に捧げる 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTML/CSS/JSの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHT</description>
+      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHTMLの作成(5分</description>
     </item>
     
   </channel>

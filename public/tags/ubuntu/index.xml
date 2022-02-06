@@ -6,10 +6,28 @@
     <description>Recent content in Ubuntu on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 21 Sep 2021 07:19:18 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 30 Jan 2022 11:22:31 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
+      <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
+      <pubDate>Sun, 30 Jan 2022 11:22:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
+      <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
+    </item>
+    
+    <item>
+      <title>LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】</title>
+      <link>https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/</link>
+      <pubDate>Fri, 17 Dec 2021 11:24:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/</guid>
+      <description>経緯 2021年12月某日、今日もLaravelのプロジェクトの開発を終え、『さあデプロイだ』とHerokuへデプロイをすると、下記のようなエラーメッセージが出た。 原因 これまで、普通にデプロイできていて、今日になってなぜデプロイに失敗するのか。どこかで設定ファイルの編集ミスったかと思いあれこれ確認してみたが、原因はわからない。 そこでStackOverflowにて、検索してみると、同様のエラー報告がみ</description>
+    </item>
     
     <item>
       <title>Nginxのログをチェックする、ログの出力設定を変更する</title>
@@ -39,12 +57,12 @@
     </item>
     
     <item>
-      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】</title>
+      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】</title>
       <link>https://noauto-nolife.com/post/laravel-database-regenerate/</link>
       <pubDate>Sat, 18 Sep 2021 08:42:15 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/laravel-database-regenerate/</guid>
-      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 そこで、bashのaliasにdatabase.sqliteを探して削除、その後生成するワンライナーコマンドを登録すればよいと思い至った。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行すること</description>
+      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 プロジェクトのディレクトリで下記コマンドを実行する。 find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \; bashのaliasに登録すれば上記コマンドをさらに短くできる。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行するこ</description>
     </item>
     
     <item>

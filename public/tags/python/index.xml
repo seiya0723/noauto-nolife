@@ -6,13 +6,58 @@
     <description>Recent content in Python on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 22 Jun 2021 15:12:04 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 19 Dec 2021 17:12:22 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプルとリスト】</title>
+      <title>Djangoをやる前に知っておきたいPython構文【オブジェクト指向と別ファイル読み込みは特に重要】</title>
+      <link>https://noauto-nolife.com/post/django-essential-python/</link>
+      <pubDate>Sun, 19 Dec 2021 17:12:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-essential-python/</guid>
+      <description>Djangoを始める前に知っておきたいPython構文をまとめる。 型 #数値型 score = 100 #文字列型 name = &amp;quot;Taro&amp;quot; #リスト型 numbers = [ 46,77,22 ] #辞書型 topic = { &amp;quot;id&amp;quot;:1, &amp;quot;comment&amp;quot;:&amp;quot;Hello&amp;quot; } #辞書型のリスト topics = [ { &amp;quot;id&amp;quot;:1, &amp;quot;comment&amp;quot;:&amp;quot;Hello&amp;quot; }, { &amp;quot;id&amp;quot;:2, &amp;quot;comment&amp;quot;:&amp;quot;Hi&amp;quot; }, { &amp;quot;id&amp;quot;:3, &amp;quot;comment&amp;quot;:&amp;quot;こんにちは&amp;quot; }, { &amp;quot;id&amp;quot;:4, &amp;quot;comment&amp;quot;:&amp;quot;どうも&amp;quot; }, ] 数値型は演算子(+ - * /)のいずれかを使用して計算を行うことができ</description>
+    </item>
+    
+    <item>
+      <title>【openpyxl】PythonからExcelファイルを読み書きする</title>
+      <link>https://noauto-nolife.com/post/startup-openpyxl/</link>
+      <pubDate>Thu, 16 Dec 2021 16:31:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-openpyxl/</guid>
+      <description>Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。 ソースコード import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティブシートを選択(新規作成時に最初からあるシート) ws = wb.active #シート名を変更 ws.title = &amp;quot;領収書&amp;quot; #セルに値を入力していく import datetime ws[&amp;quot;A1&amp;quot;].value = &amp;quot;決済日&amp;quot; ws[&amp;quot;A2&amp;quot;].value = str(datetime.date.today()) ws[&amp;quot;B1&amp;quot;].value = &amp;quot;商品名&amp;quot; ws[&amp;quot;C1&amp;quot;].value</description>
+    </item>
+    
+    <item>
+      <title>WindowsのタスクスケジューラーでPythonスクリプトを実行させる【スクレイピングの予約実行などに】</title>
+      <link>https://noauto-nolife.com/post/windows-taskscheduler/</link>
+      <pubDate>Thu, 09 Dec 2021 15:46:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/windows-taskscheduler/</guid>
+      <description>例えば、毎日定時に実行しなければならないスクリプトがある場合、手動でその時間に実行しているようではめんどくさい。 そんな時、Windowsの場合は、指定した時間になったら実行してくれるタスクスケジューラーを使うと良いだろう。 タスクスケジューラーを起動する Windowsキーを押して、『tasks』と入力すると出てくる これを起動する。 新しいタスクを作成する 『タスクスケジューラライブラリ』にて右クリック。</description>
+    </item>
+    
+    <item>
+      <title>【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】</title>
+      <link>https://noauto-nolife.com/post/python-requests-post-method/</link>
+      <pubDate>Fri, 26 Nov 2021 17:03:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-requests-post-method/</guid>
+      <description>Pythonのrequestsライブラリはスクレイピング(GETメソッド)で使用されているが、それだけでなくテストとしてPOSTメソッドでデータを投稿する事ができる。 ただ、ここで問題になるのが、CSRFトークンの存在。CSRFトークンをセットしなければCSRF検証に失敗してしまい、データの投稿ができなくなる。 そこで、セッションを維持した状態でCSRFトークンをリクエストボディにセットし、データを送</description>
+    </item>
+    
+    <item>
+      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/pycharm-config/</link>
+      <pubDate>Thu, 04 Nov 2021 17:50:56 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
+      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
+    </item>
+    
+    <item>
+      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプル型とリスト型】</title>
       <link>https://noauto-nolife.com/post/python-brackets/</link>
       <pubDate>Tue, 22 Jun 2021 15:12:04 +0900</pubDate>
       

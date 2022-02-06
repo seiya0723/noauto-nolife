@@ -6,10 +6,73 @@
     <description>Recent content in Others on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 14 Oct 2021 12:47:15 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 07 Jan 2022 09:57:31 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/categories/others/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>mogrifyコマンドを使って画像を一括クロップ(トリミング)する</title>
+      <link>https://noauto-nolife.com/post/startup-mogrify/</link>
+      <pubDate>Fri, 07 Jan 2022 09:57:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-mogrify/</guid>
+      <description>下記コマンドで一括画像処理できる mogrify [出力先] -crop [幅]x[高さ]+[切り取り始めるx座標]+[切り取り始めるy座標] [入力元] 参照元:https://qiita.com/yoya/items/62879e6e03d5a70eed09</description>
+    </item>
+    
+    <item>
+      <title>【PR】ElementTube 一般公開</title>
+      <link>https://noauto-nolife.com/post/element-tube/</link>
+      <pubDate>Thu, 30 Dec 2021 20:47:09 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/element-tube/</guid>
+      <description>動画共有サイトの雛形ウェブアプリ、『ElementTube』 一般公開します。 2021年12月時点でまだまだ未完成ではあるものの、動画共有サイトとしての体裁は十分保たれており、コードを少し編集するだけで運営は可能です。 概要 『ElementTube』は2021年1月、誰でも気軽に動画共有サイトを運営するコンセプトの元、開発を始めた。 現在の動画共有サイトは、概ね投稿されるコンテンツの一般大衆化が進んでお</description>
+    </item>
+    
+    <item>
+      <title>【GitHub】gitコマンドでリモートリポジトリへプッシュするためのトークンをジェネレートする</title>
+      <link>https://noauto-nolife.com/post/github-token-generate/</link>
+      <pubDate>Thu, 16 Dec 2021 15:07:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/github-token-generate/</guid>
+      <description>gitコマンドでGitHubにプッシュする時、アカウントのパスワードではプッシュすることはできない。前もってアカウント内に作っておいたトークンを入力する必要がある。 本記事ではその作り方を解説する。 トークン生成手順 下記リンク、もしくはSettingsからDeveloper settingsをクリック、Personal access tokensをクリックする。 https://github.com/settings/tokens Generate new tokenをクリック。パスワードの入力を要求される</description>
+    </item>
+    
+    <item>
+      <title>VBAでHelloWorld、セルの色変え、計算などの基本操作をやってみる【LibreOffice】</title>
+      <link>https://noauto-nolife.com/post/startup-vba/</link>
+      <pubDate>Thu, 16 Dec 2021 09:52:21 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-vba/</guid>
+      <description>VBAで基本操作(セルの装飾、計算処理、ダイアログ表示など)を行う。今回はLibreOfficeで行っているが、MicroSoftOfficeなどでも再現はできる。 ハローワールド Sub hello_vba_world MsgBox(&amp;quot;Hello VBA World&amp;quot;) End Sub このマクロを任意のボタンなどに割り当てることで、『Hello VBA World』と書かれたダイアログが表示される。 セルの取得と計算処理 計算処理をするには、特定のセルの値を手に入れ変数に格納する必要がある。 変数の定義</description>
+    </item>
+    
+    <item>
+      <title>VisualStudioCode(VScode)を使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/vscode-config/</link>
+      <pubDate>Tue, 23 Nov 2021 12:17:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vscode-config/</guid>
+      <description>比較的メジャーなVisualStudioCode(以下VScode)も、やはり初期状態のままでは使いづらい。 本記事では本格的にコードを書く前にやっておきたい設定を列挙する。 文字サイズを変更する まず文字サイズの変更。一番手っ取り早く文字を大きく表示させる方法として、VScode全体を拡大縮小することが有効。 VScodeのメニューバーから『表示』→『外観』→『拡大』もしくは『縮小』を選ぶ。もしくは、シ</description>
+    </item>
+    
+    <item>
+      <title>Vimのコメントの自動補完を無効化させる【JavaScriptやCSS、シェルスクリプトでコメントアウトした後、Enter押すと自動で出てくるアレ】</title>
+      <link>https://noauto-nolife.com/post/vim-comment-settings/</link>
+      <pubDate>Mon, 15 Nov 2021 07:39:25 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vim-comment-settings/</guid>
+      <description>例えばJavaScriptでコメントを書く時、 // と書く。だが、その後Enterキーを押すと // // こうなる。これがすごい鬱陶しい。 頼んでもいないのにコメント行が勝手に増えて行くのは、消す手間も同時に増えるということ。だから無効化させる。 環境 Ubuntu 18.04 VIM version 8.0.1453 下記プラグインを使っている状態 emmet.vim surround.vim コメントの自動補完を無効化する 通常、このようなコメントの自動補完を無効化させるには、下記コマンドを実行して無効化させる。</description>
+    </item>
+    
+    <item>
+      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/pycharm-config/</link>
+      <pubDate>Thu, 04 Nov 2021 17:50:56 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
+      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
+    </item>
     
     <item>
       <title>【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</title>

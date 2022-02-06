@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/vim/</link>
+    <description>Recent content in Vim on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 28 Nov 2021 08:06:40 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>VimでLaravelのビューを書いているとき、オートインデントが発動しない問題を対処する【.vimrc】</title>
+      <link>https://noauto-nolife.com/post/vim-laravel-autoindent/</link>
+      <pubDate>Sun, 28 Nov 2021 08:06:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vim-laravel-autoindent/</guid>
+      <description>VimでLaravelのビューを書いている時、オートインデントが発動してくれない。 毎度毎度Tabキーを押してインデントをするのは時間の無駄なので、ここは.vimrcに設定を施したい。 そんな時に見つかったのが下記StackOverflow。 https://stackoverflow.com/questions/32637518/vim-auto-indentation-not-working .vimrcに下記2行を追加するだけで良いらしい。 autocmd BufNewFile,BufRead *.blade.php set syntax=html autocmd BufNewFile,BufRead *.blade.php set filetype=html 確かにこれだけでオートインデントが発動してくれた。これでvimを使用したLaravelの開</description>
+    </item>
+    
+    <item>
+      <title>Vimのコメントの自動補完を無効化させる【JavaScriptやCSS、シェルスクリプトでコメントアウトした後、Enter押すと自動で出てくるアレ】</title>
+      <link>https://noauto-nolife.com/post/vim-comment-settings/</link>
+      <pubDate>Mon, 15 Nov 2021 07:39:25 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vim-comment-settings/</guid>
+      <description>例えばJavaScriptでコメントを書く時、 // と書く。だが、その後Enterキーを押すと // // こうなる。これがすごい鬱陶しい。 頼んでもいないのにコメント行が勝手に増えて行くのは、消す手間も同時に増えるということ。だから無効化させる。 環境 Ubuntu 18.04 VIM version 8.0.1453 下記プラグインを使っている状態 emmet.vim surround.vim コメントの自動補完を無効化する 通常、このようなコメントの自動補完を無効化させるには、下記コマンドを実行して無効化させる。</description>
+    </item>
+    
+  </channel>
+</rss>

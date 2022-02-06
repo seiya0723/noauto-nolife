@@ -6,10 +6,334 @@
     <description>Recent content in Django on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 21 Oct 2021 07:25:39 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 03 Feb 2022 15:11:00 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/django/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</title>
+      <link>https://noauto-nolife.com/post/django-deploy-docker-centos/</link>
+      <pubDate>Thu, 03 Feb 2022 15:11:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-docker-centos/</guid>
+      <description>docker上のCentOSにDjangoをデプロイする方法をここに記す。 前提知識 dockerの基本的な使い方に関しては、下記を参照。 UbuntuでUbuntuのdockerイメージを作るまで Djangoのデプロイに関しては下記を参照。 DjangoをAWSのEC2(Ubuntu)にデプロイする DjangoをLinux(Ubuntu)サーバーにデプロイする方法【Nginx+PostgreSQL】 Ce</description>
+    </item>
+    
+    <item>
+      <title>【Stripe】Djangoにクレジットカード決済機能を実装させる</title>
+      <link>https://noauto-nolife.com/post/startup-django-stripe/</link>
+      <pubDate>Thu, 03 Feb 2022 08:08:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-stripe/</guid>
+      <description>DjangoでECサイトや課金ゲームサイト等を展開しようと考えているのであれば、避けて通ることができないのがカード決済。 Stripeというカード決済代行会社を利用することで、決済処理を手軽に実装させることができる。 本記事ではその一例を紹介する。 共通設定 まず、stripeライブラリをインストールする pip install stripe settings.pyにて下記をセットしておく。Stripeの秘密鍵は.gitignoreに指定</description>
+    </item>
+    
+    <item>
+      <title>Django Rest Frameworkにて、APIを提供する</title>
+      <link>https://noauto-nolife.com/post/django-drf-api/</link>
+      <pubDate>Fri, 28 Jan 2022 15:12:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-drf-api/</guid>
+      <description>Serializerクラスのオブジェクトを返却することで、簡単にAPIを提供することができる。 また、投稿されたデータのバリデーションもSerializerを使えば良いのでとても楽。Ajaxも処理してくれるので、HTMLのフォームを提供するフォームクラスが不要であれば、Serializerに変換しても問題はない。 DRFのシリアライザを使用してAPIを作る 40分簡易掲示板にDELETE、PUTメソッド</description>
+    </item>
+    
+    <item>
+      <title>【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</title>
+      <link>https://noauto-nolife.com/post/django-admin-save-method/</link>
+      <pubDate>Fri, 28 Jan 2022 13:30:10 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-save-method/</guid>
+      <description>Djangoの管理サイトでモデルの保存をした時、何か実行して欲しいものがあれば、saveメソッドのオーバーライドでは通用しない。 Adminクラスにsave_modelメソッドがあるので、それをオーバーライドして使う。 class MyAdminView(admin.ModelAdmin): def save_model(self, request, obj, form, change): super(MyAdminView, self).save_model(request, obj, form, change) 用途 管理サイトから作成・編集をして、保存した時に発動するので、以下の用途が考えられる。 通販サイトにて配送処理完了のブーリアン値を変更、それを判定して配送処理完</description>
+    </item>
+    
+    <item>
+      <title>【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】</title>
+      <link>https://noauto-nolife.com/post/django-method-put-delete-patch/</link>
+      <pubDate>Mon, 24 Jan 2022 13:18:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-method-put-delete-patch/</guid>
+      <description>前提 まず前提として、PUT、PATCH、DELETEのメソッドはHTMLのformタグから送信することはできない。 例外として、Laravelでは下記のようにしてformタグでDELETEメソッドを送信するが、Djangoではそれは通用しない。これから解説するDjango Rest Frameworkを使用しても。 &amp;lt;form action=&amp;quot;{{ route(&#39;topics.destroy&#39;,$topic-&amp;gt;id) }}/&amp;quot; method=&amp;quot;POST&amp;quot; style=&amp;quot;display:inline-block;&amp;quot;&amp;gt; {{ csrf_field() }} {{ method_field(&amp;quot;delete&amp;quot;) }} &amp;lt;button class=&amp;quot;btn btn-outline-danger&amp;quot; type=&amp;quot;submit&amp;quot;&amp;gt;削除&amp;lt;</description>
+    </item>
+    
+    <item>
+      <title>【Django】ビュー関数とビュークラスの違い、一覧と使い方</title>
+      <link>https://noauto-nolife.com/post/django-view-def-and-class/</link>
+      <pubDate>Sat, 22 Jan 2022 17:39:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-view-def-and-class/</guid>
+      <description>ビュー関数とビュークラスの違い。 前提 (bbs/urls.py) config/urls.pyからアプリ(bbs)のurls.pyを読み込み、その中身は下記とする。 from django.urls import path from . import views app_name = &amp;quot;bbs&amp;quot; urlpatterns = [ path(&#39;&#39;, views.index, name=&amp;quot;index&amp;quot;), ] 構文 関数ベースのビュー from django.shortcuts import render,redirect from .models import Topic from .forms import TopicForm def index(request): if request.method == &amp;quot;GET&amp;quot;: topics = Topic.objects.all() context = { &amp;quot;topics&amp;quot;:topics } return render(request,&amp;quot;bbs/index.html&amp;quot;,context) elif request.method == &amp;quot;POST&amp;quot;: form = TopicForm(request.POST) if form.is_valid(): form.save() return redirect(&amp;quot;bbs:index&amp;quot;) メソッドをif文で分岐させる形式になっている。 クラスベースのビュー(View) from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm class IndexView(View): def get(self, request, *args, **kwargs): topics</description>
+    </item>
+    
+    <item>
+      <title>【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</title>
+      <link>https://noauto-nolife.com/post/django-error-messages-origin/</link>
+      <pubDate>Sun, 16 Jan 2022 17:57:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-error-messages-origin/</guid>
+      <description>forms.pyに書いたフォームクラスを使ってバリデーションを行った時、エラーメッセージの表示ができる。 print(forms.errors) 例えば、これで入力しなければならない場所を未入力で投稿した場合、 このフィールドは入力必須です とエラーが出てくる。やや堅めの文章であり、『フィールド』という単語はエンジニアであればまだしも、一般人はそれが何を意味しているのかわからないだろう。 そこでこの時に表示されるエラーメッセージを別のものに書</description>
+    </item>
+    
+    <item>
+      <title>【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】</title>
+      <link>https://noauto-nolife.com/post/django-allauth-custom-user-model-sendgrid/</link>
+      <pubDate>Thu, 13 Jan 2022 16:40:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-custom-user-model-sendgrid/</guid>
+      <description>config まず、カスタムユーザーモデルと、DjangoallauthでSendgridを使用したメール認証の設定を施す。 config/settings.py &amp;quot;&amp;quot;&amp;quot; Django settings for config project. Generated by &#39;django-admin startproject&#39; using Django 3.1.2. For more information on this file, see https://docs.djangoproject.com/en/3.1/topics/settings/ For the full list of settings and their values, see https://docs.djangoproject.com/en/3.1/ref/settings/ &amp;quot;&amp;quot;&amp;quot; from pathlib import Path # Build paths inside the project like this: BASE_DIR / &#39;subdir&#39;. BASE_DIR = Path(__file__).resolve().parent.parent # Quick-start development settings - unsuitable for production # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/ # SECURITY WARNING: keep the secret key used in production secret! SECRET_KEY = &#39;al#f(6(($8m%g#l4t2-0tvv1(&amp;amp;hbcd+(e8dt$!-m+ospxzv0gu&#39; # SECURITY WARNING: don&#39;t run with debug turned on in production! DEBUG = True ALLOWED_HOSTS = [] SITE_ID = 1 #django-allauthログイン時とログアウト時のリダイレクトURL LOGIN_REDIRECT_URL = &#39;/&#39; ACCOUNT_LOGOUT_REDIRECT_URL = &#39;/&#39; ####</description>
+    </item>
+    
+    <item>
+      <title>Djangoでpython3のsubprocessモジュールを使い、任意のコマンドをなるべく安全に配慮して実行させる</title>
+      <link>https://noauto-nolife.com/post/django-secure-subprocess/</link>
+      <pubDate>Tue, 04 Jan 2022 10:16:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-secure-subprocess/</guid>
+      <description>ふと思った。 毎度毎度、SSHクライアントがインストールされている端末を起動させ、サーバーにログイン、コマンドで操作するめんどくささ、どうにかできないだろうかと。 ウェブアプリから任意のコマンドを実行することができれば、わざわざSSHを使わなくても、ブラウザだけで簡単にコマンドが実行できる。ただ、問題になってくるのがセキュリティ。 不適切なコマンドを実行されてしまうと、当然システムは壊れる。そこで、なる</description>
+    </item>
+    
+    <item>
+      <title>【Django】Cookieをサーバーサイドで操作する</title>
+      <link>https://noauto-nolife.com/post/django-control-cookie/</link>
+      <pubDate>Mon, 03 Jan 2022 16:32:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-control-cookie/</guid>
+      <description>カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。 簡易掲示板における名前など、一度入力したデータを再度入力させる場合も、クライアントにとっては使い勝手が悪いので、Cookieをセットして表示させたほうが良い。 サンプルとなるコードはいつもの40分Django。 views.pyにてCookieをセット、参照する testというキー名、値はHelloでC</description>
+    </item>
+    
+    <item>
+      <title>【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】</title>
+      <link>https://noauto-nolife.com/post/django-auth-not-allauth/</link>
+      <pubDate>Sat, 01 Jan 2022 07:00:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-auth-not-allauth/</guid>
+      <description>Djangoでは、サードパーティー製ライブラリとしてdjango-allauthを使用することで、誰でも簡単にユーザー認証機能を実装させることができる。 とはいえ、事情によってライブラリの使用が制限されていたり、単なるユーザーIDとパスワードによるログインを行いたいだけであれば、デフォルトのLoginView及び、LogoutViewを使えば簡単に実装できる。 本記事ではallauthよりも手っ取り早</description>
+    </item>
+    
+    <item>
+      <title>【Django】ビュークラスの継承を使い、予めcontextを追加させる</title>
+      <link>https://noauto-nolife.com/post/django-add-context/</link>
+      <pubDate>Fri, 31 Dec 2021 08:29:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-add-context/</guid>
+      <description>クラスベースのビューであれば、継承をするだけで、継承関係にある全てのビューに同じ機能を追加できる。 どのページでも表示させるデータ(例えば、サイトのトップバーに表示するニュースなど)にも継承を使えば、予めの追加が実現できる。 以下は、40分Djangoにビュークラスの継承を行い、contextを追加するメソッドを呼び出せるようにしている。 from django.shortcuts import render,redirect from django.views import View from .models import Topic class ContextView(View): def context(self): context = {} context[&amp;quot;news&amp;quot;] = Topic.objects.order_by(&amp;quot;-id&amp;quot;)[:10] return context class BbsView(ContextView): def get(self, request, *args, **kwargs): context</description>
+    </item>
+    
+    <item>
+      <title>【PR】ElementTube 一般公開</title>
+      <link>https://noauto-nolife.com/post/element-tube/</link>
+      <pubDate>Thu, 30 Dec 2021 20:47:09 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/element-tube/</guid>
+      <description>動画共有サイトの雛形ウェブアプリ、『ElementTube』 一般公開します。 2021年12月時点でまだまだ未完成ではあるものの、動画共有サイトとしての体裁は十分保たれており、コードを少し編集するだけで運営は可能です。 概要 『ElementTube』は2021年1月、誰でも気軽に動画共有サイトを運営するコンセプトの元、開発を始めた。 現在の動画共有サイトは、概ね投稿されるコンテンツの一般大衆化が進んでお</description>
+    </item>
+    
+    <item>
+      <title>【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】</title>
+      <link>https://noauto-nolife.com/post/django-year-month-search-and-list/</link>
+      <pubDate>Sat, 25 Dec 2021 20:57:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-year-month-search-and-list/</guid>
+      <description>Djangoで月別アーカイブと年月計算を実装させる 元となったコードは40分Djangoにモデルへ投稿日を記録するフィールド(dt)を追加している。 forms.py from django import forms from django.core.validators import MinValueValidator,MaxValueValidator from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [&amp;quot;comment&amp;quot;] #モデルを継承しないフォームクラス class YearMonthForm(forms.Form): year = forms.IntegerField() month = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)]) モデルを継承しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。 views.py 年月別アーカイブのリ</description>
+    </item>
+    
+    <item>
+      <title>Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】</title>
+      <link>https://noauto-nolife.com/post/django-allauth-center-loginpage/</link>
+      <pubDate>Fri, 24 Dec 2021 10:01:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-center-loginpage/</guid>
+      <description>以前の方法であれば、単純なCSSの割り当てだけだったので、ログインフォームを中央寄せに仕立てることはできなかった。 今回は、HTMLも大幅に変更を行い、ログイン画面のフォームを中央寄せに仕立てる。 account/base.html 全てのログインフォームのテンプレートから継承されるbase.htmlを下記のように編集する。 {% load static %} &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;{% block head_title %}{% endblock %}&amp;lt;/title&amp;gt; &amp;lt;!--中央寄せ、フォーム系のタグは全てBootstrapから拝借--&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】</title>
+      <link>https://noauto-nolife.com/post/django-template-integer-for-loop/</link>
+      <pubDate>Tue, 21 Dec 2021 16:28:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-template-integer-for-loop/</guid>
+      <description>通常、DjangoTemplateLanguageのforループは数値型のループは許さない。ループが許されているのは、文字列型かリスト型、イテラブルなオブジェクトに限定される。 これを普通のPythonで表現するのであれば、こんな状態。 for content in contents: print(content) このcontentsに数値を入れることはできないのはPythonをやっていればわかる。しかし、とある方法を使えば数値のループは実現できる。 テンプレートタグw</description>
+    </item>
+    
+    <item>
+      <title>Djangoをやる前に知っておきたいPython構文【オブジェクト指向と別ファイル読み込みは特に重要】</title>
+      <link>https://noauto-nolife.com/post/django-essential-python/</link>
+      <pubDate>Sun, 19 Dec 2021 17:12:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-essential-python/</guid>
+      <description>Djangoを始める前に知っておきたいPython構文をまとめる。 型 #数値型 score = 100 #文字列型 name = &amp;quot;Taro&amp;quot; #リスト型 numbers = [ 46,77,22 ] #辞書型 topic = { &amp;quot;id&amp;quot;:1, &amp;quot;comment&amp;quot;:&amp;quot;Hello&amp;quot; } #辞書型のリスト topics = [ { &amp;quot;id&amp;quot;:1, &amp;quot;comment&amp;quot;:&amp;quot;Hello&amp;quot; }, { &amp;quot;id&amp;quot;:2, &amp;quot;comment&amp;quot;:&amp;quot;Hi&amp;quot; }, { &amp;quot;id&amp;quot;:3, &amp;quot;comment&amp;quot;:&amp;quot;こんにちは&amp;quot; }, { &amp;quot;id&amp;quot;:4, &amp;quot;comment&amp;quot;:&amp;quot;どうも&amp;quot; }, ] 数値型は演算子(+ - * /)のいずれかを使用して計算を行うことができ</description>
+    </item>
+    
+    <item>
+      <title>【openpyxl】PythonからExcelファイルを読み書きする</title>
+      <link>https://noauto-nolife.com/post/startup-openpyxl/</link>
+      <pubDate>Thu, 16 Dec 2021 16:31:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-openpyxl/</guid>
+      <description>Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。 ソースコード import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティブシートを選択(新規作成時に最初からあるシート) ws = wb.active #シート名を変更 ws.title = &amp;quot;領収書&amp;quot; #セルに値を入力していく import datetime ws[&amp;quot;A1&amp;quot;].value = &amp;quot;決済日&amp;quot; ws[&amp;quot;A2&amp;quot;].value = str(datetime.date.today()) ws[&amp;quot;B1&amp;quot;].value = &amp;quot;商品名&amp;quot; ws[&amp;quot;C1&amp;quot;].value</description>
+    </item>
+    
+    <item>
+      <title>【DRF】Django Rest Frameworkでリスト型のバリデーションも行う【UUIDや文字列を格納したリスト型のバリデーションに】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-listfield/</link>
+      <pubDate>Tue, 14 Dec 2021 15:04:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-listfield/</guid>
+      <description>例えば、Ajaxを使用して複数選択削除を行いたい場合、idもしくはuuidのリスト型をサーバーサイドに送信することになるだろう。 そういう時、DjangoRESTFramework(以下DRF)のシリアライザを使用すると良いだろう。 UUIDを含むリスト型をバリデーションする #複数選択削除で利用 class UUIDListSerializer(serializers.Serializer): id_list = serializers.ListField( child=serializers.UUIDField() ) これで実現できる。 DjangoのFormクラスで実現させる場合。 リスト型で送られてくるデータの</description>
+    </item>
+    
+    <item>
+      <title>【Django】Modelクラス、Formクラス、もしくはSerializerクラスのsaveメソッドで保存した後、保存したモデルオブジェクトのIDを手に入れる方法【データ保存した後、関連するデータも追加したい場合】</title>
+      <link>https://noauto-nolife.com/post/django-forms-save-model-object-id/</link>
+      <pubDate>Sat, 11 Dec 2021 07:30:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-forms-save-model-object-id/</guid>
+      <description>例えば、グループとそれに所属するメンバーのデータを一気に新規作成するタイプのフォームを作った場合。 グループとメンバーは1対多の関係になっており、それぞれの新規作成を1回のリクエストで済ませる場合は、まずグループを新規作成、その後そのグループに紐付いたメンバーを新規作成する必要がある。 ここで問題になるのが、メンバーのフィールドの一部にグループのIDを記録しなければならないこと。こういう時、保存したグ</description>
+    </item>
+    
+    <item>
+      <title>【Django】requestオブジェクトからクライアントのUAやIPアドレス、CSRFCookieなどをチェック、テンプレート上に表示する。</title>
+      <link>https://noauto-nolife.com/post/django-request-meta/</link>
+      <pubDate>Sat, 11 Dec 2021 07:26:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-request-meta/</guid>
+      <description>すぐ忘れるので備忘録として。 テンプレートにユーザーのIPアドレス等を表示させたい場合、下記DTLを任意のテンプレートに書き込む。 {{ request.META }} これでリクエストに関連するデータが全て表示される。必要なデータを選び、例えばREMOTE_ADDRであれば {{ request.META.REMOTE_ADDR }} とすれば良い。</description>
+    </item>
+    
+    <item>
+      <title>【Django】DTLのextendsとblockを使って、テンプレートを継承をする</title>
+      <link>https://noauto-nolife.com/post/django-templates-extends-and-block/</link>
+      <pubDate>Mon, 06 Dec 2021 07:48:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-templates-extends-and-block/</guid>
+      <description>DjangoTemplateLanguage(以下、DTL)のextendsとblockを使用することで、複数のページの共通部分を一箇所にまとめることができる。 例えば、BootstrapやjQueryの読み込み、サイトのヘッダーやサイドバー等の共通箇所を一箇所にまとめることで、編集時に一箇所だけ編集すればOK。 本記事ではextendsとblockを使用して、簡単なテンプレートの継承を行う。コードは</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】オリジナルのアイコン画像を使用して、地図上に表示させる【飲食店のマッピングであれば食べ物の画像を使って視認性UP】</title>
+      <link>https://noauto-nolife.com/post/leaflet-marker-original-icon/</link>
+      <pubDate>Mon, 06 Dec 2021 06:51:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-marker-original-icon/</guid>
+      <description>Leaflet.jsをそのまま使うと、配置されるマーカーはどこにでもあるような普通のマーカーになる。 これでは、どれも同じマーカーなので、パッと見でなにを意味しているのかはわからない。 例えば、飲食店のレビューサイトを投稿するウェブアプリとして、寿司屋でも、ラーメン屋でも、カレー屋でも、皆同じ青色の普通のマーカーになってしまう。寿司屋であれば寿司っぽいアイコンを、ラーメン屋であればラーメンっぽいアイコ</description>
+    </item>
+    
+    <item>
+      <title>【Django】ユーザーモデルと1対多のリレーションを組む方法【カスタムユーザーモデル不使用】</title>
+      <link>https://noauto-nolife.com/post/django-foreignkey-user/</link>
+      <pubDate>Sun, 05 Dec 2021 11:48:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-foreignkey-user/</guid>
+      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>【Django】簡易掲示板に折りたたみ式サイドバーを実装させる【extends】</title>
+      <link>https://noauto-nolife.com/post/django-templates-extends/</link>
+      <pubDate>Sat, 04 Dec 2021 10:29:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-templates-extends/</guid>
+      <description>テンプレートの継承を使うことで、複数のページに共通するHTMLをひとまとめにすることができる。 コードは40分Djangoで作った簡易掲示板を元に、折りたたみ式のサイドバーを使ってテンプレートを継承し、実現させる。 折りたたみサイドバーのHTMLとCSS 折りたたみ式のサイドバーは左側に設置させるようにした。templates/common/l_sidebar.htmlを作る。内容は下記 {% load static %} &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】</title>
+      <link>https://noauto-nolife.com/post/python-requests-post-method/</link>
+      <pubDate>Fri, 26 Nov 2021 17:03:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-requests-post-method/</guid>
+      <description>Pythonのrequestsライブラリはスクレイピング(GETメソッド)で使用されているが、それだけでなくテストとしてPOSTメソッドでデータを投稿する事ができる。 ただ、ここで問題になるのが、CSRFトークンの存在。CSRFトークンをセットしなければCSRF検証に失敗してしまい、データの投稿ができなくなる。 そこで、セッションを維持した状態でCSRFトークンをリクエストボディにセットし、データを送</description>
+    </item>
+    
+    <item>
+      <title>【Django】Ajaxを使ってOSMとLeaflet.jsでマーカーを配置させる</title>
+      <link>https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/</link>
+      <pubDate>Tue, 23 Nov 2021 08:12:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/</guid>
+      <description>Ajaxを使うことで、ページ全体を再レンダリングしなくてもデータの投稿ができるようになる。これをOSMとLeaflet.jsを使ったマッピングに使うことで、データの投稿がとてもスムーズになる。 Ajaxに関してはDjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】を、OSMとLeaflet.jsはDjangoでOpenStreetM</description>
+    </item>
+    
+    <item>
+      <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】</title>
+      <link>https://noauto-nolife.com/post/django-models-foreignkey/</link>
+      <pubDate>Sun, 21 Nov 2021 16:34:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-foreignkey/</guid>
+      <description>1対多のリレーションを構築することができれば、トピックにカテゴリを指定したり、トピックに対してコメントを投稿することができる。 本記事はその方法を1対多の原理からDjangoのmodels.pyでの書き方まで記す。コードは『Djangoビギナーが40分で掲示板アプリを作る方法』から流用する。 1対多の仕組み 1対多とは、一言で言ってしまうと、プロ野球チームとチームに所属する選手の関係である。下記図をご覧</description>
+    </item>
+    
+    <item>
+      <title>DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る</title>
+      <link>https://noauto-nolife.com/post/django-osm-leaflet-mapping/</link>
+      <pubDate>Mon, 15 Nov 2021 17:57:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-osm-leaflet-mapping/</guid>
+      <description>※この方法はDjangoでなくても実現できる。 Djangoでマッピングを実現する方法としてGeoDjangoがある。だが、GeoDjangoは実装が容易ではなく、以前紹介した方法では実現できない事がわかった。 そこで、GeoDjangoよりも容易にマッピングを実現するため、オープンストリートマップ(以下、OSM)とleaflet.jsを使って対処する。 ソースコードは40分Djangoをベースとしてい</description>
+    </item>
+    
+    <item>
+      <title>DjangoのMessageFrameworkで投稿とエラーをフロント側に表示する</title>
+      <link>https://noauto-nolife.com/post/django-message-framework/</link>
+      <pubDate>Sun, 14 Nov 2021 18:53:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-message-framework/</guid>
+      <description>DjangoのMessageFrameworkを有効化させる まず、settings.pyのINSTALLED_APPSに &#39;django.contrib.messages&#39; が含まれているかどうかをチェック。Django 3.2であればデフォルトで書かれてある。 同じくMIDDLEWAREに &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;, &#39;django.contrib.messages.middleware.MessageMiddleware&#39; 上記2つが含まれている事を確認。SessionMiddlewareはMessageMiddlewareよりも前に書かれてある必要がある。これもデフォルトで書かれ</description>
+    </item>
+    
+    <item>
+      <title>DjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】</title>
+      <link>https://noauto-nolife.com/post/django-ajax/</link>
+      <pubDate>Sat, 13 Nov 2021 07:05:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax/</guid>
+      <description>ウェブアプリケーションでAjaxが使えるようになれば、ページ内の一部の要素のみを更新させることができる。 それすなわち、 通信量の大幅な削減 ページのちらつき低減 SPA(シングルページアプリケーション)の開発可能 ロングポーリングを使用した永続的な接続が可能(→オンラインチャットなどに転用可能) など、様々な恩恵が得られる。 Ajaxの実装は実質テンプレートとビュー、静的ファイルの編集のみと非常にシンプル。 今</description>
+    </item>
+    
+    <item>
+      <title>【Django】formタグを使ってHTTPリクエストのGETメソッド、POSTメソッドを送信する</title>
+      <link>https://noauto-nolife.com/post/django-request-get-and-post/</link>
+      <pubDate>Fri, 12 Nov 2021 07:12:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-request-get-and-post/</guid>
+      <description>前提 DjangoでHelloWorld【HttpResponse及びレンダリング】ができた状態を前提として話を進める。 HTTPリクエストのGETメソッドの送信方法 用途は主に、検索がある。 まずindex.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;main class=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;GET&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;search&amp;quot; value=&amp;quot;{{ request.GET.search }}&amp;quot; placeholder=&amp;quot;キーワード&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;検索&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/main&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; form</description>
+    </item>
+    
+    <item>
+      <title>【Django】複数のアプリを作る場合、models.pyのモデルクラスにテーブル名を指定するべきではない【重複問題】</title>
+      <link>https://noauto-nolife.com/post/django-models-do-not-set-table-name/</link>
+      <pubDate>Thu, 11 Nov 2021 14:14:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-do-not-set-table-name/</guid>
+      <description>背景 最近、models.pyを書く時、db_tableを指定している現状に違和感が出てきた。 from django.db import models class Topic(models.Model): #↓これは必要なのか？ class Meta: db_table = &amp;quot;topic&amp;quot; #↑これは必要なのか？ comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) def __str__(self): return self.comment もしやと思い、db.sqlite3を確認する。すると、上記のモデルをマイグレーションしたときのテーブル名</description>
+    </item>
+    
+    <item>
+      <title>Djangoのインタラクティブシェルを使う【python3 manage.py shell】</title>
+      <link>https://noauto-nolife.com/post/django-shell/</link>
+      <pubDate>Sat, 06 Nov 2021 09:30:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-shell/</guid>
+      <description>Djangoに含まれているライブラリを普通のPythonのインタラクティブシェルで動かそうとしても、manage.pyの環境変数やsettings.pyが無ければ動かない。 だから、Django関係のライブラリを試しに動かしたい時は、 python3 manage.py shell とする。 用途 Djangoに含まれるライブラリの動作検証 例えば、django.utils.timezoneなどはPythonのインタラクティブシェルでは動作しない。</description>
+    </item>
+    
+    <item>
+      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/pycharm-config/</link>
+      <pubDate>Thu, 04 Nov 2021 17:50:56 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
+      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
+    </item>
+    
+    <item>
+      <title>【Django】開発を始める上で最初に覚えておいたほうがよい Django Templates Language(DTL)</title>
+      <link>https://noauto-nolife.com/post/django-templates-language/</link>
+      <pubDate>Thu, 04 Nov 2021 08:25:53 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-templates-language/</guid>
+      <description>DjangoでHelloWorldを表示させた後、次にやることはDjango Templates Language(DTL)の習得。 DTLを使うことで、ビューから受け取った変数を表示させたり、条件分岐させたり、繰り返して同じ内容のHTMLを表示させたりすることができる。 Django Templates Language (DTL)とは 例えば、ログイン機能のあるサイトで、未ログインのユーザーにはログインページのリンクを表示、ログイン済みのユーザーにはマイページのリ</description>
+    </item>
     
     <item>
       <title>【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</title>
@@ -21,7 +345,7 @@
     </item>
     
     <item>
-      <title>Djangoで投稿したデータに対して編集・削除を行う</title>
+      <title>Djangoで投稿したデータに対して編集・削除を行う【urls.pyを使用してビューに数値型の引数を与える】</title>
       <link>https://noauto-nolife.com/post/django-models-delete-and-edit/</link>
       <pubDate>Sun, 17 Oct 2021 10:44:55 +0900</pubDate>
       
@@ -48,7 +372,7 @@
     </item>
     
     <item>
-      <title>Djangoで管理サイトを作る【admin.py】</title>
+      <title>Djangoで管理サイトを作り、投稿されたデータの読み・書き・編集・削除を行う【admin.py】</title>
       <link>https://noauto-nolife.com/post/django-admin/</link>
       <pubDate>Tue, 05 Oct 2021 07:34:27 +0900</pubDate>
       
@@ -354,7 +678,7 @@
     </item>
     
     <item>
-      <title>Djangoの管理サイトのフォームをカスタムする【forms.py】</title>
+      <title>Djangoの管理サイト(admin)のフォームをforms.pyを使用してカスタムする【文字列入力フォームをtextareaタグで表現】</title>
       <link>https://noauto-nolife.com/post/django-admin-custom-form/</link>
       <pubDate>Sat, 31 Jul 2021 15:57:27 +0900</pubDate>
       
@@ -759,15 +1083,6 @@
     </item>
     
     <item>
-      <title>DjangoでAjax(jQuery)を実装する方法【非同期通信】【DRF不使用版】</title>
-      <link>https://noauto-nolife.com/post/django-ajax/</link>
-      <pubDate>Thu, 05 Nov 2020 12:05:15 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-ajax/</guid>
-      <description>ウェブアプリケーションでAjax(非同期通信)が使えるようになれば、ページ内の一部の要素のみを更新させることができる。 それすなわち、 通信量の大幅な削減 ページのちらつき低減 SPA(シングルページアプリケーション)の開発可能 ロングポーリングを使用した永続的な接続が可能(→オンラインチャットなどに転用可能) など、様々な恩恵が得られる。 Ajaxの実装は実質templatesとviews.pyの編集のみと非</description>
-    </item>
-    
-    <item>
       <title>Djangoのマイグレーションのエラー時の対処法</title>
       <link>https://noauto-nolife.com/post/django-migrate-error/</link>
       <pubDate>Thu, 05 Nov 2020 08:46:39 +0900</pubDate>
@@ -795,12 +1110,12 @@
     </item>
     
     <item>
-      <title>Djangoで開発中、データベースへ初期データを入力する【loaddata】</title>
+      <title>Djangoで開発中、データベースへ初期データを入力する【バックアップしたデータをloaddataコマンドでリストア】</title>
       <link>https://noauto-nolife.com/post/django-loaddata/</link>
       <pubDate>Sat, 24 Oct 2020 18:12:29 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-loaddata/</guid>
-      <description>Djangoで開発中にテストしたい時、デプロイ後に初期データを突っ込んで即公開したい時、どうしてもデータの入力作業が出てくる。 Seleniumで入力作業を自動化する方法もあるが、わざわざそんなことをしなくても初期データを突っ込む方法がある。それが python3 manage.py loaddata fixture/data.json models.pyに基づいたjsonファイルを作る まず、bbs/models.pyが下記のような状態だとする。 from django.db import models class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; name = model</description>
+      <description>Djangoで開発中にテストしたい時、デプロイ後に初期データを突っ込んで即公開したい時、どうしてもデータの入力作業が出てくる。 Seleniumで入力作業を自動化する方法もあるが、わざわざそんなことをしなくても初期データを突っ込む方法がある。それが python3 manage.py loaddata bbs/fixture/data.json このようにアプリディレクトリ内にfixtureディレクトリを作り、jsonのデータを指定して、リストアする models.pyに基づいたjsonファ</description>
     </item>
     
     <item>
@@ -854,7 +1169,7 @@
       <pubDate>Tue, 20 Oct 2020 14:20:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-django/</guid>
-      <description>公式のDjangoチュートリアルではよくわからない方に捧げる 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTML/CSS/JSの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHT</description>
+      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHTMLの作成(5分</description>
     </item>
     
   </channel>

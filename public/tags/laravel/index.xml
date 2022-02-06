@@ -6,10 +6,136 @@
     <description>Recent content in Laravel on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 18 Sep 2021 11:11:14 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 21 Dec 2021 08:06:32 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Laravelで.env(環境変数)に指定した値をチェックする方法【コントローラ・ビュー】</title>
+      <link>https://noauto-nolife.com/post/laravel-env-check/</link>
+      <pubDate>Tue, 21 Dec 2021 08:06:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-env-check/</guid>
+      <description>例えば、コントローラなどで開発段階とデプロイ後で処理を切り分けたい事がある。そういう時は、.env(環境変数)に指定した値を参照してif文で分岐させれば良い。 コントローラで環境変数に指定した値を確認する。 if ( env(&amp;quot;APP_DEBUG&amp;quot;) ){ \Log::debug(&amp;quot;APP_DEBUGはTrueです&amp;quot;); } else{ \Log::debug(&amp;quot;APP_DEBUGはFalseです&amp;quot;); } これで解決す</description>
+    </item>
+    
+    <item>
+      <title>Laravel 8.x系のroute/web.phpはこう書く【Target class [Controller Name] does not exist.】</title>
+      <link>https://noauto-nolife.com/post/laravel8-route-error/</link>
+      <pubDate>Mon, 20 Dec 2021 16:28:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel8-route-error/</guid>
+      <description>Laravel7.x系はサポートが切れているので早めにLaravel8.x系にしたいところ。 ルーティングの記法が変わっているので確認しましょう。 &amp;ndash;resourceの場合 こうする。 #7.x系以前の書き方。 #Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); #8.x系以降の書き方。 use App\Http\Controllers\TopicsController; Route::resource(&#39;/topics&#39;, TopicsController::class); 冒頭で予めコントローラをuseしておく。 コントローラのアクションと逆引き用の名前を指定する場合。 こうする。 #7.x系以前の書き方。 #Route::get(&#39;/topics&#39;, &#39;TopicsController@index&#39;)-&amp;gt;name(&#39;topics.index&#39;); #8.x系以降の</description>
+    </item>
+    
+    <item>
+      <title>Laravel8.xでページネーターのSVGの矢印がおかしいので修正する。</title>
+      <link>https://noauto-nolife.com/post/laravel8-paginator-svg/</link>
+      <pubDate>Mon, 20 Dec 2021 15:05:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel8-paginator-svg/</guid>
+      <description>問題だらけのLaravel8.xでまた問題が出てきた。ページネーションを普通に使うと、このようにSVGが狂っており、巨大化する。 修正 app/Providers/AppServiceProvider.phpにて下記のようにする。 &amp;lt;?php namespace App\Providers; use Illuminate\Support\ServiceProvider; use Illuminate\Pagination\Paginator; class AppServiceProvider extends ServiceProvider { /** * Register any application services. * * @return void */ public function register() { // } /** * Bootstrap any application services. * * @return void */ public function boot() { Paginator::useBootstrap(); } } これでLaravel7.x以前のBootstrapを使った普通のページネーション</description>
+    </item>
+    
+    <item>
+      <title>LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】</title>
+      <link>https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/</link>
+      <pubDate>Fri, 17 Dec 2021 11:24:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/</guid>
+      <description>経緯 2021年12月某日、今日もLaravelのプロジェクトの開発を終え、『さあデプロイだ』とHerokuへデプロイをすると、下記のようなエラーメッセージが出た。 原因 これまで、普通にデプロイできていて、今日になってなぜデプロイに失敗するのか。どこかで設定ファイルの編集ミスったかと思いあれこれ確認してみたが、原因はわからない。 そこでStackOverflowにて、検索してみると、同様のエラー報告がみ</description>
+    </item>
+    
+    <item>
+      <title>LaravelでSendgridを使ってメール送信【認証・通知に、ライブラリのインストールは不要】</title>
+      <link>https://noauto-nolife.com/post/laravel-sendgrid/</link>
+      <pubDate>Wed, 08 Dec 2021 16:42:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-sendgrid/</guid>
+      <description>特別なライブラリなどは必要ない。 流れ .envにてAPIキーなどを設定 make:mailコマンドでメールの雛形一式を作る メールのモデルを作る メールのテンプレートを作る 送信処理を実行する .envにてAPIキーなどを設定 まず、.envにてSendgridで手に入れたAPIキー等の情報を格納 MAIL_MAILER=smtp MAIL_HOST=smtp.sendgrid.net MAIL_PORT=587 MAIL_USERNAME=apikey MAIL_PASSWORD=[ここにSendgridで手に入れたAPIキーを記録する] MAIL_ENCRYPTION=tls MAIL_FROM_</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】Herokuにデプロイした後、URLをhttpsにする【デフォルトではhttpから始まるため、クライアントのブラウザが静的ファイルの読み込みに失敗する問題の対策】</title>
+      <link>https://noauto-nolife.com/post/laravel-deploy-after-https-force/</link>
+      <pubDate>Fri, 03 Dec 2021 16:36:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-deploy-after-https-force/</guid>
+      <description>HerokuにLaravelをデプロイした後の話。デフォルトではHTTPSではなく、HTTP通信であるため、静的ファイルのアクセスは暗号化されない。 それが原因で、クライアントのブラウザのセキュリティが発動して、静的ファイルの読み込みを拒否する。結果、CSSやJavaScript、画像などの読み込みに失敗し、サイトレイアウトが乱れる。 ビューでassetやroute等を使用している場合、それら全てがh</description>
+    </item>
+    
+    <item>
+      <title>LaravelをCloudinaryを使用したHerokuにデプロイ、画像やファイルをアップロードする</title>
+      <link>https://noauto-nolife.com/post/laravel-heroku-cloudinary-deploy/</link>
+      <pubDate>Thu, 02 Dec 2021 06:59:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-heroku-cloudinary-deploy/</guid>
+      <description>画像やファイルをアップロードするLaravelウェブアプリをオンプレミスではなく、クラウド(とりわけHeroku)にデプロイしたい場合、ストレージ問題を解決する必要がある。普通のLaravelアプリのHerokuデプロイはそれほど難しくはないが、Cloudinaryを使うとなると情報が限られ、難易度も高い。 そこで本記事では限られている情報に少しでも貢献するため、画像やファイルアップロード機能のある</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】CSSやJS等の静的ファイルを読み込む【public/static/】</title>
+      <link>https://noauto-nolife.com/post/laravel-static-files/</link>
+      <pubDate>Tue, 30 Nov 2021 10:26:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-static-files/</guid>
+      <description>静的ファイルの読み込みができれば、JSやCSSだけでなくサイトの画像を前もって用意することができる。 本記事では予めプロジェクトに配置したCSSやJSを読み込み、表示させる方法を解説する。 publicディレクトリ内にstaticディレクトリを作る まず、静的ファイル関係を記録するディレクトリを作成する。 Laravelにはpublicというディレクトリが用意されており、通常はそこにCSSやJS等を保管す</description>
+    </item>
+    
+    <item>
+      <title>VimでLaravelのビューを書いているとき、オートインデントが発動しない問題を対処する【.vimrc】</title>
+      <link>https://noauto-nolife.com/post/vim-laravel-autoindent/</link>
+      <pubDate>Sun, 28 Nov 2021 08:06:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vim-laravel-autoindent/</guid>
+      <description>VimでLaravelのビューを書いている時、オートインデントが発動してくれない。 毎度毎度Tabキーを押してインデントをするのは時間の無駄なので、ここは.vimrcに設定を施したい。 そんな時に見つかったのが下記StackOverflow。 https://stackoverflow.com/questions/32637518/vim-auto-indentation-not-working .vimrcに下記2行を追加するだけで良いらしい。 autocmd BufNewFile,BufRead *.blade.php set syntax=html autocmd BufNewFile,BufRead *.blade.php set filetype=html 確かにこれだけでオートインデントが発動してくれた。これでvimを使用したLaravelの開</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】マイグレーション時の『Cannot add a NOT NULL column with default value NULL』問題を対処する【エラー】</title>
+      <link>https://noauto-nolife.com/post/laravel-notnull-exception/</link>
+      <pubDate>Wed, 24 Nov 2021 16:49:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-notnull-exception/</guid>
+      <description>なぜ、このエラーが発生するのか。まず原因から解説する。 原因 要するにこういうこと。 追加しようとしているフィールド(カラム)がNull禁止でデフォルトが無い。しかし、フィールド(カラム)を追加する以上、どうしてもNullになってしまう。この矛盾をどうするかと言うのがこの問題。 この状況が発生する条件は下記。下記を全て満たすと発生する。 条件1:既存のテーブルにカラムを追加する 条件2:追加するカラムにカラム</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】IPアドレスを取得して、DBへ記録する【犯罪・不正利用の抑止、荒らし対策などに】</title>
+      <link>https://noauto-nolife.com/post/laravel-ipaddress/</link>
+      <pubDate>Wed, 24 Nov 2021 07:08:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ipaddress/</guid>
+      <description>クライアントのIPアドレスを記録できれば、認証が無くても犯罪行為の抑止につながるし、事案が発生してもすぐに対応できるだろう。 本記事ではLaravelにクライアントのIPアドレスを記録する方法を解説する。 コードは『初心者でもlaravelを使い、45分でCRUD簡易掲示板を作る【Restful対応】』から流用している。 IPアドレスのカラムを追加(モデル編集とマイグレーションファイル作成) まずマイグレ</description>
+    </item>
+    
+    <item>
+      <title>VisualStudioCode(VScode)を使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/vscode-config/</link>
+      <pubDate>Tue, 23 Nov 2021 12:17:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vscode-config/</guid>
+      <description>比較的メジャーなVisualStudioCode(以下VScode)も、やはり初期状態のままでは使いづらい。 本記事では本格的にコードを書く前にやっておきたい設定を列挙する。 文字サイズを変更する まず文字サイズの変更。一番手っ取り早く文字を大きく表示させる方法として、VScode全体を拡大縮小することが有効。 VScodeのメニューバーから『表示』→『外観』→『拡大』もしくは『縮小』を選ぶ。もしくは、シ</description>
+    </item>
+    
+    <item>
+      <title>Laravelに必要なPHP構文【if,for,function,class,型変換、配列操作など】</title>
+      <link>https://noauto-nolife.com/post/laravel-essential-php/</link>
+      <pubDate>Sat, 13 Nov 2021 17:46:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-essential-php/</guid>
+      <description>Laravelはフレームワークである。すでにコードが書かれており、それを読みながら追記していく必要がある。 そのため、Laravelによく出るPHP構文を知っておくと開発がスムーズに進む。本記事ではLaravelに必要なPHP構文をまとめて解説する。 if 基本のif文。ブーリアン型の判定が主である。 &amp;lt;?php $flag = True; if ($flag){ echo &amp;quot;True!!&amp;quot;; } else{ echo &amp;quot;False!!&amp;quot;; } Laravel実践では、コントローラがクライアントから受け取った値が存在するかチ</description>
+    </item>
+    
+    <item>
+      <title>Laravelビギナーが30分で掲示板アプリを作る方法</title>
+      <link>https://noauto-nolife.com/post/startup-laravel/</link>
+      <pubDate>Tue, 26 Oct 2021 15:13:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-laravel/</guid>
+      <description>laravelはDjangoと違って初っ端から大量のファイルやディレクトリが表示され、気後れしそうになるが、編集する部分さえ分かれば大したことはない見掛け倒し。 PHPを中心に扱う現場ではlaravelのスキルが求められるのでウェブ屋になるのであれば、是非とも習得しておきたい。 対象読者はlaravelを既にPCにインストール済み、Linux系コマンド習得済み、PHP及びHTML/CSS/JSの基本構</description>
+    </item>
     
     <item>
       <title>【Laravel】GitHubにプッシュする時.gitignoreに追加する必要のあるファイル、ディレクトリ</title>
@@ -21,12 +147,12 @@
     </item>
     
     <item>
-      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】</title>
+      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】</title>
       <link>https://noauto-nolife.com/post/laravel-database-regenerate/</link>
       <pubDate>Sat, 18 Sep 2021 08:42:15 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/laravel-database-regenerate/</guid>
-      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 そこで、bashのaliasにdatabase.sqliteを探して削除、その後生成するワンライナーコマンドを登録すればよいと思い至った。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行すること</description>
+      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 プロジェクトのディレクトリで下記コマンドを実行する。 find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \; bashのaliasに登録すれば上記コマンドをさらに短くできる。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行するこ</description>
     </item>
     
     <item>
@@ -44,11 +170,11 @@
       <pubDate>Tue, 20 Apr 2021 16:26:25 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/laravel-to-resource/</guid>
-      <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると、ルーティングの書き換えは難しい。そこで、本記事は--resourceで作ったコントローラのルーティングをバラす。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); resource</description>
+      <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると(注意:下記はLaravel7.x系のルーティング記法)、ルーティングの書き換えは難しい。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); そこで、本記事は--resourceで作</description>
     </item>
     
     <item>
-      <title>Laravelのプロジェクト名を書き換える</title>
+      <title>Laravelのプロジェクト名を書き換える【設定に依存していないのであれば、普通にディレクトリ名を書き換えるだけでOK】</title>
       <link>https://noauto-nolife.com/post/laravel-project-rename/</link>
       <pubDate>Mon, 19 Apr 2021 08:37:27 +0900</pubDate>
       
@@ -75,16 +201,7 @@
     </item>
     
     <item>
-      <title>Laravelに必要なPHP構文【if,for,function,class】</title>
-      <link>https://noauto-nolife.com/post/laravel-essential-php/</link>
-      <pubDate>Tue, 13 Apr 2021 17:46:27 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-essential-php/</guid>
-      <description>Laravelはフレームワークである。すでにコードが書かれており、それを読みながら追記していく必要がある。 そのため、Laravelによく出るPHP構文を知っておくと開発がスムーズに進む。本記事ではLaravelに必要なPHP構文をまとめて解説する。 if 基本のif文。ブーリアン型の判定が主である。 &amp;lt;?php $flag = True; if ($flag){ echo &amp;quot;True!!&amp;quot;; } else{ echo &amp;quot;False!!&amp;quot;; } Laravel実践では、コントローラがクライアントから受け取った値が存在するかチ</description>
-    </item>
-    
-    <item>
-      <title>Laravelの全体像、ファイル・ディレクトリごとの役割と関係性を俯瞰する</title>
+      <title>Laravelの全体像、ファイル・ディレクトリごとの役割と関係性を俯瞰する【各コンポーネントごとに解説】</title>
       <link>https://noauto-nolife.com/post/laravel-overview/</link>
       <pubDate>Tue, 13 Apr 2021 16:05:29 +0900</pubDate>
       
@@ -138,7 +255,7 @@
     </item>
     
     <item>
-      <title>Laravelでリクエストのバリデーションを行う</title>
+      <title>【Request】Laravelでリクエストのバリデーションを行う【不適切なデータのチェックに】</title>
       <link>https://noauto-nolife.com/post/laravel-validate/</link>
       <pubDate>Wed, 03 Feb 2021 08:14:44 +0900</pubDate>
       
@@ -165,7 +282,7 @@
     </item>
     
     <item>
-      <title>laravelでCRUD簡易掲示板を作る【Restful】</title>
+      <title>初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】</title>
       <link>https://noauto-nolife.com/post/laravel-crud-restful/</link>
       <pubDate>Mon, 01 Feb 2021 13:11:30 +0900</pubDate>
       
@@ -174,7 +291,7 @@
     </item>
     
     <item>
-      <title>laravelで開発中、ログを表示させる</title>
+      <title>laravelで開発中、ログを表示させる【エラー箇所の確認・デバッグ作業に】</title>
       <link>https://noauto-nolife.com/post/laravel-log/</link>
       <pubDate>Mon, 01 Feb 2021 10:23:55 +0900</pubDate>
       
@@ -183,7 +300,7 @@
     </item>
     
     <item>
-      <title>Laravelのartisanコマンドのまとめ</title>
+      <title>Laravelのartisanコマンドのまとめ【開発用サーバー立ち上げ、コントローラやマイグレーションファイル等の作成、ルーティングの確認などに】</title>
       <link>https://noauto-nolife.com/post/laravel-artisan-command/</link>
       <pubDate>Mon, 01 Feb 2021 08:07:45 +0900</pubDate>
       
@@ -198,15 +315,6 @@
       
       <guid>https://noauto-nolife.com/post/laravel-command-ubuntu/</guid>
       <description>laravelで新しいプロジェクトを生成するとき、 composer create-project --prefer-dist laravel/laravel [プロジェクト名] このように実行するのだが、とても長い。 laravel new [プロジェクト名] そこで上記コマンドを実行しようとしてもlaravelコマンドがインストールされていないと言う。laravelコマンドを使えるようにするにはまずはcomposerからのインストールが必要。 composer global require &amp;quot;laravel/installer&amp;quot; そしてその上で、~/.bashrcにてパスを通す。~/.bashrcの</description>
-    </item>
-    
-    <item>
-      <title>Laravelビギナーが30分で掲示板アプリを作る方法</title>
-      <link>https://noauto-nolife.com/post/startup-laravel/</link>
-      <pubDate>Mon, 26 Oct 2020 15:13:33 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-laravel/</guid>
-      <description>laravelはDjangoと違って初っ端から大量のファイルやディレクトリが表示され、気後れしそうになるが、編集する部分さえ分かれば大したことはない見掛け倒し。 PHPを中心に扱う現場ではlaravelのスキルが求められるのでウェブ屋になるのであれば、是非とも習得しておきたい。 対象読者はlaravelを既にPCにインストール済み、Linux系コマンド習得済み、PHP及びHTML/CSS/JSの基本構</description>
     </item>
     
   </channel>

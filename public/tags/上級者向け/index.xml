@@ -6,10 +6,100 @@
     <description>Recent content in 上級者向け on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 21 Oct 2021 07:25:39 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 03 Feb 2022 08:08:33 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Stripe】Djangoにクレジットカード決済機能を実装させる</title>
+      <link>https://noauto-nolife.com/post/startup-django-stripe/</link>
+      <pubDate>Thu, 03 Feb 2022 08:08:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-stripe/</guid>
+      <description>DjangoでECサイトや課金ゲームサイト等を展開しようと考えているのであれば、避けて通ることができないのがカード決済。 Stripeというカード決済代行会社を利用することで、決済処理を手軽に実装させることができる。 本記事ではその一例を紹介する。 共通設定 まず、stripeライブラリをインストールする pip install stripe settings.pyにて下記をセットしておく。Stripeの秘密鍵は.gitignoreに指定</description>
+    </item>
+    
+    <item>
+      <title>Djangoでpython3のsubprocessモジュールを使い、任意のコマンドをなるべく安全に配慮して実行させる</title>
+      <link>https://noauto-nolife.com/post/django-secure-subprocess/</link>
+      <pubDate>Tue, 04 Jan 2022 10:16:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-secure-subprocess/</guid>
+      <description>ふと思った。 毎度毎度、SSHクライアントがインストールされている端末を起動させ、サーバーにログイン、コマンドで操作するめんどくささ、どうにかできないだろうかと。 ウェブアプリから任意のコマンドを実行することができれば、わざわざSSHを使わなくても、ブラウザだけで簡単にコマンドが実行できる。ただ、問題になってくるのがセキュリティ。 不適切なコマンドを実行されてしまうと、当然システムは壊れる。そこで、なる</description>
+    </item>
+    
+    <item>
+      <title>【Django】Cookieをサーバーサイドで操作する</title>
+      <link>https://noauto-nolife.com/post/django-control-cookie/</link>
+      <pubDate>Mon, 03 Jan 2022 16:32:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-control-cookie/</guid>
+      <description>カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。 簡易掲示板における名前など、一度入力したデータを再度入力させる場合も、クライアントにとっては使い勝手が悪いので、Cookieをセットして表示させたほうが良い。 サンプルとなるコードはいつもの40分Django。 views.pyにてCookieをセット、参照する testというキー名、値はHelloでC</description>
+    </item>
+    
+    <item>
+      <title>【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】</title>
+      <link>https://noauto-nolife.com/post/django-auth-not-allauth/</link>
+      <pubDate>Sat, 01 Jan 2022 07:00:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-auth-not-allauth/</guid>
+      <description>Djangoでは、サードパーティー製ライブラリとしてdjango-allauthを使用することで、誰でも簡単にユーザー認証機能を実装させることができる。 とはいえ、事情によってライブラリの使用が制限されていたり、単なるユーザーIDとパスワードによるログインを行いたいだけであれば、デフォルトのLoginView及び、LogoutViewを使えば簡単に実装できる。 本記事ではallauthよりも手っ取り早</description>
+    </item>
+    
+    <item>
+      <title>【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】</title>
+      <link>https://noauto-nolife.com/post/django-year-month-search-and-list/</link>
+      <pubDate>Sat, 25 Dec 2021 20:57:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-year-month-search-and-list/</guid>
+      <description>Djangoで月別アーカイブと年月計算を実装させる 元となったコードは40分Djangoにモデルへ投稿日を記録するフィールド(dt)を追加している。 forms.py from django import forms from django.core.validators import MinValueValidator,MaxValueValidator from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [&amp;quot;comment&amp;quot;] #モデルを継承しないフォームクラス class YearMonthForm(forms.Form): year = forms.IntegerField() month = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)]) モデルを継承しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。 views.py 年月別アーカイブのリ</description>
+    </item>
+    
+    <item>
+      <title>【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】</title>
+      <link>https://noauto-nolife.com/post/django-template-integer-for-loop/</link>
+      <pubDate>Tue, 21 Dec 2021 16:28:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-template-integer-for-loop/</guid>
+      <description>通常、DjangoTemplateLanguageのforループは数値型のループは許さない。ループが許されているのは、文字列型かリスト型、イテラブルなオブジェクトに限定される。 これを普通のPythonで表現するのであれば、こんな状態。 for content in contents: print(content) このcontentsに数値を入れることはできないのはPythonをやっていればわかる。しかし、とある方法を使えば数値のループは実現できる。 テンプレートタグw</description>
+    </item>
+    
+    <item>
+      <title>【DRF】Django Rest Frameworkでリスト型のバリデーションも行う【UUIDや文字列を格納したリスト型のバリデーションに】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-listfield/</link>
+      <pubDate>Tue, 14 Dec 2021 15:04:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-listfield/</guid>
+      <description>例えば、Ajaxを使用して複数選択削除を行いたい場合、idもしくはuuidのリスト型をサーバーサイドに送信することになるだろう。 そういう時、DjangoRESTFramework(以下DRF)のシリアライザを使用すると良いだろう。 UUIDを含むリスト型をバリデーションする #複数選択削除で利用 class UUIDListSerializer(serializers.Serializer): id_list = serializers.ListField( child=serializers.UUIDField() ) これで実現できる。 DjangoのFormクラスで実現させる場合。 リスト型で送られてくるデータの</description>
+    </item>
+    
+    <item>
+      <title>【Django】Modelクラス、Formクラス、もしくはSerializerクラスのsaveメソッドで保存した後、保存したモデルオブジェクトのIDを手に入れる方法【データ保存した後、関連するデータも追加したい場合】</title>
+      <link>https://noauto-nolife.com/post/django-forms-save-model-object-id/</link>
+      <pubDate>Sat, 11 Dec 2021 07:30:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-forms-save-model-object-id/</guid>
+      <description>例えば、グループとそれに所属するメンバーのデータを一気に新規作成するタイプのフォームを作った場合。 グループとメンバーは1対多の関係になっており、それぞれの新規作成を1回のリクエストで済ませる場合は、まずグループを新規作成、その後そのグループに紐付いたメンバーを新規作成する必要がある。 ここで問題になるのが、メンバーのフィールドの一部にグループのIDを記録しなければならないこと。こういう時、保存したグ</description>
+    </item>
+    
+    <item>
+      <title>【Django】requestオブジェクトからクライアントのUAやIPアドレス、CSRFCookieなどをチェック、テンプレート上に表示する。</title>
+      <link>https://noauto-nolife.com/post/django-request-meta/</link>
+      <pubDate>Sat, 11 Dec 2021 07:26:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-request-meta/</guid>
+      <description>すぐ忘れるので備忘録として。 テンプレートにユーザーのIPアドレス等を表示させたい場合、下記DTLを任意のテンプレートに書き込む。 {{ request.META }} これでリクエストに関連するデータが全て表示される。必要なデータを選び、例えばREMOTE_ADDRであれば {{ request.META.REMOTE_ADDR }} とすれば良い。</description>
+    </item>
+    
+    <item>
+      <title>DjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】</title>
+      <link>https://noauto-nolife.com/post/django-ajax/</link>
+      <pubDate>Sat, 13 Nov 2021 07:05:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax/</guid>
+      <description>ウェブアプリケーションでAjaxが使えるようになれば、ページ内の一部の要素のみを更新させることができる。 それすなわち、 通信量の大幅な削減 ページのちらつき低減 SPA(シングルページアプリケーション)の開発可能 ロングポーリングを使用した永続的な接続が可能(→オンラインチャットなどに転用可能) など、様々な恩恵が得られる。 Ajaxの実装は実質テンプレートとビュー、静的ファイルの編集のみと非常にシンプル。 今</description>
+    </item>
     
     <item>
       <title>【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</title>
@@ -165,7 +255,7 @@
     </item>
     
     <item>
-      <title>Djangoの管理サイトのフォームをカスタムする【forms.py】</title>
+      <title>Djangoの管理サイト(admin)のフォームをforms.pyを使用してカスタムする【文字列入力フォームをtextareaタグで表現】</title>
       <link>https://noauto-nolife.com/post/django-admin-custom-form/</link>
       <pubDate>Sat, 31 Jul 2021 15:57:27 +0900</pubDate>
       
@@ -414,15 +504,6 @@
       
       <guid>https://noauto-nolife.com/post/django-ajax-restful/</guid>
       <description>先日の記事にて、DjangoでAjax(jQuery)を実装する方法を解説した。 ただ、RestfulAPIを使用すれば、さらに少ないコードでAjaxを実装することができる。 RestfulAPI、Django REST Frameworkとは RestfulAPIとは、HTTPリクエストに応じてサーバーの処理を切り分けることができるAPIのこと。 HTTPリクエストのヘッダ部には、リクエスト送信先のURLとリクエ</description>
-    </item>
-    
-    <item>
-      <title>DjangoでAjax(jQuery)を実装する方法【非同期通信】【DRF不使用版】</title>
-      <link>https://noauto-nolife.com/post/django-ajax/</link>
-      <pubDate>Thu, 05 Nov 2020 12:05:15 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-ajax/</guid>
-      <description>ウェブアプリケーションでAjax(非同期通信)が使えるようになれば、ページ内の一部の要素のみを更新させることができる。 それすなわち、 通信量の大幅な削減 ページのちらつき低減 SPA(シングルページアプリケーション)の開発可能 ロングポーリングを使用した永続的な接続が可能(→オンラインチャットなどに転用可能) など、様々な恩恵が得られる。 Ajaxの実装は実質templatesとviews.pyの編集のみと非</description>
     </item>
     
     <item>

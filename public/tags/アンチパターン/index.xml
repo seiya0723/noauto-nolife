@@ -6,10 +6,19 @@
     <description>Recent content in アンチパターン on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 07 Aug 2021 10:53:38 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 11 Nov 2021 14:14:40 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Django】複数のアプリを作る場合、models.pyのモデルクラスにテーブル名を指定するべきではない【重複問題】</title>
+      <link>https://noauto-nolife.com/post/django-models-do-not-set-table-name/</link>
+      <pubDate>Thu, 11 Nov 2021 14:14:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-do-not-set-table-name/</guid>
+      <description>背景 最近、models.pyを書く時、db_tableを指定している現状に違和感が出てきた。 from django.db import models class Topic(models.Model): #↓これは必要なのか？ class Meta: db_table = &amp;quot;topic&amp;quot; #↑これは必要なのか？ comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) def __str__(self): return self.comment もしやと思い、db.sqlite3を確認する。すると、上記のモデルをマイグレーションしたときのテーブル名</description>
+    </item>
     
     <item>
       <title>Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するにはnull=Trueとblank=Trueのオプションを</title>
@@ -21,7 +30,7 @@
     </item>
     
     <item>
-      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプルとリスト】</title>
+      <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプル型とリスト型】</title>
       <link>https://noauto-nolife.com/post/python-brackets/</link>
       <pubDate>Tue, 22 Jun 2021 15:12:04 +0900</pubDate>
       

@@ -6,10 +6,55 @@
     <description>Recent content in ウェブデザイン on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 14 Oct 2021 07:15:41 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 24 Dec 2021 10:01:44 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】</title>
+      <link>https://noauto-nolife.com/post/django-allauth-center-loginpage/</link>
+      <pubDate>Fri, 24 Dec 2021 10:01:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-center-loginpage/</guid>
+      <description>以前の方法であれば、単純なCSSの割り当てだけだったので、ログインフォームを中央寄せに仕立てることはできなかった。 今回は、HTMLも大幅に変更を行い、ログイン画面のフォームを中央寄せに仕立てる。 account/base.html 全てのログインフォームのテンプレートから継承されるbase.htmlを下記のように編集する。 {% load static %} &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;{% block head_title %}{% endblock %}&amp;lt;/title&amp;gt; &amp;lt;!--中央寄せ、フォーム系のタグは全てBootstrapから拝借--&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】</title>
+      <link>https://noauto-nolife.com/post/startup-chartjs/</link>
+      <pubDate>Thu, 09 Dec 2021 14:20:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-chartjs/</guid>
+      <description>インストールとチュートリアル 下記CDNをインストールする。 &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 続いて、グラフを表示させたい場所に下記、canvasタグを配置。 &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。 棒グラフ 公式から拝借。 実行させるJavaScriptが下記。 const ctx = document.getElementById(&#39;graph&#39;).getContext(&#39;2d&#39;); const myChart = new Chart(ctx, { type: &#39;bar&#39;, data: { labels: [&#39;Red&#39;, &#39;Blue&#39;, &#39;Yellow&#39;, &#39;Green&#39;, &#39;Purple&#39;, &#39;Orange&#39;], datasets: [{ label: &#39;# of Votes&#39;, data: [12, 19, 3, 5, 2, 3], backgroundColor: [ &#39;rgba(255, 99, 132, 0.2)&#39;, &#39;rgba(54, 162, 235, 0.2)&#39;, &#39;rgba(255, 206, 86, 0.2)&#39;, &#39;rgba(75, 192, 192, 0.2)&#39;, &#39;rgba(153, 102, 255, 0.2)&#39;, &#39;rgba(255, 159, 64, 0.2)&#39;</description>
+    </item>
+    
+    <item>
+      <title>【Django】簡易掲示板に折りたたみ式サイドバーを実装させる【extends】</title>
+      <link>https://noauto-nolife.com/post/django-templates-extends/</link>
+      <pubDate>Sat, 04 Dec 2021 10:29:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-templates-extends/</guid>
+      <description>テンプレートの継承を使うことで、複数のページに共通するHTMLをひとまとめにすることができる。 コードは40分Djangoで作った簡易掲示板を元に、折りたたみ式のサイドバーを使ってテンプレートを継承し、実現させる。 折りたたみサイドバーのHTMLとCSS 折りたたみ式のサイドバーは左側に設置させるようにした。templates/common/l_sidebar.htmlを作る。内容は下記 {% load static %} &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>【Django】Ajaxを使ってOSMとLeaflet.jsでマーカーを配置させる</title>
+      <link>https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/</link>
+      <pubDate>Tue, 23 Nov 2021 08:12:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/</guid>
+      <description>Ajaxを使うことで、ページ全体を再レンダリングしなくてもデータの投稿ができるようになる。これをOSMとLeaflet.jsを使ったマッピングに使うことで、データの投稿がとてもスムーズになる。 Ajaxに関してはDjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】を、OSMとLeaflet.jsはDjangoでOpenStreetM</description>
+    </item>
+    
+    <item>
+      <title>DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る</title>
+      <link>https://noauto-nolife.com/post/django-osm-leaflet-mapping/</link>
+      <pubDate>Mon, 15 Nov 2021 17:57:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-osm-leaflet-mapping/</guid>
+      <description>※この方法はDjangoでなくても実現できる。 Djangoでマッピングを実現する方法としてGeoDjangoがある。だが、GeoDjangoは実装が容易ではなく、以前紹介した方法では実現できない事がわかった。 そこで、GeoDjangoよりも容易にマッピングを実現するため、オープンストリートマップ(以下、OSM)とleaflet.jsを使って対処する。 ソースコードは40分Djangoをベースとしてい</description>
+    </item>
     
     <item>
       <title>CSS3とHTML5だけでモーダルダイアログを作る【JS不要】</title>

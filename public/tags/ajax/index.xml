@@ -6,10 +6,37 @@
     <description>Recent content in Ajax on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 21 Oct 2021 07:25:39 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 24 Jan 2022 13:18:55 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/ajax/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】</title>
+      <link>https://noauto-nolife.com/post/django-method-put-delete-patch/</link>
+      <pubDate>Mon, 24 Jan 2022 13:18:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-method-put-delete-patch/</guid>
+      <description>前提 まず前提として、PUT、PATCH、DELETEのメソッドはHTMLのformタグから送信することはできない。 例外として、Laravelでは下記のようにしてformタグでDELETEメソッドを送信するが、Djangoではそれは通用しない。これから解説するDjango Rest Frameworkを使用しても。 &amp;lt;form action=&amp;quot;{{ route(&#39;topics.destroy&#39;,$topic-&amp;gt;id) }}/&amp;quot; method=&amp;quot;POST&amp;quot; style=&amp;quot;display:inline-block;&amp;quot;&amp;gt; {{ csrf_field() }} {{ method_field(&amp;quot;delete&amp;quot;) }} &amp;lt;button class=&amp;quot;btn btn-outline-danger&amp;quot; type=&amp;quot;submit&amp;quot;&amp;gt;削除&amp;lt;</description>
+    </item>
+    
+    <item>
+      <title>【Django】Ajaxを使ってOSMとLeaflet.jsでマーカーを配置させる</title>
+      <link>https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/</link>
+      <pubDate>Tue, 23 Nov 2021 08:12:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/</guid>
+      <description>Ajaxを使うことで、ページ全体を再レンダリングしなくてもデータの投稿ができるようになる。これをOSMとLeaflet.jsを使ったマッピングに使うことで、データの投稿がとてもスムーズになる。 Ajaxに関してはDjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】を、OSMとLeaflet.jsはDjangoでOpenStreetM</description>
+    </item>
+    
+    <item>
+      <title>DjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】</title>
+      <link>https://noauto-nolife.com/post/django-ajax/</link>
+      <pubDate>Sat, 13 Nov 2021 07:05:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax/</guid>
+      <description>ウェブアプリケーションでAjaxが使えるようになれば、ページ内の一部の要素のみを更新させることができる。 それすなわち、 通信量の大幅な削減 ページのちらつき低減 SPA(シングルページアプリケーション)の開発可能 ロングポーリングを使用した永続的な接続が可能(→オンラインチャットなどに転用可能) など、様々な恩恵が得られる。 Ajaxの実装は実質テンプレートとビュー、静的ファイルの編集のみと非常にシンプル。 今</description>
+    </item>
     
     <item>
       <title>【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</title>
@@ -72,15 +99,6 @@
       
       <guid>https://noauto-nolife.com/post/django-ajax-restful/</guid>
       <description>先日の記事にて、DjangoでAjax(jQuery)を実装する方法を解説した。 ただ、RestfulAPIを使用すれば、さらに少ないコードでAjaxを実装することができる。 RestfulAPI、Django REST Frameworkとは RestfulAPIとは、HTTPリクエストに応じてサーバーの処理を切り分けることができるAPIのこと。 HTTPリクエストのヘッダ部には、リクエスト送信先のURLとリクエ</description>
-    </item>
-    
-    <item>
-      <title>DjangoでAjax(jQuery)を実装する方法【非同期通信】【DRF不使用版】</title>
-      <link>https://noauto-nolife.com/post/django-ajax/</link>
-      <pubDate>Thu, 05 Nov 2020 12:05:15 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-ajax/</guid>
-      <description>ウェブアプリケーションでAjax(非同期通信)が使えるようになれば、ページ内の一部の要素のみを更新させることができる。 それすなわち、 通信量の大幅な削減 ページのちらつき低減 SPA(シングルページアプリケーション)の開発可能 ロングポーリングを使用した永続的な接続が可能(→オンラインチャットなどに転用可能) など、様々な恩恵が得られる。 Ajaxの実装は実質templatesとviews.pyの編集のみと非</description>
     </item>
     
   </channel>
