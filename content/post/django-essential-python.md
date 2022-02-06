@@ -9,6 +9,8 @@ tags: [ "python","django","初心者向け" ]
 
 Djangoを始める前に知っておきたいPython構文をまとめる。
 
+
+
 ## 型
 
     #数値型
