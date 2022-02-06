@@ -1,6 +1,6 @@
 ---
 title: "UbuntuでUbuntuのdockerイメージを作るまで"
-date: 2022-01-30T11:22:31+09:00
+date: 2022-02-03T11:22:31+09:00
 draft: false
 thumbnail: "images/ubuntu.jpg"
 categories: [ "インフラ" ]
