@@ -87,6 +87,49 @@ forms.pyには、モデルを継承したフォームクラスを作る
 後は、日付の入力をしやすくするために、[flatpickr](/post/flatpickr-install/)を使用すればユーザーフレンドリーな予約サイトの完成である。
 
 
+## 2日後以降の入力を許すには？
+
+
+下記でOK。これで現在時刻から2日以上たった日時しか受け付けない。
+
+    from django.db import models
+    
+    from django.utils import timezone
+    from django.core.validators import MinValueValidator
+    
+    class Topic(models.Model):
+    
+        def test_dt():
+            return timezone.now() + timezone.timedelta(days=2)
+    
+        deadline    = models.DateTimeField( verbose_name="期日", validators=[ MinValueValidator( test_dt ) ] )
+        comment     = models.CharField(verbose_name="コメント",max_length=2000)
+            
+        def __str__(self):
+            return self.comment
+
+`test_dt`はメソッドとして扱われない。関数として扱われる。そのため、上記の`test_dt`には引数としてselfを入れてはならない。
+
+この関数は、クラスの外に出しても機能はする。
+
+
+    from django.db import models
+    
+    from django.utils import timezone
+    from django.core.validators import MinValueValidator
+    
+    def test_dt():
+        return timezone.now() + timezone.timedelta(days=2)
+    
+    class Topic(models.Model):
+    
+        deadline    = models.DateTimeField( verbose_name="期日", validators=[ MinValueValidator( test_dt ) ] )
+        comment     = models.CharField(verbose_name="コメント",max_length=2000)
+            
+        def __str__(self):
+            return self.comment
+
+
 ## 他のvalidatorsフィールドの解説記事
 
 - [【Django】モデルフィールドに正規表現によるバリデーションを指定する【カラーコード・電話番号に有効】](/post/django-models-regex-validate/)
@@ -94,5 +137,8 @@ forms.pyには、モデルを継承したフォームクラスを作る
 - [【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】](/post/django-year-month-search-and-list/)
 
 validatorsを使用すれば、受け付ける値に正規表現などが利用できる。これで正確に電話番号や郵便番号、ISBNなどの入力ができる。
+
+
+
 
 
