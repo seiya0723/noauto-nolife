@@ -1,5 +1,5 @@
 ---
-title: "HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】"
+title: "HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】【flex-direction:row-reverseで逆順対応可】"
 date: 2022-02-11T14:51:05+09:00
 draft: false
 thumbnail: "images/Screenshot from 2022-02-08 14-55-00.png"
@@ -163,7 +163,6 @@ tags: [ "html5","css3","fontawesome","ウェブデザイン" ]
 
 いずれにせよ、やはり単なる表示非表示をするだけであれば、HTMLとCSSで事は足りるという話である。
 
-<!--
 
 ### 逆順にしてみた。
 
@@ -323,8 +322,9 @@ CSSの`~`は以降の兄弟要素にしか使えないので、レビューの�
     #star_radio_5[type="radio"]:checked ~ .star_radio_label_area > .star_radio_label_flex > label[for="star_radio_1"] > .false_star{ display:none; }
 
 
+#### 動かすとこうなる。
 
+<div class="img-center"><img src="/images/Screenshot from 2022-02-13 17-49-59.png" alt=""></div>
 
-
--->
+このひと工夫で左端が星1、右端が星5になる。
 
