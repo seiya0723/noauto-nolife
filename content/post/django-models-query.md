@@ -1,5 +1,5 @@
 ---
-title: "【Django】実行されるクエリを確認する【.query】"
+title: "【Django】実行されるクエリ(SQL)を確認する【.query】"
 date: 2021-09-02T13:20:50+09:00
 draft: false
 thumbnail: "images/django.jpg"
