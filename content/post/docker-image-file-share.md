@@ -2,7 +2,7 @@
 title: "dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)"
 date: 2022-02-13T16:54:44+09:00
 draft: false
-thumbnail: "images/noimage.jpg"
+thumbnail: "images/docker.jpg"
 categories: [ "インフラ" ]
 tags: [ "docker","tips","ubuntu" ]
 ---

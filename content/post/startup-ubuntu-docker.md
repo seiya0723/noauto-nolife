@@ -2,7 +2,7 @@
 title: "UbuntuでUbuntuのdockerイメージを作るまで"
 date: 2022-02-03T11:22:31+09:00
 draft: false
-thumbnail: "images/ubuntu.jpg"
+thumbnail: "images/docker.jpg"
 categories: [ "インフラ" ]
 tags: [ "Ubuntu","docker","スタートアップシリーズ" ]
 ---
