@@ -37,7 +37,12 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
     cd startup_bbs
     django-admin startproject config .
 
-予めディレクトリを作っておき、その状態で`django-admin startproject config .`を実行することで`settings.py`や`urls.py`等の設定ファイルをconfigディレクトリ内に収めることが可能。
+予めディレクトリを作っておき、その状態で`django-admin startproject config .`を実行することで`settings.py`や`urls.py`等の設定ファイルを`config`ディレクトリ内に収めることが可能。
+
+もし、下記のように`django-admin startproject`コマンド実行時、プロジェクト名をそのまま指定した場合、設定ファイル関係がプロジェクトディレクトリと同名のディレクトリに格納される。
+
+    django-admin startproject myproject  #この場合、myprojectの中に設定ファイルを含むmyprojectディレクトリが作られる。
+
 
 ## アプリを作る(5分)
 
@@ -82,7 +87,7 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
     TEMPLATES = [ 
         {   
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [ BASE_DIR / "templates" ],
+            'DIRS': [ BASE_DIR / "templates" ],  #←ここを編集
             'APP_DIRS': True,
             'OPTIONS': {
                 'context_processors': [
