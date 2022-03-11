@@ -1,6 +1,6 @@
 ---
 title: "【Django】FilefieldやImageFieldでファイル名だけを表示させる方法【モデルにメソッドを追加】"
-date: 2022-03-07T22:20:05+09:00
+date: 2022-03-10T22:20:05+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]

@@ -1,6 +1,6 @@
 ---
 title: "【HTML】ダウンロードのダイアログを表示させたい場合、aタグにはdownload属性を付与する"
-date: 2022-03-07T21:53:58+09:00
+date: 2022-03-10T21:53:58+09:00
 draft: false
 thumbnail: "images/html5.jpg"
 categories: [ "フロントサイド" ]
