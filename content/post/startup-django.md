@@ -191,12 +191,15 @@ Django 2.x以前ではosモジュールを使用する形式だったため、�
     <body>
     
         <main class="container">
+            {# ここが投稿用フォーム #}
             <form method="POST">
                 {% csrf_token %}
                 <textarea class="form-control" name="comment"></textarea>
                 <input type="submit" value="送信">
             </form>
     
+
+            {# ここが投稿されたデータの表示領域 #}
             {% for topic in topics %}
             <div class="border">
                 {{ topic.comment }}
@@ -308,9 +311,101 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 
 `get`メソッドでは全データの参照、`post`メソッドではクライアントから受け取ったデータをDBへ書き込んでいる。
 
-`post`メソッドではデータを書き込んだ後、`get`メソッドへリダイレクトしている。このリダイレクトをする時、`bbs/urls.py`に書いた`app_name`と`name`を組み合わせてURLを逆引きし、リダイレクト先を指定している。
+### getメソッドの処理
+
+`get`メソッドは`Topic`を使ってDBへの読み込みを行う。下記で全データの読み込みを行うことができる。
+
+    Topic.objects.all()
+
+返り値として受け取るのは、モデルオブジェクト。ただ、全データが含まれているので、複数のモデルオブジェクトと解釈したほうが良いだろう。
+
+    topics  = Topic.objects.all()
+
+この`topics`はforループを行うことで1つずつ取り出すことができる。この`topics`をテンプレートでレンダリングして表示させるため、`context`としてレンダリング時に引き渡す。
+
+    topics  = Topic.objects.all()
+    context = { "topics":topics }
+
+    return render(request,"bbs/index.html",context)
+
+#### 【補足1】contextを受け取り、レンダリングするテンプレート側の処理
+
+テンプレートは`context`に指定されているキーを呼び出し、レンダリングをする。つまり、`Topic.objects.all()`で実行された結果を表示させたい場合、キー名の`topics`を呼び出す。
+
+    {{ topics }}
+
+ただ、これだけだと全データが雑然と表示されてしまうので、forループで1つずつ取り出し、表示させる。
+
+    {% for topic in topics %}
+    <div>{{ topic.comment }}</div>
+    {% endfor %}
+
+
+#### 【補足2】モデルクラスを使った絞り込みと並び替え
+
+他にも、このモデルクラスを使うことで、絞り込みや、並び替えなどもできる。
+
+    #特定idだけ絞り込んで表示する。
+    Topic.objects.filter(id=1)
+
+    #全件からidを逆順に並び替えて表示する。
+    Topic.objects.order_by("-id")
+
+### postメソッドの処理
+
+`post`メソッドではデータを書き込みを行う。ここでもモデルクラスを使用する。
+
+    posted  = Topic( comment = request.POST["comment"] )
+    posted.save()
+
+モデルオブジェクトを作る時、キーワード引数として`comment`を入れる。`request.POST["comment"]`はテンプレートに記述した`name="comment"`に起因している。
+
+つまり、テンプレート側が`name="message"`となった場合、`request.POST["message"]`となる。
+
+その後、`get`メソッドへリダイレクトする。このリダイレクトをする時、`bbs/urls.py`に書いた`app_name`と`name`を組み合わせてURLを逆引きし、リダイレクト先を指定している。
 
     redirect("[app_name]:[name]")
+
+#### 【補足1】モデルクラスを使った保存の別解
+
+例では下記のようにモデルオブジェクトを作って保存した。
+
+    posted  = Topic( comment = request.POST["comment"] )
+    posted.save()
+
+だが、下記のやり方でも問題はない。やっていることは全く同じである。
+
+    posted          = Topic()
+    posted.comment  = request.POST["comment"]
+    posted.save()
+
+
+#### 【補足2】postメソッドではリダイレクトを返し、レンダリングを行ってはいけないのはなぜか
+
+この`post`メソッドの末尾にレンダリングの処理を書いてreturnしてはいけない。
+
+    #postメソッドで下記を実行してはいけない。
+    #return render(request,"bbs/index.html")
+
+ブラウザ上で更新ボタンを押すと、`『このページを表示するにはフォームデータを再度送信する必要があります。フォームデータを再送信すると以前実行した検索、投稿や注文などの処理が繰り返されます。』`という警告文が表示される。これでは後々、問題が発生する。
+
+詳しくは下記をご覧いただきたい。
+
+[Djangoで『このページを表示するにはフォームデータを..』と言われたときの対処法](/post/django-redirect/)
+
+
+#### 【補足3】現状では空文字列も2000文字オーバーも受け付ける
+
+このモデルクラスを使った保存方式には欠陥がある。
+
+それは、バリデーションが行われていないので、モデルで定義した『入力必須』、『2000文字以内』というルールに従っていなくても、保存ができてしまう。
+
+開発中はデータベースとしてsqlite3を使用しているので、そのまま保存されてしまうが、デプロイ後に本番用のデータベース(MySQLやPostgreSQLなど)を使うと、DBがエラーを出す。これではDBに負荷がかかってしまうので、事前のバリデーションは必須。
+
+そこで登場するのが、`forms.py`。バリデーションを行い、ルールに則っていないデータをデータベースへ保存させないようにすることができる。詳しくは下記を参照する。
+
+[【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】](/post/django-forms-validate/)
+
 
 ## 開発用サーバーを起動する(3分)
 
@@ -346,7 +441,9 @@ https://github.com/seiya0723/startup_bbs
 
 ### forms.pyで受け取った値のバリデーション(不適切なデータの受け入れ拒否)
 
-現状ではモデルクラスを使用して直接データを格納しているので、`models.py`で設定した2000文字を超過したり、空欄を入力されてしまう。これを防ぐため`forms.py`によるバリデーションを実装すると良い。
+`views.py`の`post`メソッドの処理の補足で説明したとおり、現状ではモデルクラスを使用して直接データを格納しているので、`models.py`で設定した2000文字を超過したり、空欄を入力されてしまう。
+
+これを防ぐため`forms.py`によるバリデーションを実装すると良い。
 
 どんなウェブアプリでも、バリデーションを行ってからDBにデータを格納するのが基本のため、受け取った値のバリデーションは早めに実装したほうが良いだろう。(※本記事では、とりあえずクライアント側からのデータの格納を最短で行う事を重視したため、あえて省略した。)
 
@@ -386,6 +483,10 @@ https://github.com/seiya0723/startup_bbs
 
 [【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】](/post/django-models-add-field/)
 
+マイグレーション時に警告が出る原理・理由については下記を参照と良いだろう。
+
+[DjangoでYou are Trying to add a non-nullable fieldと表示されたときの対策【makemigrations】](/post/django-non-nullable/)
+
 ### 画像やファイルのアップロード
 
 画像や動画等のファイルをアップロードさせるためには、モデルにフィールドを追加するだけでなく、専用のmediaディレクトリを作り、`settings.py`と`config/urls.py`に設定を施す必要がある。
@@ -393,12 +494,6 @@ https://github.com/seiya0723/startup_bbs
 アップロード時のビューの処理も通常の文字列の送信とは異なるため、やや難度が高い。
 
 [Djangoで画像及びファイルをアップロードする方法](/post/django-fileupload/)
-
-### canvasで描画した画像をAjaxで送信
-
-ブラウザで描画した絵をAjaxでアップロードする。Ajaxに加えcanvasの扱いなども解説されているため、とても難易度は高い。
-
-[【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】](/post/django-canvas-send-img-by-ajax/)
 
 ### トピックにカテゴリ選択やコメント投稿を実現させる。
 
@@ -415,4 +510,10 @@ SNSなどではクライアント側がIDとパスワードを入力してユー
 allauthのインストールと、`settigns.py`、`config/urls.py`の設定だけで実現できる。メール認証も実装できる。
 
 [【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】](/post/startup-django-allauth/)
+
+### canvasで描画した画像をAjaxで送信
+
+ブラウザで描画した絵をAjaxでアップロードする。Ajaxに加えcanvasの扱いなども解説されているため、とても難易度は高い。
+
+[【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】](/post/django-canvas-send-img-by-ajax/)
 

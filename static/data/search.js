@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/html-atag-download-attribute/", "title" : "【HTML】ダウンロードのダイアログを表示させたい場合、aタグにはdownload属性を付与する" }, 
 { "link": "/post/django-essential-python/", "title" : "Djangoをやる前に知っておきたいPython構文【オブジェクト指向(class文)と別ファイル読み込み(import文)は特に重要】" }, 
 { "link": "/post/django-non-nullable/", "title" : "DjangoでYou are Trying to add a non-nullable fieldと表示されたときの対策【makemigrations】" }, 
 { "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
