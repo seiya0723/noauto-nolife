@@ -24,7 +24,6 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 1. forms.pyを作り、models.pyをimport、モデルクラスを継承したフォームクラスを作る
 1. views.pyはforms.pyをimport、フォームクラスでバリデーションを行う
 
-
 ## forms.pyを作る
 
 モデルを継承したフォームクラスを作る。
@@ -44,11 +43,9 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 クラス名は`Topic`モデルを継承して作ったフォームクラスなので、`TopicForm`とした。
 
-
 ## views.pyを書き換える
 
 `views.py`は`forms.py`を`import`して使う。
-
 
     from django.shortcuts import render,redirect
     from django.views import View
@@ -80,11 +77,13 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
                 form.save()
             else:
                 print("バリデーションNG")
+
+                #バリデーションNGの理由を表示させる
+                print(form.error)
     
             return redirect("bbs:index")
     
     index   = BbsView.as_view()
-
 
 `TopicForm`の引数に`request.POST`をそのまま入れる。フォームクラスのオブジェクトである`form`は`.is_valid()`メソッドの返り値(TrueとFalse)でバリデーションOKかNGは判定できる
 
@@ -92,6 +91,7 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 `.is_valid()`メソッドを実行して、返り値がTrueであれば、`.save()`メソッドを実行できる。モデルクラスのものと同じようにDBにデータを書き込む。
 
+ちなみに、フォームクラスのオブジェクトは`.error`属性がある。これで、バリデーションNGだった場合、何がNGの原因なのかを知ることができる。
 
 ## 動かすとこうなる。
 
@@ -103,7 +103,6 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 <div class="img-center"><img src="/images/Screenshot from 2021-09-29 09-39-27.png" alt=""></div>
 
-
 ## 結論
 
 『[Djangoビギナーが40分で掲示板アプリを作る方法](/post/startup-django/)』ではモデルフィールドが増えれば、その都度ビューでキーワード引数で入れるフィールドが増えるため、ビューが煩雑になってしまうが、このフォームクラスを使用する方法であれば、モデルフィールドが増えてもビューが煩雑になることはない。
@@ -113,5 +112,24 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 他にもフォームクラスで作ったフォームオブジェクトをテンプレートに引き渡すことで、HTMLのフォームを表示させることができる。(※もっともHTMLのclass名をサーバーサイドで指定することになるので、フロントとサーバーの分業が難しくなるデメリットがある。)
 
 
+## この先にやること
 
+フォームクラスを使ってデータのバリデーションが出来たら、後はエラーの理由を表示させたり、投稿完了した旨をテンプレート側に表示させると良いだろう。
+
+### テンプレート上に投稿完了、エラーなどの表示をさせる
+
+現状では投稿完了したにもかかわらず、その旨が表示されない。そこで、MessageFrameworkを使って投稿完了を表示させる。
+
+[DjangoのMessageFrameworkで投稿とエラーをフロント側に表示する](/post/django-message-framework/)
+
+
+### 任意のエラーメッセージを表示させる。
+
+上記のやり方ではまだ問題がある。
+
+例えば、『入力必須』『2000文字以内』の2つのルールがあり、いずれでも単に『エラー』と表示されてしまうので、何が問題なのかユーザーはわからないだろう。
+
+そこで、forms.pyのルールに応じて表示させるエラーメッセージを切り替える。これで何が問題なのかわかる。
+
+[【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】](/post/django-error-messages-origin/)
 
