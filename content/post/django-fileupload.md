@@ -12,7 +12,8 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 ## 流れ
 
 1. 必要なライブラリのインストール
-1. settings.pyとurls.pyの追記
+1. settings.pyの編集
+1. urls.pyの編集
 1. models.pyでフィールドの定義
 1. forms.pyでフォームを作る
 1. views.pyで受け取り処理
@@ -31,29 +32,28 @@ Pillowは画像を保存するために必要なライブラリ。画像の加�
 
 python-magicはアップロードされたファイルのMIME値を取得するためのライブラリ。MIMEとはファイルの種類のこと。このMIMEの値をチェックすることでアップロードされたファイルがPDFなのか、MP4なのか、EXEなのかなどを知ることができる。
 
-## settings.pyとurls.pyの追記
+## settings.pyの編集
 
 ファイルをアップロードするには、アップロード先となるディレクトリを指定して、それからアップロードしたファイルを公開するにはパスを指定しなければならない。そのためにも、まずは`settings.py`と`config/urls.py`に追記する。
 
 以下、`settings.py`に書き込む。
 
     MEDIA_URL   = "/media/"
-    if DEBUG:
-        MEDIA_ROOT  = os.path.join(BASE_DIR, "media")
-    else:
-        PROJECT_NAME    = os.path.basename(BASE_DIR)
-        #↓ は一般的なLinuxサーバーにデプロイする場合のパス。クラウドにデプロイする場合、下記は要修正。
-        MEDIA_ROOT      = "/var/www/{}/media".format(PROJECT_NAME)
+    MEDIA_ROOT  = BASE_DIR / "media"
 
-`MEDIA_URL`はサイトにアクセスするクライアント側から見たURLを指定する。例えば、`test.png`の場合はこうなる。
+`MEDIA_URL`はサイトにアクセスするクライアント側から見たURLを指定する。例えば、`test.png`の場合、URLは`127.0.0.1:8000/media/test.png`になる。
 
-    127.0.0.1:8000/media/test.png
+仮に`MEDIA_URL`が`"/mediafile/"`の場合、URLは`127.0.0.1:8000/mediafile/test.png`になる。
 
-仮に`MEDIA_URL`が`"/mediafile/"`の場合はこうなる。
+`MEDIA_ROOT`はサーバー側から見た画像ファイルの在り処を指定する。プロジェクトディレクトリ直下の`media`ディレクトリを指定する。
 
-    127.0.0.1:8000/mediafile/test.png
+### 【補足1】Django2.x以前の書き方
 
-`MEDIA_ROOT`はサーバー側から見た画像ファイルの在り処を指定する。DEBUGモードではプロジェクトディレクトリ直下の`media`ディレクトリを、デプロイ後は`/var/www/プロジェクト名/media`を指定する。
+Django2.x以前の場合は下記のように書く
+
+    MEDIA_ROOT  = os.path.join(BASE_DIR, "media")
+
+## urls.pyの編集
 
 続いて、`config/urls.py`の修正。下記のように書き換える。
 
@@ -81,15 +81,9 @@ python-magicはアップロードされたファイルのMIME値を取得する�
     
     class PhotoList(models.Model):
     
-        class Meta:
-            db_table    = "photolist"
-    
         photo       = models.ImageField(verbose_name="フォト",upload_to="photo/")
     
     class DocumentList(models.Model):
-    
-        class Meta:
-            db_table    = "documentlist"
     
         document    = models.FileField(verbose_name="ファイル",upload_to="file/")
     
