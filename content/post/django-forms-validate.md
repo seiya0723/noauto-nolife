@@ -133,3 +133,53 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 [【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】](/post/django-error-messages-origin/)
 
+### モデルを継承しないフォームクラス
+
+例えば、フォームクラスを使ってのバリデーションがDBにデータを書き込むためのものであれば、モデルを継承したほうが良い。
+
+しかし、モデルには関係のないデータをバリデーションする場合、バリデーションした後DBにデータを格納しない場合などは、モデルを継承しないでフォームクラスを作ったほうが良いだろう。
+
+具体的な例として、年月検索がある。年月検索をする時、月の指定に1~12以外の値を入れるとエラーになる。
+
+    #13月は存在しないので、これではエラーになってしまう。
+    Topic.objects.filter(dt__month=13).order_by("-dt")
+
+下記記事では年月検索をするため、モデルを継承しないフォームクラスを作っている。
+
+[【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】](/post/django-year-month-search-and-list/)
+
+
+### フォームクラスを使って、フォームのテンプレートを提供する。
+
+ビューのgetメソッドでフォームクラスのオブジェクトを作り、それをcontextに入れてレンダリングすることで、フォームクラスに適したフォームテンプレートをレンダリングすることができる。
+
+まず、ビュークラスにて、下記のようにフォームオブジェクトをcontextに入れてレンダリングさせる
+
+    class BbsView(View):
+    
+        def get(self, request, *args, **kwargs):
+    
+            topics  = Topic.objects.all()
+            form    = TopicForm()
+
+            context = { "topics":topics,
+                        "form":form
+            }
+    
+            return render(request,"bbs/index.html",context)
+
+
+続いて、レンダリング対象のHTMLであるbbs/index.htmlにて下記を追加する。
+
+    {{ form.as_p }}
+
+
+これが下記のようになる。
+
+    <p><input type="text" name="comment" maxlength="2000" required></p>
+
+だが、このフォームテンプレートの装飾は容易ではない。下記記事を見るとよくわかる。
+
+[Djangoのforms.pyが提供するフォームテンプレートは使わない](/post/django-forms-temp-not-use/)
+
+
