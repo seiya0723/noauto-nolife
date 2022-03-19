@@ -1,12 +1,11 @@
 ---
 title: "【Python】GoogleのISBNのAPIを使い、書籍の情報を手に入れる"
-date: 2022-03-17T11:42:50+09:00
+date: 2022-03-19T11:42:50+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "python","api","django","ajax" ]
 ---
-
 
 GoogleのISBN検索ができるAPIを使うことで、書籍の情報を簡単に手に入れることができる。
 
