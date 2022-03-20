@@ -28,9 +28,7 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 モデルを継承したフォームクラスを作る。
 
-
     from django import forms 
-    
     from .models import Topic
     
     class TopicForm(forms.ModelForm):
@@ -79,7 +77,7 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
                 print("バリデーションNG")
 
                 #バリデーションNGの理由を表示させる
-                print(form.error)
+                print(form.errors)
     
             return redirect("bbs:index")
     
@@ -91,7 +89,8 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 `.is_valid()`メソッドを実行して、返り値がTrueであれば、`.save()`メソッドを実行できる。モデルクラスのものと同じようにDBにデータを書き込む。
 
-ちなみに、フォームクラスのオブジェクトは`.error`属性がある。これで、バリデーションNGだった場合、何がNGの原因なのかを知ることができる。
+ちなみに、フォームクラスのオブジェクトは`.errors`属性がある。これで、バリデーションNGだった場合、何がNGの原因なのかを知ることができる。
+
 
 ## 動かすとこうなる。
 
@@ -103,11 +102,58 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 <div class="img-center"><img src="/images/Screenshot from 2021-09-29 09-39-27.png" alt=""></div>
 
-## 結論
+
+## 【補足1】モデルフィールドが増えたらどうなる？
 
 『[Djangoビギナーが40分で掲示板アプリを作る方法](/post/startup-django/)』ではモデルフィールドが増えれば、その都度ビューでキーワード引数で入れるフィールドが増えるため、ビューが煩雑になってしまうが、このフォームクラスを使用する方法であれば、モデルフィールドが増えてもビューが煩雑になることはない。
 
-問題のあるデータが事前に拒否されるので、モデルクラスに直接キーワード引数を入れて保存するよりもこちらのほうが良いだろう。
+例えば、モデルクラスが下記のように、nameとageが追加されたとする。
+
+    from django.db import models
+    
+    class Topic(models.Model):
+        name        = models.CharField(verbose_name="名前",max_length=100)
+        age         = models.IntegerField(verbose_name="年齢")
+        comment     = models.CharField(verbose_name="コメント",max_length=2000)
+
+
+モデルクラスを使った保存をする場合、下記のようになる。
+
+    posted  = Topic( comment =request.POST["comment"],
+                     name = request.POST["name"],
+                     age = request.POST["age"],
+                    )
+    posted.save()
+
+つまり、モデルのフィールドが増えるたびに、ビューでの保存処理にもキーワード引数が増えていく。これではビューが煩雑になってしまう。
+
+しかし、forms.pyを使う場合、下記のようにバリデーション対象のフィールドとして、モデルクラスに追加したフィールドを追記しておくだけで良い。
+
+    from django import forms 
+    from .models import Topic
+    
+    class TopicForm(forms.ModelForm):
+    
+        class Meta:
+            model   = Topic
+            fields  = [ "comment","name","age" ]
+    
+
+ビューの処理はそのままで問題はない。comment,name,ageの3つがバリデーションされる。
+
+    form    = TopicForm(request.POST)
+        
+    if form.is_valid():
+        print("バリデーションOK")
+        form.save()
+    else:
+        print("バリデーションNG")
+        print(form.errors)
+
+
+## 結論
+
+このようにフォームクラスを使うことで問題のあるデータが事前に拒否することができる。
 
 他にもフォームクラスで作ったフォームオブジェクトをテンプレートに引き渡すことで、HTMLのフォームを表示させることができる。(※もっともHTMLのclass名をサーバーサイドで指定することになるので、フロントとサーバーの分業が難しくなるデメリットがある。)
 
