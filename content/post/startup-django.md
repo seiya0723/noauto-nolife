@@ -26,7 +26,6 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 1. views.pyでDBへアクセス(5分)
 1. 開発用サーバーを起動する(3分)
 
-
 初心者向けの記事につき、forms.pyのバリデーション、デプロイ、DB設定、Ajaxなどは割愛する。
 
 また、views.pyはクラスベースのビューを採用。
@@ -351,6 +350,56 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
     #全件からidを逆順に並び替えて表示する。
     Topic.objects.order_by("-id")
 
+
+これを応用することで、検索機能を実装させることができる。詳しくは下記を確認したい。
+
+[Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】](/post/django-or-and-search/)
+
+
+#### 【補足3】contextをもっとスマートに書く
+
+先のコードではcontextを最後に定義し、topicsに対してtopicsというキーを割り当てた。
+
+    topics  = Topic.objects.all()
+    context = { "topics":topics }
+
+    return render(request,"bbs/index.html",context)
+
+しかし、この書き方ではcontextに含める値が増えるとこうなる。
+
+    topics_1    = Topic.objects.all()
+    topics_2    = Topic.objects.all()
+    topics_3    = Topic.objects.all()
+    topics_4    = Topic.objects.all()
+    topics_5    = Topic.objects.all()
+    topics_6    = Topic.objects.all()
+
+    context     = { 
+        "topics_1":topics_1,
+        "topics_2":topics_2,
+        "topics_3":topics_3,
+        "topics_4":topics_4,
+        "topics_5":topics_5,
+        "topics_6":topics_6,
+    }
+
+    return render(request,"bbs/index.html",context)
+
+このように、contextに含める値が増えるたびに、行数が余分に増えてしまう。これではビューの見通しが悪くなる。
+
+そこで、このように書くとビューの行数を削減できて見通しが良くなるだろう。下記は上記のコードと等価である。
+
+    context             = {}    
+    context["topics_1"] = Topic.objects.all()
+    context["topics_2"] = Topic.objects.all()
+    context["topics_3"] = Topic.objects.all()
+    context["topics_4"] = Topic.objects.all()
+    context["topics_5"] = Topic.objects.all()
+    context["topics_6"] = Topic.objects.all()
+
+    return render(request,"bbs/index.html",context)
+
+
 ### postメソッドの処理
 
 `post`メソッドではデータを書き込みを行う。ここでもモデルクラスを使用する。
@@ -393,7 +442,6 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 
 [Djangoで『このページを表示するにはフォームデータを..』と言われたときの対処法](/post/django-redirect/)
 
-
 #### 【補足3】現状では空文字列も2000文字オーバーも受け付ける
 
 このモデルクラスを使った保存方式には欠陥がある。
@@ -416,6 +464,28 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 上記コマンドを実行した後、 http://127.0.0.1:8000/ にアクセスする。下記のような画面が表示されれば成功。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-20 16-07-52.png" alt="簡易掲示板の完成"></div>
+
+### 【補足1】manage.py系コマンドについて
+
+冒頭で`startapp`、モデルに書いた内容でDBへテーブルを作るためのマイグレーションコマンドである`makemigrations`と`migrate`、そして開発用サーバーを起動する`runserver`等を実行する事ができるのが、プロジェクトの直下にある`manage.py`
+
+他にも管理者ユーザーを作る`createsuperuser`やDBに格納されたデータのバックアップとリストアも`manage.py`で行うことができる。
+
+詳細は下記。
+
+
+[Djangoで管理サイトを作る【admin.py】](/post/django-admin/)
+
+[Djangoで開発中、データベースへ初期データを入力する【バックアップしたデータをloaddataコマンドでリストア】](/post/django-loaddata/)
+
+[DjangoでDBに格納したデータをダンプ(バックアップ)させる【dumpdata】](/post/django-dumpdata/)
+
+
+ちなみに、`manage.py`で実行できるコマンドは下記で確認できる。
+
+
+    python3 manage.py
+
 
 ## ソースコード
 
