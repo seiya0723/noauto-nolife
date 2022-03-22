@@ -1,5 +1,5 @@
 ---
-title: "【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】"
+title: "【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】"
 date: 2021-09-29T09:16:49+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -21,12 +21,12 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 手順は非常にシンプル
 
-1. forms.pyを作り、models.pyをimport、モデルクラスを継承したフォームクラスを作る
+1. forms.pyを作り、models.pyをimport、モデルクラスを利用したフォームクラスを作る
 1. views.pyはforms.pyをimport、フォームクラスでバリデーションを行う
 
 ## forms.pyを作る
 
-モデルを継承したフォームクラスを作る。
+モデルを利用したフォームクラスを作る。まず`forms.ModelForm`を継承する。
 
     from django import forms 
     from .models import Topic
@@ -37,9 +37,9 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
             model   = Topic
             fields  = [ "comment" ]
     
-継承に使用するモデルは`Topic`、バリデーション対象のフィールドは`comment`である。
+利用するモデルは`Topic`、バリデーション対象のフィールドは`comment`である。
 
-クラス名は`Topic`モデルを継承して作ったフォームクラスなので、`TopicForm`とした。
+クラス名は`Topic`モデルを利用して作ったフォームクラスなので、`TopicForm`とした。
 
 ## views.pyを書き換える
 
@@ -179,18 +179,18 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 [【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】](/post/django-error-messages-origin/)
 
-### モデルを継承しないフォームクラス
+### モデルを利用しないフォームクラス
 
-例えば、フォームクラスを使ってのバリデーションがDBにデータを書き込むためのものであれば、モデルを継承したほうが良い。
+例えば、フォームクラスを使ってのバリデーションがDBにデータを書き込むためのものであれば、モデルを利用したほうが良い。
 
-しかし、モデルには関係のないデータをバリデーションする場合、バリデーションした後DBにデータを格納しない場合などは、モデルを継承しないでフォームクラスを作ったほうが良いだろう。
+しかし、モデルには関係のないデータをバリデーションする場合、バリデーションした後DBにデータを格納しない場合などは、モデルを利用しないでフォームクラスを作ったほうが良いだろう。
 
 具体的な例として、年月検索がある。年月検索をする時、月の指定に1~12以外の値を入れるとエラーになる。
 
     #13月は存在しないので、これではエラーになってしまう。
     Topic.objects.filter(dt__month=13).order_by("-dt")
 
-下記記事では年月検索をするため、モデルを継承しないフォームクラスを作っている。
+下記記事では年月検索をするため、モデルを利用しないフォームクラスを作っている。
 
 [【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】](/post/django-year-month-search-and-list/)
 
