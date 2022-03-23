@@ -422,16 +422,15 @@ DBを使用しているタイプのウェブアプリであれば、PostgreSQL�
 
 ルーターのIPアドレスをブラウザに直接入力してアクセスする。ルーターのパスワードとIDの入力をして、ルーターの管理画面でDHCPの設定を確認することができる。
 
-
 続いて、UbuntuのIPアドレスを指定する方法は、下記記事を元に行うと良い。
 
 [サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】](/post/startup-ubuntu2004-server/)
 
 もし、上記の方法では難しいと思う場合、Ubuntuの設定からネットワーク、優先設定の歯車のアイコンをクリックしてGUIで設定ができる。下記画像のようにする。
 
-<div class="img-center"><img src="/images/Screenshot from 2022-03-23 16-00-09.png" alt=""></div>
+<div class="img-center"><img src="/images/Screenshot from 2022-03-23 21-43-24.png" alt=""></div>
 
-これでIPアドレスの固定化ができる。
+メソッドは手動、アドレスを記入、DNSとしてルーターのIPアドレスを指定する。これでIPアドレスの固定化ができる。
 
 ### 【補足2】このデプロイはOSに直接Pythonライブラリをインストールしている
 
