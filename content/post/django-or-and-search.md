@@ -19,12 +19,12 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
 
 そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。
 
-## 結論
+## クエリビルダでスペース区切りのキーワード検索をする
 
-結論から言うと、コード(`views.py`)はこうなる。
 
     from django.shortcuts import render,redirect
     from django.views import View
+
     from .models import Category,Product
     
     from django.db.models import Q
@@ -33,19 +33,23 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
     
         def get(self, request, *args, **kwargs):
             
+            context = {}
+
+
+            #クエリを初期化しておく。
+            query   = Q()
+
             if "search" in request.GET:
     
                 #(1)キーワードが空欄もしくはスペースのみの場合、ページにリダイレクト
                 if request.GET["search"] == "" or request.GET["search"].isspace():
                     return redirect("shopping:index")
     
-                #(2)キーワードをリスト化させる(複数指定の場合に対応させるため)
-                search      = request.GET["search"].replace("　"," ")
-                search_list = search.split(" ")
+                #(2)全角スペースを半角スペースに変換、スペース区切りでリストにする。
+                words   = request.GET["search"].replace("　"," ").split(" ")
     
-                #(3)クエリを作る
-                query       = Q()
-                for word in search_list:
+                #(3)クエリを追加する
+                for word in words:
 
                     #空欄の場合は次のループへ
                     if word == "":
@@ -54,23 +58,17 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
                     #TIPS:AND検索の場合は&を、OR検索の場合は|を使用する。
                     query &= Q(name__contains=word)
     
-                #(4)作ったクエリを実行
-                data    = Product.objects.filter(query)
-            else:
-                data    = Product.objects.all()
-    
-            context = { "data":data }
+
+            #(4)作ったクエリを実行(検索のパラメータがない場合、絞り込みは発動しない。)
+            context["data"] = Product.objects.filter(query)
     
             return render(request,"shopping/index.html",context)
     
-        def post(self, request, *args, **kwargs):
-            
-            return redirect("shopping:index")
-       
+
     index   = ProductView.as_view()
 
 
-まず(1)。キーワードが空欄もしくはスペースのみの場合、リダイレクトさせる。この処理は無くても検索上は問題ないが、同じ検索結果でURLが違うという状況に至るため、
+まず(1)。キーワードが空欄もしくはスペースのみの場合、リダイレクトさせる。この処理は無くても検索上は問題ないが、同じ検索結果でURLが違うという状況に至るためにやっておく。
 
 続いて、(2)。全角スペースを半角スペースとして扱い、半角スペースで区切り、リスト化させる。
 
@@ -81,6 +79,76 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
 もっとも、スペース込みの検索は基本的にAND検索なので、今回は&を使用した。
 
 最後に(4)で作ったクエリを実行する。.filter()メソッドでOK
+
+
+### 【補足1】更に詳細な検索を行いたい場合はこうする
+
+フォームを使ってバリデーションを行う。
+
+    from django.shortcuts import render,redirect
+    from django.views import View
+
+    from .models import Category,Product
+
+    #商品のカテゴリ検索用フォーム(Productモデルを使ったフォーム)
+    from .forms import ProductCategoryForm
+
+    
+    from django.db.models import Q
+    
+    class ProductView(View):
+    
+        def get(self, request, *args, **kwargs):
+            
+            context = {}
+
+
+            #クエリを初期化しておく。
+            query   = Q()
+
+
+            #カテゴリ検索も同時に行う場合、事前にバリデーションを通す
+            form    = ProductCategoryForm(request.GET)
+
+            if form.is_valid():
+                cleaned = form.clean()
+                
+                #バリデーションした結果をクエリに追加させる
+                query &= Q(category=cleaned["category"])
+
+
+            if "search" in request.GET:
+    
+                #(1)キーワードが空欄もしくはスペースのみの場合、ページにリダイレクト
+                if request.GET["search"] == "" or request.GET["search"].isspace():
+                    return redirect("shopping:index")
+    
+                #(2)全角スペースを半角スペースに変換、スペース区切りでリストにする。
+                words   = request.GET["search"].replace("　"," ").split(" ")
+    
+                #(3)クエリを追加する
+                for word in words:
+
+                    #空欄の場合は次のループへ
+                    if word == "":
+                        continue
+
+                    #TIPS:AND検索の場合は&を、OR検索の場合は|を使用する。
+                    query &= Q(name__contains=word)
+
+
+
+            #(4)作ったクエリを実行(検索のパラメータがない場合、絞り込みは発動しない。)
+            context["data"] = Product.objects.filter(query)
+    
+            return render(request,"shopping/index.html",context)
+    
+    index   = ProductView.as_view()
+
+
+これで、カテゴリ検索と商品名の検索を同時に行う事ができる。
+
+指定したカテゴリであり、なおかつスペース区切りで指定した文字列を含む商品名を検索する事ができる。
 
 
 ## 結論
@@ -96,11 +164,7 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
 
 ## 参考文献
 
-https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
+- https://docs.djangoproject.com/en/3.1/ref/models/querysets/#query-related-tools
+- https://docs.djangoproject.com/en/3.1/topics/db/queries/#complex-lookups-with-q
 
-https://docs.djangoproject.com/en/3.1/topics/db/queries/#complex-lookups-with-q
 
-
-## ソースコード
-
-https://github.com/seiya0723/simple_ecsite
