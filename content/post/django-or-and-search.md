@@ -151,6 +151,83 @@ Djangoのモデルオブジェクトで検索しようとすると、こうな�
 指定したカテゴリであり、なおかつスペース区切りで指定した文字列を含む商品名を検索する事ができる。
 
 
+### 【補足2】指定したキーワードとカテゴリで検索して結果が0件の場合、カテゴリかキーワードのどちらかを無効化させるには？
+
+クエリをそれぞれ独立させると良いだろう。
+
+
+    from django.shortcuts import render,redirect
+    from django.views import View
+
+    from .models import Category,Product
+
+    #商品のカテゴリ検索用フォーム(Productモデルを使ったフォーム)
+    from .forms import ProductCategoryForm
+
+    
+    from django.db.models import Q
+    
+    class ProductView(View):
+    
+        def get(self, request, *args, **kwargs):
+            
+            context = {}
+
+
+            #クエリを初期化しておく。
+            category_query  = Q()
+
+            #カテゴリ検索も同時に行う場合、事前にバリデーションを通す
+            form    = ProductCategoryForm(request.GET)
+
+            if form.is_valid():
+                cleaned = form.clean()
+                
+                #バリデーションした結果をクエリに追加させる
+                category_query &= Q(category=cleaned["category"])
+
+
+
+            search_query   = Q()
+
+            if "search" in request.GET:
+    
+                #(1)キーワードが空欄もしくはスペースのみの場合、ページにリダイレクト
+                if request.GET["search"] == "" or request.GET["search"].isspace():
+                    return redirect("shopping:index")
+    
+                #(2)全角スペースを半角スペースに変換、スペース区切りでリストにする。
+                words   = request.GET["search"].replace("　"," ").split(" ")
+    
+                #(3)クエリを追加する
+                for word in words:
+
+                    #空欄の場合は次のループへ
+                    if word == "":
+                        continue
+
+                    #TIPS:AND検索の場合は&を、OR検索の場合は|を使用する。
+                    search_query &= Q(name__contains=word)
+
+
+
+            #(4)作ったクエリを実行
+            
+            query = search_query & category_query
+
+            context["data"] = Product.objects.filter(query)
+
+            #検索件数0件の場合、カテゴリのみで検索。
+            if not context["data"]:
+                context["data"] = Product.objects.filter(category_query)
+
+    
+            return render(request,"shopping/index.html",context)
+    
+    index   = ProductView.as_view()
+
+
+
 ## 結論
 
 ちなみに、実行されるクエリを確認したいのであれば
