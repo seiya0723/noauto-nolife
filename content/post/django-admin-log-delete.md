@@ -1,5 +1,5 @@
 ---
-title: "【Django】管理サイト(admin)のログを削除する。"
+title: "【Django】管理サイト(admin)のログを削除する【DBの使用量削減に】"
 date: 2022-03-25T10:42:13+09:00
 draft: false
 thumbnail: "images/django.jpg"

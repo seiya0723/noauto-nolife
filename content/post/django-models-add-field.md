@@ -22,9 +22,6 @@ models.pyを操作していく上で難しいのが、フィールドの追加�
     
     class Topic(models.Model):
     
-        class Meta:
-            db_table = "topic"
-    
         comment = models.CharField(verbose_name="コメント",max_length=2000)
         dt      = models.DateTimeField(verbose_name="投稿日時",default=timezone.now)
     
@@ -96,9 +93,6 @@ models.pyを操作していく上で難しいのが、フィールドの追加�
     
     class Topic(models.Model):
     
-        class Meta:
-            db_table = "topic"
-    
         name    = models.CharField(verbose_name="投稿者の名前",max_length=100)
         comment = models.CharField(verbose_name="コメント",max_length=2000)
         dt      = models.DateTimeField(verbose_name="投稿日時",default=timezone.now)
@@ -118,7 +112,7 @@ commentと同様に`verbose_name`と`max_length`を指定。ただし、ここ�
      2) Quit, and let me add a default in models.py
     Select an option: 
 
-要するに、topicテーブルに、NULL禁止のnameフィールドを追加する場合、既存のレコードの処遇をどうするか聞いている。
+要するに、Topicモデルに、NULL禁止のnameフィールドを追加する場合、既存のレコードの処遇をどうするか聞いている。
 
 [こちらの記事](/post/django-non-nullable/)でも取り扱ったが、特段の指定がない場合、基本的にフィールドのデータは入力必須(null禁止、blank禁止)である。にもかかわらず、新しくフィールドを追加した時、既存のフィールドの値がどうしてもnullになってしまう。
 
@@ -131,7 +125,17 @@ commentと同様に`verbose_name`と`max_length`を指定。ただし、ここ�
 
 1か2を入力してEnterを押す。
 
-1の場合、Pythonのインタラクティブシェル風になるので、任意の値を指定する
+### 一時的に値を入れ、以降は入力必須にしたい場合は1を選ぶ
+
+1の場合、Pythonのインタラクティブシェルになるので、任意の値を指定する
+
+まず、1を押してEnter、インタラクティブシェルになる。今回はCharFieldなので、ダブルクオーテーションで囲って文字列型のデータを入れると良い。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-03-26 14-29-02.png" alt=""></div>
+
+画像のようにすることで、一時的に空欄のnameに関しては『匿名』という文字列が入る。
+
+### 永続的にデフォルト値を入れたい場合は2を選ぶ
 
 2の場合、追加したnameにフィールドオプションとしてdefaultを指定する。今回は2を指定してmodels.pyを編集する。
 
@@ -140,9 +144,6 @@ commentと同様に`verbose_name`と`max_length`を指定。ただし、ここ�
     
     class Topic(models.Model):
     
-        class Meta:
-            db_table = "topic"
-    
         name    = models.CharField(verbose_name="投稿者の名前",max_length=100,default="匿名")
         comment = models.CharField(verbose_name="コメント",max_length=2000)
         dt      = models.DateTimeField(verbose_name="投稿日時",default=timezone.now)
@@ -150,11 +151,14 @@ commentと同様に`verbose_name`と`max_length`を指定。ただし、ここ�
         def __str__(self):
             return self.comment
 
-この`default`を指定することで`makemigrations`が可能になる。既存のレコードは全て匿名として扱われる。
+この`default`を指定することで`makemigrations`が可能になる。1を選んだときと同様に、既存のレコードは全て匿名として扱われる。
 
 <div class="img-center"><img src="/images/Screenshot from 2021-10-05 07-09-22.png" alt=""></div>
 
-これでフィールドの追加が実現できた。
+ただ、この場合、管理サイトで新規作成を行う時、最初から匿名と書かれるようになる。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-03-26 14-38-37.png" alt=""></div>
+
 
 ## フィールドを削除する
 
@@ -164,9 +168,6 @@ commentと同様に`verbose_name`と`max_length`を指定。ただし、ここ�
     from django.utils import timezone
     
     class Topic(models.Model):
-    
-        class Meta:
-            db_table = "topic"
     
         #name    = models.CharField(verbose_name="投稿者の名前",max_length=100,default="匿名")
         comment = models.CharField(verbose_name="コメント",max_length=2000)
@@ -228,10 +229,12 @@ nameを削除する。その後マイグレーション。
 
 これでプロジェクトを新規作成した状態まで戻る。後は各アプリのモデルを書き直してマイグレーションのコマンドを実行する。
 
-    python3 manage.py makemigrations
+    python3 manage.py makemigrations bbs
     python3 manage.py migrate
     
-これでマイグレーションファイルが作られ、マイグレーションファイルに倣ってDBが作られる。
+手動で`migrations`ディレクトリを削除した時、`makemigrations`コマンドを実行する時は、アプリ名を明示的に指定しなければ、マイグレーションファイルを作ってくれない点に注意する。
+
+つまり、`bbs`アプリの`migrations`ディレクトリを削除した場合、上記のように`python3 manage.py makemigrations bbs`とする。
 
 ## 結論
 
@@ -242,3 +245,5 @@ nameを削除する。その後マイグレーション。
 また、nullとblankのフィールドオプションに関しても知っておいたほうが良い。これでフィールドの追加に迷わなくなる。
 
 [Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するにはnull=Trueとblank=Trueのオプションを](/post/django-models-uuid-int-null/)
+
+
