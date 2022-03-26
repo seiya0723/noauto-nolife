@@ -106,7 +106,6 @@ commentと同様に`verbose_name`と`max_length`を指定。ただし、ここ�
 
     python3 manage.py makemigrations
 
-
 すると、下記のような警告が出る。
 
     You are trying to add a non-nullable field 'name' to topic without a default; we can't do that (the database needs something to populate existing rows).
