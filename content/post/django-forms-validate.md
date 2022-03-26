@@ -51,7 +51,7 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
     from .models import Topic
     from .forms import TopicForm
     
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, *args, **kwargs):
     
@@ -81,7 +81,7 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
     
             return redirect("bbs:index")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
 
 `TopicForm`の引数に`request.POST`をそのまま入れる。フォームクラスのオブジェクトである`form`は`.is_valid()`メソッドの返り値(TrueとFalse)でバリデーションOKかNGは判定できる
 
@@ -90,7 +90,6 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 `.is_valid()`メソッドを実行して、返り値がTrueであれば、`.save()`メソッドを実行できる。モデルクラスのものと同じようにDBにデータを書き込む。
 
 ちなみに、フォームクラスのオブジェクトは`.errors`属性がある。これで、バリデーションNGだった場合、何がNGの原因なのかを知ることができる。
-
 
 ## 動かすとこうなる。
 
@@ -151,9 +150,93 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
         print(form.errors)
 
 
+### 【補足2】アーリーリターンを使う
+
+もし、バリデーションOKの後に何もしないのであれば、先ほどのコードで問題はないが、何かを実行したい場合、コードが見づらくなってしまう。
+
+
+    from django.shortcuts import render,redirect
+    from django.views import View
+    
+    from .models import Topic
+    from .forms import TopicForm
+    
+    class IndexView(View):
+    
+        def get(self, request, *args, **kwargs):
+    
+            topics  = Topic.objects.all()
+            context = { "topics":topics }
+    
+            return render(request,"bbs/index.html",context)
+    
+        def post(self, request, *args, **kwargs):
+    
+            form    = TopicForm(request.POST)
+                
+            if form.is_valid():
+                print("バリデーションOK")
+                form.save()
+
+                #===ここにバリデーションOKの後に実行する長い処理=====
+
+
+            else:
+                print("バリデーションNG")
+                print(form.errors)
+    
+            return redirect("bbs:index")
+    
+    index   = IndexView.as_view()
+
+
+このようにバリデーションOKの後に長い処理を実行する場合、上記のやり方では少々コードが見づらくなる。処理の中で更にifやforなどを実行しようものなら更にネストが深くなり、全体像を把握しづらい。
+
+そこで、アーリーリターンという記法を施す。
+
+
+    from django.shortcuts import render,redirect
+    from django.views import View
+    
+    from .models import Topic
+    from .forms import TopicForm
+    
+    class IndexView(View):
+    
+        def get(self, request, *args, **kwargs):
+    
+            topics  = Topic.objects.all()
+            context = { "topics":topics }
+    
+            return render(request,"bbs/index.html",context)
+    
+        def post(self, request, *args, **kwargs):
+    
+            form    = TopicForm(request.POST)
+                
+            if not form.is_valid():
+                print("バリデーションNG")
+                print(form.errors)
+                return redirect("bbs:index")
+
+
+            print("バリデーションOK")
+            form.save()
+
+            #===ここにバリデーションOKの後に実行する長い処理=====
+
+    
+            return redirect("bbs:index")
+    
+    index   = IndexView.as_view()
+
+バリデーションを行った結果、NGであった場合、そのままリダイレクトの処理だけ実行してお帰りいただく。
+
+もし、条件式に当てはまらなかった場合、つまりバリデーションOKの場合は保存処理と続きの処理を行う。こうすることでネストが深くならなくて済む。
+
 ## 結論
 
-このようにフォームクラスを使うことで問題のあるデータが事前に拒否することができる。
+このようにフォームクラスを使うことで、問題のあるデータをDB格納前に拒否することができる。
 
 他にもフォームクラスで作ったフォームオブジェクトをテンプレートに引き渡すことで、HTMLのフォームを表示させることができる。(※もっともHTMLのclass名をサーバーサイドで指定することになるので、フロントとサーバーの分業が難しくなるデメリットがある。)
 
@@ -201,7 +284,7 @@ MySQLやPostgreSQL等の本番用のDBではDBが直接エラーを出す仕組�
 
 まず、ビュークラスにて、下記のようにフォームオブジェクトをcontextに入れてレンダリングさせる
 
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, *args, **kwargs):
     
