@@ -315,9 +315,9 @@ Nginxの動作確認
 
 ### systemdのログを見る
 
-下記コマンドで、myprojectのログを出力できる
+下記コマンドで、gunicornのログを出力できる
 
-    journalctl | grep myproject
+    journalctl | grep gunicorn
 
 参照:https://qiita.com/marumen/items/e4c75a2617cb5d0113ce
 
