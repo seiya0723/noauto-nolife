@@ -104,6 +104,9 @@ SendgridのAPIを使用したメール送信を行うようにsettings.pyを書�
     #【重要】APIキーの入力後、GitHubへのプッシュは厳禁
     SENDGRID_API_KEY    = "ここにsendgridのAPIkeyを記述する"
 
+    #Sendgrid利用時はサンドボックスモードを無効化しておく。
+    SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
     #DEBUGがTrueのとき、メールの内容は全て端末に表示させる(実際にメールを送信したい時はここをコメントアウトする)
     if DEBUG:
         EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
@@ -134,8 +137,6 @@ APIキーを入力し、指定したメールアドレスが実在するもの�
 下記記事にて、ビューなどの任意のタイミングで送信できるよう解説してある。
 
 [DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】](/post/django-sendgrid/)
-
-
 
 
 ### パスワードを使用した方法【Sendgridには使用不可】
