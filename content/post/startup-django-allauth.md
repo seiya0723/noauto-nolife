@@ -65,7 +65,17 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
 
 ## メールアドレスとパスワードを使用した認証方法の実装
 
-メールアドレスを使用した認証方法を実装する場合、上記にさらに追記が必要。以下はSendgridを使用したメール送信を行う場合の方法。
+メールアドレスを使用した認証方法を実装する場合、上記にさらに追記が必要。
+
+### SendgridAPIを使用した方法
+
+
+まず、DjangoでSendgridのAPIを使用して送信を行う場合、事前に`django-sendgrid-v5`をインストールしておく。
+
+    pip install django-sendgrid-v5
+
+
+SendgridのAPIを使用したメール送信を行うようにsettings.pyを書き換える。
 
 
     #################django-allauthでのメール認証設定ここから###################
@@ -88,42 +98,19 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
     #ユーザー登録画面でメールアドレス入力を要求する(True)
     ACCOUNT_EMAIL_REQUIRED      = True
     
-    
-    #===============SendgridAPIを使う場合この方法は通用しない。======================
-    """
-    #ここにメール送信設定を入力する(Sendgridを使用する場合)
-    EMAIL_BACKEND   = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST      = 'smtp.sendgrid.net'
-    EMAIL_USE_TLS   = True
-    EMAIL_PORT      = 587
-    
-    #【超重要】メールのパスワードとメールアドレスの入力後、GitHubへのプッシュはダメ!!絶対!!不正アクセスされるよ!!
-    EMAIL_HOST_USER     = ''
-    EMAIL_HOST_PASSWORD = ''
-    """
-    #===============SendgridAPIを使う場合この方法は通用しない。======================
-
-
-    #【加筆】2021年ぐらいにSendgridはユーザー名とパスワードによるメール送信を拒否するようになったため、上記のやり方は通用しない。下記にAPIキーを指定する
-    #詳細:https://noauto-nolife.com/post/django-sendgrid/
-
     EMAIL_BACKEND       = "sendgrid_backend.SendgridBackend"
     DEFAULT_FROM_EMAIL  = "ここにデフォルトの送信元メールアドレスを指定"
 
+    #【重要】APIキーの入力後、GitHubへのプッシュは厳禁
     SENDGRID_API_KEY    = "ここにsendgridのAPIkeyを記述する"
 
-
-    #DEBUGがTrueのとき、メールの内容は全て端末に表示させる
+    #DEBUGがTrueのとき、メールの内容は全て端末に表示させる(実際にメールを送信したい時はここをコメントアウトする)
     if DEBUG:
         EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
     
-    #CHECK:認証時のメールの本文等の編集は templates/allauth/account/email/ から行うことができる
-    
     #################django-allauthでのメール認証設定ここまで###################
 
-    #django-allauth関係。django.contrib.sitesで使用するSITE_IDを指定する
     SITE_ID = 1
-    #django-allauthログイン時とログアウト時のリダイレクトURL
     LOGIN_REDIRECT_URL = '/'
     ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
@@ -134,10 +121,71 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-44-06.png" alt="メールアドレスを使用した認証方式"></div>
 
-ちなみに、SendgridのアカウントのIDとパスワードを入力した状態でアカウント登録をすれば、本当にメールを送信することができる。
+APIキーを入力し、指定したメールアドレスが実在するものであれば、本当にメールを送信することができる。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-46-00.png" alt="Sendgridを使用したメール送信"></div>
 
+
+#### 【補足】任意のタイミングでメールを送信するには？
+
+
+今回の設定で新規アカウント作成時にメールが送信されるようになるが、任意のタイミングで送信したい場合がほとんどだろう。
+
+下記記事にて、ビューなどの任意のタイミングで送信できるよう解説してある。
+
+[DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】](/post/django-sendgrid/)
+
+
+
+
+### パスワードを使用した方法【Sendgridには使用不可】
+
+パスワードを使用したメール送信の場合は下記のようにする。2021年を境にパスワードを使用したSendgridのメール送信は受け付けなくなったため、Sendgridにはこの方法は通用しない。
+
+内部ネットワークのメールを利用する際などに使うと良いだろう。
+
+
+    #################django-allauthでのメール認証設定ここから###################
+    
+    #djangoallauthでメールでユーザー認証する際に必要になる認証バックエンド
+    AUTHENTICATION_BACKENDS = [
+        "django.contrib.auth.backends.ModelBackend",
+        "allauth.account.auth_backends.AuthenticationBackend",
+    ]
+    
+    #ログイン時の認証方法はemailとパスワードとする
+    ACCOUNT_AUTHENTICATION_METHOD   = "email"
+    
+    #ログイン時にユーザー名(ユーザーID)は使用しない
+    ACCOUNT_USERNAME_REQUIRED       = "False"
+    
+    #ユーザー登録時に入力したメールアドレスに、確認メールを送信する事を必須(mandatory)とする
+    ACCOUNT_EMAIL_VARIFICATION  = "mandatory"
+    
+    #ユーザー登録画面でメールアドレス入力を要求する(True)
+    ACCOUNT_EMAIL_REQUIRED      = True
+    
+    #ここにメール送信設定を入力する(Sendgridを使用する場合)
+    EMAIL_BACKEND   = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST      = 'ここにメールのホストを書く'
+
+    #メールを暗号化する
+    EMAIL_USE_TLS   = True
+    EMAIL_PORT      = 587
+
+    #【重要】メールのパスワードとメールアドレスの入力後、GitHubへのプッシュは厳禁
+    EMAIL_HOST_USER     = ''
+    EMAIL_HOST_PASSWORD = ''
+
+    #DEBUGがTrueのとき、メールの内容は全て端末に表示させる
+    if DEBUG:
+        EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
+    
+    #################django-allauthでのメール認証設定ここまで###################
+
+    SITE_ID = 1
+    LOGIN_REDIRECT_URL = '/'
+    ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 ## django-allauthのテンプレートの修正と装飾
 
@@ -153,11 +201,19 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
 
 後は、先程templatesに格納したHTMLファイルを修正していくだけ。ちなみに、メール送信時の文言も`templates/allauth/account/email/`から修正できる。
 
+
+### 【補足】ログイン画面を中央寄せにする
+
+テンプレートの設定を行った後、適当にHTMLとCSSを書き換える。下記記事に詳細が書かれている。
+
+[Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】](/post/django-allauth-center-loginpage/)
+
 ## 結論
 
 基本settings.py中心に修正を加えるだけで簡単に実装できるdjango-allauthだが、そのままでは装飾なしなので、公式のコードを持ってきて改造する必要がある。
 
 それから本格的にサービスを展開するのであれば、ボット対策として認証時にRecaptchaなどを同時に実装するべし。
+
 
 ## ソースコード
 
