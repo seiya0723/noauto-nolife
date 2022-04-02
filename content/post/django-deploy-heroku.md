@@ -9,23 +9,32 @@ tags: [ "django","heroku","デプロイ","git" ]
 
 プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。
 
+<!--
 ## クラウドにインストールさせるライブラリの定義(requirements.txt) 
 
 pycharm等の統合開発環境を使用していて、仮想環境が動いている場合(既にターミナルの左側に(venv)等の表示がされている場合)、下記コマンドを実行して、requirements.txtを生成する。
 
     pip freeze > requirements.txt
 
+
 もし、仮想環境を使用していない場合、virtualenvを使って必要なライブラリをpipコマンドにてインストールする。
+-->
 
 ## HerokuCLIをインストール
 
+Herokuではherokuコマンドを実行して、事前にログインをした上でデプロイを行う。下記からインストールする。
+
 https://devcenter.heroku.com/ja/articles/heroku-cli
 
-ここからインストールする。herokuコマンドを実行して、デプロイ先のサーバーでマイグレーション等の操作を行うためにある。
+herokuコマンドを実行して、デプロイ先のサーバーでマイグレーション等の操作を行うためにある。
 
-ちなみに、Windowsの場合、HerokuCLIをインストール直後にherokuコマンドを実行しようとしても、コマンドとして認識されない。そんな時は、PCを再起動するとherokuコマンドが使えるようになる。
+### 【補足1】Herokuコマンドが使えない。
 
-## Heroku側の設定
+Windowsの場合、HerokuCLIをインストール直後にherokuコマンドを実行しようとしても、コマンドとして認識されないことがある。
+
+そんな時は、PCを再起動するとherokuコマンドが使えるようになる。
+
+## Herokuのアカウント作成、アプリ作成から設定まで
 
 予め[Herokuのアカウント](https://signup.heroku.com/jp)を作っておく。クレジットカード不要で必要なものはメールアドレスだけ。
 
@@ -44,7 +53,6 @@ app nameを指定する。サーバーのリージョン(居場所)はアメリ�
     heroku login
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-29 14-12-11.png" alt="Herokuログイン"></div>
-
 
 ## DBのパスワード、ホスト名などを控える
 
@@ -84,48 +92,54 @@ DBの使用に必要なユーザー名、DBの名前、パスワードなどが�
     # DEBUG = True
     DEBUG = False
 
-    # Herokuデプロイ時に必要になるライブラリのインポート
-    import django_heroku
-    import dj_database_url
-    
-    # ALLOWED_HOSTSにホスト名)を入力
-    ALLOWED_HOSTS = [ 'hogehoge.herokuapp.com' ]
+    # 静的ファイルの読み込み設定がwhitenoiseに影響が及ぶので、デバッグ時にのみ有効にしておく。
+    if DEBUG:
+        STATICFILES_DIRS = [ BASE_DIR / "static" ]
 
-    # 静的ファイル配信ミドルウェア、whitenoiseを使用。※順番不一致だと動かないため下記をそのままコピーする。
-    MIDDLEWARE = [
-        'django.middleware.security.SecurityMiddleware',
-        'whitenoise.middleware.WhiteNoiseMiddleware',
-        'django.contrib.sessions.middleware.SessionMiddleware',
-        'django.middleware.common.CommonMiddleware',
-        'django.middleware.csrf.CsrfViewMiddleware',
-        'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'django.contrib.messages.middleware.MessageMiddleware',
-        'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        ]
+    if not DEBUG:
+
+        # Herokuデプロイ時に必要になるライブラリのインポート
+        import django_heroku
+        import dj_database_url
         
+        # ALLOWED_HOSTSにホスト名)を入力
+        ALLOWED_HOSTS = [ 'hogehoge.herokuapp.com' ]
 
-    # DBを使用する場合は下記を入力する。
-    DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                'NAME': 'ここにDatabaseを入力',
-                'USER': 'ここにUserを入力',
-                'PASSWORD': 'ここにPasswordを入力',
-                'HOST': 'ここにHostを入力',
-                'PORT': 'ここにPortを入力',
+        # 静的ファイル配信ミドルウェア、whitenoiseを使用。※順番不一致だと動かないため下記をそのままコピーする。
+        MIDDLEWARE = [
+            'django.middleware.security.SecurityMiddleware',
+            'whitenoise.middleware.WhiteNoiseMiddleware',
+            'django.contrib.sessions.middleware.SessionMiddleware',
+            'django.middleware.common.CommonMiddleware',
+            'django.middleware.csrf.CsrfViewMiddleware',
+            'django.contrib.auth.middleware.AuthenticationMiddleware',
+            'django.contrib.messages.middleware.MessageMiddleware',
+            'django.middleware.clickjacking.XFrameOptionsMiddleware',
+            ]
+
+        # DBを使用する場合は下記を入力する。
+        DATABASES = {
+                'default': {
+                    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                    'NAME': 'ここにDatabaseを入力',
+                    'USER': 'ここにUserを入力',
+                    'PASSWORD': 'ここにPasswordを入力',
+                    'HOST': 'ここにHostを入力',
+                    'PORT': 'ここにPortを入力',
+                    }
                 }
-            }
-    db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
-    DATABASES['default'].update(db_from_env)
+        db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+        DATABASES['default'].update(db_from_env)
 
-    # 静的ファイル(static)の存在場所を指定する。
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+        # 静的ファイル(static)の存在場所を指定する。
+        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 settings.pyの修正を終えたら、pipコマンドでデプロイ後に必要になるライブラリをインストールさせる。
 
     pip install django-heroku dj-database-url gunicorn whitenoise psycopg2
 
-requirements.txtにて控えを用意する。
+requirements.txtにて控えを用意する。このrequirements.txtに基づき、Herokuにデプロイ時にライブラリがインストールされる。
 
     pip freeze > requirements.txt
 
@@ -136,6 +150,35 @@ gunicorn(ウェブサーバーとDjangoをつなげるライブラリ)の設定�
 サーバー起動用のファイルを作る。
 
     echo "web: python manage.py runserver 0.0.0.0:5000" > Procfile.windows
+
+
+### 【補足1】Windowsで作った設定ファイル類がHeroku上で読めない
+
+Windowsの場合、echoコマンドを実行したときの文字コードがUTF-8ではないため、Heroku上で読むことができない。
+
+そんな場合は統合開発環境から、ファイルを作り、echoのダブルクオーテーションで囲んだ部分を記入すると良いだろう。
+
+つまり、
+
+    echo "web: gunicorn config.wsgi:application --log-file -" > Procfile
+
+であれば、`Procfile`というファイルを作り、その中に`web: gunicorn config.wsgi:application --log-file -`と書き込む。
+
+これでHerokuが読める設定ファイルになる。
+
+### 【補足2】wsgi.pyを格納しているディレクトリ名が違うため、デプロイに失敗する
+
+もし、settings.pyやurls.pyなど設定ファイル関係を格納しているディレクトリが、configではなく、プロジェクト名である場合、下記は間違いである。
+
+    echo "web: gunicorn config.wsgi:application --log-file -" > Procfile
+
+仮にディレクトリ名がconfigではなくmyprojectの場合、下記のように修正する必要がある。
+
+    echo "web: gunicorn myproject.wsgi:application --log-file -" > Procfile
+
+つまり、設定ファイル関係を格納するディレクトリにある、wsgi.pyを参照して動かしているということ。
+
+wsgi.pyを格納しているディレクトリ名が違うとデプロイに失敗する。
 
 
 ## いざデプロイ
@@ -166,6 +209,16 @@ Herokuのデプロイ先とローカルリポジトリを関連付ける。
 
 ターミナルに表示されるページにアクセスする。アプリがスリープ中の場合、復帰しないといけないため、ブラウザに表示されるまでに1分程度かかる。エラーではない。
 
+### 【補足1】gitでcommitできない
+
+Herokuデプロイを境に初めてgitをインストールして使う場合、事前にやっておくことがある。コミットするユーザーの名前とメールアドレスの登録である。
+
+    git config --global user.name "John Doe"
+    git config --global user.email johndoe@example.com
+
+これをやっておかないとコミットすることができない。
+
+参照:https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration
 
 ## デプロイ後の設定
 
@@ -176,8 +229,6 @@ DBを使用するタイプのウェブアプリであればデプロイ後にマ
 初期データをインプットするのであれば下記コマンドも実行。
 
     heroku run python3 manage.py loaddata ./アプリ名/fixture/jsonファイル
-
-繰り返しになるが、静的ファイル配信のコマンドである、`collectstatic`はHerokuではやらなくていい。whitenoiseを使っているから。
 
 ## 動かないときの対策
 
@@ -192,8 +243,6 @@ Herokuデプロイでつまずく最大の原因は、余計なものをsettings
 特にHerokuにはストレージがないので、メディアファイルの扱いをsettings.pyに書くともれなく500エラーが返ってくる。ファイルのアップロード関係のウェブアプリを作る予定であれば、別途S3等の外部クラウドストレージを用意してあげましょう。
 
 それからwhitenoiseの位置にも注意。INSTALLED_APPSの順序間違えると動かない。
-
-後は、Herokuのcollectstaticの指定。collectstaticはしなくていい。全部whitenoiseがやってくれる。
 
 requirements.txtの記述にも注意が必要。pip freezeコマンドを忘れずに。
 
