@@ -53,6 +53,7 @@ tags: [ "JavaScript","初心者向け" ]
 
 ちなみに、formタグでGETメソッドを送信すると、formタグ内のname属性のパラメータだけ残り、それ以外は除外される。そのため、価格帯のような自由な形式で入力する場合JavaScriptに頼らざるを得ない。
 
-参照: https://maku77.github.io/js/web/search-params.html
-参照: https://qiita.com/shuntaro_tamura/items/99adbe51132e0fb3c9e9
+
+- https://maku77.github.io/js/web/search-params.html
+- https://qiita.com/shuntaro_tamura/items/99adbe51132e0fb3c9e9
 
