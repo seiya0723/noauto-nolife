@@ -81,9 +81,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 
     class Category(models.Model):
     
-        class Meta:
-            db_table = "category"
-    
         name    = models.CharField(verbose_name="カテゴリ名",max_length=20)
     
         def __str__(self):
@@ -91,9 +88,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
     
     class Topic(models.Model):
-    
-        class Meta:
-            db_table = "topic"
     
         category    = models.ForeignKey(Category,verbose_name="カテゴリ",on_delete=models.CASCADE)
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
@@ -130,7 +124,7 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 
 続いて、フォームとビュー、テンプレートを書き換える
 
-`forms.py`にて、モデルを継承したフォームクラスの`fields`に`category`と`comment`を指定。
+`forms.py`にて、モデルを使ったフォームクラスの`fields`に`category`と`comment`を指定。
 
     from django import forms 
     from .models import Topic
@@ -149,12 +143,14 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     from .models import Category,Topic
     from .forms import TopicForm
     
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, *args, **kwargs):
     
             context = {}
             context["topics"]       = Topic.objects.all()
+
+            #カテゴリの選択肢を作るため、全てのカテゴリをcontextに引き渡す
             context["categories"]   = Category.objects.all()
     
             return render(request,"bbs/index.html",context)
@@ -170,7 +166,7 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
             return redirect("bbs:index")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
 
 以下、`templates/bbs/index.html`。
 
@@ -187,11 +183,15 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
         <main class="container">
             <form method="POST">
                 {% csrf_token %}
+
+                {# ここでカテゴリの選択肢をレンダリングさせる #}
                 <select name="category">
                     {% for category in categories %}
                     <option value="{{ category.id }}">{{ category.name }}</option>
                     {% endfor %}
                 </select>
+
+
                 <textarea class="form-control" name="comment"></textarea>
                 <input type="submit" value="送信">
             </form>
@@ -233,18 +233,12 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
     class Category(models.Model):
     
-        class Meta:
-            db_table = "category"
-    
         name    = models.CharField(verbose_name="カテゴリ名",max_length=20)
     
         def __str__(self):
             return self.name
     
     class Topic(models.Model):
-    
-        class Meta:
-            db_table = "topic"
     
         category    = models.ForeignKey(Category,verbose_name="カテゴリ",on_delete=models.CASCADE)
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
@@ -254,9 +248,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
     class Reply(models.Model):
     
-        class Meta:
-            db_table = "reply"
-    
         target  = models.ForeignKey(Topic,verbose_name="リプライ対象のトピック",on_delete=models.CASCADE)
         comment = models.CharField(verbose_name="コメント",max_length=2000)
     
@@ -265,7 +256,7 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 
 `Reply`モデルクラスが新たに作られた。この`Reply`モデルクラスの`ForeignKey`は`Topic`に繋がっている。つまり、リプライ対象の`Topic`のidを指定するのだ。
 
-当然、Replyはユーザー側から投稿される仕様にするので、`forms.py`にて、`Reply`モデルクラスを継承したフォームクラスを作る必要がある。
+当然、Replyはユーザー側から投稿される仕様にするので、`forms.py`にて、`Reply`モデルクラスを使ったフォームクラスを作る必要がある。
 
     from django import forms 
     from .models import Topic,Reply
@@ -291,7 +282,7 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     from .models import Category,Topic,Reply
     from .forms import TopicForm,ReplyForm
 
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, *args, **kwargs):
     
@@ -312,9 +303,10 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
             return redirect("bbs:index")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
     
-    class BbsReplyView(View):
+
+    class ReplyView(View):
     
         def get(self, request, pk, *args, **kwargs):
     
@@ -326,7 +318,7 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
         def post(self, request, pk, *args, **kwargs):
     
-            #request.POSTの辞書型のコピーを手に入れる。(そのままでは書き換えはできないため)
+            #request.POSTのコピーオブジェクトを作る。(そのままでは書き換えはできないため)
             copied              = request.POST.copy()
             copied["target"]    = pk
     
@@ -339,9 +331,9 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
             return redirect("bbs:reply",pk)
     
-    reply   = BbsReplyView.as_view()
+    reply   = ReplyView.as_view()
 
-新しく`BbsReplyView`を作った。ここで返信のフォームの表示、返信の投稿処理を行う。
+新しく`ReplyView`を作った。ここで返信のフォームの表示、返信の投稿処理を行う。
 
 引数としてpkを受け取っている。ビュークラスのメソッドに引数を指定する方法は、[削除と編集について解説している記事](/post/django-models-delete-and-edit/)を確認すると良いだろう。
 
@@ -358,7 +350,7 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
         path('reply/<int:pk>/', views.reply, name="reply"),
     ]
 
-`reply/数値/`であれば`views.reply`、即ち`BbsReplyView`を呼び出す。その時、引数として`pk`が与えられる。例えば、
+`reply/数値/`であれば`views.reply`、即ち`ReplyView`を呼び出す。その時、引数として`pk`が与えられる。例えば、
 
     reply/5/
 

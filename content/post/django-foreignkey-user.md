@@ -21,9 +21,6 @@ tags: [ "Django","allauth","認証","初心者向け" ]
     
     class Topic(models.Model):
     
-        class Meta:
-            db_table = "topic"
-    
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
         user        = models.ForeignKey(User, verbose_name="投稿者", on_delete=models.CASCADE, null=True,blank=True)
     
@@ -33,12 +30,9 @@ tags: [ "Django","allauth","認証","初心者向け" ]
 
 `ForeignKey`を使用して、`django.contrib.auth.models`内にある`User`と紐付ける。これでユーザーモデルを1対多で紐付けることができる。1対多に関しては下記記事を参照する。
 
-
-
-
 ### forms.py
 
-モデルを継承したバリデーションを行う。先ほど作ったモデルクラスをインポート。フィールドにはuserを追加しておく。
+モデルを使用したバリデーションを行う。先ほど作ったモデルクラスをインポート。フィールドにはuserを追加しておく。
 
     from django import forms 
     from .models import Topic
@@ -60,7 +54,7 @@ tags: [ "Django","allauth","認証","初心者向け" ]
     from .models import Topic
     from .forms import TopicForm
     
-    class BbsView(LoginRequiredMixin,View):
+    class IndexView(LoginRequiredMixin,View):
     
         def get(self, request, *args, **kwargs):
     
@@ -84,7 +78,7 @@ tags: [ "Django","allauth","認証","初心者向け" ]
     
             return redirect("bbs:index")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
     
 ユーザーから送信されたデータ(requestオブジェクト内にあるPOST属性)は書き換えができないので、`.copy()`で内容をコピー。辞書型なので、キーであるuserを指定して、ユーザーIDを代入。バリデーションをする。
 
@@ -131,7 +125,6 @@ tags: [ "Django","allauth","認証","初心者向け" ]
 実践では、ユーザーIDで絞り込み、自分の投稿した内容しか表示させないようにしたり、自分の投稿した内容であれば、削除や編集のボタンを表示させたりして対処する。
 
 ちなみに、`LoginRequiredMixin`が指定されているので、未ログインの状態で`LoginRequiredMixin`を指定したビューにアクセスすると、ログインページにリダイレクトされる。
-
 
 ## 結論
 
