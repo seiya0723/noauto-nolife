@@ -132,7 +132,10 @@ DBの使用に必要なユーザー名、DBの名前、パスワードなどが�
         DATABASES['default'].update(db_from_env)
 
         # 静的ファイル(static)の存在場所を指定する。
-        STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+        STATIC_ROOT = BASE_DIR / 'static'
+
+        #osモジュールを使う場合はこちら。
+        #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 settings.pyの修正を終えたら、pipコマンドでデプロイ後に必要になるライブラリをインストールさせる。
