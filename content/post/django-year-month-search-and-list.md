@@ -24,13 +24,13 @@ Djangoで月別アーカイブと年月計算を実装させる
             model = Topic
             fields = ["comment"]
     
-    #モデルを継承しないフォームクラス
+    #モデルを使用しないフォームクラス
     class YearMonthForm(forms.Form):
         year    = forms.IntegerField()
         month   = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)])
 
 
-モデルを継承しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。
+モデルを使用しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。
 
     
 ## views.py
