@@ -81,14 +81,27 @@ Django2.x以前の場合は下記のように書く
     
     class PhotoList(models.Model):
     
-        photo       = models.ImageField(verbose_name="フォト",upload_to="photo/")
+        photo       = models.ImageField(verbose_name="フォト",upload_to="file/photo_list/photo/")
     
     class DocumentList(models.Model):
     
-        document    = models.FileField(verbose_name="ファイル",upload_to="file/")
+        document    = models.FileField(verbose_name="ファイル",upload_to="file/document_list/document/")
     
 
 `models`の`ImageField`と`FileField`を使用する。`upload_to`属性を指定してアップロード先を分けている。
+
+
+### upload_toで指定するパスについて
+
+upload_toが未指定もしくは空文字列であれば、settings.pyのMEDIA_ROOTに基づき、プロジェクトディレクトリ直下のmediaに保存される。
+
+ただ、全てのファイルがmediaディレクトリに保存されてしまうと、バックアップの作業が大変になる。そこで、upload_toを指定して適宜ディレクトリ分けをすることを推奨する。
+
+可能であれば、パスは
+
+    [アプリ名]/[モデルクラス名]/[フィールド名]/
+
+とすれば、重複することはないだろう。その場合、スネークケースで書いたほうが無難。
 
 ## forms.pyでフォームを作る
 
@@ -127,11 +140,7 @@ Django2.x以前の場合は下記のように書く
         def get(self, request, *args, **kwargs):
     
             data    = PhotoList.objects.all()
-            form    = PhotoListForm()
-    
-            context = { "data":data,
-                        "form":form,
-                        }
+            context = { "data":data }
     
             return render(request,"upload/index.html",context)
     
@@ -152,10 +161,7 @@ Django2.x以前の場合は下記のように書く
         def get(self, request, *args, **kwargs):
     
             data    = DocumentList.objects.all()
-            form    = DocumentListForm()
-            context = { "data":data,
-                        "form":form,
-                        }
+            context = { "data":data }
     
             return render(request,"upload/document.html",context)
     
@@ -172,7 +178,6 @@ Django2.x以前の場合は下記のように書く
                 else:
                     print("このファイルは許可されていません。")
     
-    
             return redirect("upload:document")
     
     document    = DocumentView.as_view()
@@ -183,6 +188,9 @@ Django2.x以前の場合は下記のように書く
 
 
 ## templatesにフォームを設置
+
+
+### 画像のアップロード用テンプレート
 
 `templates/index.html`を作る。これが画像ファイルのアップロードページ。内容は下記。
     
@@ -204,7 +212,7 @@ Django2.x以前の場合は下記のように書く
     
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.photo }}
+                <input type="file" name="photo">
                 <input class="form-control" type="submit" value="送信">
             </form>
     
@@ -219,6 +227,8 @@ Django2.x以前の場合は下記のように書く
     
     </body>
     </html>
+
+### ファイルのアップロード用テンプレート
     
 `templates/document.html`を作る。これがファイルアップロードページ。
 
@@ -238,7 +248,7 @@ Django2.x以前の場合は下記のように書く
     
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form.document }}
+                <input type="file" name="document">
                 <input class="form-control" type="submit" value="送信">
             </form>
         
@@ -261,7 +271,9 @@ Django2.x以前の場合は下記のように書く
     python3 manage.py makemigrations
     python3 manage.py migrate 
 
-ここで、マイグレーション時に警告([You are Trying to add a non-nullable field](/post/django-non-nullable/))が出る場合、`ImageField`及び`FileField`はDB上は文字列型扱い(格納されているのはファイルパス)なので、`blank=True,default=""`のフィールドオプションを追加するか、1度限りのデフォルト値として任意の文字列を指定すると良いだろう。
+ここで、マイグレーション時に警告([You are Trying to add a non-nullable field](/post/django-non-nullable/))が出る場合、`ImageField`及び`FileField`はDB上は文字列型扱い(格納されているのはファイルパス)なので、`null=True,blank=True`のフィールドオプションを追加するか、1度限りのデフォルト値として任意の文字列を指定すると良いだろう。
+
+参照: [【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】](/post/django-models-add-field/)
 
 ## 開発用サーバーの立ち上げ
 
