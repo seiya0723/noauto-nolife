@@ -13,7 +13,6 @@ tags: [ "Django","allauth","認証","初心者向け" ]
 
 ## Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。
 
-
 ### models.py
 
     from django.db import models
@@ -30,6 +29,27 @@ tags: [ "Django","allauth","認証","初心者向け" ]
 
 `ForeignKey`を使用して、`django.contrib.auth.models`内にある`User`と紐付ける。これでユーザーモデルを1対多で紐付けることができる。1対多に関しては下記記事を参照する。
 
+### 【補足1】カスタムユーザーモデルを使用した場合は？
+
+カスタムユーザーモデルを使用した1対多を組む場合、上記のやり方ではなく、下記のように仕立てる。(※`settings.py`に`AUTH_USER_MODEL`としてカスタムユーザーモデルが指定されている場合に限る)
+
+    from django.db import models
+    from django.conf import settings 
+    
+    class Topic(models.Model):
+    
+        comment = models.CharField(verbose_name="コメント",max_length=2000)
+        user    = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name="ユーザー",on_delete=models.CASCADE, null=True,blank=True)
+    
+        def __str__(self):
+            return self.comment
+    
+
+詳細は下記記事を参照
+
+[Djangoでカスタムユーザーモデルを外部キーとして指定する方法](/post/django-custom-user-model-foreignkey/)
+
+
 ### forms.py
 
 モデルを使用したバリデーションを行う。先ほど作ったモデルクラスをインポート。フィールドにはuserを追加しておく。
@@ -43,6 +63,7 @@ tags: [ "Django","allauth","認証","初心者向け" ]
             model   = Topic
             fields  = [ "comment","user" ]
     
+
 ### views.py
 
 ログイン済みの人のみビューにアクセスできるようにする。それから、ユーザーIDをバリデーション前にセットする。
@@ -75,13 +96,13 @@ tags: [ "Django","allauth","認証","初心者向け" ]
                 form.save()
             else:
                 print("バリデーションNG")
-    
+                print(form.errors)
+
             return redirect("bbs:index")
     
     index   = IndexView.as_view()
     
 ユーザーから送信されたデータ(requestオブジェクト内にあるPOST属性)は書き換えができないので、`.copy()`で内容をコピー。辞書型なので、キーであるuserを指定して、ユーザーIDを代入。バリデーションをする。
-
 
 ### templates/bbs/index.html
 
@@ -114,7 +135,6 @@ tags: [ "Django","allauth","認証","初心者向け" ]
     </html>
 
 誰が投稿したのか、わかるようにしておく。`{{ topic.user }}`と書くと、ユーザー名が出てくる。これで誰が投稿したのかわかる。
-
 
 ## 実際に動かすとこうなる。
 

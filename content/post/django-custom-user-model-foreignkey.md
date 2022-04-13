@@ -7,7 +7,6 @@ categories: [ "サーバーサイド" ]
 tags: [ "django","tips","上級者向け","認証" ]
 ---
 
-
 例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。
 
 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。
@@ -26,9 +25,6 @@ tags: [ "django","tips","上級者向け","認証" ]
     import uuid
     
     class Topic(models.Model):
-    
-        class Meta:
-            db_table = "topic"
     
         id      = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
         dt      = models.DateTimeField(verbose_name="投稿日",default=timezone.now)
@@ -79,4 +75,8 @@ tags: [ "django","tips","上級者向け","認証" ]
 これで投稿者のユーザーモデルと紐付けができるので、ハンドルネームを変えたり、プロフィール画像を変えたりしたとしても、投稿内容はIDに紐付いているので追随できる。
 
 今回はユーザーのアカウントが削除されたら同時に投稿内容も削除されるよう、`on_delete=CASCADE`とした。
+
+ちなみに、カスタムユーザーモデルを使用しない場合(デフォルトのユーザーモデルを使用する場合)、下記を参照。
+
+[【Django】ユーザーモデルと1対多のリレーションを組む方法【カスタムユーザーモデル不使用】](/post/django-foreignkey-user/)
 
