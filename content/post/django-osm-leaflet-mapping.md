@@ -25,9 +25,6 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
     
     class Topic(models.Model):
     
-        class Meta:
-            db_table = "topic"
-    
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
         lat         = models.DecimalField(verbose_name="緯度",max_digits=9, decimal_places=6)
         lon         = models.DecimalField(verbose_name="経度",max_digits=9, decimal_places=6)
@@ -38,7 +35,6 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
 緯度と経度はデータベースへ負担をかけないよう`DecimalField`を使ったが、JavaScript上で小数点以下の処理が煩雑になるので、`FloatField`でも良いだろう。
 
 これをマイグレーションする。
-
 
 ### フォームクラスを作り、ビューでバリデーションをする
 
@@ -55,7 +51,6 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
             model   = Topic
             fields  = [ "comment","lat","lon" ]
     
-
 続いて`views.py`
 
     from django.shortcuts import render,redirect
@@ -64,7 +59,7 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
     from .models import Topic
     from .forms import TopicForm
     
-    class BbsView(View):
+    class IndexView(View):
     
         def get(self, request, *args, **kwargs):
     
@@ -83,7 +78,7 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
     
             return redirect("bbs:index")
     
-    index   = BbsView.as_view()
+    index   = IndexView.as_view()
 
 これは以前解説した、[モデルを継承したフォームクラスを使ったバリデーション](/post/django-forms-validate/)と全く同じである。
 
@@ -150,25 +145,26 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
         <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
         <script>
             //マップの表示位置を指定(緯度・経度)
-            var map = L.map('map').setView([34.6217684, -227.2109985], 9);
+            MAP = L.map('map').setView([34.6217684, -227.2109985], 9);
     
             //地図データはOSMから読み込み
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+            }).addTo(MAP);
     
             for (let topic of topics ){
-                L.marker([topic["lat"], topic["lon"]]).addTo(map).bindPopup(topic["comment"]).openPopup();
+                L.marker([topic["lat"], topic["lon"]]).addTo(MAP).bindPopup(topic["comment"]).openPopup();
             }
     
             //マウスクリックで緯度と経度の取得とポイント設置
-            function onMapClick(e) {
-                var marker = L.marker(e.latlng).addTo(map);
+            function map_click(e) {
+                var marker = L.marker(e.latlng).addTo(MAP);
                 console.log(e.latlng);
+
                 $("#lat_input").val(Math.round(e.latlng["lat"]*1000000)/1000000);
                 $("#lon_input").val(Math.round(e.latlng["lng"]*1000000)/1000000);
             }
-            map.on('click', onMapClick);
+            MAP.on('click', map_click);
         </script>
     
     </body>
@@ -196,7 +192,16 @@ https://leafletjs.com/reference.html
 
 指定した領域を囲んだりすることも、マーカーのデザインを変えることもできるようだ。
 
+ちなみに、現時点ではマーカーをクリックするとその数だけマーカーが増えていく。前にクリックしたマーカーを消したい場合は下記を参照。
+
+[【Leaflet.js】地図をクリックしてマーカーを配置した時、古いマーカーを削除する](/post/leaflet-marker-delete/)
+
+
+
+<!--
+
 ## ソースコード
 
 https://github.com/seiya0723/map_bbs
+-->
 
