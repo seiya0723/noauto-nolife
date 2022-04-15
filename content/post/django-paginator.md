@@ -7,7 +7,6 @@ categories: [ "サーバーサイド" ]
 tags: [ "django","tips","初心者向け","カスタムテンプレートタグ" ]
 ---
 
-
 殆どのプロジェクトで実装必須になるページネーション。
 
 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されないので、例えば検索とページネーションを両立させることはできない。
@@ -19,7 +18,6 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 1. views.pyを書き換える
 1. カスタムテンプレートタグを追加、インストールさせる
 1. テンプレートの修正
-
 
 ## views.pyを書き換える
 
@@ -63,7 +61,6 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
             else:
                 data    = paginator.get_page(1)
     
-    
             context = { "data":data }
     
             return render(request,"shopping/index.html",context)
@@ -98,10 +95,10 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
     register = template.Library()
     
     @register.simple_tag()
-    def url_replace(request, field, value):
-        dict_           = request.GET.copy()
-        dict_[field]    = value
-        return dict_.urlencode()
+    def url_replace(request, key, value):
+        copied      = request.GET.copy()
+        copied[key] = value
+        return copied.urlencode()
     
 
 それから、`settings.py`の`INSTALLED_APPS`に上記のカスタムテンプレートを指定する。
