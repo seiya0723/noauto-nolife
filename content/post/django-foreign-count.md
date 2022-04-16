@@ -20,23 +20,19 @@ tags: [ "django","tips","上級者向け" ]
     import uuid 
     
     class Topic(models.Model):
-        class Meta:
-            db_table    = "topic"
     
         id      = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
-        comment = models.CharField(verbose_name="コメント",max_length=500)
         dt      = models.DateTimeField(verbose_name="投稿日",default=timezone.now)
+        comment = models.CharField(verbose_name="コメント",max_length=500)
     
         def __str__(self):
             return self.comment
     
     class Reply(models.Model):
-        class Meta:
-            db_table    = "reply"
     
         target  = models.ForeignKey(Topic,verbose_name="対象トピック",on_delete=models.CASCADE)
-        comment = models.CharField(verbose_name="コメント",max_length=500)
         dt      = models.DateTimeField(verbose_name="投稿日",default=timezone.now)
+        comment = models.CharField(verbose_name="コメント",max_length=500)
     
         def __str__(self):
             return self.comment

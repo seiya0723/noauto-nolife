@@ -116,6 +116,11 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 
 一方で、未分類を許さないのであれば、migrationsディレクトリとdb.sqlite3を削除し、一からマイグレーションファイルを作り直す。
 
+ちなみに、手動でmigrationsディレクトリを削除した場合、再度マイグレーションファイルを作る時は、明示的にアプリ名を指定する必要がある点に注意。
+
+    python3 manage.py makemigrations bbs
+
+
 #### 【対策3】migrationsディレクトリとdb.sqlite3を削除できない場合、1度限りのデフォルト値を入れる
 
 もし、未分類を許さず、マイグレーションファイルやDBを削除することができない状況の場合は、1度限りのdefault値を入れる。ただし入力するdefault値は文字列ではなく、数値である。ForeignKeyは指定したモデルのidフィールドと繋がっている。idフィールドは未指定であれば数値型になっている。だから適当な数値を入力する。1から順にカテゴリのレコードが挿入されるので、1と指定すると良いだろう。
@@ -191,7 +196,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
                     {% endfor %}
                 </select>
 
-
                 <textarea class="form-control" name="comment"></textarea>
                 <input type="submit" value="送信">
             </form>
@@ -261,7 +265,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     from django import forms 
     from .models import Topic,Reply
     
-    
     class TopicForm(forms.ModelForm):
     
         class Meta:
@@ -305,7 +308,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
     
     index   = IndexView.as_view()
     
-
     class ReplyView(View):
     
         def get(self, request, pk, *args, **kwargs):
@@ -356,7 +358,7 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 
 に対してリクエストが送信されれば、pkには整数型(int型)の5が入り、ビューが実行される。GETメソッドであればpkでトピックの特定とレンダリングが、POSTメソッドであればpkでリプライ対象のトピックのIDをキー名`target`に値として入れ、バリデーションする。
 
-これでurls.pyから対象のidを特定し、その上で、表示したり、リプライを保存したりすることができる。
+これで`urls.py`から対象のidを特定し、その上で、表示したり、リプライを保存したりすることができる。
 
 後は返信をする時、HTMLの`form`タグの`action`属性に`action="reply/数値/"`になるようにテンプレートを作る。
 
@@ -472,7 +474,28 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 
 ### コメント数を表示するには？
 
-1対多のリレーションを組むことで、トピック一覧表示時にコメント数を表示させることもできる。詳しくは下記記事を参照。
+モデルにコメント数をカウントするメソッドを追加して、
+
+    class Topic(models.Model):
+    
+        category    = models.ForeignKey(Category,verbose_name="カテゴリ",on_delete=models.CASCADE)
+        comment     = models.CharField(verbose_name="コメント",max_length=2000)
+
+
+        def reply_amount(self):
+            return Reply.objects.filter(target=self.id).count()
+    
+        def __str__(self):
+            return self.comment
+
+
+テンプレートでメソッドを呼び出す。
+
+    {% for topic in topics %}
+    <div>コメント数 ( {{ topic.reply_amount }} )</div>
+    {% endfor %}
+
+ちなみに、このようにモデルにメソッドを追加したくない場合、annotateとCountを使うことでも再現できる。詳しくは下記記事を参照。
 
 [【Django】外部キーに対応したデータの個数をカウントして表示【リプライ・コメント数の表示に有効】【annotate+Count】](/post/django-foreign-count/)
 
@@ -481,7 +504,6 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 さらに、このリプライのビューは編集や削除のビューと同様に、urls.pyから受け取った引数を元に処理を行っている。リプライができたのであれば、クライアント側からの削除や編集に挑戦してみるのも良いだろう。
 
 [Djangoで投稿したデータに対して編集・削除を行う【urls.pyを使用してビューに数値型の引数を与える】](/post/django-models-delete-and-edit/)
-
 
 ### 誰が投稿したかを記録するには？
 
