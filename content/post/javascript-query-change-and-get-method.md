@@ -57,3 +57,15 @@ tags: [ "JavaScript","初心者向け" ]
 - https://maku77.github.io/js/web/search-params.html
 - https://qiita.com/shuntaro_tamura/items/99adbe51132e0fb3c9e9
 
+
+### 【補足】絞り込みがブーリアン型の場合はどうする？
+
+例えば、チェックボックスに`name="test"`と指定されている場合、チェックされていれば、
+
+    ?test=on
+
+となり、チェックされていなければパラメーターごと無くなる。
+
+これを考慮してコードを書けばよい。チェックの有無で処理がパラメーター追加か削除かで処理が変わるため、上記のコードを更に改良する必要がある。
+
+
