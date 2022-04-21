@@ -141,11 +141,11 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
             </div>
     
         </main>
-    
-        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+
         <script>
             //マップの表示位置を指定(緯度・経度)
             MAP = L.map('map').setView([34.6217684, -227.2109985], 9);
+            MARKER = null;
     
             //地図データはOSMから読み込み
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -158,7 +158,12 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
     
             //マウスクリックで緯度と経度の取得とポイント設置
             function map_click(e) {
-                var marker = L.marker(e.latlng).addTo(MAP);
+
+                if (MARKER){
+                    MAP.removeLayer(MARKER);
+                }
+
+                MARKER = L.marker(e.latlng).addTo(MAP);
                 console.log(e.latlng);
 
                 $("#lat_input").val(Math.round(e.latlng["lat"]*1000000)/1000000);
@@ -166,17 +171,18 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
             }
             MAP.on('click', map_click);
         </script>
-    
     </body>
     </html>
     
 実践では、JavaScriptはHTMLに直接書かず、[staticディレクトリに配置する](/post/django-static-file-settings/)と良いだろう。CDNも同様にDLしてstaticディレクトリに配置したほうが良い。
 
+マップをクリックするとクリックした位置に、マーカーが表示される。下記記事を元に古いマーカーをif文で分岐して存在すれば削除するようにしている。
+
+[【Leaflet.js】地図をクリックしてマーカーを配置した時、古いマーカーを削除する](/post/leaflet-marker-delete/)
+
 ## 動かすとこうなる。
 
 <div class="img-center"><img src="/images/Screenshot from 2021-11-16 08-47-12.png" alt=""></div>
-
-マップをクリックしてマーカーが表示された後、またクリックするとマーカーが2つになり、クリックのたびにどんどんマーカーが増えていく問題があるが、一応これでマッピングが機能する。
 
 後は地図の検索機能などを入れるとより使いやすくなるだろう。
 
@@ -192,10 +198,7 @@ https://leafletjs.com/reference.html
 
 指定した領域を囲んだりすることも、マーカーのデザインを変えることもできるようだ。
 
-ちなみに、現時点ではマーカーをクリックするとその数だけマーカーが増えていく。前にクリックしたマーカーを消したい場合は下記を参照。
-
-[【Leaflet.js】地図をクリックしてマーカーを配置した時、古いマーカーを削除する](/post/leaflet-marker-delete/)
-
+[【Leaflet.js】オリジナルのアイコン画像を使用して、地図上に表示させる【飲食店のマッピングであれば食べ物の画像を使って視認性UP】](/post/leaflet-marker-original-icon/)
 
 
 <!--

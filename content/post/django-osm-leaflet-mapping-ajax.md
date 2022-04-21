@@ -92,7 +92,6 @@ Ajaxを使用するために、jQueryとCSRFトークンを送信するajax.js(�
     
         </main>
     
-        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
         <script>
             //マップの表示位置を指定(緯度・経度)
             var map = L.map('map').setView([34.6217684, -227.2109985], 9);
