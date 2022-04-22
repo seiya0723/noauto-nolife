@@ -64,12 +64,14 @@ Ajaxではあるが、formタグからアップロードしたときと同様の
     
         $(document).on("click", "#submit", function(){ submit(); });
     
-        $(document).on("input", ".image_input", function(){ 
-            $("#image_input_area").append('<input class="image_input" type="file" name="image">');    
+        $(document).on("input", ".image_input", function(){
+
+            //TIPS:最後のinput要素にinputされた時、新しいinputを追加する。これを次の兄弟要素を抜き取る.next()と.lengthで判定する。(0なら最後の要素)
+            if ( !$(this).next().length ){
+                $("#image_input_area").append('<input class="image_input" type="file" name="image">');
+            }
         })
-    
     });
-    
     
     function submit(){
     
