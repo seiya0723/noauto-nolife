@@ -23,6 +23,8 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 
 まず、クエリを実行した後に得られるデータを、django.core.paginatorでページネーション化させる。
 
+
+
     from django.shortcuts import render,redirect
     from django.views import View
     from .models import Category,Product
@@ -35,33 +37,27 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
     
         def get(self, request, *args, **kwargs):
         
+            context = {}
+            query   = Q()
+
             if "search" in request.GET:
     
-                if request.GET["search"] == "" or request.GET["search"].isspace():
-                    return redirect("shopping:index")
+                words       = request.GET["search"].replace("　"," ").split(" ")
     
-                search      = request.GET["search"].replace("　"," ")
-                search_list = search.split(" ")
-    
-                query       = Q() 
-                for word in search_list:
+                for word in words:
                     query &= Q(name__contains=word)
     
-                #.order_byメソッドで並び替えしないと、paginatorでWARNINGが出る。
-                data        = Product.objects.filter(query).order_by("id")
-            else:
-                data    = Product.objects.all().order_by("id")
     
-    
+            #TIPS: .order_by()で並び替えしないと、paginatorでWARNINGが出る。
+            Product.obejcts.filter(query).order_by("id")
+
             #===========ここからページネーション処理================
             paginator   = Paginator(data,4)
     
             if "page" in request.GET:
-                data    = paginator.get_page(request.GET["page"])
+                context["products"] = paginator.get_page(request.GET["page"])
             else:
-                data    = paginator.get_page(1)
-    
-            context = { "data":data }
+                context["products"] = paginator.get_page(1)
     
             return render(request,"shopping/index.html",context)
     
@@ -99,7 +95,6 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
         copied      = request.GET.copy()
         copied[key] = value
         return copied.urlencode()
-    
 
 それから、`settings.py`の`INSTALLED_APPS`に上記のカスタムテンプレートを指定する。
 
@@ -116,6 +111,82 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 
 これでテンプレート側で`{% url_replace request field vale %}`が使えるようになる。`request`と`field`と`value`はいずれも引数。
 
+
+### 【補足1】@register.simple_tag()とは何か？
+
+@マークから始まる文言をPythonではデコレータと呼ぶ。このデコレータは、後続に書かれた関数に機能を追加させるためのものだ。
+
+つまり、デコレータである`@register.simple_tag()`は、関数の`def url_replace(request, key, value):`に対して、テンプレートタグとしての機能を追加している。
+
+このデコレータを追加していなければ、Djangoのテンプレート側から、`url_replace`を呼び出すことはできない。
+
+
+### 【補足2】関数のurl_replaceは何をしているのか。
+
+引数の指定により、次のページ、もしくは前のページのリンクを生成することができる。
+
+受取する引数は3つ。リクエストオブジェクト、クエリストリングで書き換えたいキー、クエリストリングで書き換えたいキーに対応する値。
+
+まず、リクエストオブジェクトからクエリストリングが生成される。?search=test&page=2にアクセスした状態で、下記を実行すると
+
+    print(request.GET.urlencode())
+
+出力されるのはこんな感じ。
+
+    search=test&page=2
+
+クエリストリングの?を除いた形になる。
+
+リクエストオブジェクトから値を取り出すには下記のようにする。
+
+    print(request.GET["search"])
+
+上記を実行すると、下記のように表示される。
+
+    test
+
+いまアクセスしているページが2ページで、次のページのリンクを表示させたい時、生成するクエリストリングは?search=test&page=3である。
+
+故に、リクエストオブジェクトからpageの値を書き換える必要がある。ただし、リクエストオブジェクトはイミュータブルな値。つまり書き換えはできないので、下記はエラーになってしまう。
+
+    #request.GET["page"]    = 3
+
+そのため、リクエストオブジェクトの値を書き換えるには、`.copy()`を実行して書き換え可能な形にする必要がある。
+
+    copied  = request.GET.copy()
+
+その上で、pageの値を書き換える。
+
+    copied["page"]  = 3
+
+ただし、今回の書き換え対象のキーと値は、引数として受け取っているので、
+
+    copied[key]     = value
+
+となる。
+
+
+### 【補足3】クエリストリング？パラメータ？どっち？
+
+以下はいずれも同じ意味。
+
+- クエリストリング
+- クエリ文字列
+- URLパラメータ
+- パラメータ
+
+そのため、表記ゆれを防ぐため本ブログ内では統一したいところではある。
+
+しかし、あくまでも個人的な解釈ではクエリストリングは全体、パラメータは部分的な物として捉えている。
+
+ちなみに、上記から、?を除いたものをURLエンコード、もしくはパーセントエンコーディングと呼ばれている。これは全くの別物。冒頭に?が付かなければ、リンクとして機能しない。
+
+以下、参考程度に。
+
+- https://e-words.jp/w/URL%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF.html
+- https://e-words.jp/w/%E3%82%AF%E3%82%A8%E3%83%AA%E6%96%87%E5%AD%97%E5%88%97.html
+- https://e-words.jp/w/URL%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89.html
+
 ## テンプレートの修正
 
 先程作ったカスタムテンプレートを使用する。テンプレートファイルの冒頭に下記を追加する。
@@ -125,26 +196,33 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 順番は{% load static %}の後で良い。続いて、ページネーション部はこうなる。
 
     <ul class="pagination justify-content-center">
-        {% if data.has_previous %}
+        {% if products.has_previous %}
         <li class="page-item"><a class="page-link" href="?{% url_replace request 'page' '1' %}">最初のページ</a></li>
-        <li class="page-item"><a class="page-link" href="?{% url_replace request 'page' data.previous_page_number %}">前のページ</a></li>
+        <li class="page-item"><a class="page-link" href="?{% url_replace request 'page' products.previous_page_number %}">前のページ</a></li>
         {% else %}
         <li class="page-item"><a class="page-link">最初のページ</a></li>
         <li class="page-item"><a class="page-link">前のページ</a></li>
         {% endif %}
-        <li class="page-item"><a class="page-link">{{ data.number }}</a></li>
-        {% if data.has_next %}
-        <li class="page-item"><a class="page-link" href="?{% url_replace request 'page' data.next_page_number %}">次のページ</a></li>
-        <li class="page-item"><a class="page-link" href="?{% url_replace request 'page' data.paginator.num_pages %}">最後のページ</a></li>
+        <li class="page-item"><a class="page-link">{{ products.number }}</a></li>
+        {% if products.has_next %}
+        <li class="page-item"><a class="page-link" href="?{% url_replace request 'page' products.next_page_number %}">次のページ</a></li>
+        <li class="page-item"><a class="page-link" href="?{% url_replace request 'page' products.paginator.num_pages %}">最後のページ</a></li>
         {% else %}
         <li class="page-item"><a class="page-link">次のページ</a></li>
         <li class="page-item"><a class="page-link">最後のページ</a></li>
         {% endif %}
     </ul>
 
-`data`の中にページネーションの属性が含まれているので有効に利用する。もう少しコード行数を少なく書くこともできるが、今回は見やすさを重視した。
+`products`の中にページネーションの属性が含まれているので有効に利用する。もう少しコード行数を少なく書くこともできるが、今回は見やすさを重視した。
 
 ちなみに、各要素に指定されているクラス名はBootstrap由来。
+
+### 【補足1】{% load static %}と{% load param_change %}はどちらが先に書くべきか？
+
+どちらが先でも問題はない。
+
+ただ、テンプレートの継承を意味する、`{% extends %}`は一番最初に書かなければならない。loadよりも後にextendsを書いてはならない。
+
 
 ## 動作
 
@@ -163,7 +241,10 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 
 他のパラメータを保持した状態でページ移動ができるので、複雑な絞り込みや検索などが要求される通販サイトの作成に有効。
 
-最初の1ページ目で、パラメータがある場合とない場合で内容重複する問題はmetaタグのcanonicalを指定しておけばSEO的に問題はないと思う。それか、`.copy()`を使用してリクエストをコピーした後、パラメータを追加して返却するぐらいでしょう。
+最初の1ページ目で、パラメータがある場合とない場合で内容重複する問題はmetaタグのcanonicalを指定しておけばSEO的に問題はないと思う。
+
+ちなみに、この方法の他に、JavaScriptを使って、を書き換え、
+
 
 ## 参考文献
 
@@ -181,6 +262,10 @@ https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/
 
 https://stackoverflow.com/questions/2047622/how-to-paginate-django-with-other-get-variables
 
+<!--
+
 ## ソースコード
 
 https://github.com/seiya0723/simple_ecsite
+
+-->
