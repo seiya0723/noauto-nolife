@@ -2,7 +2,7 @@
 title: "Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする"
 date: 2022-04-25T10:56:04+09:00
 draft: false
-thumbnail: "images/php.jpg"
+thumbnail: "images/nginx.jpg"
 categories: [ "インフラ" ]
 tags: [ "php","Nginx","Ubuntu","スタートアップシリーズ" ]
 ---
