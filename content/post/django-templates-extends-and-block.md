@@ -16,7 +16,6 @@ DjangoTemplateLanguage(以下、DTL)の`extends`と`block`を使用すること�
 
 本記事では`extends`と`block`を使用して、簡単なテンプレートの継承を行う。コードは[40分Django簡易掲示板](/post/startup-django/)を元に行う。
 
-
 ## templates/bbs/base.html を作る
 
 内容は下記。
@@ -35,7 +34,6 @@ DjangoTemplateLanguage(以下、DTL)の`extends`と`block`を使用すること�
     
     </head>
     <body>
-    
         <main class="container">
 
             {% block main %}
@@ -87,6 +85,30 @@ DjangoTemplateLanguage(以下、DTL)の`extends`と`block`を使用すること�
 
 [40分Django簡易掲示板](/post/startup-django/)と全く同じではあるが、テンプレートの継承が発動しているので、例えば編集ページを作る時は、`index.html`と同様に`base.html`を継承し、一部だけを書けばよい。
 
+
+### 【補足1】extendsとincludeとはどう違う？
+
+別のテンプレートを読み込むテンプレートタグとして、`{% include %}`がある。これは別のテンプレートを呼び出して、任意の場所に表示するだけであり、blockタグは使えない。
+
+ただ、includeは引数を与えることができる。この引数を利用することで、テンプレートの使い回しができる。
+
+また、extendsは基本的に親テンプレートを1つしか指定できないが、includeは何度でも呼び出すことができる点で異なる。
+
+
+### 【補足2】extendsとloadはどちらを先に書く？
+
+extendsを先に書く。loadはその後に書く。
+
+ちなみに、親テンプレートでloadをしていたとしても、それが子テンプレートに引き継がれることはないため、extendsを使って継承した後、静的ファイルを読み込むのであれば、staticを使う。
+
+
+### 【補足3】レンダリング対象のテンプレートの指定はどうする？
+
+子テンプレートを指定すればよい。先ほどの例であれば、views.pyのレンダリング処理は下記のようになる。
+
+    return render(request,"bbs/index.html")
+
+contextが必要な場合は第三引数に指定すれば、テンプレートの継承をしていない場合と同様にデータのレンダリングがされる。
 
 ## 結論
 

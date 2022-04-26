@@ -528,6 +528,19 @@ A選手はカープ、B選手はヤクルト、C選手は巨人ということ�
 
 ちなみにログインしていないユーザーの投稿を禁止するには、`LoginRequiredMixin`を使うと良いだろう。
 
+
+### 通販サイトのように星付きのレビューを投稿するには？
+
+下記の2つの記事を組み合わせる。
+
+- [【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】](/post/django-template-integer-for-loop/)
+- [HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】【flex-direction:row-reverseで逆順対応可】](/post/css3-star-review-radio/)
+
+星付きのレビューにするため、レビューのモデルに、IntegerFieldを追加すると良いだろう。
+
+ただし、5つ星にする場合、Validatorsを使用する必要がある(1~5の数値を入力させるため)
+
+
 ## ソースコード
 
 https://github.com/seiya0723/startup_bbs_foreignkey
