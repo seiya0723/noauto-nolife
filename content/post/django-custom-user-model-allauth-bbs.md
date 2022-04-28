@@ -7,16 +7,18 @@ categories: [ "サーバーサイド" ]
 tags: [ "django","allauth","上級者向け" ]
 ---
 
-
 手元のディレクトリ内で雛形が分散していたので、自分用に作った。
 
 コードは[40分Django簡易掲示板](/post/startup-django/)から。allauthはsettings.pyにID認証を、ユーザーモデルはDjangoのGitHubから何も書き加えていないモデルをそのまま流用した。
+
+[以前はfirst_nameとlast_nameを1つのhandle_nameにした](/post/django-custom-user-model-uuid/)が、今回は元に戻した。
+
 
 雛形をすぐにDLして書き換えができるようにGitHubに公開する。
 
 ## users/models.py
 
-ほぼ流用。Handle_nameは元のfirst_nameとlast_nameに分割
+ほぼ流用。handle_nameは元のfirst_nameとlast_nameに分割
 
 
     from django.db import models
@@ -149,11 +151,16 @@ tags: [ "django","allauth","上級者向け" ]
 
 こちらもHandle_nameはfirst_nameとlast_nameに分割して、元に戻した。
 
+## 結論
+
+allauthもsettings.pyにID認証で書き込んでいるだけなので、後はLoginRequiredMixinをビュークラスの引数に追加したり、1対多や多対多のリレーションを組んで、書き込みにユーザー名を表記させたり、投稿に対するコメントを実装させれば良いでしょう。
+
+もし、このコードにSendgridを使用したメール送信機能を実装させたい場合は下記記事を参照。
+
+[【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】](/post/django-allauth-custom-user-model-sendgrid/)
 
 
 ## 全体のソースコード
-
-allauthもsettings.pyにID認証で書き込んでいるだけなので、後はLoginRequiredMixinをビュークラスの引数に追加したり、1対多や多対多のリレーションを組んで、書き込みにユーザー名を表記させたり、投稿に対するコメントを実装させれば良いでしょう。
 
 https://github.com/seiya0723/startup_bbs_custom_usermodel_allauth
 
