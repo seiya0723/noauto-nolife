@@ -11,6 +11,11 @@ tags: [ "django","tips","上級者向け","認証" ]
 
 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。
 
+本記事では、下記記事で解説したカスタムユーザーモデルを実装したことを前提として話を進める。
+
+[【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】](/post/django-custom-user-model-allauth-bbs/)
+
+
 ## カスタムユーザーモデルを外部キーとして指定する
 
 まず、`settings.py`に下記のような設定がされているとする。`users`アプリの`CustomUser`クラスを指定している。

@@ -1,5 +1,5 @@
 ---
-title: "DjangoでUUIDを主キーとしたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】"
+title: "DjangoでUUIDを主キーとし、first_nameとlast_nameを1つにまとめたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】"
 date: 2021-02-15T15:47:57+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -12,6 +12,14 @@ Djangoでユーザーを作ったとき、デフォルトでは数値型オー�
 身内だけで使う小さなウェブアプリであれば大した問題にはならないと思うが、基本主キーが数値型かつオートインクリメントであれば、簡単に予測されてしまう。セキュリティリスクは最小限に留めるためにも、なるべく主キーはUUID型にしたい。
 
 そこで、本記事ではユーザーの主キーにUUIDを使用したカスタムユーザーモデルの作り方を解説する。
+
+なお、本記事ではDjangoのユーザーモデルのうち、first_nameとlast_nameを1つにまとめてhandle_nameとしている。もともとのDjangoのカスタムユーザーモデルを流用して作りたい場合は、
+
+- [【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】](/post/django-allauth-custom-user-model-sendgrid/)
+- [【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】](/post/django-custom-user-model-allauth-bbs/)
+
+上記ふたつを参考にすると良いだろう。
+
 
 ## AbstractBaseUserを継承したユーザーモデルを作る
 
@@ -97,7 +105,9 @@ Djangoでユーザーを作ったとき、デフォルトでは数値型オー�
                         },
                     )
         
+        #first_nameとlast_nameをひとまとめにした。
         handle_name = models.CharField(verbose_name="Handle_name", max_length=150)
+
         email       = models.EmailField(_('email address'))
     
         is_staff    = models.BooleanField(
