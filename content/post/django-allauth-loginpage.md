@@ -4,7 +4,7 @@ date: 2020-11-11T17:59:11+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","html5","css3","ウェブデザイン","allauth","上級者向け"]
+tags: [ "django","html5","css3","ウェブデザイン","allauth"]
 ---
 
 
@@ -234,4 +234,15 @@ django-allauthのテンプレートは`account`、`openid`、`socialaccount`、`
 allauthの実装そのものはそれほど難しくはないが、テンプレートの構造を理解した上での装飾が必要になるので、やや手間取る。メール認証、カスタムユーザーモデル、そしてテンプレートの装飾まで含めると、やはり認証関係はdjango-allauthを使用しても一朝一夕では済まない。
 
 デフォルトではクラス名等も指定されていないので、より複雑な装飾を施す場合、テンプレートのHTML構造の改造も必須になる。
+
+### 【補足1】ログインフォームを中央寄せにする
+
+下記記事ではログインフォームを中央寄せにする方法が解説されている。
+
+これが一般的ではあるだろう。
+
+[Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】](/post/django-allauth-center-loginpage/)
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-24 10-04-49.png" alt=""></div>
+
 

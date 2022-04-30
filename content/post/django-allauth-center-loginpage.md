@@ -1,5 +1,5 @@
 ---
-title: "Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】"
+title: "Django-allauthにてフォームを中央寄せにさせる【ログインページのテンプレートのカスタマイズ】"
 date: 2021-12-24T10:01:44+09:00
 draft: false
 thumbnail: "images/Screenshot from 2021-12-24 10-04-49.png"
