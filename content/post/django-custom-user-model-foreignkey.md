@@ -1,5 +1,5 @@
 ---
-title: "Djangoでカスタムユーザーモデルを外部キーとして指定する方法"
+title: "Djangoでカスタムユーザーモデルを外部キーとして指定する方法【1対多】"
 date: 2021-02-20T11:13:37+09:00
 draft: false
 thumbnail: "images/django.jpg"
