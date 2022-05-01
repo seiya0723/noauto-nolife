@@ -279,6 +279,8 @@ CSRFの実例として、先ほどのECサイト以外にある。
 
 などがある。
 
+<!--
+
 ### 市販の書籍 VS 英語で検索
 
 <p style="font-size:1.2rem;font-weight:bold;color:cyan;">結論:英語で検索</p>
@@ -293,3 +295,4 @@ CSRFの実例として、先ほどのECサイト以外にある。
 
 英語で検索をすると、検索の上位には公式のドキュメント、stackoverflow、GitHub、Qiitaなどが出てくるのでそちらを確認したほうが良いだろう。
 
+-->
