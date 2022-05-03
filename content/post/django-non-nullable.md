@@ -42,6 +42,9 @@ Djangoのモデルにフィールドを追加して、さあマイグレーシ�
 
 ## 対策
 
+
+### 【対策1】警告文に応じる(1度限りのdefaultを指定する)
+
 エラーが起こる前の`models.py`がこんな感じだったとする。
 
 
@@ -53,7 +56,6 @@ Djangoのモデルにフィールドを追加して、さあマイグレーシ�
     
         def __str__(self):
             return self.comment
-
 
 <!--
 <div class="img-center"><img src="/images/Screenshot from 2020-11-18 08-27-37.png" alt="モデルフィールドの状態"></div>
@@ -83,8 +85,6 @@ DBにデータが格納されている状態で、モデルフィールドを追
      2) Quit, and let me add a default in models.py
     Select an option:
 
-
-
 <!--
 <div class="img-center"><img src="/images/Screenshot from 2020-11-18 08-49-45.png" alt="NULL禁止フィールド追加が原因のエラー"></div>
 -->
@@ -97,15 +97,24 @@ DBにデータが格納されている状態で、モデルフィールドを追
 
 <div class="img-center"><img src="/images/Screenshot from 2020-11-18 09-05-39.png" alt="現在の日時が指定された"></div>
 
-一方で、常に`default`値を指定する場合は、2を選んで`models.py`にフィールドオプションの`default`を指定する。`DatetimeField`の場合、下記のように`default`を指定する。
+### 【対策2】フィールドオプションのdefaultを追加する
 
+一方で、常に`default`値を指定する場合は、2を選んで終了する。
 
+その後、`models.py`の新しく追加したdtにフィールドオプションの`default`を指定する。`DatetimeField`の場合、下記のように`default`を指定する。
+
+    from django.db import models
     from django.utils import timezone
-    dt      = models.DateTimeField(verbose_name="投稿日時",default=timezone.now)
-
+    
+    class Topic(models.Model):
+    
+        comment = models.CharField(verbose_name="コメント",max_length=2000)
+        dt      = models.DateTimeField(verbose_name="投稿日時",default=timezone.now)
+    
+        def __str__(self):
+            return self.comment
 
 実行するときに値が変わる、メソッドの`timezone.now()`ではなく、その関数そのものを意味する属性値の`timezone.now`を指定する。`timezone`は`django.utils`の中に含まれているので、冒頭でインポートさせる。
-
 
 ## 結論
 
@@ -117,6 +126,5 @@ Djangoのモデルフィールドでは何も指定していないとNULL禁止�
 モデルのフィールド追加・削除に関しての詳細は下記を確認。
 
 [【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】](/post/django-models-add-field/)
-
 
 
