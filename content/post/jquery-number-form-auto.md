@@ -2,7 +2,7 @@
 title: "【jQuery】数値入力フォームを押しっぱなしで入力する仕様に仕立てる"
 date: 2022-05-03T11:25:12+09:00
 draft: false
-thumbnail: "images/noimage.jpg"
+thumbnail: "images/jquery.jpg"
 categories: [ "フロントサイド" ]
 tags: [ "jQuery","ウェブデザイン" ]
 ---
