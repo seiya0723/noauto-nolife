@@ -1,5 +1,5 @@
 ---
-title: "Djangoで画像及びファイルをアップロードする方法"
+title: "Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】"
 date: 2020-11-05T15:30:14+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -23,14 +23,16 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 
 ## 必要なライブラリのインストール
 
-今回はアップロード後のバリデーションを行うため、Pythonのサードパーティー製ライブラリとして`Pillow`と`python-magic`を使用する
-
     pip install Pillow
     pip install python-magic
 
-Pillowは画像を保存するために必要なライブラリ。画像の加工もできる。
+Pillowは画像を保存するために必要なライブラリ。画像の加工もできる。後述のImageFieldを使用するために必須のライブラリである。
 
-python-magicはアップロードされたファイルのMIME値を取得するためのライブラリ。MIMEとはファイルの種類のこと。このMIMEの値をチェックすることでアップロードされたファイルがPDFなのか、MP4なのか、EXEなのかなどを知ることができる。
+python-magicはアップロードされたファイルのMIME値を取得するためのライブラリ。
+
+MIMEとはファイルの種類のこと。このMIMEの値をチェックすることでアップロードされたファイルがPDFなのか、MP4なのか、EXEなのかなどを知ることができる。
+
+python-magicは後述のFileFieldには必須ではないが、MIMEの判定によって受取するファイルを絞り込まないとセキュリティ上の問題を引き起こすので、このライブラリを使用しておいたほうが良いだろう。
 
 ## settings.pyの編集
 
@@ -55,7 +57,7 @@ Django2.x以前の場合は下記のように書く
 
 ## urls.pyの編集
 
-続いて、`config/urls.py`の修正。下記のように書き換える。
+### config/urls.py
 
     from django.contrib import admin
     from django.urls import path,include
@@ -73,29 +75,39 @@ Django2.x以前の場合は下記のように書く
 
 ファイルアップロード時の保存先と公開先の指定はこれでOK
 
-## models.pyでフィールドの定義
+### upload/urls.py
+
+    from django.urls import path
+    from . import views
+    
+    app_name    = "upload"
+    urlpatterns = [
+        path('album/', views.album, name="album"),
+        path('document/', views.document, name="document"),
+    ]
+
+
+## models.pyのモデルクラスにてImageField、FileFieldを追加
 
 今回は、画像とファイルのアップロード機能を搭載させるため、下記のようになった。
 
     from django.db import models
     
-    class PhotoList(models.Model):
+    class Album(models.Model):
     
-        photo       = models.ImageField(verbose_name="フォト",upload_to="file/photo_list/photo/")
+        photo       = models.ImageField(verbose_name="フォト",upload_to="upload/album/photo/")
     
-    class DocumentList(models.Model):
+    class Document(models.Model):
     
-        document    = models.FileField(verbose_name="ファイル",upload_to="file/document_list/document/")
+        file        = models.FileField(verbose_name="ファイル",upload_to="upload/document/file/")
     
-
 `models`の`ImageField`と`FileField`を使用する。`upload_to`属性を指定してアップロード先を分けている。
 
+### 【補足1】upload_toで指定するパスについて
 
-### upload_toで指定するパスについて
+`upload_to`が未指定もしくは空文字列であれば、`settings.py`の`MEDIA_ROOT`に基づき、プロジェクトディレクトリ直下の`media`に保存される。
 
-upload_toが未指定もしくは空文字列であれば、settings.pyのMEDIA_ROOTに基づき、プロジェクトディレクトリ直下のmediaに保存される。
-
-ただ、全てのファイルがmediaディレクトリに保存されてしまうと、バックアップの作業が大変になる。そこで、upload_toを指定して適宜ディレクトリ分けをすることを推奨する。
+ただ、全てのファイルがmediaディレクトリに保存されてしまうと、バックアップの作業が大変になる。そこで、`upload_to`を指定して適宜ディレクトリ分けをすることを推奨する。
 
 可能であれば、パスは
 
@@ -103,96 +115,120 @@ upload_toが未指定もしくは空文字列であれば、settings.pyのMEDIA_
 
 とすれば、重複することはないだろう。その場合、スネークケースで書いたほうが無難。
 
+### 【補足2】ImageFieldはFileFieldを継承して作られている。
+
+ImageFieldはもともとFileFieldを継承して作られている。
+
+仕組みは同じだが、画像だけを受け取る仕様になっているため、全てのファイルを受け取るFileFieldとは違う。
+
+画像かどうか判定するためにPillowを使用している。
+
+だから、例えば同じようにPDFだけを受け取るフィールド、動画だけを受け取るフィールドを作って、複数のモデルで使いまわしたい場合。自前でFileFieldを継承して、それぞれPDFField、VideoFieldとしても良いかもしれない。
+
+もっとも、PDFや動画を受け取るフィールドを、複数のモデルクラスで使いまわすほどの案件は無いと思われるが。
+
 ## forms.pyでフォームを作る
 
     from django import forms
-    from .models import PhotoList,DocumentList
+    from .models import Album,Document
     
-    class PhotoListForm(forms.ModelForm):
+    class AlbumForm(forms.ModelForm):
     
         class Meta:
-            model   = PhotoList
+            model   = Album
             fields  = ['photo']
     
-    class DocumentListForm(forms.ModelForm):
+    class DocumentForm(forms.ModelForm):
     
         class Meta:
-            model   = DocumentList
-            fields  = ['document']
+            model   = Document
+            fields  = ['file']
 
-モデルを継承して作る。フィールドを指定するだけでいい。
+
+モデル利用して作る。フィールドを指定するだけでいい。
 
 ## views.pyで受け取り処理
 
     from django.shortcuts import render,redirect
-    
-    # Create your views here.
     from django.views import View
-    from .models import PhotoList,DocumentList
-    from .forms import PhotoListForm,DocumentListForm
+
+    from .models import Album,Document
+    from .forms import AlbumForm,DocumentForm
     
     import magic
     
     ALLOWED_MIME    = [ "application/pdf" ]
     
-    class PhotoView(View):
+    class AlbumView(View):
     
         def get(self, request, *args, **kwargs):
+
+            context             = {}
+            context["albums"]   = Album.objects.all()
     
-            data    = PhotoList.objects.all()
-            context = { "data":data }
-    
-            return render(request,"upload/index.html",context)
+            return render(request,"upload/album.html",context)
     
         def post(self, request, *args, **kwargs):
     
-            form    = PhotoListForm(request.POST, request.FILES)
+            form    = AlbumForm(request.POST, request.FILES)
             
-            if form.is_valid():
-                print("バリデーションOK")
-                form.save()
+            if not form.is_valid():
+                print("バリデーションNG")
+                print(form.errors)
+                return redirect("upload:album")
+
+            print("バリデーションOK")
+            form.save()
     
-            return redirect("upload:index")
+            return redirect("upload:album")
     
-    index       = PhotoView.as_view()
+    album   = AlbumView.as_view()
     
     class DocumentView(View):
     
         def get(self, request, *args, **kwargs):
     
-            data    = DocumentList.objects.all()
-            context = { "data":data }
+            context                 = {}
+            context["documents"]    = Document.objects.all()
     
             return render(request,"upload/document.html",context)
     
         def post(self, request, *args, **kwargs):
     
-            form        = DocumentListForm(request.POST,request.FILES)
-            mime_type   = magic.from_buffer(request.FILES["document"].read(1024) , mime=True)
-    
-            if form.is_valid():
-                print("バリデーションOK")
-    
-                if mime_type in ALLOWED_MIME:
-                    form.save()
-                else:
-                    print("このファイルは許可されていません。")
-    
+            form        = DocumentForm(request.POST,request.FILES)
+            mime_type   = magic.from_buffer(request.FILES["file"].read(1024) , mime=True)
+
+            if not form.is_valid():
+                print("バリデーションNG")
+                print(form.errors)
+                return redirect("upload:document")
+            
+            if not mime_type in ALLOWED_MIME:
+                print("このファイルは許可されていません。")
+                return redirect("upload:document")
+
+
+            print("バリデーションOK")
+            form.save()
+
             return redirect("upload:document")
     
     document    = DocumentView.as_view()
 
-画像ファイルの保存処理は`forms.py`から継承したオブジェクトに`request.POST`と`request.FILES`を代入。バリデーションを行い、`.save()`で保存する。`media`ディレクトリ内の`photo`ディレクトリに画像が保存されている。
 
-ここでファイル保存時の処理として、python-magicを使用しMIMEを判定した上で保存をしている。`ALLOWED_MIME`にはリスト型で保存したいファイルのタイプ(今回はPDF)を指定する。
+アップロードされたファイルを保存する時、フォームクラスの第二引数に`request.FILES`をセットする必要がある。
 
+また、その際にFileFieldの場合はpython-magicを使用して、ファイルのMIMEタイプを調べている。許可されていないMIMEタイプであれば、保存はしない。
 
 ## templatesにフォームを設置
 
+注意するべきことは、`form`タグ内に`enctype="multipart/form-data"`を書いておくこと。
 
-### 画像のアップロード用テンプレート
+画像、ファイルいずれも`enctype="multipart/form-data"`がなければデータがアップロードされない。
 
-`templates/index.html`を作る。これが画像ファイルのアップロードページ。内容は下記。
+### 画像アップロード用テンプレート
+
+`templates/album.html`を作る。これが画像ファイルのアップロードページ。内容は下記。
     
     <!DOCTYPE html>
     <html lang="ja">
@@ -216,10 +252,9 @@ upload_toが未指定もしくは空文字列であれば、settings.pyのMEDIA_
                 <input class="form-control" type="submit" value="送信">
             </form>
     
-    
-            {% for content in data %}
+            {% for album in albums %}
             <div class="my-2">
-                <img class="img-fluid" src="{{ content.photo.url }}" alt="投稿された画像">
+                <img class="img-fluid" src="{{ album.photo.url }}" alt="投稿された画像">
             </div>
             {% endfor %}
         
@@ -244,17 +279,17 @@ upload_toが未指定もしくは空文字列であれば、settings.pyのMEDIA_
         <h1 class="bg-primary text-center text-white">ファイルアップロードのテスト</h1>
         <main class="container">
         
-            <p><a href="{% url 'upload:index' %}">画像のアップロードはこちら</a></p>
+            <p><a href="{% url 'upload:album' %}">画像のアップロードはこちら</a></p>
     
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="file" name="document">
+                <input type="file" name="file">
                 <input class="form-control" type="submit" value="送信">
             </form>
         
-            {% for content in data %}
+            {% for document in documents %}
             <div class="my-2">
-                <a href="{{ content.document.url }}">{{ content.document }}</a>
+                <a href="{{ document.file.url }}">{{ document.file }}</a>
             </div>
             {% endfor %}
     
@@ -262,7 +297,6 @@ upload_toが未指定もしくは空文字列であれば、settings.pyのMEDIA_
     </body>
     </html>
 
-注意するべきことは、`form`タグ内に`enctype="multipart/form-data"`を指定すること。これを指定していないと、ファイルのアップロードができない。
 
 ## マイグレーション
 
@@ -271,7 +305,12 @@ upload_toが未指定もしくは空文字列であれば、settings.pyのMEDIA_
     python3 manage.py makemigrations
     python3 manage.py migrate 
 
-ここで、マイグレーション時に警告([You are Trying to add a non-nullable field](/post/django-non-nullable/))が出る場合、`ImageField`及び`FileField`はDB上は文字列型扱い(格納されているのはファイルパス)なので、`null=True,blank=True`のフィールドオプションを追加するか、1度限りのデフォルト値として任意の文字列を指定すると良いだろう。
+
+### 【補足1】マイグレーション時の警告が出る場合はどうする？
+
+今回の場合は新しくモデルを作っているので問題はないが、既存のモデルに上記のフィールドを追加する時、マイグレーション時に警告([You are Trying to add a non-nullable field](/post/django-non-nullable/))が出る。
+
+`ImageField`及び`FileField`はDB上は文字列型扱い(格納されているのはファイルパス)なので、`null=True,blank=True`のフィールドオプションを追加するか、1度限りのデフォルト値として任意の文字列を指定すると良いだろう。
 
 参照: [【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】](/post/django-models-add-field/)
 
