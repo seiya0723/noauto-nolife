@@ -1,9 +1,11 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-custom-user-model-mydata-edit/", "title" : "【Django】カスタムユーザーモデルに記録した自分のユーザー情報を編集する【ユーザー情報変更画面に】" }, 
+{ "link": "/post/startup-git/", "title" : "【git/GitHub】コマンドと使い方の一覧" }, 
+{ "link": "/post/python3-update/", "title" : "UbuntuにインストールされているPythonをアップデートする" }, 
 { "link": "/post/django-fileupload/", "title" : "Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】" }, 
 { "link": "/post/polling-long-polling-websocket-difference/", "title" : "WebSocketとポーリング、ロングポーリングの違い【非同期通信と双方向通信】" }, 
 { "link": "/post/css3-sidebar/", "title" : "CSS3で折りたたみ式のサイドバーを実装させる【checkbox+transition+position】" }, 
 { "link": "/post/django-non-nullable/", "title" : "DjangoでYou are Trying to add a non-nullable fieldと表示されたときの対策【makemigrations】" }, 
-{ "link": "/post/django-custom-user-model-mydata-edit/", "title" : "【Django】カスタムユーザーモデルに記録した自分のユーザー情報を編集する【ユーザー情報変更画面に】" }, 
 { "link": "/post/jquery-number-form-auto/", "title" : "【jQuery】数値入力フォームを押しっぱなしで入力する仕様に仕立てる" }, 
 { "link": "/post/startup-django-channels-web-socket/", "title" : "【Django】channelsを使ってWebSocketを実現させる【チャットサイト開発に】" }, 
 { "link": "/post/django-session-expire-second-and-browser-close/", "title" : "【Django】セッションの有効期限をセット、もしくはブラウザを閉じた時にセッションを無効化【settings.py】" }, 

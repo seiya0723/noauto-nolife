@@ -4,11 +4,10 @@ date: 2022-05-03T17:23:44+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django" ]
+tags: [ "Django","上級者向け" ]
 ---
 
 Djangoでは新規会員登録したとき、記録できるのはユーザーIDとパスワードだけで、会員登録フォームの追加をしない限り、姓名の記録はできない。
-
 
 仮に新規会員登録した時にフォームが与えられていたとしても、後にその編集をするページがなければ仕方ない。(例えば、姓名が変わった時に変更する手続きをするフォームページを用意していないと、後々問題になる)
 
@@ -205,4 +204,87 @@ Djangoでは新規会員登録したとき、記録できるのはユーザーID
 更に、usersアプリ内にユーザーモデルの編集処理を書くデメリットは、リダイレクト先を自由に指定できない点にあると思われる。
 
 なにはともあれ、これで会員登録後に姓名の変更、メールアドレスの変更などができるようになる。
+
+### 【補足1】Djangoで編集の仕方ってどうするんだっけ？
+
+下記記事に掲載されている。
+
+[Djangoで投稿したデータに対して編集・削除を行う【urls.pyを使用してビューに数値型の引数を与える】](/post/django-models-delete-and-edit/)
+
+編集対象のモデルオブジェクトを特定する。
+
+    topic   = Topic.objects.filter(id=pk).first()
+
+フォームクラスのキーワード引数`instance`にそのモデルオブジェクトを指定する。
+
+    form    = TopicForm(request.POST, instance=topic)
+
+    if form.is_valid():
+        form.save()
+
+
+### 【補足2】カスタムしていない、デフォルトのユーザーモデルに編集機能を加えるにはどうすれば？
+
+カスタムしていない、デフォルトのユーザーモデルは下記記事でも取り扱っている。
+
+[【Django】ユーザーモデルと1対多のリレーションを組む方法【カスタムユーザーモデル不使用】](/post/django-foreignkey-user/)
+
+つまり、`from django.contrib.auth.models import User`を使ったフォームクラスを作る。
+
+    from django import forms 
+    from django.contrib.auth.models import User
+    
+    class UserForm(forms.ModelForm):
+    
+        class Meta:
+            model   = User
+            fields  = [ "first_name","last_name" ]
+
+
+そして、ビュー側では、デフォルトのユーザーモデルに対して、モデルオブジェクトを特定し、編集する。
+
+    from django.shortcuts import render,redirect
+    
+    from django.views import View
+    from .models import Topic
+    from .forms import UserForm
+    
+    from django.contrib.auth.models import User
+    
+    
+    class IndexView(View):
+    
+        def get(self, request, *args, **kwargs):
+    
+            context = {}
+    
+            context["topics"]   = Topic.objects.all()
+            context["users"]    = User.objects.all()
+    
+            print(context["users"])
+    
+            return render(request,"bbs/index.html",context)
+    
+        def post(self, request, *args, **kwargs):
+    
+            if not request.user.is_authenticated:
+                print("未認証")
+                return redirect("account_login")
+    
+            user    = User.objects.filter(id=request.user.id).first()
+            form    = UserForm(request.POST,instance=user)
+    
+            if form.is_valid():
+                print("バリデーションOK")
+                form.save()
+            else:
+                print("バリデーションNG")
+                print(form.errors)
+    
+            return redirect("bbs:index")
+    
+    index   = IndexView.as_view()
+
+
+これで、カスタムしていないユーザーモデルでも編集処理が実現できる。
 

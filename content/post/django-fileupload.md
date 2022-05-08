@@ -9,6 +9,9 @@ tags: [ "django","tips","セキュリティ" ]
 
 Djangoで画像やファイルをアップロードする方法をまとめる。
 
+[40分Django](/post/startup-django/)を理解している方向け。
+
+
 ## 流れ
 
 1. 必要なライブラリのインストール
@@ -196,15 +199,17 @@ ImageFieldはもともとFileFieldを継承して作られている。
         def post(self, request, *args, **kwargs):
     
             form        = DocumentForm(request.POST,request.FILES)
-            mime_type   = magic.from_buffer(request.FILES["file"].read(1024) , mime=True)
 
             if not form.is_valid():
                 print("バリデーションNG")
                 print(form.errors)
                 return redirect("upload:document")
+
+            mime_type   = magic.from_buffer(request.FILES["file"].read(1024) , mime=True)
             
             if not mime_type in ALLOWED_MIME:
-                print("このファイルは許可されていません。")
+                print("このファイルのMIMEは許可されていません。")
+                print(mime_type)
                 return redirect("upload:document")
 
 
@@ -296,6 +301,28 @@ ImageFieldはもともとFileFieldを継承して作られている。
         </main>
     </body>
     </html>
+
+
+### 【補足1】ファイル名だけを取り出したい場合は？
+
+`upload_to`のフィールドオプションにはファイルの名前だけでなくmediaディレクトリ以下のファイルパスまで含まれている。
+
+そのため、リンクタグの表示としてはあまり適切ではないかもしれない。そこでファイル名のみを表示させる必要が出てくる。
+
+具体的には、モデルにメソッドを追加し、テンプレート側からそのメソッドを呼び出す。
+
+    import os
+    
+    class Document(models.Model):
+        file    = models.FileField(verbose_name="ファイル",upload_to="app/document/file/")
+    
+        def file_name(self):
+            return os.path.basename(self.file.name)
+
+
+詳細は下記記事にて解説されている。
+
+[【Django】FilefieldやImageFieldでファイル名だけを表示させる方法【モデルにメソッドを追加】](/post/django-filefield-only-filename/)
 
 
 ## マイグレーション
