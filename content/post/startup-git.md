@@ -7,26 +7,29 @@ categories: [ "others" ]
 tags: [ "git","GitHub" ]
 ---
 
-
 後に追記予定あり。
 
 必要と思われるものから順に、解説サイトから抜粋して並べている。
 
-## リポジトリを作る
+## 基本操作編
+
+これができれば、作ったコードをGitHubに公開できる。
+
+### リポジトリを作る
 
     git init 
 
-## インデックスする(コミットするファイルを記録)
+### インデックスする(コミットするファイルを記録)
 
 全てのファイルをインデックスする場合はこうする
 
     git add .
 
-## コミットする
+### コミットする
 
     git commit -m "ここにコミットのメッセージを記録する"
 
-### 【補足1】ユーザー情報を入力していないため、コミットできない
+#### 【補足1】ユーザー情報を入力していないため、コミットできない
 
 gitコマンドでコミットするとき、コミットするユーザーの情報を記録しておく必要がある。
 
@@ -37,7 +40,31 @@ gitコマンドでコミットするとき、コミットするユーザーの�
 
 gitをインストールしてすぐの状態ではコミットできないため、注意。
 
-## リモートリポジトリ関係
+
+## コミット編
+
+これができれば、前のコミットに遡ったり、コミットのログの確認ができる。
+
+### コミットのログを見る。
+
+    git log 
+
+これまでのコミットログが記録されている。
+
+    commit XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+などと表示されているのはコミットのハッシュ値
+
+### 特定のコミットまで戻す
+
+    git reset --hard XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+実際にはハッシュ値の途中まで入力すればOK
+
+これで特定のコミットまで戻れる。
+
+
+## リモートリポジトリ編
 
 GitHubやHerokuなどのリモートリポジトリと連携させ、成果物を送信(プッシュ)する。
 
@@ -61,8 +88,16 @@ GitHubやHerokuなどのリモートリポジトリと連携させ、成果物�
 
     git remote -v 
 
+### リモートリポジトリの内容を複製する(クローン)
 
-## その他
+    git clone https://github.com/ユーザ名/REPOSITORY.git
+
+GitHubのページからZipでDLする場合と違って、.gitが作られる。つまり前のコミットに遡ってコードを手に入れることができるというわけだ。
+
+
+
+
+## その他編
 
 ### gitの設定を確認する
 
@@ -73,7 +108,6 @@ GitHubやHerokuなどのリモートリポジトリと連携させ、成果物�
 デフォルトではnanoエディタになっているため、vimを使いたい場合は下記を実行しておく。
 
     git config --global core.editor 'vim -c "set fenc=utf-8"'
-
 
 ### コミットしたくないファイルがある場合、.gitignoreを使う
 
@@ -89,6 +123,8 @@ GitHubやHerokuなどのリモートリポジトリと連携させ、成果物�
 
 ## 参照元
 
-https://qiita.com/gold-kou/items/7f6a3b46e2781b0dd4a0
+- https://qiita.com/gold-kou/items/7f6a3b46e2781b0dd4a0
+- https://docs.github.com/ja/get-started/using-git/getting-changes-from-a-remote-repository
+- https://qiita.com/Yorinton/items/e0e969d961b17a359e19
 
 
