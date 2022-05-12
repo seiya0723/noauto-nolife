@@ -59,31 +59,14 @@ Cloudinaryのリンクから作られたアカウントへ行き着く。ダッ�
 
 `settings.py`に下記を追記。
 
-    INSTALLED_APPS = [
-        'django.contrib.admin',
-        'django.contrib.auth',
-        'django.contrib.contenttypes',
-        'django.contrib.sessions',
-        'django.contrib.messages',
-        'django.contrib.staticfiles',
-    
-        #以下2つを追加。
-        'cloudinary',
-        'cloudinary_storage',
-    
-        #Django内のアプリ
-        'upload.apps.UploadConfig',
-    ]
 
+```
+if not DEBUG:
 
-    #STATICFILES_DIRSをコメントアウト。
-    #STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+    #INSTALLED_APPSにcloudinaryの追加
+    INSTALLED_APPS.append('cloudinary')
+    INSTALLED_APPS.append('cloudinary_storage')
 
-
-    # Herokuデプロイ時に必要になるライブラリのインポート
-    import django_heroku
-    import dj_database_url
-    
     # ALLOWED_HOSTSにホスト名)を入力
     ALLOWED_HOSTS = [ 'hogehoge.herokuapp.com' ]
     
@@ -98,8 +81,12 @@ Cloudinaryのリンクから作られたアカウントへ行き着く。ダッ�
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         ]
-    
-    # DBを使用する場合は下記を入力する。
+
+    # 静的ファイル(static)の存在場所を指定する。
+    STATIC_ROOT = BASE_DIR / 'static'
+
+
+    # DBの設定
     DATABASES = { 
             'default': {
                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -110,16 +97,15 @@ Cloudinaryのリンクから作られたアカウントへ行き着く。ダッ�
                 'PORT': '5432',
                 }
             }
+
+    #DBのアクセス設定
+    import dj_database_url
+
     db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
     DATABASES['default'].update(db_from_env)
     
-    # 静的ファイル(static)の存在場所を指定する。
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-    import cloudinary
-    import cloudinary.uploader
-    import cloudinary.api
-
+    #cloudinaryの設定
     CLOUDINARY_STORAGE = { 
             'CLOUD_NAME': "", 
             'API_KEY'   : "", 
@@ -135,6 +121,8 @@ Cloudinaryのリンクから作られたアカウントへ行き着く。ダッ�
 
     #これで全てのファイルがアップロード可能(上限20MB。ビュー側でアップロードファイル制限するなら基本これでいい)
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
+
+```
 
 
 先ほどのCloudinaryのダッシュボードで控えた情報を`CLOUDINARY_STORAGE`にコピペする。
@@ -162,11 +150,13 @@ Herokuへログイン
     git commit -m "commit"
     heroku git:remote -a [アプリ名]
 
+<!--
 Cloudinaryを使用することで、静的ファイルの自動配信を尋ねられるので、下記のように設定する。
 
     heroku config:set DISABLE_COLLECTSTATIC=1
 
 この設定はwhitenoiseと競合するかも知れないので、検証した後、追記する予定。
+-->
 
 プッシュする。
 
