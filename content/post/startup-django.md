@@ -266,6 +266,8 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 
 ちなみに、このstrメソッドの指定がないと、idの数値が表示される。例えばidが5のデータであれば、`Topic object (5)`となる。
 
+
+
 ## マイグレーション実行(2分)
 
 `models.py`で定義したフィールドはマイグレーションを実行して、DBに格納先のテーブルを作る。
@@ -428,6 +430,8 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
     posted.comment  = request.POST["comment"]
     posted.save()
 
+モデルオブジェクトを作る時に送信されたデータを指定するか、それともモデルオブジェクトを作った後に送信されたデータを指定するか、の違いである。
+
 
 #### 【補足2】postメソッドではリダイレクトを返し、レンダリングを行ってはいけないのはなぜか
 
@@ -473,7 +477,6 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 
 詳細は下記。
 
-
 [Djangoで管理サイトを作る【admin.py】](/post/django-admin/)
 
 [Djangoで開発中、データベースへ初期データを入力する【バックアップしたデータをloaddataコマンドでリストア】](/post/django-loaddata/)
@@ -483,8 +486,11 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 
 ちなみに、`manage.py`で実行できるコマンドは下記で確認できる。
 
-
     python3 manage.py
+
+`manage.py`に新たに独自のコマンドを追加することもできる。
+
+[【Django】manage.pyコマンドを追加させる【バッチ処理、常駐プログラムなどに】](/post/django-command-add/)
 
 
 ## ソースコード
