@@ -46,7 +46,7 @@ Djangoには`context_processors`という、任意の処理を行った後contex
         return context
 
 
-下記のようにすると良いだろう。
+このようにすると良いだろう。
 
 
 ## context_processorsを登録する
