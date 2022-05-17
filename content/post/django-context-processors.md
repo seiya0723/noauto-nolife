@@ -12,7 +12,6 @@ tags: [ "Django","tips" ]
 
 Djangoには`context_processors`という、任意の処理を行った後contextを追加できる便利な機能があるので、こちらを使う。
 
-
 ## context_processorsを作る
 
 まず、アプリディレクトリ内部に、`custom_context.py`というファイルを作る。内容は下記。
@@ -25,14 +24,35 @@ Djangoには`context_processors`という、任意の処理を行った後contex
         context["FIRST_TOPIC"]  = Topic.objects.order_by("-id").first()
     
         return context
+
+### 【補足1】contextのキーの重複を防ぐには？
+
+上記のように大文字を使用するのが一考である。ただ、むやみに大文字で書いてしまえばいいという問題ではないと思う。
+
+例えば、サイドバーに表示させるコンテキストを提供したい場合、
+
+
+    from .models import Category,Tag,Topic
     
+    def sidebar(request):
+        
+        context                 = {}
+        context["SIDEBAR"]      = {}
+
+        context["SIDEBAR"]["categories"]    = Category.objects.order_by("-dt")
+        context["SIDEBAR"]["tags"]          = Tag.objects.order_by("-dt")
+        context["SIDEBAR"]["latests"]       = Topic.objects.order_by("-dt")[:10]
+
+        return context
+
+
+下記のようにすると良いだろう。
+
 
 ## context_processorsを登録する
 
 続いて、`context_processors`をsettings.pyに登録する。
 
-
-    
     TEMPLATES = [ 
         {   
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
