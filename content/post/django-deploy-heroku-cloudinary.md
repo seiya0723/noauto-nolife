@@ -129,13 +129,26 @@ if not DEBUG:
 
 動画と画像もアップロードするのであれば、`DEFAULT_FILE_STORAGE`は`RawMediaCloudinaryStorage`なので、上限20MBになる。`models.py`を書き換えて対処する方法もあるようだが、今回はこのように`settings.py`の書き換えだけで済ませた。
 
-仮想環境に`django-cloudinary-storage`をインストールする
 
-    pip install django-cloudinary-storage
+## 必要なライブラリと起動ファイルを作成
+
+仮想環境に`django-cloudinary-storage`もインストールする
+
+    pip install django-heroku dj-database-url gunicorn whitenoise psycopg2 django-cloudinary-storage
 
 `requirements.txt`を更新。
 
     pip freeze > requirements.txt
+
+
+gunicorn(ウェブサーバーとDjangoをつなげるライブラリ)の設定を施す。下記コマンドを実行する。
+
+    echo "web: gunicorn config.wsgi:application --log-file -" > Procfile
+
+サーバー起動用のファイルを作る。
+
+    echo "web: python manage.py runserver 0.0.0.0:5000" > Procfile.windows
+
 
 ### デプロイ
 
@@ -186,7 +199,7 @@ CloudinaryのMediaLibraryをみると、アップロードされている事が�
 
 ## 結論
 
-永年無料のHerokuで永年無料のストレージが使えるので、リージョンにこだわらない、無料で済ませたいのであればAWSのS3よりもこちらのほうが良いだろう。
+永年無料のHerokuサーバーで、永年無料のストレージが使える。リージョンにこだわらない、無料で済ませたいのであればAWSのS3よりもこちらのほうが良いだろう。
 
 体感だが、ローカルネットワーク内のサーバーには劣るが、普通のサイトとして見ればそれほど遅くはない。上限容量(20MB)を超えたファイルをアップロードしようとすると極端にレスポンスが遅くなるので、ビュー側で容量制限を行う等の対策をしておいたほうが良い。
 
