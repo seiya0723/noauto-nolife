@@ -9,9 +9,11 @@ tags: [ "django","tips","初心者向け","カスタムテンプレートタグ"
 
 殆どのプロジェクトで実装必須になるページネーション。
 
-Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されないので、例えば検索とページネーションを両立させることはできない。
+Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。
 
-本記事では他のURLパラメーターを保持した状態でページネーションを実装する術を解説する。
+しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されない。例えば、検索とページネーションを両立させることはできない。
+
+本記事では他のURLパラメーターを保持した状態で、ページネーションを実装する術を解説する。
 
 ## 流れ
 
@@ -24,7 +26,6 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 まず、クエリを実行した後に得られるデータを、django.core.paginatorでページネーション化させる。
 
 
-
     from django.shortcuts import render,redirect
     from django.views import View
     from .models import Category,Product
@@ -32,7 +33,7 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
     from django.db.models import Q
     
     from django.core.paginator import Paginator 
-    
+     
     class ProductView(View):
     
         def get(self, request, *args, **kwargs):
@@ -42,6 +43,8 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 
             if "search" in request.GET:
     
+                #全角スペースを半角スペースに変換、半角スペース区切りで文字列のリストに仕立てる。
+                #(ex) 『"Django　教科書 入門"』 → 『"Django 教科書 入門"』 → 『["Django","教科書","入門"]』
                 words       = request.GET["search"].replace("　"," ").split(" ")
     
                 for word in words:
@@ -49,11 +52,12 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
     
     
             #TIPS: .order_by()で並び替えしないと、paginatorでWARNINGが出る。
-            Product.obejcts.filter(query).order_by("id")
+            products    = Product.obejcts.filter(query).order_by("id")
 
             #===========ここからページネーション処理================
-            paginator   = Paginator(data,4)
+            paginator   = Paginator(products,4)
     
+            # ?page=2 などの指定がある場合、
             if "page" in request.GET:
                 context["products"] = paginator.get_page(request.GET["page"])
             else:
@@ -62,6 +66,8 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
             return render(request,"shopping/index.html",context)
     
         def post(self, request, *args, **kwargs):
+
+            # 中略 #
                 
             return redirect("shopping:index")
        
@@ -70,15 +76,55 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 
 ページネーションをする時は`.order_by()`を明示的に指定してソーティングしていないとWARNINGが出る点に注意。
 
-`Paginator(data,4)`はクエリによって検索されたデータ(`data`)を4個区切りでページネーションにするオブジェクトを返す。つまり1ページにつき4つのレコードが表示される。
+`Paginator(products,4)`はクエリによって検索されたデータ(`products`)を4個区切りでページネーションにするオブジェクトを返す。つまり1ページにつき4つのレコードが表示される。
 
 続いて、`paginator.get_page()`で指定されたページを表示させる。もし、`request.GET["page"]`の値が数値ではない場合は最初のページを表示させ、マイナス値もしくは最後のページよりも大きい場合は最後のページを返す。だからバリデーションも不要。
 
 他にも似たようなものに、`.page()`メソッドがあるがこちらは不適切な値を入力すると例外処理が発生する。処理時間とコードが長くなるため非推奨。
 
-## カスタムテンプレートタグを追加、インストールさせる
 
-今回は単にページネーションを実装するのではなく、検索のパラメーターも維持した状態でページ移動も行わなければならない。公式にはURLパラメータを両立させるための機能は用意されていない。故に、テンプレートタグを新たに作り、インストールさせ実装する。
+## 普通にページネーションを表示する【問題ありの方法】
+
+まず、普通にページネーションを実装させたらどうなるか、その挙動を確認する。
+
+実践ではこの方法は使い物にならないので、とにかくページネーションを実装させたい場合は、次の項へスキップすると良い。
+
+テンプレート上で、下記を追加する。
+
+    <ul class="pagination justify-content-center">
+        {% if products.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">最初のページ</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">前のページ</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link">最初のページ</a></li>
+        <li class="page-item"><a class="page-link">前のページ</a></li>
+        {% endif %}
+        <li class="page-item"><a class="page-link">{{ products.number }}</a></li>
+        {% if products.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">次のページ</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ products.paginator.num_pages }}">最後のページ</a></li>
+        {% else %}
+        <li class="page-item"><a class="page-link">次のページ</a></li>
+        <li class="page-item"><a class="page-link">最後のページ</a></li>
+        {% endif %}
+    </ul>
+
+これで、ページネーションが実装できる。
+
+ただ、検索をした後にページネーションで移動してもらいたい。
+
+検索をした時、 `?search=test`のようにURLにクエリが表示されるが、その状態でページ移動をすると、`?search=test&page=2`の状態ではなく、ただの`?page=2`になってしまうのである。
+
+つまり、検索をした状態でページ移動ができない。
+
+この問題を解消するため、カスタムテンプレートタグを使う。
+
+
+## ページネーション用のカスタムテンプレートタグを追加、インストール
+
+前項で説明したとおり、今回は単にページネーションを実装するのではなく、検索のパラメーターも維持した状態でページ移動も行わなければならない。
+
+公式にはURLパラメータを両立させるための機能は用意されていない。故に、テンプレートタグを新たに作り、インストールさせ実装する。
 
 まず、アプリのディレクトリ内に`templatetags`ディレクトリを作る。スペルミスに注意。
 
@@ -87,7 +133,6 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 続いて、`templatetags`に`param_change.py`を作る。中身は下記。
 
     from django import template
-    
     register = template.Library()
     
     @register.simple_tag()
@@ -96,7 +141,7 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
         copied[key] = value
         return copied.urlencode()
 
-それから、`settings.py`の`INSTALLED_APPS`に上記のカスタムテンプレートを指定する。
+それから、`settings.py`の`INSTALLED_APPS`に上記のカスタムテンプレートを指定する。`アプリ名.ディレクトリ名.Pythonファイル名`のように指定すればOK
 
     INSTALLED_APPS = [
         'django.contrib.admin',
@@ -109,8 +154,7 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
         'shopping.templatetags.param_change',
     ]
 
-これでテンプレート側で`{% url_replace request field vale %}`が使えるようになる。`request`と`field`と`value`はいずれも引数。
-
+これでテンプレート側で`{% load %}``{% url_replace request field vale %}`が使えるようになる。`request`と`field`と`value`はいずれも引数。
 
 ### 【補足1】@register.simple_tag()とは何か？
 
@@ -223,7 +267,6 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 
 ただ、テンプレートの継承を意味する、`{% extends %}`は一番最初に書かなければならない。loadよりも後にextendsを書いてはならない。
 
-
 ## 動作
 
 動かすとこうなる。
@@ -243,10 +286,20 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 
 最初の1ページ目で、パラメータがある場合とない場合で内容重複する問題はmetaタグのcanonicalを指定しておけばSEO的に問題はないと思う。
 
-ちなみに、この方法の他に、JavaScriptを使って、を書き換え、
 
+### どうしてもカスタムテンプレートタグを使いたくない場合は？
 
-## 参考文献
+カスタムテンプレートタグの実装はアプリ内に新たにディレクトリを作って、`INSTALLED_APPS`まで編集する必要もあり、少々手間がかかる。
+
+更に、カスタムテンプレートタグはサーバーサイドの処理であり、安易に増やしていけば当然サーバーに負荷がかかる。
+
+そこでJavaScriptを使った方法を推奨する。パラメータの書き換えはJSでも再現できる。
+
+[JavaScriptでクエリパラメータを書き換え、GETメソッドを送信する【通販サイトなどの絞り込み検索に有効】](/post/javascript-query-change-and-get-method/)
+
+サーバーの処理の負担を軽減させることができるので、スペックの低いサーバーを使用している場合はこちらが良いだろう。
+
+### 参考文献
 
 いずれも公式のドキュメントに書かれてある。
 
