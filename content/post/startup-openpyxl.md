@@ -30,31 +30,44 @@ Pythonを使えばExcelファイルの新規作成や編集、読み込みなど
     import datetime
     
     ws["A1"].value  = "決済日"
-    ws["A2"].value  = str(datetime.date.today())
+
+    #このように入れると、エクセル上、文字列として処理される。
+    #ws["A2"].value  = str(datetime.date.today())
+
+    #このように入れると、エクセル上、日付として処理される。
+    ws["A2"].value  = datetime.date.today()
     
     ws["B1"].value  = "商品名"
     ws["C1"].value  = "個数"
     ws["D1"].value  = "小計"
     
     ws["B2"].value  = "商品A"
-    ws["C2"].value  = "2個"
-    ws["D2"].value  = "20000"
+    ws["C2"].value  = 2
+    ws["D2"].value  = 20000
     
     ws["B3"].value  = "商品B"
-    ws["C3"].value  = "1個"
-    ws["D3"].value  = "30000"
+    ws["C3"].value  = 1
+    ws["D3"].value  = 30000
     
     
     #セルの値を入手。計算結果を入力
     ws["F2"].value  = "請求金額"
-    ws["F3"].value  = int(ws["D2"].value) + int(ws["D3"].value)
+
+
+    #数値型なのでそのまま計算が可能
+    #ws["F3"].value  = ws["C2"].value*ws["D2"].value + ws["C3"].value*ws["D3"].value
+
+    #文字列として関数を入れても、計算処理を行ってくれる。
+    ws["F3"].value  = "=SUM(C2*D2,C3*D3)"
+
+    #数値と数値でセルを特定して、データを入れる
+    ws.cell(row=10, column=10).value  = "test"
     
     wb.save('test.xlsx')
 
 `A1`などとセルを指定して、その`.value`属性に値を入れれば良いだけなので、VBAでやるよりもとってもカンタン。
 
 ファイル名もuuidや実行の日付を指定するなどをすれば重複を回避できる。
-
 
 ## 結論
 

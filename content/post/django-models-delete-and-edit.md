@@ -36,19 +36,21 @@ tags: [ "django","初心者向け" ]
     
         def get(self, request, *args, **kwargs):
     
-            topics  = Topic.objects.all()
-            context = { "topics":topics }
+            context             = {}
+            context["topics"]   = Topic.objects.all()
     
             return render(request,"bbs/index.html",context)
     
         def post(self, request, *args, **kwargs):
     
             form    = TopicForm(request.POST)
+
             if form.is_valid():
                 print("バリデーションOK")
                 form.save()
             else:
                 print("バリデーションNG")
+                print(form.errors)
     
             return redirect("bbs:index")
     
@@ -157,7 +159,7 @@ tags: [ "django","初心者向け" ]
                 topic.delete()
             else:
                 print("対象のデータは見つかりませんでした。")
-
+                
             return redirect("bbs:index")
     
     delete  = BbsDeleteView.as_view()
@@ -274,8 +276,9 @@ classにはBootstrapの削除ボタン風の装飾を割り当てた。こんな
         def get(self, request, pk, *args, **kwargs):
     
             #編集対象を特定してレンダリング
-            topic   = Topic.objects.filter(id=pk).first()
-            context = { "topic":topic }
+
+            context             = {}
+            context["topic"]    = Topic.objects.filter(id=pk).first()
     
             return render(request,"bbs/edit.html",context)
     
@@ -283,15 +286,20 @@ classにはBootstrapの削除ボタン風の装飾を割り当てた。こんな
     
             #編集対象を特定
             topic   = Topic.objects.filter(id=pk).first()
+
             
-            #instanceに編集対象を指定して、request.POSTをバリデーション(※ これで編集対象の内容が書き換わる。もし、instanceが存在しない場合、新しく作られる。)
+            #instanceに編集対象を指定して、request.POSTをバリデーション
+            #(※ これで編集対象の内容が書き換わる。もし、instanceが存在しない場合、新しく作られる。)
+
             form    = TopicForm(request.POST,instance=topic)
+
     
             if form.is_valid():
                 print("バリデーションOK")
                 form.save()
             else:
                 print("バリデーションNG")
+                print(form.errors)
     
             return redirect("bbs:index")
     
@@ -331,7 +339,7 @@ classにはBootstrapの削除ボタン風の装飾を割り当てた。こんな
                     <input class="btn btn-danger" type="submit" value="削除">
                 </form>
     
-                <!--↓ここに編集のリンクを追加-->
+                {# ↓ここに編集のリンクを追加 #}
                 <a class="btn btn-success" href="{% url 'bbs:edit' topic.id %}">編集</a>
             </div>
             {% endfor %}
@@ -358,14 +366,25 @@ classにはBootstrapの削除ボタン風の装飾を割り当てた。こんな
 
 自分が投稿したトピックは、自分しか削除と編集を許可しないのであれば、ユーザー認証とユーザーidとトピックを紐付ける1対多のフィールドの追加が必要になるだろう。
 
+
+### 【補足1】認証を使って削除と編集をする
+
 ユーザー認証であれば、allauthを使えば簡単に実現できる。
 
 [【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】](/post/startup-django-allauth/)
 
 
+### 【補足2】1対多に応用する
+
 また、編集のビューは1対多のリレーションを組んだトピックへのリプライのビューと構造が似ている。詳しくは下記記事を参照する。
 
 [Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】](/post/django-models-foreignkey/)
+
+### 【補足3】削除・編集した結果をクライアント側に表示させる
+
+編集、削除した結果を表示させたい場合は下記記事を参考に。
+
+[DjangoのMessageFrameworkで投稿とエラーをフロント側に表示する](/post/django-message-framework/)
 
 
 
