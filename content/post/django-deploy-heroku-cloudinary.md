@@ -61,6 +61,15 @@ Cloudinaryのリンクから作られたアカウントへ行き着く。ダッ�
 
 
 ```
+#デバッグモードは無効化しておく。
+DEBUG = False
+
+
+# 静的ファイルの読み込み設定がwhitenoiseに影響が及ぶので、デバッグ時にのみ有効にしておく。
+if DEBUG:
+    STATICFILES_DIRS = [ BASE_DIR / "static" ]
+
+
 if not DEBUG:
 
     #INSTALLED_APPSにcloudinaryの追加
