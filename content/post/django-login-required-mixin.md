@@ -47,6 +47,8 @@ tags: [ "django","tips","認証" ]
         return render(request,"bbs/index.html")
 
 
+参照: https://docs.djangoproject.com/en/4.0/topics/auth/default/#the-login-required-decorator
+
 デコレータとは、ざっくり言ってしまえば関数に機能を追加することを意味する。
 
 例えば、Djangoであればカスタムテンプレートタグがある。ただの関数ではテンプレートタグとして機能することはできないため、`@register.simple_tag()`をデコレータとしてセットする
