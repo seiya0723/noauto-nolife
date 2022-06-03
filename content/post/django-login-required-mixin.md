@@ -16,8 +16,6 @@ tags: [ "django","tips","認証" ]
 - [【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】](/post/startup-django-allauth/)
 - [【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】](/post/django-auth-not-allauth/)
 
-
-
 ## クラスベースのビューであればLoginRequiredMixinを多重継承する。
 
 
@@ -42,7 +40,7 @@ tags: [ "django","tips","認証" ]
     from django.shortcuts import render
     from django.views import View
     
-    from django.contrib.auth.mixins import LoginRequiredMixin
+    from django.contrib.auth.decorators import login_required
 
     @login_required(login_url='/accounts/login/')    
     def index(request):
