@@ -75,8 +75,6 @@ GitHubやHerokuなどのリモートリポジトリと連携させ、成果物�
     git remote add origin [リモートリポジトリのURL]
 
 
-
-
 ### リモートリポジトリに対してプッシュする
 
 例えば、GitHubで作ったリモートリポジトリにmasterブランチをプッシュする場合、下記のようにする。
@@ -114,6 +112,68 @@ GitHubやHerokuなどのリモートリポジトリと連携させ、成果物�
 GitHubのページからZipでDLする場合と違って、.gitが作られる。つまり前のコミットに遡ってコードを手に入れることができるというわけだ。
 
 
+## ブランチ編
+
+ブランチを作ることで、開発版と安定版を分離させ、開発途中でもコミットをすることができるようになる。
+
+まずはmasterブランチとdevelopブランチを使い分けるところから始めると良いだろう。
+
+
+参照元1: https://qiita.com/y-okudera/items/0b57830d2f56d1d51692
+参照元2: https://qiita.com/sf213471118/items/557c3335fc40aab857c9
+
+### 新しくブランチを作る
+
+既にmasterブランチが存在している状態(`git init`から`git commit -m`までやっている状態)で下記を実行することで、新しいブランチを作ることができる。
+
+    git branch [ブランチ名]
+
+下記のようにdevelopブランチを作ると良いだろう。
+
+    git branch develop
+
+
+### ブランチの切り替え
+
+先ほどブランチを作ったので、そのブランチへコミットするよう切り替える。
+
+例えばdevelopブランチに切り替えしたい場合はこうする。
+
+    git checkout develop
+
+
+### ブランチの一覧表示
+
+    git branch 
+
+これで一覧が表示される。
+
+*が付いているものは現在操作中のブランチ。
+
+
+### 新しく作ったブランチをプッシュする
+
+ローカルで作ったブランチはリモートには存在しない。
+
+そのため、新しく作ったブランチをリモートにプッシュする時、下記のように引数を指定。
+
+    git push --set-upstream origin develop
+
+二回目以降のコミットからのプッシュは下記のようになる。
+
+    git push origin develop
+
+### ブランチをマージする
+
+まず、masterブランチに切り替える
+
+    git checkout master 
+
+続いて、developブランチの内容をmasterに取り込む。
+
+    git merge develop
+
+これで、developの内容がmasterに取り込まれた。
 
 
 ## その他編
@@ -145,5 +205,5 @@ GitHubのページからZipでDLする場合と違って、.gitが作られる�
 - https://qiita.com/gold-kou/items/7f6a3b46e2781b0dd4a0
 - https://docs.github.com/ja/get-started/using-git/getting-changes-from-a-remote-repository
 - https://qiita.com/Yorinton/items/e0e969d961b17a359e19
-
-
+- https://qiita.com/sf213471118/items/557c3335fc40aab857c9
+- https://qiita.com/y-okudera/items/0b57830d2f56d1d51692
