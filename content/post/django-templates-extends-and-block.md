@@ -94,13 +94,13 @@ DjangoTemplateLanguage(以下、DTL)の`extends`と`block`を使用すること�
 
 また、extendsは基本的に親テンプレートを1つしか指定できないが、includeは何度でも呼び出すことができる点で異なる。
 
+extendsはPythonのクラスの継承に近いが、includeは関数のように呼び出しができる。
 
 ### 【補足2】extendsとloadはどちらを先に書く？
 
 extendsを先に書く。loadはその後に書く。
 
 ちなみに、親テンプレートでloadをしていたとしても、それが子テンプレートに引き継がれることはないため、extendsを使って継承した後、静的ファイルを読み込むのであれば、staticを使う。
-
 
 ### 【補足3】レンダリング対象のテンプレートの指定はどうする？
 
@@ -117,5 +117,13 @@ contextが必要な場合は第三引数に指定すれば、テンプレート�
 その具体的な例として、[折りたたみ式サイドバー](/post/css3-sidebar/)を継承し、各ページに表示させた方法がある。それが下記記事。
 
 [【Django】簡易掲示板に折りたたみ式サイドバーを実装させる【extends】](/post/django-templates-extends/)
+
+
+他にも、Djangoの認証用のライブラリであるDjango-allauthのテンプレートでは継承を使用して、共通箇所を1つのHTMLにまとめている。
+
+下記はDjango-allauthのテンプレートを編集しているが、各所でextendsとblockを使用している。
+
+[Django-allauthにてフォームを中央寄せにさせる【ログインページのテンプレートのカスタマイズ】](/post/django-allauth-center-loginpage/)
+
 
 

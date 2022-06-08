@@ -119,8 +119,8 @@ GitHubのページからZipでDLする場合と違って、.gitが作られる�
 まずはmasterブランチとdevelopブランチを使い分けるところから始めると良いだろう。
 
 
-参照元1: https://qiita.com/y-okudera/items/0b57830d2f56d1d51692
-参照元2: https://qiita.com/sf213471118/items/557c3335fc40aab857c9
+- 参照元1: https://qiita.com/y-okudera/items/0b57830d2f56d1d51692
+- 参照元2: https://qiita.com/sf213471118/items/557c3335fc40aab857c9
 
 ### 新しくブランチを作る
 
