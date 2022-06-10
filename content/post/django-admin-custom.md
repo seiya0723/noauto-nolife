@@ -23,9 +23,6 @@ tags: [ "django","上級者向け","tips" ]
     
     class PhotoList(models.Model):
     
-        class Meta:
-            db_table    = "photolist"
-    
         photo       = models.ImageField(verbose_name="フォト",upload_to="photo/",blank=True)
         dt          = models.DateTimeField(verbose_name="投稿日",default=timezone.now)
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
@@ -33,9 +30,6 @@ tags: [ "django","上級者向け","tips" ]
         age         = models.IntegerField(verbose_name="年齢",default=20)
     
     class DocumentList(models.Model):
-    
-        class Meta:
-            db_table    = "documentlist"
     
         document    = models.FileField(verbose_name="ファイル",upload_to="file/")
 
@@ -146,7 +140,6 @@ tags: [ "django","上級者向け","tips" ]
 ## 結論
 
 <div class="img-center"><img src="/images/Screenshot from 2021-06-10 14-42-55.png" alt="カスタムされた管理画面"></div>
-
 
 このように`admin.py`の編集だけで簡単に管理サイトをカスタムできる。ただ、モデルフィールドを直接指定しているので、`models.py`が固まった開発終盤に作るのが妥当と言えよう。
 
