@@ -2,7 +2,7 @@
 title: "UbuntuにWordpressをインストールする【MariaDB+Apache】"
 date: 2022-06-04T16:46:42+09:00
 draft: false
-thumbnail: "images/noimage.jpg"
+thumbnail: "images/ubuntu.jpg"
 categories: [ "others" ]
 tags: [ "Wordpress","Ubuntu","virtualbox" ]
 ---

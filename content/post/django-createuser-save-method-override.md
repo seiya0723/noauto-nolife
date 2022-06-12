@@ -1,6 +1,6 @@
 ---
 title: "【Django】ユーザー作成時に何らかの処理を行う方法【saveメソッドオーバーライド】"
-date: 2022-06-08T17:17:42+09:00
+date: 2022-06-18T17:17:42+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
