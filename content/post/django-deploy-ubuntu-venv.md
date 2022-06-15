@@ -34,9 +34,22 @@ PostgreSQLは下記を見て、ユーザーとDBを作る。
 
     pip install gunicorn psycopg2 psycopg2-binary
 
-requirements.txtがあれば、下記でまとめてインストールしておく。
+もし、psycopg2のインストールができない場合、以下を実行
+
+    sudo apt install libpq-dev python3-dev
+
+`requirements.txt`があれば、下記でまとめてインストールしておく。
     
     pip install -r requirements.txt
+
+### 【補足1】pip3とvirtualenvがインストールされていない場合
+
+python3.x系のPythonパッケージ管理ツールのpip3コマンドと、virtualenvがインストールされていない場合は下記コマンドでインストールする。
+
+    sudo apt install python3-pip
+    sudo pip3 install virtualenv
+
+
 
 ## Djangoのsettings.pyの編集
 
@@ -263,10 +276,10 @@ settings.pyを書き換える。
     
         location = /favicon.ico { access_log off; log_not_found off; }
         location /static/ {
-            root /var/www/[プロジェクト名]
+            root /var/www/[プロジェクト名];
         }
         location /media/ {
-            root /var/www/[プロジェクト名]
+            root /var/www/[プロジェクト名];
         }
         location / {
             include proxy_params;
@@ -284,8 +297,13 @@ settings.pyを書き換える。
 
 もともとあったデフォルトの設定は無効化、Nginxをリロード
 
+    #デフォルトの設定ファイルの無効化
     sudo unlink /etc/nginx/sites-enabled/default
+
+    #nginxの設定をテストする。
     sudo nginx -t
+
+    #nginxのリロード
     sudo systemctl reload nginx
 
 
@@ -305,15 +323,15 @@ Nginxの動作確認
 サーバーのIPアドレスにアクセスする。
 
 
-## エラーで動かない時は？
+## 【必読】エラーで動かない時の対処法
 
-### Nginxのログを見る
+### 【必読1】Nginxのログを見る
 
 デフォルトでは`/var/log/nginx/error.log`に出力されている。詳しくは下記。
 
 [Nginxのログをチェックする、ログの出力設定を変更する](/post/nginx-log-check/)
 
-### systemdのログを見る
+### 【必読2】systemdのログを見る
 
 下記コマンドで、gunicornのログを出力できる
 
@@ -321,9 +339,9 @@ Nginxの動作確認
 
 参照:https://qiita.com/marumen/items/e4c75a2617cb5d0113ce
 
-### 権限が適切かチェックする。
+### 【必読3】権限が適切かチェックする。VirtualBoxのOSに対してのデプロイは特に注意！！
 
-プロジェクトのディレクトリのアクセス権が適切に割り振られていない場合、エラーになる。
+プロジェクトのディレクトリのアクセス権が適切に割り振られていない場合、502エラーになる。
 
     ls -al ~/Documents/[プロジェクト名]
 
@@ -333,7 +351,16 @@ Nginxの動作確認
 
 これをやっていない場合、Nginxは`[プロジェクト名].socket`に対してアクセスできない。
 
-### 設定ファイルを読み込み、再起動させる
+#### 【補足】ドラッグアンドドロップでコピーすると、所有者のみフルアクセスの権限に変わる。
+
+特に注意しなければならないのが、VirtualBoxにインストールしたUbuntuへデプロイをする時。
+
+ドラッグアンドドロップでプロジェクトをコピペする時、ディレクトリのパーミッションが所有者のみ全て許可されており、それ以外のユーザーは実行さえ許されない。
+
+そのため、www-dataがプロジェクトファイルを読み込もうとすると、502エラーが出る。
+
+
+### 【必読4】設定ファイルを読み込み、再起動させる
 
     sudo systemctl daemon-reload
     sudo systemctl restart nginx gunicorn 
