@@ -8,16 +8,37 @@ tags: [ "django","tips" ]
 ---
 
 
+カスタムユーザーモデルを使用している時、ユーザーアカウント新規作成時に何らかの処理を行って欲しい場合。
 
-カスタムユーザーモデルを使用している時、ユーザーアカウント新規作成時に何らかの処理を行って欲しい場合があるだろう。
-
-アカウント作成時にメールを送信したい場合などがある。
-
-そういう時はsaveメソッドをオーバーライドすると良い。ただし、アカウント作成時にのみ限る場合は、SignUpFormに対してのみsaveメソッドのオーバーライドを行う。
+そういう時はSignupFormのsaveメソッドをオーバーライドする。
 
 
 ## SignUpFormのコード
 
+    from django.contrib.auth.forms import UserCreationForm
+    from .models import CustomUser
+    
+    class SignupForm(UserCreationForm):
+        class Meta(UserCreationForm.Meta):
+            model   = CustomUser
+            fields  = ("username")
+    
+    
+        def save(self, request,  commit=True, *args, **kwargs):
+    
+            #ユーザーモデルのオブジェクト作成(ただし、保存をしない)
+            user    = super().save(commit=False)
+    
+            #生のパスワードをハッシュ化した上で、モデルオブジェクトの属性にセットする。
+            user.set_password(self.cleaned_data["password1"])
+    
+            #保存する
+            if commit:
+                user.save()
+
+            #TODO:ここに任意の処理を追加する。
+    
+            return user
 
 
 

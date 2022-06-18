@@ -129,15 +129,6 @@ APIキーを入力し、指定したメールアドレスが実在するもの�
 <div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-46-00.png" alt="Sendgridを使用したメール送信"></div>
 
 
-#### 【補足】任意のタイミングでメールを送信するには？
-
-
-今回の設定で新規アカウント作成時にメールが送信されるようになるが、任意のタイミングで送信したい場合がほとんどだろう。
-
-下記記事にて、ビューなどの任意のタイミングで送信できるよう解説してある。
-
-[DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】](/post/django-sendgrid/)
-
 
 ### パスワードを使用した方法【Sendgridには使用不可】
 
@@ -188,6 +179,43 @@ APIキーを入力し、指定したメールアドレスが実在するもの�
     LOGIN_REDIRECT_URL = '/'
     ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
+
+
+### 【補足1】アカウント作成時の確認メールが英語になっている。
+
+<div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-46-00.png" alt="Sendgridを使用したメール送信"></div>
+
+このようにDjangoの言語設定をjaに指定しているにもかかわらず、英語のメールが送信されてしまう。
+
+この場合、使用するDjango-allauthのテンプレートのバージョンと、インストールされたバージョンが不一致の可能性がある。
+
+allauthの0.51をインストールした場合、テンプレートもGitHubから0.51を使用する。
+
+GitHubからgit cloneコマンドを実行し、ログを確認、特定のバージョンまで戻す。
+
+    git clone https://github.com/pennersr/django-allauth
+
+    git log 
+
+    git reset --hard XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+[【git/GitHub】コマンドと使い方の一覧](/post/startup-git/)
+
+ちなみに下記のように https://github.com/pennersr/django-allauth/commits/ のTagからバージョンが選べる。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-06-18 22-21-32.png" alt=""></div>
+
+
+### 【補足2】任意のタイミングでメールを送信するには？
+
+今回の設定で新規アカウント作成時にメールが送信されるようになるが、任意のタイミングで送信したい場合がほとんどだろう。
+
+下記記事にて、ビューなどの任意のタイミングで送信できるよう解説してある。
+
+[DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】](/post/django-sendgrid/)
+
+
 ## django-allauthのテンプレートの修正と装飾
 
 ご覧の通り、デフォルトの状態だと、HTMLのみで構成されており、装飾は一切施されていない。そのため、適宜コードを修正する必要がある。
@@ -203,17 +231,20 @@ APIキーを入力し、指定したメールアドレスが実在するもの�
 後は、先程templatesに格納したHTMLファイルを修正していくだけ。ちなみに、メール送信時の文言も`templates/allauth/account/email/`から修正できる。
 
 
-### 【補足】ログイン画面を中央寄せにする
+### 【補足1】ログイン画面を中央寄せにする
 
 テンプレートの設定を行った後、適当にHTMLとCSSを書き換える。下記記事に詳細が書かれている。
 
 [Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】](/post/django-allauth-center-loginpage/)
 
+
 ## 結論
 
 基本settings.py中心に修正を加えるだけで簡単に実装できるdjango-allauthだが、そのままでは装飾なしなので、公式のコードを持ってきて改造する必要がある。
 
-それから本格的にサービスを展開するのであれば、ボット対策として認証時にRecaptchaなどを同時に実装するべし。
+それから本格的にサービスを展開するのであれば、ボット対策として認証時にRecaptchaなどを用意する必要があるだろう。
+
+
 
 
 ## ソースコード
