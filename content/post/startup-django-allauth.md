@@ -69,7 +69,6 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
 
 ### SendgridAPIを使用した方法
 
-
 まず、DjangoでSendgridのAPIを使用して送信を行う場合、事前に`django-sendgrid-v5`をインストールしておく。
 
     pip install django-sendgrid-v5
@@ -98,18 +97,20 @@ SendgridのAPIを使用したメール送信を行うようにsettings.pyを書�
     #ユーザー登録画面でメールアドレス入力を要求する(True)
     ACCOUNT_EMAIL_REQUIRED      = True
     
-    EMAIL_BACKEND       = "sendgrid_backend.SendgridBackend"
-    DEFAULT_FROM_EMAIL  = "ここにデフォルトの送信元メールアドレスを指定"
-
-    #【重要】APIキーの入力後、GitHubへのプッシュは厳禁
-    SENDGRID_API_KEY    = "ここにsendgridのAPIkeyを記述する"
-
-    #Sendgrid利用時はサンドボックスモードを無効化しておく。
-    SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 
     #DEBUGがTrueのとき、メールの内容は全て端末に表示させる(実際にメールを送信したい時はここをコメントアウトする)
     if DEBUG:
         EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
+    else:
+        #TODO:SendgridのAPIキーと送信元メールアドレスを入れていない時、以下が実行されると必ずエラーになる点に注意。
+        EMAIL_BACKEND       = "sendgrid_backend.SendgridBackend"
+        DEFAULT_FROM_EMAIL  = "ここにデフォルトの送信元メールアドレスを指定"
+
+        #【重要】APIキーの入力後、GitHubへのプッシュは厳禁。可能であれば.gitignoreに指定した別ファイルから読み込む
+        SENDGRID_API_KEY    = "ここにsendgridのAPIkeyを記述する"
+
+        #Sendgrid利用時はサンドボックスモードを無効化しておく。
+        SENDGRID_SANDBOX_MODE_IN_DEBUG = False
     
     #################django-allauthでのメール認証設定ここまで###################
 
@@ -157,21 +158,23 @@ APIキーを入力し、指定したメールアドレスが実在するもの�
     #ユーザー登録画面でメールアドレス入力を要求する(True)
     ACCOUNT_EMAIL_REQUIRED      = True
     
-    #ここにメール送信設定を入力する(Sendgridを使用する場合)
-    EMAIL_BACKEND   = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST      = 'ここにメールのホストを書く'
-
-    #メールを暗号化する
-    EMAIL_USE_TLS   = True
-    EMAIL_PORT      = 587
-
-    #【重要】メールのパスワードとメールアドレスの入力後、GitHubへのプッシュは厳禁
-    EMAIL_HOST_USER     = ''
-    EMAIL_HOST_PASSWORD = ''
 
     #DEBUGがTrueのとき、メールの内容は全て端末に表示させる
     if DEBUG:
         EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
+
+    else:
+        #ここにメール送信設定を入力する(Sendgridを使用する場合)
+        EMAIL_BACKEND   = 'django.core.mail.backends.smtp.EmailBackend'
+        EMAIL_HOST      = 'ここにメールのホストを書く'
+
+        #メールを暗号化する
+        EMAIL_USE_TLS   = True
+        EMAIL_PORT      = 587
+
+        #【重要】メールのパスワードとメールアドレスの入力後、GitHubへのプッシュは厳禁
+        EMAIL_HOST_USER     = ''
+        EMAIL_HOST_PASSWORD = ''
     
     #################django-allauthでのメール認証設定ここまで###################
 
