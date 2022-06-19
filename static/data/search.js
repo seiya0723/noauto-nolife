@@ -1,6 +1,8 @@
 const SEARCH_LIST = [
-{ "link": "/post/django-createuser-save-method-override/", "title" : "【Django】ユーザー作成時に何らかの処理を行う方法【saveメソッドオーバーライド】" }, 
+{ "link": "/post/django-allauth-why-not-verify-email/", "title" : "Django-allauthのメールを使用したログイン方式で、アカウント新規作成時、確認URLにアクセスしていないにもかかわらず、ログインできてしまうのはなぜか？" }, 
 { "link": "/post/startup-django-allauth/", "title" : "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】" }, 
+{ "link": "/post/django-settings-installed-apps/", "title" : "【Django】settings.pyのINSTALLED_APPSにはどのように書くのが適切か【順番とapps】" }, 
+{ "link": "/post/django-createuser-save-method-override/", "title" : "【Django】ユーザー作成時に何らかの処理を行う方法【saveメソッドオーバーライド】" }, 
 { "link": "/post/django-deploy-ubuntu-venv/", "title" : "UbuntuにDjangoをデプロイする【PostgreSQL+Nginx、Virtualenv使用】" }, 
 { "link": "/post/django-many-to-many/", "title" : "Djangoで多対多のリレーションの構造と作り方、テンプレートで表示する方法【ManyToManyField】" }, 
 { "link": "/post/startup-wordpress-ubuntu/", "title" : "UbuntuにWordpressをインストールする【MariaDB+Apache】" }, 
