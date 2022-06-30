@@ -7,7 +7,6 @@ categories: [ "サーバーサイド" ]
 tags: [ "スタートアップシリーズ","django","allauth","セキュリティ","認証" ]
 ---
 
-
 ここに、Django-allauthの実装方法をまとめる。主に`settings.py`を操作することになる。
 
 また、allauth付属のテンプレートではHTMLのみなのでテンプレート及びCSSによる装飾も付せて説明する。
@@ -89,7 +88,7 @@ SendgridのAPIを使用したメール送信を行うようにsettings.pyを書�
     ACCOUNT_AUTHENTICATION_METHOD   = "email"
     
     #ログイン時にユーザー名(ユーザーID)は使用しない
-    ACCOUNT_USERNAME_REQUIRED       = "False"
+    ACCOUNT_USERNAME_REQUIRED       = False
     
     #ユーザー登録時に入力したメールアドレスに、確認メールを送信する事を必須(mandatory)とする
     ACCOUNT_EMAIL_VARIFICATION  = "mandatory"
@@ -150,7 +149,7 @@ APIキーを入力し、指定したメールアドレスが実在するもの�
     ACCOUNT_AUTHENTICATION_METHOD   = "email"
     
     #ログイン時にユーザー名(ユーザーID)は使用しない
-    ACCOUNT_USERNAME_REQUIRED       = "False"
+    ACCOUNT_USERNAME_REQUIRED       = False
     
     #ユーザー登録時に入力したメールアドレスに、確認メールを送信する事を必須(mandatory)とする
     ACCOUNT_EMAIL_VARIFICATION  = "mandatory"
