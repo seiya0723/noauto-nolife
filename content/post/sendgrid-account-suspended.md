@@ -52,7 +52,13 @@ APIキーにはメールの送信機能しか権限を与えていないので�
 
 ## 対処
 
-ちなみに、今回の`suspended`はサポートにメールを送る必要はない。だが、利用できない期間も課金状態は続く。
+~ちなみに、今回の`suspended`はサポートにメールを送る必要はない。~
+
+下記からログインしてサポートリクエストを送信する。
+
+https://support.sendgrid.com/hc/en-us/requests
+
+利用できない期間も課金状態は続くため、速やかにサポートリクエストを送ったほうが良い。
 
 https://support.sendgrid.com/hc/en-us/articles/360041790293-Account-Under-Review
 
@@ -63,7 +69,6 @@ https://docs.sendgrid.com/ui/account-and-settings/account-under-review
 ### 【対策1】.gitignoreを使ってAPIキーファイルを全てコミット対象外とする
 
 手動でやらないといけないので効果は限定的かもしれないが、APIキーを含めたファイルを.gitignoreに記録、コミット対象外とするのが妥当である。
-
 
 例えばPythonであれば、APIキーを読み込む側は下記のようにする。fromは適宜編集
 
@@ -84,7 +89,5 @@ grepコマンドを使うことでAPIキーの文字列を取得できる。
 https://qiita.com/jqtype/items/9196e047eddb53d07a91
 
 パターンを登録することで、特定の文字列を含んだファイルがある場合、コミットできないようにすることができる
-
-
 
 
