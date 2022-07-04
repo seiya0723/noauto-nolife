@@ -45,38 +45,66 @@ tags: [ "ウェブデザイン","JavaScript","初心者向け" ]
 
     window.addEventListener("load" , function (){ 
     
-        var config_date = { 
-            "locale": "ja"
+        let config_date = { 
+            locale: "ja"
         }   
-        var config_time = { 
+        let config_time = { 
             enableTime: true,
             noCalendar: true,
             dateFormat: "H:i",
             time_24hr: true,
-            "locale": "ja"
+            locale: "ja"
         }   
-        var config_dt = { 
+        let config_dt = { 
             enableTime: true,
             dateFormat: "Y-m-d H:i",
-            "locale": "ja"
-        }   
-    
+            locale: "ja"
+        }
     
         flatpickr("#date", config_date);
         flatpickr("#time", config_time);
-        
-        var config_dt = { 
-            enableTime: true,
-            dateFormat: "Y-m-d H:i",
-            "locale": "ja"
-        }
-    
-        flatpickr("#dt",config_dt)
+        flatpickr("#dt", config_dt);
     
     });
 
 
 `flatpickr`を読み込むことで、`flatpickr()`関数をJS内で実行させることができる。第一引数は要素名、第二引数は設定。
+
+### 【補足1】デフォルトの日付を表示させたい場合は？
+
+`defaultDate`を文字列型にして指定する。
+
+    let config_date = { 
+        enableTime: true,
+        dateFormat: "Y-m-d",
+        defaultDate: "2016-10-20"
+        locale: "ja"
+    }
+
+これで、最初から2016-10-20がテキストボックスに表示される。
+
+### 【補足2】今日の日付をデフォルトの日付として指定するには？
+
+より実践的なコード。ゼロ埋めしておく必要がある。
+
+
+    let today   = new Date();
+
+    let year    = String(today.getFullYear());
+    let month   = ("0" + String(today.getMonth() + 1) ).slice(-2);
+    let day     = ("0" + String(today.getDate()) ).slice(-2);
+
+    let date    = year + "-" + month + "-" + day;
+
+    let config_date = { 
+        locale: "ja",
+        dateFormat: "Y-m-d",
+        defaultDate: date,
+    }
+
+    flatpickr("#date",config_date);
+
+
 
 ## 結論
 
