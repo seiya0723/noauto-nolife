@@ -11,7 +11,6 @@ tags: [ "ウェブデザイン","css3","html5" ]
 
 checkboxとlabelタグを使えば良いだけの話である。
 
-
 ## ソースコード
 
 まずHTML
@@ -28,8 +27,6 @@ checkboxとlabelタグを使えば良いだけの話である。
     <body>
     
         <label class="modal_label" for="modal_chk">新規作成</label>
-    
-    
     
         <input id="modal_chk" class="modal_chk" type="checkbox">
         <div class="modal_body">
@@ -64,7 +61,7 @@ checkboxとlabelタグを使えば良いだけの話である。
         cursor:pointer;
     }
     .modal_content {
-        position:absolute;
+        position:fixed;
         top:50%;
         left:50%;
         width:80%;
@@ -75,7 +72,9 @@ checkboxとlabelタグを使えば良いだけの話である。
     input[type="checkbox"]#modal_chk:checked + .modal_body { display:block; }
 
 
-HTMLの構造を工夫すればz-indexはいらない。`.modal_bg`は子要素にfontawesomeのバツアイコンを表示させる可能性を考慮し、opacityではなくrgbaを使用して、子要素に不透明度の影響が及ばないようにしている。
+HTMLの構造を工夫すればz-indexはいらない。
+
+`.modal_bg`は子要素にfontawesomeのバツアイコンを表示させる可能性を考慮し、opacityではなくrgbaを使用して、子要素に不透明度の影響が及ばないようにしている。
 
 checkboxの仕組みは、[CSS3で折りたたみ式のサイドバーを実装させる【checkbox+transition+position】](/post/css3-sidebar/)や[CSS3でiOS風のトグルスイッチを作る方法【transition+checkbox】](/post/css3-toggle-switch/)を元にしているので、それほど難しくはない。
 
@@ -85,8 +84,9 @@ checkboxの仕組みは、[CSS3で折りたたみ式のサイドバーを実装�
 
 ## 結論
 
-モーダルダイアログも結局のところ、ただの表示非表示の繰り返し。わざわざJavaScriptを使わなくても再現はできる。
+モーダルダイアログも、ただの表示非表示の繰り返し。JavaScriptを使わなくても再現はできる。
 
-もし、このモーダルダイアログの表示にアニメーションを実装させようとなると、transitionによる遅延描画やtopやleftの配置、opacityによる不透明度の調整によってアニメーションは成立するので、これまたJavaScriptは要らない。
+もし、このモーダルダイアログの表示に簡単なアニメーションを実装させる場合、transitionによる遅延描画やtopやleftの配置、opacityによる不透明度の調整によって実現できるので、これまたJavaScriptは要らない。
 
+ただ、複雑な計算を要する物はJavaScriptでなければ実現できない。
 
