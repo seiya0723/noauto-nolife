@@ -1,7 +1,7 @@
 ---
 title: "【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする"
 date: 2022-07-08T08:15:03+09:00
-draft: true
+draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "django","openpyxl" ]
