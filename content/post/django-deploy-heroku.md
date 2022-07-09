@@ -78,11 +78,9 @@ Heroku Postgres のリンクをクリック、Settingsタブをクリック。Vi
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-29 14-19-08.png" alt="View Credentials"></div>
 
-
 DBの使用に必要なユーザー名、DBの名前、パスワードなどが表示される。これを後のsettings.pyに書き込む。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-29 14-19-57.png" alt="View Credentials"></div>
-
 
 ## settings.pyの設定
 
@@ -136,7 +134,6 @@ DBの使用に必要なユーザー名、DBの名前、パスワードなどが�
 
         #osモジュールを使う場合はこちら。
         #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 
 settings.pyの修正を終えたら、pipコマンドでデプロイ後に必要になるライブラリをインストールさせる。
 
@@ -253,4 +250,12 @@ requirements.txtの記述にも注意が必要。pip freezeコマンドを忘れ
 ちなみにこの方法だと別途管理サイト(admin)のCSSを用意してあげる必要がある。[Django公式のGitHub](https://github.com/django/django)からDLして設置すればよろし。
 -->
 
+
+### 【補足】ストレージありのデプロイはどうする？
+
+下記を参照する。
+
+[DjangoをHeroku+Cloudinary(基本無料ストレージ)の環境にデプロイする【ウェブアプリのデモを一般公開したい場合などに】](/post/django-deploy-heroku-cloudinary/)
+
+ストレージであるCloudinaryを使う。前もってクレジットカードの登録が必要。
 
