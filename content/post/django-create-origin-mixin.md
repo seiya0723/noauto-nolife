@@ -164,7 +164,36 @@ https://github.com/django/django/blob/main/django/contrib/auth/mixins.py#L67
     
         def get(self, request, *args, **kwargs):
     
-
 LoginRequiredMixinと同様にAccessMixinを継承して作っている。
+
+
+既にLoginRequiredMixinを使っている場合、クラス名をLoginRequiredMixinにすると良いだろう。
+
+これにより、全てのビュークラスの多重継承を書き換える必要はなくなる。
+
+    from allauth.account.admin import EmailAddress
+
+    #元のLoginRequiredMixinのimportをコメントアウト
+    #from django.contrib.auth.mixins import LoginRequiredMixin
+    from django.contrib.auth.mixins import AccessMixin
+    
+    class LoginRequiredMixin(AccessMixin):
+    
+        def dispatch(self, request, *args, **kwargs):
+    
+            if not request.user.is_authenticated:
+                return self.handle_no_permission()
+    
+            if not EmailAddress.objects.filter(user=request.user.id,verified=True).exists():
+                print("メールの確認が済んでいません")
+                return redirect("account_email")
+    
+            #HttpResponseを返却する。
+            return super().dispatch(request, *args, **kwargs)
+    
+    #LoginRequiredMixinを継承したままでOK
+    class IndexView(LoginRequiredMixin,View):
+        def get(self, request, *args, **kwargs):
+
 
 
