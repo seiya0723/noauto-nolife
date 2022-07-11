@@ -143,6 +143,7 @@ https://github.com/django/django/blob/main/django/contrib/auth/mixins.py#L67
 以下のコードが良いだろう。
 
 
+    from allauth.account.admin import EmailAddress
     from django.contrib.auth.mixins import AccessMixin
     
     class EmailAddressConfirmMixin(AccessMixin):
