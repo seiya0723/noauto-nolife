@@ -9,9 +9,11 @@ tags: [ "Django","allauth","tips" ]
 
 allauthはそういう仕様になっているから。
 
-ちなみに前提として、下記記事の『メールアドレスとパスワードを使用した認証方法の実装』のコードを採用している場合に限る。
+前提として、下記記事の『メールアドレスとパスワードを使用した認証方法の実装』のコードを採用している場合に限る。
 
 [【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】](/post/startup-django-allauth/)
+
+
 
 ## メールの確認の仕様を考慮するとわかる
 
@@ -41,12 +43,20 @@ allauthに欠陥があり、勝手にメールアドレスの追加をされた�
 
     from allauth.account.admin import EmailAddress
 
-    class IndexView(request):
-    
-        if not EmailAddress.objects.filter(user=request.user.id,verified=True).exists():
-            print("メールの確認が済んでいません")
+    class IndexView(View):
 
-            return redirect("account_email")
+        def get(self, request, *args, *kwargs):
+    
+            if not EmailAddress.objects.filter(user=request.user.id,verified=True).exists():
+                print("メールの確認が済んでいません")
+
+                return redirect("account_email")
+
+
+
+
+
+
 
 ## 結論
 
