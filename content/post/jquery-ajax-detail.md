@@ -26,9 +26,9 @@ tags: [ "JavaScript","jQuery","Ajax" ]
         contentType: false, // デフォルトでは"application/x-www-form-urlencoded"になっている。このままではURLエンコードで送信されてしまうので、falseを指定
         dataType: 'json'    // レスポンスはJSONを指定
     }).done( function(data, status, xhr ) {
-        //dataはレスポンスの内容、
-        //statusはレスポンスのステータス [success, notmodified, nocontent, error, timeout, abort, parsererror]のいずれかが返却される。(参照元: https://qiita.com/otsukayuhi/items/31ee9a761ce3b978c87a )
-        //xhrはXMLHttpRequestオブジェクト (参照元: https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest ) 
+        // dataはレスポンスの内容、
+        // statusはレスポンスのステータス [success, notmodified, nocontent, error, timeout, abort, parsererror]のいずれかが返却される。(参照元: https://qiita.com/otsukayuhi/items/31ee9a761ce3b978c87a )
+        // xhrはXMLHttpRequestオブジェクト (参照元: https://developer.mozilla.org/ja/docs/Web/API/XMLHttpRequest ) 
 
 
         //Ajaxのリクエストに対してレスポンスが返ってきた時の処理
@@ -41,6 +41,19 @@ tags: [ "JavaScript","jQuery","Ajax" ]
         //Ajaxのリクエストに対してレスポンスが返ってこなかった時
     });
 ```
+
+
+XMLHttpRequestオブジェクトに関しては、素のJavaScriptを使ったAjaxの記事を見るとわかる。
+
+[素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】](/post/django-xmlhttprequest-ajax-not-use-jquery/)
+
+
+```
+    const request = new XMLHttpRequest();
+```
+
+この`request`がXMLHttpRequestオブジェクトである。これを使って、指定したURLとメソッドへAjaxを送信することができる。
+
 
 
 
