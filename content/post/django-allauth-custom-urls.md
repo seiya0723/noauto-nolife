@@ -49,7 +49,10 @@ allauthのGitHubからコピペして、新たに`allauth_urls.py`を作り、�
     
         #無効化させたい処理をコメントアウト、汎用ビューのリダイレクトを処理に割り当て
         #path("signup/", views.signup, name="account_signup"),
-        path("signup/", RedirectView.as_view(url="/"), name="account_signup"),
+
+
+        #https://docs.djangoproject.com/en/4.0/ref/class-based-views/base/#django.views.generic.base.RedirectView
+        path("signup/", RedirectView.as_view(pattern_name="account_login"), name="account_signup"),
     
     
         path("login/", views.login, name="account_login"),
