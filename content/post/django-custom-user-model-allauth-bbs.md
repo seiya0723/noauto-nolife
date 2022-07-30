@@ -1,6 +1,6 @@
 ---
 title: "【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】"
-date: 2021-06-22T08:46:59+09:00
+date: 2022-07-30T08:46:59+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
@@ -13,8 +13,13 @@ tags: [ "django","allauth","上級者向け" ]
 
 [以前はfirst_nameとlast_nameを1つのhandle_nameにした](/post/django-custom-user-model-uuid/)が、今回は元に戻した。
 
-
 雛形をすぐにDLして書き換えができるようにGitHubに公開する。
+
+## usersアプリを作成
+
+    python3 manage.py startapp users
+
+
 
 ## users/models.py
 
@@ -34,7 +39,7 @@ tags: [ "django","allauth","上級者向け" ]
     import uuid
     
     
-    #ここ( https://github.com/django/django/blob/master/django/contrib/auth/models.py#L321 )から流用
+    #ここ( https://github.com/django/django/blob/main/django/contrib/auth/models.py#L334 )から流用
     class CustomUser(AbstractBaseUser, PermissionsMixin):
     
         username_validator  = UnicodeUsernameValidator()
@@ -54,7 +59,7 @@ tags: [ "django","allauth","上級者向け" ]
         first_name  = models.CharField(_('first name'), max_length=150, blank=True)
         last_name   = models.CharField(_('last name'), max_length=150, blank=True)
     
-        email       = models.EmailField(_('email address'))
+        email       = models.EmailField(_('email address'), blank=True)
     
         is_staff    = models.BooleanField(
                         _('staff status'),
@@ -81,7 +86,7 @@ tags: [ "django","allauth","上級者向け" ]
         class Meta:
             verbose_name = _('user')
             verbose_name_plural = _('users')
-            #abstract = True
+            #abstract = True #←このabstractをコメントアウトする
     
         def clean(self):
             super().clean()
@@ -115,6 +120,7 @@ tags: [ "django","allauth","上級者向け" ]
     
 会員登録時に入力するのはデフォルトのユーザーネームのみ。
 
+デフォルトの状態で、会員登録時に使用するフォームクラス、[UserCreationForm](https://github.com/django/django/blob/main/django/contrib/auth/forms.py#L84)を継承して作る。
 
 
 ## users/admin.py
@@ -149,7 +155,28 @@ tags: [ "django","allauth","上級者向け" ]
     admin.site.register(CustomUser, CustomUserAdmin)
     
 
+[UserAdmin](https://github.com/django/django/blob/main/django/contrib/auth/admin.py#L44)を継承して作る
+
 こちらもHandle_nameはfirst_nameとlast_nameに分割して、元に戻した。
+
+## config/settings.py
+
+最後に、settings.pyにてカスタムユーザーモデルを読み込みする設定を施す。
+
+    INSTALLED_APPS = [ 
+    
+        #==中略==
+    
+        'users.apps.UsersConfig',
+    ]
+    AUTH_USER_MODEL = 'users.CustomUser'
+    ACCOUNT_FORMS   = { "signup":"users.forms.SignupForm"}
+
+
+`AUTH_USER_MODEL`は認証時に使用するユーザーモデル
+
+`ACCOUNT_FORMS`はアカウント新規作成時のフォームを指定しておく。
+
 
 ## 結論
 
