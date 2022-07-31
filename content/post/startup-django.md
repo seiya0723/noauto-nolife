@@ -11,6 +11,11 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。
 
+## 注意事項
+
+40分はあくまでも私見に基づく目安である点をご留意いただきたい。
+ 
+
 ## 流れ
 
 以下、流れ。
@@ -52,15 +57,26 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
 ## settings.pyの書き換え(5分)
 
-`INSTALLED_APPS`の最後に`'bbs.apps.BbsConfig',`を追加。`bbs`ディレクトリ内にある`apps.py`の`BbsConfig`クラスを読み込むという意味。これを忘れるとマイグレーションが反映されない問題が起こるので注意。
+`INSTALLED_APPS`の最後に`'bbs.apps.BbsConfig',`を追加する。
+
+`bbs`ディレクトリ内にある`apps.py`の`BbsConfig`クラスを読み込むという意味。これを忘れるとマイグレーションが反映されない問題が起こるので注意。
 
     INSTALLED_APPS  = [
 
-        ## 省略 ##
-    
-    
         'bbs.apps.BbsConfig',
+
+        ## 省略 ##
     ]
+
+
+市販の教科書によっては、このINSTALLED_APPSにアプリ名だけの`bbs`と書くように指示しているものもある。
+
+だが、Django公式では上記のように書くことを推奨している。
+
+詳細は下記。
+
+[【Django】settings.pyのINSTALLED_APPSにはどのように書くのが適切か【順番とapps】](/post/django-settings-installed-apps/)
+
 
 `TEMPLATES`の`DIRS`にテンプレートのパスを追加。プロジェクト直下の`templates`ディレクトリをレンダリング対象のHTMLを格納するテンプレートとして扱うという意味。
 
