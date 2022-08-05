@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-deploy-heroku/", "title" : "DjangoをDEBUG=FalseでHerokuにデプロイする方法" }, 
+{ "link": "/post/python-google-trans-install/", "title" : "【Python】pipで翻訳系ライブラリのgoogletransをインストールする【※バージョン指定しないとエラー】" }, 
 { "link": "/post/javascript-stopwatch-and-timer/", "title" : "JavaScript(jQuery)でストップウォッチとタイマーを作る【勉強や運動の記録などに】" }, 
 { "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
 { "link": "/post/django-attr-method-sort/", "title" : "【Django】operatorでモデルのフィールド、メソッドを指定してソーティングをする【ランキングの実装に有効】" }, 
@@ -11,7 +13,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-create-origin-mixin/", "title" : "【Django】自前でLoginRequiredMixinのような物を作るには、dispatchメソッドを使う【多重継承】" }, 
 { "link": "/post/django-allauth-why-not-verify-email/", "title" : "Django-allauthのメールを使用したログイン方式で、アカウント新規作成時、確認URLにアクセスしていないにもかかわらず、ログインできてしまうのはなぜか？" }, 
 { "link": "/post/django-calendar-ui/", "title" : "DjangoでカレンダーのUIを作る" }, 
-{ "link": "/post/django-deploy-heroku/", "title" : "DjangoをDEBUG=FalseでHerokuにデプロイする方法" }, 
 { "link": "/post/css3-modal-dialog/", "title" : "CSS3とHTML5だけでモーダルダイアログを作る【JS不要】" }, 
 { "link": "/post/django-openpyxl/", "title" : "【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする" }, 
 { "link": "/post/flatpickr-install/", "title" : "【日付入力】flatpickrの実装方法(ロケール日本語化、日時入力対応化)" }, 
