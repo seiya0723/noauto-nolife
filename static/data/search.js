@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/javascript-stopwatch-and-timer/", "title" : "JavaScript(jQuery)でストップウォッチとタイマーを作る【勉強や運動の記録などに】" }, 
+{ "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
 { "link": "/post/django-attr-method-sort/", "title" : "【Django】operatorでモデルのフィールド、メソッドを指定してソーティングをする【ランキングの実装に有効】" }, 
 { "link": "/post/django-custom-user-model-allauth-bbs/", "title" : "【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】" }, 
 { "link": "/post/django-allauth-custom-urls/", "title" : "【Django】allauthのurls.pyをカスタムする【新規アカウント作成、パスワード変更処理の無効化など】" }, 
@@ -33,7 +35,6 @@ const SEARCH_LIST = [
 { "link": "/post/javascript-qrcode/", "title" : "JavaScript(jQuery)でQRコードを表示させる" }, 
 { "link": "/post/django-paginator/", "title" : "Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】" }, 
 { "link": "/post/django-context-processors/", "title" : "【Django】context_processorsを使い、全ページに対して同じコンテキストを提供する【サイドバーのカテゴリ欄、ニュース欄などに有効】" }, 
-{ "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
 { "link": "/post/django-filter-method/", "title" : "【Django】モデルクラスのfilterメソッドで検索・絞り込みをする" }, 
 { "link": "/post/django-fileupload-rename/", "title" : "【Django】ファイルアップロード時にファイル名をリネーム(改名)する" }, 
 { "link": "/post/django-fileupload-limit-size/", "title" : "【Django】アップロードするファイルサイズに上限をセットする【validators】" }, 

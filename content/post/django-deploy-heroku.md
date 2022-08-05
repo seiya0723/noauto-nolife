@@ -94,16 +94,13 @@ DBの使用に必要なユーザー名、DBの名前、パスワードなどが�
     if DEBUG:
         STATICFILES_DIRS = [ BASE_DIR / "static" ]
 
+
     if not DEBUG:
 
-        # Herokuデプロイ時に必要になるライブラリのインポート
-        import django_heroku
-        import dj_database_url
-        
         # ALLOWED_HOSTSにホスト名)を入力
         ALLOWED_HOSTS = [ 'hogehoge.herokuapp.com' ]
 
-        # 静的ファイル配信ミドルウェア、whitenoiseを使用。※順番不一致だと動かないため下記をそのままコピーする。
+        # 静的ファイル配信ミドルウェア、whitenoiseを使用。※ 順番不一致だと動かないため下記をそのままコピーする。
         MIDDLEWARE = [
             'django.middleware.security.SecurityMiddleware',
             'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -119,13 +116,16 @@ DBの使用に必要なユーザー名、DBの名前、パスワードなどが�
         DATABASES = {
                 'default': {
                     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                    'NAME': 'ここにDatabaseを入力',
-                    'USER': 'ここにUserを入力',
-                    'PASSWORD': 'ここにPasswordを入力',
-                    'HOST': 'ここにHostを入力',
-                    'PORT': 'ここにPortを入力',
+                    'NAME': '',
+                    'USER': '',
+                    'PASSWORD': '',
+                    'HOST': '',
+                    'PORT': '5432',
                     }
                 }
+
+        #HerokuPostgresの接続方法(SSL使用、接続の有効時間は600秒)
+        import dj_database_url
         db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
         DATABASES['default'].update(db_from_env)
 
@@ -134,6 +134,8 @@ DBの使用に必要なユーザー名、DBの名前、パスワードなどが�
 
         #osモジュールを使う場合はこちら。
         #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
 
 settings.pyの修正を終えたら、pipコマンドでデプロイ後に必要になるライブラリをインストールさせる。
 
