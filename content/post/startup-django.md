@@ -220,12 +220,16 @@ Django 2.x以前ではosモジュールを使用する形式だったため、�
                 {{ topic.comment }}
             </div>
             {% endfor %}
-    
         </main>
     </body>
     </html>
 
 DTL(Django Template Language)を使用し、`for`文でデータを並べる。Pythonの`for`文と違って、インデント構文ではなく、`endfor`を使用することで`for`文の終端を示す。
+
+    {% for topic in topics %}
+    <div class="border">
+        {{ topic.comment }}
+    </div>
 
 変数は`{{ 変数名 }}`で表現する。コメントを表示させる必要があるので、モデルオブジェクト変数`topic`の中の`comment`属性を参照する。よって、`{{ topic.comment }}`となる。
 
@@ -236,7 +240,6 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
     from django.db import models
     
     class Topic(models.Model):
-    
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
 
     
@@ -281,8 +284,6 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 そういう場合、上記のようにstrメソッドをセットする。こうすることで投稿されたコメントが`print()`で出力され、どんなデータなのかわかりやすくなる。
 
 ちなみに、このstrメソッドの指定がないと、idの数値が表示される。例えばidが5のデータであれば、`Topic object (5)`となる。
-
-
 
 ## マイグレーション実行(2分)
 
@@ -389,16 +390,12 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
     topics_2    = Topic.objects.all()
     topics_3    = Topic.objects.all()
     topics_4    = Topic.objects.all()
-    topics_5    = Topic.objects.all()
-    topics_6    = Topic.objects.all()
 
     context     = { 
         "topics_1":topics_1,
         "topics_2":topics_2,
         "topics_3":topics_3,
         "topics_4":topics_4,
-        "topics_5":topics_5,
-        "topics_6":topics_6,
     }
 
     return render(request,"bbs/index.html",context)
@@ -412,11 +409,8 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
     context["topics_2"] = Topic.objects.all()
     context["topics_3"] = Topic.objects.all()
     context["topics_4"] = Topic.objects.all()
-    context["topics_5"] = Topic.objects.all()
-    context["topics_6"] = Topic.objects.all()
 
     return render(request,"bbs/index.html",context)
-
 
 ### postメソッドの処理
 
@@ -447,7 +441,6 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
     posted.save()
 
 モデルオブジェクトを作る時に送信されたデータを指定するか、それともモデルオブジェクトを作った後に送信されたデータを指定するか、の違いである。
-
 
 #### 【補足2】postメソッドではリダイレクトを返し、レンダリングを行ってはいけないのはなぜか
 
