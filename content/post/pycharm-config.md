@@ -1,6 +1,6 @@
 ---
 title: "Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法"
-date: 2021-11-04T17:50:56+09:00
+date: 2022-08-10T17:50:56+09:00
 draft: false
 thumbnail: "images/pycharm.jpg"
 categories: [ "others" ]
@@ -112,6 +112,20 @@ Editor→Code Style→File and Code Templatesを見る。そこには既にデ�
 ### プラグインのemmetをインストールしてHTMLコーディングを高速化
 
 -->
+
+
+## インスペクションの内、警告を全て無効化する。
+
+コーディングしていると、コメントはこんなふうに書けとか、関数名や変数名のスペルが間違っているとか、構文エラーに影響しない警告のお節介が鬱陶しいので全て消す。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-08-10 13-54-54.png" alt=""></div>
+
+設定からエディタ→インスペクションを指定。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-08-10 13-58-45.png" alt=""></div>
+
+ろうとのアイコンをクリックしてWarning、WeakWarning、Typoをチェックして選び、表示される警告のチェックを外す。
+
 
 
 
