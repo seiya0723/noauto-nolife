@@ -1,6 +1,6 @@
 ---
 title: "【Django】Cookieをサーバーサイドで操作する"
-date: 2022-01-03T16:32:07+09:00
+date: 2022-08-12T16:32:07+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
@@ -19,7 +19,6 @@ testというキー名、値はHelloでCookieをセットする。
 
 ただし、参照はともかく、Cookieのセットはレスポンスオブジェクトに対して行わなければならない。故に、下記のようになる。
 
-
     from django.shortcuts import render,redirect
     
     from django.views import View
@@ -32,6 +31,12 @@ testというキー名、値はHelloでCookieをセットする。
             #キーを指定して値が含まれていれば表示される。
             print( request.COOKIES.get("test") ) 
         
+            
+            #↑の別解
+            if "test" in request.COOKIES:
+                print(request.COOKIES["test"])
+
+
             topics  = Topic.objects.all()
             context = { "topics":topics }
     
@@ -61,6 +66,22 @@ request.COOKIESに保存されているので、後はキーを指定するだ�
 
 値を元に分岐させることもできる。
 
+## 2バイト文字をCookieに記録したい場合はどうする？
+
+2バイト文字を直接Cookieに入れることはできない。
+
+    # 下記はエラー
+    #response.set_cookie("test","こんにちは")
+
+そこで、Python標準モジュールであるurllibを使ってパーセントエンコーディングをする。
+
+    import urllib
+    response.set_cookie("test", urllib.parse.quote("こんにちは") ) 
+
+
+取り出す時は、デコードする。
+
+    print( urllib.parse.unquote( request.COOKIES["test"] ) )
 
 ## 結論
 
