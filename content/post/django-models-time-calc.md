@@ -4,7 +4,7 @@ date: 2022-08-13T14:44:47+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","models","上級者向け" ]
+tags: [ "Django","models","上級者向け","追記予定" ]
 ---
 
 例えば、勉強時間や筋トレ時間を記録するウェブアプリを作るとする。
@@ -91,13 +91,16 @@ https://stackoverflow.com/questions/33105457/display-and-format-django-durationf
     
             #集計とフォーマット作成
             topics  = Topic.objects.all().aggregate(Sum("time"))
-            total   = int(topics["time__sum"].total_seconds())
-    
-            hours   = total // 3600
-            minutes = (total % 3600) // 60
-            seconds = (total % 60) 
-    
-            context["total"]    = "{}時間{}分{}秒".format(hours, minutes, seconds)
+            
+            if topics["time__sum"]:
+
+                total   = int(topics["time__sum"].total_seconds())
+        
+                hours   = total // 3600
+                minutes = (total % 3600) // 60
+                seconds = (total % 60) 
+        
+                context["total"]    = "{}時間{}分{}秒".format(hours, minutes, seconds)
     
             return render(request,"bbs/index.html",context)
     
@@ -114,6 +117,7 @@ https://stackoverflow.com/questions/33105457/display-and-format-django-durationf
 <div class="img-center"><img src="/images/Screenshot from 2022-08-17 13-47-10.png" alt=""></div>
 
 
+<!--
 #### DurationFieldをオーバーライドする(現在検討中)
 
 `models.DurationField()`をオーバーライドすることで、その挙動を書き換える事ができると思われる。
@@ -125,6 +129,8 @@ https://stackoverflow.com/questions/33105457/display-and-format-django-durationf
 
 
 とは言え、ここまで来ると、ミリ秒単位で記録することもできるIntegerFieldとの優位性が揺らぐと思う。
+
+-->
 
 
 
