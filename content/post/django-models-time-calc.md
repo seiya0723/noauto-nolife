@@ -114,12 +114,34 @@ https://stackoverflow.com/questions/33105457/display-and-format-django-durationf
 <div class="img-center"><img src="/images/Screenshot from 2022-08-17 13-47-10.png" alt=""></div>
 
 
+#### DurationFieldをオーバーライドする(現在検討中)
+
+`models.DurationField()`をオーバーライドすることで、その挙動を書き換える事ができると思われる。
+
+モデルに作ってしまえば、後は属性名を指定するだけなので、上記2つよりも更にコードを減らすことができるだろう。
+
+コードを短く、見た目も良く仕立てたい場合、カスタムテンプレートタグに比べて遥かに効果的ではある。
+
+
+
+とは言え、ここまで来ると、ミリ秒単位で記録することもできるIntegerFieldとの優位性が揺らぐと思う。
+
+
+
+
 ## 結論
 
-カスタムテンプレートタグが使える環境下であれば、DurationFieldを採用すると良いだろう。
+~~カスタムテンプレートタグが使える環境下であれば、DurationFieldを採用すると良いだろう。~~
 
 ~~カスタムテンプレートタグが使えない環境下であれば、IntegerFieldかDateTimeFieldしか選択肢はない。~~
 
 と思っていたが、カスタムテンプレートタグはなくても表現する方法はいくらでもあるようだ。
+
+考慮した結果、ミリ秒単位以下で記録をしたい場合はIntegerField()
+
+秒単位で記録をしたい場合はDurationField()という結論が得られた。
+
+
+
 
 
