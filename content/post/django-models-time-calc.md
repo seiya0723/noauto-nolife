@@ -1,5 +1,5 @@
 ---
-title: "【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】"
+title: "【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】"
 date: 2022-08-13T14:44:47+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -45,10 +45,81 @@ https://stackoverflow.com/questions/33105457/display-and-format-django-durationf
 上記サイトのカスタムテンプレートタグを使うことで解決できる。
 
 
+
+#### モデルメソッドを使って表記を変える。
+
+モデルメソッドを使って表現することもできる。カスタムテンプレートタグを使いたくない場合はこちらが良いだろう。
+
+
+    from django.db import models
+    
+    class Topic(models.Model):
+    
+        comment     = models.CharField(verbose_name="コメント",max_length=2000)
+        time        = models.DurationField(verbose_name="トレーニング時間")
+    
+        #DurationFieldの表示
+        def time_format(self):
+            total   = int(self.time.total_seconds())
+    
+            hours   = total // 3600
+            minutes = (total % 3600) // 60
+            seconds = (total % 60)
+    
+            return '{}時間{}分{}秒'.format(hours, minutes, seconds)
+    
+
+<div class="img-center"><img src="/images/Screenshot from 2022-08-17 13-38-44.png" alt=""></div>
+
+
+#### ビューにて`.aggregate(Sum("time"))`を使う。
+
+
+    from django.shortcuts import render,redirect
+    
+    from django.views import View
+    from django.db.models import Sum
+    
+    from .models import Topic
+    
+    class IndexView(View):
+    
+        def get(self, request, *args, **kwargs):
+    
+            context             = {}
+            context["topics"]   = Topic.objects.all()
+    
+            #集計とフォーマット作成
+            topics  = Topic.objects.all().aggregate(Sum("time"))
+            total   = int(topics["time__sum"].total_seconds())
+    
+            hours   = total // 3600
+            minutes = (total % 3600) // 60
+            seconds = (total % 60) 
+    
+            context["total"]    = "{}時間{}分{}秒".format(hours, minutes, seconds)
+    
+            return render(request,"bbs/index.html",context)
+    
+        def post(self, request, *args, **kwargs):
+    
+            posted  = Topic( comment = request.POST["comment"] )
+            posted.save()
+    
+            return redirect("bbs:index")
+    
+    index   = IndexView.as_view()
+
+
+<div class="img-center"><img src="/images/Screenshot from 2022-08-17 13-47-10.png" alt=""></div>
+
+
 ## 結論
 
 カスタムテンプレートタグが使える環境下であれば、DurationFieldを採用すると良いだろう。
 
-カスタムテンプレートタグが使えない環境下であれば、IntegerFieldかDateTimeFieldしか選択肢はない。
+~~カスタムテンプレートタグが使えない環境下であれば、IntegerFieldかDateTimeFieldしか選択肢はない。~~
+
+と思っていたが、カスタムテンプレートタグはなくても表現する方法はいくらでもあるようだ。
 
 
