@@ -73,6 +73,34 @@ tags: [ "django","tips","上級者向け" ]
         <div>評価:★★★★</div>
     </div>
 
+
+### 【別解】モデルに`空文字列*星の値`を返すメソッドを追加
+
+モデルを以下のようにする。
+
+
+    from django.core.validators import MinValueValidator,MaxValueValidator
+
+    class Review(models.Model):
+        star = models.IntegerField(verbose_name="星",validators=[MinValueValidator(1),MaxValueValidator(5)])
+
+        def star_range(self):
+            return self.star * " "
+
+
+
+`star_range`メソッドを実行したら、星の数とスペースを乗算した値を返却する(星の数だけスペースがある文字列)
+
+これを以下のようにループすると良いだろう。短くまとまった。
+
+
+    <div class="review_star">{% for x in review.star_range %}<i class="fas fa-star"></i>{% endfor %}</div>
+
+
+ただし、このモデルメソッドの方法はaggregateなどの集計を行った場合には使用できない。aggregateで得られた星の数はビュー側で空文字列に変換するか、あるいは、先ほどのwithとcenterを使う方法が良いだろう。
+
+
+
 ## 結論
 
 後は[Fontawesome](/post/startup-fontawesome/)等を使用したり、CSSで装飾するなどすれば通販サイトのそれに近づけることはできるだろう。
