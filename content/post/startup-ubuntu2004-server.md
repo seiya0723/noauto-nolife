@@ -159,6 +159,35 @@ DHCPのIPアドレスが残っているが、リース期限が切れるか、�
 
 参照:https://netplan.io/examples/
 
+
+### gateway4が廃止されたと言われたら？
+
+Ubuntu22.04をインストールしたところ、下記メッセージが表示された。
+
+    ** (generate:1119): WARNING **: 04:38:35.138: `gateway4` has been deprecated, use default routes instead.
+    See the 'Default routes' section of the documentation for more details.
+
+gateway4が廃止されており、routesを使用するようにとのこと。以下のように書き換える
+
+    network:
+      ethernets:
+        eth0:
+          addresses:
+          - 192.168.11.246/24
+          routes:
+            - to: default
+              via: 192.168.11.1
+          nameservers:
+            addresses:
+            - 192.168.11.1
+            search: []
+      version: 2
+    
+
+どうやら最近netplanの構文が変わったらしい。
+
+参照元:https://unix.stackexchange.com/questions/681220/netplan-generate-gateway4-has-been-deprecated-use-default-routes-instead
+
 ## SSHのインストール
 
 `openssh-server`をインストールする。

@@ -13,6 +13,12 @@ Restful化のためには、DjangoRestframeworkをインストールする必要
 
 本記事では、[40分Django](/post/startup-django/)を元にDRF移行手続きを解説する。
 
+## 予めインストールしておく
+
+    pip install djangorestframework
+
+
+
 ## views.pyにて、ビュークラス継承元を書き換える。
 
 `as`を使うことで、書き換える箇所は2箇所だけで済む。

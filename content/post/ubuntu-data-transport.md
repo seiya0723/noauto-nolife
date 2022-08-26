@@ -7,13 +7,11 @@ categories: [ "インフラ" ]
 tags: [ "開発環境","Ubuntu","私見","追記予定" ]
 ---
 
-
 別のPCのUbuntuにデータを全て輸送する必要があったりする。
 
 そういう時、手順をまとめておかないと手直しに返って時間がかかる。
 
 よって、必要なデータ移行作業をここに列挙しておく。
-
 
 ## 準備編
 
@@ -34,25 +32,29 @@ tags: [ "開発環境","Ubuntu","私見","追記予定" ]
 
     cat ~/.bashrc | clipcopy
 
-以下、コマンド入力履歴
+コマンド入力履歴。不適切なコマンドはコピーした後、vimで検索して削除しておく。
+
+    cat ~/.bash_history | clipcopy
+
+
+#### エイリアス
+
+virtualenvをアクティベートするコマンド
+
+    alias activenv="source ./venv/bin/activate"
 
 
 ### crontabの設定を輸送する
 
     cat /etc/crontab | clipcopy
 
-
-
+wakeonlan送信、Sendgridメール送信等を輸送しておく。
 
 ### OSに直インストール済みのPythonライブラリを記録する
 
+必要に応じてそれぞれvirtualenvにインストールすれば良いが、一応。
 
-
-
-
-
-
-
+    pip3 freeze > requirements.txt
 
 
 ## アプリ編
@@ -64,10 +66,39 @@ tags: [ "開発環境","Ubuntu","私見","追記予定" ]
 - wakeonlan
 - xsel
 
-上記をまとめると下記コマンドを実行すると良いということがわかる。
+上記をまとめる
+
+
+    sudo apt install wakeonlan
+
+    sudo apt install vim
+    sudo apt install openssh-server
+
+    sudo apt install python3-pip
+
+
+    sudo apt install nginx 
+    sudo apt install postgresql
+
+    #psycopg2用
+    sudo apt install libpq-dev python3-dev
+
+
+    #以下サーバー版Ubuntuは不要
+
+    #クリップボードコピー用
+    sudo apt install xsel
+
+    sudo apt install thunderbird
+    sudo apt install vlc
+
+    #画像ビューアー
+    sudo apt install viewnior
 
 
 
+    #ラズパイイメージ作成
+    sudo snap install rpi-imager
 
 
 
@@ -93,8 +124,6 @@ URLバーに`about:profiles`を入力する。
 参照元:https://support.mozilla.org/ja/kb/profile-manager-create-and-remove-firefox-profiles
 
 
-
-
 ### ThunderBirdのデータを輸送する
 
 同じく、プロファイルを特定して、新しいUbuntuに貼り付ける
@@ -116,6 +145,11 @@ FirefoxやThunderBirdと同様に設定関係を含むプロファイルを輸�
 
 
 
+### その他アプリの設定
+
+Nautilusのパスをテキスト表示
+
+    gsettings set org.gnome.nautilus.preferences always-use-location-entry true
 
 
 
