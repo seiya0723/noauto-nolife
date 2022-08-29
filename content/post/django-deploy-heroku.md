@@ -232,6 +232,16 @@ DBを使用するタイプのウェブアプリであればデプロイ後にマ
 
     heroku run python3 manage.py loaddata ./アプリ名/fixture/jsonファイル
 
+
+## 環境変数の設定
+
+例えば、`EMAIL_BACKEND`に値を入れたい場合、下記のように指定すれば良い。
+
+    heroku config:set EMAIL_BACKEND="django.core.mail.backends.console.EmailBackend"
+
+これでパスワードなどの情報をsettings.pyに直接書かなくても済む
+
+
 ## 動かないときの対策
 
 設定はしっかりしているのに、エラーが出てしまう場合、下記コマンドを実行してDoneが表示されれば正常に設定が再読込され、動くようになる。
