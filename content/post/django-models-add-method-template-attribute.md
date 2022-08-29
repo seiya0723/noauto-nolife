@@ -13,16 +13,12 @@ tags: [ "django","上級者向け","tips" ]
     
     class Topic(models.Model):
     
-        class Meta:
-            db_table = "topic"
-    
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
         time        = models.IntegerField(verbose_name="活動時間(分)",default=0)
         level       = models.IntegerField(verbose_name="負荷レベル",default=0)
 
         def score(self):
             return self.time*self.level
-    
     
         def __str__(self):
             return self.comment
@@ -39,9 +35,6 @@ tags: [ "django","上級者向け","tips" ]
     from django.db import models
     
     class Topic(models.Model):
-    
-        class Meta:
-            db_table = "topic"
     
         comment     = models.CharField(verbose_name="コメント",max_length=2000)
         time        = models.IntegerField(verbose_name="活動時間(分)",default=0)

@@ -341,9 +341,15 @@ commentはコメントアウトを意味するDTL。通常、HTMLにおいて、
 
     {% endcomment %}
 
-このようにDTLとして解釈されないので、テンプレートエラーは起こらない。
+
+`{% comment %}`から`{% endcomment %}`の間はDTLとして解釈されないので、テンプレートエラーは起こらない。
 
 書きかけのDTLをとりあえず一旦無効化させたい場合などに使うと良いだろう。
+
+ちなみに、一行をコメントアウトしたい場合は下記のようにする。
+
+    {# この部分はコメント #}
+
 
 
 ## テンプレートフィルタ編
@@ -456,3 +462,22 @@ textareaタグで投稿したコメントで、改行ありで投稿された場
 
 <div class="img-center"><img src="/images/Screenshot from 2021-11-04 14-40-37.png" alt=""></div>
 
+
+
+## 結論
+
+Django Template LanguageはPythonとは違う記法である点に注意。
+
+数値の計算などの複雑なことをしたい場合は、カスタムテンプレートタグを使用すると良いだろう。
+
+独自にテンプレートタグを作ることができる。
+
+
+- [【Django】カスタムテンプレートタグ(フィルタ)でリンク付きのハッシュタグを実現する。【#から始まる正規表現】](https://noauto-nolife.com/post/django-custom-template-tags-hashtags/)
+- [Djangoで埋め込みカスタムテンプレートタグを実装する方法](https://noauto-nolife.com/post/django-custom-template-tags/)
+- [Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】](https://noauto-nolife.com/post/django-paginator/)
+
+
+余談だが、モデルに作ったメソッドは、引数なしであればテンプレート側でも表示できる。
+
+[Djangoのモデルに独自メソッドを追加、テンプレートに表示【フィールド間の計算、他モデルの値の表示などに有効】](https://noauto-nolife.com/post/django-models-add-method-template-attribute/)
