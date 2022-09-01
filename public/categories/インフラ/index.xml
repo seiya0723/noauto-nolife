@@ -6,15 +6,96 @@
     <description>Recent content in インフラ on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 30 Jan 2022 11:22:31 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 01 Sep 2022 08:49:01 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>WindowsでPythonとPycharmをインストールする</title>
+      <link>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</link>
+      <pubDate>Thu, 01 Sep 2022 08:49:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</guid>
+      <description>Pythonのインストール Pythonのインストーラーを配布しているサイト( https://www.python.org/downloads/ )へ行く。 Download Python 3.10.6 の部分をクリックする。インストーラーがDLされる。 ( ※下記画像の赤枠部分。3.10.6は2022年9月現在のバージョンであり、今後バージョンが更新される。最新版のPythonインストーラーをDLする。 ) ダウンロードフォルダにて、先ほどDLしたインストーラーのファイルがあるので、ダブルクリックしてPytho</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにSambaをインストールしてファイルサーバー化させる</title>
+      <link>https://noauto-nolife.com/post/ubuntu-samba/</link>
+      <pubDate>Sat, 27 Aug 2022 10:04:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-samba/</guid>
+      <description>本記事はプライベート用として運用するため、セキュリティは全く考慮していない。 本記事に倣って作ったファイルサーバーは、LAN内の端末であれば、いずれも自由に読み書きできてしまうので注意。 インストールする sudo apt install samba 共有ディレクトリを作る 今回はホームディレクトリに作った mkdir ~/share chmod 777 ~/share 設定する sudo vi /etc/samba/smb.conf を開いて、末尾に下記を記入。UserNameには任意のユーザー名を指定 [share] path = /home/UserName/share browseable = yes writable = yes guest ok = yes guest only = yes create mode = 0777</description>
+    </item>
+    
+    <item>
+      <title>Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</title>
+      <link>https://noauto-nolife.com/post/heroku-counter-plan/</link>
+      <pubDate>Fri, 26 Aug 2022 17:37:46 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-counter-plan/</guid>
+      <description>2022年8月26日、メールボックスを見るとHerokuからメールが届いていた。内容は下記。 まとめると、こうなる 2022年11月28日からHerokuの一部サービスで無料プランが無くなる 対象はHerokuDynos、HerokuPostgres、Redisの3つ 有料化以降、WEB(7$)+DB(9$)のウェブアプリをデプロイする時、一ヶ月につき16$支払う必要がある さあ困った。 これまでHeroku</description>
+    </item>
+    
+    <item>
+      <title>別のUbuntuにデータを輸送する</title>
+      <link>https://noauto-nolife.com/post/ubuntu-data-transport/</link>
+      <pubDate>Mon, 15 Aug 2022 18:20:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-data-transport/</guid>
+      <description>別のPCのUbuntuにデータを全て輸送する必要があったりする。 そういう時、手順をまとめておかないと手直しに返って時間がかかる。 よって、必要なデータ移行作業をここに列挙しておく。 準備編 前もって、下記をやっておく(任意) サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 【保存版】Ubuntu18.04をインストールした後に真</description>
+    </item>
+    
+    <item>
+      <title>Sendgridのアカウントが一時的に凍結された場合の対処法と対策</title>
+      <link>https://noauto-nolife.com/post/sendgrid-account-suspended/</link>
+      <pubDate>Tue, 28 Jun 2022 07:03:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/sendgrid-account-suspended/</guid>
+      <description>某日、Sendgridからメールが届く。内容は下記。 Dear Twilio SendGrid Customer, Your Twilio SendGrid account has been temporarily suspended as we have detected that your account&#39;s credentials (password and/or API key) are publicly listed on the code repository GitHub. This is a dangerous practice which may result in your account being used by unauthorized third parties to send malicious content and which may incur damage to your reputation as a quality sender and charges against your account for high usage that you did not perform. Before you ask for your account&#39;s reactivation, please ensure that you: 1) Change your account&#39;s password: https://sendgrid.com/docs/ui/account-and-settings/resetting-your-username-and-password. If your account was created using Heroku or IBM BlueMix, you must use our password reset form. 2) Delete and update exposed API keys in your account [APIのID] : https://sendgrid.com/docs/ui/account-and-settings/api-keys/#delete-an-api-key 3) Enable two-factor authentication for your account 4) Remove your account credentials and API keys from any public listings on code repositories or associated comments on sites such as GitHub or BitBucket. Please see the following link(s) for locations where your credentials</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする</title>
+      <link>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</link>
+      <pubDate>Mon, 25 Apr 2022 10:56:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</guid>
+      <description>5年以上前にやったきり、完全に忘れているNginxでPHPを動かす方法。 本記事ではその手順をまとめる。 必要なパッケージのインストール sudo apt install nginx php php-fpm Nginxはサーバー、phpはPHP処理系、php-fpmはNginxから動作させるために必要なもの Nginxの設定 /etc/nginx/sites-available/defaultを書き換える。 sudo vi /etc/nginx/sites-available/default TODOと書かれた場所だけ編集する。 ## # You should look at the following</description>
+    </item>
+    
+    <item>
+      <title>Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】</title>
+      <link>https://noauto-nolife.com/post/linux-commandline-clipboard/</link>
+      <pubDate>Wed, 30 Mar 2022 09:13:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/linux-commandline-clipboard/</guid>
+      <description>とてつもなく長いコードをクリップボードにコピーして、誰かと共有したい時、エディタのカーソルを上に持っていって下まで下げてコピーするのはとても面倒。 だから、コマンド一発でファイルの内容全てをコピーする。xselを使って。 sudo apt install xsel これでOK。後はコピペしたいファイルを用意して、下記コマンドを実行する。 cat ./index.html | xsel --clipboard --input これでindex.htmlの中身が全部コピーできた。bashrcにエイリアスで登録しておく</description>
+    </item>
+    
+    <item>
+      <title>Herokuの無料プランで独自ドメインを設定し、HTTPS通信を行う方法【ムームードメイン&#43;Cloudflare】</title>
+      <link>https://noauto-nolife.com/post/heroku-origin-domain/</link>
+      <pubDate>Tue, 22 Feb 2022 08:13:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-origin-domain/</guid>
+      <description>無料プランでは独自ドメインのセットは出来てもHTTPS通信を行うことは出来ない。 そのため、Cloudflareをリバースプロキシとして機能させ、クライアントからCloudflare間まで暗号化させる。 一見安全性に欠けるような形だが、AWSにデプロイした際も、クライアントからリバースプロキシ間までしか暗号化はされないので、それほど問題ではない。 気になるなら、有料プランを使用してHTTPS通信を行うと</description>
+    </item>
+    
+    <item>
+      <title>dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</title>
+      <link>https://noauto-nolife.com/post/docker-image-file-share/</link>
+      <pubDate>Sun, 13 Feb 2022 16:54:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/docker-image-file-share/</guid>
+      <description>dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに</description>
+    </item>
+    
+    <item>
       <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
       <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
-      <pubDate>Sun, 30 Jan 2022 11:22:31 +0900</pubDate>
+      <pubDate>Thu, 03 Feb 2022 11:22:31 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
       <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>

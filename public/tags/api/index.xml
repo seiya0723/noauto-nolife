@@ -6,10 +6,19 @@
     <description>Recent content in Api on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 28 Jan 2022 15:12:00 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 19 Mar 2022 11:42:50 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Python】GoogleのISBNのAPIを使い、書籍の情報を手に入れる</title>
+      <link>https://noauto-nolife.com/post/python-google-isbn-api/</link>
+      <pubDate>Sat, 19 Mar 2022 11:42:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-google-isbn-api/</guid>
+      <description>GoogleのISBN検索ができるAPIを使うことで、書籍の情報を簡単に手に入れることができる。 もちろん、書籍のサムネイルも取得可能。スクレイピングではないので、サイトの変化に合わせて手直しが必要になることもない。 アカウントの登録も不要 #! /usr/bin/env python3 # -*- coding: utf-8 -*- import requests try: result = requests.get(&amp;quot;https://www.googleapis.com/books/v1/volumes?q=isbn:9784873117782&amp;quot;) except: print(&amp;quot;通信エラー&amp;quot;) else: #返却されたJSONを辞書型に変換する。 data = result.json() print(data) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;]) #書籍情報を手に入れる。 print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;title&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;publishedDate&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;authors&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;description&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;imageLinks&amp;quot;][&amp;quot;thumbnail&amp;quot;])</description>
+    </item>
     
     <item>
       <title>Django Rest Frameworkにて、APIを提供する</title>

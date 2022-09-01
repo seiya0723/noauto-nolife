@@ -57,12 +57,12 @@
         <ul class="article_list">
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/startup-ubuntu-docker/"><h2 class="article_title">UbuntuでUbuntuのdockerイメージを作るまで</h2></a>
+    <a href="https://noauto-nolife.com/post/ubuntu-samba/"><h2 class="article_title">UbuntuにSambaをインストールしてファイルサーバー化させる</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2022-01-30T11:22:31JST">2022年1月30日 11時22分</time></li>
+                <li>作成日時:<time datetime="2022-08-27T10:04:40JST">2022年8月27日 10時04分</time></li>
 
                 
                 
@@ -80,7 +80,265 @@
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/docker/">docker</a>
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/ubuntu-samba/" class="thumb" title="UbuntuにSambaをインストールしてファイルサーバー化させる" style="background-image: url(https://noauto-nolife.com/images/ubuntu.jpg);"></a>
+            
+            <div class="summary">本記事はプライベート用として運用するため、セキュリティは全く考慮していない。 本記事に倣って作ったファイルサーバーは、LAN内の端末であれば、いずれも自由に読み書きできてしまうので注意。 インストールする sudo apt install samba 共有ディレクトリを作る 今回はホームディレクトリに作った mkdir ~/share chmod 777 ~/share 設定する sudo vi /etc/samba/smb.conf を開いて、末尾に下記を記入。UserNameには任意のユーザー名を指定 [share] path = /home/UserName/share browseable = yes writable = yes guest ok = yes guest only = yes create mode = 0777 ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/ubuntu-samba/" title="UbuntuにSambaをインストールしてファイルサーバー化させる">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/"><h2 class="article_title">Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-08-24T08:58:03JST">2022年8月24日 08時58分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi/">Raspberry Pi</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/">インフラ</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/" class="thumb" title="Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする" style="background-image: url(https://noauto-nolife.com/images/ubuntu.jpg);"></a>
+            
+            <div class="summary">公式のRaspberry Pi OSはサーバーとして機能させるには不必要なものがあまりにも多すぎる。 ここは普段使い慣れているUbuntuをインストールしたい。 ということで、Ubuntu18.04からRaspberry Piにサーバー版をインストールさせる 必要なもの ラズパイ3B本体 MicroSD(64GBぐらいが理想) MicroSDとUSBの変換器(PCにMicroSDのコネクタがある場合は不要) インストー ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/" title="Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/ubuntu-data-transport/"><h2 class="article_title">別のUbuntuにデータを輸送する</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-08-15T18:20:02JST">2022年8月15日 18時20分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/">インフラ</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83/">開発環境</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B/">私見</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A/">追記予定</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/ubuntu-data-transport/" class="thumb" title="別のUbuntuにデータを輸送する" style="background-image: url(https://noauto-nolife.com/images/ubuntu.jpg);"></a>
+            
+            <div class="summary">別のPCのUbuntuにデータを全て輸送する必要があったりする。 そういう時、手順をまとめておかないと手直しに返って時間がかかる。 よって、必要なデータ移行作業をここに列挙しておく。 準備編 前もって、下記をやっておく(任意) サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 【保存版】Ubuntu18.04をインストールした後に真 ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/ubuntu-data-transport/" title="別のUbuntuにデータを輸送する">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/startup-wordpress-ubuntu/"><h2 class="article_title">UbuntuにWordpressをインストールする【MariaDB&#43;Apache】</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-06-04T16:46:42JST">2022年6月4日 16時46分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/others/">others</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/wordpress/">Wordpress</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox/">virtualbox</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/startup-wordpress-ubuntu/" class="thumb" title="UbuntuにWordpressをインストールする【MariaDB&#43;Apache】" style="background-image: url(https://noauto-nolife.com/images/ubuntu.jpg);"></a>
+            
+            <div class="summary">手元のPCにWordpressをインストールして試したいが、OSに直にインストールするのは避けたい。 そういう時、VirtualBoxにインストールしたUbuntuへ、Wordpressをインストールすると良いだろう。 流れ Apacheのインストール MariaDBのインストールとDB・ユーザーの作成 PHPのインストール Wordpressのインストール Apacheのインストール インストール sudo apt install apache2 自動起 ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/startup-wordpress-ubuntu/" title="UbuntuにWordpressをインストールする【MariaDB&#43;Apache】">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/python3-update/"><h2 class="article_title">UbuntuにインストールされているPythonをアップデートする</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-05-07T22:33:21JST">2022年5月7日 22時33分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/python/">python</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">ubuntu</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/python3-update/" class="thumb" title="UbuntuにインストールされているPythonをアップデートする" style="background-image: url(https://noauto-nolife.com/images/python.jpg);"></a>
+            
+            <div class="summary">経緯 非同期系ライブラリのacyncioのコードを動かそうとした時。 正常に動いてくれない。公式によると、これはPythonが3.7以上でなければ動いてくれないとのこと。( https://docs.python.org/3/library/asyncio.html ) そこでPythonのバージョンを調べたところ、 うわっ..私のPython古すぎ..!! ということで、UbuntuにインストールされているPythonをアップデートしておく。ちなみに2022年5月現時点では、Pythonの最新安定 ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/python3-update/" title="UbuntuにインストールされているPythonをアップデートする">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/startup-php-nginx-ubuntu/"><h2 class="article_title">Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-04-25T10:56:04JST">2022年4月25日 10時56分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/">インフラ</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/php/">php</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/nginx/">Nginx</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA/">スタートアップシリーズ</a>
                     
@@ -93,13 +351,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/startup-ubuntu-docker/" class="thumb" title="UbuntuでUbuntuのdockerイメージを作るまで" style="background-image: url(https://noauto-nolife.com/images/ubuntu.jpg);"></a>
+            <a href="https://noauto-nolife.com/post/startup-php-nginx-ubuntu/" class="thumb" title="Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする" style="background-image: url(https://noauto-nolife.com/images/nginx.jpg);"></a>
             
-            <div class="summary">インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数 ...</div>
+            <div class="summary">5年以上前にやったきり、完全に忘れているNginxでPHPを動かす方法。 本記事ではその手順をまとめる。 必要なパッケージのインストール sudo apt install nginx php php-fpm Nginxはサーバー、phpはPHP処理系、php-fpmはNginxから動作させるために必要なもの Nginxの設定 /etc/nginx/sites-available/defaultを書き換える。 sudo vi /etc/nginx/sites-available/default TODOと書かれた場所だけ編集する。 ## # You should look at the following ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/startup-ubuntu-docker/" title="UbuntuでUbuntuのdockerイメージを作るまで">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/startup-php-nginx-ubuntu/" title="Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする">続きを読む</a></div>
         
 
 
@@ -109,66 +367,12 @@
 </li>
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/"><h2 class="article_title">LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】</h2></a>
+    <a href="https://noauto-nolife.com/post/linux-commandline-clipboard/"><h2 class="article_title">Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-12-17T11:24:38JST">2021年12月17日 11時24分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">laravel</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/heroku/">Heroku</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/">デプロイ</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">ubuntu</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/" class="thumb" title="LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】" style="background-image: url(https://noauto-nolife.com/images/laravel.jpg);"></a>
-            
-            <div class="summary">経緯 2021年12月某日、今日もLaravelのプロジェクトの開発を終え、『さあデプロイだ』とHerokuへデプロイをすると、下記のようなエラーメッセージが出た。 原因 これまで、普通にデプロイできていて、今日になってなぜデプロイに失敗するのか。どこかで設定ファイルの編集ミスったかと思いあれこれ確認してみたが、原因はわからない。 そこでStackOverflowにて、検索してみると、同様のエラー報告がみ ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/" title="LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/nginx-log-check/"><h2 class="article_title">Nginxのログをチェックする、ログの出力設定を変更する</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-09-21T07:19:18JST">2021年9月21日 07時19分</time></li>
+                <li>作成日時:<time datetime="2022-03-30T09:13:28JST">2022年3月30日 09時13分</time></li>
 
                 
                 
@@ -184,74 +388,12 @@
                 
                 <li class="taxonomies_area">Tags:
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/nginx/">nginx</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86/">システム管理</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC/">ウェブサーバー</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/">セキュリティ</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/">ネットワーク</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/linux/">linux</a>
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/linux/">Linux</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/nginx-log-check/" class="thumb" title="Nginxのログをチェックする、ログの出力設定を変更する" style="background-image: url(https://noauto-nolife.com/images/nginx.jpg);"></a>
-            
-            <div class="summary">事案が発生した時、まっさきに確認するべきがサーバーのログ。とりわけウェブサーバーのNginxのログ確認方法、設定方法をここに記す。 Nginxのログの見方 Nginxの設定ファイル(/etc/nginx/nginx.conf)にログのパスが書かれてある ## # Logging Settings ## access_log /var/log/nginx/access.log; error_log /var/log/nginx/error.log; ログは/var/log/nginx/access.logに保管されてある事がわかる。中身はこんな感じ。 左から順にこうなっている。 送信元 ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/nginx-log-check/" title="Nginxのログをチェックする、ログの出力設定を変更する">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/uuid-generate/"><h2 class="article_title">UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-09-19T18:14:00JST">2021年9月19日 18時14分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/">インフラ</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/">セキュリティ</a>
-                    
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/bash/">bash</a>
-                    
                 </li>
                 
                 
@@ -261,13 +403,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/uuid-generate/" class="thumb" title="UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】" style="background-image: url(https://noauto-nolife.com/images/bash.jpg);"></a>
+            <a href="https://noauto-nolife.com/post/linux-commandline-clipboard/" class="thumb" title="Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】" style="background-image: url(https://noauto-nolife.com/images/ubuntu.jpg);"></a>
             
-            <div class="summary">Ubuntuであれば、下記コマンドを実行するだけで自動的にUUIDが生成される。 uuidgen 用途 秘匿する必要のあるページ(管理サイト等)にURLとして割り当てることで、総当たりでヒットされにくくなる。 UUIDが重複する確立は途方もなく低いので、他のセキュリティ対策ができない場合の代替案として有効であると思われる。 例えば、sedコマンドなどを使用して、Djangoのurls.pyから管理サイトを割り当てている ...</div>
+            <div class="summary">とてつもなく長いコードをクリップボードにコピーして、誰かと共有したい時、エディタのカーソルを上に持っていって下まで下げてコピーするのはとても面倒。 だから、コマンド一発でファイルの内容全てをコピーする。xselを使って。 sudo apt install xsel これでOK。後はコピペしたいファイルを用意して、下記コマンドを実行する。 cat ./index.html | xsel --clipboard --input これでindex.htmlの中身が全部コピーできた。bashrcにエイリアスで登録しておく ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/uuid-generate/" title="UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/linux-commandline-clipboard/" title="Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】">続きを読む</a></div>
         
 
 
@@ -277,126 +419,12 @@
 </li>
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/shellscript-server-checker/"><h2 class="article_title">シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】</h2></a>
+    <a href="https://noauto-nolife.com/post/django-deploy-ubuntu-venv/"><h2 class="article_title">UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-09-19T08:51:18JST">2021年9月19日 08時51分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/">インフラ</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88/">シェルスクリプト</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86/">システム管理</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC/">ウェブサーバー</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/">ネットワーク</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">ubuntu</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/bash/">bash</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/shellscript-server-checker/" class="thumb" title="シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】" style="background-image: url(https://noauto-nolife.com/images/bash.jpg);"></a>
-            
-            <div class="summary">サーバーが応答不能になった時、すぐに対処できるよう、通知機能が欲しい。そういうときのシェルスクリプト。 pingで応答不能をチェックする #! /bin/bash while true ; do ping -c 1 192.168.11.99 rc=$? if [[ $rc -eq 0 ]] ; then echo &quot;正常です&quot; else echo &quot;失敗しました&quot; fi sleep 1 done 後は『正常です』『失敗しました』のいずれかに任意の処理を書き込む。 curlで応答不能をチェックする curlはHTTPのステータスコードも手に入るの ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/shellscript-server-checker/" title="シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/laravel-database-regenerate/"><h2 class="article_title">【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-09-18T08:42:15JST">2021年9月18日 08時42分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">Laravel</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86/">システム管理</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/bash/">bash</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">ubuntu</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/laravel-database-regenerate/" class="thumb" title="【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】" style="background-image: url(https://noauto-nolife.com/images/laravel.jpg);"></a>
-            
-            <div class="summary">前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 プロジェクトのディレクトリで下記コマンドを実行する。 find ./database/ -name &quot;database.sqlite&quot; -exec rm &quot;{}&quot; \; -exec touch &quot;{}&quot; \; bashのaliasに登録すれば上記コマンドをさらに短くできる。 alias laravel-dbrefresh='find ./database/ -name &quot;database.sqlite&quot; -exec rm &quot;{}&quot; \; -exec touch &quot;{}&quot; \;' このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行するこ ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/laravel-database-regenerate/" title="【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/django-secret-key-regenerate/"><h2 class="article_title">【Django】settings.pyのSECRET_KEYを再発行(リジェネレート)する【alias登録で即生成・即実装からの再起動】</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-09-17T11:19:11JST">2021年9月17日 11時19分</time></li>
+                <li>作成日時:<time datetime="2022-03-30T08:03:28JST">2022年3月30日 08時03分</time></li>
 
                 
                 
@@ -414,11 +442,7 @@
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">django</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86/">システム管理</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/bash/">bash</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/">デプロイ</a>
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
                     
@@ -431,13 +455,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/django-secret-key-regenerate/" class="thumb" title="【Django】settings.pyのSECRET_KEYを再発行(リジェネレート)する【alias登録で即生成・即実装からの再起動】" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
+            <a href="https://noauto-nolife.com/post/django-deploy-ubuntu-venv/" class="thumb" title="UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
             
-            <div class="summary">うっかり、SECRET_KEYをバージョン管理対象に含ませてしまった。このままではクラウドサーバーにデプロイしたSECRET_KEYが予測され、CSRFトークン等が機能不全になってしまう。 そんな時に備えておきたい、SECRET_KEYの再発行の方法を解説する。 ソースコード Qiitaより拝借。 from django.core.management.utils import get_random_secret_key secret_key = get_random_secret_key() text = 'SECRET_KEY = \'{0}\''.format(secret_key) print(text) 実行すると、 SECRET_KEY = '07y^y0#_7b74jy)d6z0lu5*r$#azfyt1*1f+g1-3w+l@&amp;hs^2!' 等の文言が出てくる。 aliasに登録して、どこでも再発行できるよ ...</div>
+            <div class="summary">Ubuntuのデプロイ時にVirtualenvを使う。 以前の方法はOSに直接Djangoなどのライブラリをインストールしているため、OSの更新と同時にライブラリも更新されてしまう。 Virtualenvを使えば、OSを更新してもライブラリのバージョンは常に一定。手動で更新する仕様になる。 Djangoプロジェクトの配置 下記になるよう配置する。 /home/[ユーザー名]/Documents/[プロジェク ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-secret-key-regenerate/" title="【Django】settings.pyのSECRET_KEYを再発行(リジェネレート)する【alias登録で即生成・即実装からの再起動】">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-deploy-ubuntu-venv/" title="UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】">続きを読む</a></div>
         
 
 
@@ -447,12 +471,12 @@
 </li>
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/startup-ubuntu2004-server/"><h2 class="article_title">サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】</h2></a>
+    <a href="https://noauto-nolife.com/post/hugo-install-latest/"><h2 class="article_title">【HUGO】最新版をインストールして、サイトを作り、テーマを当ててビルドするまで</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-08-21T17:39:30JST">2021年8月21日 17時39分</time></li>
+                <li>作成日時:<time datetime="2022-03-22T08:39:10JST">2022年3月22日 08時39分</time></li>
 
                 
                 
@@ -460,7 +484,7 @@
                 
                 <li class="taxonomies_area">Categories:
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/">インフラ</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/web%E5%85%A8%E8%88%AC/">web全般</a>
                     
                 </li>
                 
@@ -468,68 +492,12 @@
                 
                 <li class="taxonomies_area">Tags:
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA/">スタートアップシリーズ</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/hugo/">hugo</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ssh/">SSH</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/bash/">bash</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/linux/">Linux</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/startup-ubuntu2004-server/" class="thumb" title="サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】" style="background-image: url(https://noauto-nolife.com/images/ubuntu.jpg);"></a>
-            
-            <div class="summary">デスクトップ版のUbuntuとサーバー版のUbuntuは完全に別物である。 デスクトップ版はGUIでラクラク固定IPアドレス設定できたり、作業しながらブラウザで検索できる一方で、サーバー版のUbuntuはただ無機質なターミナルが全画面を覆っているだけである。 本記事ではインストールからIPアドレスの固定化、bashの設定やタイムゾーン設定、別端末からSSHでログインするまでを解説する。 対象読者は、既に ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/startup-ubuntu2004-server/" title="サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/virtualbox-ubuntu-install/"><h2 class="article_title">VirtualBoxにUbuntuをインストールする</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-06-19T16:49:00JST">2021年6月19日 16時49分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/">インフラ</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/">初心者向け</a>
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">ubuntu</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox/">virtualbox</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86/">システム管理</a>
-                    
                 </li>
                 
                 
@@ -539,13 +507,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/virtualbox-ubuntu-install/" class="thumb" title="VirtualBoxにUbuntuをインストールする" style="background-image: url(https://noauto-nolife.com/images/ubuntu.jpg);"></a>
+            <a href="https://noauto-nolife.com/post/hugo-install-latest/" class="thumb" title="【HUGO】最新版をインストールして、サイトを作り、テーマを当ててビルドするまで" style="background-image: url(https://noauto-nolife.com/images/hugo.jpg);"></a>
             
-            <div class="summary">作ったウェブアプリをデプロイする時、実機のLinuxサーバーでも良いが、VirtualBox上のLinux系OSのいずれかにデプロイして試験運用するのも良いだろう。 そこでその前段階としてVirtualBoxにUbuntuをインストールさせる。 用意する物 Ubuntuのisoファイル VirtualBoxのインストーラー(パッケージファイル) メモリ4GB以上の空きがあり、なおかつ20GB以上のストレージ ...</div>
+            <div class="summary">手順 GitHubから最新版のインストーラを入手 サイトを作る 記事を作る テーマをインストールする HUGOサーバー(開発用サーバー)を起動する ビルドする GitHubから最新版のインストーラを入手 https://github.com/gohugoio/hugo/releases 上記サイトから、Latestと書かれてあるバージョンのインストーラーをDLする。Ubuntu 20.04の場合はhugo_0.95.0_Linux-64bit.debをDLすると良いだろう。 Windowsであれば ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/virtualbox-ubuntu-install/" title="VirtualBoxにUbuntuをインストールする">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/hugo-install-latest/" title="【HUGO】最新版をインストールして、サイトを作り、テーマを当ててビルドするまで">続きを読む</a></div>
         
 
 
@@ -555,12 +523,12 @@
 </li>
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/laravel-ubuntu-deploy/"><h2 class="article_title">LaravelをUbuntuにデプロイする【Nginx&#43;PostgreSQL】</h2></a>
+    <a href="https://noauto-nolife.com/post/docker-image-file-share/"><h2 class="article_title">dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-04-13T19:09:40JST">2021年4月13日 19時09分</time></li>
+                <li>作成日時:<time datetime="2022-02-13T16:54:44JST">2022年2月13日 16時54分</time></li>
 
                 
                 
@@ -568,7 +536,7 @@
                 
                 <li class="taxonomies_area">Categories:
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/">インフラ</a>
                     
                 </li>
                 
@@ -576,15 +544,11 @@
                 
                 <li class="taxonomies_area">Tags:
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">laravel</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/docker/">docker</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/">デプロイ</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/nginx/">nginx</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/postgresql/">PostgreSQL</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">ubuntu</a>
                     
                 </li>
                 
@@ -595,13 +559,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/laravel-ubuntu-deploy/" class="thumb" title="LaravelをUbuntuにデプロイする【Nginx&#43;PostgreSQL】" style="background-image: url(https://noauto-nolife.com/images/laravel.jpg);"></a>
+            <a href="https://noauto-nolife.com/post/docker-image-file-share/" class="thumb" title="dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)" style="background-image: url(https://noauto-nolife.com/images/docker.jpg);"></a>
             
-            <div class="summary">構成について タイトルの通り、下記構成にてデプロイを行う Laravel Framework 7.30.4 Ubuntu 18.04 nginx version: nginx/1.14.0 (Ubuntu) psql (PostgreSQL) 10.16 (Ubuntu 10.16-0ubuntu0.18.04.1) なぜPostgreSQLなのか？(MySQLではないのか？) MySQLは使わない。なぜなら、Laravelのtimestamp型とMySQLが組み合わさると2038年問題が発生するから。 コード側を合わせるという方法もあるが、今回はデプロイが主目的であるため、安全なPostgreSQLでデプロイする。 https://qiita.com/ucan-lab/items/99ee14ad6bb24614980c デプロイまでの流 ...</div>
+            <div class="summary">dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/laravel-ubuntu-deploy/" title="LaravelをUbuntuにデプロイする【Nginx&#43;PostgreSQL】">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/docker-image-file-share/" title="dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)">続きを読む</a></div>
         
 
 
@@ -691,23 +655,15 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -719,7 +675,27 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -727,7 +703,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -747,15 +723,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -763,19 +731,19 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -787,15 +755,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -803,11 +767,23 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -819,15 +795,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -843,6 +815,10 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
         </span>
         
@@ -851,7 +827,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -871,6 +847,18 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
         </span>
         
@@ -879,7 +867,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -891,11 +883,23 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -907,15 +911,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -943,15 +939,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -960,6 +952,10 @@
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -975,15 +971,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -1003,15 +995,31 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -1027,11 +1035,23 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
         </span>
         
     </section>
@@ -1042,25 +1062,25 @@
     <section class="sidebar_panel">
         <div class="sidebar_panel_title">News</div>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-deploy-docker-centos/">docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-django-stripe/">【Stripe】Djangoにクレジットカード決済機能を実装させる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-composer-error/">composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-ubuntu-docker/">UbuntuでUbuntuのdockerイメージを作るまで</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-samba/">UbuntuにSambaをインストールしてファイルサーバー化させる</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-drf-api/">Django Rest Frameworkにて、APIを提供する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/heroku-counter-plan/">Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-save-method/">【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-command-not-found/">【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-method-put-delete-patch/">【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/">Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-view-def-and-class/">【Django】ビュー関数とビュークラスの違い、一覧と使い方</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-jupyter-lab/">Jupyter Labを始める</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-error-messages-origin/">【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-star-review/">【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-allauth-custom-user-model-sendgrid/">【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-data-transport/">別のUbuntuにデータを輸送する</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-mogrify/">mogrifyコマンドを使って画像を一括クロップ(トリミング)する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-time-calc/">【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</a>
         
     </section>
 

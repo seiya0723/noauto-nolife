@@ -57,6 +57,364 @@
         <ul class="article_list">
             
             <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/jquery-ajax-detail/"><h2 class="article_title">【保存版】Ajax(jQuery)の仕組みと仕様</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-07-15T11:42:54JST">2022年7月15日 11時42分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ajax/">Ajax</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/jquery-ajax-detail/" class="thumb" title="【保存版】Ajax(jQuery)の仕組みと仕様" style="background-image: url(https://noauto-nolife.com/images/jquery.jpg);"></a>
+            
+            <div class="summary">本記事は、たびたび忘れがちなAjaxのパラメータや引数などの意味を思い返すための備忘録である。 let form_elem = &quot;#form_area&quot;; let data = new FormData( $(form_elem).get(0) ); let url = $(form_elem).prop(&quot;action&quot;); let method = $(form_elem).prop(&quot;method&quot;); $.ajax({ url: url, // リクエストの送信先 type: method, // 送信するリクエストのメソッド data: data, // 送信するデータ(FormDataオブジェクト型) processData: false, // dataに指定した内容をURLエンコードして送信(?page=2などの形式)にするかの指定。FormDataオブジェクトの場合はfalseを指定 contentType: false, ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/jquery-ajax-detail/" title="【保存版】Ajax(jQuery)の仕組みと仕様">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/javascript-memory-weakness/"><h2 class="article_title">JavaScript(jQuery)で神経衰弱</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-06-30T14:57:25JST">2022年6月30日 14時57分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89/">フロントサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0/">ゲーム</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/javascript-memory-weakness/" class="thumb" title="JavaScript(jQuery)で神経衰弱" style="background-image: url(https://noauto-nolife.com/images/Screenshot%20from%202022-06-30%2015-04-26.png);"></a>
+            
+            <div class="summary">canvas未使用、JavaScript(jQuery)で神経衰弱を作ってみた。 突貫で作ったためかなり雑ではあるが、トランプを使用したゲームに流用できそうだ。 デモページ カードの素材は ( https://opengameart.org/content/playing-cards-vector-png )より。ウラ面は自前で作った。 https://seiya0723.github.io/memory_cards_game/ ソースコード https://github.com/seiya0723/memory_cards_game HTML &lt;!DOCTYPE html&gt; &lt;html lang=&quot;ja&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt; &lt;title&gt;Hello World test!!&lt;/title&gt; &lt;script src=&quot;https://code.jquery.com/jquery-3.4.1.min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt; &lt;style&gt; img { width:200px; } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;table id=&quot;table&quot;&gt;&lt;/table&gt; &lt;/body&gt; &lt;/html&gt; JavaScript window.addEventListener(&quot;load&quot; , function (){ // カードの画像: https://opengameart.org/content/playing-cards-vector-png //カードのデータ形式 var CARD_DATA = [ { &quot;number&quot;:1,&quot;src&quot;:&quot;img/ace_of_clubs.png&quot; }, { &quot;number&quot;:1,&quot;src&quot;:&quot;img/ace_of_diamonds.png&quot; }, { &quot;number&quot;:1,&quot;src&quot;:&quot;img/ace_of_hearts.png&quot; }, { &quot;number&quot;:1,&quot;src&quot;:&quot;img/ace_of_spades.png&quot; }, { &quot;number&quot;:2,&quot;src&quot;:&quot;img/2_of_clubs.png&quot; }, { &quot;number&quot;:2,&quot;src&quot;:&quot;img/2_of_diamonds.png&quot; }, { &quot;number&quot;:2,&quot;src&quot;:&quot;img/2_of_hearts.png&quot; }, { &quot;number&quot;:2,&quot;src&quot;:&quot;img/2_of_spades.png&quot; }, { ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/javascript-memory-weakness/" title="JavaScript(jQuery)で神経衰弱">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/javascript-qrcode/"><h2 class="article_title">JavaScript(jQuery)でQRコードを表示させる</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-05-23T11:23:01JST">2022年5月23日 11時23分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89/">フロントサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/javascript-qrcode/" class="thumb" title="JavaScript(jQuery)でQRコードを表示させる" style="background-image: url(https://noauto-nolife.com/images/jquery.jpg);"></a>
+            
+            <div class="summary">例えば、ユーザーの一部がPCでの操作をやめて、スマホで操作したいと思ったとする。 こういう時QRコードを表示させる、ブラウザのアドオンや機能を使えば良いが、ユーザーにそれを強いるのはやや酷である。 そこで、jQueryを使用して、QRコードを簡単に表示させると良いだろう。 コード &lt;!DOCTYPE html&gt; &lt;html lang=&quot;ja&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt; &lt;title&gt;Hello World test!!&lt;/title&gt; &lt;script src=&quot;https://code.jquery.com/jquery-3.4.1.min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js&quot;&gt;&lt;/script&gt; &lt;script&gt; window.addEventListener(&quot;load&quot; , function (){ let qrtext = location.href; let utf8qrtext = unescape(encodeURIComponent(qrtext)); $(&quot;#qrcode&quot;).html(&quot;&quot;); $(&quot;#qrcode&quot;).qrcode({width:160,height:160,text:utf8qrtext}); }); &lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&quot;qrcode&quot;&gt;&lt;/div&gt; &lt;/body&gt; &lt;/html&gt; 動かすとこうなる。 結論 下記を参照。 https://github.com/jeromeetienne/jquery-qrcode ...</div>
+        </div>
+        
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/jquery-number-form-auto/"><h2 class="article_title">【jQuery】数値入力フォームを押しっぱなしで入力する仕様に仕立てる</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-05-03T11:25:12JST">2022年5月3日 11時25分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89/">フロントサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/">ウェブデザイン</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/jquery-number-form-auto/" class="thumb" title="【jQuery】数値入力フォームを押しっぱなしで入力する仕様に仕立てる" style="background-image: url(https://noauto-nolife.com/images/jquery.jpg);"></a>
+            
+            <div class="summary">以前、『【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる』で解説したフォームを、ボタン押しっぱなしでも入力できるように仕立てる。 HTML &lt;!DOCTYPE html&gt; &lt;html lang=&quot;ja&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt; &lt;title&gt;Hello World test!!&lt;/title&gt; &lt;script src=&quot;https://code.jquery.com/jquery-3.4.1.min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt; &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt; &lt;/head&gt; &lt;body&gt; &lt;form action=&quot;&quot;&gt; &lt;div class=&quot;spinner_area&quot;&gt; &lt;input class=&quot;spinner&quot; type=&quot;number&quot; value=&quot;0&quot; max=&quot;10&quot; min=&quot;0&quot;&gt; &lt;button class=&quot;spinner_button&quot; type=&quot;button&quot; name=&quot;minus&quot; value=&quot;-1&quot;&gt;ー&lt;/button&gt; &lt;button class=&quot;spinner_button&quot; type=&quot;button&quot; name=&quot;plus&quot; value=&quot;1&quot; &gt;＋&lt;/button&gt; &lt;/div&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt; CSS .spinner_button{ user-select: none; cursor:pointer; padding:0.5rem; width: auto; vertical-align: middle; } .spinner_area input{ padding: 0.5rem; border: 0.1rem solid gray; border-radius: 0.25rem; font-size: ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/jquery-number-form-auto/" title="【jQuery】数値入力フォームを押しっぱなしで入力する仕様に仕立てる">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/jquery-number-form/"><h2 class="article_title">【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-03-02T11:45:18JST">2022年3月2日 11時45分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89/">フロントサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jquery</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/">ウェブデザイン</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/jquery-number-form/" class="thumb" title="【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる" style="background-image: url(https://noauto-nolife.com/images/jquery.jpg);"></a>
+            
+            <div class="summary">数値入力フォーム。キーボードを使わず、ボタン入力で行いたい場合、JavaScriptを使う必要がある。 今回は更に短くかけるよう、jQueryで表現した。なお、再利用を想定して、装飾は全く行っていない。 ソースコード HTML &lt;!DOCTYPE html&gt; &lt;html lang=&quot;ja&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt; &lt;title&gt;Hello World test!!&lt;/title&gt; &lt;script src=&quot;https://code.jquery.com/jquery-3.4.1.min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;form action=&quot;&quot;&gt; &lt;input type=&quot;number&quot; name=&quot;amount&quot; value=&quot;0&quot; readonly&gt; &lt;input type=&quot;button&quot; name=&quot;minus&quot; value=&quot;減らす&quot;&gt; &lt;input type=&quot;button&quot; name=&quot;plus&quot; value=&quot;増やす&quot;&gt; &lt;/form&gt; &lt;/body&gt; &lt;/html&gt; JavaScript window.addEventListener(&quot;load&quot; , function (){ $(&quot;[name='plus']&quot;).on(&quot;click&quot;, function(){ amount_add(this,true); ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/jquery-number-form/" title="【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/jquery-ajax-postcode/"><h2 class="article_title">【jQuery】Ajaxで郵便番号検索を行う【通販サイトなどの住所登録に有効】</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-02-18T17:40:50JST">2022年2月18日 17時40分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89/">フロントサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ajax/">Ajax</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/jquery-ajax-postcode/" class="thumb" title="【jQuery】Ajaxで郵便番号検索を行う【通販サイトなどの住所登録に有効】" style="background-image: url(https://noauto-nolife.com/images/jquery.jpg);"></a>
+            
+            <div class="summary">通販サイトなどでは、郵便番号を入力すると、住所の入力を自動で行ってくれる。 本記事では郵便番号検索の実装を解説する。 HTML &lt;!DOCTYPE html&gt; &lt;html lang=&quot;ja&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt; &lt;title&gt;Hello World test!!&lt;/title&gt; &lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot; integrity=&quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&quot; crossorigin=&quot;anonymous&quot;&gt; &lt;script src=&quot;https://code.jquery.com/jquery-3.4.1.min.js&quot;&gt;&lt;/script&gt; &lt;script src=&quot;script.js&quot;&gt;&lt;/script&gt; &lt;/head&gt; &lt;body&gt; &lt;input id=&quot;postcode&quot; type=&quot;text&quot; name=&quot;postcode&quot; placeholder=&quot;ここに郵便番号を入力する(ハイフン不要)&quot;&gt; &lt;input id=&quot;postcode_search&quot; type=&quot;button&quot; value=&quot;郵便番号検索&quot;&gt; &lt;input id=&quot;prefecture&quot; type=&quot;text&quot; name=&quot;prefecture&quot; placeholder=&quot;都道府県&quot;&gt ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/jquery-ajax-postcode/" title="【jQuery】Ajaxで郵便番号検索を行う【通販サイトなどの住所登録に有効】">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/jquery-ymd-search/"><h2 class="article_title">【jQuery】selectタグで年月日検索をする【うるう年対応】</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-02-15T16:14:29JST">2022年2月15日 16時14分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89/">フロントサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/jquery-ymd-search/" class="thumb" title="【jQuery】selectタグで年月日検索をする【うるう年対応】" style="background-image: url(https://noauto-nolife.com/images/js.jpg);"></a>
+            
+            <div class="summary">年月日検索をする時、年だけ、月だけ指定して検索する場合がある。この場合、年月日全てを指定するflatpickrでは対応できない。 この場合はselectタグを使用して検索をする。だが、月ごとに日数は異なる。うるう年では2月は29日になる。それに対応させるためには、JavaScriptを書く必要がある。 本記事ではjQueryを使用して、なるべく短く年月日検索を行うselectタグを作る。 HTML &lt;!DOCTYPE html&gt; &lt;html lang=&quot;ja&quot;&gt; &lt;head&gt; &lt;meta ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/jquery-ymd-search/" title="【jQuery】selectタグで年月日検索をする【うるう年対応】">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
     <a href="https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/"><h2 class="article_title">【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</h2></a>
     <div class="article_spacer">	    
 
@@ -224,218 +582,21 @@
 </article>
 </li>
             
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/javascript-formdata-obj-set/"><h2 class="article_title">FormDataをformタグではなく、オブジェクトにキーと値をセットした上でAjax送信</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-08-14T11:48:15JST">2021年8月14日 11時48分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ajax/">Ajax</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">Django</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/javascript-formdata-obj-set/" class="thumb" title="FormDataをformタグではなく、オブジェクトにキーと値をセットした上でAjax送信" style="background-image: url(https://noauto-nolife.com/images/js.jpg);"></a>
-            
-            <div class="summary">タイトルの説明。 通常、Ajaxでサーバーにリクエストを送信する時、下記のようにFormDataクラスを使用して送信する。 let form_elem = &quot;#form_area&quot;; let data = new FormData( $(form_elem).get(0) ); let url = $(form_elem).prop(&quot;action&quot;); let method = $(form_elem).prop(&quot;method&quot;); $.ajax({ url: url, type: method, data: data, processData: false, contentType: false, dataType: 'json' }).done( function(data, status, xhr ) { //Done }).fail( function(xhr, status, error) { //Fail }); しかし、送信したいデータがいつもこのようにformタグで囲まれているとも限らない。 そこで、FormDataクラスに引数を入れずにオブジェクトを作り、オブジェクトにキーと値をセットしてAja ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/javascript-formdata-obj-set/" title="FormDataをformタグではなく、オブジェクトにキーと値をセットした上でAjax送信">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/jquery-to-javascript/"><h2 class="article_title">jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-04-13T18:32:51JST">2021年4月13日 18時32分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89/">フロントサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">javascript</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/jquery-to-javascript/" class="thumb" title="jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】" style="background-image: url(https://noauto-nolife.com/images/js.jpg);"></a>
-            
-            <div class="summary">jQueryに依存したコードをそのままにするのは再利用性に欠け、開発効率にも関わる。そこで、今回はjQueryのコードを適宜javascriptに書き換える。 セレクタ まずは基本のセレクタ以下のように書き換える。 var test = $(&quot;.test&quot;); //↓以下に書き換え var test = document.querySelectorAll(&quot;.test&quot;); //←全ての.textクラスの要素を抜き取る var test = document.querySelector(&quot;.test&quot;); //←.testクラスの1番最初の要素を抜き取る jQueryが提供するメソッドや属性などは使用できなく ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/jquery-to-javascript/" title="jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/laravel-ajax/"><h2 class="article_title">laravelでAjax(jQuery)を送信する【POST&#43;DELETE】</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-02-04T12:29:32JST">2021年2月4日 12時29分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">laravel</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ajax/">ajax</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/laravel-ajax/" class="thumb" title="laravelでAjax(jQuery)を送信する【POST&#43;DELETE】" style="background-image: url(https://noauto-nolife.com/images/laravel.jpg);"></a>
-            
-            <div class="summary">タイトルの通り。laravelにAjax(jQuery)を送信する。コードはLaravelでリクエストのバリデーションを行うを元に作られている。 jQueryを読み込みCSRFトークンをAjax送信時に付せて送信させる まずAjax送信用にjQueryを読み込ませる。それからPOSTリクエストの場合、CSRF対策用のトークンもセットで送信しなければならない。故に、resources/views/bas ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/laravel-ajax/" title="laravelでAjax(jQuery)を送信する【POST&#43;DELETE】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/jquery-autocomplete/"><h2 class="article_title">jQueryでオートコンプリート(入力補正)を実装させる【表記ゆれ対策にも有効】</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2020-10-29T16:52:35JST">2020年10月29日 16時52分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89/">フロントサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/jquery/">jQuery</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/jquery-autocomplete/" class="thumb" title="jQueryでオートコンプリート(入力補正)を実装させる【表記ゆれ対策にも有効】" style="background-image: url(https://noauto-nolife.com/images/jquery.jpg);"></a>
-            
-            <div class="summary">ウェブアプリを作って、ユーザーに何かを文字列を入力させる時、大抵表記ゆれが起こる。 例えば、JAと農業協同組合と農協、ラズパイとラズベリーパイとRaspberry Piとraspberry piなど。 このような表記ゆれを一度でも許すと、検索で引っかからなくなる。しかし、SELECTタグを使うと、項目が増えた時、選択に時間がかかりすぎる。 そこで、文字入力(入力補正)と選択が同時にできるオートコンプリートを ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/jquery-autocomplete/" title="jQueryでオートコンプリート(入力補正)を実装させる【表記ゆれ対策にも有効】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
         </ul>
         
+<nav>
+  <ul class="paginator">
+    <li class="pg_prev_area">
+    
+    </li>
+    <li class="pg_next_area">
+    
+        <a class="pg_next" href="/tags/jquery/page/2/">Next ...</a>
+    
+    </li>
+  </ul>
+</nav>
+
 
 
     </div>
@@ -502,23 +663,15 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -530,7 +683,27 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -538,7 +711,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -558,15 +731,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -574,19 +739,19 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -598,15 +763,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -614,11 +775,23 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -630,15 +803,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -654,6 +823,10 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
         </span>
         
@@ -662,7 +835,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -682,6 +855,18 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
         </span>
         
@@ -690,7 +875,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -702,11 +891,23 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -718,15 +919,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -754,15 +947,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -771,6 +960,10 @@
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -786,15 +979,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -814,15 +1003,31 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -838,11 +1043,23 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
         </span>
         
     </section>
@@ -853,25 +1070,25 @@
     <section class="sidebar_panel">
         <div class="sidebar_panel_title">News</div>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-deploy-docker-centos/">docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-django-stripe/">【Stripe】Djangoにクレジットカード決済機能を実装させる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-composer-error/">composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-ubuntu-docker/">UbuntuでUbuntuのdockerイメージを作るまで</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-samba/">UbuntuにSambaをインストールしてファイルサーバー化させる</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-drf-api/">Django Rest Frameworkにて、APIを提供する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/heroku-counter-plan/">Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-save-method/">【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-command-not-found/">【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-method-put-delete-patch/">【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/">Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-view-def-and-class/">【Django】ビュー関数とビュークラスの違い、一覧と使い方</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-jupyter-lab/">Jupyter Labを始める</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-error-messages-origin/">【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-star-review/">【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-allauth-custom-user-model-sendgrid/">【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-data-transport/">別のUbuntuにデータを輸送する</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-mogrify/">mogrifyコマンドを使って画像を一括クロップ(トリミング)する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-time-calc/">【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</a>
         
     </section>
 

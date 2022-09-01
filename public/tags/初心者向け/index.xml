@@ -6,10 +6,64 @@
     <description>Recent content in 初心者向け on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 21 Dec 2021 08:06:32 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 01 Sep 2022 08:49:01 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WindowsでPythonとPycharmをインストールする</title>
+      <link>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</link>
+      <pubDate>Thu, 01 Sep 2022 08:49:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</guid>
+      <description>Pythonのインストール Pythonのインストーラーを配布しているサイト( https://www.python.org/downloads/ )へ行く。 Download Python 3.10.6 の部分をクリックする。インストーラーがDLされる。 ( ※下記画像の赤枠部分。3.10.6は2022年9月現在のバージョンであり、今後バージョンが更新される。最新版のPythonインストーラーをDLする。 ) ダウンロードフォルダにて、先ほどDLしたインストーラーのファイルがあるので、ダブルクリックしてPytho</description>
+    </item>
+    
+    <item>
+      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/pycharm-config/</link>
+      <pubDate>Wed, 10 Aug 2022 17:50:56 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
+      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
+    </item>
+    
+    <item>
+      <title>要件定義書の書き方</title>
+      <link>https://noauto-nolife.com/post/startup-create-rdd/</link>
+      <pubDate>Sat, 04 Jun 2022 17:13:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-create-rdd/</guid>
+      <description>開発者になるために必要な要件定義書の書き方と必要なものを解説する。 そもそも要件定義とは？ システムを作るために決めるべきこと。 とりわけ、システムにおける5W1Hに基づいて、取り決めを行う必要がある。 この取り決めが曖昧であれば、受注者と顧客間での認識に食い違いが生まれる。 要件定義書に必要なもの 要件定義書に正解はない。 必ずしも下記の全ての項目を作る必要はない。必要に応じて省略し、簡潔に済ませることもわか</description>
+    </item>
+    
+    <item>
+      <title>【Django】モデルクラスのfilterメソッドで検索・絞り込みをする</title>
+      <link>https://noauto-nolife.com/post/django-filter-method/</link>
+      <pubDate>Mon, 16 May 2022 10:19:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-filter-method/</guid>
+      <description>モデルクラスを使用してデータをDBから取り出す時、filterメソッドを使用することで、取り出しの条件を指定することができる。 完全一致の場合(=) =を使用することで完全一致のデータを取り出すことができる。 topics = Topic.objects.filter(id=3) 主キーに対して、=を実行した時、取り出されるデータは1個もしくは0個になる。 そのため、上記のやり方だとforループしなければ、データを取り出すことができない for topic in topics: print(topic) そこで、単一のモデルオブ</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptでクエリパラメータを書き換え、GETメソッドを送信する【通販サイトなどの絞り込み検索に有効】</title>
+      <link>https://noauto-nolife.com/post/javascript-query-change-and-get-method/</link>
+      <pubDate>Thu, 07 Apr 2022 13:31:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-query-change-and-get-method/</guid>
+      <description>クエリパラメータ(クエリ文字列、もしくはクエリストリング)はサーバーサイドだけのデータではない、JavaScriptも操作できる。 これを利用することで、サイトの絞り込み検索を作ることができる。 HTML 下記のように価格帯の入力欄を作る。 &amp;lt;h2&amp;gt;下限&amp;lt;/h2&amp;gt; &amp;lt;input class=&amp;quot;url_replace&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;min_price&amp;quot;&amp;gt; &amp;lt;h2&amp;gt;上限&amp;lt;/h2&amp;gt; &amp;lt;input class=&amp;quot;url_replace&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;max_price&amp;quot;&amp;gt; そして、次項のJavaScriptを読んでおく。 JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;.url_replace&amp;quot;).on(&amp;quot;keydown&amp;quot;, function(e) {</description>
+    </item>
+    
+    <item>
+      <title>【HUGO】最新版をインストールして、サイトを作り、テーマを当ててビルドするまで</title>
+      <link>https://noauto-nolife.com/post/hugo-install-latest/</link>
+      <pubDate>Tue, 22 Mar 2022 08:39:10 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/hugo-install-latest/</guid>
+      <description>手順 GitHubから最新版のインストーラを入手 サイトを作る 記事を作る テーマをインストールする HUGOサーバー(開発用サーバー)を起動する ビルドする GitHubから最新版のインストーラを入手 https://github.com/gohugoio/hugo/releases 上記サイトから、Latestと書かれてあるバージョンのインストーラーをDLする。Ubuntu 20.04の場合はhugo_0.95.0_Linux-64bit.debをDLすると良いだろう。 Windowsであれば</description>
+    </item>
     
     <item>
       <title>Laravelで.env(環境変数)に指定した値をチェックする方法【コントローラ・ビュー】</title>
@@ -21,7 +75,7 @@
     </item>
     
     <item>
-      <title>Djangoをやる前に知っておきたいPython構文【オブジェクト指向と別ファイル読み込みは特に重要】</title>
+      <title>Djangoをやる前に知っておきたいPython構文【オブジェクト指向(class文)と別ファイル読み込み(import文)は特に重要】</title>
       <link>https://noauto-nolife.com/post/django-essential-python/</link>
       <pubDate>Sun, 19 Dec 2021 17:12:22 +0900</pubDate>
       
@@ -62,7 +116,7 @@
       <pubDate>Sun, 05 Dec 2021 11:48:32 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-foreignkey-user/</guid>
-      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;qu</description>
+      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;quot;投稿</description>
     </item>
     
     <item>
@@ -93,7 +147,7 @@
     </item>
     
     <item>
-      <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】</title>
+      <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】</title>
       <link>https://noauto-nolife.com/post/django-models-foreignkey/</link>
       <pubDate>Sun, 21 Nov 2021 16:34:32 +0900</pubDate>
       
@@ -117,15 +171,6 @@
       
       <guid>https://noauto-nolife.com/post/django-request-get-and-post/</guid>
       <description>前提 DjangoでHelloWorld【HttpResponse及びレンダリング】ができた状態を前提として話を進める。 HTTPリクエストのGETメソッドの送信方法 用途は主に、検索がある。 まずindex.html &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;main class=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;GET&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;search&amp;quot; value=&amp;quot;{{ request.GET.search }}&amp;quot; placeholder=&amp;quot;キーワード&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;submit&amp;quot; value=&amp;quot;検索&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/main&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; form</description>
-    </item>
-    
-    <item>
-      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
-      <link>https://noauto-nolife.com/post/pycharm-config/</link>
-      <pubDate>Thu, 04 Nov 2021 17:50:56 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
-      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
     </item>
     
     <item>
@@ -197,7 +242,7 @@
       <pubDate>Tue, 05 Oct 2021 06:45:55 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-models-add-field/</guid>
-      <description>models.pyを操作していく上で難しいのが、フィールドの追加とマイグレーション。 特に、追加するフィールドによってはマイグレーションファイル作成時に警告が出ることがある。 本記事では警告が出る理由も含め、フィールドの追加方法も含めて解説する。ソースコードはDjangoビギナーが40分で掲示板アプリを作る方法を元にする。 デフォルト値ありのフィールドを追加する まず、安全なデフォルト値ありのフィールドを</description>
+      <description>models.pyを操作していく上で難しいのが、フィールドの追加とマイグレーション。 特に、追加するフィールドによってはマイグレーションファイル作成時に警告が出ることがある。 本記事では警告が出る理由も含め、フィールドの追加方法も含めて解説する。ソースコードはDjangoビギナーが40分で掲示板アプリを作る方法を元にする。 デフォルト値ありのフィールドを追加する【警告なし】 まず、安全なデフォルト値ありの</description>
     </item>
     
     <item>
@@ -210,7 +255,7 @@
     </item>
     
     <item>
-      <title>【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】</title>
+      <title>【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】</title>
       <link>https://noauto-nolife.com/post/django-forms-validate/</link>
       <pubDate>Wed, 29 Sep 2021 09:16:49 +0900</pubDate>
       
@@ -444,12 +489,12 @@
     </item>
     
     <item>
-      <title>Djangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】</title>
+      <title>Djangoで多対多のリレーションの構造と作り方、テンプレートで表示する方法【ManyToManyField】</title>
       <link>https://noauto-nolife.com/post/django-many-to-many/</link>
       <pubDate>Fri, 27 Nov 2020 17:20:39 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-many-to-many/</guid>
-      <description>多対多のリレーションを作って、いざ表示させようとした時、普通に{{ content.allergy }}などと指定してしまうとこうなってしまう。 表示できていない。正しく指定するとこうなる。 コードの解説 結論から言うと、テンプレートでの表示に問題がある。下記のようにすると表示できる。 &amp;lt;td&amp;gt;{% for allergy in content.allergy.all %}{{ allergy }} {% endfor %}&amp;lt;/td&amp;gt; .all属性を使用しforループで並べる。 結論 多対多のリレーションはアレルギー表示や動画等のタグ表示、エンジニアの担当言語やスキル</description>
+      <description>多対多のリレーションの作り方 多対多のモデルは以下のように作る。 from django.db import models class Allergy(models.Model): name = models.CharField(verbose_name=&amp;quot;アレルギー名&amp;quot;,max_length=10) def __str__(self): return self.name class Menu(models.Model): name = models.CharField(verbose_name=&amp;quot;品名&amp;quot;,max_length=20) breakfast = models.BooleanField(verbose_n</description>
     </item>
     
     <item>
@@ -458,7 +503,7 @@
       <pubDate>Wed, 18 Nov 2020 08:23:05 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-non-nullable/</guid>
-      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコードはどうするか</description>
+      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 この警告文の解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコード</description>
     </item>
     
     <item>
@@ -476,7 +521,7 @@
       <pubDate>Wed, 11 Nov 2020 17:57:49 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-paginator/</guid>
-      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されないので、例えば検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態でページネーションを実装する術を解説する。 流れ views</description>
+      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。 しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されない。例えば、検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態で、ページネーションを実装する術を解説する。 流れ views</description>
     </item>
     
     <item>
@@ -485,7 +530,7 @@
       <pubDate>Wed, 11 Nov 2020 17:56:10 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-or-and-search/</guid>
-      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 結論 結論から言うと、コード(views.py)はこ</description>
+      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 クエリビルダでスペース区切りのキーワード検索をする</description>
     </item>
     
     <item>
@@ -566,7 +611,7 @@
       <pubDate>Tue, 20 Oct 2020 14:20:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-django/</guid>
-      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHTMLの作成(5分</description>
+      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 注意事項 40分はあくまでも私見に基づく目安である点をご留意いただきたい。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) vi</description>
     </item>
     
   </channel>

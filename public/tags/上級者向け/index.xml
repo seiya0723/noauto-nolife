@@ -6,10 +6,145 @@
     <description>Recent content in 上級者向け on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 03 Feb 2022 08:08:33 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 20 Aug 2022 17:55:28 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</title>
+      <link>https://noauto-nolife.com/post/django-star-review/</link>
+      <pubDate>Sat, 20 Aug 2022 17:55:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-star-review/</guid>
+      <description>最終的にこのようになる。 今回はテンプレートのwithとcenterは不使用とした。 そして、5つ星の内、4つ星でレビューした場合、空の星を1つ描画する仕様に仕立てた。 参照 【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】 HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星</description>
+    </item>
+    
+    <item>
+      <title>【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</title>
+      <link>https://noauto-nolife.com/post/django-models-time-calc/</link>
+      <pubDate>Sat, 13 Aug 2022 14:44:47 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-time-calc/</guid>
+      <description>例えば、勉強時間や筋トレ時間を記録するウェブアプリを作るとする。 この時に、ネックになるのが、時間を記録するモデルフィールド。 IntegerFieldで記録するべきか、DatetimeFieldでtimedeltaを使うか。 いずれにせよ、合計や平均などを出さないといけないので、このフィールド選択を間違えると後々大変なことになる。 フォームの形式も考慮する必要がある。 そこで、本記事では、時間を記録する方</description>
+    </item>
+    
+    <item>
+      <title>【Django】Cookieをサーバーサイドで操作する</title>
+      <link>https://noauto-nolife.com/post/django-control-cookie/</link>
+      <pubDate>Fri, 12 Aug 2022 16:32:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-control-cookie/</guid>
+      <description>カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。 簡易掲示板における名前など、一度入力したデータを再度入力させる場合も、クライアントにとっては使い勝手が悪いので、Cookieをセットして表示させたほうが良い。 サンプルとなるコードはいつもの40分Django。 views.pyにてCookieをセット、参照する testというキー名、値はHelloでC</description>
+    </item>
+    
+    <item>
+      <title>【Django】カレンダーを更に改良する</title>
+      <link>https://noauto-nolife.com/post/django-calendar-custom/</link>
+      <pubDate>Mon, 08 Aug 2022 16:16:36 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-calendar-custom/</guid>
+      <description>カレンダー機能に年月指定をするリンクとフォームを用意した。 ソースコード https://github.com/seiya0723/django_calendar_custom</description>
+    </item>
+    
+    <item>
+      <title>【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】</title>
+      <link>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</link>
+      <pubDate>Sat, 30 Jul 2022 08:46:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</guid>
+      <description>手元のディレクトリ内で雛形が分散していたので、自分用に作った。 コードは40分Django簡易掲示板から。allauthはsettings.pyにID認証を、ユーザーモデルはDjangoのGitHubから何も書き加えていないモデルをそのまま流用した。 以前はfirst_nameとlast_nameを1つのhandle_nameにしたが、今回は元に戻した。 雛形をすぐにDLして書き換えができるようにGit</description>
+    </item>
+    
+    <item>
+      <title>【Django】アップロードするファイルサイズに上限をセットする【validators】</title>
+      <link>https://noauto-nolife.com/post/django-fileupload-limit-size/</link>
+      <pubDate>Fri, 13 May 2022 16:04:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-fileupload-limit-size/</guid>
+      <description>本記事ではアップロードするファイルサイズに上限をセットする方法を解説する。 ただし、ビュー側にファイルサイズの上限をチェックする機能を実装させるのではなく、以前紹介した、『【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】』を元に実装させる。 ビューに判定機能を実装させる方法でも問題はないが、投稿するビューが二分</description>
+    </item>
+    
+    <item>
+      <title>WebSocketとポーリング、ロングポーリングの違い【非同期通信と双方向通信】</title>
+      <link>https://noauto-nolife.com/post/polling-long-polling-websocket-difference/</link>
+      <pubDate>Thu, 05 May 2022 08:53:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/polling-long-polling-websocket-difference/</guid>
+      <description>前説 非同期通信 非同期通信とは、2人以上のユーザーがそれぞれ自分たちの都合のいいタイミングでデータを受信し、通信をすることである。 同期通信とは、リクエストを送信した後、レスポンスを受け取るまで何もできない。 非同期通信ではリクエスト送信をJavaScriptに任せることで、リクエスト送信後からレスポンスを受け取るまでに、続けて処理を行うことができる。 この非同期通信を行うために使用する技術がAjaxであ</description>
+    </item>
+    
+    <item>
+      <title>【Django】カスタムユーザーモデルに記録した自分のユーザー情報を編集する【ユーザー情報変更画面に】</title>
+      <link>https://noauto-nolife.com/post/django-custom-user-model-mydata-edit/</link>
+      <pubDate>Tue, 03 May 2022 17:23:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-user-model-mydata-edit/</guid>
+      <description>Djangoでは新規会員登録したとき、記録できるのはユーザーIDとパスワードだけで、会員登録フォームの追加をしない限り、姓名の記録はできない。 仮に新規会員登録した時にフォームが与えられていたとしても、後にその編集をするページがなければ仕方ない。(例えば、姓名が変わった時に変更する手続きをするフォームページを用意していないと、後々問題になる) そこで、本記事ではユーザー情報を編集するページを作る方法を</description>
+    </item>
+    
+    <item>
+      <title>【Django】channelsを使ってWebSocketを実現させる【チャットサイト開発に】</title>
+      <link>https://noauto-nolife.com/post/startup-django-channels-web-socket/</link>
+      <pubDate>Mon, 02 May 2022 21:34:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-channels-web-socket/</guid>
+      <description>django-channelsのチュートリアルに倣って、WebSocketを使ったチャットサイトを作った。 とても実装難易度が高く、一筋縄では行かない。そのため実装手順の備忘録として本記事をまとめておく。 わかっていること WebSocketとはプロトコルのこと、HTTPでは実現できない双方向通信を実現させるためのもの 前もってHTTPでWebSocketの通信経路を作る必要がある WebSocketの経路</description>
+    </item>
+    
+    <item>
+      <title>【Django】Ajax(jQuery)でロングポーリングを実装させる【チャットサイトの開発に】</title>
+      <link>https://noauto-nolife.com/post/django-ajax-long-polling/</link>
+      <pubDate>Thu, 28 Apr 2022 16:06:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax-long-polling/</guid>
+      <description>Ajaxを使えば、ページを部分的に更新させることができる。 そして、setTimeoutを使うことで、指定した時間おきにページを部分的に更新することができる。 ただ、Ajaxによるリクエストとレスポンスを繰り返している(ただのポーリング)ようでは、ウェブサーバーに負担が掛かってしまう。 クラウドサーバーなどは死活問題で、負荷が増えると課金してサーバーの強化などを考慮しなければならない。 そこで、リクエスト</description>
+    </item>
+    
+    <item>
+      <title>【Django】スペース区切りでOR・AND検索を改定する</title>
+      <link>https://noauto-nolife.com/post/django-or-and-search-revision/</link>
+      <pubDate>Fri, 15 Apr 2022 16:42:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-or-and-search-revision/</guid>
+      <description>以前、紹介した『Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】』では少々ビューの見通しが悪い。 また、他の絞り込みなどの機能も考慮した場合、キーワードが無かった場合にリダイレクトをするのはおかしい。 そこで本記事では検索処理の改定を行う。 views.py from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm from django.db.models import Q class IndexView(View): def get(self, request, *args, **kwargs): context = {} query = Q() if &amp;quot;search&amp;quot; in request.GET search = request.GET[&amp;quot;search&amp;quot;] raw_words = search.replace(&amp;quot; &amp;quot;,&amp;quot; &amp;quot;).split(&amp;quot; &amp;quot;) words = [ w for w in raw_words if</description>
+    </item>
+    
+    <item>
+      <title>【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】</title>
+      <link>https://noauto-nolife.com/post/django-models-origin-validators/</link>
+      <pubDate>Fri, 15 Apr 2022 14:33:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-origin-validators/</guid>
+      <description>例えば、簡易掲示板にて、特定の禁止ワードを含んだ投稿を拒否したい場合。 承認制にして、管理者が文面を確認した上で公開を許す方法もあるが、それでは人件費がかかる。 なるべく保存する前に禁止ワードを含んでいるかどうかをチェックする仕組みにしたい。 そういう時は、validatorsに独自の関数を割り当てれば良い。 コードは40分Djangoから流用して作る models.py 不快語を除外するバリデーションを実装させる。 from django.db import models</description>
+    </item>
+    
+    <item>
+      <title>【Django】Ajaxで複数枚の画像を一回のリクエストでアップロードする。</title>
+      <link>https://noauto-nolife.com/post/django-ajax-multi-img-upload/</link>
+      <pubDate>Mon, 21 Mar 2022 18:25:17 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax-multi-img-upload/</guid>
+      <description>経緯 例えば、1つのデータに対して、複数枚の画像を記録したい場合がある。 ECサイトの商品がその例で、1つの商品に対して、複数枚の画像を記録する必要がある。 しかも、商品に対して記録する画像の枚数が10枚以上になる可能性もあり、これを1つのモデルに画像フィールド10個などとしているようではDBの構造上の問題に発展する。 だからこのような場合は、商品モデルと商品画像モデルの1対多のリレーションを組むべきであ</description>
+    </item>
+    
+    <item>
+      <title>DjangoRestFrameworkは本当に必要なのか？【Restful化とAjaxでデータを送信するときの問題】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-need-ajax/</link>
+      <pubDate>Sat, 26 Feb 2022 08:40:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-need-ajax/</guid>
+      <description>結論 DjangoはデフォルトでRestfulに対応している(Ajaxを使ってPUT,DELETE,PATCHメソッドの送信ができる)。 ただし、PUT,DELETE,PATCHのリクエストボディを参照するのはやや複雑。 そのため、それらのメソッドを使ってリクエストを送信する場合、DRFを使ったほうが良い。 素のDjangoはRestfulに対応している AjaxでPUT,DELETE,PATCHメソッドを</description>
+    </item>
+    
+    <item>
+      <title>Djangoで現在時刻以降の日時入力を促すのであれば、MinValueValidatorを使用する【DateTimeField】</title>
+      <link>https://noauto-nolife.com/post/django-thereafter-timezone-now/</link>
+      <pubDate>Mon, 07 Feb 2022 07:28:47 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-thereafter-timezone-now/</guid>
+      <description>予約システムなどでは、指定した日時以降の日時を入れてもらう必要がある。 入力できる日時にフロント側で制限をかけることができれば良いが、それだけでは限界がある。 そこで、Djangoではmodelsのフィールドオプションであるvalidatorsを使用することで、指定した日時以降の日時だけを入力できるようになる。 MinValueValidatorsで現在時刻以降の日時入力をさせる モデルはこうかけばよい。</description>
+    </item>
     
     <item>
       <title>【Stripe】Djangoにクレジットカード決済機能を実装させる</title>
@@ -30,15 +165,6 @@
     </item>
     
     <item>
-      <title>【Django】Cookieをサーバーサイドで操作する</title>
-      <link>https://noauto-nolife.com/post/django-control-cookie/</link>
-      <pubDate>Mon, 03 Jan 2022 16:32:07 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-control-cookie/</guid>
-      <description>カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。 簡易掲示板における名前など、一度入力したデータを再度入力させる場合も、クライアントにとっては使い勝手が悪いので、Cookieをセットして表示させたほうが良い。 サンプルとなるコードはいつもの40分Django。 views.pyにてCookieをセット、参照する testというキー名、値はHelloでC</description>
-    </item>
-    
-    <item>
       <title>【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】</title>
       <link>https://noauto-nolife.com/post/django-auth-not-allauth/</link>
       <pubDate>Sat, 01 Jan 2022 07:00:48 +0900</pubDate>
@@ -53,7 +179,7 @@
       <pubDate>Sat, 25 Dec 2021 20:57:33 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-year-month-search-and-list/</guid>
-      <description>Djangoで月別アーカイブと年月計算を実装させる 元となったコードは40分Djangoにモデルへ投稿日を記録するフィールド(dt)を追加している。 forms.py from django import forms from django.core.validators import MinValueValidator,MaxValueValidator from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [&amp;quot;comment&amp;quot;] #モデルを継承しないフォームクラス class YearMonthForm(forms.Form): year = forms.IntegerField() month = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)]) モデルを継承しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。 views.py 年月別アーカイブのリ</description>
+      <description>Djangoで月別アーカイブと年月計算を実装させる 元となったコードは40分Djangoにモデルへ投稿日を記録するフィールド(dt)を追加している。 forms.py from django import forms from django.core.validators import MinValueValidator,MaxValueValidator from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [&amp;quot;comment&amp;quot;] #モデルを使用しないフォームクラス class YearMonthForm(forms.Form): year = forms.IntegerField() month = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)]) モデルを使用しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。 views.py 年月別アーカイブのリ</description>
     </item>
     
     <item>
@@ -224,7 +350,7 @@
       <pubDate>Sat, 07 Aug 2021 16:28:40 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-models-add-method-template-attribute/</guid>
-      <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.Integer</description>
+      <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.IntegerField</description>
     </item>
     
     <item>
@@ -270,15 +396,6 @@
       
       <guid>https://noauto-nolife.com/post/django-deploy-ec2/</guid>
       <description>Herokuとは違ってサーバーが日本にもあり、なおかつ課金すれば大型のウェブアプリでもインターネット上に公開できる、それがAWS。 本記事ではAWSのEC2を使用し、画像アップロード可能な簡易掲示板をデプロイ工程を解説する。 デプロイ対象のコード ソースコードは以下。 https://github.com/seiya0723/django_fileupload 作り方は下記を参照。 Djangoで画像及びファイルをアップロードする方法 必要なもの クレジットカード AWSアカウント Djangoのsett</description>
-    </item>
-    
-    <item>
-      <title>【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】</title>
-      <link>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</link>
-      <pubDate>Tue, 22 Jun 2021 08:46:59 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</guid>
-      <description>手元のディレクトリ内で雛形が分散していたので、自分用に作った。 コードは40分Django簡易掲示板から。allauthはsettings.pyにID認証を、ユーザーモデルはDjangoのGitHubから何も書き加えていないモデルをそのまま流用した。 雛形をすぐにDLして書き換えができるようにGitHubに公開する。 users/models.py ほぼ流用。Handle_nameは元のfirst_nameとlast_nameに分割</description>
     </item>
     
     <item>
@@ -399,16 +516,16 @@
     </item>
     
     <item>
-      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法</title>
+      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法【1対多】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</link>
       <pubDate>Sat, 20 Feb 2021 11:13:37 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</guid>
-      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 カスタムユーザーモデルを外部キーとして指定する まず、settings.pyに下記のような設定がされているとする。usersアプリのCustomUserクラスを指定している。 AUTH_USER_MODEL = &#39;users.CustomUser&#39; 続いて、任意のアプリのモデルを編集する。 from django.db import models from django.utils import timezone from django.conf</description>
+      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 本記事では、下記記事で解説したカスタムユーザーモデルを実装したことを前提として話を進める。 【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】 カスタムユーザーモデルを外部キー</description>
     </item>
     
     <item>
-      <title>DjangoでUUIDを主キーとしたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
+      <title>DjangoでUUIDを主キーとし、first_nameとlast_nameを1つにまとめたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-uuid/</link>
       <pubDate>Mon, 15 Feb 2021 15:47:57 +0900</pubDate>
       
@@ -486,15 +603,6 @@
       
       <guid>https://noauto-nolife.com/post/django-m2m-form/</guid>
       <description>本記事ではDjangoで一対多、多対多のリレーションを実装した上で、forms.pyを使用し、フォームをバリデーションする。 また、単にforms.pyからフォームのテンプレートを作るだけでなく、複数指定が要求されるフォームの作り方についても解説する。 コードはDjangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】から流用。 【1】forms.pyを使用したフォ</description>
-    </item>
-    
-    <item>
-      <title>Django-allauthのログインページの装飾を装飾する【テンプレートの追加】</title>
-      <link>https://noauto-nolife.com/post/django-allauth-loginpage/</link>
-      <pubDate>Wed, 11 Nov 2020 17:59:11 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-allauth-loginpage/</guid>
-      <description>django-allauthにより、比較的簡単に認証関係の機能を実装できる。だが、装飾まではサポートされていない。 このような殺風景なログイン画面が表示されてしまうのだ。これをそのままにして顧客に納品させるわけにはいかない。 本記事ではこのdjango-allauthのログインページを装飾させる方法を解説する。 Django-allauthのインストールとsettings.py、urls.pyの設定 まず</description>
     </item>
     
     <item>

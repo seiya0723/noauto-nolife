@@ -6,10 +6,28 @@
     <description>Recent content in Heroku on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 17 Dec 2021 11:24:38 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 26 Aug 2022 17:37:46 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/heroku/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</title>
+      <link>https://noauto-nolife.com/post/heroku-counter-plan/</link>
+      <pubDate>Fri, 26 Aug 2022 17:37:46 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-counter-plan/</guid>
+      <description>2022年8月26日、メールボックスを見るとHerokuからメールが届いていた。内容は下記。 まとめると、こうなる 2022年11月28日からHerokuの一部サービスで無料プランが無くなる 対象はHerokuDynos、HerokuPostgres、Redisの3つ 有料化以降、WEB(7$)+DB(9$)のウェブアプリをデプロイする時、一ヶ月につき16$支払う必要がある さあ困った。 これまでHeroku</description>
+    </item>
+    
+    <item>
+      <title>Herokuの無料プランで独自ドメインを設定し、HTTPS通信を行う方法【ムームードメイン&#43;Cloudflare】</title>
+      <link>https://noauto-nolife.com/post/heroku-origin-domain/</link>
+      <pubDate>Tue, 22 Feb 2022 08:13:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-origin-domain/</guid>
+      <description>無料プランでは独自ドメインのセットは出来てもHTTPS通信を行うことは出来ない。 そのため、Cloudflareをリバースプロキシとして機能させ、クライアントからCloudflare間まで暗号化させる。 一見安全性に欠けるような形だが、AWSにデプロイした際も、クライアントからリバースプロキシ間までしか暗号化はされないので、それほど問題ではない。 気になるなら、有料プランを使用してHTTPS通信を行うと</description>
+    </item>
     
     <item>
       <title>LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】</title>
@@ -107,7 +125,7 @@
       <pubDate>Mon, 26 Oct 2020 11:16:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-deploy-heroku/</guid>
-      <description>プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。 クラウドにインストールさせるライブラリの定義(requirements.txt) pycharm等の統合開発環境を使用していて、仮想環境が動いている場合(既にターミナルの左側に(venv)等の表示がされている場合)、下記コマンドを実行して、requirements.txtを生成する。 pip freeze &amp;gt; requirements.txt もし、仮想環境を使</description>
+      <description>プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。 requirements.txt もし、仮想環境を使用していない場合、virtualenvを使って必要なライブラリをpipコマンドにてインストールする。 -- HerokuCLIをインストール Herokuではherokuコマンドを実行して、事前にログインをした上でデプロイを行う。下記からインストールする。 https://devcenter.heroku.com/ja/articles/heroku-cli herokuコマンドを実行して、デプロ</description>
     </item>
     
   </channel>

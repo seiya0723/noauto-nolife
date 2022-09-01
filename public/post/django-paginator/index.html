@@ -151,9 +151,11 @@
 
 <p>殆どのプロジェクトで実装必須になるページネーション。</p>
 
-<p>Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されないので、例えば検索とページネーションを両立させることはできない。</p>
+<p>Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。</p>
 
-<p>本記事では他のURLパラメーターを保持した状態でページネーションを実装する術を解説する。</p>
+<p>しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されない。例えば、検索とページネーションを両立させることはできない。</p>
+
+<p>本記事では他のURLパラメーターを保持した状態で、ページネーションを実装する術を解説する。</p>
 
 <h2 id="流れ">流れ</h2>
 
@@ -179,38 +181,36 @@ class ProductView(View):
 
     def get(self, request, *args, **kwargs):
 
+        context = {}
+        query   = Q()
+
         if &quot;search&quot; in request.GET:
 
-            if request.GET[&quot;search&quot;] == &quot;&quot; or request.GET[&quot;search&quot;].isspace():
-                return redirect(&quot;shopping:index&quot;)
+            #全角スペースを半角スペースに変換、半角スペース区切りで文字列のリストに仕立てる。
+            #(ex) 『&quot;Django　教科書 入門&quot;』 → 『&quot;Django 教科書 入門&quot;』 → 『[&quot;Django&quot;,&quot;教科書&quot;,&quot;入門&quot;]』
+            words       = request.GET[&quot;search&quot;].replace(&quot;　&quot;,&quot; &quot;).split(&quot; &quot;)
 
-            search      = request.GET[&quot;search&quot;].replace(&quot;　&quot;,&quot; &quot;)
-            search_list = search.split(&quot; &quot;)
-
-            query       = Q() 
-            for word in search_list:
+            for word in words:
                 query &amp;= Q(name__contains=word)
 
-            #.order_byメソッドで並び替えしないと、paginatorでWARNINGが出る。
-            data        = Product.objects.filter(query).order_by(&quot;id&quot;)
-        else:
-            data    = Product.objects.all().order_by(&quot;id&quot;)
 
+        #TIPS: .order_by()で並び替えしないと、paginatorでWARNINGが出る。
+        products    = Product.obejcts.filter(query).order_by(&quot;id&quot;)
 
         #===========ここからページネーション処理================
-        paginator   = Paginator(data,4)
+        paginator   = Paginator(products,4)
 
+        # ?page=2 などの指定がある場合、
         if &quot;page&quot; in request.GET:
-            data    = paginator.get_page(request.GET[&quot;page&quot;])
+            context[&quot;products&quot;] = paginator.get_page(request.GET[&quot;page&quot;])
         else:
-            data    = paginator.get_page(1)
-
-
-        context = { &quot;data&quot;:data }
+            context[&quot;products&quot;] = paginator.get_page(1)
 
         return render(request,&quot;shopping/index.html&quot;,context)
 
     def post(self, request, *args, **kwargs):
+
+        # 中略 #
 
         return redirect(&quot;shopping:index&quot;)
 
@@ -219,15 +219,54 @@ index   = ProductView.as_view()
 
 <p>ページネーションをする時は<code>.order_by()</code>を明示的に指定してソーティングしていないとWARNINGが出る点に注意。</p>
 
-<p><code>Paginator(data,4)</code>はクエリによって検索されたデータ(<code>data</code>)を4個区切りでページネーションにするオブジェクトを返す。つまり1ページにつき4つのレコードが表示される。</p>
+<p><code>Paginator(products,4)</code>はクエリによって検索されたデータ(<code>products</code>)を4個区切りでページネーションにするオブジェクトを返す。つまり1ページにつき4つのレコードが表示される。</p>
 
 <p>続いて、<code>paginator.get_page()</code>で指定されたページを表示させる。もし、<code>request.GET[&quot;page&quot;]</code>の値が数値ではない場合は最初のページを表示させ、マイナス値もしくは最後のページよりも大きい場合は最後のページを返す。だからバリデーションも不要。</p>
 
 <p>他にも似たようなものに、<code>.page()</code>メソッドがあるがこちらは不適切な値を入力すると例外処理が発生する。処理時間とコードが長くなるため非推奨。</p>
 
-<h2 id="カスタムテンプレートタグを追加-インストールさせる">カスタムテンプレートタグを追加、インストールさせる</h2>
+<h2 id="普通にページネーションを表示する-問題ありの方法">普通にページネーションを表示する【問題ありの方法】</h2>
 
-<p>今回は単にページネーションを実装するのではなく、検索のパラメーターも維持した状態でページ移動も行わなければならない。公式にはURLパラメータを両立させるための機能は用意されていない。故に、テンプレートタグを新たに作り、インストールさせ実装する。</p>
+<p>まず、普通にページネーションを実装させたらどうなるか、その挙動を確認する。</p>
+
+<p>実践ではこの方法は使い物にならないので、とにかくページネーションを実装させたい場合は、次の項へスキップすると良い。</p>
+
+<p>テンプレート上で、下記を追加する。</p>
+
+<pre><code>&lt;ul class=&quot;pagination justify-content-center&quot;&gt;
+    {% if products.has_previous %}
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?page=1&quot;&gt;最初のページ&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?page={{ products.previous_page_number }}&quot;&gt;前のページ&lt;/a&gt;&lt;/li&gt;
+    {% else %}
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;最初のページ&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;前のページ&lt;/a&gt;&lt;/li&gt;
+    {% endif %}
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;{{ products.number }}&lt;/a&gt;&lt;/li&gt;
+    {% if products.has_next %}
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?page={{ products.next_page_number }}&quot;&gt;次のページ&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?page={{ products.paginator.num_pages }}&quot;&gt;最後のページ&lt;/a&gt;&lt;/li&gt;
+    {% else %}
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;次のページ&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;最後のページ&lt;/a&gt;&lt;/li&gt;
+    {% endif %}
+&lt;/ul&gt;
+</code></pre>
+
+<p>これで、ページネーションが実装できる。</p>
+
+<p>ただ、検索をした後にページネーションで移動してもらいたい。</p>
+
+<p>検索をした時、 <code>?search=test</code>のようにURLにクエリが表示されるが、その状態でページ移動をすると、<code>?search=test&amp;page=2</code>の状態ではなく、ただの<code>?page=2</code>になってしまうのである。</p>
+
+<p>つまり、検索をした状態でページ移動ができない。</p>
+
+<p>この問題を解消するため、カスタムテンプレートタグを使う。</p>
+
+<h2 id="ページネーション用のカスタムテンプレートタグを追加-インストール">ページネーション用のカスタムテンプレートタグを追加、インストール</h2>
+
+<p>前項で説明したとおり、今回は単にページネーションを実装するのではなく、検索のパラメーターも維持した状態でページ移動も行わなければならない。</p>
+
+<p>公式にはURLパラメータを両立させるための機能は用意されていない。故に、テンプレートタグを新たに作り、インストールさせ実装する。</p>
 
 <p>まず、アプリのディレクトリ内に<code>templatetags</code>ディレクトリを作る。スペルミスに注意。</p>
 
@@ -237,17 +276,16 @@ index   = ProductView.as_view()
 <p>続いて、<code>templatetags</code>に<code>param_change.py</code>を作る。中身は下記。</p>
 
 <pre><code>from django import template
-
 register = template.Library()
 
 @register.simple_tag()
-def url_replace(request, field, value):
-    dict_           = request.GET.copy()
-    dict_[field]    = value
-    return dict_.urlencode()
+def url_replace(request, key, value):
+    copied      = request.GET.copy()
+    copied[key] = value
+    return copied.urlencode()
 </code></pre>
 
-<p>それから、<code>settings.py</code>の<code>INSTALLED_APPS</code>に上記のカスタムテンプレートを指定する。</p>
+<p>それから、<code>settings.py</code>の<code>INSTALLED_APPS</code>に上記のカスタムテンプレートを指定する。<code>アプリ名.ディレクトリ名.Pythonファイル名</code>のように指定すればOK</p>
 
 <pre><code>INSTALLED_APPS = [
     'django.contrib.admin',
@@ -261,7 +299,92 @@ def url_replace(request, field, value):
 ]
 </code></pre>
 
-<p>これでテンプレート側で<code>{% url_replace request field vale %}</code>が使えるようになる。<code>request</code>と<code>field</code>と<code>value</code>はいずれも引数。</p>
+<p>これでテンプレート側で<code>{% load %}</code><code>{% url_replace request field vale %}</code>が使えるようになる。<code>request</code>と<code>field</code>と<code>value</code>はいずれも引数。</p>
+
+<h3 id="補足1-register-simple-tag-とは何か">【補足1】@register.simple_tag()とは何か？</h3>
+
+<p>@マークから始まる文言をPythonではデコレータと呼ぶ。このデコレータは、後続に書かれた関数に機能を追加させるためのものだ。</p>
+
+<p>つまり、デコレータである<code>@register.simple_tag()</code>は、関数の<code>def url_replace(request, key, value):</code>に対して、テンプレートタグとしての機能を追加している。</p>
+
+<p>このデコレータを追加していなければ、Djangoのテンプレート側から、<code>url_replace</code>を呼び出すことはできない。</p>
+
+<h3 id="補足2-関数のurl-replaceは何をしているのか">【補足2】関数のurl_replaceは何をしているのか。</h3>
+
+<p>引数の指定により、次のページ、もしくは前のページのリンクを生成することができる。</p>
+
+<p>受取する引数は3つ。リクエストオブジェクト、クエリストリングで書き換えたいキー、クエリストリングで書き換えたいキーに対応する値。</p>
+
+<p>まず、リクエストオブジェクトからクエリストリングが生成される。?search=test&amp;page=2にアクセスした状態で、下記を実行すると</p>
+
+<pre><code>print(request.GET.urlencode())
+</code></pre>
+
+<p>出力されるのはこんな感じ。</p>
+
+<pre><code>search=test&amp;page=2
+</code></pre>
+
+<p>クエリストリングの?を除いた形になる。</p>
+
+<p>リクエストオブジェクトから値を取り出すには下記のようにする。</p>
+
+<pre><code>print(request.GET[&quot;search&quot;])
+</code></pre>
+
+<p>上記を実行すると、下記のように表示される。</p>
+
+<pre><code>test
+</code></pre>
+
+<p>いまアクセスしているページが2ページで、次のページのリンクを表示させたい時、生成するクエリストリングは?search=test&amp;page=3である。</p>
+
+<p>故に、リクエストオブジェクトからpageの値を書き換える必要がある。ただし、リクエストオブジェクトはイミュータブルな値。つまり書き換えはできないので、下記はエラーになってしまう。</p>
+
+<pre><code>#request.GET[&quot;page&quot;]    = 3
+</code></pre>
+
+<p>そのため、リクエストオブジェクトの値を書き換えるには、<code>.copy()</code>を実行して書き換え可能な形にする必要がある。</p>
+
+<pre><code>copied  = request.GET.copy()
+</code></pre>
+
+<p>その上で、pageの値を書き換える。</p>
+
+<pre><code>copied[&quot;page&quot;]  = 3
+</code></pre>
+
+<p>ただし、今回の書き換え対象のキーと値は、引数として受け取っているので、</p>
+
+<pre><code>copied[key]     = value
+</code></pre>
+
+<p>となる。</p>
+
+<h3 id="補足3-クエリストリング-パラメータ-どっち">【補足3】クエリストリング？パラメータ？どっち？</h3>
+
+<p>以下はいずれも同じ意味。</p>
+
+<ul>
+<li>クエリストリング</li>
+<li>クエリ文字列</li>
+<li>URLパラメータ</li>
+<li>パラメータ</li>
+</ul>
+
+<p>そのため、表記ゆれを防ぐため本ブログ内では統一したいところではある。</p>
+
+<p>しかし、あくまでも個人的な解釈ではクエリストリングは全体、パラメータは部分的な物として捉えている。</p>
+
+<p>ちなみに、上記から、?を除いたものをURLエンコード、もしくはパーセントエンコーディングと呼ばれている。これは全くの別物。冒頭に?が付かなければ、リンクとして機能しない。</p>
+
+<p>以下、参考程度に。</p>
+
+<ul>
+<li><a href="https://e-words.jp/w/URL%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF.html">https://e-words.jp/w/URL%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF.html</a></li>
+<li><a href="https://e-words.jp/w/%E3%82%AF%E3%82%A8%E3%83%AA%E6%96%87%E5%AD%97%E5%88%97.html">https://e-words.jp/w/%E3%82%AF%E3%82%A8%E3%83%AA%E6%96%87%E5%AD%97%E5%88%97.html</a></li>
+<li><a href="https://e-words.jp/w/URL%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89.html">https://e-words.jp/w/URL%E3%82%A8%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89.html</a></li>
+</ul>
 
 <h2 id="テンプレートの修正">テンプレートの修正</h2>
 
@@ -273,17 +396,17 @@ def url_replace(request, field, value):
 <p>順番は{% load static %}の後で良い。続いて、ページネーション部はこうなる。</p>
 
 <pre><code>&lt;ul class=&quot;pagination justify-content-center&quot;&gt;
-    {% if data.has_previous %}
+    {% if products.has_previous %}
     &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?{% url_replace request 'page' '1' %}&quot;&gt;最初のページ&lt;/a&gt;&lt;/li&gt;
-    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?{% url_replace request 'page' data.previous_page_number %}&quot;&gt;前のページ&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?{% url_replace request 'page' products.previous_page_number %}&quot;&gt;前のページ&lt;/a&gt;&lt;/li&gt;
     {% else %}
     &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;最初のページ&lt;/a&gt;&lt;/li&gt;
     &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;前のページ&lt;/a&gt;&lt;/li&gt;
     {% endif %}
-    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;{{ data.number }}&lt;/a&gt;&lt;/li&gt;
-    {% if data.has_next %}
-    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?{% url_replace request 'page' data.next_page_number %}&quot;&gt;次のページ&lt;/a&gt;&lt;/li&gt;
-    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?{% url_replace request 'page' data.paginator.num_pages %}&quot;&gt;最後のページ&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;{{ products.number }}&lt;/a&gt;&lt;/li&gt;
+    {% if products.has_next %}
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?{% url_replace request 'page' products.next_page_number %}&quot;&gt;次のページ&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot; href=&quot;?{% url_replace request 'page' products.paginator.num_pages %}&quot;&gt;最後のページ&lt;/a&gt;&lt;/li&gt;
     {% else %}
     &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;次のページ&lt;/a&gt;&lt;/li&gt;
     &lt;li class=&quot;page-item&quot;&gt;&lt;a class=&quot;page-link&quot;&gt;最後のページ&lt;/a&gt;&lt;/li&gt;
@@ -291,9 +414,15 @@ def url_replace(request, field, value):
 &lt;/ul&gt;
 </code></pre>
 
-<p><code>data</code>の中にページネーションの属性が含まれているので有効に利用する。もう少しコード行数を少なく書くこともできるが、今回は見やすさを重視した。</p>
+<p><code>products</code>の中にページネーションの属性が含まれているので有効に利用する。もう少しコード行数を少なく書くこともできるが、今回は見やすさを重視した。</p>
 
 <p>ちなみに、各要素に指定されているクラス名はBootstrap由来。</p>
+
+<h3 id="補足1-load-static-と-load-param-change-はどちらが先に書くべきか">【補足1】{% load static %}と{% load param_change %}はどちらが先に書くべきか？</h3>
+
+<p>どちらが先でも問題はない。</p>
+
+<p>ただ、テンプレートの継承を意味する、<code>{% extends %}</code>は一番最初に書かなければならない。loadよりも後にextendsを書いてはならない。</p>
 
 <h2 id="動作">動作</h2>
 
@@ -311,9 +440,21 @@ def url_replace(request, field, value):
 
 <p>他のパラメータを保持した状態でページ移動ができるので、複雑な絞り込みや検索などが要求される通販サイトの作成に有効。</p>
 
-<p>最初の1ページ目で、パラメータがある場合とない場合で内容重複する問題はmetaタグのcanonicalを指定しておけばSEO的に問題はないと思う。それか、<code>.copy()</code>を使用してリクエストをコピーした後、パラメータを追加して返却するぐらいでしょう。</p>
+<p>最初の1ページ目で、パラメータがある場合とない場合で内容重複する問題はmetaタグのcanonicalを指定しておけばSEO的に問題はないと思う。</p>
 
-<h2 id="参考文献">参考文献</h2>
+<h3 id="どうしてもカスタムテンプレートタグを使いたくない場合は">どうしてもカスタムテンプレートタグを使いたくない場合は？</h3>
+
+<p>カスタムテンプレートタグの実装はアプリ内に新たにディレクトリを作って、<code>INSTALLED_APPS</code>まで編集する必要もあり、少々手間がかかる。</p>
+
+<p>更に、カスタムテンプレートタグはサーバーサイドの処理であり、安易に増やしていけば当然サーバーに負荷がかかる。</p>
+
+<p>そこでJavaScriptを使った方法を推奨する。パラメータの書き換えはJSでも再現できる。</p>
+
+<p><a href="/post/javascript-query-change-and-get-method/">JavaScriptでクエリパラメータを書き換え、GETメソッドを送信する【通販サイトなどの絞り込み検索に有効】</a></p>
+
+<p>サーバーの処理の負担を軽減させることができるので、スペックの低いサーバーを使用している場合はこちらが良いだろう。</p>
+
+<h3 id="参考文献">参考文献</h3>
 
 <p>いずれも公式のドキュメントに書かれてある。</p>
 
@@ -329,9 +470,13 @@ def url_replace(request, field, value):
 
 <p><a href="https://stackoverflow.com/questions/2047622/how-to-paginate-django-with-other-get-variables">https://stackoverflow.com/questions/2047622/how-to-paginate-django-with-other-get-variables</a></p>
 
-<h2 id="ソースコード">ソースコード</h2>
+<!--
 
-<p><a href="https://github.com/seiya0723/simple_ecsite">https://github.com/seiya0723/simple_ecsite</a></p>
+## ソースコード
+
+https://github.com/seiya0723/simple_ecsite
+
+-->
 </div>
 
 
@@ -371,15 +516,15 @@ def url_replace(request, field, value):
         <h2 class="relate_content_title">関連記事</h2>
         
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/startup-django-stripe/">【Stripe】Djangoにクレジットカード決済機能を実装させる<time class="relate_time">2022年2月3日 08時08分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする<time class="relate_time">2022年9月1日 08時49分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-drf-api/">Django Rest Frameworkにて、APIを提供する<time class="relate_time">2022年1月28日 15時12分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/ubuntu-composer-error/">composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】<time class="relate_time">2022年8月29日 17時39分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-admin-save-method/">【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】<time class="relate_time">2022年1月28日 13時30分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-admin-command-not-found/">【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】<time class="relate_time">2022年8月25日 13時48分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-view-def-and-class/">【Django】ビュー関数とビュークラスの違い、一覧と使い方<time class="relate_time">2022年1月22日 17時39分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-star-review/">【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示<time class="relate_time">2022年8月20日 17時55分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-error-messages-origin/">【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】<time class="relate_time">2022年1月16日 17時57分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/pycharm-config/">Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法<time class="relate_time">2022年8月10日 17時50分</time></a>
         
         
     </footer>
@@ -469,23 +614,15 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -497,7 +634,27 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -505,7 +662,7 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -525,15 +682,7 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -541,19 +690,19 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -565,15 +714,11 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -581,11 +726,23 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -597,15 +754,11 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -621,6 +774,10 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
         </span>
         
@@ -629,7 +786,7 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -649,6 +806,18 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
         </span>
         
@@ -657,7 +826,11 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -669,11 +842,23 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -685,15 +870,7 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -721,15 +898,11 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -738,6 +911,10 @@ def url_replace(request, field, value):
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -753,15 +930,11 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -781,15 +954,31 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -805,11 +994,23 @@ def url_replace(request, field, value):
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
         </span>
         
     </section>
@@ -820,25 +1021,25 @@ def url_replace(request, field, value):
     <section class="sidebar_panel">
         <div class="sidebar_panel_title">News</div>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-deploy-docker-centos/">docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-django-stripe/">【Stripe】Djangoにクレジットカード決済機能を実装させる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-composer-error/">composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-ubuntu-docker/">UbuntuでUbuntuのdockerイメージを作るまで</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-samba/">UbuntuにSambaをインストールしてファイルサーバー化させる</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-drf-api/">Django Rest Frameworkにて、APIを提供する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/heroku-counter-plan/">Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-save-method/">【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-command-not-found/">【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-method-put-delete-patch/">【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/">Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-view-def-and-class/">【Django】ビュー関数とビュークラスの違い、一覧と使い方</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-jupyter-lab/">Jupyter Labを始める</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-error-messages-origin/">【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-star-review/">【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-allauth-custom-user-model-sendgrid/">【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-data-transport/">別のUbuntuにデータを輸送する</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-mogrify/">mogrifyコマンドを使って画像を一括クロップ(トリミング)する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-time-calc/">【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</a>
         
     </section>
 

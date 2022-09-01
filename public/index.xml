@@ -6,10 +6,667 @@
     <description>Recent content on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 03 Feb 2022 15:11:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 01 Sep 2022 08:49:01 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>WindowsでPythonとPycharmをインストールする</title>
+      <link>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</link>
+      <pubDate>Thu, 01 Sep 2022 08:49:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</guid>
+      <description>Pythonのインストール Pythonのインストーラーを配布しているサイト( https://www.python.org/downloads/ )へ行く。 Download Python 3.10.6 の部分をクリックする。インストーラーがDLされる。 ( ※下記画像の赤枠部分。3.10.6は2022年9月現在のバージョンであり、今後バージョンが更新される。最新版のPythonインストーラーをDLする。 ) ダウンロードフォルダにて、先ほどDLしたインストーラーのファイルがあるので、ダブルクリックしてPytho</description>
+    </item>
+    
+    <item>
+      <title>composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】</title>
+      <link>https://noauto-nolife.com/post/ubuntu-composer-error/</link>
+      <pubDate>Mon, 29 Aug 2022 17:39:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-composer-error/</guid>
+      <description>ある日、composerコマンドを実行してLaravelプロジェクトを作ろうにも、エラーが出て作れない。 composer create-project --prefer-dist laravel/laravel testlaraveler1 を実行すると下記が得られる。 Creating a &amp;quot;laravel/laravel&amp;quot; project at &amp;quot;./testlaraveler1&amp;quot; Info from https://repo.packagist.org: #StandWithUkraine Installing laravel/laravel (v9.3.5) - Downloading laravel/laravel (v9.3.5) - Installing laravel/laravel (v9.3.5): Extracting archive Created project in /home/akagi/Documents/programming/php/laravel_test03/testlaraveler1 &amp;gt; @php -r &amp;quot;file_exists(&#39;.env&#39;) || copy(&#39;.env.example&#39;, &#39;.env&#39;);&amp;quot; Loading composer repositories with package information Updating dependencies Your requirements could not be resolved to an installable set of packages. Problem 1 - spatie/laravel-ignition[1.0.0, ..., 1.4.0] require ext-curl * -&amp;gt; it is missing from your system. Install or enable PHP&#39;s curl extension. - Root composer.json requires spatie/laravel-ignition ^1.0 -&amp;gt; satisfiable by spatie/laravel-ignition[1.0.0, ..., 1.4.0]. To enable extensions, verify that they are enabled in your .ini files: - /etc/php/8.1/cli/php.ini - /etc/php/8.1/cli/conf.d/10-opcache.ini - /etc/php/8.1/cli/conf.d/10-pdo.ini - /etc/php/8.1/cli/conf.d/15-xml.ini - /etc/php/8.1/cli/conf.d/20-calendar.ini - /etc/php/8.1/cli/conf.d/20-ctype.ini - /etc/php/8.1/cli/conf.d/20-dom.ini - /etc/php/8.1/cli/conf.d/20-exif.ini - /etc/php/8.1/cli/conf.d/20-ffi.ini - /etc/php/8.1/cli/conf.d/20-fileinfo.ini - /etc/php/8.1/cli/conf.d/20-ftp.ini - /etc/php/8.1/cli/conf.d/20-gettext.ini - /etc/php/8.1/cli/conf.d/20-iconv.ini - /etc/php/8.1/cli/conf.d/20-phar.ini -</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにSambaをインストールしてファイルサーバー化させる</title>
+      <link>https://noauto-nolife.com/post/ubuntu-samba/</link>
+      <pubDate>Sat, 27 Aug 2022 10:04:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-samba/</guid>
+      <description>本記事はプライベート用として運用するため、セキュリティは全く考慮していない。 本記事に倣って作ったファイルサーバーは、LAN内の端末であれば、いずれも自由に読み書きできてしまうので注意。 インストールする sudo apt install samba 共有ディレクトリを作る 今回はホームディレクトリに作った mkdir ~/share chmod 777 ~/share 設定する sudo vi /etc/samba/smb.conf を開いて、末尾に下記を記入。UserNameには任意のユーザー名を指定 [share] path = /home/UserName/share browseable = yes writable = yes guest ok = yes guest only = yes create mode = 0777</description>
+    </item>
+    
+    <item>
+      <title>Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</title>
+      <link>https://noauto-nolife.com/post/heroku-counter-plan/</link>
+      <pubDate>Fri, 26 Aug 2022 17:37:46 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-counter-plan/</guid>
+      <description>2022年8月26日、メールボックスを見るとHerokuからメールが届いていた。内容は下記。 まとめると、こうなる 2022年11月28日からHerokuの一部サービスで無料プランが無くなる 対象はHerokuDynos、HerokuPostgres、Redisの3つ 有料化以降、WEB(7$)+DB(9$)のウェブアプリをデプロイする時、一ヶ月につき16$支払う必要がある さあ困った。 これまでHeroku</description>
+    </item>
+    
+    <item>
+      <title>【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</title>
+      <link>https://noauto-nolife.com/post/django-admin-command-not-found/</link>
+      <pubDate>Thu, 25 Aug 2022 13:48:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-command-not-found/</guid>
+      <description>いわゆる、PATHが通っていない状態 Pythonのインストーラーでインストールする時、『add Python 3.x to PATH』というチェック項目がある。 そこにチェックを入れることで、pythonコマンドが使えるようになる。 参照元:https://bluebirdofoz.hatenablog.com/entry/2019/01/19/141007 django-adminコマンドが使えない時、 django-admin startproject config . pythonか</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする</title>
+      <link>https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/</link>
+      <pubDate>Wed, 24 Aug 2022 08:58:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/</guid>
+      <description>公式のRaspberry Pi OSはサーバーとして機能させるには不必要なものがあまりにも多すぎる。 ここは普段使い慣れているUbuntuをインストールしたい。 ということで、Ubuntu18.04からRaspberry Piにサーバー版をインストールさせる 必要なもの ラズパイ3B本体 MicroSD(64GBぐらいが理想) MicroSDとUSBの変換器(PCにMicroSDのコネクタがある場合は不要) インストー</description>
+    </item>
+    
+    <item>
+      <title>Jupyter Labを始める</title>
+      <link>https://noauto-nolife.com/post/startup-jupyter-lab/</link>
+      <pubDate>Mon, 22 Aug 2022 12:14:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-jupyter-lab/</guid>
+      <description>インストール pip install jupyterlab サーバー起動 jupyter lab ファイルの起動 jupyterlabが動いている環境下から適当にディレクトリを作り、ipynbファイルを貼り付ける 下記パスにアクセスする #-------------作ったディレクトリ↓----↓ipynbファイル http://localhost:8888/lab/tree/test/test.ipynb</description>
+    </item>
+    
+    <item>
+      <title>【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</title>
+      <link>https://noauto-nolife.com/post/django-star-review/</link>
+      <pubDate>Sat, 20 Aug 2022 17:55:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-star-review/</guid>
+      <description>最終的にこのようになる。 今回はテンプレートのwithとcenterは不使用とした。 そして、5つ星の内、4つ星でレビューした場合、空の星を1つ描画する仕様に仕立てた。 参照 【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】 HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星</description>
+    </item>
+    
+    <item>
+      <title>別のUbuntuにデータを輸送する</title>
+      <link>https://noauto-nolife.com/post/ubuntu-data-transport/</link>
+      <pubDate>Mon, 15 Aug 2022 18:20:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-data-transport/</guid>
+      <description>別のPCのUbuntuにデータを全て輸送する必要があったりする。 そういう時、手順をまとめておかないと手直しに返って時間がかかる。 よって、必要なデータ移行作業をここに列挙しておく。 準備編 前もって、下記をやっておく(任意) サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 【保存版】Ubuntu18.04をインストールした後に真</description>
+    </item>
+    
+    <item>
+      <title>【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</title>
+      <link>https://noauto-nolife.com/post/django-models-time-calc/</link>
+      <pubDate>Sat, 13 Aug 2022 14:44:47 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-time-calc/</guid>
+      <description>例えば、勉強時間や筋トレ時間を記録するウェブアプリを作るとする。 この時に、ネックになるのが、時間を記録するモデルフィールド。 IntegerFieldで記録するべきか、DatetimeFieldでtimedeltaを使うか。 いずれにせよ、合計や平均などを出さないといけないので、このフィールド選択を間違えると後々大変なことになる。 フォームの形式も考慮する必要がある。 そこで、本記事では、時間を記録する方</description>
+    </item>
+    
+    <item>
+      <title>【Django】Cookieをサーバーサイドで操作する</title>
+      <link>https://noauto-nolife.com/post/django-control-cookie/</link>
+      <pubDate>Fri, 12 Aug 2022 16:32:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-control-cookie/</guid>
+      <description>カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。 簡易掲示板における名前など、一度入力したデータを再度入力させる場合も、クライアントにとっては使い勝手が悪いので、Cookieをセットして表示させたほうが良い。 サンプルとなるコードはいつもの40分Django。 views.pyにてCookieをセット、参照する testというキー名、値はHelloでC</description>
+    </item>
+    
+    <item>
+      <title>【Python3】BeautifulSoup4の使い方、検証のコード作成方法、役立つリンク集のまとめ【保存版】</title>
+      <link>https://noauto-nolife.com/post/startup-python3-beautifulsoup4/</link>
+      <pubDate>Thu, 11 Aug 2022 09:27:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-python3-beautifulsoup4/</guid>
+      <description>スクレイピングの用途は様々。 画像などのメディアファイルのDL、サイトの監視、ウェブアプリへの活用などなど。 よって、なるべくすぐにスクレイピング用のコードを作れる状態にしておきたいのだが、そういう時に限ってBeautifulSoupの仕様を忘れたり、コードを漁ったりしないと作れない。 そこで、本記事ではBeautifulSoup4の使い方を含め、検証方法等やドキュメントなどをまとめる。 【request</description>
+    </item>
+    
+    <item>
+      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/pycharm-config/</link>
+      <pubDate>Wed, 10 Aug 2022 17:50:56 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
+      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
+    </item>
+    
+    <item>
+      <title>【Django】カレンダーを更に改良する</title>
+      <link>https://noauto-nolife.com/post/django-calendar-custom/</link>
+      <pubDate>Mon, 08 Aug 2022 16:16:36 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-calendar-custom/</guid>
+      <description>カレンダー機能に年月指定をするリンクとフォームを用意した。 ソースコード https://github.com/seiya0723/django_calendar_custom</description>
+    </item>
+    
+    <item>
+      <title>【Python】pipで翻訳系ライブラリのgoogletransをインストールする【※バージョン指定しないとエラー】</title>
+      <link>https://noauto-nolife.com/post/python-google-trans-install/</link>
+      <pubDate>Wed, 03 Aug 2022 15:25:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-google-trans-install/</guid>
+      <description>グーグル翻訳を手軽に試すことができる、Pythonライブラリのgoogletrans。 だが、インストールするバージョンの指定を間違えると、正常に動作してくれない不具合が報告されている。 下記コマンドを実行してインストールするべし。 pip install googletrans==3.1.0a0 その上で、下記を実行する。 from googletrans import Translator translator = Translator() string_ja = &amp;quot;Pythonの勉強は楽しい&amp;quot; trans_en = translator.translate(string_ja, dest=&amp;quot;en&amp;quot;) print(trans_en.text) 正常に翻訳されている。</description>
+    </item>
+    
+    <item>
+      <title>JavaScript(jQuery)でストップウォッチとタイマーを作る【勉強や運動の記録などに】</title>
+      <link>https://noauto-nolife.com/post/javascript-stopwatch-and-timer/</link>
+      <pubDate>Sun, 31 Jul 2022 16:26:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-stopwatch-and-timer/</guid>
+      <description>記録系のウェブアプリに欠かせないストップウォッチとタイマー これをJavaScript(jQuery)で再現する。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.6.0.min.js&amp;quot; integrity=&amp;quot;sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;p-2 my-2&amp;quot;&amp;gt; &amp;lt;h2&amp;gt;タイマー&amp;lt;/h2&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_hour&amp;quot; type=&amp;quot;number&amp;quot; min=&amp;quot;0&amp;quot; max=&amp;quot;99&amp;quot; value=&amp;quot;0&amp;quot;&amp;gt;時間&amp;lt;/label&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_minute&amp;quot; type=&amp;quot;number&amp;quot; min=&amp;quot;0&amp;quot; max=&amp;quot;59&amp;quot; value=&amp;quot;0&amp;quot;&amp;gt;分&amp;lt;/label&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_second&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>【Django】operatorでモデルのフィールド、メソッドを指定してソーティングをする【ランキングの実装に有効】</title>
+      <link>https://noauto-nolife.com/post/django-attr-method-sort/</link>
+      <pubDate>Sat, 30 Jul 2022 17:48:17 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-attr-method-sort/</guid>
+      <description>例えば、モデルがこうだったとする。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) score = models.IntegerField(verbose_name=&amp;quot;スコア&amp;quot;) def twice(self): return self.score*2 ビューでこのようにすることで、モデルフィールドもしくはモデルメソッドでソーティングができる。 from django.shortcuts import render,redirect from django.views import View from .models import</description>
+    </item>
+    
+    <item>
+      <title>【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】</title>
+      <link>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</link>
+      <pubDate>Sat, 30 Jul 2022 08:46:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</guid>
+      <description>手元のディレクトリ内で雛形が分散していたので、自分用に作った。 コードは40分Django簡易掲示板から。allauthはsettings.pyにID認証を、ユーザーモデルはDjangoのGitHubから何も書き加えていないモデルをそのまま流用した。 以前はfirst_nameとlast_nameを1つのhandle_nameにしたが、今回は元に戻した。 雛形をすぐにDLして書き換えができるようにGit</description>
+    </item>
+    
+    <item>
+      <title>【Django】1回のリクエストで複数のデータを投稿する【request.POST.getlist()】</title>
+      <link>https://noauto-nolife.com/post/django-multi-send/</link>
+      <pubDate>Fri, 15 Jul 2022 14:13:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-multi-send/</guid>
+      <description>例えば、複数のデータを投稿しなければならない時。 フォームに内容を書いて投稿(POSTリクエスト)、投稿内容が表示される(レスポンス) フォームに内容を書いて投稿(POSTリクエスト)、投稿内容が表示される(レスポンス) フォームに内容を書いて投稿(POSTリクエスト)、投稿内容が表示される(レスポンス) フォームに内容を書いて投稿(POSTリクエスト)、投稿内容が表示される(レスポンス) などと複数回リク</description>
+    </item>
+    
+    <item>
+      <title>【保存版】Ajax(jQuery)の仕組みと仕様</title>
+      <link>https://noauto-nolife.com/post/jquery-ajax-detail/</link>
+      <pubDate>Fri, 15 Jul 2022 11:42:54 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-ajax-detail/</guid>
+      <description>本記事は、たびたび忘れがちなAjaxのパラメータや引数などの意味を思い返すための備忘録である。 let form_elem = &amp;quot;#form_area&amp;quot;; let data = new FormData( $(form_elem).get(0) ); let url = $(form_elem).prop(&amp;quot;action&amp;quot;); let method = $(form_elem).prop(&amp;quot;method&amp;quot;); $.ajax({ url: url, // リクエストの送信先 type: method, // 送信するリクエストのメソッド data: data, // 送信するデータ(FormDataオブジェクト型) processData: false, // dataに指定した内容をURLエンコードして送信(?page=2などの形式)にするかの指定。FormDataオブジェクトの場合はfalseを指定 contentType: false,</description>
+    </item>
+    
+    <item>
+      <title>【JavaScript】.replace()で検索した文字列すべてを置換したい場合は正規表現を使う</title>
+      <link>https://noauto-nolife.com/post/javascript-replace-trap/</link>
+      <pubDate>Thu, 14 Jul 2022 17:30:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-replace-trap/</guid>
+      <description>例えば、以下の文字列の,をに書き換えたいとする。 let data = &amp;quot;aaa,bbb,ccc&amp;quot;; 文字列の置換処理は.replace()で実現できるから、こうすれば良いと思いがちだが実は違う。 console.log(data.replace(&amp;quot;,&amp;quot;,&amp;quot; &amp;quot;)); // aaa bbb,ccc デフォルトでは最初にヒットした文字列しか置換してくれない。検索した文字列を全て置換したい場合、このようにする。 console.log(data.replace( /,/g , &amp;quot; &amp;quot;)); // aaa bbb ccc ちなみにPythonでは.replace()を使うと全て置換してくれる。だから、Pythonでreplaceを使</description>
+    </item>
+    
+    <item>
+      <title>【Django】自前でLoginRequiredMixinのような物を作るには、dispatchメソッドを使う【多重継承】</title>
+      <link>https://noauto-nolife.com/post/django-create-origin-mixin/</link>
+      <pubDate>Mon, 11 Jul 2022 12:06:17 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-create-origin-mixin/</guid>
+      <description>LoginRequiredMixinのように、ビューが実行される前に何かの処理を実行したい場合。 dispatchメソッドに処理を書くと良いだろう。ただ、全てのビュークラスにdispatchメソッドを書いているようでは手間がかかる。 そこで、多重継承して利用できるように仕立てる。つまり、LoginRequiredMixinのような物を自前で作るのだ。 ソースコード 下記のようにdispatchメソッドを含</description>
+    </item>
+    
+    <item>
+      <title>DjangoでカレンダーのUIを作る</title>
+      <link>https://noauto-nolife.com/post/django-calendar-ui/</link>
+      <pubDate>Sat, 09 Jul 2022 15:42:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-calendar-ui/</guid>
+      <description>『Djangoビギナーが40分で掲示板アプリを作る方法』を元に、カレンダーのUIを作る。 1ヶ月分のデータをまとめて表示させたい系のウェブアプリの作成に活用できる。 calendar.py このcalendar.pyをアプリディレクトリ内に作る。 import datetime def create_calendar(year,month): #今月の初日を指定 dt = datetime.date(year,month,1) #calendarはweekのリスト、weekは日付のリスト calendar = [] week = [] #月始めが日曜日以外の場合、空欄を追加する。 if dt.weekday() != 6: week = [ {&amp;quot;day&amp;quot;:&amp;quot;&amp;quot;} for i in range(dt.weekday()+1) ] &amp;quot;&amp;quot;&amp;quot; #内</description>
+    </item>
+    
+    <item>
+      <title>【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする</title>
+      <link>https://noauto-nolife.com/post/django-openpyxl/</link>
+      <pubDate>Fri, 08 Jul 2022 08:15:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-openpyxl/</guid>
+      <description>Djangoでエクセルファイルを新規作成し、ダウンロード(以下DL)する。 ファイルのDLと言うと、ファイルのアップロードと同じようにやればいいだろうと思うかもしれない。 実際、ファイルをストレージに保存し、そのURLへリダイレクトしてDLする方法でも、問題なく動作する。しかし、これではストレージが圧迫される。 そこで今回は、サーバーのメモリ内に保存されているファイルをバイナリに変換し、レスポンスとして</description>
+    </item>
+    
+    <item>
+      <title>JavaScript(jQuery)で神経衰弱</title>
+      <link>https://noauto-nolife.com/post/javascript-memory-weakness/</link>
+      <pubDate>Thu, 30 Jun 2022 14:57:25 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-memory-weakness/</guid>
+      <description>canvas未使用、JavaScript(jQuery)で神経衰弱を作ってみた。 突貫で作ったためかなり雑ではあるが、トランプを使用したゲームに流用できそうだ。 デモページ カードの素材は ( https://opengameart.org/content/playing-cards-vector-png )より。ウラ面は自前で作った。 https://seiya0723.github.io/memory_cards_game/ ソースコード https://github.com/seiya0723/memory_cards_game HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; img { width:200px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;table id=&amp;quot;table&amp;quot;&amp;gt;&amp;lt;/table&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ // カードの画像: https://opengameart.org/content/playing-cards-vector-png //カードのデータ形式 var CARD_DATA = [ { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_clubs.png&amp;quot; }, { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_diamonds.png&amp;quot; }, { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_hearts.png&amp;quot; }, { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_spades.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_clubs.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_diamonds.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_hearts.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_spades.png&amp;quot; }, {</description>
+    </item>
+    
+    <item>
+      <title>Sendgridのアカウントが一時的に凍結された場合の対処法と対策</title>
+      <link>https://noauto-nolife.com/post/sendgrid-account-suspended/</link>
+      <pubDate>Tue, 28 Jun 2022 07:03:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/sendgrid-account-suspended/</guid>
+      <description>某日、Sendgridからメールが届く。内容は下記。 Dear Twilio SendGrid Customer, Your Twilio SendGrid account has been temporarily suspended as we have detected that your account&#39;s credentials (password and/or API key) are publicly listed on the code repository GitHub. This is a dangerous practice which may result in your account being used by unauthorized third parties to send malicious content and which may incur damage to your reputation as a quality sender and charges against your account for high usage that you did not perform. Before you ask for your account&#39;s reactivation, please ensure that you: 1) Change your account&#39;s password: https://sendgrid.com/docs/ui/account-and-settings/resetting-your-username-and-password. If your account was created using Heroku or IBM BlueMix, you must use our password reset form. 2) Delete and update exposed API keys in your account [APIのID] : https://sendgrid.com/docs/ui/account-and-settings/api-keys/#delete-an-api-key 3) Enable two-factor authentication for your account 4) Remove your account credentials and API keys from any public listings on code repositories or associated comments on sites such as GitHub or BitBucket. Please see the following link(s) for locations where your credentials</description>
+    </item>
+    
+    <item>
+      <title>Django-allauthのメールを使用したログイン方式で、アカウント新規作成時、確認URLにアクセスしていないにもかかわらず、ログインできてしまうのはなぜか？</title>
+      <link>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</link>
+      <pubDate>Sun, 19 Jun 2022 16:12:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</guid>
+      <description>allauthはそういう仕様になっているから。 前提として、下記記事の『メールアドレスとパスワードを使用した認証方法の実装』のコードを採用している場合に限る。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 メールの確認の仕様を考慮するとわかる アカウント新規作成時に送信されるメールの中にあるURL このURLに対してGETリクエスト送信 Django側はこのURLに対して</description>
+    </item>
+    
+    <item>
+      <title>【Django】settings.pyのINSTALLED_APPSにはどのように書くのが適切か【順番とapps】</title>
+      <link>https://noauto-nolife.com/post/django-settings-installed-apps/</link>
+      <pubDate>Sat, 18 Jun 2022 22:55:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-settings-installed-apps/</guid>
+      <description>公式の書き方 Django公式によると、下記のように書くのが適切。 INSTALLED_APPS = [ &amp;quot;bbs.apps.BbsConfig&amp;quot;, &#39;django.contrib.admin&#39;, &#39;django.contrib.auth&#39;, &#39;django.contrib.contenttypes&#39;, &#39;django.contrib.sessions&#39;, &#39;django.contrib.messages&#39;, &#39;django.contrib.staticfiles&#39;, ] 参照元: https://docs.djangoproject.com/ja/4.0/ref/applications/#configuring-applications 一部媒体における書き方 一方で一部の媒体では以下のように書かれてある。 INSTALLED_APPS = [ &amp;quot;bbs&amp;quot;, &#39;django.contrib.admin&#39;, &#39;django.contrib.auth&#39;, &#39;django.contrib.contenttypes&#39;, &#39;django.contrib.sessions&#39;, &#39;django.contrib.messages&#39;, &#39;django.contrib.staticfiles&#39;, ] どちらが正しいのか？ bbs/apps.pyにて、下記のように仕立てる。 from django.apps import AppConfig class BbsConfig(AppConfig): default_auto_field = &#39;django.db.models.BigAutoField&#39; name = &#39;bbs&#39; verbose_name = &amp;quot;簡易掲示板&amp;quot; これは管理サイトで操作するモデルの一覧を表記する際、verbose_nameを追加</description>
+    </item>
+    
+    <item>
+      <title>【Django】ユーザー作成時に何らかの処理を行う方法【saveメソッドオーバーライド】</title>
+      <link>https://noauto-nolife.com/post/django-createuser-save-method-override/</link>
+      <pubDate>Sat, 18 Jun 2022 17:17:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-createuser-save-method-override/</guid>
+      <description>カスタムユーザーモデルを使用している時、ユーザーアカウント新規作成時に何らかの処理を行って欲しい場合。 そういう時はSignupFormのsaveメソッドをオーバーライドする。 SignUpFormのコード from django.contrib.auth.forms import UserCreationForm from .models import CustomUser class SignupForm(UserCreationForm): class Meta(UserCreationForm.Meta): model = CustomUser fields = (&amp;quot;username&amp;quot;) def save(self, request, commit=True, *args, **kwargs): #ユーザーモデルのオブジェクト作成(ただし、保存をしない) user = super().save(commit=False) #生のパスワードをハッシュ化した上で、モデルオブジェクトの属性にセットする。 user.set_password(self.cleaned_data[&amp;quot;password1&amp;quot;]) #保存す</description>
+    </item>
+    
+    <item>
+      <title>要件定義書の書き方</title>
+      <link>https://noauto-nolife.com/post/startup-create-rdd/</link>
+      <pubDate>Sat, 04 Jun 2022 17:13:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-create-rdd/</guid>
+      <description>開発者になるために必要な要件定義書の書き方と必要なものを解説する。 そもそも要件定義とは？ システムを作るために決めるべきこと。 とりわけ、システムにおける5W1Hに基づいて、取り決めを行う必要がある。 この取り決めが曖昧であれば、受注者と顧客間での認識に食い違いが生まれる。 要件定義書に必要なもの 要件定義書に正解はない。 必ずしも下記の全ての項目を作る必要はない。必要に応じて省略し、簡潔に済ませることもわか</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにWordpressをインストールする【MariaDB&#43;Apache】</title>
+      <link>https://noauto-nolife.com/post/startup-wordpress-ubuntu/</link>
+      <pubDate>Sat, 04 Jun 2022 16:46:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-wordpress-ubuntu/</guid>
+      <description>手元のPCにWordpressをインストールして試したいが、OSに直にインストールするのは避けたい。 そういう時、VirtualBoxにインストールしたUbuntuへ、Wordpressをインストールすると良いだろう。 流れ Apacheのインストール MariaDBのインストールとDB・ユーザーの作成 PHPのインストール Wordpressのインストール Apacheのインストール インストール sudo apt install apache2 自動起</description>
+    </item>
+    
+    <item>
+      <title>JavaScript(jQuery)でQRコードを表示させる</title>
+      <link>https://noauto-nolife.com/post/javascript-qrcode/</link>
+      <pubDate>Mon, 23 May 2022 11:23:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-qrcode/</guid>
+      <description>例えば、ユーザーの一部がPCでの操作をやめて、スマホで操作したいと思ったとする。 こういう時QRコードを表示させる、ブラウザのアドオンや機能を使えば良いが、ユーザーにそれを強いるのはやや酷である。 そこで、jQueryを使用して、QRコードを簡単に表示させると良いだろう。 コード &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; window.addEventListener(&amp;quot;load&amp;quot; , function (){ let qrtext = location.href; let utf8qrtext = unescape(encodeURIComponent(qrtext)); $(&amp;quot;#qrcode&amp;quot;).html(&amp;quot;&amp;quot;); $(&amp;quot;#qrcode&amp;quot;).qrcode({width:160,height:160,text:utf8qrtext}); }); &amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;qrcode&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる。 結論 下記を参照。 https://github.com/jeromeetienne/jquery-qrcode</description>
+    </item>
+    
+    <item>
+      <title>【Django】context_processorsを使い、全ページに対して同じコンテキストを提供する【サイドバーのカテゴリ欄、ニュース欄などに有効】</title>
+      <link>https://noauto-nolife.com/post/django-context-processors/</link>
+      <pubDate>Tue, 17 May 2022 09:24:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-context-processors/</guid>
+      <description>以前は、ビュークラスの継承を使ったり、MIDDLEWAREでリクエストオブジェクトを操作したりすることでテンプレートに対してデータを提供していたが、これではやや無駄が多い。 Djangoにはcontext_processorsという、任意の処理を行った後contextを追加できる便利な機能があるので、こちらを使う。 context_processorsを作る まず、アプリディレクトリ内部に、custom</description>
+    </item>
+    
+    <item>
+      <title>【Django】モデルクラスのfilterメソッドで検索・絞り込みをする</title>
+      <link>https://noauto-nolife.com/post/django-filter-method/</link>
+      <pubDate>Mon, 16 May 2022 10:19:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-filter-method/</guid>
+      <description>モデルクラスを使用してデータをDBから取り出す時、filterメソッドを使用することで、取り出しの条件を指定することができる。 完全一致の場合(=) =を使用することで完全一致のデータを取り出すことができる。 topics = Topic.objects.filter(id=3) 主キーに対して、=を実行した時、取り出されるデータは1個もしくは0個になる。 そのため、上記のやり方だとforループしなければ、データを取り出すことができない for topic in topics: print(topic) そこで、単一のモデルオブ</description>
+    </item>
+    
+    <item>
+      <title>【Django】ファイルアップロード時にファイル名をリネーム(改名)する</title>
+      <link>https://noauto-nolife.com/post/django-fileupload-rename/</link>
+      <pubDate>Fri, 13 May 2022 17:18:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-fileupload-rename/</guid>
+      <description>方法論として、2つある。ビューから書き換える方法と、モデルに独自のバリデーションを仕込む方法の2つである。 ビューからファイル名を書き換える request.FILES[&amp;quot;image&amp;quot;].nameから書き換えができる。 request.FILES[&amp;quot;image&amp;quot;].name = &amp;quot;test.png&amp;quot; form = TopicForm(request.POST,request.FILES) # 以下略 # request.POSTに対しては書き換えできないが、何故かFILESに対しては書き換えできる。 もしちょっと気持ち悪いなと思う場合は下記にすると</description>
+    </item>
+    
+    <item>
+      <title>【Django】アップロードするファイルサイズに上限をセットする【validators】</title>
+      <link>https://noauto-nolife.com/post/django-fileupload-limit-size/</link>
+      <pubDate>Fri, 13 May 2022 16:04:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-fileupload-limit-size/</guid>
+      <description>本記事ではアップロードするファイルサイズに上限をセットする方法を解説する。 ただし、ビュー側にファイルサイズの上限をチェックする機能を実装させるのではなく、以前紹介した、『【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】』を元に実装させる。 ビューに判定機能を実装させる方法でも問題はないが、投稿するビューが二分</description>
+    </item>
+    
+    <item>
+      <title>【git/GitHub】コマンドと使い方の一覧</title>
+      <link>https://noauto-nolife.com/post/startup-git/</link>
+      <pubDate>Sun, 08 May 2022 10:58:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-git/</guid>
+      <description>後に追記予定あり。 必要と思われるものから順に、解説サイトから抜粋して並べている。 基本操作編 これができれば、作ったコードをGitHubに公開できる。 リポジトリを作る git init インデックスする(コミットするファイルを記録) 全てのファイルをインデックスする場合はこうする git add . コミットする git commit -m &amp;quot;ここにコミットのメッセージを記録する&amp;quot; 【補足1】ユーザー情報を入力していないため、コミットできな</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにインストールされているPythonをアップデートする</title>
+      <link>https://noauto-nolife.com/post/python3-update/</link>
+      <pubDate>Sat, 07 May 2022 22:33:21 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python3-update/</guid>
+      <description>経緯 非同期系ライブラリのacyncioのコードを動かそうとした時。 正常に動いてくれない。公式によると、これはPythonが3.7以上でなければ動いてくれないとのこと。( https://docs.python.org/3/library/asyncio.html ) そこでPythonのバージョンを調べたところ、 うわっ..私のPython古すぎ..!! ということで、UbuntuにインストールされているPythonをアップデートしておく。ちなみに2022年5月現時点では、Pythonの最新安定</description>
+    </item>
+    
+    <item>
+      <title>WebSocketとポーリング、ロングポーリングの違い【非同期通信と双方向通信】</title>
+      <link>https://noauto-nolife.com/post/polling-long-polling-websocket-difference/</link>
+      <pubDate>Thu, 05 May 2022 08:53:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/polling-long-polling-websocket-difference/</guid>
+      <description>前説 非同期通信 非同期通信とは、2人以上のユーザーがそれぞれ自分たちの都合のいいタイミングでデータを受信し、通信をすることである。 同期通信とは、リクエストを送信した後、レスポンスを受け取るまで何もできない。 非同期通信ではリクエスト送信をJavaScriptに任せることで、リクエスト送信後からレスポンスを受け取るまでに、続けて処理を行うことができる。 この非同期通信を行うために使用する技術がAjaxであ</description>
+    </item>
+    
+    <item>
+      <title>【Django】カスタムユーザーモデルに記録した自分のユーザー情報を編集する【ユーザー情報変更画面に】</title>
+      <link>https://noauto-nolife.com/post/django-custom-user-model-mydata-edit/</link>
+      <pubDate>Tue, 03 May 2022 17:23:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-user-model-mydata-edit/</guid>
+      <description>Djangoでは新規会員登録したとき、記録できるのはユーザーIDとパスワードだけで、会員登録フォームの追加をしない限り、姓名の記録はできない。 仮に新規会員登録した時にフォームが与えられていたとしても、後にその編集をするページがなければ仕方ない。(例えば、姓名が変わった時に変更する手続きをするフォームページを用意していないと、後々問題になる) そこで、本記事ではユーザー情報を編集するページを作る方法を</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】数値入力フォームを押しっぱなしで入力する仕様に仕立てる</title>
+      <link>https://noauto-nolife.com/post/jquery-number-form-auto/</link>
+      <pubDate>Tue, 03 May 2022 11:25:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-number-form-auto/</guid>
+      <description>以前、『【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる』で解説したフォームを、ボタン押しっぱなしでも入力できるように仕立てる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;spinner_area&amp;quot;&amp;gt; &amp;lt;input class=&amp;quot;spinner&amp;quot; type=&amp;quot;number&amp;quot; value=&amp;quot;0&amp;quot; max=&amp;quot;10&amp;quot; min=&amp;quot;0&amp;quot;&amp;gt; &amp;lt;button class=&amp;quot;spinner_button&amp;quot; type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;-1&amp;quot;&amp;gt;ー&amp;lt;/button&amp;gt; &amp;lt;button class=&amp;quot;spinner_button&amp;quot; type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;1&amp;quot; &amp;gt;＋&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; CSS .spinner_button{ user-select: none; cursor:pointer; padding:0.5rem; width: auto; vertical-align: middle; } .spinner_area input{ padding: 0.5rem; border: 0.1rem solid gray; border-radius: 0.25rem; font-size:</description>
+    </item>
+    
+    <item>
+      <title>【Django】channelsを使ってWebSocketを実現させる【チャットサイト開発に】</title>
+      <link>https://noauto-nolife.com/post/startup-django-channels-web-socket/</link>
+      <pubDate>Mon, 02 May 2022 21:34:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-channels-web-socket/</guid>
+      <description>django-channelsのチュートリアルに倣って、WebSocketを使ったチャットサイトを作った。 とても実装難易度が高く、一筋縄では行かない。そのため実装手順の備忘録として本記事をまとめておく。 わかっていること WebSocketとはプロトコルのこと、HTTPでは実現できない双方向通信を実現させるためのもの 前もってHTTPでWebSocketの通信経路を作る必要がある WebSocketの経路</description>
+    </item>
+    
+    <item>
+      <title>【Django】セッションの有効期限をセット、もしくはブラウザを閉じた時にセッションを無効化【settings.py】</title>
+      <link>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</link>
+      <pubDate>Sun, 01 May 2022 20:09:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</guid>
+      <description>セキュリティを担保したいサイトであれば、ブラウザが閉じてもセッションが残るデフォルトのDjango設定を疎ましく思うだろう。 そういう時は、settings.pyからセッションの有効期限の設定もしくは、ブラウザの終了を検知して無効化する設定を施せばよい。 セッションに有効期限をセットする【単位:秒】 例えば60秒後にセッションを切って、再ログインを要求させる場合はこうする。 SESSION_COOKIE_AGE = 60 デフォルトでは2週間にな</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】半径5km圏内の領域に円を描画する【circle】</title>
+      <link>https://noauto-nolife.com/post/leaflet-draw-circle-5000m/</link>
+      <pubDate>Sun, 01 May 2022 19:50:53 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-draw-circle-5000m/</guid>
+      <description>半径5km圏内に円を描画する。これで指定したポイントからの距離がつかめる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;コメント付きマップ&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&amp;quot; integrity=&amp;quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&amp;quot; crossorigin=&amp;quot;&amp;quot;/&amp;gt; &amp;lt;script src=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&amp;quot; integrity=&amp;quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&amp;quot; crossorigin=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; #map { height:90vh; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1 class=&amp;quot;bg-success text-white text-center&amp;quot;&amp;gt;コメント付きマップ&amp;lt;/h1&amp;gt; &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;row mx-0&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;map&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;set_gps&amp;quot; type=&amp;quot;button&amp;quot; value=&amp;quot;GPSを使って入力&amp;quot;&amp;gt; &amp;lt;form</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】クリックした地図上に画像を配置する【overlays】</title>
+      <link>https://noauto-nolife.com/post/leaflet-overlays/</link>
+      <pubDate>Sun, 01 May 2022 18:49:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-overlays/</guid>
+      <description>用途がいまいち思いつかないが、leaflet.jsでは地図上に画像を描画する事ができる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;コメント付きマップ&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&amp;quot; integrity=&amp;quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&amp;quot; crossorigin=&amp;quot;&amp;quot;/&amp;gt; &amp;lt;script src=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&amp;quot; integrity=&amp;quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&amp;quot; crossorigin=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; #map { height:90vh; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1 class=&amp;quot;bg-success text-white text-center&amp;quot;&amp;gt;コメント付きマップ&amp;lt;/h1&amp;gt; &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;row mx-0&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;map&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;set_gps&amp;quot; type=&amp;quot;button&amp;quot; value=&amp;quot;GPSを使って入力&amp;quo</description>
+    </item>
+    
+    <item>
+      <title>【Django】Ajax(jQuery)でロングポーリングを実装させる【チャットサイトの開発に】</title>
+      <link>https://noauto-nolife.com/post/django-ajax-long-polling/</link>
+      <pubDate>Thu, 28 Apr 2022 16:06:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax-long-polling/</guid>
+      <description>Ajaxを使えば、ページを部分的に更新させることができる。 そして、setTimeoutを使うことで、指定した時間おきにページを部分的に更新することができる。 ただ、Ajaxによるリクエストとレスポンスを繰り返している(ただのポーリング)ようでは、ウェブサーバーに負担が掛かってしまう。 クラウドサーバーなどは死活問題で、負荷が増えると課金してサーバーの強化などを考慮しなければならない。 そこで、リクエスト</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする</title>
+      <link>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</link>
+      <pubDate>Mon, 25 Apr 2022 10:56:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</guid>
+      <description>5年以上前にやったきり、完全に忘れているNginxでPHPを動かす方法。 本記事ではその手順をまとめる。 必要なパッケージのインストール sudo apt install nginx php php-fpm Nginxはサーバー、phpはPHP処理系、php-fpmはNginxから動作させるために必要なもの Nginxの設定 /etc/nginx/sites-available/defaultを書き換える。 sudo vi /etc/nginx/sites-available/default TODOと書かれた場所だけ編集する。 ## # You should look at the following</description>
+    </item>
+    
+    <item>
+      <title>【Django】スペース区切りでOR・AND検索を改定する</title>
+      <link>https://noauto-nolife.com/post/django-or-and-search-revision/</link>
+      <pubDate>Fri, 15 Apr 2022 16:42:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-or-and-search-revision/</guid>
+      <description>以前、紹介した『Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】』では少々ビューの見通しが悪い。 また、他の絞り込みなどの機能も考慮した場合、キーワードが無かった場合にリダイレクトをするのはおかしい。 そこで本記事では検索処理の改定を行う。 views.py from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm from django.db.models import Q class IndexView(View): def get(self, request, *args, **kwargs): context = {} query = Q() if &amp;quot;search&amp;quot; in request.GET search = request.GET[&amp;quot;search&amp;quot;] raw_words = search.replace(&amp;quot; &amp;quot;,&amp;quot; &amp;quot;).split(&amp;quot; &amp;quot;) words = [ w for w in raw_words if</description>
+    </item>
+    
+    <item>
+      <title>【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】</title>
+      <link>https://noauto-nolife.com/post/django-models-origin-validators/</link>
+      <pubDate>Fri, 15 Apr 2022 14:33:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-origin-validators/</guid>
+      <description>例えば、簡易掲示板にて、特定の禁止ワードを含んだ投稿を拒否したい場合。 承認制にして、管理者が文面を確認した上で公開を許す方法もあるが、それでは人件費がかかる。 なるべく保存する前に禁止ワードを含んでいるかどうかをチェックする仕組みにしたい。 そういう時は、validatorsに独自の関数を割り当てれば良い。 コードは40分Djangoから流用して作る models.py 不快語を除外するバリデーションを実装させる。 from django.db import models</description>
+    </item>
+    
+    <item>
+      <title>【Django】DateTimeFieldに自動的に現在時刻を入れるには、auto_now_addもしくはauto_nowフィールドオプションを指定【新規作成時・編集時の時刻】【※編集不可】</title>
+      <link>https://noauto-nolife.com/post/django-models-datetime-auto-now-add/</link>
+      <pubDate>Thu, 14 Apr 2022 17:07:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-datetime-auto-now-add/</guid>
+      <description>作成時と編集時の日時を自動的に入れたい場合は、auto_nowもしくはauto_now_addを指定する。 auto_nowはモデルのsaveメソッドが実行された時、auto_now_addはモデルに新規作成された時に、その時の日時が指定したフィールドに格納される。 つまり、モデルを下記のように組むと良いだろう。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コ</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptでクエリパラメータを書き換え、GETメソッドを送信する【通販サイトなどの絞り込み検索に有効】</title>
+      <link>https://noauto-nolife.com/post/javascript-query-change-and-get-method/</link>
+      <pubDate>Thu, 07 Apr 2022 13:31:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-query-change-and-get-method/</guid>
+      <description>クエリパラメータ(クエリ文字列、もしくはクエリストリング)はサーバーサイドだけのデータではない、JavaScriptも操作できる。 これを利用することで、サイトの絞り込み検索を作ることができる。 HTML 下記のように価格帯の入力欄を作る。 &amp;lt;h2&amp;gt;下限&amp;lt;/h2&amp;gt; &amp;lt;input class=&amp;quot;url_replace&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;min_price&amp;quot;&amp;gt; &amp;lt;h2&amp;gt;上限&amp;lt;/h2&amp;gt; &amp;lt;input class=&amp;quot;url_replace&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;max_price&amp;quot;&amp;gt; そして、次項のJavaScriptを読んでおく。 JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;.url_replace&amp;quot;).on(&amp;quot;keydown&amp;quot;, function(e) {</description>
+    </item>
+    
+    <item>
+      <title>【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】</title>
+      <link>https://noauto-nolife.com/post/django-login-required-mixin/</link>
+      <pubDate>Thu, 07 Apr 2022 13:19:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-login-required-mixin/</guid>
+      <description>ログインしていないユーザーが特定のページにアクセスしてきた時、処理を実行せず、ログインページにリダイレクトするには、LoginRequiredMixinを使う。 前提 予め前もって、認証を実装しておく。allauthを使っても、Djangoの備え付けの認証を使っても良い。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 【Django】allauth未使用でユーザー認証</description>
+    </item>
+    
+    <item>
+      <title>【OSM&#43;leaflet.js】ブラウザからGPS(位置情報)を取得し、マーカーを配置させる</title>
+      <link>https://noauto-nolife.com/post/leaflet-marker-gps-position/</link>
+      <pubDate>Fri, 01 Apr 2022 19:24:47 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-marker-gps-position/</guid>
+      <description>ブラウザから位置情報を取得し、leaflet.jsでマーカーを配置させる。 index.html 今回は、leaflet.jsを外部のファイルにまとめた。こうすることでleaflet.jsの追加機能を組みやすくなると思う。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;コメント付きマップ&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&amp;quot; integrity=&amp;quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&amp;quot; crossorigin=&amp;quot;&amp;quot;/&amp;gt; &amp;lt;script src=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&amp;quot; integrity=&amp;quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&amp;quot; crossorigin=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; #map { height:90vh; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1 class=&amp;quot;bg-success text-white text-center&amp;quot;&amp;gt;コメント</description>
+    </item>
+    
+    <item>
+      <title>素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】</title>
+      <link>https://noauto-nolife.com/post/django-xmlhttprequest-ajax-not-use-jquery/</link>
+      <pubDate>Fri, 01 Apr 2022 09:17:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-xmlhttprequest-ajax-not-use-jquery/</guid>
+      <description>CSRFトークンを取得する POSTメソッドを送信する時必要になるCSRFトークン。 前もって取得しておく。下記コードをページロードと同時に実行する。 function getCookie(name) { var cookieValue = null; if (document.cookie &amp;amp;&amp;amp; document.cookie !== &#39;&#39;) { var cookies = document.cookie.split(&#39;;&#39;); for (var i = 0; i &amp;lt; cookies.length; i++) { var cookie = cookies[i].trim(); // Does this cookie string begin with the name we want? if (cookie.substring(0, name.length + 1) === (name + &#39;=&#39;)) { cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); break; } } } return cookieValue; } const csrftoken = getCookie(&#39;csrftoken&#39;); ちなみに、このコードはDjango公式からの受け売りである。 https://docs.djangoproject.com/en/4.0/ref/csrf/ POSTメソッドを送信する 前項で取得したCSRFトーク</description>
+    </item>
+    
+    <item>
+      <title>Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】</title>
+      <link>https://noauto-nolife.com/post/linux-commandline-clipboard/</link>
+      <pubDate>Wed, 30 Mar 2022 09:13:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/linux-commandline-clipboard/</guid>
+      <description>とてつもなく長いコードをクリップボードにコピーして、誰かと共有したい時、エディタのカーソルを上に持っていって下まで下げてコピーするのはとても面倒。 だから、コマンド一発でファイルの内容全てをコピーする。xselを使って。 sudo apt install xsel これでOK。後はコピペしたいファイルを用意して、下記コマンドを実行する。 cat ./index.html | xsel --clipboard --input これでindex.htmlの中身が全部コピーできた。bashrcにエイリアスで登録しておく</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-ubuntu-venv/</link>
+      <pubDate>Wed, 30 Mar 2022 08:03:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-ubuntu-venv/</guid>
+      <description>Ubuntuのデプロイ時にVirtualenvを使う。 以前の方法はOSに直接Djangoなどのライブラリをインストールしているため、OSの更新と同時にライブラリも更新されてしまう。 Virtualenvを使えば、OSを更新してもライブラリのバージョンは常に一定。手動で更新する仕様になる。 Djangoプロジェクトの配置 下記になるよう配置する。 /home/[ユーザー名]/Documents/[プロジェク</description>
+    </item>
+    
+    <item>
+      <title>【Django】管理サイト(admin)のログを削除する【DBの使用量削減に】</title>
+      <link>https://noauto-nolife.com/post/django-admin-log-delete/</link>
+      <pubDate>Fri, 25 Mar 2022 10:42:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-log-delete/</guid>
+      <description>Djangoの管理サイトは自動的に操作のログを取るようになっている。 そのログはDBに記録されているため、Herokuの無料プランなどの1万行しかないDBであれば、死活問題になる。 そこで、管理サイトのログをDBから消す。下記のようにすればよい。 from django.shortcuts import render from django.views import View from django.contrib.admin.models import LogEntry class IndexView(View) LogEntry.objects.all().delete() ## 以下略 ##</description>
+    </item>
+    
+    <item>
+      <title>【HUGO】最新版をインストールして、サイトを作り、テーマを当ててビルドするまで</title>
+      <link>https://noauto-nolife.com/post/hugo-install-latest/</link>
+      <pubDate>Tue, 22 Mar 2022 08:39:10 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/hugo-install-latest/</guid>
+      <description>手順 GitHubから最新版のインストーラを入手 サイトを作る 記事を作る テーマをインストールする HUGOサーバー(開発用サーバー)を起動する ビルドする GitHubから最新版のインストーラを入手 https://github.com/gohugoio/hugo/releases 上記サイトから、Latestと書かれてあるバージョンのインストーラーをDLする。Ubuntu 20.04の場合はhugo_0.95.0_Linux-64bit.debをDLすると良いだろう。 Windowsであれば</description>
+    </item>
+    
+    <item>
+      <title>【Django】Ajaxで複数枚の画像を一回のリクエストでアップロードする。</title>
+      <link>https://noauto-nolife.com/post/django-ajax-multi-img-upload/</link>
+      <pubDate>Mon, 21 Mar 2022 18:25:17 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax-multi-img-upload/</guid>
+      <description>経緯 例えば、1つのデータに対して、複数枚の画像を記録したい場合がある。 ECサイトの商品がその例で、1つの商品に対して、複数枚の画像を記録する必要がある。 しかも、商品に対して記録する画像の枚数が10枚以上になる可能性もあり、これを1つのモデルに画像フィールド10個などとしているようではDBの構造上の問題に発展する。 だからこのような場合は、商品モデルと商品画像モデルの1対多のリレーションを組むべきであ</description>
+    </item>
+    
+    <item>
+      <title>【Python】GoogleのISBNのAPIを使い、書籍の情報を手に入れる</title>
+      <link>https://noauto-nolife.com/post/python-google-isbn-api/</link>
+      <pubDate>Sat, 19 Mar 2022 11:42:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-google-isbn-api/</guid>
+      <description>GoogleのISBN検索ができるAPIを使うことで、書籍の情報を簡単に手に入れることができる。 もちろん、書籍のサムネイルも取得可能。スクレイピングではないので、サイトの変化に合わせて手直しが必要になることもない。 アカウントの登録も不要 #! /usr/bin/env python3 # -*- coding: utf-8 -*- import requests try: result = requests.get(&amp;quot;https://www.googleapis.com/books/v1/volumes?q=isbn:9784873117782&amp;quot;) except: print(&amp;quot;通信エラー&amp;quot;) else: #返却されたJSONを辞書型に変換する。 data = result.json() print(data) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;]) #書籍情報を手に入れる。 print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;title&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;publishedDate&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;authors&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;description&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;imageLinks&amp;quot;][&amp;quot;thumbnail&amp;quot;])</description>
+    </item>
+    
+    <item>
+      <title>【Django】星の平均をアイコンで表示させる【3.5の時、三星と半星で表示】</title>
+      <link>https://noauto-nolife.com/post/django-star-average/</link>
+      <pubDate>Mon, 14 Mar 2022 09:17:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-star-average/</guid>
+      <description>通販サイトなどでよくある、星の平均をアイコンで表示する。 モデル 2つのメソッドを追加する。平均スコアを出力するメソッド。少数だけ取り出し、それを元に1星、半星、無星を判定するメソッド。 from django.db import models from django.core.validators import MinValueValidator,MaxValueValidator from django.db.models import Avg class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) def avg_star_score(self): reviews = Review.objects.filter(topic=self.id).aggregate(Avg(&amp;quot;star&amp;quot;)) if reviews[&amp;quot;star__avg&amp;quot;]: return reviews[&amp;quot;star__avg&amp;quot;] else: return 0 def avg_star_icon_few(self): reviews = Review.objects.filter(topic=self.id).aggregate(Avg(&amp;quot;star&amp;quot;)) avg = reviews[&amp;quot;star__avg&amp;quot;] #平均スコアなしの場</description>
+    </item>
+    
+    <item>
+      <title>【Django】FilefieldやImageFieldでファイル名だけを表示させる方法【モデルにメソッドを追加】</title>
+      <link>https://noauto-nolife.com/post/django-filefield-only-filename/</link>
+      <pubDate>Thu, 10 Mar 2022 22:20:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-filefield-only-filename/</guid>
+      <description>FilefieldやImageFieldにはフィールドオプションとしてupload_toが指定されている。 そのため、そのままではファイル名だけを取り出すことはできない。 例えば、モデルが下記でファイル名がtest.pdfだった場合。 class Document(models.Model): file = models.FileField(verbose_name=&amp;quot;ファイル&amp;quot;,upload_to=&amp;quot;app/document/file/</description>
+    </item>
+    
+    <item>
+      <title>【HTML】ダウンロードのダイアログを表示させたい場合、aタグにはdownload属性を付与する</title>
+      <link>https://noauto-nolife.com/post/html-atag-download-attribute/</link>
+      <pubDate>Thu, 10 Mar 2022 21:53:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/html-atag-download-attribute/</guid>
+      <description>小ネタ。 例えば、ファイルを共有するウェブアプリを作る時、ファイルをリンクタグでダウンロードする仕様に仕立てる。 しかし、それが画像やPDF等のブラウザで表示できるファイルの場合、ダウンロードのダイアログが表示されず、ファイルそのものが表示されてしまう。 &amp;lt;a href=&amp;quot;sample.pdf&amp;quot;&amp;gt;ダウンロードする&amp;lt;/a&amp;gt; そこで、aタグにdownload属性を付与する。 &amp;lt;a</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる</title>
+      <link>https://noauto-nolife.com/post/jquery-number-form/</link>
+      <pubDate>Wed, 02 Mar 2022 11:45:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-number-form/</guid>
+      <description>数値入力フォーム。キーボードを使わず、ボタン入力で行いたい場合、JavaScriptを使う必要がある。 今回は更に短くかけるよう、jQueryで表現した。なお、再利用を想定して、装飾は全く行っていない。 ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;number&amp;quot; name=&amp;quot;amount&amp;quot; value=&amp;quot;0&amp;quot; readonly&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;減らす&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;増やす&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;[name=&#39;plus&#39;]&amp;quot;).on(&amp;quot;click&amp;quot;, function(){ amount_add(this,true);</description>
+    </item>
+    
+    <item>
+      <title>【Restful化】DjangoRestframeworkの導入・移行作業【ビュークラス継承元の書き換え、Serializerの運用】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-changing/</link>
+      <pubDate>Sun, 27 Feb 2022 15:05:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-changing/</guid>
+      <description>Restful化のためには、DjangoRestframeworkをインストールする必要がある。(素のDjangoでもAjaxでDELETE,PUT,PATCHメソッドの送信は可能だが、リクエストボディの読み込みに難があるため。) だが、素のDjangoで開発している状態であれば、コードの一部をDRF仕様に書き換えを行う必要がある。 本記事では、40分Djangoを元にDRF移行手続きを解説する。 予め</description>
+    </item>
+    
+    <item>
+      <title>DjangoRestFrameworkは本当に必要なのか？【Restful化とAjaxでデータを送信するときの問題】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-need-ajax/</link>
+      <pubDate>Sat, 26 Feb 2022 08:40:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-need-ajax/</guid>
+      <description>結論 DjangoはデフォルトでRestfulに対応している(Ajaxを使ってPUT,DELETE,PATCHメソッドの送信ができる)。 ただし、PUT,DELETE,PATCHのリクエストボディを参照するのはやや複雑。 そのため、それらのメソッドを使ってリクエストを送信する場合、DRFを使ったほうが良い。 素のDjangoはRestfulに対応している AjaxでPUT,DELETE,PATCHメソッドを</description>
+    </item>
+    
+    <item>
+      <title>Herokuの無料プランで独自ドメインを設定し、HTTPS通信を行う方法【ムームードメイン&#43;Cloudflare】</title>
+      <link>https://noauto-nolife.com/post/heroku-origin-domain/</link>
+      <pubDate>Tue, 22 Feb 2022 08:13:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-origin-domain/</guid>
+      <description>無料プランでは独自ドメインのセットは出来てもHTTPS通信を行うことは出来ない。 そのため、Cloudflareをリバースプロキシとして機能させ、クライアントからCloudflare間まで暗号化させる。 一見安全性に欠けるような形だが、AWSにデプロイした際も、クライアントからリバースプロキシ間までしか暗号化はされないので、それほど問題ではない。 気になるなら、有料プランを使用してHTTPS通信を行うと</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】Ajaxで郵便番号検索を行う【通販サイトなどの住所登録に有効】</title>
+      <link>https://noauto-nolife.com/post/jquery-ajax-postcode/</link>
+      <pubDate>Fri, 18 Feb 2022 17:40:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-ajax-postcode/</guid>
+      <description>通販サイトなどでは、郵便番号を入力すると、住所の入力を自動で行ってくれる。 本記事では郵便番号検索の実装を解説する。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;quot;postcode&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;postcode&amp;quot; placeholder=&amp;quot;ここに郵便番号を入力する(ハイフン不要)&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;postcode_search&amp;quot; type=&amp;quot;button&amp;quot; value=&amp;quot;郵便番号検索&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;prefecture&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;prefecture&amp;quot; placeholder=&amp;quot;都道府県&amp;quot;&amp;gt</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】selectタグで年月日検索をする【うるう年対応】</title>
+      <link>https://noauto-nolife.com/post/jquery-ymd-search/</link>
+      <pubDate>Tue, 15 Feb 2022 16:14:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-ymd-search/</guid>
+      <description>年月日検索をする時、年だけ、月だけ指定して検索する場合がある。この場合、年月日全てを指定するflatpickrでは対応できない。 この場合はselectタグを使用して検索をする。だが、月ごとに日数は異なる。うるう年では2月は29日になる。それに対応させるためには、JavaScriptを書く必要がある。 本記事ではjQueryを使用して、なるべく短く年月日検索を行うselectタグを作る。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta</description>
+    </item>
+    
+    <item>
+      <title>dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</title>
+      <link>https://noauto-nolife.com/post/docker-image-file-share/</link>
+      <pubDate>Sun, 13 Feb 2022 16:54:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/docker-image-file-share/</guid>
+      <description>dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに</description>
+    </item>
+    
+    <item>
+      <title>HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】【flex-direction:row-reverseで逆順対応可】</title>
+      <link>https://noauto-nolife.com/post/css3-star-review-radio/</link>
+      <pubDate>Fri, 11 Feb 2022 14:51:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-star-review-radio/</guid>
+      <description>以前、サーバーサイドで1から5のいずれかの数値を受付、DBに保存する方法を実践したが、フロント系ではそれをもう少しおしゃれに実装させたい。 そういう時は、なるべくJavaScriptを使用せず、HTMLとCSSだけで表現するのがベターなやり方だと個人的には思う。 だからこそ、今回も同様にHTMLとCSSだけでレビューの星を入力するフォームを再現した。 マウスをホバーした時、星が塗りつぶされ、外れると星が</description>
+    </item>
+    
+    <item>
+      <title>Djangoのモデルにて指定された選択肢をセットし、それだけ入力を許可する【choicesフィールドオプションで都道府県の指定をする】</title>
+      <link>https://noauto-nolife.com/post/django-models-choices/</link>
+      <pubDate>Fri, 11 Feb 2022 08:18:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-choices/</guid>
+      <description>例えば、都道府県の指定、どうやってモデルに格納するか。都道府県は47個。これ以外の物を選ぶことはできない。 故に、CharFieldを使用して、都道府県の格納先のフィールドを作るのは、間違っているわけではないが、あまりスマートではない。 そこで、フィールドオプションのchoicesを使用して、特定の選択肢のみ入力を許可する。 【前提】settings.py settings.pyにて、都道府県の名前を定義</description>
+    </item>
+    
+    <item>
+      <title>Djangoで現在時刻以降の日時入力を促すのであれば、MinValueValidatorを使用する【DateTimeField】</title>
+      <link>https://noauto-nolife.com/post/django-thereafter-timezone-now/</link>
+      <pubDate>Mon, 07 Feb 2022 07:28:47 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-thereafter-timezone-now/</guid>
+      <description>予約システムなどでは、指定した日時以降の日時を入れてもらう必要がある。 入力できる日時にフロント側で制限をかけることができれば良いが、それだけでは限界がある。 そこで、Djangoではmodelsのフィールドオプションであるvalidatorsを使用することで、指定した日時以降の日時だけを入力できるようになる。 MinValueValidatorsで現在時刻以降の日時入力をさせる モデルはこうかけばよい。</description>
+    </item>
     
     <item>
       <title>docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</title>
@@ -21,21 +678,21 @@
     </item>
     
     <item>
+      <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
+      <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
+      <pubDate>Thu, 03 Feb 2022 11:22:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
+      <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
+    </item>
+    
+    <item>
       <title>【Stripe】Djangoにクレジットカード決済機能を実装させる</title>
       <link>https://noauto-nolife.com/post/startup-django-stripe/</link>
       <pubDate>Thu, 03 Feb 2022 08:08:33 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-django-stripe/</guid>
       <description>DjangoでECサイトや課金ゲームサイト等を展開しようと考えているのであれば、避けて通ることができないのがカード決済。 Stripeというカード決済代行会社を利用することで、決済処理を手軽に実装させることができる。 本記事ではその一例を紹介する。 共通設定 まず、stripeライブラリをインストールする pip install stripe settings.pyにて下記をセットしておく。Stripeの秘密鍵は.gitignoreに指定</description>
-    </item>
-    
-    <item>
-      <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
-      <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
-      <pubDate>Sun, 30 Jan 2022 11:22:31 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
-      <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
     </item>
     
     <item>
@@ -111,15 +768,6 @@
     </item>
     
     <item>
-      <title>【Django】Cookieをサーバーサイドで操作する</title>
-      <link>https://noauto-nolife.com/post/django-control-cookie/</link>
-      <pubDate>Mon, 03 Jan 2022 16:32:07 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-control-cookie/</guid>
-      <description>カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。 簡易掲示板における名前など、一度入力したデータを再度入力させる場合も、クライアントにとっては使い勝手が悪いので、Cookieをセットして表示させたほうが良い。 サンプルとなるコードはいつもの40分Django。 views.pyにてCookieをセット、参照する testというキー名、値はHelloでC</description>
-    </item>
-    
-    <item>
       <title>【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】</title>
       <link>https://noauto-nolife.com/post/django-auth-not-allauth/</link>
       <pubDate>Sat, 01 Jan 2022 07:00:48 +0900</pubDate>
@@ -152,11 +800,11 @@
       <pubDate>Sat, 25 Dec 2021 20:57:33 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-year-month-search-and-list/</guid>
-      <description>Djangoで月別アーカイブと年月計算を実装させる 元となったコードは40分Djangoにモデルへ投稿日を記録するフィールド(dt)を追加している。 forms.py from django import forms from django.core.validators import MinValueValidator,MaxValueValidator from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [&amp;quot;comment&amp;quot;] #モデルを継承しないフォームクラス class YearMonthForm(forms.Form): year = forms.IntegerField() month = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)]) モデルを継承しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。 views.py 年月別アーカイブのリ</description>
+      <description>Djangoで月別アーカイブと年月計算を実装させる 元となったコードは40分Djangoにモデルへ投稿日を記録するフィールド(dt)を追加している。 forms.py from django import forms from django.core.validators import MinValueValidator,MaxValueValidator from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [&amp;quot;comment&amp;quot;] #モデルを使用しないフォームクラス class YearMonthForm(forms.Form): year = forms.IntegerField() month = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)]) モデルを使用しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。 views.py 年月別アーカイブのリ</description>
     </item>
     
     <item>
-      <title>Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】</title>
+      <title>Django-allauthにてフォームを中央寄せにさせる【ログインページのテンプレートのカスタマイズ】</title>
       <link>https://noauto-nolife.com/post/django-allauth-center-loginpage/</link>
       <pubDate>Fri, 24 Dec 2021 10:01:44 +0900</pubDate>
       
@@ -219,7 +867,7 @@
     </item>
     
     <item>
-      <title>Djangoをやる前に知っておきたいPython構文【オブジェクト指向と別ファイル読み込みは特に重要】</title>
+      <title>Djangoをやる前に知っておきたいPython構文【オブジェクト指向(class文)と別ファイル読み込み(import文)は特に重要】</title>
       <link>https://noauto-nolife.com/post/django-essential-python/</link>
       <pubDate>Sun, 19 Dec 2021 17:12:22 +0900</pubDate>
       
@@ -242,7 +890,7 @@
       <pubDate>Thu, 16 Dec 2021 16:31:27 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-openpyxl/</guid>
-      <description>Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。 ソースコード import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティブシートを選択(新規作成時に最初からあるシート) ws = wb.active #シート名を変更 ws.title = &amp;quot;領収書&amp;quot; #セルに値を入力していく import datetime ws[&amp;quot;A1&amp;quot;].value = &amp;quot;決済日&amp;quot; ws[&amp;quot;A2&amp;quot;].value = str(datetime.date.today()) ws[&amp;quot;B1&amp;quot;].value = &amp;quot;商品名&amp;quot; ws[&amp;quot;C1&amp;quot;].value</description>
+      <description>Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。 ソースコード import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティブシートを選択(新規作成時に最初からあるシート) ws = wb.active #シート名を変更 ws.title = &amp;quot;領収書&amp;quot; #セルに値を入力していく import datetime ws[&amp;quot;A1&amp;quot;].value = &amp;quot;決済日&amp;quot; #このように入れると、エクセル上、文字列と</description>
     </item>
     
     <item>
@@ -350,7 +998,7 @@
       <pubDate>Sun, 05 Dec 2021 11:48:32 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-foreignkey-user/</guid>
-      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;qu</description>
+      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;quot;投稿</description>
     </item>
     
     <item>
@@ -453,7 +1101,7 @@
     </item>
     
     <item>
-      <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】</title>
+      <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】</title>
       <link>https://noauto-nolife.com/post/django-models-foreignkey/</link>
       <pubDate>Sun, 21 Nov 2021 16:34:32 +0900</pubDate>
       
@@ -485,7 +1133,7 @@
       <pubDate>Sun, 14 Nov 2021 18:53:28 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-message-framework/</guid>
-      <description>DjangoのMessageFrameworkを有効化させる まず、settings.pyのINSTALLED_APPSに &#39;django.contrib.messages&#39; が含まれているかどうかをチェック。Django 3.2であればデフォルトで書かれてある。 同じくMIDDLEWAREに &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;, &#39;django.contrib.messages.middleware.MessageMiddleware&#39; 上記2つが含まれている事を確認。SessionMiddlewareはMessageMiddlewareよりも前に書かれてある必要がある。これもデフォルトで書かれ</description>
+      <description>MessageFrameworkを使ってHelloWorldを表示させる。 元になるコードは40分Djangoにforms.pyを追加した状態から流用している。 まず、views.pyにて、公式からコードを拝借して追加した。 from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm #↓追加 from django.contrib import messages class IndexView(View): def get(self, request, *args, **kwargs): #↓追加 messages.add_message(request, messages.INFO, &#39;Hello world.&#39;) topics = Topic.objects.all() context = { &amp;quot;topics&amp;quot;:topics } return render(request,&amp;quot;bbs/index.html&amp;quot;,context) def post(self, request, *args, **kwargs): form = TopicForm(request.POST) if form.is_valid(): form.save() return redirect(&amp;quot;bbs:index&amp;quot;) index = IndexView.as_view() HTML側でメッセージを表示させるにはこうする。 &amp;lt;!DOCTYPE</description>
     </item>
     
     <item>
@@ -531,15 +1179,6 @@
       
       <guid>https://noauto-nolife.com/post/django-shell/</guid>
       <description>Djangoに含まれているライブラリを普通のPythonのインタラクティブシェルで動かそうとしても、manage.pyの環境変数やsettings.pyが無ければ動かない。 だから、Django関係のライブラリを試しに動かしたい時は、 python3 manage.py shell とする。 用途 Djangoに含まれるライブラリの動作検証 例えば、django.utils.timezoneなどはPythonのインタラクティブシェルでは動作しない。</description>
-    </item>
-    
-    <item>
-      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
-      <link>https://noauto-nolife.com/post/pycharm-config/</link>
-      <pubDate>Thu, 04 Nov 2021 17:50:56 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
-      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
     </item>
     
     <item>
@@ -647,7 +1286,7 @@
       <pubDate>Tue, 05 Oct 2021 06:45:55 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-models-add-field/</guid>
-      <description>models.pyを操作していく上で難しいのが、フィールドの追加とマイグレーション。 特に、追加するフィールドによってはマイグレーションファイル作成時に警告が出ることがある。 本記事では警告が出る理由も含め、フィールドの追加方法も含めて解説する。ソースコードはDjangoビギナーが40分で掲示板アプリを作る方法を元にする。 デフォルト値ありのフィールドを追加する まず、安全なデフォルト値ありのフィールドを</description>
+      <description>models.pyを操作していく上で難しいのが、フィールドの追加とマイグレーション。 特に、追加するフィールドによってはマイグレーションファイル作成時に警告が出ることがある。 本記事では警告が出る理由も含め、フィールドの追加方法も含めて解説する。ソースコードはDjangoビギナーが40分で掲示板アプリを作る方法を元にする。 デフォルト値ありのフィールドを追加する【警告なし】 まず、安全なデフォルト値ありの</description>
     </item>
     
     <item>
@@ -696,7 +1335,7 @@
     </item>
     
     <item>
-      <title>【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】</title>
+      <title>【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】</title>
       <link>https://noauto-nolife.com/post/django-forms-validate/</link>
       <pubDate>Wed, 29 Sep 2021 09:16:49 +0900</pubDate>
       
@@ -930,7 +1569,7 @@
     </item>
     
     <item>
-      <title>【Django】実行されるクエリを確認する【.query】</title>
+      <title>【Django】実行されるクエリ(SQL)を確認する【.query】</title>
       <link>https://noauto-nolife.com/post/django-models-query/</link>
       <pubDate>Thu, 02 Sep 2021 13:20:50 +0900</pubDate>
       
@@ -1043,7 +1682,7 @@
       <pubDate>Sat, 07 Aug 2021 16:28:40 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-models-add-method-template-attribute/</guid>
-      <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.Integer</description>
+      <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.IntegerField</description>
     </item>
     
     <item>
@@ -1143,15 +1782,6 @@
       
       <guid>https://noauto-nolife.com/post/python-brackets/</guid>
       <description>Djangoの公式コードを流用したりしていると、よく見かける()を使ったコード。 これはタプルである。タプルはリスト型の[]と同じであるが、書き換えが不可能であるという点でリスト型とは異なる。 タプルを定義する時、下記のような書き方をしてしまうと、文字列型として判定されてしまう。 (&amp;quot;username&amp;quot;) タプルとして扱ってもらいたいのであれば、下記のように記述する。カンマを忘れずに。 (&amp;quot;username&amp;quot;,) タプルはリストと同様に扱えるので、後から</description>
-    </item>
-    
-    <item>
-      <title>【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】</title>
-      <link>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</link>
-      <pubDate>Tue, 22 Jun 2021 08:46:59 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</guid>
-      <description>手元のディレクトリ内で雛形が分散していたので、自分用に作った。 コードは40分Django簡易掲示板から。allauthはsettings.pyにID認証を、ユーザーモデルはDjangoのGitHubから何も書き加えていないモデルをそのまま流用した。 雛形をすぐにDLして書き換えができるようにGitHubに公開する。 users/models.py ほぼ流用。Handle_nameは元のfirst_nameとlast_nameに分割</description>
     </item>
     
     <item>
@@ -1434,12 +2064,12 @@
     </item>
     
     <item>
-      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法</title>
+      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法【1対多】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</link>
       <pubDate>Sat, 20 Feb 2021 11:13:37 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</guid>
-      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 カスタムユーザーモデルを外部キーとして指定する まず、settings.pyに下記のような設定がされているとする。usersアプリのCustomUserクラスを指定している。 AUTH_USER_MODEL = &#39;users.CustomUser&#39; 続いて、任意のアプリのモデルを編集する。 from django.db import models from django.utils import timezone from django.conf</description>
+      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 本記事では、下記記事で解説したカスタムユーザーモデルを実装したことを前提として話を進める。 【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】 カスタムユーザーモデルを外部キー</description>
     </item>
     
     <item>
@@ -1452,7 +2082,7 @@
     </item>
     
     <item>
-      <title>DjangoでUUIDを主キーとしたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
+      <title>DjangoでUUIDを主キーとし、first_nameとlast_nameを1つにまとめたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-uuid/</link>
       <pubDate>Mon, 15 Feb 2021 15:47:57 +0900</pubDate>
       
@@ -1722,12 +2352,12 @@
     </item>
     
     <item>
-      <title>Djangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】</title>
+      <title>Djangoで多対多のリレーションの構造と作り方、テンプレートで表示する方法【ManyToManyField】</title>
       <link>https://noauto-nolife.com/post/django-many-to-many/</link>
       <pubDate>Fri, 27 Nov 2020 17:20:39 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-many-to-many/</guid>
-      <description>多対多のリレーションを作って、いざ表示させようとした時、普通に{{ content.allergy }}などと指定してしまうとこうなってしまう。 表示できていない。正しく指定するとこうなる。 コードの解説 結論から言うと、テンプレートでの表示に問題がある。下記のようにすると表示できる。 &amp;lt;td&amp;gt;{% for allergy in content.allergy.all %}{{ allergy }} {% endfor %}&amp;lt;/td&amp;gt; .all属性を使用しforループで並べる。 結論 多対多のリレーションはアレルギー表示や動画等のタグ表示、エンジニアの担当言語やスキル</description>
+      <description>多対多のリレーションの作り方 多対多のモデルは以下のように作る。 from django.db import models class Allergy(models.Model): name = models.CharField(verbose_name=&amp;quot;アレルギー名&amp;quot;,max_length=10) def __str__(self): return self.name class Menu(models.Model): name = models.CharField(verbose_name=&amp;quot;品名&amp;quot;,max_length=20) breakfast = models.BooleanField(verbose_n</description>
     </item>
     
     <item>
@@ -1736,7 +2366,7 @@
       <pubDate>Wed, 18 Nov 2020 08:23:05 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-non-nullable/</guid>
-      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコードはどうするか</description>
+      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 この警告文の解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコード</description>
     </item>
     
     <item>
@@ -1763,7 +2393,7 @@
       <pubDate>Wed, 11 Nov 2020 17:57:49 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-paginator/</guid>
-      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されないので、例えば検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態でページネーションを実装する術を解説する。 流れ views</description>
+      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。 しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されない。例えば、検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態で、ページネーションを実装する術を解説する。 流れ views</description>
     </item>
     
     <item>
@@ -1772,7 +2402,7 @@
       <pubDate>Wed, 11 Nov 2020 17:56:10 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-or-and-search/</guid>
-      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 結論 結論から言うと、コード(views.py)はこ</description>
+      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 クエリビルダでスペース区切りのキーワード検索をする</description>
     </item>
     
     <item>
@@ -1785,12 +2415,12 @@
     </item>
     
     <item>
-      <title>Djangoで画像及びファイルをアップロードする方法</title>
+      <title>Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】</title>
       <link>https://noauto-nolife.com/post/django-fileupload/</link>
       <pubDate>Thu, 05 Nov 2020 15:30:14 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-fileupload/</guid>
-      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 流れ 必要なライブラリのインストール settings.pyとurls.pyの追記 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール 今回はアップロード後のバリデーションを行うため、Pytho</description>
+      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 40分Djangoを理解している方向け。 流れ 必要なライブラリのインストール settings.pyの編集 urls.pyの編集 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール pip install Pillow pip install python-magic P</description>
     </item>
     
     <item>
@@ -1907,7 +2537,7 @@
       <pubDate>Mon, 26 Oct 2020 11:16:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-deploy-heroku/</guid>
-      <description>プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。 クラウドにインストールさせるライブラリの定義(requirements.txt) pycharm等の統合開発環境を使用していて、仮想環境が動いている場合(既にターミナルの左側に(venv)等の表示がされている場合)、下記コマンドを実行して、requirements.txtを生成する。 pip freeze &amp;gt; requirements.txt もし、仮想環境を使</description>
+      <description>プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。 requirements.txt もし、仮想環境を使用していない場合、virtualenvを使って必要なライブラリをpipコマンドにてインストールする。 -- HerokuCLIをインストール Herokuではherokuコマンドを実行して、事前にログインをした上でデプロイを行う。下記からインストールする。 https://devcenter.heroku.com/ja/articles/heroku-cli herokuコマンドを実行して、デプロ</description>
     </item>
     
     <item>
@@ -1979,7 +2609,7 @@
       <pubDate>Thu, 22 Oct 2020 14:28:18 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-netlify/</guid>
-      <description>世間ではWordpressだとか有料版レンタルブログだとかで、一ヶ月に1000円以上かけてブログを運営している人も多々いるが、実際にはそこまでお金をかけなくてもブログ運営は可能。 もっとも、運営者のスキルが要求されるが。 方法 結論から言うと、静的サイトジェネレーターとGitHub、Netlify、それからムームドメインを使う。 静的サイトジェネレーターとは 静的サイトジェネレーター(Static Site Gene</description>
+      <description>世間ではWordpressや有料版レンタルブログで、一ヶ月に1000円以上かけてブログを運営している人も多々いるが、実際にはそこまでお金をかけなくてもブログ運営は可能。 もっとも、運営者のスキルが要求される。 方法 結論から言うと、静的サイトジェネレーターとGitHub、Netlify、それからムームドメインを使う。 静的サイトジェネレーターとは 静的サイトジェネレーター(Static Site Generator)</description>
     </item>
     
     <item>
@@ -1997,7 +2627,7 @@
       <pubDate>Tue, 20 Oct 2020 14:20:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-django/</guid>
-      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHTMLの作成(5分</description>
+      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 注意事項 40分はあくまでも私見に基づく目安である点をご留意いただきたい。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) vi</description>
     </item>
     
     <item>
@@ -2024,7 +2654,7 @@
       <pubDate>Sat, 02 Dec 2017 10:55:33 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/information/introduction/</guid>
-      <description>ここはWEB、AI、Linux関係のことに特化して作られた技術ブログサイトです。 作者について 項目 内容 名前 S.Asahina 居住地 広島県 経験 2011年〜 資格 ITパスポート(2012年6月),基本情報技術者(2013年春),応用情報技術者(2014年春) 言語 HTML,CSS,JS(jQuery,Vue.js),Python(Django,Flask),PHP(laravel),その他(C,COBOL,JAVAなど) そ</description>
+      <description>ここはWEB、AI、Linux関係のことに特化して作られた技術ブログサイトです。 作者について 項目 内容 名前 S.Asahina 経験 2011年〜 資格 ITパスポート(2012年6月),基本情報技術者(2013年春),応用情報技術者(2014年春) 言語 HTML,CSS,JS(jQuery,Vue.js),Python(Django,Flask),PHP(laravel),その他(C,COBOL,JAVAなど) その他技術 Apache,Nginx,MySQL,PostgreSQL,Ubuntu,Raspberry P</description>
     </item>
     
   </channel>

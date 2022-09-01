@@ -6,10 +6,19 @@
     <description>Recent content in セキュリティ on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 04 Jan 2022 10:16:48 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 01 May 2022 20:09:59 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Django】セッションの有効期限をセット、もしくはブラウザを閉じた時にセッションを無効化【settings.py】</title>
+      <link>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</link>
+      <pubDate>Sun, 01 May 2022 20:09:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</guid>
+      <description>セキュリティを担保したいサイトであれば、ブラウザが閉じてもセッションが残るデフォルトのDjango設定を疎ましく思うだろう。 そういう時は、settings.pyからセッションの有効期限の設定もしくは、ブラウザの終了を検知して無効化する設定を施せばよい。 セッションに有効期限をセットする【単位:秒】 例えば60秒後にセッションを切って、再ログインを要求させる場合はこうする。 SESSION_COOKIE_AGE = 60 デフォルトでは2週間にな</description>
+    </item>
     
     <item>
       <title>Djangoでpython3のsubprocessモジュールを使い、任意のコマンドをなるべく安全に配慮して実行させる</title>
@@ -192,7 +201,7 @@
     </item>
     
     <item>
-      <title>DjangoでUUIDを主キーとしたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
+      <title>DjangoでUUIDを主キーとし、first_nameとlast_nameを1つにまとめたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-uuid/</link>
       <pubDate>Mon, 15 Feb 2021 15:47:57 +0900</pubDate>
       
@@ -201,12 +210,12 @@
     </item>
     
     <item>
-      <title>Djangoで画像及びファイルをアップロードする方法</title>
+      <title>Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】</title>
       <link>https://noauto-nolife.com/post/django-fileupload/</link>
       <pubDate>Thu, 05 Nov 2020 15:30:14 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-fileupload/</guid>
-      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 流れ 必要なライブラリのインストール settings.pyとurls.pyの追記 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール 今回はアップロード後のバリデーションを行うため、Pytho</description>
+      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 40分Djangoを理解している方向け。 流れ 必要なライブラリのインストール settings.pyの編集 urls.pyの編集 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール pip install Pillow pip install python-magic P</description>
     </item>
     
     <item>

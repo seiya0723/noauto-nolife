@@ -6,10 +6,55 @@
     <description>Recent content in スタートアップシリーズ on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 03 Feb 2022 08:08:33 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 22 Aug 2022 12:14:16 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Jupyter Labを始める</title>
+      <link>https://noauto-nolife.com/post/startup-jupyter-lab/</link>
+      <pubDate>Mon, 22 Aug 2022 12:14:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-jupyter-lab/</guid>
+      <description>インストール pip install jupyterlab サーバー起動 jupyter lab ファイルの起動 jupyterlabが動いている環境下から適当にディレクトリを作り、ipynbファイルを貼り付ける 下記パスにアクセスする #-------------作ったディレクトリ↓----↓ipynbファイル http://localhost:8888/lab/tree/test/test.ipynb</description>
+    </item>
+    
+    <item>
+      <title>要件定義書の書き方</title>
+      <link>https://noauto-nolife.com/post/startup-create-rdd/</link>
+      <pubDate>Sat, 04 Jun 2022 17:13:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-create-rdd/</guid>
+      <description>開発者になるために必要な要件定義書の書き方と必要なものを解説する。 そもそも要件定義とは？ システムを作るために決めるべきこと。 とりわけ、システムにおける5W1Hに基づいて、取り決めを行う必要がある。 この取り決めが曖昧であれば、受注者と顧客間での認識に食い違いが生まれる。 要件定義書に必要なもの 要件定義書に正解はない。 必ずしも下記の全ての項目を作る必要はない。必要に応じて省略し、簡潔に済ませることもわか</description>
+    </item>
+    
+    <item>
+      <title>【Django】channelsを使ってWebSocketを実現させる【チャットサイト開発に】</title>
+      <link>https://noauto-nolife.com/post/startup-django-channels-web-socket/</link>
+      <pubDate>Mon, 02 May 2022 21:34:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-channels-web-socket/</guid>
+      <description>django-channelsのチュートリアルに倣って、WebSocketを使ったチャットサイトを作った。 とても実装難易度が高く、一筋縄では行かない。そのため実装手順の備忘録として本記事をまとめておく。 わかっていること WebSocketとはプロトコルのこと、HTTPでは実現できない双方向通信を実現させるためのもの 前もってHTTPでWebSocketの通信経路を作る必要がある WebSocketの経路</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする</title>
+      <link>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</link>
+      <pubDate>Mon, 25 Apr 2022 10:56:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</guid>
+      <description>5年以上前にやったきり、完全に忘れているNginxでPHPを動かす方法。 本記事ではその手順をまとめる。 必要なパッケージのインストール sudo apt install nginx php php-fpm Nginxはサーバー、phpはPHP処理系、php-fpmはNginxから動作させるために必要なもの Nginxの設定 /etc/nginx/sites-available/defaultを書き換える。 sudo vi /etc/nginx/sites-available/default TODOと書かれた場所だけ編集する。 ## # You should look at the following</description>
+    </item>
+    
+    <item>
+      <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
+      <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
+      <pubDate>Thu, 03 Feb 2022 11:22:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
+      <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
+    </item>
     
     <item>
       <title>【Stripe】Djangoにクレジットカード決済機能を実装させる</title>
@@ -21,21 +66,12 @@
     </item>
     
     <item>
-      <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
-      <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
-      <pubDate>Sun, 30 Jan 2022 11:22:31 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
-      <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
-    </item>
-    
-    <item>
       <title>【openpyxl】PythonからExcelファイルを読み書きする</title>
       <link>https://noauto-nolife.com/post/startup-openpyxl/</link>
       <pubDate>Thu, 16 Dec 2021 16:31:27 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-openpyxl/</guid>
-      <description>Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。 ソースコード import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティブシートを選択(新規作成時に最初からあるシート) ws = wb.active #シート名を変更 ws.title = &amp;quot;領収書&amp;quot; #セルに値を入力していく import datetime ws[&amp;quot;A1&amp;quot;].value = &amp;quot;決済日&amp;quot; ws[&amp;quot;A2&amp;quot;].value = str(datetime.date.today()) ws[&amp;quot;B1&amp;quot;].value = &amp;quot;商品名&amp;quot; ws[&amp;quot;C1&amp;quot;].value</description>
+      <description>Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。 ソースコード import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティブシートを選択(新規作成時に最初からあるシート) ws = wb.active #シート名を変更 ws.title = &amp;quot;領収書&amp;quot; #セルに値を入力していく import datetime ws[&amp;quot;A1&amp;quot;].value = &amp;quot;決済日&amp;quot; #このように入れると、エクセル上、文字列と</description>
     </item>
     
     <item>
@@ -170,7 +206,7 @@
       <pubDate>Thu, 22 Oct 2020 14:28:18 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-netlify/</guid>
-      <description>世間ではWordpressだとか有料版レンタルブログだとかで、一ヶ月に1000円以上かけてブログを運営している人も多々いるが、実際にはそこまでお金をかけなくてもブログ運営は可能。 もっとも、運営者のスキルが要求されるが。 方法 結論から言うと、静的サイトジェネレーターとGitHub、Netlify、それからムームドメインを使う。 静的サイトジェネレーターとは 静的サイトジェネレーター(Static Site Gene</description>
+      <description>世間ではWordpressや有料版レンタルブログで、一ヶ月に1000円以上かけてブログを運営している人も多々いるが、実際にはそこまでお金をかけなくてもブログ運営は可能。 もっとも、運営者のスキルが要求される。 方法 結論から言うと、静的サイトジェネレーターとGitHub、Netlify、それからムームドメインを使う。 静的サイトジェネレーターとは 静的サイトジェネレーター(Static Site Generator)</description>
     </item>
     
     <item>
@@ -188,7 +224,7 @@
       <pubDate>Tue, 20 Oct 2020 14:20:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-django/</guid>
-      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHTMLの作成(5分</description>
+      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 注意事項 40分はあくまでも私見に基づく目安である点をご留意いただきたい。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) vi</description>
     </item>
     
   </channel>

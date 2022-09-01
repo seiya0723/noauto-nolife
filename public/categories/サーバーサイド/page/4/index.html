@@ -57,12 +57,12 @@
         <ul class="article_list">
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/laravel-deploy-after-https-force/"><h2 class="article_title">【Laravel】Herokuにデプロイした後、URLをhttpsにする【デフォルトではhttpから始まるため、クライアントのブラウザが静的ファイルの読み込みに失敗する問題の対策】</h2></a>
+    <a href="https://noauto-nolife.com/post/django-or-and-search-revision/"><h2 class="article_title">【Django】スペース区切りでOR・AND検索を改定する</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-12-03T16:36:45JST">2021年12月3日 16時36分</time></li>
+                <li>作成日時:<time datetime="2022-04-15T16:42:39JST">2022年4月15日 16時42分</time></li>
 
                 
                 
@@ -78,11 +78,11 @@
                 
                 <li class="taxonomies_area">Tags:
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">Laravel</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">django</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/heroku/">Heroku</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91/">上級者向け</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/">デプロイ</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2/">検索</a>
                     
                 </li>
                 
@@ -93,13 +93,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/laravel-deploy-after-https-force/" class="thumb" title="【Laravel】Herokuにデプロイした後、URLをhttpsにする【デフォルトではhttpから始まるため、クライアントのブラウザが静的ファイルの読み込みに失敗する問題の対策】" style="background-image: url(https://noauto-nolife.com/images/laravel.jpg);"></a>
+            <a href="https://noauto-nolife.com/post/django-or-and-search-revision/" class="thumb" title="【Django】スペース区切りでOR・AND検索を改定する" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
             
-            <div class="summary">HerokuにLaravelをデプロイした後の話。デフォルトではHTTPSではなく、HTTP通信であるため、静的ファイルのアクセスは暗号化されない。 それが原因で、クライアントのブラウザのセキュリティが発動して、静的ファイルの読み込みを拒否する。結果、CSSやJavaScript、画像などの読み込みに失敗し、サイトレイアウトが乱れる。 ビューでassetやroute等を使用している場合、それら全てがh ...</div>
+            <div class="summary">以前、紹介した『Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】』では少々ビューの見通しが悪い。 また、他の絞り込みなどの機能も考慮した場合、キーワードが無かった場合にリダイレクトをするのはおかしい。 そこで本記事では検索処理の改定を行う。 views.py from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm from django.db.models import Q class IndexView(View): def get(self, request, *args, **kwargs): context = {} query = Q() if &quot;search&quot; in request.GET search = request.GET[&quot;search&quot;] raw_words = search.replace(&quot; &quot;,&quot; &quot;).split(&quot; &quot;) words = [ w for w in raw_words if ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/laravel-deploy-after-https-force/" title="【Laravel】Herokuにデプロイした後、URLをhttpsにする【デフォルトではhttpから始まるため、クライアントのブラウザが静的ファイルの読み込みに失敗する問題の対策】">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-or-and-search-revision/" title="【Django】スペース区切りでOR・AND検索を改定する">続きを読む</a></div>
         
 
 
@@ -109,12 +109,12 @@
 </li>
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/laravel-heroku-cloudinary-deploy/"><h2 class="article_title">LaravelをCloudinaryを使用したHerokuにデプロイ、画像やファイルをアップロードする</h2></a>
+    <a href="https://noauto-nolife.com/post/django-models-origin-validators/"><h2 class="article_title">【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-12-02T06:59:02JST">2021年12月2日 06時59分</time></li>
+                <li>作成日時:<time datetime="2022-04-15T14:33:20JST">2022年4月15日 14時33分</time></li>
 
                 
                 
@@ -130,13 +130,11 @@
                 
                 <li class="taxonomies_area">Tags:
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">laravel</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">django</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/heroku/">Heroku</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/">デプロイ</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/cloudinary/">cloudinary</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91/">上級者向け</a>
                     
                 </li>
                 
@@ -147,13 +145,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/laravel-heroku-cloudinary-deploy/" class="thumb" title="LaravelをCloudinaryを使用したHerokuにデプロイ、画像やファイルをアップロードする" style="background-image: url(https://noauto-nolife.com/images/laravel.jpg);"></a>
+            <a href="https://noauto-nolife.com/post/django-models-origin-validators/" class="thumb" title="【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
             
-            <div class="summary">画像やファイルをアップロードするLaravelウェブアプリをオンプレミスではなく、クラウド(とりわけHeroku)にデプロイしたい場合、ストレージ問題を解決する必要がある。普通のLaravelアプリのHerokuデプロイはそれほど難しくはないが、Cloudinaryを使うとなると情報が限られ、難易度も高い。 そこで本記事では限られている情報に少しでも貢献するため、画像やファイルアップロード機能のある ...</div>
+            <div class="summary">例えば、簡易掲示板にて、特定の禁止ワードを含んだ投稿を拒否したい場合。 承認制にして、管理者が文面を確認した上で公開を許す方法もあるが、それでは人件費がかかる。 なるべく保存する前に禁止ワードを含んでいるかどうかをチェックする仕組みにしたい。 そういう時は、validatorsに独自の関数を割り当てれば良い。 コードは40分Djangoから流用して作る models.py 不快語を除外するバリデーションを実装させる。 from django.db import models ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/laravel-heroku-cloudinary-deploy/" title="LaravelをCloudinaryを使用したHerokuにデプロイ、画像やファイルをアップロードする">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-models-origin-validators/" title="【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】">続きを読む</a></div>
         
 
 
@@ -163,12 +161,12 @@
 </li>
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/laravel-static-files/"><h2 class="article_title">【Laravel】CSSやJS等の静的ファイルを読み込む【public/static/】</h2></a>
+    <a href="https://noauto-nolife.com/post/django-models-datetime-auto-now-add/"><h2 class="article_title">【Django】DateTimeFieldに自動的に現在時刻を入れるには、auto_now_addもしくはauto_nowフィールドオプションを指定【新規作成時・編集時の時刻】【※編集不可】</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-11-30T10:26:12JST">2021年11月30日 10時26分</time></li>
+                <li>作成日時:<time datetime="2022-04-14T17:07:34JST">2022年4月14日 17時07分</time></li>
 
                 
                 
@@ -183,115 +181,11 @@
                 
                 
                 <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">Laravel</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/">初心者向け</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/laravel-static-files/" class="thumb" title="【Laravel】CSSやJS等の静的ファイルを読み込む【public/static/】" style="background-image: url(https://noauto-nolife.com/images/laravel.jpg);"></a>
-            
-            <div class="summary">静的ファイルの読み込みができれば、JSやCSSだけでなくサイトの画像を前もって用意することができる。 本記事では予めプロジェクトに配置したCSSやJSを読み込み、表示させる方法を解説する。 publicディレクトリ内にstaticディレクトリを作る まず、静的ファイル関係を記録するディレクトリを作成する。 Laravelにはpublicというディレクトリが用意されており、通常はそこにCSSやJS等を保管す ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/laravel-static-files/" title="【Laravel】CSSやJS等の静的ファイルを読み込む【public/static/】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/vim-laravel-autoindent/"><h2 class="article_title">VimでLaravelのビューを書いているとき、オートインデントが発動しない問題を対処する【.vimrc】</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-11-28T08:06:40JST">2021年11月28日 08時06分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/vim/">vim</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">Laravel</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/vim-laravel-autoindent/" class="thumb" title="VimでLaravelのビューを書いているとき、オートインデントが発動しない問題を対処する【.vimrc】" style="background-image: url(https://noauto-nolife.com/images/vim.jpg);"></a>
-            
-            <div class="summary">VimでLaravelのビューを書いている時、オートインデントが発動してくれない。 毎度毎度Tabキーを押してインデントをするのは時間の無駄なので、ここは.vimrcに設定を施したい。 そんな時に見つかったのが下記StackOverflow。 https://stackoverflow.com/questions/32637518/vim-auto-indentation-not-working .vimrcに下記2行を追加するだけで良いらしい。 autocmd BufNewFile,BufRead *.blade.php set syntax=html autocmd BufNewFile,BufRead *.blade.php set filetype=html 確かにこれだけでオートインデントが発動してくれた。これでvimを使用したLaravelの開 ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/vim-laravel-autoindent/" title="VimでLaravelのビューを書いているとき、オートインデントが発動しない問題を対処する【.vimrc】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/python-requests-post-method/"><h2 class="article_title">【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-11-26T17:03:01JST">2021年11月26日 17時03分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/python/">Python</a>
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">Django</a>
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0/">スクレイピング</a>
-                    
                 </li>
                 
                 
@@ -301,13 +195,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/python-requests-post-method/" class="thumb" title="【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】" style="background-image: url(https://noauto-nolife.com/images/python.jpg);"></a>
+            <a href="https://noauto-nolife.com/post/django-models-datetime-auto-now-add/" class="thumb" title="【Django】DateTimeFieldに自動的に現在時刻を入れるには、auto_now_addもしくはauto_nowフィールドオプションを指定【新規作成時・編集時の時刻】【※編集不可】" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
             
-            <div class="summary">Pythonのrequestsライブラリはスクレイピング(GETメソッド)で使用されているが、それだけでなくテストとしてPOSTメソッドでデータを投稿する事ができる。 ただ、ここで問題になるのが、CSRFトークンの存在。CSRFトークンをセットしなければCSRF検証に失敗してしまい、データの投稿ができなくなる。 そこで、セッションを維持した状態でCSRFトークンをリクエストボディにセットし、データを送 ...</div>
+            <div class="summary">作成時と編集時の日時を自動的に入れたい場合は、auto_nowもしくはauto_now_addを指定する。 auto_nowはモデルのsaveメソッドが実行された時、auto_now_addはモデルに新規作成された時に、その時の日時が指定したフィールドに格納される。 つまり、モデルを下記のように組むと良いだろう。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&quot;コ ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/python-requests-post-method/" title="【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-models-datetime-auto-now-add/" title="【Django】DateTimeFieldに自動的に現在時刻を入れるには、auto_now_addもしくはauto_nowフィールドオプションを指定【新規作成時・編集時の時刻】【※編集不可】">続きを読む</a></div>
         
 
 
@@ -317,12 +211,12 @@
 </li>
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/laravel-notnull-exception/"><h2 class="article_title">【Laravel】マイグレーション時の『Cannot add a NOT NULL column with default value NULL』問題を対処する【エラー】</h2></a>
+    <a href="https://noauto-nolife.com/post/javascript-query-change-and-get-method/"><h2 class="article_title">JavaScriptでクエリパラメータを書き換え、GETメソッドを送信する【通販サイトなどの絞り込み検索に有効】</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-11-24T16:49:32JST">2021年11月24日 16時49分</time></li>
+                <li>作成日時:<time datetime="2022-04-07T13:31:52JST">2022年4月7日 13時31分</time></li>
 
                 
                 
@@ -338,9 +232,213 @@
                 
                 <li class="taxonomies_area">Tags:
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">Laravel</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/">初心者向け</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/javascript-query-change-and-get-method/" class="thumb" title="JavaScriptでクエリパラメータを書き換え、GETメソッドを送信する【通販サイトなどの絞り込み検索に有効】" style="background-image: url(https://noauto-nolife.com/images/js.jpg);"></a>
+            
+            <div class="summary">クエリパラメータ(クエリ文字列、もしくはクエリストリング)はサーバーサイドだけのデータではない、JavaScriptも操作できる。 これを利用することで、サイトの絞り込み検索を作ることができる。 HTML 下記のように価格帯の入力欄を作る。 &lt;h2&gt;下限&lt;/h2&gt; &lt;input class=&quot;url_replace&quot; type=&quot;text&quot; name=&quot;min_price&quot;&gt; &lt;h2&gt;上限&lt;/h2&gt; &lt;input class=&quot;url_replace&quot; type=&quot;text&quot; name=&quot;max_price&quot;&gt; そして、次項のJavaScriptを読んでおく。 JavaScript window.addEventListener(&quot;load&quot; , function (){ $(&quot;.url_replace&quot;).on(&quot;keydown&quot;, function(e) { ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/javascript-query-change-and-get-method/" title="JavaScriptでクエリパラメータを書き換え、GETメソッドを送信する【通販サイトなどの絞り込み検索に有効】">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/django-login-required-mixin/"><h2 class="article_title">【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-04-07T13:19:33JST">2022年4月7日 13時19分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">django</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC/">認証</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/django-login-required-mixin/" class="thumb" title="【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
+            
+            <div class="summary">ログインしていないユーザーが特定のページにアクセスしてきた時、処理を実行せず、ログインページにリダイレクトするには、LoginRequiredMixinを使う。 前提 予め前もって、認証を実装しておく。allauthを使っても、Djangoの備え付けの認証を使っても良い。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 【Django】allauth未使用でユーザー認証 ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-login-required-mixin/" title="【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/django-xmlhttprequest-ajax-not-use-jquery/"><h2 class="article_title">素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-04-01T09:17:45JST">2022年4月1日 09時17分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">django</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/javascript/">JavaScript</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ajax/">Ajax</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/django-xmlhttprequest-ajax-not-use-jquery/" class="thumb" title="素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】" style="background-image: url(https://noauto-nolife.com/images/js.jpg);"></a>
+            
+            <div class="summary">CSRFトークンを取得する POSTメソッドを送信する時必要になるCSRFトークン。 前もって取得しておく。下記コードをページロードと同時に実行する。 function getCookie(name) { var cookieValue = null; if (document.cookie &amp;&amp; document.cookie !== '') { var cookies = document.cookie.split(';'); for (var i = 0; i &lt; cookies.length; i++) { var cookie = cookies[i].trim(); // Does this cookie string begin with the name we want? if (cookie.substring(0, name.length + 1) === (name + '=')) { cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); break; } } } return cookieValue; } const csrftoken = getCookie('csrftoken'); ちなみに、このコードはDjango公式からの受け売りである。 https://docs.djangoproject.com/en/4.0/ref/csrf/ POSTメソッドを送信する 前項で取得したCSRFトーク ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-xmlhttprequest-ajax-not-use-jquery/" title="素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/django-deploy-ubuntu-venv/"><h2 class="article_title">UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-03-30T08:03:28JST">2022年3月30日 08時03分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">django</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/">デプロイ</a>
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
+                    
+                </li>
+                
+                
+            </ul>
+        </div>
+
+
+        <div class="detail_area">
+            
+            <a href="https://noauto-nolife.com/post/django-deploy-ubuntu-venv/" class="thumb" title="UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
+            
+            <div class="summary">Ubuntuのデプロイ時にVirtualenvを使う。 以前の方法はOSに直接Djangoなどのライブラリをインストールしているため、OSの更新と同時にライブラリも更新されてしまう。 Virtualenvを使えば、OSを更新してもライブラリのバージョンは常に一定。手動で更新する仕様になる。 Djangoプロジェクトの配置 下記になるよう配置する。 /home/[ユーザー名]/Documents/[プロジェク ...</div>
+        </div>
+        
+        
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-deploy-ubuntu-venv/" title="UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】">続きを読む</a></div>
+        
+
+
+    </div>
+
+</article>
+</li>
+            
+            <li><article class="article_area">
+    <a href="https://noauto-nolife.com/post/django-admin-log-delete/"><h2 class="article_title">【Django】管理サイト(admin)のログを削除する【DBの使用量削減に】</h2></a>
+    <div class="article_spacer">	    
+
+        <div>
+            <ul class="article_status">
+                <li>作成日時:<time datetime="2022-03-25T10:42:13JST">2022年3月25日 10時42分</time></li>
+
+                
+                
+                
+                
+                <li class="taxonomies_area">Categories:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+                    
+                </li>
+                
+                
+                
+                <li class="taxonomies_area">Tags:
+                    
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">django</a>
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/tips/">tips</a>
                     
@@ -353,13 +451,11 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/laravel-notnull-exception/" class="thumb" title="【Laravel】マイグレーション時の『Cannot add a NOT NULL column with default value NULL』問題を対処する【エラー】" style="background-image: url(https://noauto-nolife.com/images/laravel.jpg);"></a>
+            <a href="https://noauto-nolife.com/post/django-admin-log-delete/" class="thumb" title="【Django】管理サイト(admin)のログを削除する【DBの使用量削減に】" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
             
-            <div class="summary">なぜ、このエラーが発生するのか。まず原因から解説する。 原因 要するにこういうこと。 追加しようとしているフィールド(カラム)がNull禁止でデフォルトが無い。しかし、フィールド(カラム)を追加する以上、どうしてもNullになってしまう。この矛盾をどうするかと言うのがこの問題。 この状況が発生する条件は下記。下記を全て満たすと発生する。 条件1:既存のテーブルにカラムを追加する 条件2:追加するカラムにカラム ...</div>
+            <div class="summary">Djangoの管理サイトは自動的に操作のログを取るようになっている。 そのログはDBに記録されているため、Herokuの無料プランなどの1万行しかないDBであれば、死活問題になる。 そこで、管理サイトのログをDBから消す。下記のようにすればよい。 from django.shortcuts import render from django.views import View from django.contrib.admin.models import LogEntry class IndexView(View) LogEntry.objects.all().delete() ## 以下略 ## ...</div>
         </div>
         
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/laravel-notnull-exception/" title="【Laravel】マイグレーション時の『Cannot add a NOT NULL column with default value NULL』問題を対処する【エラー】">続きを読む</a></div>
         
 
 
@@ -369,64 +465,12 @@
 </li>
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/laravel-ipaddress/"><h2 class="article_title">【Laravel】IPアドレスを取得して、DBへ記録する【犯罪・不正利用の抑止、荒らし対策などに】</h2></a>
+    <a href="https://noauto-nolife.com/post/django-ajax-multi-img-upload/"><h2 class="article_title">【Django】Ajaxで複数枚の画像を一回のリクエストでアップロードする。</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-11-24T07:08:50JST">2021年11月24日 07時08分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">Laravel</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/">セキュリティ</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86/">システム管理</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/laravel-ipaddress/" class="thumb" title="【Laravel】IPアドレスを取得して、DBへ記録する【犯罪・不正利用の抑止、荒らし対策などに】" style="background-image: url(https://noauto-nolife.com/images/laravel.jpg);"></a>
-            
-            <div class="summary">クライアントのIPアドレスを記録できれば、認証が無くても犯罪行為の抑止につながるし、事案が発生してもすぐに対応できるだろう。 本記事ではLaravelにクライアントのIPアドレスを記録する方法を解説する。 コードは『初心者でもlaravelを使い、45分でCRUD簡易掲示板を作る【Restful対応】』から流用している。 IPアドレスのカラムを追加(モデル編集とマイグレーションファイル作成) まずマイグレ ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/laravel-ipaddress/" title="【Laravel】IPアドレスを取得して、DBへ記録する【犯罪・不正利用の抑止、荒らし対策などに】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/"><h2 class="article_title">【Django】Ajaxを使ってOSMとLeaflet.jsでマーカーを配置させる</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-11-23T08:12:55JST">2021年11月23日 08時12分</time></li>
+                <li>作成日時:<time datetime="2022-03-21T18:25:17JST">2022年3月21日 18時25分</time></li>
 
                 
                 
@@ -446,11 +490,7 @@
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ajax/">ajax</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0/">マッピング</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/">ウェブデザイン</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js/">leaflet.js</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91/">上級者向け</a>
                     
                 </li>
                 
@@ -461,13 +501,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/" class="thumb" title="【Django】Ajaxを使ってOSMとLeaflet.jsでマーカーを配置させる" style="background-image: url(https://noauto-nolife.com/images/Screenshot%20from%202021-11-23%2009-48-56.png);"></a>
+            <a href="https://noauto-nolife.com/post/django-ajax-multi-img-upload/" class="thumb" title="【Django】Ajaxで複数枚の画像を一回のリクエストでアップロードする。" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
             
-            <div class="summary">Ajaxを使うことで、ページ全体を再レンダリングしなくてもデータの投稿ができるようになる。これをOSMとLeaflet.jsを使ったマッピングに使うことで、データの投稿がとてもスムーズになる。 Ajaxに関してはDjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】を、OSMとLeaflet.jsはDjangoでOpenStreetM ...</div>
+            <div class="summary">経緯 例えば、1つのデータに対して、複数枚の画像を記録したい場合がある。 ECサイトの商品がその例で、1つの商品に対して、複数枚の画像を記録する必要がある。 しかも、商品に対して記録する画像の枚数が10枚以上になる可能性もあり、これを1つのモデルに画像フィールド10個などとしているようではDBの構造上の問題に発展する。 だからこのような場合は、商品モデルと商品画像モデルの1対多のリレーションを組むべきであ ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/" title="【Django】Ajaxを使ってOSMとLeaflet.jsでマーカーを配置させる">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-ajax-multi-img-upload/" title="【Django】Ajaxで複数枚の画像を一回のリクエストでアップロードする。">続きを読む</a></div>
         
 
 
@@ -477,12 +517,12 @@
 </li>
             
             <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/django-models-foreignkey/"><h2 class="article_title">Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】</h2></a>
+    <a href="https://noauto-nolife.com/post/python-google-isbn-api/"><h2 class="article_title">【Python】GoogleのISBNのAPIを使い、書籍の情報を手に入れる</h2></a>
     <div class="article_spacer">	    
 
         <div>
             <ul class="article_status">
-                <li>作成日時:<time datetime="2021-11-21T16:34:32JST">2021年11月21日 16時34分</time></li>
+                <li>作成日時:<time datetime="2022-03-19T11:42:50JST">2022年3月19日 11時42分</time></li>
 
                 
                 
@@ -498,63 +538,13 @@
                 
                 <li class="taxonomies_area">Tags:
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">Django</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/python/">python</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/">初心者向け</a>
-                    
-                </li>
-                
-                
-            </ul>
-        </div>
-
-
-        <div class="detail_area">
-            
-            <a href="https://noauto-nolife.com/post/django-models-foreignkey/" class="thumb" title="Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】" style="background-image: url(https://noauto-nolife.com/images/django.jpg);"></a>
-            
-            <div class="summary">1対多のリレーションを構築することができれば、トピックにカテゴリを指定したり、トピックに対してコメントを投稿することができる。 本記事はその方法を1対多の原理からDjangoのmodels.pyでの書き方まで記す。コードは『Djangoビギナーが40分で掲示板アプリを作る方法』から流用する。 1対多の仕組み 1対多とは、一言で言ってしまうと、プロ野球チームとチームに所属する選手の関係である。下記図をご覧 ...</div>
-        </div>
-        
-        
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-models-foreignkey/" title="Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】">続きを読む</a></div>
-        
-
-
-    </div>
-
-</article>
-</li>
-            
-            <li><article class="article_area">
-    <a href="https://noauto-nolife.com/post/django-osm-leaflet-mapping/"><h2 class="article_title">DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る</h2></a>
-    <div class="article_spacer">	    
-
-        <div>
-            <ul class="article_status">
-                <li>作成日時:<time datetime="2021-11-15T17:57:22JST">2021年11月15日 17時57分</time></li>
-
-                
-                
-                
-                
-                <li class="taxonomies_area">Categories:
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
-                    
-                </li>
-                
-                
-                
-                <li class="taxonomies_area">Tags:
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/api/">api</a>
                     
                     <a class="taxonomies_link" href="https://noauto-nolife.com/tags/django/">django</a>
                     
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0/">マッピング</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/">ウェブデザイン</a>
-                    
-                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js/">leaflet.js</a>
+                    <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ajax/">ajax</a>
                     
                 </li>
                 
@@ -565,13 +555,13 @@
 
         <div class="detail_area">
             
-            <a href="https://noauto-nolife.com/post/django-osm-leaflet-mapping/" class="thumb" title="DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る" style="background-image: url(https://noauto-nolife.com/images/Screenshot%20from%202021-11-16%2008-47-12.png);"></a>
+            <a href="https://noauto-nolife.com/post/python-google-isbn-api/" class="thumb" title="【Python】GoogleのISBNのAPIを使い、書籍の情報を手に入れる" style="background-image: url(https://noauto-nolife.com/images/python.jpg);"></a>
             
-            <div class="summary">※この方法はDjangoでなくても実現できる。 Djangoでマッピングを実現する方法としてGeoDjangoがある。だが、GeoDjangoは実装が容易ではなく、以前紹介した方法では実現できない事がわかった。 そこで、GeoDjangoよりも容易にマッピングを実現するため、オープンストリートマップ(以下、OSM)とleaflet.jsを使って対処する。 ソースコードは40分Djangoをベースとしてい ...</div>
+            <div class="summary">GoogleのISBN検索ができるAPIを使うことで、書籍の情報を簡単に手に入れることができる。 もちろん、書籍のサムネイルも取得可能。スクレイピングではないので、サイトの変化に合わせて手直しが必要になることもない。 アカウントの登録も不要 #! /usr/bin/env python3 # -*- coding: utf-8 -*- import requests try: result = requests.get(&quot;https://www.googleapis.com/books/v1/volumes?q=isbn:9784873117782&quot;) except: print(&quot;通信エラー&quot;) else: #返却されたJSONを辞書型に変換する。 data = result.json() print(data) print(data[&quot;items&quot;][0][&quot;volumeInfo&quot;]) #書籍情報を手に入れる。 print(data[&quot;items&quot;][0][&quot;volumeInfo&quot;][&quot;title&quot;]) print(data[&quot;items&quot;][0][&quot;volumeInfo&quot;][&quot;publishedDate&quot;]) print(data[&quot;items&quot;][0][&quot;volumeInfo&quot;][&quot;authors&quot;]) print(data[&quot;items&quot;][0][&quot;volumeInfo&quot;][&quot;description&quot;]) print(data[&quot;items&quot;][0][&quot;volumeInfo&quot;][&quot;imageLinks&quot;][&quot;thumbnail&quot;]) ...</div>
         </div>
         
         
-        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/django-osm-leaflet-mapping/" title="DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る">続きを読む</a></div>
+        <div class="readmore"><a class="readmore_link" href="https://noauto-nolife.com/post/python-google-isbn-api/" title="【Python】GoogleのISBNのAPIを使い、書籍の情報を手に入れる">続きを読む</a></div>
         
 
 
@@ -663,23 +653,15 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -691,7 +673,27 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -699,7 +701,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -719,15 +721,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -735,19 +729,19 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -759,15 +753,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -775,11 +765,23 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -791,15 +793,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -815,6 +813,10 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
         </span>
         
@@ -823,7 +825,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -843,6 +845,18 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
         </span>
         
@@ -851,7 +865,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -863,11 +881,23 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -879,15 +909,7 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -915,15 +937,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -932,6 +950,10 @@
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -947,15 +969,11 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -975,15 +993,31 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -999,11 +1033,23 @@
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
         </span>
         
     </section>
@@ -1014,25 +1060,25 @@
     <section class="sidebar_panel">
         <div class="sidebar_panel_title">News</div>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-deploy-docker-centos/">docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-django-stripe/">【Stripe】Djangoにクレジットカード決済機能を実装させる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-composer-error/">composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-ubuntu-docker/">UbuntuでUbuntuのdockerイメージを作るまで</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-samba/">UbuntuにSambaをインストールしてファイルサーバー化させる</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-drf-api/">Django Rest Frameworkにて、APIを提供する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/heroku-counter-plan/">Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-save-method/">【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-command-not-found/">【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-method-put-delete-patch/">【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/">Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-view-def-and-class/">【Django】ビュー関数とビュークラスの違い、一覧と使い方</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-jupyter-lab/">Jupyter Labを始める</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-error-messages-origin/">【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-star-review/">【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-allauth-custom-user-model-sendgrid/">【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-data-transport/">別のUbuntuにデータを輸送する</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-mogrify/">mogrifyコマンドを使って画像を一括クロップ(トリミング)する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-time-calc/">【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</a>
         
     </section>
 

@@ -20,10 +20,10 @@
         <script src="https://noauto-nolife.com/data/search.js"></script>
         <script src="https://noauto-nolife.com/js/script.js"></script>
 
-        <title>【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】 - 自動化無しに生活無し</title>
+        <title>【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】 - 自動化無しに生活無し</title>
         
 
-<meta property="og:title" content="【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】 - 自動化無しに生活無し">
+<meta property="og:title" content="【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】 - 自動化無しに生活無し">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://noauto-nolife.com/post/django-forms-validate/">
 <meta property="og:image" content="https://noauto-nolife.com/images/django.jpg">
@@ -33,7 +33,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="自動化無しに生活無し">
 <meta name="twitter:url" content="https://noauto-nolife.com/post/django-forms-validate/">
-<meta name="twitter:title" content="【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】 - 自動化無しに生活無し">
+<meta name="twitter:title" content="【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】 - 自動化無しに生活無し">
 <meta name="twitter:image" content="https://noauto-nolife.com/images/django.jpg">
 
 
@@ -45,7 +45,7 @@
       "@type": "WebPage",
       "@id":"https://noauto-nolife.com/"
     },
-    "headline": "【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】 - 自動化無しに生活無し",
+    "headline": "【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】 - 自動化無しに生活無し",
     "image": {
       "@type": "ImageObject",
       "url": "https://noauto-nolife.com/images/django.jpg",
@@ -107,12 +107,12 @@
                 
                 <li><a href="https://noauto-nolife.com/post/">post</a></li>
                 
-                <li class="active">【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】</li>
+                <li class="active">【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】</li>
             </ol>
         </nav>
         
         <article class="single">
-    <h1 class="article_title">【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】</h1>
+    <h1 class="article_title">【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】</h1>
         
     <div class="article_spacer">
 
@@ -160,16 +160,15 @@
 <p>手順は非常にシンプル</p>
 
 <ol>
-<li>forms.pyを作り、models.pyをimport、モデルクラスを継承したフォームクラスを作る</li>
+<li>forms.pyを作り、models.pyをimport、モデルクラスを利用したフォームクラスを作る</li>
 <li>views.pyはforms.pyをimport、フォームクラスでバリデーションを行う</li>
 </ol>
 
 <h2 id="forms-pyを作る">forms.pyを作る</h2>
 
-<p>モデルを継承したフォームクラスを作る。</p>
+<p>モデルを利用したフォームクラスを作る。まず<code>forms.ModelForm</code>を継承する。</p>
 
 <pre><code>from django import forms 
-
 from .models import Topic
 
 class TopicForm(forms.ModelForm):
@@ -179,9 +178,9 @@ class TopicForm(forms.ModelForm):
         fields  = [ &quot;comment&quot; ]
 </code></pre>
 
-<p>継承に使用するモデルは<code>Topic</code>、バリデーション対象のフィールドは<code>comment</code>である。</p>
+<p>利用するモデルは<code>Topic</code>、バリデーション対象のフィールドは<code>comment</code>である。</p>
 
-<p>クラス名は<code>Topic</code>モデルを継承して作ったフォームクラスなので、<code>TopicForm</code>とした。</p>
+<p>クラス名は<code>Topic</code>モデルを利用して作ったフォームクラスなので、<code>TopicForm</code>とした。</p>
 
 <h2 id="views-pyを書き換える">views.pyを書き換える</h2>
 
@@ -193,7 +192,7 @@ from django.views import View
 from .models import Topic
 from .forms import TopicForm
 
-class BbsView(View):
+class IndexView(View):
 
     def get(self, request, *args, **kwargs):
 
@@ -218,9 +217,12 @@ class BbsView(View):
         else:
             print(&quot;バリデーションNG&quot;)
 
+            #バリデーションNGの理由を表示させる
+            print(form.errors)
+
         return redirect(&quot;bbs:index&quot;)
 
-index   = BbsView.as_view()
+index   = IndexView.as_view()
 </code></pre>
 
 <p><code>TopicForm</code>の引数に<code>request.POST</code>をそのまま入れる。フォームクラスのオブジェクトである<code>form</code>は<code>.is_valid()</code>メソッドの返り値(TrueとFalse)でバリデーションOKかNGは判定できる</p>
@@ -228,6 +230,8 @@ index   = BbsView.as_view()
 <p>もし、2000文字以上だったり、空欄だったりすれば、返り値はFalseになる。</p>
 
 <p><code>.is_valid()</code>メソッドを実行して、返り値がTrueであれば、<code>.save()</code>メソッドを実行できる。モデルクラスのものと同じようにDBにデータを書き込む。</p>
+
+<p>ちなみに、フォームクラスのオブジェクトは<code>.errors</code>属性がある。これで、バリデーションNGだった場合、何がNGの原因なのかを知ることができる。</p>
 
 <h2 id="動かすとこうなる">動かすとこうなる。</h2>
 
@@ -239,13 +243,213 @@ index   = BbsView.as_view()
 
 <div class="img-center"><img src="/images/Screenshot from 2021-09-29 09-39-27.png" alt=""></div>
 
-<h2 id="結論">結論</h2>
+<h2 id="補足1-モデルフィールドが増えたらどうなる">【補足1】モデルフィールドが増えたらどうなる？</h2>
 
 <p>『<a href="/post/startup-django/">Djangoビギナーが40分で掲示板アプリを作る方法</a>』ではモデルフィールドが増えれば、その都度ビューでキーワード引数で入れるフィールドが増えるため、ビューが煩雑になってしまうが、このフォームクラスを使用する方法であれば、モデルフィールドが増えてもビューが煩雑になることはない。</p>
 
-<p>問題のあるデータが事前に拒否されるので、モデルクラスに直接キーワード引数を入れて保存するよりもこちらのほうが良いだろう。</p>
+<p>例えば、モデルクラスが下記のように、nameとageが追加されたとする。</p>
+
+<pre><code>from django.db import models
+
+class Topic(models.Model):
+    name        = models.CharField(verbose_name=&quot;名前&quot;,max_length=100)
+    age         = models.IntegerField(verbose_name=&quot;年齢&quot;)
+    comment     = models.CharField(verbose_name=&quot;コメント&quot;,max_length=2000)
+</code></pre>
+
+<p>モデルクラスを使った保存をする場合、下記のようになる。</p>
+
+<pre><code>posted  = Topic( comment =request.POST[&quot;comment&quot;],
+                 name = request.POST[&quot;name&quot;],
+                 age = request.POST[&quot;age&quot;],
+                )
+posted.save()
+</code></pre>
+
+<p>つまり、モデルのフィールドが増えるたびに、ビューでの保存処理にもキーワード引数が増えていく。これではビューが煩雑になってしまう。</p>
+
+<p>しかし、forms.pyを使う場合、下記のようにバリデーション対象のフィールドとして、モデルクラスに追加したフィールドを追記しておくだけで良い。</p>
+
+<pre><code>from django import forms 
+from .models import Topic
+
+class TopicForm(forms.ModelForm):
+
+    class Meta:
+        model   = Topic
+        fields  = [ &quot;comment&quot;,&quot;name&quot;,&quot;age&quot; ]
+</code></pre>
+
+<p>ビューの処理はそのままで問題はない。comment,name,ageの3つがバリデーションされる。</p>
+
+<pre><code>form    = TopicForm(request.POST)
+
+if form.is_valid():
+    print(&quot;バリデーションOK&quot;)
+    form.save()
+else:
+    print(&quot;バリデーションNG&quot;)
+    print(form.errors)
+</code></pre>
+
+<h3 id="補足2-アーリーリターンを使う">【補足2】アーリーリターンを使う</h3>
+
+<p>もし、バリデーションOKの後に何もしないのであれば、先ほどのコードで問題はないが、何かを実行したい場合、コードが見づらくなってしまう。</p>
+
+<pre><code>from django.shortcuts import render,redirect
+from django.views import View
+
+from .models import Topic
+from .forms import TopicForm
+
+class IndexView(View):
+
+    def get(self, request, *args, **kwargs):
+
+        topics  = Topic.objects.all()
+        context = { &quot;topics&quot;:topics }
+
+        return render(request,&quot;bbs/index.html&quot;,context)
+
+    def post(self, request, *args, **kwargs):
+
+        form    = TopicForm(request.POST)
+
+        if form.is_valid():
+            print(&quot;バリデーションOK&quot;)
+            form.save()
+
+            #===ここにバリデーションOKの後に実行する長い処理=====
+
+
+        else:
+            print(&quot;バリデーションNG&quot;)
+            print(form.errors)
+
+        return redirect(&quot;bbs:index&quot;)
+
+index   = IndexView.as_view()
+</code></pre>
+
+<p>このようにバリデーションOKの後に長い処理を実行する場合、上記のやり方では少々コードが見づらくなる。処理の中で更にifやforなどを実行しようものなら更にネストが深くなり、全体像を把握しづらい。</p>
+
+<p>そこで、アーリーリターンという記法を施す。</p>
+
+<pre><code>from django.shortcuts import render,redirect
+from django.views import View
+
+from .models import Topic
+from .forms import TopicForm
+
+class IndexView(View):
+
+    def get(self, request, *args, **kwargs):
+
+        topics  = Topic.objects.all()
+        context = { &quot;topics&quot;:topics }
+
+        return render(request,&quot;bbs/index.html&quot;,context)
+
+    def post(self, request, *args, **kwargs):
+
+        form    = TopicForm(request.POST)
+
+        if not form.is_valid():
+            print(&quot;バリデーションNG&quot;)
+            print(form.errors)
+            return redirect(&quot;bbs:index&quot;)
+
+
+        print(&quot;バリデーションOK&quot;)
+        form.save()
+
+        #===ここにバリデーションOKの後に実行する長い処理=====
+
+
+        return redirect(&quot;bbs:index&quot;)
+
+index   = IndexView.as_view()
+</code></pre>
+
+<p>バリデーションを行った結果、NGであった場合、そのままリダイレクトの処理だけ実行してお帰りいただく。</p>
+
+<p>もし、条件式に当てはまらなかった場合、つまりバリデーションOKの場合は保存処理と続きの処理を行う。こうすることでネストが深くならなくて済む。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>このようにフォームクラスを使うことで、問題のあるデータをDB格納前に拒否することができる。</p>
 
 <p>他にもフォームクラスで作ったフォームオブジェクトをテンプレートに引き渡すことで、HTMLのフォームを表示させることができる。(※もっともHTMLのclass名をサーバーサイドで指定することになるので、フロントとサーバーの分業が難しくなるデメリットがある。)</p>
+
+<h2 id="この先にやること">この先にやること</h2>
+
+<p>フォームクラスを使ってデータのバリデーションが出来たら、後はエラーの理由を表示させたり、投稿完了した旨をテンプレート側に表示させると良いだろう。</p>
+
+<h3 id="テンプレート上に投稿完了-エラーなどの表示をさせる">テンプレート上に投稿完了、エラーなどの表示をさせる</h3>
+
+<p>現状では投稿完了したにもかかわらず、その旨が表示されない。そこで、MessageFrameworkを使って投稿完了を表示させる。</p>
+
+<p><a href="/post/django-message-framework/">DjangoのMessageFrameworkで投稿とエラーをフロント側に表示する</a></p>
+
+<h3 id="任意のエラーメッセージを表示させる">任意のエラーメッセージを表示させる。</h3>
+
+<p>上記のやり方ではまだ問題がある。</p>
+
+<p>例えば、『入力必須』『2000文字以内』の2つのルールがあり、いずれでも単に『エラー』と表示されてしまうので、何が問題なのかユーザーはわからないだろう。</p>
+
+<p>そこで、forms.pyのルールに応じて表示させるエラーメッセージを切り替える。これで何が問題なのかわかる。</p>
+
+<p><a href="/post/django-error-messages-origin/">【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</a></p>
+
+<h3 id="モデルを利用しないフォームクラス">モデルを利用しないフォームクラス</h3>
+
+<p>例えば、フォームクラスを使ってのバリデーションがDBにデータを書き込むためのものであれば、モデルを利用したほうが良い。</p>
+
+<p>しかし、モデルには関係のないデータをバリデーションする場合、バリデーションした後DBにデータを格納しない場合などは、モデルを利用しないでフォームクラスを作ったほうが良いだろう。</p>
+
+<p>具体的な例として、年月検索がある。年月検索をする時、月の指定に1~12以外の値を入れるとエラーになる。</p>
+
+<pre><code>#13月は存在しないので、これではエラーになってしまう。
+Topic.objects.filter(dt__month=13).order_by(&quot;-dt&quot;)
+</code></pre>
+
+<p>下記記事では年月検索をするため、モデルを利用しないフォームクラスを作っている。</p>
+
+<p><a href="/post/django-year-month-search-and-list/">【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】</a></p>
+
+<h3 id="フォームクラスを使って-フォームのテンプレートを提供する">フォームクラスを使って、フォームのテンプレートを提供する。</h3>
+
+<p>ビューのgetメソッドでフォームクラスのオブジェクトを作り、それをcontextに入れてレンダリングすることで、フォームクラスに適したフォームテンプレートをレンダリングすることができる。</p>
+
+<p>まず、ビュークラスにて、下記のようにフォームオブジェクトをcontextに入れてレンダリングさせる</p>
+
+<pre><code>class IndexView(View):
+
+    def get(self, request, *args, **kwargs):
+
+        topics  = Topic.objects.all()
+        form    = TopicForm()
+
+        context = { &quot;topics&quot;:topics,
+                    &quot;form&quot;:form
+        }
+
+        return render(request,&quot;bbs/index.html&quot;,context)
+</code></pre>
+
+<p>続いて、レンダリング対象のHTMLであるbbs/index.htmlにて下記を追加する。</p>
+
+<pre><code>{{ form.as_p }}
+</code></pre>
+
+<p>これが下記のようになる。</p>
+
+<pre><code>&lt;p&gt;&lt;input type=&quot;text&quot; name=&quot;comment&quot; maxlength=&quot;2000&quot; required&gt;&lt;/p&gt;
+</code></pre>
+
+<p>だが、このフォームテンプレートの装飾は容易ではない。下記記事を見るとよくわかる。</p>
+
+<p><a href="/post/django-forms-temp-not-use/">Djangoのforms.pyが提供するフォームテンプレートは使わない</a></p>
 </div>
 
 
@@ -268,10 +472,10 @@ index   = BbsView.as_view()
 
     <div class="article_share_area">
         <h2>シェアボタン</h2>
-        <a class="article_share_link link_twitter" target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-forms-validate%2f&text=%e3%80%90Django%e3%80%91forms.py%e3%81%a7%e3%83%90%e3%83%aa%e3%83%87%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e3%81%99%e3%82%8b%e3%80%90%e3%83%a2%e3%83%87%e3%83%ab%e3%82%92%e7%b6%99%e6%89%bf%e3%81%97%e3%81%9fForm%e3%82%af%e3%83%a9%e3%82%b9%e3%80%91">Twitter</a>
+        <a class="article_share_link link_twitter" target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-forms-validate%2f&text=%e3%80%90Django%e3%80%91forms.py%e3%81%a7%e3%83%90%e3%83%aa%e3%83%87%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e3%81%99%e3%82%8b%e3%80%90%e3%83%a2%e3%83%87%e3%83%ab%e3%82%92%e5%88%a9%e7%94%a8%e3%81%97%e3%81%9fForm%e3%82%af%e3%83%a9%e3%82%b9%e3%80%91">Twitter</a>
         <a class="article_share_link link_line" target="_blank" rel="nofollow noopener noreferrer" href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-forms-validate%2f">LINEで送る</a>
         <a class="article_share_link link_facebook" target="_blank" rel="nofollow noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-forms-validate%2f">Facebook</a>
-        <a class="article_share_link link_hatena" target="_blank" rel="nofollow noopener noreferrer" href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-forms-validate%2f&title=%e3%80%90Django%e3%80%91forms.py%e3%81%a7%e3%83%90%e3%83%aa%e3%83%87%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e3%81%99%e3%82%8b%e3%80%90%e3%83%a2%e3%83%87%e3%83%ab%e3%82%92%e7%b6%99%e6%89%bf%e3%81%97%e3%81%9fForm%e3%82%af%e3%83%a9%e3%82%b9%e3%80%91">はてなブログ</a>
+        <a class="article_share_link link_hatena" target="_blank" rel="nofollow noopener noreferrer" href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-forms-validate%2f&title=%e3%80%90Django%e3%80%91forms.py%e3%81%a7%e3%83%90%e3%83%aa%e3%83%87%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e3%81%99%e3%82%8b%e3%80%90%e3%83%a2%e3%83%87%e3%83%ab%e3%82%92%e5%88%a9%e7%94%a8%e3%81%97%e3%81%9fForm%e3%82%af%e3%83%a9%e3%82%b9%e3%80%91">はてなブログ</a>
     </div>
 
 
@@ -285,15 +489,15 @@ index   = BbsView.as_view()
         <h2 class="relate_content_title">関連記事</h2>
         
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/startup-django-stripe/">【Stripe】Djangoにクレジットカード決済機能を実装させる<time class="relate_time">2022年2月3日 08時08分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする<time class="relate_time">2022年9月1日 08時49分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-drf-api/">Django Rest Frameworkにて、APIを提供する<time class="relate_time">2022年1月28日 15時12分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-admin-command-not-found/">【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】<time class="relate_time">2022年8月25日 13時48分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-view-def-and-class/">【Django】ビュー関数とビュークラスの違い、一覧と使い方<time class="relate_time">2022年1月22日 17時39分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-star-review/">【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示<time class="relate_time">2022年8月20日 17時55分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-error-messages-origin/">【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】<time class="relate_time">2022年1月16日 17時57分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/pycharm-config/">Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法<time class="relate_time">2022年8月10日 17時50分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-allauth-custom-user-model-sendgrid/">【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】<time class="relate_time">2022年1月13日 16時40分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-calendar-custom/">【Django】カレンダーを更に改良する<time class="relate_time">2022年8月8日 16時16分</time></a>
         
         
     </footer>
@@ -383,23 +587,15 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -411,7 +607,27 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -419,7 +635,7 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -439,15 +655,7 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -455,19 +663,19 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -479,15 +687,11 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -495,11 +699,23 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -511,15 +727,11 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -535,6 +747,10 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
         </span>
         
@@ -543,7 +759,7 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -563,6 +779,18 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
         </span>
         
@@ -571,7 +799,11 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -583,11 +815,23 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -599,15 +843,7 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -635,15 +871,11 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -652,6 +884,10 @@ index   = BbsView.as_view()
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -667,15 +903,11 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -695,15 +927,31 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -719,11 +967,23 @@ index   = BbsView.as_view()
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
         </span>
         
     </section>
@@ -734,25 +994,25 @@ index   = BbsView.as_view()
     <section class="sidebar_panel">
         <div class="sidebar_panel_title">News</div>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-deploy-docker-centos/">docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-django-stripe/">【Stripe】Djangoにクレジットカード決済機能を実装させる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-composer-error/">composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-ubuntu-docker/">UbuntuでUbuntuのdockerイメージを作るまで</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-samba/">UbuntuにSambaをインストールしてファイルサーバー化させる</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-drf-api/">Django Rest Frameworkにて、APIを提供する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/heroku-counter-plan/">Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-save-method/">【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-command-not-found/">【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-method-put-delete-patch/">【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/">Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-view-def-and-class/">【Django】ビュー関数とビュークラスの違い、一覧と使い方</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-jupyter-lab/">Jupyter Labを始める</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-error-messages-origin/">【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-star-review/">【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-allauth-custom-user-model-sendgrid/">【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-data-transport/">別のUbuntuにデータを輸送する</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-mogrify/">mogrifyコマンドを使って画像を一括クロップ(トリミング)する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-time-calc/">【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</a>
         
     </section>
 

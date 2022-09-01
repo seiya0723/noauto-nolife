@@ -6,10 +6,37 @@
     <description>Recent content in Leaflet.js on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 06 Dec 2021 06:51:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 01 May 2022 19:50:53 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/leaflet.js/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Leaflet.js】半径5km圏内の領域に円を描画する【circle】</title>
+      <link>https://noauto-nolife.com/post/leaflet-draw-circle-5000m/</link>
+      <pubDate>Sun, 01 May 2022 19:50:53 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-draw-circle-5000m/</guid>
+      <description>半径5km圏内に円を描画する。これで指定したポイントからの距離がつかめる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;コメント付きマップ&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&amp;quot; integrity=&amp;quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&amp;quot; crossorigin=&amp;quot;&amp;quot;/&amp;gt; &amp;lt;script src=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&amp;quot; integrity=&amp;quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&amp;quot; crossorigin=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; #map { height:90vh; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1 class=&amp;quot;bg-success text-white text-center&amp;quot;&amp;gt;コメント付きマップ&amp;lt;/h1&amp;gt; &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;row mx-0&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;map&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;set_gps&amp;quot; type=&amp;quot;button&amp;quot; value=&amp;quot;GPSを使って入力&amp;quot;&amp;gt; &amp;lt;form</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】クリックした地図上に画像を配置する【overlays】</title>
+      <link>https://noauto-nolife.com/post/leaflet-overlays/</link>
+      <pubDate>Sun, 01 May 2022 18:49:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-overlays/</guid>
+      <description>用途がいまいち思いつかないが、leaflet.jsでは地図上に画像を描画する事ができる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;コメント付きマップ&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&amp;quot; integrity=&amp;quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&amp;quot; crossorigin=&amp;quot;&amp;quot;/&amp;gt; &amp;lt;script src=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&amp;quot; integrity=&amp;quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&amp;quot; crossorigin=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; #map { height:90vh; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1 class=&amp;quot;bg-success text-white text-center&amp;quot;&amp;gt;コメント付きマップ&amp;lt;/h1&amp;gt; &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;row mx-0&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;map&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;set_gps&amp;quot; type=&amp;quot;button&amp;quot; value=&amp;quot;GPSを使って入力&amp;quo</description>
+    </item>
+    
+    <item>
+      <title>【OSM&#43;leaflet.js】ブラウザからGPS(位置情報)を取得し、マーカーを配置させる</title>
+      <link>https://noauto-nolife.com/post/leaflet-marker-gps-position/</link>
+      <pubDate>Fri, 01 Apr 2022 19:24:47 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-marker-gps-position/</guid>
+      <description>ブラウザから位置情報を取得し、leaflet.jsでマーカーを配置させる。 index.html 今回は、leaflet.jsを外部のファイルにまとめた。こうすることでleaflet.jsの追加機能を組みやすくなると思う。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;コメント付きマップ&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&amp;quot; integrity=&amp;quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&amp;quot; crossorigin=&amp;quot;&amp;quot;/&amp;gt; &amp;lt;script src=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&amp;quot; integrity=&amp;quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&amp;quot; crossorigin=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; #map { height:90vh; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1 class=&amp;quot;bg-success text-white text-center&amp;quot;&amp;gt;コメント</description>
+    </item>
     
     <item>
       <title>【Leaflet.js】オリジナルのアイコン画像を使用して、地図上に表示させる【飲食店のマッピングであれば食べ物の画像を使って視認性UP】</title>

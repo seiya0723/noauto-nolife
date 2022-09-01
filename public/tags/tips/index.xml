@@ -6,10 +6,253 @@
     <description>Recent content in Tips on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 28 Jan 2022 13:30:10 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 29 Aug 2022 17:39:34 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】</title>
+      <link>https://noauto-nolife.com/post/ubuntu-composer-error/</link>
+      <pubDate>Mon, 29 Aug 2022 17:39:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-composer-error/</guid>
+      <description>ある日、composerコマンドを実行してLaravelプロジェクトを作ろうにも、エラーが出て作れない。 composer create-project --prefer-dist laravel/laravel testlaraveler1 を実行すると下記が得られる。 Creating a &amp;quot;laravel/laravel&amp;quot; project at &amp;quot;./testlaraveler1&amp;quot; Info from https://repo.packagist.org: #StandWithUkraine Installing laravel/laravel (v9.3.5) - Downloading laravel/laravel (v9.3.5) - Installing laravel/laravel (v9.3.5): Extracting archive Created project in /home/akagi/Documents/programming/php/laravel_test03/testlaraveler1 &amp;gt; @php -r &amp;quot;file_exists(&#39;.env&#39;) || copy(&#39;.env.example&#39;, &#39;.env&#39;);&amp;quot; Loading composer repositories with package information Updating dependencies Your requirements could not be resolved to an installable set of packages. Problem 1 - spatie/laravel-ignition[1.0.0, ..., 1.4.0] require ext-curl * -&amp;gt; it is missing from your system. Install or enable PHP&#39;s curl extension. - Root composer.json requires spatie/laravel-ignition ^1.0 -&amp;gt; satisfiable by spatie/laravel-ignition[1.0.0, ..., 1.4.0]. To enable extensions, verify that they are enabled in your .ini files: - /etc/php/8.1/cli/php.ini - /etc/php/8.1/cli/conf.d/10-opcache.ini - /etc/php/8.1/cli/conf.d/10-pdo.ini - /etc/php/8.1/cli/conf.d/15-xml.ini - /etc/php/8.1/cli/conf.d/20-calendar.ini - /etc/php/8.1/cli/conf.d/20-ctype.ini - /etc/php/8.1/cli/conf.d/20-dom.ini - /etc/php/8.1/cli/conf.d/20-exif.ini - /etc/php/8.1/cli/conf.d/20-ffi.ini - /etc/php/8.1/cli/conf.d/20-fileinfo.ini - /etc/php/8.1/cli/conf.d/20-ftp.ini - /etc/php/8.1/cli/conf.d/20-gettext.ini - /etc/php/8.1/cli/conf.d/20-iconv.ini - /etc/php/8.1/cli/conf.d/20-phar.ini -</description>
+    </item>
+    
+    <item>
+      <title>【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</title>
+      <link>https://noauto-nolife.com/post/django-admin-command-not-found/</link>
+      <pubDate>Thu, 25 Aug 2022 13:48:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-command-not-found/</guid>
+      <description>いわゆる、PATHが通っていない状態 Pythonのインストーラーでインストールする時、『add Python 3.x to PATH』というチェック項目がある。 そこにチェックを入れることで、pythonコマンドが使えるようになる。 参照元:https://bluebirdofoz.hatenablog.com/entry/2019/01/19/141007 django-adminコマンドが使えない時、 django-admin startproject config . pythonか</description>
+    </item>
+    
+    <item>
+      <title>【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</title>
+      <link>https://noauto-nolife.com/post/django-star-review/</link>
+      <pubDate>Sat, 20 Aug 2022 17:55:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-star-review/</guid>
+      <description>最終的にこのようになる。 今回はテンプレートのwithとcenterは不使用とした。 そして、5つ星の内、4つ星でレビューした場合、空の星を1つ描画する仕様に仕立てた。 参照 【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】 HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星</description>
+    </item>
+    
+    <item>
+      <title>【Python】pipで翻訳系ライブラリのgoogletransをインストールする【※バージョン指定しないとエラー】</title>
+      <link>https://noauto-nolife.com/post/python-google-trans-install/</link>
+      <pubDate>Wed, 03 Aug 2022 15:25:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-google-trans-install/</guid>
+      <description>グーグル翻訳を手軽に試すことができる、Pythonライブラリのgoogletrans。 だが、インストールするバージョンの指定を間違えると、正常に動作してくれない不具合が報告されている。 下記コマンドを実行してインストールするべし。 pip install googletrans==3.1.0a0 その上で、下記を実行する。 from googletrans import Translator translator = Translator() string_ja = &amp;quot;Pythonの勉強は楽しい&amp;quot; trans_en = translator.translate(string_ja, dest=&amp;quot;en&amp;quot;) print(trans_en.text) 正常に翻訳されている。</description>
+    </item>
+    
+    <item>
+      <title>【Django】operatorでモデルのフィールド、メソッドを指定してソーティングをする【ランキングの実装に有効】</title>
+      <link>https://noauto-nolife.com/post/django-attr-method-sort/</link>
+      <pubDate>Sat, 30 Jul 2022 17:48:17 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-attr-method-sort/</guid>
+      <description>例えば、モデルがこうだったとする。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) score = models.IntegerField(verbose_name=&amp;quot;スコア&amp;quot;) def twice(self): return self.score*2 ビューでこのようにすることで、モデルフィールドもしくはモデルメソッドでソーティングができる。 from django.shortcuts import render,redirect from django.views import View from .models import</description>
+    </item>
+    
+    <item>
+      <title>【JavaScript】.replace()で検索した文字列すべてを置換したい場合は正規表現を使う</title>
+      <link>https://noauto-nolife.com/post/javascript-replace-trap/</link>
+      <pubDate>Thu, 14 Jul 2022 17:30:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-replace-trap/</guid>
+      <description>例えば、以下の文字列の,をに書き換えたいとする。 let data = &amp;quot;aaa,bbb,ccc&amp;quot;; 文字列の置換処理は.replace()で実現できるから、こうすれば良いと思いがちだが実は違う。 console.log(data.replace(&amp;quot;,&amp;quot;,&amp;quot; &amp;quot;)); // aaa bbb,ccc デフォルトでは最初にヒットした文字列しか置換してくれない。検索した文字列を全て置換したい場合、このようにする。 console.log(data.replace( /,/g , &amp;quot; &amp;quot;)); // aaa bbb ccc ちなみにPythonでは.replace()を使うと全て置換してくれる。だから、Pythonでreplaceを使</description>
+    </item>
+    
+    <item>
+      <title>Sendgridのアカウントが一時的に凍結された場合の対処法と対策</title>
+      <link>https://noauto-nolife.com/post/sendgrid-account-suspended/</link>
+      <pubDate>Tue, 28 Jun 2022 07:03:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/sendgrid-account-suspended/</guid>
+      <description>某日、Sendgridからメールが届く。内容は下記。 Dear Twilio SendGrid Customer, Your Twilio SendGrid account has been temporarily suspended as we have detected that your account&#39;s credentials (password and/or API key) are publicly listed on the code repository GitHub. This is a dangerous practice which may result in your account being used by unauthorized third parties to send malicious content and which may incur damage to your reputation as a quality sender and charges against your account for high usage that you did not perform. Before you ask for your account&#39;s reactivation, please ensure that you: 1) Change your account&#39;s password: https://sendgrid.com/docs/ui/account-and-settings/resetting-your-username-and-password. If your account was created using Heroku or IBM BlueMix, you must use our password reset form. 2) Delete and update exposed API keys in your account [APIのID] : https://sendgrid.com/docs/ui/account-and-settings/api-keys/#delete-an-api-key 3) Enable two-factor authentication for your account 4) Remove your account credentials and API keys from any public listings on code repositories or associated comments on sites such as GitHub or BitBucket. Please see the following link(s) for locations where your credentials</description>
+    </item>
+    
+    <item>
+      <title>Django-allauthのメールを使用したログイン方式で、アカウント新規作成時、確認URLにアクセスしていないにもかかわらず、ログインできてしまうのはなぜか？</title>
+      <link>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</link>
+      <pubDate>Sun, 19 Jun 2022 16:12:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</guid>
+      <description>allauthはそういう仕様になっているから。 前提として、下記記事の『メールアドレスとパスワードを使用した認証方法の実装』のコードを採用している場合に限る。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 メールの確認の仕様を考慮するとわかる アカウント新規作成時に送信されるメールの中にあるURL このURLに対してGETリクエスト送信 Django側はこのURLに対して</description>
+    </item>
+    
+    <item>
+      <title>【Django】settings.pyのINSTALLED_APPSにはどのように書くのが適切か【順番とapps】</title>
+      <link>https://noauto-nolife.com/post/django-settings-installed-apps/</link>
+      <pubDate>Sat, 18 Jun 2022 22:55:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-settings-installed-apps/</guid>
+      <description>公式の書き方 Django公式によると、下記のように書くのが適切。 INSTALLED_APPS = [ &amp;quot;bbs.apps.BbsConfig&amp;quot;, &#39;django.contrib.admin&#39;, &#39;django.contrib.auth&#39;, &#39;django.contrib.contenttypes&#39;, &#39;django.contrib.sessions&#39;, &#39;django.contrib.messages&#39;, &#39;django.contrib.staticfiles&#39;, ] 参照元: https://docs.djangoproject.com/ja/4.0/ref/applications/#configuring-applications 一部媒体における書き方 一方で一部の媒体では以下のように書かれてある。 INSTALLED_APPS = [ &amp;quot;bbs&amp;quot;, &#39;django.contrib.admin&#39;, &#39;django.contrib.auth&#39;, &#39;django.contrib.contenttypes&#39;, &#39;django.contrib.sessions&#39;, &#39;django.contrib.messages&#39;, &#39;django.contrib.staticfiles&#39;, ] どちらが正しいのか？ bbs/apps.pyにて、下記のように仕立てる。 from django.apps import AppConfig class BbsConfig(AppConfig): default_auto_field = &#39;django.db.models.BigAutoField&#39; name = &#39;bbs&#39; verbose_name = &amp;quot;簡易掲示板&amp;quot; これは管理サイトで操作するモデルの一覧を表記する際、verbose_nameを追加</description>
+    </item>
+    
+    <item>
+      <title>【Django】ユーザー作成時に何らかの処理を行う方法【saveメソッドオーバーライド】</title>
+      <link>https://noauto-nolife.com/post/django-createuser-save-method-override/</link>
+      <pubDate>Sat, 18 Jun 2022 17:17:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-createuser-save-method-override/</guid>
+      <description>カスタムユーザーモデルを使用している時、ユーザーアカウント新規作成時に何らかの処理を行って欲しい場合。 そういう時はSignupFormのsaveメソッドをオーバーライドする。 SignUpFormのコード from django.contrib.auth.forms import UserCreationForm from .models import CustomUser class SignupForm(UserCreationForm): class Meta(UserCreationForm.Meta): model = CustomUser fields = (&amp;quot;username&amp;quot;) def save(self, request, commit=True, *args, **kwargs): #ユーザーモデルのオブジェクト作成(ただし、保存をしない) user = super().save(commit=False) #生のパスワードをハッシュ化した上で、モデルオブジェクトの属性にセットする。 user.set_password(self.cleaned_data[&amp;quot;password1&amp;quot;]) #保存す</description>
+    </item>
+    
+    <item>
+      <title>JavaScript(jQuery)でQRコードを表示させる</title>
+      <link>https://noauto-nolife.com/post/javascript-qrcode/</link>
+      <pubDate>Mon, 23 May 2022 11:23:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-qrcode/</guid>
+      <description>例えば、ユーザーの一部がPCでの操作をやめて、スマホで操作したいと思ったとする。 こういう時QRコードを表示させる、ブラウザのアドオンや機能を使えば良いが、ユーザーにそれを強いるのはやや酷である。 そこで、jQueryを使用して、QRコードを簡単に表示させると良いだろう。 コード &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; window.addEventListener(&amp;quot;load&amp;quot; , function (){ let qrtext = location.href; let utf8qrtext = unescape(encodeURIComponent(qrtext)); $(&amp;quot;#qrcode&amp;quot;).html(&amp;quot;&amp;quot;); $(&amp;quot;#qrcode&amp;quot;).qrcode({width:160,height:160,text:utf8qrtext}); }); &amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;qrcode&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる。 結論 下記を参照。 https://github.com/jeromeetienne/jquery-qrcode</description>
+    </item>
+    
+    <item>
+      <title>【Django】context_processorsを使い、全ページに対して同じコンテキストを提供する【サイドバーのカテゴリ欄、ニュース欄などに有効】</title>
+      <link>https://noauto-nolife.com/post/django-context-processors/</link>
+      <pubDate>Tue, 17 May 2022 09:24:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-context-processors/</guid>
+      <description>以前は、ビュークラスの継承を使ったり、MIDDLEWAREでリクエストオブジェクトを操作したりすることでテンプレートに対してデータを提供していたが、これではやや無駄が多い。 Djangoにはcontext_processorsという、任意の処理を行った後contextを追加できる便利な機能があるので、こちらを使う。 context_processorsを作る まず、アプリディレクトリ内部に、custom</description>
+    </item>
+    
+    <item>
+      <title>【Django】ファイルアップロード時にファイル名をリネーム(改名)する</title>
+      <link>https://noauto-nolife.com/post/django-fileupload-rename/</link>
+      <pubDate>Fri, 13 May 2022 17:18:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-fileupload-rename/</guid>
+      <description>方法論として、2つある。ビューから書き換える方法と、モデルに独自のバリデーションを仕込む方法の2つである。 ビューからファイル名を書き換える request.FILES[&amp;quot;image&amp;quot;].nameから書き換えができる。 request.FILES[&amp;quot;image&amp;quot;].name = &amp;quot;test.png&amp;quot; form = TopicForm(request.POST,request.FILES) # 以下略 # request.POSTに対しては書き換えできないが、何故かFILESに対しては書き換えできる。 もしちょっと気持ち悪いなと思う場合は下記にすると</description>
+    </item>
+    
+    <item>
+      <title>【Django】アップロードするファイルサイズに上限をセットする【validators】</title>
+      <link>https://noauto-nolife.com/post/django-fileupload-limit-size/</link>
+      <pubDate>Fri, 13 May 2022 16:04:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-fileupload-limit-size/</guid>
+      <description>本記事ではアップロードするファイルサイズに上限をセットする方法を解説する。 ただし、ビュー側にファイルサイズの上限をチェックする機能を実装させるのではなく、以前紹介した、『【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】』を元に実装させる。 ビューに判定機能を実装させる方法でも問題はないが、投稿するビューが二分</description>
+    </item>
+    
+    <item>
+      <title>【Django】セッションの有効期限をセット、もしくはブラウザを閉じた時にセッションを無効化【settings.py】</title>
+      <link>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</link>
+      <pubDate>Sun, 01 May 2022 20:09:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</guid>
+      <description>セキュリティを担保したいサイトであれば、ブラウザが閉じてもセッションが残るデフォルトのDjango設定を疎ましく思うだろう。 そういう時は、settings.pyからセッションの有効期限の設定もしくは、ブラウザの終了を検知して無効化する設定を施せばよい。 セッションに有効期限をセットする【単位:秒】 例えば60秒後にセッションを切って、再ログインを要求させる場合はこうする。 SESSION_COOKIE_AGE = 60 デフォルトでは2週間にな</description>
+    </item>
+    
+    <item>
+      <title>【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】</title>
+      <link>https://noauto-nolife.com/post/django-models-origin-validators/</link>
+      <pubDate>Fri, 15 Apr 2022 14:33:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-origin-validators/</guid>
+      <description>例えば、簡易掲示板にて、特定の禁止ワードを含んだ投稿を拒否したい場合。 承認制にして、管理者が文面を確認した上で公開を許す方法もあるが、それでは人件費がかかる。 なるべく保存する前に禁止ワードを含んでいるかどうかをチェックする仕組みにしたい。 そういう時は、validatorsに独自の関数を割り当てれば良い。 コードは40分Djangoから流用して作る models.py 不快語を除外するバリデーションを実装させる。 from django.db import models</description>
+    </item>
+    
+    <item>
+      <title>【Django】DateTimeFieldに自動的に現在時刻を入れるには、auto_now_addもしくはauto_nowフィールドオプションを指定【新規作成時・編集時の時刻】【※編集不可】</title>
+      <link>https://noauto-nolife.com/post/django-models-datetime-auto-now-add/</link>
+      <pubDate>Thu, 14 Apr 2022 17:07:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-datetime-auto-now-add/</guid>
+      <description>作成時と編集時の日時を自動的に入れたい場合は、auto_nowもしくはauto_now_addを指定する。 auto_nowはモデルのsaveメソッドが実行された時、auto_now_addはモデルに新規作成された時に、その時の日時が指定したフィールドに格納される。 つまり、モデルを下記のように組むと良いだろう。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コ</description>
+    </item>
+    
+    <item>
+      <title>【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】</title>
+      <link>https://noauto-nolife.com/post/django-login-required-mixin/</link>
+      <pubDate>Thu, 07 Apr 2022 13:19:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-login-required-mixin/</guid>
+      <description>ログインしていないユーザーが特定のページにアクセスしてきた時、処理を実行せず、ログインページにリダイレクトするには、LoginRequiredMixinを使う。 前提 予め前もって、認証を実装しておく。allauthを使っても、Djangoの備え付けの認証を使っても良い。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 【Django】allauth未使用でユーザー認証</description>
+    </item>
+    
+    <item>
+      <title>Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】</title>
+      <link>https://noauto-nolife.com/post/linux-commandline-clipboard/</link>
+      <pubDate>Wed, 30 Mar 2022 09:13:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/linux-commandline-clipboard/</guid>
+      <description>とてつもなく長いコードをクリップボードにコピーして、誰かと共有したい時、エディタのカーソルを上に持っていって下まで下げてコピーするのはとても面倒。 だから、コマンド一発でファイルの内容全てをコピーする。xselを使って。 sudo apt install xsel これでOK。後はコピペしたいファイルを用意して、下記コマンドを実行する。 cat ./index.html | xsel --clipboard --input これでindex.htmlの中身が全部コピーできた。bashrcにエイリアスで登録しておく</description>
+    </item>
+    
+    <item>
+      <title>【Django】管理サイト(admin)のログを削除する【DBの使用量削減に】</title>
+      <link>https://noauto-nolife.com/post/django-admin-log-delete/</link>
+      <pubDate>Fri, 25 Mar 2022 10:42:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-log-delete/</guid>
+      <description>Djangoの管理サイトは自動的に操作のログを取るようになっている。 そのログはDBに記録されているため、Herokuの無料プランなどの1万行しかないDBであれば、死活問題になる。 そこで、管理サイトのログをDBから消す。下記のようにすればよい。 from django.shortcuts import render from django.views import View from django.contrib.admin.models import LogEntry class IndexView(View) LogEntry.objects.all().delete() ## 以下略 ##</description>
+    </item>
+    
+    <item>
+      <title>【Django】星の平均をアイコンで表示させる【3.5の時、三星と半星で表示】</title>
+      <link>https://noauto-nolife.com/post/django-star-average/</link>
+      <pubDate>Mon, 14 Mar 2022 09:17:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-star-average/</guid>
+      <description>通販サイトなどでよくある、星の平均をアイコンで表示する。 モデル 2つのメソッドを追加する。平均スコアを出力するメソッド。少数だけ取り出し、それを元に1星、半星、無星を判定するメソッド。 from django.db import models from django.core.validators import MinValueValidator,MaxValueValidator from django.db.models import Avg class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) def avg_star_score(self): reviews = Review.objects.filter(topic=self.id).aggregate(Avg(&amp;quot;star&amp;quot;)) if reviews[&amp;quot;star__avg&amp;quot;]: return reviews[&amp;quot;star__avg&amp;quot;] else: return 0 def avg_star_icon_few(self): reviews = Review.objects.filter(topic=self.id).aggregate(Avg(&amp;quot;star&amp;quot;)) avg = reviews[&amp;quot;star__avg&amp;quot;] #平均スコアなしの場</description>
+    </item>
+    
+    <item>
+      <title>【Django】FilefieldやImageFieldでファイル名だけを表示させる方法【モデルにメソッドを追加】</title>
+      <link>https://noauto-nolife.com/post/django-filefield-only-filename/</link>
+      <pubDate>Thu, 10 Mar 2022 22:20:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-filefield-only-filename/</guid>
+      <description>FilefieldやImageFieldにはフィールドオプションとしてupload_toが指定されている。 そのため、そのままではファイル名だけを取り出すことはできない。 例えば、モデルが下記でファイル名がtest.pdfだった場合。 class Document(models.Model): file = models.FileField(verbose_name=&amp;quot;ファイル&amp;quot;,upload_to=&amp;quot;app/document/file/</description>
+    </item>
+    
+    <item>
+      <title>【HTML】ダウンロードのダイアログを表示させたい場合、aタグにはdownload属性を付与する</title>
+      <link>https://noauto-nolife.com/post/html-atag-download-attribute/</link>
+      <pubDate>Thu, 10 Mar 2022 21:53:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/html-atag-download-attribute/</guid>
+      <description>小ネタ。 例えば、ファイルを共有するウェブアプリを作る時、ファイルをリンクタグでダウンロードする仕様に仕立てる。 しかし、それが画像やPDF等のブラウザで表示できるファイルの場合、ダウンロードのダイアログが表示されず、ファイルそのものが表示されてしまう。 &amp;lt;a href=&amp;quot;sample.pdf&amp;quot;&amp;gt;ダウンロードする&amp;lt;/a&amp;gt; そこで、aタグにdownload属性を付与する。 &amp;lt;a</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる</title>
+      <link>https://noauto-nolife.com/post/jquery-number-form/</link>
+      <pubDate>Wed, 02 Mar 2022 11:45:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-number-form/</guid>
+      <description>数値入力フォーム。キーボードを使わず、ボタン入力で行いたい場合、JavaScriptを使う必要がある。 今回は更に短くかけるよう、jQueryで表現した。なお、再利用を想定して、装飾は全く行っていない。 ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;number&amp;quot; name=&amp;quot;amount&amp;quot; value=&amp;quot;0&amp;quot; readonly&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;減らす&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;増やす&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;[name=&#39;plus&#39;]&amp;quot;).on(&amp;quot;click&amp;quot;, function(){ amount_add(this,true);</description>
+    </item>
+    
+    <item>
+      <title>【Restful化】DjangoRestframeworkの導入・移行作業【ビュークラス継承元の書き換え、Serializerの運用】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-changing/</link>
+      <pubDate>Sun, 27 Feb 2022 15:05:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-changing/</guid>
+      <description>Restful化のためには、DjangoRestframeworkをインストールする必要がある。(素のDjangoでもAjaxでDELETE,PUT,PATCHメソッドの送信は可能だが、リクエストボディの読み込みに難があるため。) だが、素のDjangoで開発している状態であれば、コードの一部をDRF仕様に書き換えを行う必要がある。 本記事では、40分Djangoを元にDRF移行手続きを解説する。 予め</description>
+    </item>
+    
+    <item>
+      <title>dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</title>
+      <link>https://noauto-nolife.com/post/docker-image-file-share/</link>
+      <pubDate>Sun, 13 Feb 2022 16:54:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/docker-image-file-share/</guid>
+      <description>dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに</description>
+    </item>
+    
+    <item>
+      <title>Djangoのモデルにて指定された選択肢をセットし、それだけ入力を許可する【choicesフィールドオプションで都道府県の指定をする】</title>
+      <link>https://noauto-nolife.com/post/django-models-choices/</link>
+      <pubDate>Fri, 11 Feb 2022 08:18:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-choices/</guid>
+      <description>例えば、都道府県の指定、どうやってモデルに格納するか。都道府県は47個。これ以外の物を選ぶことはできない。 故に、CharFieldを使用して、都道府県の格納先のフィールドを作るのは、間違っているわけではないが、あまりスマートではない。 そこで、フィールドオプションのchoicesを使用して、特定の選択肢のみ入力を許可する。 【前提】settings.py settings.pyにて、都道府県の名前を定義</description>
+    </item>
     
     <item>
       <title>【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</title>
@@ -161,7 +404,7 @@
       <pubDate>Sun, 14 Nov 2021 18:53:28 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-message-framework/</guid>
-      <description>DjangoのMessageFrameworkを有効化させる まず、settings.pyのINSTALLED_APPSに &#39;django.contrib.messages&#39; が含まれているかどうかをチェック。Django 3.2であればデフォルトで書かれてある。 同じくMIDDLEWAREに &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;, &#39;django.contrib.messages.middleware.MessageMiddleware&#39; 上記2つが含まれている事を確認。SessionMiddlewareはMessageMiddlewareよりも前に書かれてある必要がある。これもデフォルトで書かれ</description>
+      <description>MessageFrameworkを使ってHelloWorldを表示させる。 元になるコードは40分Djangoにforms.pyを追加した状態から流用している。 まず、views.pyにて、公式からコードを拝借して追加した。 from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm #↓追加 from django.contrib import messages class IndexView(View): def get(self, request, *args, **kwargs): #↓追加 messages.add_message(request, messages.INFO, &#39;Hello world.&#39;) topics = Topic.objects.all() context = { &amp;quot;topics&amp;quot;:topics } return render(request,&amp;quot;bbs/index.html&amp;quot;,context) def post(self, request, *args, **kwargs): form = TopicForm(request.POST) if form.is_valid(): form.save() return redirect(&amp;quot;bbs:index&amp;quot;) index = IndexView.as_view() HTML側でメッセージを表示させるにはこうする。 &amp;lt;!DOCTYPE</description>
     </item>
     
     <item>
@@ -264,7 +507,7 @@
     </item>
     
     <item>
-      <title>【Django】実行されるクエリを確認する【.query】</title>
+      <title>【Django】実行されるクエリ(SQL)を確認する【.query】</title>
       <link>https://noauto-nolife.com/post/django-models-query/</link>
       <pubDate>Thu, 02 Sep 2021 13:20:50 +0900</pubDate>
       
@@ -296,7 +539,7 @@
       <pubDate>Sat, 07 Aug 2021 16:28:40 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-models-add-method-template-attribute/</guid>
-      <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.Integer</description>
+      <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.IntegerField</description>
     </item>
     
     <item>
@@ -444,12 +687,12 @@
     </item>
     
     <item>
-      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法</title>
+      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法【1対多】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</link>
       <pubDate>Sat, 20 Feb 2021 11:13:37 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</guid>
-      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 カスタムユーザーモデルを外部キーとして指定する まず、settings.pyに下記のような設定がされているとする。usersアプリのCustomUserクラスを指定している。 AUTH_USER_MODEL = &#39;users.CustomUser&#39; 続いて、任意のアプリのモデルを編集する。 from django.db import models from django.utils import timezone from django.conf</description>
+      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 本記事では、下記記事で解説したカスタムユーザーモデルを実装したことを前提として話を進める。 【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】 カスタムユーザーモデルを外部キー</description>
     </item>
     
     <item>
@@ -579,12 +822,12 @@
     </item>
     
     <item>
-      <title>Djangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】</title>
+      <title>Djangoで多対多のリレーションの構造と作り方、テンプレートで表示する方法【ManyToManyField】</title>
       <link>https://noauto-nolife.com/post/django-many-to-many/</link>
       <pubDate>Fri, 27 Nov 2020 17:20:39 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-many-to-many/</guid>
-      <description>多対多のリレーションを作って、いざ表示させようとした時、普通に{{ content.allergy }}などと指定してしまうとこうなってしまう。 表示できていない。正しく指定するとこうなる。 コードの解説 結論から言うと、テンプレートでの表示に問題がある。下記のようにすると表示できる。 &amp;lt;td&amp;gt;{% for allergy in content.allergy.all %}{{ allergy }} {% endfor %}&amp;lt;/td&amp;gt; .all属性を使用しforループで並べる。 結論 多対多のリレーションはアレルギー表示や動画等のタグ表示、エンジニアの担当言語やスキル</description>
+      <description>多対多のリレーションの作り方 多対多のモデルは以下のように作る。 from django.db import models class Allergy(models.Model): name = models.CharField(verbose_name=&amp;quot;アレルギー名&amp;quot;,max_length=10) def __str__(self): return self.name class Menu(models.Model): name = models.CharField(verbose_name=&amp;quot;品名&amp;quot;,max_length=20) breakfast = models.BooleanField(verbose_n</description>
     </item>
     
     <item>
@@ -593,7 +836,7 @@
       <pubDate>Wed, 18 Nov 2020 08:23:05 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-non-nullable/</guid>
-      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコードはどうするか</description>
+      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 この警告文の解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコード</description>
     </item>
     
     <item>
@@ -611,7 +854,7 @@
       <pubDate>Wed, 11 Nov 2020 17:57:49 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-paginator/</guid>
-      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されないので、例えば検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態でページネーションを実装する術を解説する。 流れ views</description>
+      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。 しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されない。例えば、検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態で、ページネーションを実装する術を解説する。 流れ views</description>
     </item>
     
     <item>
@@ -620,16 +863,16 @@
       <pubDate>Wed, 11 Nov 2020 17:56:10 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-or-and-search/</guid>
-      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 結論 結論から言うと、コード(views.py)はこ</description>
+      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 クエリビルダでスペース区切りのキーワード検索をする</description>
     </item>
     
     <item>
-      <title>Djangoで画像及びファイルをアップロードする方法</title>
+      <title>Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】</title>
       <link>https://noauto-nolife.com/post/django-fileupload/</link>
       <pubDate>Thu, 05 Nov 2020 15:30:14 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-fileupload/</guid>
-      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 流れ 必要なライブラリのインストール settings.pyとurls.pyの追記 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール 今回はアップロード後のバリデーションを行うため、Pytho</description>
+      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 40分Djangoを理解している方向け。 流れ 必要なライブラリのインストール settings.pyの編集 urls.pyの編集 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール pip install Pillow pip install python-magic P</description>
     </item>
     
     <item>

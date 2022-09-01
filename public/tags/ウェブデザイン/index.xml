@@ -6,13 +6,58 @@
     <description>Recent content in ウェブデザイン on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 24 Dec 2021 10:01:44 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 31 Jul 2022 16:26:04 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】</title>
+      <title>JavaScript(jQuery)でストップウォッチとタイマーを作る【勉強や運動の記録などに】</title>
+      <link>https://noauto-nolife.com/post/javascript-stopwatch-and-timer/</link>
+      <pubDate>Sun, 31 Jul 2022 16:26:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-stopwatch-and-timer/</guid>
+      <description>記録系のウェブアプリに欠かせないストップウォッチとタイマー これをJavaScript(jQuery)で再現する。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.6.0.min.js&amp;quot; integrity=&amp;quot;sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;p-2 my-2&amp;quot;&amp;gt; &amp;lt;h2&amp;gt;タイマー&amp;lt;/h2&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_hour&amp;quot; type=&amp;quot;number&amp;quot; min=&amp;quot;0&amp;quot; max=&amp;quot;99&amp;quot; value=&amp;quot;0&amp;quot;&amp;gt;時間&amp;lt;/label&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_minute&amp;quot; type=&amp;quot;number&amp;quot; min=&amp;quot;0&amp;quot; max=&amp;quot;59&amp;quot; value=&amp;quot;0&amp;quot;&amp;gt;分&amp;lt;/label&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_second&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>DjangoでカレンダーのUIを作る</title>
+      <link>https://noauto-nolife.com/post/django-calendar-ui/</link>
+      <pubDate>Sat, 09 Jul 2022 15:42:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-calendar-ui/</guid>
+      <description>『Djangoビギナーが40分で掲示板アプリを作る方法』を元に、カレンダーのUIを作る。 1ヶ月分のデータをまとめて表示させたい系のウェブアプリの作成に活用できる。 calendar.py このcalendar.pyをアプリディレクトリ内に作る。 import datetime def create_calendar(year,month): #今月の初日を指定 dt = datetime.date(year,month,1) #calendarはweekのリスト、weekは日付のリスト calendar = [] week = [] #月始めが日曜日以外の場合、空欄を追加する。 if dt.weekday() != 6: week = [ {&amp;quot;day&amp;quot;:&amp;quot;&amp;quot;} for i in range(dt.weekday()+1) ] &amp;quot;&amp;quot;&amp;quot; #内</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】数値入力フォームを押しっぱなしで入力する仕様に仕立てる</title>
+      <link>https://noauto-nolife.com/post/jquery-number-form-auto/</link>
+      <pubDate>Tue, 03 May 2022 11:25:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-number-form-auto/</guid>
+      <description>以前、『【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる』で解説したフォームを、ボタン押しっぱなしでも入力できるように仕立てる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;spinner_area&amp;quot;&amp;gt; &amp;lt;input class=&amp;quot;spinner&amp;quot; type=&amp;quot;number&amp;quot; value=&amp;quot;0&amp;quot; max=&amp;quot;10&amp;quot; min=&amp;quot;0&amp;quot;&amp;gt; &amp;lt;button class=&amp;quot;spinner_button&amp;quot; type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;-1&amp;quot;&amp;gt;ー&amp;lt;/button&amp;gt; &amp;lt;button class=&amp;quot;spinner_button&amp;quot; type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;1&amp;quot; &amp;gt;＋&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; CSS .spinner_button{ user-select: none; cursor:pointer; padding:0.5rem; width: auto; vertical-align: middle; } .spinner_area input{ padding: 0.5rem; border: 0.1rem solid gray; border-radius: 0.25rem; font-size:</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる</title>
+      <link>https://noauto-nolife.com/post/jquery-number-form/</link>
+      <pubDate>Wed, 02 Mar 2022 11:45:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-number-form/</guid>
+      <description>数値入力フォーム。キーボードを使わず、ボタン入力で行いたい場合、JavaScriptを使う必要がある。 今回は更に短くかけるよう、jQueryで表現した。なお、再利用を想定して、装飾は全く行っていない。 ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;number&amp;quot; name=&amp;quot;amount&amp;quot; value=&amp;quot;0&amp;quot; readonly&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;減らす&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;増やす&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;[name=&#39;plus&#39;]&amp;quot;).on(&amp;quot;click&amp;quot;, function(){ amount_add(this,true);</description>
+    </item>
+    
+    <item>
+      <title>HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】【flex-direction:row-reverseで逆順対応可】</title>
+      <link>https://noauto-nolife.com/post/css3-star-review-radio/</link>
+      <pubDate>Fri, 11 Feb 2022 14:51:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-star-review-radio/</guid>
+      <description>以前、サーバーサイドで1から5のいずれかの数値を受付、DBに保存する方法を実践したが、フロント系ではそれをもう少しおしゃれに実装させたい。 そういう時は、なるべくJavaScriptを使用せず、HTMLとCSSだけで表現するのがベターなやり方だと個人的には思う。 だからこそ、今回も同様にHTMLとCSSだけでレビューの星を入力するフォームを再現した。 マウスをホバーした時、星が塗りつぶされ、外れると星が</description>
+    </item>
+    
+    <item>
+      <title>Django-allauthにてフォームを中央寄せにさせる【ログインページのテンプレートのカスタマイズ】</title>
       <link>https://noauto-nolife.com/post/django-allauth-center-loginpage/</link>
       <pubDate>Fri, 24 Dec 2021 10:01:44 +0900</pubDate>
       

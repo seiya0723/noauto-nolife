@@ -6,15 +6,105 @@
     <description>Recent content in Ubuntu on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 30 Jan 2022 11:22:31 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 27 Aug 2022 10:04:40 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>UbuntuにSambaをインストールしてファイルサーバー化させる</title>
+      <link>https://noauto-nolife.com/post/ubuntu-samba/</link>
+      <pubDate>Sat, 27 Aug 2022 10:04:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-samba/</guid>
+      <description>本記事はプライベート用として運用するため、セキュリティは全く考慮していない。 本記事に倣って作ったファイルサーバーは、LAN内の端末であれば、いずれも自由に読み書きできてしまうので注意。 インストールする sudo apt install samba 共有ディレクトリを作る 今回はホームディレクトリに作った mkdir ~/share chmod 777 ~/share 設定する sudo vi /etc/samba/smb.conf を開いて、末尾に下記を記入。UserNameには任意のユーザー名を指定 [share] path = /home/UserName/share browseable = yes writable = yes guest ok = yes guest only = yes create mode = 0777</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする</title>
+      <link>https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/</link>
+      <pubDate>Wed, 24 Aug 2022 08:58:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/</guid>
+      <description>公式のRaspberry Pi OSはサーバーとして機能させるには不必要なものがあまりにも多すぎる。 ここは普段使い慣れているUbuntuをインストールしたい。 ということで、Ubuntu18.04からRaspberry Piにサーバー版をインストールさせる 必要なもの ラズパイ3B本体 MicroSD(64GBぐらいが理想) MicroSDとUSBの変換器(PCにMicroSDのコネクタがある場合は不要) インストー</description>
+    </item>
+    
+    <item>
+      <title>別のUbuntuにデータを輸送する</title>
+      <link>https://noauto-nolife.com/post/ubuntu-data-transport/</link>
+      <pubDate>Mon, 15 Aug 2022 18:20:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-data-transport/</guid>
+      <description>別のPCのUbuntuにデータを全て輸送する必要があったりする。 そういう時、手順をまとめておかないと手直しに返って時間がかかる。 よって、必要なデータ移行作業をここに列挙しておく。 準備編 前もって、下記をやっておく(任意) サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 【保存版】Ubuntu18.04をインストールした後に真</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにWordpressをインストールする【MariaDB&#43;Apache】</title>
+      <link>https://noauto-nolife.com/post/startup-wordpress-ubuntu/</link>
+      <pubDate>Sat, 04 Jun 2022 16:46:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-wordpress-ubuntu/</guid>
+      <description>手元のPCにWordpressをインストールして試したいが、OSに直にインストールするのは避けたい。 そういう時、VirtualBoxにインストールしたUbuntuへ、Wordpressをインストールすると良いだろう。 流れ Apacheのインストール MariaDBのインストールとDB・ユーザーの作成 PHPのインストール Wordpressのインストール Apacheのインストール インストール sudo apt install apache2 自動起</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにインストールされているPythonをアップデートする</title>
+      <link>https://noauto-nolife.com/post/python3-update/</link>
+      <pubDate>Sat, 07 May 2022 22:33:21 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python3-update/</guid>
+      <description>経緯 非同期系ライブラリのacyncioのコードを動かそうとした時。 正常に動いてくれない。公式によると、これはPythonが3.7以上でなければ動いてくれないとのこと。( https://docs.python.org/3/library/asyncio.html ) そこでPythonのバージョンを調べたところ、 うわっ..私のPython古すぎ..!! ということで、UbuntuにインストールされているPythonをアップデートしておく。ちなみに2022年5月現時点では、Pythonの最新安定</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする</title>
+      <link>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</link>
+      <pubDate>Mon, 25 Apr 2022 10:56:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</guid>
+      <description>5年以上前にやったきり、完全に忘れているNginxでPHPを動かす方法。 本記事ではその手順をまとめる。 必要なパッケージのインストール sudo apt install nginx php php-fpm Nginxはサーバー、phpはPHP処理系、php-fpmはNginxから動作させるために必要なもの Nginxの設定 /etc/nginx/sites-available/defaultを書き換える。 sudo vi /etc/nginx/sites-available/default TODOと書かれた場所だけ編集する。 ## # You should look at the following</description>
+    </item>
+    
+    <item>
+      <title>Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】</title>
+      <link>https://noauto-nolife.com/post/linux-commandline-clipboard/</link>
+      <pubDate>Wed, 30 Mar 2022 09:13:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/linux-commandline-clipboard/</guid>
+      <description>とてつもなく長いコードをクリップボードにコピーして、誰かと共有したい時、エディタのカーソルを上に持っていって下まで下げてコピーするのはとても面倒。 だから、コマンド一発でファイルの内容全てをコピーする。xselを使って。 sudo apt install xsel これでOK。後はコピペしたいファイルを用意して、下記コマンドを実行する。 cat ./index.html | xsel --clipboard --input これでindex.htmlの中身が全部コピーできた。bashrcにエイリアスで登録しておく</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-ubuntu-venv/</link>
+      <pubDate>Wed, 30 Mar 2022 08:03:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-ubuntu-venv/</guid>
+      <description>Ubuntuのデプロイ時にVirtualenvを使う。 以前の方法はOSに直接Djangoなどのライブラリをインストールしているため、OSの更新と同時にライブラリも更新されてしまう。 Virtualenvを使えば、OSを更新してもライブラリのバージョンは常に一定。手動で更新する仕様になる。 Djangoプロジェクトの配置 下記になるよう配置する。 /home/[ユーザー名]/Documents/[プロジェク</description>
+    </item>
+    
+    <item>
+      <title>【HUGO】最新版をインストールして、サイトを作り、テーマを当ててビルドするまで</title>
+      <link>https://noauto-nolife.com/post/hugo-install-latest/</link>
+      <pubDate>Tue, 22 Mar 2022 08:39:10 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/hugo-install-latest/</guid>
+      <description>手順 GitHubから最新版のインストーラを入手 サイトを作る 記事を作る テーマをインストールする HUGOサーバー(開発用サーバー)を起動する ビルドする GitHubから最新版のインストーラを入手 https://github.com/gohugoio/hugo/releases 上記サイトから、Latestと書かれてあるバージョンのインストーラーをDLする。Ubuntu 20.04の場合はhugo_0.95.0_Linux-64bit.debをDLすると良いだろう。 Windowsであれば</description>
+    </item>
+    
+    <item>
+      <title>dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</title>
+      <link>https://noauto-nolife.com/post/docker-image-file-share/</link>
+      <pubDate>Sun, 13 Feb 2022 16:54:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/docker-image-file-share/</guid>
+      <description>dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに</description>
+    </item>
+    
+    <item>
       <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
       <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
-      <pubDate>Sun, 30 Jan 2022 11:22:31 +0900</pubDate>
+      <pubDate>Thu, 03 Feb 2022 11:22:31 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
       <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>

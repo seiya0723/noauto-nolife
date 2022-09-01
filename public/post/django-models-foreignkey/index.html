@@ -20,10 +20,10 @@
         <script src="https://noauto-nolife.com/data/search.js"></script>
         <script src="https://noauto-nolife.com/js/script.js"></script>
 
-        <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】 - 自動化無しに生活無し</title>
+        <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】 - 自動化無しに生活無し</title>
         
 
-<meta property="og:title" content="Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】 - 自動化無しに生活無し">
+<meta property="og:title" content="Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】 - 自動化無しに生活無し">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://noauto-nolife.com/post/django-models-foreignkey/">
 <meta property="og:image" content="https://noauto-nolife.com/images/django.jpg">
@@ -33,7 +33,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="自動化無しに生活無し">
 <meta name="twitter:url" content="https://noauto-nolife.com/post/django-models-foreignkey/">
-<meta name="twitter:title" content="Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】 - 自動化無しに生活無し">
+<meta name="twitter:title" content="Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】 - 自動化無しに生活無し">
 <meta name="twitter:image" content="https://noauto-nolife.com/images/django.jpg">
 
 
@@ -45,7 +45,7 @@
       "@type": "WebPage",
       "@id":"https://noauto-nolife.com/"
     },
-    "headline": "Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】 - 自動化無しに生活無し",
+    "headline": "Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】 - 自動化無しに生活無し",
     "image": {
       "@type": "ImageObject",
       "url": "https://noauto-nolife.com/images/django.jpg",
@@ -107,12 +107,12 @@
                 
                 <li><a href="https://noauto-nolife.com/post/">post</a></li>
                 
-                <li class="active">Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】</li>
+                <li class="active">Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】</li>
             </ol>
         </nav>
         
         <article class="single">
-    <h1 class="article_title">Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】</h1>
+    <h1 class="article_title">Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】</h1>
         
     <div class="article_spacer">
 
@@ -167,6 +167,8 @@
 
 <p>A選手はカープ、B選手はヤクルト、C選手は巨人ということがわかる。</p>
 
+<p>更に、球団テーブルには球団に関するカラムを追加することができるので、選手テーブルから球団情報を参照することができる。</p>
+
 <h3 id="1対多のメリット">1対多のメリット</h3>
 
 <p>このように直接、所属先の文字列を書き込むよりも、1対多のリレーションを組むほうがメリットが多い。</p>
@@ -179,11 +181,15 @@
 
 <h4 id="必ずどれかひとつを選ぶ-複数選ぶことはできない">必ずどれかひとつを選ぶ(複数選ぶことはできない)</h4>
 
-<p>1対多のメリットとしてどれかひとつを選ぶことにある。もちろん選ばないという選択肢もモデルの設定によっては実現できる。だが、1対多において複数を選ぶことはない。今回の例であれば選手が複数の球団と同時に契約することはできない。</p>
+<p>1対多のメリットとしてどれかひとつを選ぶことにある。もちろん選ばないという選択肢もモデルの設定によっては実現できる。</p>
+
+<p>だが、1対多において複数を選ぶことはない。今回の例であれば選手が複数の球団と同時に契約することはできない。</p>
 
 <h4 id="表記ゆれがなくなる">表記ゆれがなくなる</h4>
 
-<p>もし、これがエクセルであり、文字列で手入力する場合、必ずどこかで表記ゆれが発生する。球団の名称であれば、『カープ』『広島』『広島東洋』などの表記ゆれが発生してしまう。この表記ゆれが発生した場合、何が問題かと言うと、検索でヒットしなくなる。</p>
+<p>もし、これがエクセルであり、文字列で手入力する場合、必ずどこかで表記ゆれが発生する。球団の名称であれば、『カープ』『広島』『広島東洋』などの表記ゆれが発生してしまう。</p>
+
+<p>この表記ゆれが発生した場合、何が問題かと言うと、検索でヒットしなくなる。</p>
 
 <h4 id="1が消された時の挙動を指定できる-多を削除など">1が消された時の挙動を指定できる(多を削除など)</h4>
 
@@ -217,8 +223,8 @@
 </tr>
 
 <tr>
-<td align="center">投稿されたコンテンツ(掲示板、動画など)</td>
 <td align="center">投稿者</td>
+<td align="center">投稿されたコンテンツ(掲示板、動画など)</td>
 </tr>
 
 <tr>
@@ -228,7 +234,7 @@
 
 <tr>
 <td align="center">コンテンツに対するコメント</td>
-<td align="center">コメントに対するリプライ</td>
+<td align="center">そのコメントに対するリプライ</td>
 </tr>
 
 <tr>
@@ -250,9 +256,6 @@
 
 <pre><code>class Category(models.Model):
 
-    class Meta:
-        db_table = &quot;category&quot;
-
     name    = models.CharField(verbose_name=&quot;カテゴリ名&quot;,max_length=20)
 
     def __str__(self):
@@ -261,9 +264,6 @@
 
 class Topic(models.Model):
 
-    class Meta:
-        db_table = &quot;topic&quot;
-
     category    = models.ForeignKey(Category,verbose_name=&quot;カテゴリ&quot;,on_delete=models.CASCADE)
     comment     = models.CharField(verbose_name=&quot;コメント&quot;,max_length=2000)
 
@@ -271,7 +271,42 @@ class Topic(models.Model):
         return self.comment
 </code></pre>
 
-<p>新たに<code>Category</code>モデルクラスを作る。そして、既存の<code>Topic</code>モデルクラスに<code>ForeignKey</code>フィールドを追加する。<code>ForeignKey</code>フィールドにはフィールドオプションとして、<code>on_delete</code>は必須なので指定する。今回指定した<code>models.CASCADE</code>はトピックに指定したカテゴリが削除された時、トピックもセットで削除すると言う意味。前項で説明したとおり、削除させずに残したりすることもできる。</p>
+<p>新たに<code>Category</code>モデルクラスを作る。そして、既存の<code>Topic</code>モデルクラスに<code>ForeignKey</code>フィールドを追加する。</p>
+
+<p><code>ForeignKey</code>フィールドにはフィールドオプションとして、<code>on_delete</code>は必須なので指定する。今回指定した<code>models.CASCADE</code>はトピックに指定したカテゴリが削除された時、トピックもセットで削除すると言う意味。前項で説明したとおり、削除させずに残したりすることもできる。</p>
+
+<p>下記は<code>on_delete</code>に指定できる値の一覧である</p>
+
+<table>
+<thead>
+<tr>
+<th align="center">値</th>
+<th>効果</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">models.CASCADE</td>
+<td>1が削除される時、紐付いている多は全て削除される</td>
+</tr>
+
+<tr>
+<td align="center">models.PROTECT</td>
+<td>1が削除される時、紐付いている多が存在する場合、削除できない</td>
+</tr>
+
+<tr>
+<td align="center">models.SET_NULL</td>
+<td>1が削除された時、紐付いている多にNULL(PythonのNone)が入力される(ただしNull=Trueとしている場合に限る)</td>
+</tr>
+
+<tr>
+<td align="center">models.SET_DEFAULT</td>
+<td>1が削除された時、紐付いている多にdefaultの値が入力される(ただしdefaultに値がセットされている場合に限る)</td>
+</tr>
+</tbody>
+</table>
 
 <p>そして、これをマイグレーションする時、警告が出る。null禁止である<code>category</code>にはフィールドオプションの<code>default</code>がない。この矛盾の対策は3通りある。</p>
 
@@ -294,6 +329,11 @@ class Topic(models.Model):
 
 <p>一方で、未分類を許さないのであれば、migrationsディレクトリとdb.sqlite3を削除し、一からマイグレーションファイルを作り直す。</p>
 
+<p>ちなみに、手動でmigrationsディレクトリを削除した場合、再度マイグレーションファイルを作る時は、明示的にアプリ名を指定する必要がある点に注意。</p>
+
+<pre><code>python3 manage.py makemigrations bbs
+</code></pre>
+
 <h4 id="対策3-migrationsディレクトリとdb-sqlite3を削除できない場合-1度限りのデフォルト値を入れる">【対策3】migrationsディレクトリとdb.sqlite3を削除できない場合、1度限りのデフォルト値を入れる</h4>
 
 <p>もし、未分類を許さず、マイグレーションファイルやDBを削除することができない状況の場合は、1度限りのdefault値を入れる。ただし入力するdefault値は文字列ではなく、数値である。ForeignKeyは指定したモデルのidフィールドと繋がっている。idフィールドは未指定であれば数値型になっている。だから適当な数値を入力する。1から順にカテゴリのレコードが挿入されるので、1と指定すると良いだろう。</p>
@@ -302,7 +342,7 @@ class Topic(models.Model):
 
 <p>続いて、フォームとビュー、テンプレートを書き換える</p>
 
-<p><code>forms.py</code>にて、モデルを継承したフォームクラスの<code>fields</code>に<code>category</code>と<code>comment</code>を指定。</p>
+<p><code>forms.py</code>にて、モデルを使ったフォームクラスの<code>fields</code>に<code>category</code>と<code>comment</code>を指定。</p>
 
 <pre><code>from django import forms 
 from .models import Topic
@@ -322,12 +362,14 @@ from django.views import View
 from .models import Category,Topic
 from .forms import TopicForm
 
-class BbsView(View):
+class IndexView(View):
 
     def get(self, request, *args, **kwargs):
 
         context = {}
         context[&quot;topics&quot;]       = Topic.objects.all()
+
+        #カテゴリの選択肢を作るため、全てのカテゴリをcontextに引き渡す
         context[&quot;categories&quot;]   = Category.objects.all()
 
         return render(request,&quot;bbs/index.html&quot;,context)
@@ -343,7 +385,7 @@ class BbsView(View):
 
         return redirect(&quot;bbs:index&quot;)
 
-index   = BbsView.as_view()
+index   = IndexView.as_view()
 </code></pre>
 
 <p>以下、<code>templates/bbs/index.html</code>。</p>
@@ -361,11 +403,14 @@ index   = BbsView.as_view()
     &lt;main class=&quot;container&quot;&gt;
         &lt;form method=&quot;POST&quot;&gt;
             {% csrf_token %}
+
+            {# ここでカテゴリの選択肢をレンダリングさせる #}
             &lt;select name=&quot;category&quot;&gt;
                 {% for category in categories %}
                 &lt;option value=&quot;{{ category.id }}&quot;&gt;{{ category.name }}&lt;/option&gt;
                 {% endfor %}
             &lt;/select&gt;
+
             &lt;textarea class=&quot;form-control&quot; name=&quot;comment&quot;&gt;&lt;/textarea&gt;
             &lt;input type=&quot;submit&quot; value=&quot;送信&quot;&gt;
         &lt;/form&gt;
@@ -409,18 +454,12 @@ admin.site.register(Topic)
 
 class Category(models.Model):
 
-    class Meta:
-        db_table = &quot;category&quot;
-
     name    = models.CharField(verbose_name=&quot;カテゴリ名&quot;,max_length=20)
 
     def __str__(self):
         return self.name
 
 class Topic(models.Model):
-
-    class Meta:
-        db_table = &quot;topic&quot;
 
     category    = models.ForeignKey(Category,verbose_name=&quot;カテゴリ&quot;,on_delete=models.CASCADE)
     comment     = models.CharField(verbose_name=&quot;コメント&quot;,max_length=2000)
@@ -429,9 +468,6 @@ class Topic(models.Model):
         return self.comment
 
 class Reply(models.Model):
-
-    class Meta:
-        db_table = &quot;reply&quot;
 
     target  = models.ForeignKey(Topic,verbose_name=&quot;リプライ対象のトピック&quot;,on_delete=models.CASCADE)
     comment = models.CharField(verbose_name=&quot;コメント&quot;,max_length=2000)
@@ -442,11 +478,10 @@ class Reply(models.Model):
 
 <p><code>Reply</code>モデルクラスが新たに作られた。この<code>Reply</code>モデルクラスの<code>ForeignKey</code>は<code>Topic</code>に繋がっている。つまり、リプライ対象の<code>Topic</code>のidを指定するのだ。</p>
 
-<p>当然、Replyはユーザー側から投稿される仕様にするので、<code>forms.py</code>にて、<code>Reply</code>モデルクラスを継承したフォームクラスを作る必要がある。</p>
+<p>当然、Replyはユーザー側から投稿される仕様にするので、<code>forms.py</code>にて、<code>Reply</code>モデルクラスを使ったフォームクラスを作る必要がある。</p>
 
 <pre><code>from django import forms 
 from .models import Topic,Reply
-
 
 class TopicForm(forms.ModelForm):
 
@@ -469,7 +504,7 @@ from django.views import View
 from .models import Category,Topic,Reply
 from .forms import TopicForm,ReplyForm
 
-class BbsView(View):
+class IndexView(View):
 
     def get(self, request, *args, **kwargs):
 
@@ -490,9 +525,9 @@ class BbsView(View):
 
         return redirect(&quot;bbs:index&quot;)
 
-index   = BbsView.as_view()
+index   = IndexView.as_view()
 
-class BbsReplyView(View):
+class ReplyView(View):
 
     def get(self, request, pk, *args, **kwargs):
 
@@ -504,7 +539,7 @@ class BbsReplyView(View):
 
     def post(self, request, pk, *args, **kwargs):
 
-        #request.POSTの辞書型のコピーを手に入れる。(そのままでは書き換えはできないため)
+        #request.POSTのコピーオブジェクトを作る。(そのままでは書き換えはできないため)
         copied              = request.POST.copy()
         copied[&quot;target&quot;]    = pk
 
@@ -517,10 +552,10 @@ class BbsReplyView(View):
 
         return redirect(&quot;bbs:reply&quot;,pk)
 
-reply   = BbsReplyView.as_view()
+reply   = ReplyView.as_view()
 </code></pre>
 
-<p>新しく<code>BbsReplyView</code>を作った。ここで返信のフォームの表示、返信の投稿処理を行う。</p>
+<p>新しく<code>ReplyView</code>を作った。ここで返信のフォームの表示、返信の投稿処理を行う。</p>
 
 <p>引数としてpkを受け取っている。ビュークラスのメソッドに引数を指定する方法は、<a href="/post/django-models-delete-and-edit/">削除と編集について解説している記事</a>を確認すると良いだろう。</p>
 
@@ -538,14 +573,14 @@ urlpatterns = [
 ]
 </code></pre>
 
-<p><code>reply/数値/</code>であれば<code>views.reply</code>、即ち<code>BbsReplyView</code>を呼び出す。その時、引数として<code>pk</code>が与えられる。例えば、</p>
+<p><code>reply/数値/</code>であれば<code>views.reply</code>、即ち<code>ReplyView</code>を呼び出す。その時、引数として<code>pk</code>が与えられる。例えば、</p>
 
 <pre><code>reply/5/
 </code></pre>
 
 <p>に対してリクエストが送信されれば、pkには整数型(int型)の5が入り、ビューが実行される。GETメソッドであればpkでトピックの特定とレンダリングが、POSTメソッドであればpkでリプライ対象のトピックのIDをキー名<code>target</code>に値として入れ、バリデーションする。</p>
 
-<p>これでurls.pyから対象のidを特定し、その上で、表示したり、リプライを保存したりすることができる。</p>
+<p>これで<code>urls.py</code>から対象のidを特定し、その上で、表示したり、リプライを保存したりすることができる。</p>
 
 <p>後は返信をする時、HTMLの<code>form</code>タグの<code>action</code>属性に<code>action=&quot;reply/数値/&quot;</code>になるようにテンプレートを作る。</p>
 
@@ -663,7 +698,28 @@ urlpatterns = [
 
 <h3 id="コメント数を表示するには">コメント数を表示するには？</h3>
 
-<p>1対多のリレーションを組むことで、トピック一覧表示時にコメント数を表示させることもできる。詳しくは下記記事を参照。</p>
+<p>モデルにコメント数をカウントするメソッドを追加して、</p>
+
+<pre><code>class Topic(models.Model):
+
+    category    = models.ForeignKey(Category,verbose_name=&quot;カテゴリ&quot;,on_delete=models.CASCADE)
+    comment     = models.CharField(verbose_name=&quot;コメント&quot;,max_length=2000)
+
+    def reply_amount(self):
+        return Reply.objects.filter(target=self.id).count()
+
+    def __str__(self):
+        return self.comment
+</code></pre>
+
+<p>テンプレートでメソッドを呼び出す。</p>
+
+<pre><code>{% for topic in topics %}
+&lt;div&gt;コメント数 ( {{ topic.reply_amount }} )&lt;/div&gt;
+{% endfor %}
+</code></pre>
+
+<p>ちなみに、このようにモデルにメソッドを追加したくない場合、annotateとCountを使うことでも再現できる。詳しくは下記記事を参照。</p>
 
 <p><a href="/post/django-foreign-count/">【Django】外部キーに対応したデータの個数をカウントして表示【リプライ・コメント数の表示に有効】【annotate+Count】</a></p>
 
@@ -672,6 +728,39 @@ urlpatterns = [
 <p>さらに、このリプライのビューは編集や削除のビューと同様に、urls.pyから受け取った引数を元に処理を行っている。リプライができたのであれば、クライアント側からの削除や編集に挑戦してみるのも良いだろう。</p>
 
 <p><a href="/post/django-models-delete-and-edit/">Djangoで投稿したデータに対して編集・削除を行う【urls.pyを使用してビューに数値型の引数を与える】</a></p>
+
+<h3 id="誰が投稿したかを記録するには">誰が投稿したかを記録するには？</h3>
+
+<p>認証機能を実装させ、認証済みのユーザーのみ投稿を許可する。投稿する直前に、投稿したユーザーのIDを記録する。</p>
+
+<p>つまり、トピックとリプライの1対多を組んだ上で、ユーザーモデルとリプライもしくはユーザーモデルとトピックの1対多を構築する。</p>
+
+<p><a href="/post/django-foreignkey-user/">【Django】ユーザーモデルと1対多のリレーションを組む方法【カスタムユーザーモデル不使用】</a></p>
+
+<p>ちなみにログインしていないユーザーの投稿を禁止するには、<code>LoginRequiredMixin</code>を使うと良いだろう。</p>
+
+<h3 id="通販サイトのように星付きのレビューを投稿するには">通販サイトのように星付きのレビューを投稿するには？</h3>
+
+<p>下記の2つの記事を組み合わせる。</p>
+
+<ul>
+<li><a href="/post/django-template-integer-for-loop/">【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】</a></li>
+<li><a href="/post/css3-star-review-radio/">HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】【flex-direction:row-reverseで逆順対応可】</a></li>
+</ul>
+
+<p>星付きのレビューにするため、レビューのモデルに、IntegerFieldを追加すると良いだろう。</p>
+
+<p>ただし、5つ星にする場合、Validatorsを使用する必要がある(1~5の数値を入力させるため)</p>
+
+<h3 id="通販サイトで-商品に紐づく画像を無制限にするには">通販サイトで、商品に紐づく画像を無制限にするには？</h3>
+
+<p>例えば、通販サイトでは商品1つに対して、複数枚の画像が表示されている。</p>
+
+<p>こういう状況の場合、商品モデル画像のフィールドを大量に追加するのは利口ではない。</p>
+
+<p>そこで、本記事の1対多を扱う。これで1つの商品に対して無制限の画像をセットすることが可能になる。問題はフォームだが、それも下記記事では対策済みである。</p>
+
+<p><a href="/post/django-ajax-multi-img-upload/">【Django】Ajaxで複数枚の画像を一回のリクエストでアップロードする。</a></p>
 
 <h2 id="ソースコード">ソースコード</h2>
 
@@ -698,10 +787,10 @@ urlpatterns = [
 
     <div class="article_share_area">
         <h2>シェアボタン</h2>
-        <a class="article_share_link link_twitter" target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-models-foreignkey%2f&text=Django%e3%81%a71%e5%af%be%e5%a4%9a%e3%81%ae%e3%83%aa%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e6%a7%8b%e7%af%89%e3%81%99%e3%82%8b%e3%80%90%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e6%8c%87%e5%ae%9a%e3%80%81%e3%82%b3%e3%83%a1%e3%83%b3%e3%83%88%e3%81%ae%e8%bf%94%e4%bf%a1%e3%81%aa%e3%81%a9%e3%81%ab%e3%80%91">Twitter</a>
+        <a class="article_share_link link_twitter" target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-models-foreignkey%2f&text=Django%e3%81%a71%e5%af%be%e5%a4%9a%e3%81%ae%e3%83%aa%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e6%a7%8b%e7%af%89%e3%81%99%e3%82%8b%e3%80%90%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e6%8c%87%e5%ae%9a%e3%80%81%e3%82%b3%e3%83%a1%e3%83%b3%e3%83%88%e3%81%ae%e8%bf%94%e4%bf%a1%e3%81%aa%e3%81%a9%e3%81%ab%e3%80%91%e3%80%90ForeignKey%e3%80%91">Twitter</a>
         <a class="article_share_link link_line" target="_blank" rel="nofollow noopener noreferrer" href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-models-foreignkey%2f">LINEで送る</a>
         <a class="article_share_link link_facebook" target="_blank" rel="nofollow noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-models-foreignkey%2f">Facebook</a>
-        <a class="article_share_link link_hatena" target="_blank" rel="nofollow noopener noreferrer" href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-models-foreignkey%2f&title=Django%e3%81%a71%e5%af%be%e5%a4%9a%e3%81%ae%e3%83%aa%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e6%a7%8b%e7%af%89%e3%81%99%e3%82%8b%e3%80%90%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e6%8c%87%e5%ae%9a%e3%80%81%e3%82%b3%e3%83%a1%e3%83%b3%e3%83%88%e3%81%ae%e8%bf%94%e4%bf%a1%e3%81%aa%e3%81%a9%e3%81%ab%e3%80%91">はてなブログ</a>
+        <a class="article_share_link link_hatena" target="_blank" rel="nofollow noopener noreferrer" href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fdjango-models-foreignkey%2f&title=Django%e3%81%a71%e5%af%be%e5%a4%9a%e3%81%ae%e3%83%aa%e3%83%ac%e3%83%bc%e3%82%b7%e3%83%a7%e3%83%b3%e3%82%92%e6%a7%8b%e7%af%89%e3%81%99%e3%82%8b%e3%80%90%e3%82%ab%e3%83%86%e3%82%b4%e3%83%aa%e6%8c%87%e5%ae%9a%e3%80%81%e3%82%b3%e3%83%a1%e3%83%b3%e3%83%88%e3%81%ae%e8%bf%94%e4%bf%a1%e3%81%aa%e3%81%a9%e3%81%ab%e3%80%91%e3%80%90ForeignKey%e3%80%91">はてなブログ</a>
     </div>
 
 
@@ -715,15 +804,15 @@ urlpatterns = [
         <h2 class="relate_content_title">関連記事</h2>
         
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-deploy-docker-centos/">docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる<time class="relate_time">2022年2月3日 15時11分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする<time class="relate_time">2022年9月1日 08時49分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-admin-save-method/">【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】<time class="relate_time">2022年1月28日 13時30分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-models-time-calc/">【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】<time class="relate_time">2022年8月13日 14時44分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-method-put-delete-patch/">【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】<time class="relate_time">2022年1月24日 13時18分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-control-cookie/">【Django】Cookieをサーバーサイドで操作する<time class="relate_time">2022年8月12日 16時32分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-control-cookie/">【Django】Cookieをサーバーサイドで操作する<time class="relate_time">2022年1月3日 16時32分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/pycharm-config/">Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法<time class="relate_time">2022年8月10日 17時50分</time></a>
         
-        <a class="relate_link" href="https://noauto-nolife.com/post/django-auth-not-allauth/">【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】<time class="relate_time">2022年1月1日 07時00分</time></a>
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-attr-method-sort/">【Django】operatorでモデルのフィールド、メソッドを指定してソーティングをする【ランキングの実装に有効】<time class="relate_time">2022年7月30日 17時48分</time></a>
         
         
     </footer>
@@ -813,23 +902,15 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -841,7 +922,27 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -849,7 +950,7 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -869,15 +970,7 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -885,19 +978,19 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -909,15 +1002,11 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -925,11 +1014,23 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -941,15 +1042,11 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -965,6 +1062,10 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
         </span>
         
@@ -973,7 +1074,7 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -993,6 +1094,18 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
         </span>
         
@@ -1001,7 +1114,11 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -1013,11 +1130,23 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -1029,15 +1158,7 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -1065,15 +1186,11 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -1082,6 +1199,10 @@ urlpatterns = [
         
         <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -1097,15 +1218,11 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -1125,15 +1242,31 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
-            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
-        </span>
-        
-        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
@@ -1149,11 +1282,23 @@ urlpatterns = [
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
         </span>
         
         <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
             <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
         </span>
         
     </section>
@@ -1164,25 +1309,25 @@ urlpatterns = [
     <section class="sidebar_panel">
         <div class="sidebar_panel_title">News</div>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-deploy-docker-centos/">docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-django-stripe/">【Stripe】Djangoにクレジットカード決済機能を実装させる</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-composer-error/">composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-ubuntu-docker/">UbuntuでUbuntuのdockerイメージを作るまで</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-samba/">UbuntuにSambaをインストールしてファイルサーバー化させる</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-drf-api/">Django Rest Frameworkにて、APIを提供する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/heroku-counter-plan/">Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-save-method/">【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-admin-command-not-found/">【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-method-put-delete-patch/">【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/rasp3b-ubuntu-install-by-ubuntu/">Ubuntu18.04を使ってRaspberryPi3Bにサーバー版Ubuntu22.04をインストールする</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-view-def-and-class/">【Django】ビュー関数とビュークラスの違い、一覧と使い方</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-jupyter-lab/">Jupyter Labを始める</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-error-messages-origin/">【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-star-review/">【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/django-allauth-custom-user-model-sendgrid/">【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-data-transport/">別のUbuntuにデータを輸送する</a>
         
-        <a class="news_link" href="https://noauto-nolife.com/post/startup-mogrify/">mogrifyコマンドを使って画像を一括クロップ(トリミング)する</a>
+        <a class="news_link" href="https://noauto-nolife.com/post/django-models-time-calc/">【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</a>
         
     </section>
 

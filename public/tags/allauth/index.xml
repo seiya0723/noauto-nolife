@@ -6,10 +6,28 @@
     <description>Recent content in Allauth on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 13 Jan 2022 16:40:39 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 30 Jul 2022 08:46:59 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/allauth/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】</title>
+      <link>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</link>
+      <pubDate>Sat, 30 Jul 2022 08:46:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</guid>
+      <description>手元のディレクトリ内で雛形が分散していたので、自分用に作った。 コードは40分Django簡易掲示板から。allauthはsettings.pyにID認証を、ユーザーモデルはDjangoのGitHubから何も書き加えていないモデルをそのまま流用した。 以前はfirst_nameとlast_nameを1つのhandle_nameにしたが、今回は元に戻した。 雛形をすぐにDLして書き換えができるようにGit</description>
+    </item>
+    
+    <item>
+      <title>Django-allauthのメールを使用したログイン方式で、アカウント新規作成時、確認URLにアクセスしていないにもかかわらず、ログインできてしまうのはなぜか？</title>
+      <link>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</link>
+      <pubDate>Sun, 19 Jun 2022 16:12:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</guid>
+      <description>allauthはそういう仕様になっているから。 前提として、下記記事の『メールアドレスとパスワードを使用した認証方法の実装』のコードを採用している場合に限る。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 メールの確認の仕様を考慮するとわかる アカウント新規作成時に送信されるメールの中にあるURL このURLに対してGETリクエスト送信 Django側はこのURLに対して</description>
+    </item>
     
     <item>
       <title>【Django】allauthを使用し、カスタムユーザーモデルを搭載させ、SendgridのAPIでメール認証をする簡易掲示板【保存版】</title>
@@ -30,7 +48,7 @@
     </item>
     
     <item>
-      <title>Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】</title>
+      <title>Django-allauthにてフォームを中央寄せにさせる【ログインページのテンプレートのカスタマイズ】</title>
       <link>https://noauto-nolife.com/post/django-allauth-center-loginpage/</link>
       <pubDate>Fri, 24 Dec 2021 10:01:44 +0900</pubDate>
       
@@ -44,7 +62,7 @@
       <pubDate>Sun, 05 Dec 2021 11:48:32 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-foreignkey-user/</guid>
-      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;qu</description>
+      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;quot;投稿</description>
     </item>
     
     <item>
@@ -57,15 +75,6 @@
     </item>
     
     <item>
-      <title>【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】</title>
-      <link>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</link>
-      <pubDate>Tue, 22 Jun 2021 08:46:59 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</guid>
-      <description>手元のディレクトリ内で雛形が分散していたので、自分用に作った。 コードは40分Django簡易掲示板から。allauthはsettings.pyにID認証を、ユーザーモデルはDjangoのGitHubから何も書き加えていないモデルをそのまま流用した。 雛形をすぐにDLして書き換えができるようにGitHubに公開する。 users/models.py ほぼ流用。Handle_nameは元のfirst_nameとlast_nameに分割</description>
-    </item>
-    
-    <item>
       <title>【Django】allauthのurls.pyをカスタムする【新規アカウント作成、パスワード変更処理の無効化など】</title>
       <link>https://noauto-nolife.com/post/django-allauth-custom-urls/</link>
       <pubDate>Tue, 25 May 2021 09:49:51 +0900</pubDate>
@@ -75,7 +84,7 @@
     </item>
     
     <item>
-      <title>DjangoでUUIDを主キーとしたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
+      <title>DjangoでUUIDを主キーとし、first_nameとlast_nameを1つにまとめたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-uuid/</link>
       <pubDate>Mon, 15 Feb 2021 15:47:57 +0900</pubDate>
       

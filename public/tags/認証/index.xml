@@ -6,10 +6,19 @@
     <description>Recent content in 認証 on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 05 Dec 2021 11:48:32 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 07 Apr 2022 13:19:33 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】</title>
+      <link>https://noauto-nolife.com/post/django-login-required-mixin/</link>
+      <pubDate>Thu, 07 Apr 2022 13:19:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-login-required-mixin/</guid>
+      <description>ログインしていないユーザーが特定のページにアクセスしてきた時、処理を実行せず、ログインページにリダイレクトするには、LoginRequiredMixinを使う。 前提 予め前もって、認証を実装しておく。allauthを使っても、Djangoの備え付けの認証を使っても良い。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 【Django】allauth未使用でユーザー認証</description>
+    </item>
     
     <item>
       <title>【Django】ユーザーモデルと1対多のリレーションを組む方法【カスタムユーザーモデル不使用】</title>
@@ -17,7 +26,7 @@
       <pubDate>Sun, 05 Dec 2021 11:48:32 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-foreignkey-user/</guid>
-      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;qu</description>
+      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;quot;投稿</description>
     </item>
     
     <item>
@@ -39,16 +48,16 @@
     </item>
     
     <item>
-      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法</title>
+      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法【1対多】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</link>
       <pubDate>Sat, 20 Feb 2021 11:13:37 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</guid>
-      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 カスタムユーザーモデルを外部キーとして指定する まず、settings.pyに下記のような設定がされているとする。usersアプリのCustomUserクラスを指定している。 AUTH_USER_MODEL = &#39;users.CustomUser&#39; 続いて、任意のアプリのモデルを編集する。 from django.db import models from django.utils import timezone from django.conf</description>
+      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 本記事では、下記記事で解説したカスタムユーザーモデルを実装したことを前提として話を進める。 【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】 カスタムユーザーモデルを外部キー</description>
     </item>
     
     <item>
-      <title>DjangoでUUIDを主キーとしたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
+      <title>DjangoでUUIDを主キーとし、first_nameとlast_nameを1つにまとめたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-uuid/</link>
       <pubDate>Mon, 15 Feb 2021 15:47:57 +0900</pubDate>
       

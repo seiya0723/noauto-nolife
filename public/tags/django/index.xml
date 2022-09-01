@@ -6,10 +6,352 @@
     <description>Recent content in Django on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 03 Feb 2022 15:11:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 25 Aug 2022 13:48:12 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/django/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</title>
+      <link>https://noauto-nolife.com/post/django-admin-command-not-found/</link>
+      <pubDate>Thu, 25 Aug 2022 13:48:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-command-not-found/</guid>
+      <description>いわゆる、PATHが通っていない状態 Pythonのインストーラーでインストールする時、『add Python 3.x to PATH』というチェック項目がある。 そこにチェックを入れることで、pythonコマンドが使えるようになる。 参照元:https://bluebirdofoz.hatenablog.com/entry/2019/01/19/141007 django-adminコマンドが使えない時、 django-admin startproject config . pythonか</description>
+    </item>
+    
+    <item>
+      <title>【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</title>
+      <link>https://noauto-nolife.com/post/django-star-review/</link>
+      <pubDate>Sat, 20 Aug 2022 17:55:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-star-review/</guid>
+      <description>最終的にこのようになる。 今回はテンプレートのwithとcenterは不使用とした。 そして、5つ星の内、4つ星でレビューした場合、空の星を1つ描画する仕様に仕立てた。 参照 【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】 HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星</description>
+    </item>
+    
+    <item>
+      <title>【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</title>
+      <link>https://noauto-nolife.com/post/django-models-time-calc/</link>
+      <pubDate>Sat, 13 Aug 2022 14:44:47 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-time-calc/</guid>
+      <description>例えば、勉強時間や筋トレ時間を記録するウェブアプリを作るとする。 この時に、ネックになるのが、時間を記録するモデルフィールド。 IntegerFieldで記録するべきか、DatetimeFieldでtimedeltaを使うか。 いずれにせよ、合計や平均などを出さないといけないので、このフィールド選択を間違えると後々大変なことになる。 フォームの形式も考慮する必要がある。 そこで、本記事では、時間を記録する方</description>
+    </item>
+    
+    <item>
+      <title>【Django】Cookieをサーバーサイドで操作する</title>
+      <link>https://noauto-nolife.com/post/django-control-cookie/</link>
+      <pubDate>Fri, 12 Aug 2022 16:32:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-control-cookie/</guid>
+      <description>カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。 簡易掲示板における名前など、一度入力したデータを再度入力させる場合も、クライアントにとっては使い勝手が悪いので、Cookieをセットして表示させたほうが良い。 サンプルとなるコードはいつもの40分Django。 views.pyにてCookieをセット、参照する testというキー名、値はHelloでC</description>
+    </item>
+    
+    <item>
+      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
+      <link>https://noauto-nolife.com/post/pycharm-config/</link>
+      <pubDate>Wed, 10 Aug 2022 17:50:56 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
+      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
+    </item>
+    
+    <item>
+      <title>【Django】カレンダーを更に改良する</title>
+      <link>https://noauto-nolife.com/post/django-calendar-custom/</link>
+      <pubDate>Mon, 08 Aug 2022 16:16:36 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-calendar-custom/</guid>
+      <description>カレンダー機能に年月指定をするリンクとフォームを用意した。 ソースコード https://github.com/seiya0723/django_calendar_custom</description>
+    </item>
+    
+    <item>
+      <title>【Django】operatorでモデルのフィールド、メソッドを指定してソーティングをする【ランキングの実装に有効】</title>
+      <link>https://noauto-nolife.com/post/django-attr-method-sort/</link>
+      <pubDate>Sat, 30 Jul 2022 17:48:17 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-attr-method-sort/</guid>
+      <description>例えば、モデルがこうだったとする。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) score = models.IntegerField(verbose_name=&amp;quot;スコア&amp;quot;) def twice(self): return self.score*2 ビューでこのようにすることで、モデルフィールドもしくはモデルメソッドでソーティングができる。 from django.shortcuts import render,redirect from django.views import View from .models import</description>
+    </item>
+    
+    <item>
+      <title>【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】</title>
+      <link>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</link>
+      <pubDate>Sat, 30 Jul 2022 08:46:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</guid>
+      <description>手元のディレクトリ内で雛形が分散していたので、自分用に作った。 コードは40分Django簡易掲示板から。allauthはsettings.pyにID認証を、ユーザーモデルはDjangoのGitHubから何も書き加えていないモデルをそのまま流用した。 以前はfirst_nameとlast_nameを1つのhandle_nameにしたが、今回は元に戻した。 雛形をすぐにDLして書き換えができるようにGit</description>
+    </item>
+    
+    <item>
+      <title>【Django】1回のリクエストで複数のデータを投稿する【request.POST.getlist()】</title>
+      <link>https://noauto-nolife.com/post/django-multi-send/</link>
+      <pubDate>Fri, 15 Jul 2022 14:13:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-multi-send/</guid>
+      <description>例えば、複数のデータを投稿しなければならない時。 フォームに内容を書いて投稿(POSTリクエスト)、投稿内容が表示される(レスポンス) フォームに内容を書いて投稿(POSTリクエスト)、投稿内容が表示される(レスポンス) フォームに内容を書いて投稿(POSTリクエスト)、投稿内容が表示される(レスポンス) フォームに内容を書いて投稿(POSTリクエスト)、投稿内容が表示される(レスポンス) などと複数回リク</description>
+    </item>
+    
+    <item>
+      <title>【Django】自前でLoginRequiredMixinのような物を作るには、dispatchメソッドを使う【多重継承】</title>
+      <link>https://noauto-nolife.com/post/django-create-origin-mixin/</link>
+      <pubDate>Mon, 11 Jul 2022 12:06:17 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-create-origin-mixin/</guid>
+      <description>LoginRequiredMixinのように、ビューが実行される前に何かの処理を実行したい場合。 dispatchメソッドに処理を書くと良いだろう。ただ、全てのビュークラスにdispatchメソッドを書いているようでは手間がかかる。 そこで、多重継承して利用できるように仕立てる。つまり、LoginRequiredMixinのような物を自前で作るのだ。 ソースコード 下記のようにdispatchメソッドを含</description>
+    </item>
+    
+    <item>
+      <title>DjangoでカレンダーのUIを作る</title>
+      <link>https://noauto-nolife.com/post/django-calendar-ui/</link>
+      <pubDate>Sat, 09 Jul 2022 15:42:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-calendar-ui/</guid>
+      <description>『Djangoビギナーが40分で掲示板アプリを作る方法』を元に、カレンダーのUIを作る。 1ヶ月分のデータをまとめて表示させたい系のウェブアプリの作成に活用できる。 calendar.py このcalendar.pyをアプリディレクトリ内に作る。 import datetime def create_calendar(year,month): #今月の初日を指定 dt = datetime.date(year,month,1) #calendarはweekのリスト、weekは日付のリスト calendar = [] week = [] #月始めが日曜日以外の場合、空欄を追加する。 if dt.weekday() != 6: week = [ {&amp;quot;day&amp;quot;:&amp;quot;&amp;quot;} for i in range(dt.weekday()+1) ] &amp;quot;&amp;quot;&amp;quot; #内</description>
+    </item>
+    
+    <item>
+      <title>【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする</title>
+      <link>https://noauto-nolife.com/post/django-openpyxl/</link>
+      <pubDate>Fri, 08 Jul 2022 08:15:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-openpyxl/</guid>
+      <description>Djangoでエクセルファイルを新規作成し、ダウンロード(以下DL)する。 ファイルのDLと言うと、ファイルのアップロードと同じようにやればいいだろうと思うかもしれない。 実際、ファイルをストレージに保存し、そのURLへリダイレクトしてDLする方法でも、問題なく動作する。しかし、これではストレージが圧迫される。 そこで今回は、サーバーのメモリ内に保存されているファイルをバイナリに変換し、レスポンスとして</description>
+    </item>
+    
+    <item>
+      <title>Django-allauthのメールを使用したログイン方式で、アカウント新規作成時、確認URLにアクセスしていないにもかかわらず、ログインできてしまうのはなぜか？</title>
+      <link>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</link>
+      <pubDate>Sun, 19 Jun 2022 16:12:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</guid>
+      <description>allauthはそういう仕様になっているから。 前提として、下記記事の『メールアドレスとパスワードを使用した認証方法の実装』のコードを採用している場合に限る。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 メールの確認の仕様を考慮するとわかる アカウント新規作成時に送信されるメールの中にあるURL このURLに対してGETリクエスト送信 Django側はこのURLに対して</description>
+    </item>
+    
+    <item>
+      <title>【Django】settings.pyのINSTALLED_APPSにはどのように書くのが適切か【順番とapps】</title>
+      <link>https://noauto-nolife.com/post/django-settings-installed-apps/</link>
+      <pubDate>Sat, 18 Jun 2022 22:55:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-settings-installed-apps/</guid>
+      <description>公式の書き方 Django公式によると、下記のように書くのが適切。 INSTALLED_APPS = [ &amp;quot;bbs.apps.BbsConfig&amp;quot;, &#39;django.contrib.admin&#39;, &#39;django.contrib.auth&#39;, &#39;django.contrib.contenttypes&#39;, &#39;django.contrib.sessions&#39;, &#39;django.contrib.messages&#39;, &#39;django.contrib.staticfiles&#39;, ] 参照元: https://docs.djangoproject.com/ja/4.0/ref/applications/#configuring-applications 一部媒体における書き方 一方で一部の媒体では以下のように書かれてある。 INSTALLED_APPS = [ &amp;quot;bbs&amp;quot;, &#39;django.contrib.admin&#39;, &#39;django.contrib.auth&#39;, &#39;django.contrib.contenttypes&#39;, &#39;django.contrib.sessions&#39;, &#39;django.contrib.messages&#39;, &#39;django.contrib.staticfiles&#39;, ] どちらが正しいのか？ bbs/apps.pyにて、下記のように仕立てる。 from django.apps import AppConfig class BbsConfig(AppConfig): default_auto_field = &#39;django.db.models.BigAutoField&#39; name = &#39;bbs&#39; verbose_name = &amp;quot;簡易掲示板&amp;quot; これは管理サイトで操作するモデルの一覧を表記する際、verbose_nameを追加</description>
+    </item>
+    
+    <item>
+      <title>【Django】ユーザー作成時に何らかの処理を行う方法【saveメソッドオーバーライド】</title>
+      <link>https://noauto-nolife.com/post/django-createuser-save-method-override/</link>
+      <pubDate>Sat, 18 Jun 2022 17:17:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-createuser-save-method-override/</guid>
+      <description>カスタムユーザーモデルを使用している時、ユーザーアカウント新規作成時に何らかの処理を行って欲しい場合。 そういう時はSignupFormのsaveメソッドをオーバーライドする。 SignUpFormのコード from django.contrib.auth.forms import UserCreationForm from .models import CustomUser class SignupForm(UserCreationForm): class Meta(UserCreationForm.Meta): model = CustomUser fields = (&amp;quot;username&amp;quot;) def save(self, request, commit=True, *args, **kwargs): #ユーザーモデルのオブジェクト作成(ただし、保存をしない) user = super().save(commit=False) #生のパスワードをハッシュ化した上で、モデルオブジェクトの属性にセットする。 user.set_password(self.cleaned_data[&amp;quot;password1&amp;quot;]) #保存す</description>
+    </item>
+    
+    <item>
+      <title>【Django】context_processorsを使い、全ページに対して同じコンテキストを提供する【サイドバーのカテゴリ欄、ニュース欄などに有効】</title>
+      <link>https://noauto-nolife.com/post/django-context-processors/</link>
+      <pubDate>Tue, 17 May 2022 09:24:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-context-processors/</guid>
+      <description>以前は、ビュークラスの継承を使ったり、MIDDLEWAREでリクエストオブジェクトを操作したりすることでテンプレートに対してデータを提供していたが、これではやや無駄が多い。 Djangoにはcontext_processorsという、任意の処理を行った後contextを追加できる便利な機能があるので、こちらを使う。 context_processorsを作る まず、アプリディレクトリ内部に、custom</description>
+    </item>
+    
+    <item>
+      <title>【Django】モデルクラスのfilterメソッドで検索・絞り込みをする</title>
+      <link>https://noauto-nolife.com/post/django-filter-method/</link>
+      <pubDate>Mon, 16 May 2022 10:19:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-filter-method/</guid>
+      <description>モデルクラスを使用してデータをDBから取り出す時、filterメソッドを使用することで、取り出しの条件を指定することができる。 完全一致の場合(=) =を使用することで完全一致のデータを取り出すことができる。 topics = Topic.objects.filter(id=3) 主キーに対して、=を実行した時、取り出されるデータは1個もしくは0個になる。 そのため、上記のやり方だとforループしなければ、データを取り出すことができない for topic in topics: print(topic) そこで、単一のモデルオブ</description>
+    </item>
+    
+    <item>
+      <title>【Django】ファイルアップロード時にファイル名をリネーム(改名)する</title>
+      <link>https://noauto-nolife.com/post/django-fileupload-rename/</link>
+      <pubDate>Fri, 13 May 2022 17:18:16 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-fileupload-rename/</guid>
+      <description>方法論として、2つある。ビューから書き換える方法と、モデルに独自のバリデーションを仕込む方法の2つである。 ビューからファイル名を書き換える request.FILES[&amp;quot;image&amp;quot;].nameから書き換えができる。 request.FILES[&amp;quot;image&amp;quot;].name = &amp;quot;test.png&amp;quot; form = TopicForm(request.POST,request.FILES) # 以下略 # request.POSTに対しては書き換えできないが、何故かFILESに対しては書き換えできる。 もしちょっと気持ち悪いなと思う場合は下記にすると</description>
+    </item>
+    
+    <item>
+      <title>【Django】アップロードするファイルサイズに上限をセットする【validators】</title>
+      <link>https://noauto-nolife.com/post/django-fileupload-limit-size/</link>
+      <pubDate>Fri, 13 May 2022 16:04:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-fileupload-limit-size/</guid>
+      <description>本記事ではアップロードするファイルサイズに上限をセットする方法を解説する。 ただし、ビュー側にファイルサイズの上限をチェックする機能を実装させるのではなく、以前紹介した、『【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】』を元に実装させる。 ビューに判定機能を実装させる方法でも問題はないが、投稿するビューが二分</description>
+    </item>
+    
+    <item>
+      <title>【Django】カスタムユーザーモデルに記録した自分のユーザー情報を編集する【ユーザー情報変更画面に】</title>
+      <link>https://noauto-nolife.com/post/django-custom-user-model-mydata-edit/</link>
+      <pubDate>Tue, 03 May 2022 17:23:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-user-model-mydata-edit/</guid>
+      <description>Djangoでは新規会員登録したとき、記録できるのはユーザーIDとパスワードだけで、会員登録フォームの追加をしない限り、姓名の記録はできない。 仮に新規会員登録した時にフォームが与えられていたとしても、後にその編集をするページがなければ仕方ない。(例えば、姓名が変わった時に変更する手続きをするフォームページを用意していないと、後々問題になる) そこで、本記事ではユーザー情報を編集するページを作る方法を</description>
+    </item>
+    
+    <item>
+      <title>【Django】channelsを使ってWebSocketを実現させる【チャットサイト開発に】</title>
+      <link>https://noauto-nolife.com/post/startup-django-channels-web-socket/</link>
+      <pubDate>Mon, 02 May 2022 21:34:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-channels-web-socket/</guid>
+      <description>django-channelsのチュートリアルに倣って、WebSocketを使ったチャットサイトを作った。 とても実装難易度が高く、一筋縄では行かない。そのため実装手順の備忘録として本記事をまとめておく。 わかっていること WebSocketとはプロトコルのこと、HTTPでは実現できない双方向通信を実現させるためのもの 前もってHTTPでWebSocketの通信経路を作る必要がある WebSocketの経路</description>
+    </item>
+    
+    <item>
+      <title>【Django】セッションの有効期限をセット、もしくはブラウザを閉じた時にセッションを無効化【settings.py】</title>
+      <link>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</link>
+      <pubDate>Sun, 01 May 2022 20:09:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</guid>
+      <description>セキュリティを担保したいサイトであれば、ブラウザが閉じてもセッションが残るデフォルトのDjango設定を疎ましく思うだろう。 そういう時は、settings.pyからセッションの有効期限の設定もしくは、ブラウザの終了を検知して無効化する設定を施せばよい。 セッションに有効期限をセットする【単位:秒】 例えば60秒後にセッションを切って、再ログインを要求させる場合はこうする。 SESSION_COOKIE_AGE = 60 デフォルトでは2週間にな</description>
+    </item>
+    
+    <item>
+      <title>【Django】Ajax(jQuery)でロングポーリングを実装させる【チャットサイトの開発に】</title>
+      <link>https://noauto-nolife.com/post/django-ajax-long-polling/</link>
+      <pubDate>Thu, 28 Apr 2022 16:06:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax-long-polling/</guid>
+      <description>Ajaxを使えば、ページを部分的に更新させることができる。 そして、setTimeoutを使うことで、指定した時間おきにページを部分的に更新することができる。 ただ、Ajaxによるリクエストとレスポンスを繰り返している(ただのポーリング)ようでは、ウェブサーバーに負担が掛かってしまう。 クラウドサーバーなどは死活問題で、負荷が増えると課金してサーバーの強化などを考慮しなければならない。 そこで、リクエスト</description>
+    </item>
+    
+    <item>
+      <title>【Django】スペース区切りでOR・AND検索を改定する</title>
+      <link>https://noauto-nolife.com/post/django-or-and-search-revision/</link>
+      <pubDate>Fri, 15 Apr 2022 16:42:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-or-and-search-revision/</guid>
+      <description>以前、紹介した『Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】』では少々ビューの見通しが悪い。 また、他の絞り込みなどの機能も考慮した場合、キーワードが無かった場合にリダイレクトをするのはおかしい。 そこで本記事では検索処理の改定を行う。 views.py from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm from django.db.models import Q class IndexView(View): def get(self, request, *args, **kwargs): context = {} query = Q() if &amp;quot;search&amp;quot; in request.GET search = request.GET[&amp;quot;search&amp;quot;] raw_words = search.replace(&amp;quot; &amp;quot;,&amp;quot; &amp;quot;).split(&amp;quot; &amp;quot;) words = [ w for w in raw_words if</description>
+    </item>
+    
+    <item>
+      <title>【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】</title>
+      <link>https://noauto-nolife.com/post/django-models-origin-validators/</link>
+      <pubDate>Fri, 15 Apr 2022 14:33:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-origin-validators/</guid>
+      <description>例えば、簡易掲示板にて、特定の禁止ワードを含んだ投稿を拒否したい場合。 承認制にして、管理者が文面を確認した上で公開を許す方法もあるが、それでは人件費がかかる。 なるべく保存する前に禁止ワードを含んでいるかどうかをチェックする仕組みにしたい。 そういう時は、validatorsに独自の関数を割り当てれば良い。 コードは40分Djangoから流用して作る models.py 不快語を除外するバリデーションを実装させる。 from django.db import models</description>
+    </item>
+    
+    <item>
+      <title>【Django】DateTimeFieldに自動的に現在時刻を入れるには、auto_now_addもしくはauto_nowフィールドオプションを指定【新規作成時・編集時の時刻】【※編集不可】</title>
+      <link>https://noauto-nolife.com/post/django-models-datetime-auto-now-add/</link>
+      <pubDate>Thu, 14 Apr 2022 17:07:34 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-datetime-auto-now-add/</guid>
+      <description>作成時と編集時の日時を自動的に入れたい場合は、auto_nowもしくはauto_now_addを指定する。 auto_nowはモデルのsaveメソッドが実行された時、auto_now_addはモデルに新規作成された時に、その時の日時が指定したフィールドに格納される。 つまり、モデルを下記のように組むと良いだろう。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コ</description>
+    </item>
+    
+    <item>
+      <title>【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】</title>
+      <link>https://noauto-nolife.com/post/django-login-required-mixin/</link>
+      <pubDate>Thu, 07 Apr 2022 13:19:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-login-required-mixin/</guid>
+      <description>ログインしていないユーザーが特定のページにアクセスしてきた時、処理を実行せず、ログインページにリダイレクトするには、LoginRequiredMixinを使う。 前提 予め前もって、認証を実装しておく。allauthを使っても、Djangoの備え付けの認証を使っても良い。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 【Django】allauth未使用でユーザー認証</description>
+    </item>
+    
+    <item>
+      <title>素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】</title>
+      <link>https://noauto-nolife.com/post/django-xmlhttprequest-ajax-not-use-jquery/</link>
+      <pubDate>Fri, 01 Apr 2022 09:17:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-xmlhttprequest-ajax-not-use-jquery/</guid>
+      <description>CSRFトークンを取得する POSTメソッドを送信する時必要になるCSRFトークン。 前もって取得しておく。下記コードをページロードと同時に実行する。 function getCookie(name) { var cookieValue = null; if (document.cookie &amp;amp;&amp;amp; document.cookie !== &#39;&#39;) { var cookies = document.cookie.split(&#39;;&#39;); for (var i = 0; i &amp;lt; cookies.length; i++) { var cookie = cookies[i].trim(); // Does this cookie string begin with the name we want? if (cookie.substring(0, name.length + 1) === (name + &#39;=&#39;)) { cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); break; } } } return cookieValue; } const csrftoken = getCookie(&#39;csrftoken&#39;); ちなみに、このコードはDjango公式からの受け売りである。 https://docs.djangoproject.com/en/4.0/ref/csrf/ POSTメソッドを送信する 前項で取得したCSRFトーク</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-ubuntu-venv/</link>
+      <pubDate>Wed, 30 Mar 2022 08:03:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-ubuntu-venv/</guid>
+      <description>Ubuntuのデプロイ時にVirtualenvを使う。 以前の方法はOSに直接Djangoなどのライブラリをインストールしているため、OSの更新と同時にライブラリも更新されてしまう。 Virtualenvを使えば、OSを更新してもライブラリのバージョンは常に一定。手動で更新する仕様になる。 Djangoプロジェクトの配置 下記になるよう配置する。 /home/[ユーザー名]/Documents/[プロジェク</description>
+    </item>
+    
+    <item>
+      <title>【Django】管理サイト(admin)のログを削除する【DBの使用量削減に】</title>
+      <link>https://noauto-nolife.com/post/django-admin-log-delete/</link>
+      <pubDate>Fri, 25 Mar 2022 10:42:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-log-delete/</guid>
+      <description>Djangoの管理サイトは自動的に操作のログを取るようになっている。 そのログはDBに記録されているため、Herokuの無料プランなどの1万行しかないDBであれば、死活問題になる。 そこで、管理サイトのログをDBから消す。下記のようにすればよい。 from django.shortcuts import render from django.views import View from django.contrib.admin.models import LogEntry class IndexView(View) LogEntry.objects.all().delete() ## 以下略 ##</description>
+    </item>
+    
+    <item>
+      <title>【Django】Ajaxで複数枚の画像を一回のリクエストでアップロードする。</title>
+      <link>https://noauto-nolife.com/post/django-ajax-multi-img-upload/</link>
+      <pubDate>Mon, 21 Mar 2022 18:25:17 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax-multi-img-upload/</guid>
+      <description>経緯 例えば、1つのデータに対して、複数枚の画像を記録したい場合がある。 ECサイトの商品がその例で、1つの商品に対して、複数枚の画像を記録する必要がある。 しかも、商品に対して記録する画像の枚数が10枚以上になる可能性もあり、これを1つのモデルに画像フィールド10個などとしているようではDBの構造上の問題に発展する。 だからこのような場合は、商品モデルと商品画像モデルの1対多のリレーションを組むべきであ</description>
+    </item>
+    
+    <item>
+      <title>【Python】GoogleのISBNのAPIを使い、書籍の情報を手に入れる</title>
+      <link>https://noauto-nolife.com/post/python-google-isbn-api/</link>
+      <pubDate>Sat, 19 Mar 2022 11:42:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/python-google-isbn-api/</guid>
+      <description>GoogleのISBN検索ができるAPIを使うことで、書籍の情報を簡単に手に入れることができる。 もちろん、書籍のサムネイルも取得可能。スクレイピングではないので、サイトの変化に合わせて手直しが必要になることもない。 アカウントの登録も不要 #! /usr/bin/env python3 # -*- coding: utf-8 -*- import requests try: result = requests.get(&amp;quot;https://www.googleapis.com/books/v1/volumes?q=isbn:9784873117782&amp;quot;) except: print(&amp;quot;通信エラー&amp;quot;) else: #返却されたJSONを辞書型に変換する。 data = result.json() print(data) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;]) #書籍情報を手に入れる。 print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;title&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;publishedDate&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;authors&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;description&amp;quot;]) print(data[&amp;quot;items&amp;quot;][0][&amp;quot;volumeInfo&amp;quot;][&amp;quot;imageLinks&amp;quot;][&amp;quot;thumbnail&amp;quot;])</description>
+    </item>
+    
+    <item>
+      <title>【Django】星の平均をアイコンで表示させる【3.5の時、三星と半星で表示】</title>
+      <link>https://noauto-nolife.com/post/django-star-average/</link>
+      <pubDate>Mon, 14 Mar 2022 09:17:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-star-average/</guid>
+      <description>通販サイトなどでよくある、星の平均をアイコンで表示する。 モデル 2つのメソッドを追加する。平均スコアを出力するメソッド。少数だけ取り出し、それを元に1星、半星、無星を判定するメソッド。 from django.db import models from django.core.validators import MinValueValidator,MaxValueValidator from django.db.models import Avg class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) def avg_star_score(self): reviews = Review.objects.filter(topic=self.id).aggregate(Avg(&amp;quot;star&amp;quot;)) if reviews[&amp;quot;star__avg&amp;quot;]: return reviews[&amp;quot;star__avg&amp;quot;] else: return 0 def avg_star_icon_few(self): reviews = Review.objects.filter(topic=self.id).aggregate(Avg(&amp;quot;star&amp;quot;)) avg = reviews[&amp;quot;star__avg&amp;quot;] #平均スコアなしの場</description>
+    </item>
+    
+    <item>
+      <title>【Django】FilefieldやImageFieldでファイル名だけを表示させる方法【モデルにメソッドを追加】</title>
+      <link>https://noauto-nolife.com/post/django-filefield-only-filename/</link>
+      <pubDate>Thu, 10 Mar 2022 22:20:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-filefield-only-filename/</guid>
+      <description>FilefieldやImageFieldにはフィールドオプションとしてupload_toが指定されている。 そのため、そのままではファイル名だけを取り出すことはできない。 例えば、モデルが下記でファイル名がtest.pdfだった場合。 class Document(models.Model): file = models.FileField(verbose_name=&amp;quot;ファイル&amp;quot;,upload_to=&amp;quot;app/document/file/</description>
+    </item>
+    
+    <item>
+      <title>【Restful化】DjangoRestframeworkの導入・移行作業【ビュークラス継承元の書き換え、Serializerの運用】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-changing/</link>
+      <pubDate>Sun, 27 Feb 2022 15:05:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-changing/</guid>
+      <description>Restful化のためには、DjangoRestframeworkをインストールする必要がある。(素のDjangoでもAjaxでDELETE,PUT,PATCHメソッドの送信は可能だが、リクエストボディの読み込みに難があるため。) だが、素のDjangoで開発している状態であれば、コードの一部をDRF仕様に書き換えを行う必要がある。 本記事では、40分Djangoを元にDRF移行手続きを解説する。 予め</description>
+    </item>
+    
+    <item>
+      <title>DjangoRestFrameworkは本当に必要なのか？【Restful化とAjaxでデータを送信するときの問題】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-need-ajax/</link>
+      <pubDate>Sat, 26 Feb 2022 08:40:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-need-ajax/</guid>
+      <description>結論 DjangoはデフォルトでRestfulに対応している(Ajaxを使ってPUT,DELETE,PATCHメソッドの送信ができる)。 ただし、PUT,DELETE,PATCHのリクエストボディを参照するのはやや複雑。 そのため、それらのメソッドを使ってリクエストを送信する場合、DRFを使ったほうが良い。 素のDjangoはRestfulに対応している AjaxでPUT,DELETE,PATCHメソッドを</description>
+    </item>
+    
+    <item>
+      <title>Djangoのモデルにて指定された選択肢をセットし、それだけ入力を許可する【choicesフィールドオプションで都道府県の指定をする】</title>
+      <link>https://noauto-nolife.com/post/django-models-choices/</link>
+      <pubDate>Fri, 11 Feb 2022 08:18:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-models-choices/</guid>
+      <description>例えば、都道府県の指定、どうやってモデルに格納するか。都道府県は47個。これ以外の物を選ぶことはできない。 故に、CharFieldを使用して、都道府県の格納先のフィールドを作るのは、間違っているわけではないが、あまりスマートではない。 そこで、フィールドオプションのchoicesを使用して、特定の選択肢のみ入力を許可する。 【前提】settings.py settings.pyにて、都道府県の名前を定義</description>
+    </item>
+    
+    <item>
+      <title>Djangoで現在時刻以降の日時入力を促すのであれば、MinValueValidatorを使用する【DateTimeField】</title>
+      <link>https://noauto-nolife.com/post/django-thereafter-timezone-now/</link>
+      <pubDate>Mon, 07 Feb 2022 07:28:47 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-thereafter-timezone-now/</guid>
+      <description>予約システムなどでは、指定した日時以降の日時を入れてもらう必要がある。 入力できる日時にフロント側で制限をかけることができれば良いが、それだけでは限界がある。 そこで、Djangoではmodelsのフィールドオプションであるvalidatorsを使用することで、指定した日時以降の日時だけを入力できるようになる。 MinValueValidatorsで現在時刻以降の日時入力をさせる モデルはこうかけばよい。</description>
+    </item>
     
     <item>
       <title>docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</title>
@@ -93,15 +435,6 @@
     </item>
     
     <item>
-      <title>【Django】Cookieをサーバーサイドで操作する</title>
-      <link>https://noauto-nolife.com/post/django-control-cookie/</link>
-      <pubDate>Mon, 03 Jan 2022 16:32:07 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-control-cookie/</guid>
-      <description>カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。 簡易掲示板における名前など、一度入力したデータを再度入力させる場合も、クライアントにとっては使い勝手が悪いので、Cookieをセットして表示させたほうが良い。 サンプルとなるコードはいつもの40分Django。 views.pyにてCookieをセット、参照する testというキー名、値はHelloでC</description>
-    </item>
-    
-    <item>
       <title>【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】</title>
       <link>https://noauto-nolife.com/post/django-auth-not-allauth/</link>
       <pubDate>Sat, 01 Jan 2022 07:00:48 +0900</pubDate>
@@ -134,11 +467,11 @@
       <pubDate>Sat, 25 Dec 2021 20:57:33 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-year-month-search-and-list/</guid>
-      <description>Djangoで月別アーカイブと年月計算を実装させる 元となったコードは40分Djangoにモデルへ投稿日を記録するフィールド(dt)を追加している。 forms.py from django import forms from django.core.validators import MinValueValidator,MaxValueValidator from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [&amp;quot;comment&amp;quot;] #モデルを継承しないフォームクラス class YearMonthForm(forms.Form): year = forms.IntegerField() month = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)]) モデルを継承しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。 views.py 年月別アーカイブのリ</description>
+      <description>Djangoで月別アーカイブと年月計算を実装させる 元となったコードは40分Djangoにモデルへ投稿日を記録するフィールド(dt)を追加している。 forms.py from django import forms from django.core.validators import MinValueValidator,MaxValueValidator from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [&amp;quot;comment&amp;quot;] #モデルを使用しないフォームクラス class YearMonthForm(forms.Form): year = forms.IntegerField() month = forms.IntegerField(validators=[MinValueValidator(1),MaxValueValidator(12)]) モデルを使用しないフォームクラスで年と月を数値型で受け取る。月は1から12までの数値なので、validatorsで追加の制約を付与する。 views.py 年月別アーカイブのリ</description>
     </item>
     
     <item>
-      <title>Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】</title>
+      <title>Django-allauthにてフォームを中央寄せにさせる【ログインページのテンプレートのカスタマイズ】</title>
       <link>https://noauto-nolife.com/post/django-allauth-center-loginpage/</link>
       <pubDate>Fri, 24 Dec 2021 10:01:44 +0900</pubDate>
       
@@ -156,7 +489,7 @@
     </item>
     
     <item>
-      <title>Djangoをやる前に知っておきたいPython構文【オブジェクト指向と別ファイル読み込みは特に重要】</title>
+      <title>Djangoをやる前に知っておきたいPython構文【オブジェクト指向(class文)と別ファイル読み込み(import文)は特に重要】</title>
       <link>https://noauto-nolife.com/post/django-essential-python/</link>
       <pubDate>Sun, 19 Dec 2021 17:12:22 +0900</pubDate>
       
@@ -170,7 +503,7 @@
       <pubDate>Thu, 16 Dec 2021 16:31:27 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-openpyxl/</guid>
-      <description>Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。 ソースコード import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティブシートを選択(新規作成時に最初からあるシート) ws = wb.active #シート名を変更 ws.title = &amp;quot;領収書&amp;quot; #セルに値を入力していく import datetime ws[&amp;quot;A1&amp;quot;].value = &amp;quot;決済日&amp;quot; ws[&amp;quot;A2&amp;quot;].value = str(datetime.date.today()) ws[&amp;quot;B1&amp;quot;].value = &amp;quot;商品名&amp;quot; ws[&amp;quot;C1&amp;quot;].value</description>
+      <description>Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。 ソースコード import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティブシートを選択(新規作成時に最初からあるシート) ws = wb.active #シート名を変更 ws.title = &amp;quot;領収書&amp;quot; #セルに値を入力していく import datetime ws[&amp;quot;A1&amp;quot;].value = &amp;quot;決済日&amp;quot; #このように入れると、エクセル上、文字列と</description>
     </item>
     
     <item>
@@ -224,7 +557,7 @@
       <pubDate>Sun, 05 Dec 2021 11:48:32 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-foreignkey-user/</guid>
-      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;qu</description>
+      <description>認証にはallauthを使用する。 コードは40分Djangoの簡易掲示板を元に作成する。forms.pyを実装させている。 Userモデルと1対多のリレーションを組み、誰が投稿したのかわかるようにする。 models.py from django.db import models from django.contrib.auth.models import User class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) user = models.ForeignKey(User, verbose_name=&amp;quot;投稿</description>
     </item>
     
     <item>
@@ -255,7 +588,7 @@
     </item>
     
     <item>
-      <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】</title>
+      <title>Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】</title>
       <link>https://noauto-nolife.com/post/django-models-foreignkey/</link>
       <pubDate>Sun, 21 Nov 2021 16:34:32 +0900</pubDate>
       
@@ -278,7 +611,7 @@
       <pubDate>Sun, 14 Nov 2021 18:53:28 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-message-framework/</guid>
-      <description>DjangoのMessageFrameworkを有効化させる まず、settings.pyのINSTALLED_APPSに &#39;django.contrib.messages&#39; が含まれているかどうかをチェック。Django 3.2であればデフォルトで書かれてある。 同じくMIDDLEWAREに &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;, &#39;django.contrib.messages.middleware.MessageMiddleware&#39; 上記2つが含まれている事を確認。SessionMiddlewareはMessageMiddlewareよりも前に書かれてある必要がある。これもデフォルトで書かれ</description>
+      <description>MessageFrameworkを使ってHelloWorldを表示させる。 元になるコードは40分Djangoにforms.pyを追加した状態から流用している。 まず、views.pyにて、公式からコードを拝借して追加した。 from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm #↓追加 from django.contrib import messages class IndexView(View): def get(self, request, *args, **kwargs): #↓追加 messages.add_message(request, messages.INFO, &#39;Hello world.&#39;) topics = Topic.objects.all() context = { &amp;quot;topics&amp;quot;:topics } return render(request,&amp;quot;bbs/index.html&amp;quot;,context) def post(self, request, *args, **kwargs): form = TopicForm(request.POST) if form.is_valid(): form.save() return redirect(&amp;quot;bbs:index&amp;quot;) index = IndexView.as_view() HTML側でメッセージを表示させるにはこうする。 &amp;lt;!DOCTYPE</description>
     </item>
     
     <item>
@@ -315,15 +648,6 @@
       
       <guid>https://noauto-nolife.com/post/django-shell/</guid>
       <description>Djangoに含まれているライブラリを普通のPythonのインタラクティブシェルで動かそうとしても、manage.pyの環境変数やsettings.pyが無ければ動かない。 だから、Django関係のライブラリを試しに動かしたい時は、 python3 manage.py shell とする。 用途 Djangoに含まれるライブラリの動作検証 例えば、django.utils.timezoneなどはPythonのインタラクティブシェルでは動作しない。</description>
-    </item>
-    
-    <item>
-      <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
-      <link>https://noauto-nolife.com/post/pycharm-config/</link>
-      <pubDate>Thu, 04 Nov 2021 17:50:56 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
-      <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
     </item>
     
     <item>
@@ -386,7 +710,7 @@
       <pubDate>Tue, 05 Oct 2021 06:45:55 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-models-add-field/</guid>
-      <description>models.pyを操作していく上で難しいのが、フィールドの追加とマイグレーション。 特に、追加するフィールドによってはマイグレーションファイル作成時に警告が出ることがある。 本記事では警告が出る理由も含め、フィールドの追加方法も含めて解説する。ソースコードはDjangoビギナーが40分で掲示板アプリを作る方法を元にする。 デフォルト値ありのフィールドを追加する まず、安全なデフォルト値ありのフィールドを</description>
+      <description>models.pyを操作していく上で難しいのが、フィールドの追加とマイグレーション。 特に、追加するフィールドによってはマイグレーションファイル作成時に警告が出ることがある。 本記事では警告が出る理由も含め、フィールドの追加方法も含めて解説する。ソースコードはDjangoビギナーが40分で掲示板アプリを作る方法を元にする。 デフォルト値ありのフィールドを追加する【警告なし】 まず、安全なデフォルト値ありの</description>
     </item>
     
     <item>
@@ -426,7 +750,7 @@
     </item>
     
     <item>
-      <title>【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】</title>
+      <title>【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】</title>
       <link>https://noauto-nolife.com/post/django-forms-validate/</link>
       <pubDate>Wed, 29 Sep 2021 09:16:49 +0900</pubDate>
       
@@ -534,7 +858,7 @@
     </item>
     
     <item>
-      <title>【Django】実行されるクエリを確認する【.query】</title>
+      <title>【Django】実行されるクエリ(SQL)を確認する【.query】</title>
       <link>https://noauto-nolife.com/post/django-models-query/</link>
       <pubDate>Thu, 02 Sep 2021 13:20:50 +0900</pubDate>
       
@@ -620,7 +944,7 @@
       <pubDate>Sat, 07 Aug 2021 16:28:40 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-models-add-method-template-attribute/</guid>
-      <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): class Meta: db_table = &amp;quot;topic&amp;quot; comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.Integer</description>
+      <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.IntegerField</description>
     </item>
     
     <item>
@@ -702,15 +1026,6 @@
       
       <guid>https://noauto-nolife.com/post/django-deploy-ec2/</guid>
       <description>Herokuとは違ってサーバーが日本にもあり、なおかつ課金すれば大型のウェブアプリでもインターネット上に公開できる、それがAWS。 本記事ではAWSのEC2を使用し、画像アップロード可能な簡易掲示板をデプロイ工程を解説する。 デプロイ対象のコード ソースコードは以下。 https://github.com/seiya0723/django_fileupload 作り方は下記を参照。 Djangoで画像及びファイルをアップロードする方法 必要なもの クレジットカード AWSアカウント Djangoのsett</description>
-    </item>
-    
-    <item>
-      <title>【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】</title>
-      <link>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</link>
-      <pubDate>Tue, 22 Jun 2021 08:46:59 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-custom-user-model-allauth-bbs/</guid>
-      <description>手元のディレクトリ内で雛形が分散していたので、自分用に作った。 コードは40分Django簡易掲示板から。allauthはsettings.pyにID認証を、ユーザーモデルはDjangoのGitHubから何も書き加えていないモデルをそのまま流用した。 雛形をすぐにDLして書き換えができるようにGitHubに公開する。 users/models.py ほぼ流用。Handle_nameは元のfirst_nameとlast_nameに分割</description>
     </item>
     
     <item>
@@ -858,12 +1173,12 @@
     </item>
     
     <item>
-      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法</title>
+      <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法【1対多】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</link>
       <pubDate>Sat, 20 Feb 2021 11:13:37 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</guid>
-      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 カスタムユーザーモデルを外部キーとして指定する まず、settings.pyに下記のような設定がされているとする。usersアプリのCustomUserクラスを指定している。 AUTH_USER_MODEL = &#39;users.CustomUser&#39; 続いて、任意のアプリのモデルを編集する。 from django.db import models from django.utils import timezone from django.conf</description>
+      <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 本記事では、下記記事で解説したカスタムユーザーモデルを実装したことを前提として話を進める。 【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】 カスタムユーザーモデルを外部キー</description>
     </item>
     
     <item>
@@ -876,7 +1191,7 @@
     </item>
     
     <item>
-      <title>DjangoでUUIDを主キーとしたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
+      <title>DjangoでUUIDを主キーとし、first_nameとlast_nameを1つにまとめたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
       <link>https://noauto-nolife.com/post/django-custom-user-model-uuid/</link>
       <pubDate>Mon, 15 Feb 2021 15:47:57 +0900</pubDate>
       
@@ -1002,12 +1317,12 @@
     </item>
     
     <item>
-      <title>Djangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】</title>
+      <title>Djangoで多対多のリレーションの構造と作り方、テンプレートで表示する方法【ManyToManyField】</title>
       <link>https://noauto-nolife.com/post/django-many-to-many/</link>
       <pubDate>Fri, 27 Nov 2020 17:20:39 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-many-to-many/</guid>
-      <description>多対多のリレーションを作って、いざ表示させようとした時、普通に{{ content.allergy }}などと指定してしまうとこうなってしまう。 表示できていない。正しく指定するとこうなる。 コードの解説 結論から言うと、テンプレートでの表示に問題がある。下記のようにすると表示できる。 &amp;lt;td&amp;gt;{% for allergy in content.allergy.all %}{{ allergy }} {% endfor %}&amp;lt;/td&amp;gt; .all属性を使用しforループで並べる。 結論 多対多のリレーションはアレルギー表示や動画等のタグ表示、エンジニアの担当言語やスキル</description>
+      <description>多対多のリレーションの作り方 多対多のモデルは以下のように作る。 from django.db import models class Allergy(models.Model): name = models.CharField(verbose_name=&amp;quot;アレルギー名&amp;quot;,max_length=10) def __str__(self): return self.name class Menu(models.Model): name = models.CharField(verbose_name=&amp;quot;品名&amp;quot;,max_length=20) breakfast = models.BooleanField(verbose_n</description>
     </item>
     
     <item>
@@ -1016,7 +1331,7 @@
       <pubDate>Wed, 18 Nov 2020 08:23:05 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-non-nullable/</guid>
-      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコードはどうするか</description>
+      <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 この警告文の解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコード</description>
     </item>
     
     <item>
@@ -1043,7 +1358,7 @@
       <pubDate>Wed, 11 Nov 2020 17:57:49 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-paginator/</guid>
-      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されないので、例えば検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態でページネーションを実装する術を解説する。 流れ views</description>
+      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。 しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されない。例えば、検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態で、ページネーションを実装する術を解説する。 流れ views</description>
     </item>
     
     <item>
@@ -1052,7 +1367,7 @@
       <pubDate>Wed, 11 Nov 2020 17:56:10 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-or-and-search/</guid>
-      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 結論 結論から言うと、コード(views.py)はこ</description>
+      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 クエリビルダでスペース区切りのキーワード検索をする</description>
     </item>
     
     <item>
@@ -1065,12 +1380,12 @@
     </item>
     
     <item>
-      <title>Djangoで画像及びファイルをアップロードする方法</title>
+      <title>Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】</title>
       <link>https://noauto-nolife.com/post/django-fileupload/</link>
       <pubDate>Thu, 05 Nov 2020 15:30:14 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-fileupload/</guid>
-      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 流れ 必要なライブラリのインストール settings.pyとurls.pyの追記 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール 今回はアップロード後のバリデーションを行うため、Pytho</description>
+      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 40分Djangoを理解している方向け。 流れ 必要なライブラリのインストール settings.pyの編集 urls.pyの編集 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール pip install Pillow pip install python-magic P</description>
     </item>
     
     <item>
@@ -1097,7 +1412,7 @@
       <pubDate>Mon, 26 Oct 2020 11:16:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/django-deploy-heroku/</guid>
-      <description>プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。 クラウドにインストールさせるライブラリの定義(requirements.txt) pycharm等の統合開発環境を使用していて、仮想環境が動いている場合(既にターミナルの左側に(venv)等の表示がされている場合)、下記コマンドを実行して、requirements.txtを生成する。 pip freeze &amp;gt; requirements.txt もし、仮想環境を使</description>
+      <description>プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。 requirements.txt もし、仮想環境を使用していない場合、virtualenvを使って必要なライブラリをpipコマンドにてインストールする。 -- HerokuCLIをインストール Herokuではherokuコマンドを実行して、事前にログインをした上でデプロイを行う。下記からインストールする。 https://devcenter.heroku.com/ja/articles/heroku-cli herokuコマンドを実行して、デプロ</description>
     </item>
     
     <item>
@@ -1169,7 +1484,7 @@
       <pubDate>Tue, 20 Oct 2020 14:20:34 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-django/</guid>
-      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) views.pyで処理の定義(5分) templatesでHTMLの作成(5分</description>
+      <description>公式のDjangoチュートリアルではよくわからない方向け。 対象読者は既にDjangoをインストール済み、Linux系コマンド習得済み、Python及びHTMLの基本構文を把握済みとする。 注意事項 40分はあくまでも私見に基づく目安である点をご留意いただきたい。 流れ 以下、流れ。 プロジェクトを作る(5分) アプリを作る(5分) settings.pyの書き換え(5分) urls.pyでURLの指定(5分) vi</description>
     </item>
     
   </channel>

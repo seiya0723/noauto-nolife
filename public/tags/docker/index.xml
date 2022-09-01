@@ -6,10 +6,19 @@
     <description>Recent content in Docker on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 03 Feb 2022 15:11:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 13 Feb 2022 16:54:44 +0900</lastBuildDate>
     
 	<atom:link href="https://noauto-nolife.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</title>
+      <link>https://noauto-nolife.com/post/docker-image-file-share/</link>
+      <pubDate>Sun, 13 Feb 2022 16:54:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/docker-image-file-share/</guid>
+      <description>dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに</description>
+    </item>
     
     <item>
       <title>docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</title>
@@ -23,7 +32,7 @@
     <item>
       <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
       <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
-      <pubDate>Sun, 30 Jan 2022 11:22:31 +0900</pubDate>
+      <pubDate>Thu, 03 Feb 2022 11:22:31 +0900</pubDate>
       
       <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
       <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
