@@ -10,7 +10,9 @@
         {{ end }}
 
         <ul class="article_list">
-            {{ range (.Paginate .Data.Pages).Pages }}
+            {{/* {{ range (.Paginate .Data.Pages).Pages }} */}}
+
+            {{ range .Site.RegularPages }}
             <li>{{ .Render "li" }}</li>
             {{ end }}
         </ul>
