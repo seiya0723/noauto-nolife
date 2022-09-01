@@ -237,7 +237,14 @@ DBを使用するタイプのウェブアプリであればデプロイ後にマ
 
 例えば、`EMAIL_BACKEND`に値を入れたい場合、下記のように指定すれば良い。
 
-    heroku config:set EMAIL_BACKEND="django.core.mail.backends.console.EmailBackend"
+    heroku config:set PASSWORD="password"
+
+
+Python側から読む時、以下のようにする。
+
+    import os
+    PASSWORD_LIST = [ os.environ['PASSWORD'] ]
+
 
 これでパスワードなどの情報をsettings.pyに直接書かなくても済む
 
