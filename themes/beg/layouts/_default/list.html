@@ -10,9 +10,11 @@
         {{ end }}
 
         <ul class="article_list">
+
+            {{/* ここのループがcontentのディレクトリごとになっている。hugo 0.60から？下記に修正 */}}
             {{/* {{ range (.Paginate .Data.Pages).Pages }} */}}
 
-            {{ range .Site.RegularPages }}
+            {{ range (.Paginate .Site.RegularPages).Pages }}
             <li>{{ .Render "li" }}</li>
             {{ end }}
         </ul>
