@@ -6,8 +6,11 @@ hasCJKLanguage = "true"
 summaryLength = "200"
 HUGO_VERSION = "0.40.1"
 
-[markup.goldmark.renderer]
-    unsafe= true
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe= true
 
 [params]
     Author = "S.Asahina"
