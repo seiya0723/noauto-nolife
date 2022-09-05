@@ -24,13 +24,11 @@ https://github.com/seiya0723/django_fileupload
 
 ## 必要なもの
 
-- クレジットカード
 - AWSアカウント
 - Djangoのsettings.py
 - Linuxのコマンド(cp,mkdir,mv,cdなど)
 - ネットワーク、データベース、セキュリティなどの基本的な知識
 - sshコマンドの使用方法の知識
-
 
 ## 備考
 
@@ -100,7 +98,7 @@ SSHを利用するには専用の秘密鍵を生成する必要がある。先�
 
 自分のPCの端末(Windowsの場合はTeraTerm等のSSHクライアントソフトなど)から、先ほど生成したSSHの秘密鍵を使ってインスタンスへ接続を行う。
 
-まず、先ほどDLした秘密鍵のディレクトリまで移動して、権限を所有者のみ読み取り権限に変更する。この所有者のみ読み取りの権限ありに設定しないと、SSHでログインはできない。
+まず、先ほどDLした秘密鍵のディレクトリまで移動して、権限を所有者のみ読み取り権限に変更する。この所有者のみ読み取りの権限ありに設定しないと、SSHでログインはできない。(英語で権限が多すぎると言われる。)
 
     chmod 400 seiya0723-aws.pem
 
@@ -337,13 +335,13 @@ Ctrl+Dを押してログアウトをする。
         MEDIA_ROOT          = "/var/www/{}/media".format(PROJECT_NAME)
     
 
-このsettings.pyの末端のstaticとmediaに書かれてある`/var/www/django_fileupload/`は存在しないので、作る必要がある。
+このsettings.pyの末端のstaticとmediaに書かれてある`/var/www/[プロジェクト名]/`は存在しないので、作る必要がある。
 
-    sudo mkdir /var/www/django_fileupload/
+    sudo mkdir /var/www/[プロジェクト名]/
 
 所有者とグループはrootになっているので、所有者はubuntu、グループはwww-dataに書き換える。
 
-    sudo chown ubuntu:www-data /var/www/django_fileupload/
+    sudo chown ubuntu:www-data /var/www/[プロジェクト名]/
 
 mediaとstaticまでは作る必要はない。Djangoが自動的に作ってくれる。
 
@@ -379,16 +377,16 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
     [Service]
     User=ubuntu
     Group=www-data
-    WorkingDirectory=/home/ubuntu/Documents/django_fileupload
-    ExecStart       =/home/ubuntu/Documents/django_fileupload/venv/bin/gunicorn --access-logfile - --workers 3 \
-                     --bind unix:/home/ubuntu/Documents/django_fileupload/django_fileupload.socket config.wsgi:application
+    WorkingDirectory=/home/ubuntu/Documents/[プロジェクト名]
+    ExecStart       =/home/ubuntu/Documents/[プロジェクト名]/venv/bin/gunicorn --access-logfile - --workers 3 \
+                     --bind unix:/home/ubuntu/Documents/[プロジェクト名]/[プロジェクト名].socket config.wsgi:application
     
     [Install]
     WantedBy=multi-user.target
 
 プロジェクトの`wsgi.py`は`config`ディレクトリの中に`urls.py`や`settings.py`と含まれているので、`config.wsgi.application`になる点にご注意。
 
-仮想環境(`venv`)の場所は、プロジェクトディレクトリ(`django_fileupload`)にあるので、そちらに指定している。
+仮想環境(`venv`)の場所は、プロジェクトディレクトリ(`[プロジェクト名]`)にあるので、そちらに指定している。
 
 `systemd`のファイルはバックスラッシュ(`\`)を使うことで、改行することができる。セミコロン(`;`)を使うことでコメントアウトもできる。
 
@@ -415,7 +413,7 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
 
 次のファイルを作成し、Nginxの設定ファイルを作る。
 
-    sudo vi /etc/nginx/sites-available/django_fileupload
+    sudo vi /etc/nginx/sites-available/[プロジェクト名]
 
 中身は下記
 
@@ -425,14 +423,14 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
     
         location = /favicon.ico { access_log off; log_not_found off; }
         location /static/ {
-            root /var/www/django_fileupload;
+            root /var/www/[プロジェクト名];
         }
         location /media/ {
-            root /var/www/django_fileupload;
+            root /var/www/[プロジェクト名];
         }
         location / {
             include proxy_params;
-            proxy_pass http://unix:/home/ubuntu/Documents/django_fileupload/django_fileupload.socket;
+            proxy_pass http://unix:/home/ubuntu/Documents/[プロジェクト名]/[プロジェクト名].socket;
         }
     
         client_max_body_size 100M;
@@ -442,7 +440,7 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
 
 `sites-enabled`にシンボリックリンクを作り、この設定を反映させる。
 
-    sudo ln -s /etc/nginx/sites-available/django_fileupload /etc/nginx/sites-enabled/
+    sudo ln -s /etc/nginx/sites-available/[プロジェクト名] /etc/nginx/sites-enabled/
 
 デフォルト設定のシンボリックリンクは除外して、設定を再読込、nginxを再起動させる。
 
@@ -472,7 +470,7 @@ staticファイルを配信する、下記コマンドを実行
     
     python3 manage.py collectstatic
 
-このコマンドで予め作っておいた`/var/www/django_fileupload/`にstaticディレクトリが作られ、その中に静的ファイルがコピーされる。
+このコマンドで予め作っておいた`/var/www/[プロジェクト名]/`にstaticディレクトリが作られ、その中に静的ファイルがコピーされる。
 
 ## インバウンドにHTTPアクセスの許可
 
@@ -519,13 +517,21 @@ staticファイルを配信する、下記コマンドを実行
 https://qiita.com/shizen-shin/items/549087e77f1397bc1d92
 
 
+### 502 Bad Gatewayエラーはどうすればいい？
+
+まず、Nginxのエラーログを確認する
+
+    less /var/log/nginx/error.log
+
+sockファイルのアクセス権に関するエラーが書かれてある場合、`~/Documents/[プロジェクト名]/`までのパーミッションが755になっていることを確認する。
+
+もし、755になっていない場合はそのように修正する。
+
 ## 結論
 
 これでEC2へのデプロイができるようになるが、実際にサービスを一般公開するとなるとドメインを指定する必要があるだろう。ムームードメインなどからドメインを手に入れ、それを割り当てる。.comドメインなどであれば一年で1000〜2000円程度で手に入る。
 
 また、このEC2はストレージが8GBほどしか無く、膨大なデータの取扱いや、大容量ファイルの共有には不向きである。そこで、ストレージにはS3、データベースにはRDSを別途指定する必要がある。S3であれば12ヶ月間5GBまで無料、RDSであれば12ヶ月間無料になっている。
-
-
 
 ## 参照元
 

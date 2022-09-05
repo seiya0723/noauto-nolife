@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/ubuntu-env-read-python/", "title" : "Ubuntuに環境変数をセットし、Pythonで読む方法" }, 
+{ "link": "/post/startup-git/", "title" : "【git/GitHub】コマンドと使い方の一覧" }, 
 { "link": "/post/heroku-counter-plan/", "title" : "Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】" }, 
 { "link": "/post/php-not-found-mb-strlen/", "title" : "PHPでmb_strlenもしくはstrlenがNotFoundのときの対策" }, 
 { "link": "/post/hugo-comment-out/", "title" : "HUGOのテンプレートでコメントアウトする" }, 
@@ -46,7 +48,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-many-to-many/", "title" : "Djangoで多対多のリレーションの構造と作り方、テンプレートで表示する方法【ManyToManyField】" }, 
 { "link": "/post/startup-wordpress-ubuntu/", "title" : "UbuntuにWordpressをインストールする【MariaDB+Apache】" }, 
 { "link": "/post/django-admin-custom/", "title" : "Djangoの管理サイト(admin)をカスタムする【全件表示、全フィールド表示、並び替え、画像表示、検索など】" }, 
-{ "link": "/post/startup-git/", "title" : "【git/GitHub】コマンドと使い方の一覧" }, 
 { "link": "/post/startup-create-rdd/", "title" : "要件定義書の書き方" }, 
 { "link": "/post/django-templates-extends-and-block/", "title" : "【Django】DTLのextendsとblockを使って、テンプレートを継承をする" }, 
 { "link": "/post/django-login-required-mixin/", "title" : "【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】" }, 
