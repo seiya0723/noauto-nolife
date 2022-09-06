@@ -4,7 +4,7 @@ date: 2022-09-04T15:49:58+09:00
 draft: false
 thumbnail: "images/ubuntu.jpg"
 categories: [ "インフラ" ]
-tags: [ "Ubuntu","Python","git","tips","デプロイ" ]
+tags: [ "Ubuntu","Python","git","tips","デプロイ","セキュリティ" ]
 ---
 
 例えば、gitで管理しているプロジェクトをgitでデプロイする時。
@@ -60,4 +60,7 @@ tags: [ "Ubuntu","Python","git","tips","デプロイ" ]
 
 これでgitとデプロイを両立できる。
 
+この環境変数は利便性だけでなく、セキュリティ面でも有効。秘匿にする必要があるAPIキー等が散らばらなくて済むからだ。
+
+例えば、SendgridのAPIキーを環境変数に登録し、環境変数から読み込む形式にするなどがある。
 
