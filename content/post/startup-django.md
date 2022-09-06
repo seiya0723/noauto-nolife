@@ -181,9 +181,51 @@ Django 2.x以前ではosモジュールを使用する形式だったため、�
 
 `render()`にはレンダリング対象のHTMLを指定する。とは言え、`templates/bbs/index.html`はまだ存在しないので次の項目で作成する。
 
-`*args`、`**kwargs`についての詳細は下記を参考に。
+
+### 【補足1】`*args`、`**kwargs`とは？
+
+`*args`、`**kwargs`についての詳細は下記を参考に。引数が溢れてもエラーが起こらないようにする事ができる。
 
 [DjangoやPythonにおける\*argsと\*\*kwargsとは何か](/post/django-args-kwargs/)
+
+
+### 【補足2】なぜクラスに直接メソッドを実行できるようになっているのか？
+
+通常のクラスであれば、オブジェクトを作った上で、メソッドを実行する。
+
+    obj   = BaseClass()
+    obj.do_something()
+
+しかし、今回は
+
+    index   = IndexView.as_view()
+
+と実行することが可能である。これはクラスメソッドと呼ばれるものである。
+
+クラスで、クラスメソッドを予め作っておけば、このようにクラスが直接メソッドを呼び出すことができる。
+
+今回IndexViewの継承に使用したViewクラスには、前もってこの`.as_view()`のメソッドがクラスメソッドとして書かれてある。
+
+https://github.com/django/django/blob/main/django/views/generic/base.py
+
+とりわけ、この`.as_view()`メソッドはDjangoが独自に作った`@classonlymethod`で作られている(オブジェクトから`.as_view()`を呼び出すことはできない)
+
+下記を参照。
+
+- https://stackoverflow.com/questions/8133312/what-is-the-difference-between-django-classonlymethod-and-python-classmethod
+- https://qiita.com/ysk24ok/items/848daec3886f1030f587
+
+
+### 【補足3】このクラスベースのビューというものがよくわからない
+
+Djangoには関数ベースのビューも用意されているので、クラスの概念が難しい場合はそちらを使うと良いだろう。
+
+[【Django】ビュー関数とビュークラスの違い、一覧と使い方](/post/django-view-def-and-class/)
+
+クラスを使うには、オブジェクト指向の概念を理解する必要がある。下記記事で解説されている。
+
+[Djangoをやる前に知っておきたいPython構文【オブジェクト指向(class文)と別ファイル読み込み(import文)は特に重要】](/post/django-essential-python/)
+
 
 ## templatesでHTMLの作成(5分)
 
