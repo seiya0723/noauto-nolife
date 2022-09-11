@@ -30,7 +30,7 @@ tags: [ "django","上級者向け","検索" ]
             context = {}
             query   = Q()
     
-            if "search" in request.GET
+            if "search" in request.GET:
                 search      = request.GET["search"]
     
                 raw_words   = search.replace("　"," ").split(" ")
