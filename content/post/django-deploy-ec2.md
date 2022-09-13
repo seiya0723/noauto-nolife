@@ -119,6 +119,8 @@ SSHを利用するには専用の秘密鍵を生成する必要がある。先�
 
     chmod 400 seiya0723-aws.pem
 
+Windowsの場合はファイルのプロパティから所有者の読み取り権限のみ付与する。
+
 <div class="img-center"><img src="/images/Screenshot from 2021-07-12 11-10-37.png" alt="所有者読み取りのみ可"></div>
 
 そして、その秘密鍵を使って`ssh`コマンドを実行する。
@@ -161,10 +163,7 @@ pip、PostgreSQL、Nginx等、必要なパッケージをインストール
 
 virtualenvのインストール
 
-    sudo -H pip3 install --upgrade pip
-    sudo -H pip3 install virtualenv
-
-
+    sudo pip3 install virtualenv
 
 ## PostgreSQLの設定
 
@@ -209,6 +208,7 @@ Ctrl+Dを押してログアウトをする。
     
 
 ## settings.pyの書き換え
+
 
 settings.pyの末端に下記を追記する。
 
