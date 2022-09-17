@@ -11,7 +11,6 @@ Herokuとは違ってサーバーが日本にもあり、なおかつ課金す�
 
 本記事ではAWSのEC2を使用し、デプロイ工程を解説する。
 
-
 <!--
 ## デプロイ対象のコード
 
@@ -31,7 +30,7 @@ https://github.com/seiya0723/django_fileupload
 
 - ネットワーク、データベース、セキュリティの知識
 - Linuxのコマンド(cp,mkdir,mv,cdなど)
-- vimなどのCUI系エディタの操作方法
+- vimやnanoなどのCUI系エディタの操作方法
 - 公開鍵認証方式を使用したSSH(sshとscpコマンド)
 - Nginxのログの確認方法
 - PostgreSQLにて、ユーザーとDBの作成
@@ -45,7 +44,7 @@ https://github.com/seiya0723/django_fileupload
 - [PostgreSQLインストールから、ユーザーとDBを作る](/post/startup-postgresql/)
 - [AWSでなるべくお金がかからないようにウェブアプリを運用する方法](/post/aws-do-not-spend-money/)
 - [UbuntuにSSHでリモートログインする方法【パスワード認証+公開鍵認証+scpコマンド】](/post/ubuntu-ssh/)
-
+- [nanoエディタの操作方法](/post/startup-nano-editor/)
 
 ## 手順
 
@@ -113,7 +112,7 @@ SSHを利用するには専用の秘密鍵を生成する必要がある。先�
 
 ## インスタンスへSSH接続
 
-自分のPCの端末(Windowsの場合はTeraTerm等のSSHクライアントソフトなど)から、先ほど生成したSSHの秘密鍵を使ってインスタンスへ接続を行う。
+自分のPCの端末(Windowsの場合はPowerShell)から、先ほど生成したSSHの秘密鍵を使ってインスタンスへ接続を行う。
 
 まず、先ほどDLした秘密鍵のディレクトリまで移動して、権限を所有者のみ読み取り権限に変更する。この所有者のみ読み取りの権限ありに設定しないと、SSHでログインはできない。(英語で権限が多すぎると言われる。)
 
@@ -142,6 +141,10 @@ Windowsの場合はファイルのプロパティから所有者の読み取り�
 まず、インスタンスのbashの設定を変更する。
 
     vi ~/.bashrc
+
+nanoエディタを使いたい場合は下記。使い方は『[nanoエディタの操作方法](/post/startup-nano-editor/)』へ
+
+    nano ~/.bashrc
 
 下記のように記述。
 
@@ -248,7 +251,6 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
 
 ## systemdにgunicornの自動起動を指定
 
-
 先ほど仮想環境にインストールさせたgunicornを自動起動させるsystemdを書く。
 
     sudo vi /etc/systemd/system/gunicorn.service
@@ -335,7 +337,6 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
     sudo systemctl status nginx
 
 <div class="img-center"><img src="/images/Screenshot from 2021-07-20 14-50-11.png" alt="Nginxが動いている。"></div>
-
 
 ## マイグレーション
 
@@ -427,3 +428,4 @@ EC2だけでなくRDS、S3も使用したデプロイ方法は下記を参照。
 https://qiita.com/tachibanayu24/items/b8d73cdfd4cbd42c5b1d
 
 https://qiita.com/Bashi50/items/d5bc47eeb9668304aaa2#10-gunicorn%E3%81%AE%E8%A8%AD%E5%AE%9A
+
