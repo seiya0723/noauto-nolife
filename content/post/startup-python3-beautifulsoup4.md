@@ -31,7 +31,7 @@ tags: [ "Python","スクレイピング","BeautifulSoup" ]
     except Exception as e:
         print("ERROR_DOWNLOAD:{}".format(e))
     else:
-        soup    = bs4.BeautifulSoup(result.soup, "html.parser")
+        soup    = bs4.BeautifulSoup(result.content, "html.parser")
         main    = soup.select(main)
     
     
