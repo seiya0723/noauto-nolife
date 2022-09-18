@@ -23,7 +23,7 @@ Pythonのrequestsライブラリはスクレイピング(GETメソッド)で使�
     PASS    = ""
     
     URL     = "http://127.0.0.1:8000/"
-    LOGIN   = URL + "admin/login/"
+    LOGIN   = URL + "admin/login/?next=/admin/"
     TIMEOUT = 10
     HEADERS = {'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0'}
     
