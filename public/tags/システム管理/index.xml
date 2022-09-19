@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>システム管理 on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86/</link>
+    <description>Recent content in システム管理 on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 17 Sep 2022 10:20:08 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】</title>
+      <link>https://noauto-nolife.com/post/rtcwake-and-crontab/</link>
+      <pubDate>Sat, 17 Sep 2022 10:20:08 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/rtcwake-and-crontab/</guid>
+      <description>私のサーバーは夜中は操作しないので、crontabでshutdownすることにしている。 そして、朝になったらラズパイなどの常時動いている端末にWakeOnLanを送信して起動させている。 だが、そのサーバーが無線LANになった時、WakeOnLanは通用しない。 ではいかにして、終了と起動を指定時間に行わせるか。そこで、rtcwakeを使う。 今すぐ終了して7時間後に起動して欲しい場合 sudo rtcwake -m off -s 25200 これを</description>
+    </item>
+    
+    <item>
+      <title>vimの操作方法</title>
+      <link>https://noauto-nolife.com/post/startup-vim/</link>
+      <pubDate>Sun, 11 Sep 2022 18:24:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-vim/</guid>
+      <description>前提 vimは通常のテキストエディタと違って、主に3つのモードを使い分けて編集を行う コマンドモード 挿入モード ビジュアルモード コマンドモード vimを起動した時、デフォルトでこのモードになっている。 保存や終了、検索やマクロなどのコマンドを実行する事ができる。 挿入モード テキスト入力をするモード。i、o、aキーのいずれかでこのモードに入る。 挿入モードを終了してコマンドモードに移行するにはEscキーを押す。 ビ</description>
+    </item>
+    
+    <item>
+      <title>FFmpegを使ってUbuntuサーバーにUSBで接続されたウェブカメラで映像を録画する</title>
+      <link>https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/</link>
+      <pubDate>Sat, 10 Sep 2022 20:48:19 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/</guid>
+      <description>Ubuntu 22.04 Serverでやった ハードはラズパイ3B+ インストール FFmpegとv4l2-utilsをインストール sudo apt install ffmpeg v4l-utils デバイスを特定する v4l2-ctl --list-devices こんなふうに表示される(一部省略) BUFFALO BSWHD06M USB Camera : (usb-3f980000.usb-1.4): /dev/video0 /dev/video1 /dev/media3 対応しているフォーマットと解像度を特定する ffmpeg -f v4l2 -list_formats all -i /dev/video0 こんなふうに表示される(一部省略) [video4linux2,v4l2 @ 0xaaaad7c25420] Raw : yuyv422 : YUYV 4:2:2 : 1280x720 800x600 640x480 640x360 352x288 320x240 176x144 160x120 [video4linux2,v4l2 @ 0xaaaad7c25420] Compressed: mjpeg : Motion-JPEG : 1280x960 1280x720 800x600 640x480 640x360 352x288 320x240 176x144 160x120 映像を録画する ffmpeg -f v4l2 -framerate 30 -video_size 352x288 -i /dev/video0 output.mkv 後はこの映像をs</description>
+    </item>
+    
+    <item>
+      <title>【Ubuntu】netplanに無線LAN(wifi)で固定IPアドレスを割り当てる</title>
+      <link>https://noauto-nolife.com/post/netplan-wireless-settings/</link>
+      <pubDate>Sat, 10 Sep 2022 17:48:36 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/netplan-wireless-settings/</guid>
+      <description>有線であれば以下のように書く。 network: ethernets: eth0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 version: 2 無線LANの場合、ip addrで表示される無線LANのデバイス名を控えた上で下記のように記す network: wifis: wlan0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 access-points: &amp;quot;SSIDname&amp;quot;: password: &amp;quot;password&amp;quot; version: 2</description>
+    </item>
+    
+    <item>
+      <title>Herokuの無料プランで独自ドメインを設定し、HTTPS通信を行う方法【ムームードメイン&#43;Cloudflare】</title>
+      <link>https://noauto-nolife.com/post/heroku-origin-domain/</link>
+      <pubDate>Tue, 22 Feb 2022 08:13:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-origin-domain/</guid>
+      <description>無料プランでは独自ドメインのセットは出来てもHTTPS通信を行うことは出来ない。 そのため、Cloudflareをリバースプロキシとして機能させ、クライアントからCloudflare間まで暗号化させる。 一見安全性に欠けるような形だが、AWSにデプロイした際も、クライアントからリバースプロキシ間までしか暗号化はされないので、それほど問題ではない。 気になるなら、有料プランを使用してHTTPS通信を行うと</description>
+    </item>
+    
+    <item>
+      <title>Djangoでpython3のsubprocessモジュールを使い、任意のコマンドをなるべく安全に配慮して実行させる</title>
+      <link>https://noauto-nolife.com/post/django-secure-subprocess/</link>
+      <pubDate>Tue, 04 Jan 2022 10:16:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-secure-subprocess/</guid>
+      <description>ふと思った。 毎度毎度、SSHクライアントがインストールされている端末を起動させ、サーバーにログイン、コマンドで操作するめんどくささ、どうにかできないだろうかと。 ウェブアプリから任意のコマンドを実行することができれば、わざわざSSHを使わなくても、ブラウザだけで簡単にコマンドが実行できる。ただ、問題になってくるのがセキュリティ。 不適切なコマンドを実行されてしまうと、当然システムは壊れる。そこで、なる</description>
+    </item>
+    
+    <item>
+      <title>LaravelでSendgridを使ってメール送信【認証・通知に、ライブラリのインストールは不要】</title>
+      <link>https://noauto-nolife.com/post/laravel-sendgrid/</link>
+      <pubDate>Wed, 08 Dec 2021 16:42:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-sendgrid/</guid>
+      <description>特別なライブラリなどは必要ない。 流れ .envにてAPIキーなどを設定 make:mailコマンドでメールの雛形一式を作る メールのモデルを作る メールのテンプレートを作る 送信処理を実行する .envにてAPIキーなどを設定 まず、.envにてSendgridで手に入れたAPIキー等の情報を格納 MAIL_MAILER=smtp MAIL_HOST=smtp.sendgrid.net MAIL_PORT=587 MAIL_USERNAME=apikey MAIL_PASSWORD=[ここにSendgridで手に入れたAPIキーを記録する] MAIL_ENCRYPTION=tls MAIL_FROM_</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】IPアドレスを取得して、DBへ記録する【犯罪・不正利用の抑止、荒らし対策などに】</title>
+      <link>https://noauto-nolife.com/post/laravel-ipaddress/</link>
+      <pubDate>Wed, 24 Nov 2021 07:08:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ipaddress/</guid>
+      <description>クライアントのIPアドレスを記録できれば、認証が無くても犯罪行為の抑止につながるし、事案が発生してもすぐに対応できるだろう。 本記事ではLaravelにクライアントのIPアドレスを記録する方法を解説する。 コードは『初心者でもlaravelを使い、45分でCRUD簡易掲示板を作る【Restful対応】』から流用している。 IPアドレスのカラムを追加(モデル編集とマイグレーションファイル作成) まずマイグレ</description>
+    </item>
+    
+    <item>
+      <title>Nginxで特定IPアドレスのリクエストを拒否する</title>
+      <link>https://noauto-nolife.com/post/nginx-deny-ip-address/</link>
+      <pubDate>Tue, 28 Sep 2021 11:20:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-deny-ip-address/</guid>
+      <description>特定IPアドレスのリクエストを拒否したいのであれば、ロードバランサーやリバースプロキシなどのセキュリティ設定を書き換えれば済む話だが、環境によっては他のサービスなどに影響を及ぼす可能性もある。 そこで、Nginxの設定を書き換え、特定のサービスだけで特定のIPアドレスを使用したリクエストを拒否する方法をここに記す。 設定ファイルに追加する Nginxの設定ファイル( /etc/nginx/nginx.conf )に下記を追加する。 deny 192.168.XXX.XXX; /etc/n</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi Zeroに搭載したNginxの限界を試す【curlコマンド】</title>
+      <link>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</link>
+      <pubDate>Tue, 28 Sep 2021 10:20:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</guid>
+      <description>Raspberry Pi Zeroの性能は無料プランのEC2やHerokuとほぼ同じ。Raspberry Pi Zeroの限界を知れば、ある程度EC2やHerokuの限界が予測できる。今回はウェブサーバーとして仕立てたRaspberry Pi Zeroにcurlコマンドでリクエストを大量送信し、サーバーダウンするまでのデータをここに記す。 なお、この行為は自分が管理していないサーバーで行うと、普通にDos攻撃になってしまうので、宛先</description>
+    </item>
+    
+    <item>
+      <title>Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check-by-awk/</link>
+      <pubDate>Thu, 23 Sep 2021 13:51:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check-by-awk/</guid>
+      <description>Nginxのログはスペース区切りで送信元IPアドレス、アクセス対象のURLなどが書かれてある。これはスペース区切りで文字を扱うことができるawkコマンドと相性が良い。 本記事では、awkコマンドを使用して、特定の条件下のログを報告したり、ログの情報を見やすくさせる方法を記す。 awkコマンドを使用して、表示する情報を絞る 基本。 cat access.log | awk &#39;{print $1}&#39; これで送信元IPアドレス(スペース区切りで1番目のデータ)が表示</description>
+    </item>
+    
+    <item>
+      <title>【Django】デプロイ後に管理サイトを管理者以外がアクセスできないようにする【UUID&#43;MIDDLEWAREによるURL複雑化とIPアドレス制限】</title>
+      <link>https://noauto-nolife.com/post/django-admin-protect/</link>
+      <pubDate>Wed, 22 Sep 2021 21:55:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-protect/</guid>
+      <description>Djangoの管理サイトのURLはデフォルトでは、admin/となっている。そのため、誰でも簡単に管理サイトにアクセスできる。しかもIDとパスワードのフォームしか表示されていないので、総当りすればいずれ突破されてしまう。 だからこそ、アクセス制限と推測されないURLというものが重要になってくる。本記事ではなるべくシステムに依存せず、Djangoのみで管理サイトの保護が完結する方法を記す。 方法論 以下の</description>
+    </item>
+    
+    <item>
+      <title>Nginxのログをチェックする、ログの出力設定を変更する</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check/</link>
+      <pubDate>Tue, 21 Sep 2021 07:19:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check/</guid>
+      <description>事案が発生した時、まっさきに確認するべきがサーバーのログ。とりわけウェブサーバーのNginxのログ確認方法、設定方法をここに記す。 Nginxのログの見方 Nginxの設定ファイル(/etc/nginx/nginx.conf)にログのパスが書かれてある ## # Logging Settings ## access_log /var/log/nginx/access.log; error_log /var/log/nginx/error.log; ログは/var/log/nginx/access.logに保管されてある事がわかる。中身はこんな感じ。 左から順にこうなっている。 送信元</description>
+    </item>
+    
+    <item>
+      <title>リモートサーバーのデータを自動的にバックアップする方法論【scp&#43;crontab】</title>
+      <link>https://noauto-nolife.com/post/shellscript-auto-backup/</link>
+      <pubDate>Sun, 19 Sep 2021 18:12:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/shellscript-auto-backup/</guid>
+      <description>手順 crontabを使って、一定時間おきにリモートサーバーがバックアップを取る crontabを使って、一定時間おきに任意の端末がscpでリモートサーバーのバックアップファイルをDL crontabを使って、一定時間おきにリモートサーバーがバックアップしたデータを削除 方法 例えば、Djangoであればこうなる。 リモートサーバーの/etc/crontabに以下の設定を施す。 00 * * * * ubuntu cd ~/Document/django/ &amp;amp;&amp;amp; python3 manage.py dumpdata [任意の</description>
+    </item>
+    
+    <item>
+      <title>シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】</title>
+      <link>https://noauto-nolife.com/post/shellscript-server-checker/</link>
+      <pubDate>Sun, 19 Sep 2021 08:51:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/shellscript-server-checker/</guid>
+      <description>サーバーが応答不能になった時、すぐに対処できるよう、通知機能が欲しい。そういうときのシェルスクリプト。 pingで応答不能をチェックする #! /bin/bash while true ; do ping -c 1 192.168.11.99 rc=$? if [[ $rc -eq 0 ]] ; then echo &amp;quot;正常です&amp;quot; else echo &amp;quot;失敗しました&amp;quot; fi sleep 1 done 後は『正常です』『失敗しました』のいずれかに任意の処理を書き込む。 curlで応答不能をチェックする curlはHTTPのステータスコードも手に入るの</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】</title>
+      <link>https://noauto-nolife.com/post/laravel-database-regenerate/</link>
+      <pubDate>Sat, 18 Sep 2021 08:42:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-database-regenerate/</guid>
+      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 プロジェクトのディレクトリで下記コマンドを実行する。 find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \; bashのaliasに登録すれば上記コマンドをさらに短くできる。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行するこ</description>
+    </item>
+    
+    <item>
+      <title>【Django】settings.pyのSECRET_KEYを再発行(リジェネレート)する【alias登録で即生成・即実装からの再起動】</title>
+      <link>https://noauto-nolife.com/post/django-secret-key-regenerate/</link>
+      <pubDate>Fri, 17 Sep 2021 11:19:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-secret-key-regenerate/</guid>
+      <description>うっかり、SECRET_KEYをバージョン管理対象に含ませてしまった。このままではクラウドサーバーにデプロイしたSECRET_KEYが予測され、CSRFトークン等が機能不全になってしまう。 そんな時に備えておきたい、SECRET_KEYの再発行の方法を解説する。 ソースコード Qiitaより拝借。 from django.core.management.utils import get_random_secret_key secret_key = get_random_secret_key() text = &#39;SECRET_KEY = \&#39;{0}\&#39;&#39;.format(secret_key) print(text) 実行すると、 SECRET_KEY = &#39;07y^y0#_7b74jy)d6z0lu5*r$#azfyt1*1f+g1-3w+l@&amp;amp;hs^2!&#39; 等の文言が出てくる。 aliasに登録して、どこでも再発行できるよ</description>
+    </item>
+    
+    <item>
+      <title>【Django&#43;Sendgrid】サーバー処理中(ビュー、独自コマンド)に通知メール(To,CC,BCC)を送信する</title>
+      <link>https://noauto-nolife.com/post/django-sendgrid-processing/</link>
+      <pubDate>Wed, 15 Sep 2021 07:48:47 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-sendgrid-processing/</guid>
+      <description>DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】で解説したとおり、SendgridのAPIキーをsettings.pyに書けばallauthでメール送信ができる。 だが、サーバーの処理中(ビューやmanage.py系の独自コマンド)でメールを送信するにはsettings.pyのメール設定を読み込む必要がある。 ソースコード まず、前回と同様にsettings.pyにてA</description>
+    </item>
+    
+    <item>
+      <title>サーバーを本格的に運用するようになったらやること・守ること</title>
+      <link>https://noauto-nolife.com/post/startup-server-manage/</link>
+      <pubDate>Tue, 14 Sep 2021 06:54:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-server-manage/</guid>
+      <description>圧倒的に人手不足な組織でありがちなのが、『開発とデプロイができるならサーバー管理もできるだろう』と言わんばかりに経験も無いのにサーバー管理まで任されること。 そんな時に一通りチェックしておくと良いものを列挙する。 事前対策編【予防・抑止】 OSにインストールされているパッケージのアップデート(更新) OSにインストールされているパッケージは問題がなければ定期的にアップデートしておく。 sudo apt update &amp;amp;&amp;amp; sudo apt -y upgrade &amp;amp;&amp;amp; sudo apt</description>
+    </item>
+    
+    <item>
+      <title>DjangoでサイトにアクセスしたクライアントのIPアドレス、ユーザーエージェント(UA)、プロバイダ名(ゲートウェイ名)を表示する【犯罪・不正行為の抑止とセキュリティ】</title>
+      <link>https://noauto-nolife.com/post/django-show-ip-ua-gateway/</link>
+      <pubDate>Mon, 13 Sep 2021 07:21:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-show-ip-ua-gateway/</guid>
+      <description>不正行為や犯罪などの抑止力として効果を発揮する、クライアントのUA、IPアドレス及びプロバイダ名の表示。その方法をここに記す。 グローバルIPアドレスを表示 ビュー側で以下のように取得する。 ip_list = request.META.get(&#39;HTTP_X_FORWARDED_FOR&#39;) if ip_list: ip = ip_list.split(&#39;,&#39;)[0] else: ip = request.META.get(&#39;REMOTE_ADDR&#39;) もし、ip_listに記録されたIPアドレスが複数ある場合は、ネットワーク構成などを考慮して添字を指定する。 ユーザーエージェント(UA)を表示 ビュー側で以下のように取得する。 user_agent = request.META.get(&#39;HTTP_USER_AGENT&#39;) リクエスト</description>
+    </item>
+    
+    <item>
+      <title>【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 &#43; Certificate Manager &#43; ロードバランサ(ELB)】</title>
+      <link>https://noauto-nolife.com/post/ec2-origin-domain-https/</link>
+      <pubDate>Sun, 05 Sep 2021 15:32:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ec2-origin-domain-https/</guid>
+      <description>タイトルの通り。 手順 EC2のインスタンスを作る セキュリティグループを書き換える ElasticIPを割り当てる Route53に独自ドメインを割り当てる SSHで独自ドメインでログインしてみる Certificate Managerとロードバランサを使ってHTTPS通信を実現させる EC2のインスタンスを作る まず、EC2のインスタンスを作る。インスタンスの作り方はDjangoをAWSのEC2(Ubuntu)にデプロイするに倣う。</description>
+    </item>
+    
+    <item>
+      <title>AWSでなるべくお金がかからないようにウェブアプリを運用する方法</title>
+      <link>https://noauto-nolife.com/post/aws-do-not-spend-money/</link>
+      <pubDate>Sun, 05 Sep 2021 11:45:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/aws-do-not-spend-money/</guid>
+      <description>気づいたらAWSの請求額が数百ドルを超えてた。ということはよくある。 そこで、なるべくお金がかからないように運用する方法を即効性がある運用編、開発編、セキュリティ編、その他編に分けて解説する。 運用編 基本的に運用編に書いてある内容を実践すれば、ほぼ課金されることはない。マウスクリックだけで簡単に実践できるので、ぜひともやっておきたい。 インスタンスを多重起動しない まず、前提としてEC2やRDS等のインス</description>
+    </item>
+    
+    <item>
+      <title>【Django】同一人物による工作(再生数の水増しなど)をいかにして防ぐか、方法と対策【unique_together,Recaptcha,UA,IPアドレス等】</title>
+      <link>https://noauto-nolife.com/post/django-same-user-operate-prevent/</link>
+      <pubDate>Thu, 26 Aug 2021 12:24:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-same-user-operate-prevent/</guid>
+      <description>例えば、動画サイトを運営していて、動画の再生回数を記録する機能を実装したとする。 動画の検索で、再生数の多い順に並び替えて表示する機能が既にある場合、再生回数の水増しによって、全く面白くない動画が検索の上位に表示されるなどの問題が発生する。 それだけでなく、再生回数の水増しを放置してしまうと、ランキングも荒れ果て、結果的にユーザーが離反してしまう恐れもある。(※ただし、ランキングの集計方法によってある</description>
+    </item>
+    
+    <item>
+      <title>VirtualBoxにUbuntuをインストールする</title>
+      <link>https://noauto-nolife.com/post/virtualbox-ubuntu-install/</link>
+      <pubDate>Sat, 19 Jun 2021 16:49:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/virtualbox-ubuntu-install/</guid>
+      <description>作ったウェブアプリをデプロイする時、実機のLinuxサーバーでも良いが、VirtualBox上のLinux系OSのいずれかにデプロイして試験運用するのも良いだろう。 そこでその前段階としてVirtualBoxにUbuntuをインストールさせる。 用意する物 Ubuntuのisoファイル VirtualBoxのインストーラー(パッケージファイル) メモリ4GB以上の空きがあり、なおかつ20GB以上のストレージ</description>
+    </item>
+    
+    <item>
+      <title>【Django】admin.pyからカスタムアクションを追加し、管理サイトから実行【crontab、BaseCommandが使えない場合の対処法】</title>
+      <link>https://noauto-nolife.com/post/django-admin-custom-action/</link>
+      <pubDate>Mon, 14 Jun 2021 17:33:41 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-custom-action/</guid>
+      <description>【Django】manage.pyコマンドを追加させる【バッチ処理、常駐プログラムなどに】から、manage.pyのコマンドを追加することができる。 だが、誰もがmanage.pyのコマンドを実行できるとも限らない。crontabが使えない場合もある。 特にコマンドを打ったことのない人向けにシステムの管理を行ってもらう場合、GUIで操作できる管理サイトからアクションを追加する方法が妥当と言えよう。 そこ</description>
+    </item>
+    
+    <item>
+      <title>【Django】バッチ処理でPS、AI(PDF)ファイルのサムネイルを自動生成させる【BaseCommand】</title>
+      <link>https://noauto-nolife.com/post/django-batch-thumbnail-create/</link>
+      <pubDate>Sun, 23 May 2021 12:02:33 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-batch-thumbnail-create/</guid>
+      <description>PS、AIファイルのサムネイルを作る処理をmanage.pyコマンドに追加することで、ビューの負担を軽減する。 これにより、負荷のかかる処理をビューから分離できる。投稿処理が集中しても、高負荷の処理が原因でサーバーダウンすることは無いのだ。 全体像 こんなふうに、通常のリクエストで行われる処理系とは分離して、サムネイルの自動生成が行われる。 ループにより逐次処理を行うため、リクエストとは違って並列ではない</description>
+    </item>
+    
+    <item>
+      <title>【Django】バッチ処理のOpenCVが撮影した画像をDBに保存する</title>
+      <link>https://noauto-nolife.com/post/django-batch-opencv/</link>
+      <pubDate>Tue, 16 Mar 2021 16:15:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-batch-opencv/</guid>
+      <description>Djangoのバッチ処理を実行し、DBにデータを格納させる。ただし、OpenCVで撮影した画像をDBに保存させる。本記事ではその手順を記す。 実行環境・やりたいこと 実行環境 Django 2.2以上 Ubuntu 18.04 やりたいこと 流れはだいたいこんな感じ OS起動時、バッチ処理がCrontabから実行される バッチ処理はOpenCVを使用し、撮影した画像を保存 保存した画像とコメントをDBに記録 1秒経ったら、2に戻る つまり、コマ撮りし</description>
+    </item>
+    
+    <item>
+      <title>【Django】manage.pyコマンドを追加させる【バッチ処理、常駐プログラムなどに】</title>
+      <link>https://noauto-nolife.com/post/django-command-add/</link>
+      <pubDate>Mon, 01 Feb 2021 18:25:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-command-add/</guid>
+      <description>Djangoのmanage.pyにはコマンドを追加することができる。これを利用すれば、アプリディレクトリで定義したモデルをそのまま流用してDBにアクセスしたり、コマンド一発で複雑な処理を終わらせたり、バッチ処理として運用させることも簡単にできる。 manage.pyにコマンドを追加させる まず、任意のアプリディレクトリにmanagement/commands/ディレクトリを作る。 mkdir -p [アプリディレクト</description>
+    </item>
+    
+    <item>
+      <title>SQLiteの操作方法【テーブル一覧表示、SQLなど】</title>
+      <link>https://noauto-nolife.com/post/startup-sqlite3/</link>
+      <pubDate>Mon, 26 Oct 2020 13:51:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-sqlite3/</guid>
+      <description>インストールと基本操作 Ubuntuであればaptコマンドで簡単にインストールできる。 sudo apt install sqlite3 ファイルの閲覧はsqlite3コマンドで実行できる。対象のsqlite3ファイルを指定するだけ。 sqlite3 db.sqlite3 テーブル一覧表示 テーブル一覧表示。 .table 基本的なSQL文 SELECT文。指定したテーブルを参照する。 SELECT カラム名 FROM テーブル名 INSERT文。指定したレコードを追加する。文字列型はダブルクオーテーションでくくる。数値</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにSSHでリモートログインする方法【パスワード認証&#43;公開鍵認証&#43;scpコマンド】</title>
+      <link>https://noauto-nolife.com/post/ubuntu-ssh/</link>
+      <pubDate>Thu, 20 Sep 2018 18:22:19 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-ssh/</guid>
+      <description>SSH（Secure Shell）とはネットワークに接続されている端末にリモートログインをするための技術のことを言います。 SSHにより直接端末を操作しなくても遠隔地から端末にログインを行い、コマンド入力で簡単に操作できるようになります。それだけでなく、SSHを使用した際にはネットワークを流れる通信がすべて暗号化されるようになるのです。SSHでは暗号化された通信経路を使用するので、通信経路が暗号化され</description>
+    </item>
+    
+  </channel>
+</rss>

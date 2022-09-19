@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+
+<link rel="canonical" href="https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/">
+
+
+        <link href="https://noauto-nolife.com/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="https://noauto-nolife.com/css/bootstrap-grid.css"> 
+
+        <script src="https://noauto-nolife.com/data/search.js"></script>
+        <script src="https://noauto-nolife.com/js/script.js"></script>
+
+        <title>LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】 - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】 - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/">
+<meta property="og:image" content="https://noauto-nolife.com/images/laravel.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="https://noauto-nolife.com/post/laravel-heroku-deploy-php-version-error/">
+<meta name="twitter:title" content="LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】 - 自動化無しに生活無し">
+<meta name="twitter:image" content="https://noauto-nolife.com/images/laravel.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://noauto-nolife.com/"
+    },
+    "headline": "LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】 - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://noauto-nolife.com/images/laravel.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-12-17T11:24:38JST",
+    "dateModified": "2021-12-17T11:24:38JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://noauto-nolife.com/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="https://noauto-nolife.com/css/style.css" rel="stylesheet">
+        
+
+        
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="https://noauto-nolife.com/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEBとかAIとかLinux関係をひたすら書く備忘録系ブログ</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="https://noauto-nolife.com/">HOME</a></li>
+                
+                <li><a href="https://noauto-nolife.com/post/">post</a></li>
+                
+                <li class="active">LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">LaravelのHerokuデプロイがPHPバージョン問題で必ず失敗する問題は、バージョンアップで対処する【ERROR: Dependency installation failed!】</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+        <li>投稿日時：<time datetime="2021-12-17T11:24:38JST">2021年12月17日 11時24分</time></li>
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">laravel</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/heroku/">Heroku</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4/">デプロイ</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">ubuntu</a>
+            
+        </li>
+        
+        
+    </ul>
+
+    <div class="img-center"><img src="https://noauto-nolife.com/images/laravel.jpg" alt="thumbnail"></div>
+
+	<div class="article_body">
+
+<h2 id="経緯">経緯</h2>
+
+<p>2021年12月某日、今日もLaravelのプロジェクトの開発を終え、『さあデプロイだ』とHerokuへデプロイをすると、下記のようなエラーメッセージが出た。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 11-21-49.png" alt=""></div>
+
+<h2 id="原因">原因</h2>
+
+<p>これまで、普通にデプロイできていて、今日になってなぜデプロイに失敗するのか。どこかで設定ファイルの編集ミスったかと思いあれこれ確認してみたが、原因はわからない。</p>
+
+<p>そこでStackOverflowにて、検索してみると、同様のエラー報告がみられた。</p>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/70352116/an-error-occurred-in-the-composer-during-deployment">https://stackoverflow.com/questions/70352116/an-error-occurred-in-the-composer-during-deployment</a></li>
+<li><a href="https://stackoverflow.com/questions/70358254/im-trying-to-deploy-a-laravel-a-project-on-heroku-but-im-getting-this-error-i">https://stackoverflow.com/questions/70358254/im-trying-to-deploy-a-laravel-a-project-on-heroku-but-im-getting-this-error-i</a></li>
+</ul>
+
+<p>StackOverflowによると原因はHerokuのPHPのバージョン対応問題。2021年12月の段階で、Herokuが対応しているPHPのバージョンは下記の通り。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 11-30-14.png" alt=""></div>
+
+<p>参照元:<a href="https://devcenter.heroku.com/ja/articles/php-support">https://devcenter.heroku.com/ja/articles/php-support</a></p>
+
+<p>私のPHPのバージョンは、7.2</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 11-34-06.png" alt=""></div>
+
+<p>よって、今回のエラーが発生したと思われる。</p>
+
+<p>そもそも、プッシュした時に、Heroku側はPHP 8.1.0をインストールしているのだから。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 11-33-10.png" alt=""></div>
+
+<h2 id="対策-ubuntu">対策(Ubuntu)</h2>
+
+<p>PHPのバージョンアップを行う。Herokuと同様に8.1をインストールする。</p>
+
+<p>ただ、普通のUbuntu18.01ではaptコマンドを実行してもphp8.1をインストールする事はできない。PHPのリポジトリがないからだ。だから、PHPのリポジトリをまずインストールさせる。</p>
+
+<pre><code>sudo apt update
+
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:ondrej/php
+</code></pre>
+
+<p>上記コマンドを順次実行すると、下記の内容が表示される。</p>
+
+<pre><code> Co-installable PHP versions: PHP 5.6, PHP 7.x and most requested extensions are included. Only Supported Versions of PHP (http://php.net/supported-versions.php) for Supported Ubuntu Releases (https://wiki.ubuntu.com/Releases) are provided. Don't ask for end-of-life PHP versions or Ubuntu release, they won't be provided.
+
+Debian oldstable and stable packages are provided as well: https://deb.sury.org/#debian-dpa
+
+You can get more information about the packages at https://deb.sury.org
+
+IMPORTANT: The &lt;foo&gt;-backports is now required on older Ubuntu releases.
+
+BUGS&amp;FEATURES: This PPA now has a issue tracker:
+https://deb.sury.org/#bug-reporting
+
+CAVEATS:
+1. If you are using php-gearman, you need to add ppa:ondrej/pkg-gearman
+2. If you are using apache2, you are advised to add ppa:ondrej/apache2
+3. If you are using nginx, you are advised to add ppa:ondrej/nginx-mainline
+   or ppa:ondrej/nginx
+
+PLEASE READ: If you like my work and want to give me a little motivation, please consider donating regularly: https://donate.sury.org/
+
+WARNING: add-apt-repository is broken with non-UTF-8 locales, see
+https://github.com/oerdnj/deb.sury.org/issues/56 for workaround:
+
+# LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+ 詳しい情報: https://launchpad.net/~ondrej/+archive/ubuntu/php
+[ENTER] を押すと続行します。Ctrl-c で追加をキャンセルできます。
+</code></pre>
+
+<p>Enterキーを押して続行。完了したら、次のコマンドを実行し、php8.1をインストールさせる</p>
+
+<pre><code>sudo apt install php8.1
+</code></pre>
+
+<p>インストール完了した後、下記コマンドを実行して、PHPのバージョン確認をする</p>
+
+<pre><code>php --version
+</code></pre>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 13-20-42.png" alt=""></div>
+
+<p>ちなみに、先のPHP8.1インストールのコマンドを入力した状態でTabキーを押すと、8.1に対応した拡張パッケージの一覧が出てくる。</p>
+
+<pre><code>php8.1                 php8.1-ds              php8.1-interbase       php8.1-oauth           php8.1-rrd             php8.1-vips
+php8.1-amqp            php8.1-enchant         php8.1-intl            php8.1-odbc            php8.1-smbclient       php8.1-xdebug
+php8.1-apcu            php8.1-fpm             php8.1-ldap            php8.1-opcache         php8.1-snmp            php8.1-xhprof
+php8.1-ast             php8.1-gd              php8.1-lz4             php8.1-pcov            php8.1-soap            php8.1-xml
+php8.1-bcmath          php8.1-gearman         php8.1-mailparse       php8.1-pgsql           php8.1-solr            php8.1-xmlrpc
+php8.1-bz2             php8.1-gmagick         php8.1-maxminddb       php8.1-phpdbg          php8.1-sqlite3         php8.1-xsl
+php8.1-cgi             php8.1-gmp             php8.1-mbstring        php8.1-protobuf        php8.1-ssh2            php8.1-yac
+php8.1-cli             php8.1-gnupg           php8.1-mcrypt          php8.1-ps              php8.1-swoole          php8.1-yaml
+php8.1-common          php8.1-grpc            php8.1-memcache        php8.1-pspell          php8.1-sybase          php8.1-zip
+php8.1-curl            php8.1-igbinary        php8.1-memcached       php8.1-psr             php8.1-tidy            php8.1-zmq
+php8.1-dba             php8.1-imagick         php8.1-mongodb         php8.1-raphf           php8.1-uopz            php8.1-zstd
+php8.1-decimal         php8.1-imap            php8.1-msgpack         php8.1-readline        php8.1-uploadprogress  
+php8.1-dev             php8.1-inotify         php8.1-mysql           php8.1-redis           php8.1-uuid            
+</code></pre>
+
+<p>これでPHP8.1に対応した拡張パッケージをインストールする事ができる。一応、開発時にはsqlite3を使用するので、下記コマンドを実行して、PHP側からsqlite3が使えるようにしておいたほうが良いだろう。</p>
+
+<pre><code>sudo apt install php8.1-sqlite3
+</code></pre>
+
+<p>これでLaravel8.xでもsqlite3にマイグレーションできる。もしインストールされていなかったら、Sqlite3へのマイグレーション時に下記のようなエラーが出る。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 15-58-42.png" alt=""></div>
+
+<h2 id="再度laravelプロジェクトを生成してherokuにデプロイしてみる">再度Laravelプロジェクトを生成してHerokuにデプロイしてみる</h2>
+
+<p>デプロイの具体的な方法は下記を参照。</p>
+
+<p><a href="/post/laravel-heroku-deploy/">LaravelをHerokuにデプロイする【Heroku-postgresql使用】</a></p>
+
+<p>まず、下記コマンドを実行してプロジェクトを作る。</p>
+
+<pre><code>composer create-project --prefer-dist laravel/laravel after_update
+</code></pre>
+
+<p>この時点で、PHPが8.1になっているので、Laravelもバージョンが7.x系から8.x系になっていることがわかる。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 13-26-38.png" alt=""></div>
+
+<p>だが、ここでプロジェクト生成に失敗した模様。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 13-30-52.png" alt=""></div>
+
+<p><a href="https://stackoverflow.com/questions/43408604/php7-install-ext-dom-issue">stackoverflow</a>によると、下記コマンドを実行し、php8.1-xmlをインストールする。</p>
+
+<pre><code>sudo apt install php8.1-xml
+</code></pre>
+
+<p>ちなみに下記サイトによると、インストールしておいたほうが良い拡張パッケージ一覧が載っている。</p>
+
+<p><a href="https://www.cloudbooklet.com/how-to-install-or-upgrade-php-8-1-on-ubuntu-20-04/">https://www.cloudbooklet.com/how-to-install-or-upgrade-php-8-1-on-ubuntu-20-04/</a></p>
+
+<pre><code>sudo apt install php8.1-common php8.1-mysql php8.1-xml php8.1-xmlrpc php8.1-curl php8.1-gd php8.1-imagick php8.1-cli php8.1-dev php8.1-imap php8.1-mbstring php8.1-opcache php8.1-soap php8.1-zip php8.1-redis php8.1-intl
+</code></pre>
+
+<p>とは言え、php8.1-xmlをインストールしたら無事プロジェクト作成できた。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 13-42-09.png" alt=""></div>
+
+<p>サーバーを立ち上げる。</p>
+
+<pre><code>cd after_update
+php artisan serve
+</code></pre>
+
+<p>Laravel8.x系のデフォルト画面はこんな感じ。7.x系までとかなり雰囲気が変わっている。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 13-44-32.png" alt=""></div>
+
+<p>とりあえず、素の状態でデプロイする。Procfileを作る。</p>
+
+<pre><code>echo &quot;web: vendor/bin/heroku-php-apache2 public/&quot; &gt; Procfile
+</code></pre>
+
+<p>gitコマンドでローカルリポジトリを作る。</p>
+
+<pre><code>git init 
+git add .
+git commit -m &quot;1st commit&quot;
+heroku git:remote -a [アプリ名]
+</code></pre>
+
+<p>プッシュすると、下記のエラーが出た。</p>
+
+<pre><code>remote:  !     &gt;   Problem 1
+remote:  !     &gt;     - symfony/polyfill-mbstring dev-main requires php &gt;=7.1 -&gt; satisfiable by php[7.3.24, 7.3.25, 7.3.26, 7.3.27, 7.3.28, 7.3.29, 7.3.30, 7.3.31, 7.3.32, 7.3.33, 7.4.12, 7.4.13, 7.4.14, 7.4.15, 7.4.16, 7.4.19, 7.4.20, 7.4.21, 7.4.22, 7.4.23, 7.4.24, 7.4.25, 7.4.26, 8.0.0, 8.0.0RC4, 8.0.1, 8.0.10, 8.0.11, 8.0.12, 8.0.13, 8.0.2, 8.0.3, 8.0.6, 8.0.7, 8.0.8, 8.0.9, 8.1.0].
+</code></pre>
+
+<p>どうやらsymfonyのバージョン問題らしい。php8.1に対応したものをインストールする。</p>
+
+<pre><code>sudo apt install php8.1-mbstring
+</code></pre>
+
+<p>インストール完了後、先ほど作った<code>after_update</code>をディレクトリごと削除して、一から同名のプロジェクトを作り、gitローカルリポジトリを作り、プッシュした。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 13-56-58.png" alt=""></div>
+
+<p>この状態でサイトにアクセスしても、500エラーが出る。</p>
+
+<p>当たり前である。なぜなら許可するドメインを指定しておらず、アプリのセキュリティキーを生成して、Heroku側に指定していないから。</p>
+
+<pre><code>#キーを生成する。
+php artisan key:generate --show
+#↑のコマンドで生成されたキーを↓に張り付け
+heroku config:set APP_KEY=[↑のコマンドのキーをbase64:から記入]
+#公開するサイトのドメインを指定
+heroku config:set APP_URL=[アプリ名].herokuapp.com
+</code></pre>
+
+<p>デプロイ成功した。ここまで調べながらだったので3〜4時間ぐらい掛かったと思う。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-12-17 14-13-02.png" alt=""></div>
+
+<h2 id="結論">結論</h2>
+
+<p>PHP8.1も2024年でサポート切れるので、同様の問題が発生しうるだろう。PHPはPythonと違ってコロコロバージョンが変わるので、それに対応しなければならないのは辛い。</p>
+
+<p>参照元:<a href="https://www.php.net/supported-versions.php">https://www.php.net/supported-versions.php</a></p>
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    <div class="article_share_area">
+        <h2>シェアボタン</h2>
+        <a class="article_share_link link_twitter" target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2flaravel-heroku-deploy-php-version-error%2f&text=Laravel%e3%81%aeHeroku%e3%83%87%e3%83%97%e3%83%ad%e3%82%a4%e3%81%8cPHP%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e5%95%8f%e9%a1%8c%e3%81%a7%e5%bf%85%e3%81%9a%e5%a4%b1%e6%95%97%e3%81%99%e3%82%8b%e5%95%8f%e9%a1%8c%e3%81%af%e3%80%81%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%82%a2%e3%83%83%e3%83%97%e3%81%a7%e5%af%be%e5%87%a6%e3%81%99%e3%82%8b%e3%80%90ERROR%3a%20Dependency%20installation%20failed%21%e3%80%91">Twitter</a>
+        <a class="article_share_link link_line" target="_blank" rel="nofollow noopener noreferrer" href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2flaravel-heroku-deploy-php-version-error%2f">LINEで送る</a>
+        <a class="article_share_link link_facebook" target="_blank" rel="nofollow noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fnoauto-nolife.com%2fpost%2flaravel-heroku-deploy-php-version-error%2f">Facebook</a>
+        <a class="article_share_link link_hatena" target="_blank" rel="nofollow noopener noreferrer" href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fnoauto-nolife.com%2fpost%2flaravel-heroku-deploy-php-version-error%2f&title=Laravel%e3%81%aeHeroku%e3%83%87%e3%83%97%e3%83%ad%e3%82%a4%e3%81%8cPHP%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e5%95%8f%e9%a1%8c%e3%81%a7%e5%bf%85%e3%81%9a%e5%a4%b1%e6%95%97%e3%81%99%e3%82%8b%e5%95%8f%e9%a1%8c%e3%81%af%e3%80%81%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3%e3%82%a2%e3%83%83%e3%83%97%e3%81%a7%e5%af%be%e5%87%a6%e3%81%99%e3%82%8b%e3%80%90ERROR%3a%20Dependency%20installation%20failed%21%e3%80%91">はてなブログ</a>
+    </div>
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/ubuntu-env-read-python/">Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】<time class="relate_time">2022年9月4日 15時49分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/heroku-counter-plan/">Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】<time class="relate_time">2022年8月26日 17時37分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/python3-update/">UbuntuにインストールされているPythonをアップデートする<time class="relate_time">2022年5月7日 22時33分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-deploy-ubuntu-venv/">UbuntuにDjangoをデプロイする【PostgreSQL&#43;Nginx、Virtualenv使用】<time class="relate_time">2022年3月30日 08時03分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/hugo-install-latest/">【HUGO】最新版をインストールして、サイトを作り、テーマを当ててビルドするまで<time class="relate_time">2022年3月22日 08時39分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/django-essential-python/">次の投稿<br><span class="summary_pg">Djangoをやる前に知っておきたいPython構文【オブジェクト指向(class文)と別ファイル読み込み(import文)は特に重要】</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/startup-openpyxl/">前の投稿<br><span class="summary_pg">【openpyxl】PythonからExcelファイルを読み書きする</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="https://noauto-nolife.com/information/introduction/"><img class="author_img" src="https://noauto-nolife.com/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: We are not your kind.</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ai">ai</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/centos">centos</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%93%E3%83%A5%E3%83%BC">ビュー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA">ポートフォリオ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/rtcwake-and-crontab/">rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/javascript-dynamic-element-change-detect/">【JavaScript】動的に要素が変化した時に何か処理をさせたいならMutationObserverを使う</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/javascript-sortablejs/">JavaScriptで並び替えをするならSortable.js【jQuery不要のライブラリ】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-vim/">vimの操作方法</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-search-querybuilder-custom-templates-js/">Djangoでクエリビルダを使い、スペース区切りの文字列検索と絞り込みを同時に行う【JSとカスタムテンプレートタグを使用】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/">FFmpegを使ってUbuntuサーバーにUSBで接続されたウェブカメラで映像を録画する</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/netplan-wireless-settings/">【Ubuntu】netplanに無線LAN(wifi)で固定IPアドレスを割り当てる</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-nano-editor/">nanoエディタの操作方法</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/css3-chat-web-design/">【CSS3】チャットのウェブデザインを作る</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-env-read-python/">Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

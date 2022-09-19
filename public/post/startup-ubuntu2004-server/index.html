@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+
+<link rel="canonical" href="https://noauto-nolife.com/post/startup-ubuntu2004-server/">
+
+
+        <link href="https://noauto-nolife.com/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="https://noauto-nolife.com/css/bootstrap-grid.css"> 
+
+        <script src="https://noauto-nolife.com/data/search.js"></script>
+        <script src="https://noauto-nolife.com/js/script.js"></script>
+
+        <title>サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://noauto-nolife.com/post/startup-ubuntu2004-server/">
+<meta property="og:image" content="https://noauto-nolife.com/images/ubuntu.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="https://noauto-nolife.com/post/startup-ubuntu2004-server/">
+<meta name="twitter:title" content="サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 - 自動化無しに生活無し">
+<meta name="twitter:image" content="https://noauto-nolife.com/images/ubuntu.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://noauto-nolife.com/"
+    },
+    "headline": "サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://noauto-nolife.com/images/ubuntu.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-08-21T17:39:30JST",
+    "dateModified": "2021-08-21T17:39:30JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://noauto-nolife.com/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="https://noauto-nolife.com/css/style.css" rel="stylesheet">
+        
+
+        
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="https://noauto-nolife.com/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEBとかAIとかLinux関係をひたすら書く備忘録系ブログ</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="https://noauto-nolife.com/">HOME</a></li>
+                
+                <li><a href="https://noauto-nolife.com/post/">post</a></li>
+                
+                <li class="active">サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+        <li>投稿日時：<time datetime="2021-08-21T17:39:30JST">2021年8月21日 17時39分</time></li>
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/">インフラ</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA/">スタートアップシリーズ</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu/">Ubuntu</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/ssh/">SSH</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/bash/">bash</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/linux/">Linux</a>
+            
+        </li>
+        
+        
+    </ul>
+
+    <div class="img-center"><img src="https://noauto-nolife.com/images/ubuntu.jpg" alt="thumbnail"></div>
+
+	<div class="article_body">
+
+<p>デスクトップ版のUbuntuとサーバー版のUbuntuは完全に別物である。</p>
+
+<p>デスクトップ版はGUIでラクラク固定IPアドレス設定できたり、作業しながらブラウザで検索できる一方で、サーバー版のUbuntuはただ無機質なターミナルが全画面を覆っているだけである。</p>
+
+<p>本記事ではインストールからIPアドレスの固定化、bashの設定やタイムゾーン設定、別端末からSSHでログインするまでを解説する。</p>
+
+<p>対象読者は、既にデスクトップ版Ubuntuを自前でインストールして使用した事があり、ターミナル操作やVimを問題なく扱えるレベルを想定している。もしデスクトップ版のUbuntuもインストールしたこと無い場合は、日経Linuxなどの雑誌にデスクトップ版Ubuntuのインストール方法が書かれてあるので、そちらを参照。</p>
+
+<h2 id="インストール">インストール</h2>
+
+<p>まず、<a href="https://ubuntu.com/download/server">Ubuntu公式</a>からサーバー版Ubuntuのiso(Option2)をDL。</p>
+
+<p>後はこのisoファイルをUSBメモリにUniversal USB Installerなどを使用してインストールする。そのUSBメモリを任意のPCに差し込み、PCにUbuntuをインストールさせる。</p>
+
+<p>以下、VirtualBox上に表示された画面をスクリーンショットして解説。</p>
+
+<p>まず、最初に表示されるのは言語の指定。日本語は無いので、Englishを選択。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_01.png" alt="言語選択"></div>
+
+<p>キーボードのレイアウトを選択。日本語キーボードを選ぶ。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_02.png" alt="キーボードレイアウト"></div>
+
+<p>IPアドレスの指定。ここで正しく設定を施せば、後のIPアドレス固定化の作業をスキップできるが、解説のためあえて何も設定せず、DHCPのままで行う。そのままDoneを押せばよい。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_03.png" alt="IPアドレスの指定"></div>
+
+<p>プロキシサーバーの指定。特に何も指定しなくていい。そのままDoneを押す。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_04.png" alt="プロキシサーバーの指定"></div>
+
+<p>Ubuntuのミラーアドレスの指定。これも特に何も指定せず、そのままDoneを押す。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_05.png" alt="ミラーアドレス"></div>
+
+<p>インストールに使用するディスクの指定、ディスクのLVM設定(論理ボリュームマネージャー)。画像では、『Set up this disk as LVM group』のチェックが入っているが、チェックを外す。実機の場合チェックが入っていると、ブートに使用したUSBとHDDでストレージ容量が折半されてしまうので、必ずチェックを外す。Doneを押す。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_06.png" alt="ディスクの指定"></div>
+
+<p>パーティションの設定。これも何もしなくていい。そのままDoneを押す。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_07.png" alt="パーティションの設定"></div>
+
+<p>Doneを押すと、下記のようにディスクをフォーマット(初期化)する件について了承を求められる。Continueを押す。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_08.png" alt="フォーマット確認"></div>
+
+<p>OSのusernameとpassword、servernameの入力を要求される。適宜記入して、Doneを押す。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_16.png" alt="ユーザー名とパスワード入力"></div>
+
+<p>OpenSSHserverをインストールするか聞かれる。インストールすれば後の設定をスキップできるが、ここは解説のため、あえてインストールせず、そのままDoneを押す。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_10.png" alt="SSHのインストール"></div>
+
+<p>サーバー向けのアプリのインストールをするか聞かれる。全て必要ないので、そのままDoneを押す。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_11.png" alt="サーバー向けのアプリ"></div>
+
+<p>OSのインストールが始まる。詳細の確認も可能。インストール完了までハードウェアの性能にもよるが、およそ5分から10分程度でインストールは終わる。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_12.png" alt="インストール処理"></div>
+
+<p>数分後、下記画面になりインストールが完了する。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_15.png" alt="インストール完了"></div>
+
+<p>さっき入力したusernameとpasswordを順に入力する。ログインに成功したらこんな画面が表示される。これでインストール作業は完了。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-27_17.png" alt="ログイン成功"></div>
+
+<h2 id="bashrcの設定">.bashrcの設定</h2>
+
+<p>.bashrcの設定。ターミナルログの設定変更を行う。</p>
+
+<pre><code>vi ~/.bashrc
+</code></pre>
+
+<p>行目あたりの場所に下記を記述。</p>
+
+<pre><code>HISTSIZE=100000
+HISTFILESIZE=200000
+HISTTIMEFORMAT='%y/%m/%d %H:%M:%S '
+</code></pre>
+
+<p>設定有効化。</p>
+
+<pre><code>source ~/.bashrc
+</code></pre>
+
+<h2 id="タイムゾーンの指定">タイムゾーンの指定</h2>
+
+<p>dateコマンドを実行すると、時刻が9時間遅れになっている。日本のタイムゾーンに合わせる。</p>
+
+<pre><code>timedatectl list-timezones | grep &quot;Asia/Tokyo&quot;
+
+#↑の出力結果にAsia/Tokyoがあれば、下記を実行。
+
+sudo timedatectl set-timezone Asia/Tokyo
+</code></pre>
+
+<p>これでhistoryコマンドで出力される時刻も日本時間基準になる。</p>
+
+<h2 id="ipアドレスの固定化">IPアドレスの固定化</h2>
+
+<p>※VirtualBoxを使用している場合、予めネットワーク設定をブリッジモードにしておく。これで実機と同様にIPアドレスがルーターから付与される。</p>
+
+<p>まず、ネットワークに繋がっているインターフェイスの名を調べる。</p>
+
+<pre><code>ip addr 
+</code></pre>
+
+<p>ルーターがDHCPであれば、既にローカルIPアドレスが割り当てられている。そのインターフェイス名を控える。</p>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-28_01.png" alt="インターフェイス名の確認"></div>
+
+<p>この場合、インターフェイス名は<code>enp0s3</code>、IPアドレスは<code>192.168.11.14</code>。</p>
+
+<p>netplanを編集し、IPアドレスを固定に仕立てる。オリジナルの設定をコピーしてから編集する。</p>
+
+<pre><code>sudo cp /etc/netplan/01-network-manager-all.yaml /etc/netplan/01-network-manager-all_origin.yaml
+sudo vi /etc/netplan/01-network-manager-all.yaml
+</code></pre>
+
+<p>下記のように書き換える。</p>
+
+<pre><code># This is the network config written by 'subiquity'
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+      - 192.168.11.234/24
+      gateway4: 192.168.11.1
+      nameservers:
+        addresses:
+        - 192.168.11.1
+        search: []
+  version: 2
+</code></pre>
+
+<p>addressesに指定するIPアドレスはDHCPでリースする範囲外のIPアドレスを指定する。この設定を反映させるため、下記コマンドを実行。</p>
+
+<pre><code>sudo netplan apply
+</code></pre>
+
+<p>もう一度、<code>ip</code>コマンドでIPアドレス、インターフェイスを確認する。</p>
+
+<pre><code>ip addr 
+</code></pre>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-08-28_02.png" alt="IPアドレスの固定化成功"></div>
+
+<p>IPアドレスの固定化に成功した。</p>
+
+<p>DHCPのIPアドレスが残っているが、リース期限が切れるか、ルーター側から割り当てを消すことで、削除できる。</p>
+
+<p>参照:<a href="https://netplan.io/examples/">https://netplan.io/examples/</a></p>
+
+<h3 id="gateway4が廃止されたと言われたら">gateway4が廃止されたと言われたら？</h3>
+
+<p>Ubuntu22.04をインストールしたところ、下記メッセージが表示された。</p>
+
+<pre><code>** (generate:1119): WARNING **: 04:38:35.138: `gateway4` has been deprecated, use default routes instead.
+See the 'Default routes' section of the documentation for more details.
+</code></pre>
+
+<p>gateway4が廃止されており、routesを使用するようにとのこと。以下のように書き換える</p>
+
+<pre><code>network:
+  ethernets:
+    eth0:
+      addresses:
+      - 192.168.11.246/24
+      routes:
+        - to: default
+          via: 192.168.11.1
+      nameservers:
+        addresses:
+        - 192.168.11.1
+        search: []
+  version: 2
+</code></pre>
+
+<p>どうやら最近netplanの構文が変わったらしい。</p>
+
+<p>参照元:<a href="https://unix.stackexchange.com/questions/681220/netplan-generate-gateway4-has-been-deprecated-use-default-routes-instead">https://unix.stackexchange.com/questions/681220/netplan-generate-gateway4-has-been-deprecated-use-default-routes-instead</a></p>
+
+<h2 id="sshのインストール">SSHのインストール</h2>
+
+<p><code>openssh-server</code>をインストールする。</p>
+
+<pre><code>sudo apt install openssh-server
+</code></pre>
+
+<p>SSHの設定を施す。netplanの時と同様にオリジナルの設定のバックアップをとった上で、設定を編集する。</p>
+
+<pre><code>sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_origin
+sudo vi /etc/ssh/sshd_config
+</code></pre>
+
+<p><code>sshd_config</code>の中身は下記。必要に応じて変更する。</p>
+
+<pre><code>#   $OpenBSD: sshd_config,v 1.103 2018/04/09 20:41:22 tj Exp $
+
+# This is the sshd server system-wide configuration file.  See
+# sshd_config(5) for more information.
+
+# This sshd was compiled with PATH=/usr/bin:/bin:/usr/sbin:/sbin
+
+# The strategy used for options in the default sshd_config shipped with
+# OpenSSH is to specify options with their default value where
+# possible, but leave them commented.  Uncommented options override the
+# default value.
+
+Include /etc/ssh/sshd_config.d/*.conf
+
+
+#↓ポート番号を変更(デフォルト22番)
+#Port 22
+
+#AddressFamily any
+
+#接続を受け付けるIPアドレス
+#ListenAddress 0.0.0.0
+#ListenAddress ::
+
+#HostKey /etc/ssh/ssh_host_rsa_key
+#HostKey /etc/ssh/ssh_host_ecdsa_key
+#HostKey /etc/ssh/ssh_host_ed25519_key
+
+# Ciphers and keying
+#RekeyLimit default none
+
+# Logging
+#SyslogFacility AUTH
+#LogLevel INFO
+
+# Authentication:
+
+#ログイン試行時間、これをすぎると正しいパスワードを入力してもログインに失敗する。
+#LoginGraceTime 2m
+
+#rootを使用したログインの禁止
+#PermitRootLogin prohibit-password
+#StrictModes yes
+#MaxAuthTries 6
+#MaxSessions 10
+
+
+#公開鍵認証を使用したログイン
+#PubkeyAuthentication yes
+
+# Expect .ssh/authorized_keys2 to be disregarded by default in future.
+#AuthorizedKeysFile .ssh/authorized_keys .ssh/authorized_keys2
+
+#AuthorizedPrincipalsFile none
+
+#AuthorizedKeysCommand none
+#AuthorizedKeysCommandUser nobody
+
+# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
+#HostbasedAuthentication no
+# Change to yes if you don't trust ~/.ssh/known_hosts for
+# HostbasedAuthentication
+#IgnoreUserKnownHosts no
+# Don't read the user's ~/.rhosts and ~/.shosts files
+#IgnoreRhosts yes
+
+# To disable tunneled clear text passwords, change to no here!
+
+#パスワードを使用したログイン(公開鍵認証方式だけにしたいならこれはnoにする)
+#PasswordAuthentication yes
+
+#パスワード無しを許可するか否か
+#PermitEmptyPasswords no
+
+# Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication no
+
+# Kerberos options
+#KerberosAuthentication no
+#KerberosOrLocalPasswd yes
+#KerberosTicketCleanup yes
+#KerberosGetAFSToken no
+
+# GSSAPI options
+#GSSAPIAuthentication no
+#GSSAPICleanupCredentials yes
+#GSSAPIStrictAcceptorCheck yes
+#GSSAPIKeyExchange no
+
+# Set this to 'yes' to enable PAM authentication, account processing,
+# and session processing. If this is enabled, PAM authentication will
+# be allowed through the ChallengeResponseAuthentication and
+# PasswordAuthentication.  Depending on your PAM configuration,
+# PAM authentication via ChallengeResponseAuthentication may bypass
+# the setting of &quot;PermitRootLogin without-password&quot;.
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+UsePAM yes
+
+#AllowAgentForwarding yes
+#AllowTcpForwarding yes
+#GatewayPorts no
+X11Forwarding yes
+#X11DisplayOffset 10
+#X11UseLocalhost yes
+#PermitTTY yes
+PrintMotd no
+#PrintLastLog yes
+#TCPKeepAlive yes
+#PermitUserEnvironment no
+#Compression delayed
+#ClientAliveInterval 0
+#ClientAliveCountMax 3
+#UseDNS no
+#PidFile /var/run/sshd.pid
+#MaxStartups 10:30:100
+#PermitTunnel no
+#ChrootDirectory none
+#VersionAddendum none
+
+# no default banner path
+#Banner none
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+# override default of no subsystems
+Subsystem sftp  /usr/lib/openssh/sftp-server
+
+# Example of overriding settings on a per-user basis
+#Match User anoncvs
+#   X11Forwarding no
+#   AllowTcpForwarding no
+#   PermitTTY no
+#   ForceCommand cvs server
+PasswordAuthentication yes
+</code></pre>
+
+<p>見ての通り、<code>#</code>でコメントアウトする。</p>
+
+<p>なお、保存した直後から設定変更が反映されるため、SSHでログインした状態で設定を書き換えて保存すると、即追い出される事がある。</p>
+
+<p>設定間違えて、とにかくオリジナルの設定に戻したい場合、下記を実行すればすぐに戻すことができる。</p>
+
+<pre><code>sudo cp /etc/ssh/sshd_config_origin /etc/ssh/sshd_config
+</code></pre>
+
+<p>デフォルト設定でログインをする。先程指定した固定IPアドレスを指定する。</p>
+
+<pre><code>ssh asahina@192.168.11.234
+</code></pre>
+
+<p>パスワードはOSインストール時に指定したものを入力する。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>こうしてまとめると日常的にvimやターミナルを触っていれば、それほど難しくないことがわかる。</p>
+
+<p>ブラウザなどを使用しない、GUIである必要がない場合は、思い切ってサーバー版のUbuntuを採用したほうが、サービス提供のためのリソースを確保できる上に、古い低スペックPCもリサイクルできる。</p>
+
+<p>ちなみに、インストール以降の作業はデスクトップ版、サーバー版いずれも同じである。故にターミナルでのサーバー設定方法を覚えておけば、どこでも通用する。</p>
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    <div class="article_share_area">
+        <h2>シェアボタン</h2>
+        <a class="article_share_link link_twitter" target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fstartup-ubuntu2004-server%2f&text=%e3%82%b5%e3%83%bc%e3%83%90%e3%83%bc%e7%89%88Ubuntu%2020.04%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%8b%e3%82%89%e8%a8%ad%e5%ae%9a%e3%80%81SSH%e3%83%ad%e3%82%b0%e3%82%a4%e3%83%b3%e3%81%be%e3%81%a7%e3%80%90%e5%9b%ba%e5%ae%9aIP%e3%82%a2%e3%83%89%e3%83%ac%e3%82%b9%e3%80%81%e3%82%bf%e3%82%a4%e3%83%a0%e3%82%be%e3%83%bc%e3%83%b3%e3%80%81bashrc%e3%81%aa%e3%81%a9%e3%80%91">Twitter</a>
+        <a class="article_share_link link_line" target="_blank" rel="nofollow noopener noreferrer" href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fstartup-ubuntu2004-server%2f">LINEで送る</a>
+        <a class="article_share_link link_facebook" target="_blank" rel="nofollow noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fnoauto-nolife.com%2fpost%2fstartup-ubuntu2004-server%2f">Facebook</a>
+        <a class="article_share_link link_hatena" target="_blank" rel="nofollow noopener noreferrer" href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fstartup-ubuntu2004-server%2f&title=%e3%82%b5%e3%83%bc%e3%83%90%e3%83%bc%e7%89%88Ubuntu%2020.04%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%81%8b%e3%82%89%e8%a8%ad%e5%ae%9a%e3%80%81SSH%e3%83%ad%e3%82%b0%e3%82%a4%e3%83%b3%e3%81%be%e3%81%a7%e3%80%90%e5%9b%ba%e5%ae%9aIP%e3%82%a2%e3%83%89%e3%83%ac%e3%82%b9%e3%80%81%e3%82%bf%e3%82%a4%e3%83%a0%e3%82%be%e3%83%bc%e3%83%b3%e3%80%81bashrc%e3%81%aa%e3%81%a9%e3%80%91">はてなブログ</a>
+    </div>
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/rtcwake-and-crontab/">rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】<time class="relate_time">2022年9月17日 10時20分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/">FFmpegを使ってUbuntuサーバーにUSBで接続されたウェブカメラで映像を録画する<time class="relate_time">2022年9月10日 20時48分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/ubuntu-env-read-python/">Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】<time class="relate_time">2022年9月4日 15時49分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/php-not-found-mb-strlen/">PHPでmb_strlenもしくはstrlenがNotFoundのときの対策<time class="relate_time">2022年9月2日 09時07分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/ubuntu-samba/">UbuntuにSambaをインストールしてファイルサーバー化させる<time class="relate_time">2022年8月27日 10時04分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/django-m2m-through-good-bad/">次の投稿<br><span class="summary_pg">Djangoで中間テーブルありの多対多フィールドを使用したモデルに良いね・悪いねする【related_nameとカスタムユーザーモデル】</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/django-m2m-through-reverse-accessor-error/">前の投稿<br><span class="summary_pg">【Django】Reverse accessor for &#39;Topic.good&#39; clashes with reverse accessor for &#39;Topic.user&#39;.というエラーの対処【Topicに対する良いね、多対多中間フィールドあり】</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="https://noauto-nolife.com/information/introduction/"><img class="author_img" src="https://noauto-nolife.com/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: We are not your kind.</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ai">ai</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/centos">centos</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%93%E3%83%A5%E3%83%BC">ビュー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA">ポートフォリオ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/rtcwake-and-crontab/">rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/javascript-dynamic-element-change-detect/">【JavaScript】動的に要素が変化した時に何か処理をさせたいならMutationObserverを使う</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/javascript-sortablejs/">JavaScriptで並び替えをするならSortable.js【jQuery不要のライブラリ】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-vim/">vimの操作方法</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-search-querybuilder-custom-templates-js/">Djangoでクエリビルダを使い、スペース区切りの文字列検索と絞り込みを同時に行う【JSとカスタムテンプレートタグを使用】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/">FFmpegを使ってUbuntuサーバーにUSBで接続されたウェブカメラで映像を録画する</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/netplan-wireless-settings/">【Ubuntu】netplanに無線LAN(wifi)で固定IPアドレスを割り当てる</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-nano-editor/">nanoエディタの操作方法</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/css3-chat-web-design/">【CSS3】チャットのウェブデザインを作る</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-env-read-python/">Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

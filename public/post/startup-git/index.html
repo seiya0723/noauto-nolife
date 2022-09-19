@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+
+<link rel="canonical" href="https://noauto-nolife.com/post/startup-git/">
+
+
+        <link href="https://noauto-nolife.com/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="https://noauto-nolife.com/css/bootstrap-grid.css"> 
+
+        <script src="https://noauto-nolife.com/data/search.js"></script>
+        <script src="https://noauto-nolife.com/js/script.js"></script>
+
+        <title>【git/GitHub】コマンドと使い方の一覧 - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="【git/GitHub】コマンドと使い方の一覧 - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://noauto-nolife.com/post/startup-git/">
+<meta property="og:image" content="https://noauto-nolife.com/images/git.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="https://noauto-nolife.com/post/startup-git/">
+<meta name="twitter:title" content="【git/GitHub】コマンドと使い方の一覧 - 自動化無しに生活無し">
+<meta name="twitter:image" content="https://noauto-nolife.com/images/git.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://noauto-nolife.com/"
+    },
+    "headline": "【git/GitHub】コマンドと使い方の一覧 - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://noauto-nolife.com/images/git.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2022-05-08T10:58:15JST",
+    "dateModified": "2022-05-08T10:58:15JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://noauto-nolife.com/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="https://noauto-nolife.com/css/style.css" rel="stylesheet">
+        
+
+        
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="https://noauto-nolife.com/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEBとかAIとかLinux関係をひたすら書く備忘録系ブログ</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="https://noauto-nolife.com/">HOME</a></li>
+                
+                <li><a href="https://noauto-nolife.com/post/">post</a></li>
+                
+                <li class="active">【git/GitHub】コマンドと使い方の一覧</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">【git/GitHub】コマンドと使い方の一覧</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+        <li>投稿日時：<time datetime="2022-05-08T10:58:15JST">2022年5月8日 10時58分</time></li>
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/categories/others/">others</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/git/">git</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/github/">GitHub</a>
+            
+        </li>
+        
+        
+    </ul>
+
+    <div class="img-center"><img src="https://noauto-nolife.com/images/git.jpg" alt="thumbnail"></div>
+
+	<div class="article_body">
+
+<p>後に追記予定あり。</p>
+
+<p>必要と思われるものから順に、解説サイトから抜粋して並べている。</p>
+
+<h2 id="基本操作編">基本操作編</h2>
+
+<p>これができれば、作ったコードをGitHubに公開できる。</p>
+
+<h3 id="リポジトリを作る">リポジトリを作る</h3>
+
+<pre><code>git init 
+</code></pre>
+
+<h3 id="インデックスする-コミットするファイルを記録">インデックスする(コミットするファイルを記録)</h3>
+
+<p>全てのファイルをインデックスする場合はこうする</p>
+
+<pre><code>git add .
+</code></pre>
+
+<h3 id="コミットする">コミットする</h3>
+
+<pre><code>git commit -m &quot;ここにコミットのメッセージを記録する&quot;
+</code></pre>
+
+<h4 id="補足1-ユーザー情報を入力していないため-コミットできない">【補足1】ユーザー情報を入力していないため、コミットできない</h4>
+
+<p>gitコマンドでコミットするとき、コミットするユーザーの情報を記録しておく必要がある。</p>
+
+<pre><code>git config --global user.name [ここにユーザー名を書く]
+git config --global user.email [ここにメールアドレスを書く(実在しないドメインも可)]
+</code></pre>
+
+<p>これでコミットできるようになる。</p>
+
+<p>gitをインストールしてすぐの状態ではコミットできないため、注意。</p>
+
+<h2 id="コミット編">コミット編</h2>
+
+<p>これができれば、前のコミットに遡ったり、コミットのログの確認ができる。</p>
+
+<h3 id="コミットのログを見る">コミットのログを見る。</h3>
+
+<pre><code>git log 
+</code></pre>
+
+<p>これまでのコミットログが記録されている。</p>
+
+<pre><code>commit XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</code></pre>
+
+<p>などと表示されているのはコミットのハッシュ値</p>
+
+<h3 id="特定のコミットまで戻す">特定のコミットまで戻す</h3>
+
+<pre><code>git reset --hard XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</code></pre>
+
+<p>実際にはハッシュ値の途中まで入力すればOK</p>
+
+<p>これで特定のコミットまで戻れる。</p>
+
+<h2 id="リモートリポジトリ編">リモートリポジトリ編</h2>
+
+<p>GitHubやHerokuなどのリモートリポジトリと連携させ、成果物を送信(プッシュ)する。</p>
+
+<h3 id="リモートリポジトリを追加する">リモートリポジトリを追加する</h3>
+
+<p>例えば、GitHubにて作られたリモートリポジトリを追加したい場合、下記のようにする。</p>
+
+<pre><code>git remote add origin [リモートリポジトリのURL]
+</code></pre>
+
+<h3 id="リモートリポジトリに対してプッシュする">リモートリポジトリに対してプッシュする</h3>
+
+<p>例えば、GitHubで作ったリモートリポジトリにmasterブランチをプッシュする場合、下記のようにする。</p>
+
+<pre><code>git push origin master 
+</code></pre>
+
+<h3 id="リモートリポジトリの一覧を表示する">リモートリポジトリの一覧を表示する。</h3>
+
+<p>下記でリモートリポジトリのURLもまとめて表示される。</p>
+
+<pre><code>git remote -v 
+</code></pre>
+
+<h3 id="リモートリポジトリの追加を取り消す">リモートリポジトリの追加を取り消す</h3>
+
+<pre><code>git remote -v 
+</code></pre>
+
+<p>により、下記が表示される場合、</p>
+
+<pre><code>origin  [リモートリポジトリ名] (fetch)
+origin  [リモートリポジトリ名] (push)
+</code></pre>
+
+<p>下記コマンドで追加を取り消せる。</p>
+
+<pre><code>git remote rm origin 
+</code></pre>
+
+<p>もう一度一覧を表示すると、消えている。</p>
+
+<h3 id="リモートリポジトリの内容を複製する-クローン">リモートリポジトリの内容を複製する(クローン)</h3>
+
+<pre><code>git clone https://github.com/ユーザ名/REPOSITORY.git
+</code></pre>
+
+<p>GitHubのページからZipでDLする場合と違って、.gitが作られる。つまり前のコミットに遡ってコードを手に入れることができるというわけだ。</p>
+
+<h2 id="ブランチ編">ブランチ編</h2>
+
+<p>ブランチを作ることで、開発版と安定版を分離させ、開発途中でもコミットをすることができるようになる。</p>
+
+<p>まずはmasterブランチとdevelopブランチを使い分けるところから始めると良いだろう。</p>
+
+<ul>
+<li>参照元1: <a href="https://qiita.com/y-okudera/items/0b57830d2f56d1d51692">https://qiita.com/y-okudera/items/0b57830d2f56d1d51692</a></li>
+<li>参照元2: <a href="https://qiita.com/sf213471118/items/557c3335fc40aab857c9">https://qiita.com/sf213471118/items/557c3335fc40aab857c9</a></li>
+</ul>
+
+<h3 id="新しくブランチを作る">新しくブランチを作る</h3>
+
+<p>既にmasterブランチが存在している状態(<code>git init</code>から<code>git commit -m</code>までやっている状態)で下記を実行することで、新しいブランチを作ることができる。</p>
+
+<pre><code>git branch [ブランチ名]
+</code></pre>
+
+<p>下記のようにdevelopブランチを作ると良いだろう。</p>
+
+<pre><code>git branch develop
+</code></pre>
+
+<h3 id="ブランチの切り替え">ブランチの切り替え</h3>
+
+<p>先ほどブランチを作ったので、そのブランチへコミットするよう切り替える。</p>
+
+<p>例えばdevelopブランチに切り替えしたい場合はこうする。</p>
+
+<pre><code>git checkout develop
+</code></pre>
+
+<h3 id="ブランチの一覧表示">ブランチの一覧表示</h3>
+
+<pre><code>git branch 
+</code></pre>
+
+<p>これで一覧が表示される。</p>
+
+<p>*が付いているものは現在操作中のブランチ。</p>
+
+<h3 id="新しく作ったブランチをプッシュする">新しく作ったブランチをプッシュする</h3>
+
+<p>ローカルで作ったブランチはリモートには存在しない。</p>
+
+<p>そのため、新しく作ったブランチをリモートにプッシュする時、下記のように引数を指定。</p>
+
+<pre><code>git push --set-upstream origin develop
+</code></pre>
+
+<p>二回目以降のコミットからのプッシュは下記のようになる。</p>
+
+<pre><code>git push origin develop
+</code></pre>
+
+<h3 id="ブランチをマージする">ブランチをマージする</h3>
+
+<p>まず、masterブランチに切り替える</p>
+
+<pre><code>git checkout master 
+</code></pre>
+
+<p>続いて、developブランチの内容をmasterに取り込む。</p>
+
+<pre><code>git merge develop
+</code></pre>
+
+<p>これで、developの内容がmasterに取り込まれた。</p>
+
+<h2 id="その他編">その他編</h2>
+
+<h3 id="gitの設定を確認する">gitの設定を確認する</h3>
+
+<pre><code>git config --global --list
+</code></pre>
+
+<h3 id="gitのコミットログをvimに変更する">gitのコミットログをvimに変更する</h3>
+
+<p>デフォルトではnanoエディタになっているため、vimを使いたい場合は下記を実行しておく。</p>
+
+<pre><code>git config --global core.editor 'vim -c &quot;set fenc=utf-8&quot;'
+</code></pre>
+
+<h3 id="コミットしたくないファイルがある場合-gitignoreを使う">コミットしたくないファイルがある場合、.gitignoreを使う</h3>
+
+<p>例えば、SendgridやStripeなどの外部サービスのAPIなどは、リポジトリにはコミットしたくないだろう。(その状態でGitHubにプッシュすると、APIキーを不正利用されるため)</p>
+
+<p>だから、コミットしたくないファイルは前もって<code>.gitignore</code>に追加しておくと良い。</p>
+
+<pre><code>local_settings.py
+</code></pre>
+
+<p>この.gitignoreに指定したファイルにAPIなどの情報を格納し、読込する形にする。</p>
+
+<pre><code>from .local_settings import *
+</code></pre>
+
+<h2 id="gitサーバー編">gitサーバー編</h2>
+
+<p>GitHubに公開できないプロジェクトで、gitを使って複数人で開発を進めたい場合、ローカルのサーバーをgitサーバーに仕立てることで対処できる。</p>
+
+<p>本項ではその方法をまとめる</p>
+
+<p>参照元: <a href="https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97">https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97</a></p>
+
+<h3 id="流れ">流れ</h3>
+
+<ul>
+<li>サーバーを用意する(今回はUbuntu20.04 Server)</li>
+<li>サーバーにgitとopenssh-serverのインストール</li>
+<li>サーバーにリポジトリの作成</li>
+<li>クライアントがプッシュする</li>
+<li>サーバーがクローンする</li>
+<li>別のクライアントがクローンする</li>
+</ul>
+
+<h3 id="サーバーを用意する-今回はubuntu20-04-server">サーバーを用意する(今回はUbuntu20.04 Server)</h3>
+
+<p>サーバーを用意する。Ubuntu20.04 Server版のインストールは下記を参照</p>
+
+<p><a href="/post/startup-ubuntu2004-server/">サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】</a></p>
+
+<p>以降、サーバーのユーザー名はdefault、IPアドレスは192.168.11.100とする。</p>
+
+<h3 id="サーバーにgitとopenssh-serverのインストール">サーバーにgitとopenssh-serverのインストール</h3>
+
+<pre><code>sudo apt install git
+sudo apt install openssh-server
+</code></pre>
+
+<p>SSHはデフォルトでパスワード認証が有効になっている。</p>
+
+<p>公開鍵認証方式を採用したい場合は別途設定を変更する。</p>
+
+<h3 id="サーバーにリポジトリの作成">サーバーにリポジトリの作成</h3>
+
+<p>ホームディレクトリ配下で実行。</p>
+
+<pre><code>mkdir ~/project.git
+cd ~/project.git
+git init --bare
+</code></pre>
+
+<p>これでリモートリポジトリが作られた。</p>
+
+<h3 id="クライアントがプッシュする">クライアントがプッシュする</h3>
+
+<p>クライアントのPCにて、ローカルリポジトリを作ってプッシュする</p>
+
+<pre><code>echo &quot;HelloWorld&quot; &gt; README.md
+git init 
+git add .
+git commit -m &quot;first commit&quot;
+
+# default@192.168.11.100:~/project.git を origin とする
+git remote add origin default@192.168.11.100:~/project.git
+
+#ここでSSHのパスワードの入力をする
+git push origin master 
+</code></pre>
+
+<p>これでプッシュできる</p>
+
+<h3 id="サーバーがクローンする">サーバーがクローンする</h3>
+
+<pre><code>git clone ~/project.git
+
+#projectというディレクトリが作られる
+cd project 
+
+#この中にREADME.mdが作られている
+cat README.md
+</code></pre>
+
+<h3 id="別のクライアントがクローンする">別のクライアントがクローンする</h3>
+
+<pre><code>#SSHでクローンを実行(パスワード入力)
+git clone default@192.168.11.100:~/project.git
+
+#projectというディレクトリが作られる
+cd project 
+
+#この中にREADME.mdが作られている
+cat README.md
+</code></pre>
+
+<h3 id="q-gitサーバーを使ってデプロイをするには">Q:gitサーバーを使ってデプロイをするには？</h3>
+
+<p>フック(hooks)を使用してプッシュされた時にスクリプトを発動させる。</p>
+
+<p>スクリプトに、デプロイ先のディレクトリにコピーするなどの処理を書いておけば、プッシュ同時にデプロイができる。</p>
+
+<p>詳細は下記。</p>
+
+<ul>
+<li><a href="https://softwarenote.info/p2433/">https://softwarenote.info/p2433/</a></li>
+<li><a href="https://qiita.com/zaburo/items/8886be1a733aaf581045">https://qiita.com/zaburo/items/8886be1a733aaf581045</a></li>
+</ul>
+
+<h2 id="参照元のまとめ">参照元のまとめ</h2>
+
+<ul>
+<li><a href="https://qiita.com/gold-kou/items/7f6a3b46e2781b0dd4a0">https://qiita.com/gold-kou/items/7f6a3b46e2781b0dd4a0</a></li>
+<li><a href="https://docs.github.com/ja/get-started/using-git/getting-changes-from-a-remote-repository">https://docs.github.com/ja/get-started/using-git/getting-changes-from-a-remote-repository</a></li>
+<li><a href="https://qiita.com/Yorinton/items/e0e969d961b17a359e19">https://qiita.com/Yorinton/items/e0e969d961b17a359e19</a></li>
+<li><a href="https://qiita.com/sf213471118/items/557c3335fc40aab857c9">https://qiita.com/sf213471118/items/557c3335fc40aab857c9</a></li>
+<li><a href="https://qiita.com/y-okudera/items/0b57830d2f56d1d51692">https://qiita.com/y-okudera/items/0b57830d2f56d1d51692</a></li>
+<li><a href="https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97">https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97</a></li>
+<li><a href="https://softwarenote.info/p2433/">https://softwarenote.info/p2433/</a></li>
+</ul>
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    <div class="article_share_area">
+        <h2>シェアボタン</h2>
+        <a class="article_share_link link_twitter" target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fstartup-git%2f&text=%e3%80%90git%2fGitHub%e3%80%91%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89%e3%81%a8%e4%bd%bf%e3%81%84%e6%96%b9%e3%81%ae%e4%b8%80%e8%a6%a7">Twitter</a>
+        <a class="article_share_link link_line" target="_blank" rel="nofollow noopener noreferrer" href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fstartup-git%2f">LINEで送る</a>
+        <a class="article_share_link link_facebook" target="_blank" rel="nofollow noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fnoauto-nolife.com%2fpost%2fstartup-git%2f">Facebook</a>
+        <a class="article_share_link link_hatena" target="_blank" rel="nofollow noopener noreferrer" href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fnoauto-nolife.com%2fpost%2fstartup-git%2f&title=%e3%80%90git%2fGitHub%e3%80%91%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89%e3%81%a8%e4%bd%bf%e3%81%84%e6%96%b9%e3%81%ae%e4%b8%80%e8%a6%a7">はてなブログ</a>
+    </div>
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/ubuntu-env-read-python/">Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】<time class="relate_time">2022年9月4日 15時49分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/github-token-generate/">【GitHub】gitコマンドでリモートリポジトリへプッシュするためのトークンをジェネレートする<time class="relate_time">2021年12月16日 15時07分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/laravel-gitignore-add/">【Laravel】GitHubにプッシュする時.gitignoreに追加する必要のあるファイル、ディレクトリ<time class="relate_time">2021年9月18日 11時11分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-deploy-heroku/">DjangoをDEBUG=FalseでHerokuにデプロイする方法<time class="relate_time">2020年10月26日 11時16分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/django-fileupload-limit-size/">次の投稿<br><span class="summary_pg">【Django】アップロードするファイルサイズに上限をセットする【validators】</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/python3-update/">前の投稿<br><span class="summary_pg">UbuntuにインストールされているPythonをアップデートする</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="https://noauto-nolife.com/information/introduction/"><img class="author_img" src="https://noauto-nolife.com/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: We are not your kind.</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ai">ai</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/centos">centos</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%93%E3%83%A5%E3%83%BC">ビュー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA">ポートフォリオ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/rtcwake-and-crontab/">rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/javascript-dynamic-element-change-detect/">【JavaScript】動的に要素が変化した時に何か処理をさせたいならMutationObserverを使う</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/javascript-sortablejs/">JavaScriptで並び替えをするならSortable.js【jQuery不要のライブラリ】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-vim/">vimの操作方法</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-search-querybuilder-custom-templates-js/">Djangoでクエリビルダを使い、スペース区切りの文字列検索と絞り込みを同時に行う【JSとカスタムテンプレートタグを使用】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/">FFmpegを使ってUbuntuサーバーにUSBで接続されたウェブカメラで映像を録画する</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/netplan-wireless-settings/">【Ubuntu】netplanに無線LAN(wifi)で固定IPアドレスを割り当てる</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-nano-editor/">nanoエディタの操作方法</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/css3-chat-web-design/">【CSS3】チャットのウェブデザインを作る</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-env-read-python/">Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

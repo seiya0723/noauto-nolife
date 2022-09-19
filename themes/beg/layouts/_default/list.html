@@ -14,9 +14,18 @@
             {{/* ここのループがcontentのディレクトリごとになっている。hugo 0.60から？下記に修正 */}}
             {{/* {{ range (.Paginate .Data.Pages).Pages }} */}}
 
-            {{ range (.Paginate .Site.RegularPages).Pages }}
-            <li>{{ .Render "li" }}</li>
+            {{/* TODO:これだとカテゴリやタグで確認ができない */}}
+
+            {{ if .IsHome }}
+                {{ range (.Paginate .Site.RegularPages).Pages }}
+                <li>{{ .Render "li" }}</li>
+                {{ end }}
+            {{ else }}
+                {{ range (.Paginate .Data.Pages).Pages }}
+                <li>{{ .Render "li" }}</li>
+                {{ end }}
             {{ end }}
+
         </ul>
         {{ partial "pagination.html" . }}
     </div>

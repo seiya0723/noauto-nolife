@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jquery on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/jquery/</link>
+    <description>Recent content in Jquery on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 11 Sep 2022 21:23:32 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【JavaScript】動的に要素が変化した時に何か処理をさせたいならMutationObserverを使う</title>
+      <link>https://noauto-nolife.com/post/javascript-dynamic-element-change-detect/</link>
+      <pubDate>Sun, 11 Sep 2022 21:23:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-dynamic-element-change-detect/</guid>
+      <description>例えば、特定の要素内のHTMLがJavaScriptの処理によって変わった時。 こんな時に何か処理を実行したい場合、MutationObserverを使うと良い。 ソースコード //特定の要素が動的に変化した時、何らかの発動させる let body = document.getElementsByTagName(&#39;body&#39;)[0]; let target = new MutationObserver(function(){ detail_sortable() }); target.observe(body, { &amp;quot;childList&amp;quot;:true,&amp;quot;subtree&amp;quot;:true }); 結論 例えば、Ajaxが発動して、ページがレンダリングされた時に何かを発動させることができる。(Ajaxのdoneの時に処理を書くという方法もあるが</description>
+    </item>
+    
+    <item>
+      <title>【保存版】Ajax(jQuery)の仕組みと仕様</title>
+      <link>https://noauto-nolife.com/post/jquery-ajax-detail/</link>
+      <pubDate>Fri, 15 Jul 2022 11:42:54 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-ajax-detail/</guid>
+      <description>本記事は、たびたび忘れがちなAjaxのパラメータや引数などの意味を思い返すための備忘録である。 let form_elem = &amp;quot;#form_area&amp;quot;; let data = new FormData( $(form_elem).get(0) ); let url = $(form_elem).prop(&amp;quot;action&amp;quot;); let method = $(form_elem).prop(&amp;quot;method&amp;quot;); $.ajax({ url: url, // リクエストの送信先 type: method, // 送信するリクエストのメソッド data: data, // 送信するデータ(FormDataオブジェクト型) processData: false, // dataに指定した内容をURLエンコードして送信(?page=2などの形式)にするかの指定。FormDataオブジェクトの場合はfalseを指定 contentType: false,</description>
+    </item>
+    
+    <item>
+      <title>JavaScript(jQuery)で神経衰弱</title>
+      <link>https://noauto-nolife.com/post/javascript-memory-weakness/</link>
+      <pubDate>Thu, 30 Jun 2022 14:57:25 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-memory-weakness/</guid>
+      <description>canvas未使用、JavaScript(jQuery)で神経衰弱を作ってみた。 突貫で作ったためかなり雑ではあるが、トランプを使用したゲームに流用できそうだ。 デモページ カードの素材は ( https://opengameart.org/content/playing-cards-vector-png )より。ウラ面は自前で作った。 https://seiya0723.github.io/memory_cards_game/ ソースコード https://github.com/seiya0723/memory_cards_game HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; img { width:200px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;table id=&amp;quot;table&amp;quot;&amp;gt;&amp;lt;/table&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ // カードの画像: https://opengameart.org/content/playing-cards-vector-png //カードのデータ形式 var CARD_DATA = [ { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_clubs.png&amp;quot; }, { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_diamonds.png&amp;quot; }, { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_hearts.png&amp;quot; }, { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_spades.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_clubs.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_diamonds.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_hearts.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_spades.png&amp;quot; }, {</description>
+    </item>
+    
+    <item>
+      <title>JavaScript(jQuery)でQRコードを表示させる</title>
+      <link>https://noauto-nolife.com/post/javascript-qrcode/</link>
+      <pubDate>Mon, 23 May 2022 11:23:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-qrcode/</guid>
+      <description>例えば、ユーザーの一部がPCでの操作をやめて、スマホで操作したいと思ったとする。 こういう時QRコードを表示させる、ブラウザのアドオンや機能を使えば良いが、ユーザーにそれを強いるのはやや酷である。 そこで、jQueryを使用して、QRコードを簡単に表示させると良いだろう。 コード &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; window.addEventListener(&amp;quot;load&amp;quot; , function (){ let qrtext = location.href; let utf8qrtext = unescape(encodeURIComponent(qrtext)); $(&amp;quot;#qrcode&amp;quot;).html(&amp;quot;&amp;quot;); $(&amp;quot;#qrcode&amp;quot;).qrcode({width:160,height:160,text:utf8qrtext}); }); &amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;qrcode&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる。 結論 下記を参照。 https://github.com/jeromeetienne/jquery-qrcode</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】数値入力フォームを押しっぱなしで入力する仕様に仕立てる</title>
+      <link>https://noauto-nolife.com/post/jquery-number-form-auto/</link>
+      <pubDate>Tue, 03 May 2022 11:25:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-number-form-auto/</guid>
+      <description>以前、『【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる』で解説したフォームを、ボタン押しっぱなしでも入力できるように仕立てる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;spinner_area&amp;quot;&amp;gt; &amp;lt;input class=&amp;quot;spinner&amp;quot; type=&amp;quot;number&amp;quot; value=&amp;quot;0&amp;quot; max=&amp;quot;10&amp;quot; min=&amp;quot;0&amp;quot;&amp;gt; &amp;lt;button class=&amp;quot;spinner_button&amp;quot; type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;-1&amp;quot;&amp;gt;ー&amp;lt;/button&amp;gt; &amp;lt;button class=&amp;quot;spinner_button&amp;quot; type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;1&amp;quot; &amp;gt;＋&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; CSS .spinner_button{ user-select: none; cursor:pointer; padding:0.5rem; width: auto; vertical-align: middle; } .spinner_area input{ padding: 0.5rem; border: 0.1rem solid gray; border-radius: 0.25rem; font-size:</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる</title>
+      <link>https://noauto-nolife.com/post/jquery-number-form/</link>
+      <pubDate>Wed, 02 Mar 2022 11:45:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-number-form/</guid>
+      <description>数値入力フォーム。キーボードを使わず、ボタン入力で行いたい場合、JavaScriptを使う必要がある。 今回は更に短くかけるよう、jQueryで表現した。なお、再利用を想定して、装飾は全く行っていない。 ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;number&amp;quot; name=&amp;quot;amount&amp;quot; value=&amp;quot;0&amp;quot; readonly&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;減らす&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;増やす&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;[name=&#39;plus&#39;]&amp;quot;).on(&amp;quot;click&amp;quot;, function(){ amount_add(this,true);</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】Ajaxで郵便番号検索を行う【通販サイトなどの住所登録に有効】</title>
+      <link>https://noauto-nolife.com/post/jquery-ajax-postcode/</link>
+      <pubDate>Fri, 18 Feb 2022 17:40:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-ajax-postcode/</guid>
+      <description>通販サイトなどでは、郵便番号を入力すると、住所の入力を自動で行ってくれる。 本記事では郵便番号検索の実装を解説する。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;quot;postcode&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;postcode&amp;quot; placeholder=&amp;quot;ここに郵便番号を入力する(ハイフン不要)&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;postcode_search&amp;quot; type=&amp;quot;button&amp;quot; value=&amp;quot;郵便番号検索&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;prefecture&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;prefecture&amp;quot; placeholder=&amp;quot;都道府県&amp;quot;&amp;gt</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】selectタグで年月日検索をする【うるう年対応】</title>
+      <link>https://noauto-nolife.com/post/jquery-ymd-search/</link>
+      <pubDate>Tue, 15 Feb 2022 16:14:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-ymd-search/</guid>
+      <description>年月日検索をする時、年だけ、月だけ指定して検索する場合がある。この場合、年月日全てを指定するflatpickrでは対応できない。 この場合はselectタグを使用して検索をする。だが、月ごとに日数は異なる。うるう年では2月は29日になる。それに対応させるためには、JavaScriptを書く必要がある。 本記事ではjQueryを使用して、なるべく短く年月日検索を行うselectタグを作る。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta</description>
+    </item>
+    
+    <item>
+      <title>【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</title>
+      <link>https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/</link>
+      <pubDate>Thu, 21 Oct 2021 07:25:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/</guid>
+      <description>例えば、チャットサイト、掲示板サイトでユーザーが描画したイラストを投稿できる形式にしたい時。 ユーザーが手元の端末でペイントツールを起動して画像を保存して、サイトに添付して貼り付けるのはやや面倒。それだけでなく、サイト独自のレギュレーション(お題に沿ってイラストを付け加える形式、指定された色しか使ってはいけないなど)がある場合、ユーザーのペイントツールでそれを強いるのは不可能に近い。 そこで、サイト上</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】ボタン式の横スライダーを自作する【通販サイト・コンテンツ共有サイトなどに】</title>
+      <link>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</link>
+      <pubDate>Sun, 26 Sep 2021 03:09:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</guid>
+      <description>通販サイトなどでよくある。横スクロール型のスライダーを作る。slick.jsなどを使えば簡単に実現できるが、かえって複雑なので、自作した。 ソースコード HTML。jQueryを読み込み、別途JavaScriptとCSSを読み込む。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;!--jquery読み込み--&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;preview_control_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_frame&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;data_preview_content&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】HTML、CSS、JS合わせて100行以内でカルーセルを自作する【自動スライド】</title>
+      <link>https://noauto-nolife.com/post/javascript-carousel-origin/</link>
+      <pubDate>Tue, 31 Aug 2021 14:22:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-carousel-origin/</guid>
+      <description>カルーセルと言えば、slick.js等のライブラリがあるが、たかだか自動的にスライドするだけのシンプルなカルーセルをサイトの一部分に実装させるためだけにライブラリをインストールさせるのはやや大げさだ。 そこで、今回はカルーセルをjQueryを使用した上で自作する。書く必要のあるコードはHTMLが約30行、CSSが約20行、JSが約40行の合計100行足らずで実現できる。 ソースコードと解説 HTML。C</description>
+    </item>
+    
+    <item>
+      <title>FormDataをformタグではなく、オブジェクトにキーと値をセットした上でAjax送信</title>
+      <link>https://noauto-nolife.com/post/javascript-formdata-obj-set/</link>
+      <pubDate>Sat, 14 Aug 2021 11:48:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-formdata-obj-set/</guid>
+      <description>タイトルの説明。 通常、Ajaxでサーバーにリクエストを送信する時、下記のようにFormDataクラスを使用して送信する。 let form_elem = &amp;quot;#form_area&amp;quot;; let data = new FormData( $(form_elem).get(0) ); let url = $(form_elem).prop(&amp;quot;action&amp;quot;); let method = $(form_elem).prop(&amp;quot;method&amp;quot;); $.ajax({ url: url, type: method, data: data, processData: false, contentType: false, dataType: &#39;json&#39; }).done( function(data, status, xhr ) { //Done }).fail( function(xhr, status, error) { //Fail }); しかし、送信したいデータがいつもこのようにformタグで囲まれているとも限らない。 そこで、FormDataクラスに引数を入れずにオブジェクトを作り、オブジェクトにキーと値をセットしてAja</description>
+    </item>
+    
+    <item>
+      <title>jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】</title>
+      <link>https://noauto-nolife.com/post/jquery-to-javascript/</link>
+      <pubDate>Tue, 13 Apr 2021 18:32:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-to-javascript/</guid>
+      <description>jQueryに依存したコードをそのままにするのは再利用性に欠け、開発効率にも関わる。そこで、今回はjQueryのコードを適宜javascriptに書き換える。 セレクタ まずは基本のセレクタ以下のように書き換える。 var test = $(&amp;quot;.test&amp;quot;); //↓以下に書き換え var test = document.querySelectorAll(&amp;quot;.test&amp;quot;); //←全ての.textクラスの要素を抜き取る var test = document.querySelector(&amp;quot;.test&amp;quot;); //←.testクラスの1番最初の要素を抜き取る jQueryが提供するメソッドや属性などは使用できなく</description>
+    </item>
+    
+    <item>
+      <title>laravelでAjax(jQuery)を送信する【POST&#43;DELETE】</title>
+      <link>https://noauto-nolife.com/post/laravel-ajax/</link>
+      <pubDate>Thu, 04 Feb 2021 12:29:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ajax/</guid>
+      <description>タイトルの通り。laravelにAjax(jQuery)を送信する。コードはLaravelでリクエストのバリデーションを行うを元に作られている。 jQueryを読み込みCSRFトークンをAjax送信時に付せて送信させる まずAjax送信用にjQueryを読み込ませる。それからPOSTリクエストの場合、CSRF対策用のトークンもセットで送信しなければならない。故に、resources/views/bas</description>
+    </item>
+    
+    <item>
+      <title>jQueryでオートコンプリート(入力補正)を実装させる【表記ゆれ対策にも有効】</title>
+      <link>https://noauto-nolife.com/post/jquery-autocomplete/</link>
+      <pubDate>Thu, 29 Oct 2020 16:52:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-autocomplete/</guid>
+      <description>ウェブアプリを作って、ユーザーに何かを文字列を入力させる時、大抵表記ゆれが起こる。 例えば、JAと農業協同組合と農協、ラズパイとラズベリーパイとRaspberry Piとraspberry piなど。 このような表記ゆれを一度でも許すと、検索で引っかからなくなる。しかし、SELECTタグを使うと、項目が増えた時、選択に時間がかかりすぎる。 そこで、文字入力(入力補正)と選択が同時にできるオートコンプリートを</description>
+    </item>
+    
+  </channel>
+</rss>

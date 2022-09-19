@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>シェルスクリプト on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88/</link>
+    <description>Recent content in シェルスクリプト on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Tue, 28 Sep 2021 10:20:02 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Raspberry Pi Zeroに搭載したNginxの限界を試す【curlコマンド】</title>
+      <link>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</link>
+      <pubDate>Tue, 28 Sep 2021 10:20:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</guid>
+      <description>Raspberry Pi Zeroの性能は無料プランのEC2やHerokuとほぼ同じ。Raspberry Pi Zeroの限界を知れば、ある程度EC2やHerokuの限界が予測できる。今回はウェブサーバーとして仕立てたRaspberry Pi Zeroにcurlコマンドでリクエストを大量送信し、サーバーダウンするまでのデータをここに記す。 なお、この行為は自分が管理していないサーバーで行うと、普通にDos攻撃になってしまうので、宛先</description>
+    </item>
+    
+    <item>
+      <title>Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check-by-awk/</link>
+      <pubDate>Thu, 23 Sep 2021 13:51:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check-by-awk/</guid>
+      <description>Nginxのログはスペース区切りで送信元IPアドレス、アクセス対象のURLなどが書かれてある。これはスペース区切りで文字を扱うことができるawkコマンドと相性が良い。 本記事では、awkコマンドを使用して、特定の条件下のログを報告したり、ログの情報を見やすくさせる方法を記す。 awkコマンドを使用して、表示する情報を絞る 基本。 cat access.log | awk &#39;{print $1}&#39; これで送信元IPアドレス(スペース区切りで1番目のデータ)が表示</description>
+    </item>
+    
+    <item>
+      <title>シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】</title>
+      <link>https://noauto-nolife.com/post/shellscript-server-checker/</link>
+      <pubDate>Sun, 19 Sep 2021 08:51:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/shellscript-server-checker/</guid>
+      <description>サーバーが応答不能になった時、すぐに対処できるよう、通知機能が欲しい。そういうときのシェルスクリプト。 pingで応答不能をチェックする #! /bin/bash while true ; do ping -c 1 192.168.11.99 rc=$? if [[ $rc -eq 0 ]] ; then echo &amp;quot;正常です&amp;quot; else echo &amp;quot;失敗しました&amp;quot; fi sleep 1 done 後は『正常です』『失敗しました』のいずれかに任意の処理を書き込む。 curlで応答不能をチェックする curlはHTTPのステータスコードも手に入るの</description>
+    </item>
+    
+    <item>
+      <title>HUGOにシェルスクリプトとJavaScriptの記事検索機能を実装させる</title>
+      <link>https://noauto-nolife.com/post/hugo-js-search-system/</link>
+      <pubDate>Tue, 13 Apr 2021 08:18:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/hugo-js-search-system/</guid>
+      <description>タイトルの通り。 静的サイトジェネレーターのHUGOはサーバーサイドのスクリプトが存在しない(全てフロント言語)。そのため、検索機能を実装させるとなると、検索対象と検索機能の全てをフロントに記述する必要がある。フロントで完結する検索機能に必要になるのが、JavaScript。 それから、検索対象である記事の文字列をJSが読み取れる形式でジェネレートしてあげる必要もある。その際にコマンド一発でジェネレー</description>
+    </item>
+    
+  </channel>
+</rss>

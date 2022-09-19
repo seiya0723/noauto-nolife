@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Html5 on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/html5/</link>
+    <description>Recent content in Html5 on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 11 Feb 2022 14:51:05 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/html5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】【flex-direction:row-reverseで逆順対応可】</title>
+      <link>https://noauto-nolife.com/post/css3-star-review-radio/</link>
+      <pubDate>Fri, 11 Feb 2022 14:51:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-star-review-radio/</guid>
+      <description>以前、サーバーサイドで1から5のいずれかの数値を受付、DBに保存する方法を実践したが、フロント系ではそれをもう少しおしゃれに実装させたい。 そういう時は、なるべくJavaScriptを使用せず、HTMLとCSSだけで表現するのがベターなやり方だと個人的には思う。 だからこそ、今回も同様にHTMLとCSSだけでレビューの星を入力するフォームを再現した。 マウスをホバーした時、星が塗りつぶされ、外れると星が</description>
+    </item>
+    
+    <item>
+      <title>HTMLのformタグで送信(submit)をする際に、確認をとった上で送信を行う【onsubmit属性】</title>
+      <link>https://noauto-nolife.com/post/form-tags-onsubmit/</link>
+      <pubDate>Mon, 20 Dec 2021 15:21:08 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/form-tags-onsubmit/</guid>
+      <description>例えば、下記のような削除ボタンであれば、削除ボタンが押されると同時に削除が実行される。 &amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;POST&amp;quot;&amp;gt; &amp;lt;!--CSRF_token--&amp;gt; &amp;lt;input class=&amp;quot;btn btn-outline-danger&amp;quot; type=&amp;quot;submit&amp;quot; value=&amp;quot;削除&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; これでは間違えて押してしまった時に取り返しが付かない。 そこで下記のようにformタグにonsubmit属性を付与する。これで削除の送信前に確認をとった上で送信を行う事ができる。 &amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;POST&amp;quot; onsubmit=&amp;quot;if(confirm(&#39;本当に削除し</description>
+    </item>
+    
+    <item>
+      <title>CSS3とHTML5だけでモーダルダイアログを作る【JS不要】</title>
+      <link>https://noauto-nolife.com/post/css3-modal-dialog/</link>
+      <pubDate>Thu, 14 Oct 2021 07:15:41 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-modal-dialog/</guid>
+      <description>モーダルダイアログもとどのつまり、単なる表示非表示なので、HTMLとCSSだけで再現できる。 checkboxとlabelタグを使えば良いだけの話である。 ソースコード まずHTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;label class=&amp;quot;modal_label&amp;quot; for=&amp;quot;modal_chk&amp;quot;&amp;gt;新規作成&amp;lt;/label&amp;gt; &amp;lt;input id=&amp;quot;modal_chk&amp;quot; class=&amp;quot;modal_chk&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;modal_body&amp;quot;&amp;gt; &amp;lt;label class=&amp;quot;modal_bg&amp;quot; for=&amp;quot;modal_chk&amp;quot;&amp;gt;&amp;lt;/label&amp;gt; &amp;lt;div class=&amp;quot;modal_content&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 2つのlabelタグのfor属性はいずれもcheckboxのI</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】ボタン式の横スライダーを自作する【通販サイト・コンテンツ共有サイトなどに】</title>
+      <link>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</link>
+      <pubDate>Sun, 26 Sep 2021 03:09:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</guid>
+      <description>通販サイトなどでよくある。横スクロール型のスライダーを作る。slick.jsなどを使えば簡単に実現できるが、かえって複雑なので、自作した。 ソースコード HTML。jQueryを読み込み、別途JavaScriptとCSSを読み込む。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;!--jquery読み込み--&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;preview_control_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_frame&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;data_preview_content&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>CSS3とHTML5のタブシステムをtransitionでアニメーション表示に仕立てる</title>
+      <link>https://noauto-nolife.com/post/css3-tab-system-transition/</link>
+      <pubDate>Sat, 14 Aug 2021 12:05:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-tab-system-transition/</guid>
+      <description>CSS3とHTML5だけでタブを作り、複数のページを表示させる【JS不要】で作ったタブシステムは瞬間的に切り替わるので、少し野暮ったい。 他にアニメーションを多用したサイトであれば、タブシステムも同様にアニメーションを実装するべきかと思われる。そこで本記事ではその解説を行う。 タブシステムの基本形(改修) 従来型は、スマホ表示になると、折り返して表示していたので、横スクロールに仕立てる。 まずHTML。 &amp;lt;!DOCTYPE</description>
+    </item>
+    
+    <item>
+      <title>FontAwesomeや画像を選択できるプルダウンメニュー【JS不使用】</title>
+      <link>https://noauto-nolife.com/post/fontawesome-image-select/</link>
+      <pubDate>Sun, 25 Apr 2021 17:41:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/fontawesome-image-select/</guid>
+      <description>普通のselectタグの場合、画像やアイコンを表示させようとしてもうまく行かない。他にも、複数選択しないといけないとき、selectタグにmultiple属性を指定するだけでは操作が難しい。 そこで、画像とFontAwesomeが表示できて、なおかつ複数選択可能なプルダウンメニューを作ってみた。 ソースコード html5、いつものinputタグに、checkboxとradioを使っている。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>【Slack風】モーダルダイアログ無し、ページ遷移無しで編集フォームを作る【JS不使用】</title>
+      <link>https://noauto-nolife.com/post/nomodal-edit-form/</link>
+      <pubDate>Sun, 25 Apr 2021 13:42:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nomodal-edit-form/</guid>
+      <description>投稿されたコンテンツを編集する時、編集フォームを表示するページに遷移したり、編集フォームをJSなどを使用してモーダルダイアログとして表示させることがある。こんなふうに。 しかし、これでは他のコンテンツを見ながらの編集ができない。それだけでなく、ページ遷移やダイアログ表示を行うとJSやサーバーサイドに負担がかかる。そこで、投稿したコンテンツを表示する場所を、編集フォームに切り替えるように仕立てる。こん</description>
+    </item>
+    
+    <item>
+      <title>CSS3とHTML5だけでタブを作り、複数のページを表示させる【JS不要】</title>
+      <link>https://noauto-nolife.com/post/css3-tab-system/</link>
+      <pubDate>Wed, 17 Mar 2021 08:54:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-tab-system/</guid>
+      <description>例えば、こんなふうにタブでページを切り替えて表示させるフロント。 かつてはJSじゃないと成立しなかったが、今となっては、JS不要でCSS3とHTML5だけで再現できる。 コード まず、HTML。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;タブシステム&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;quot;tab_radio_1&amp;quot; class=&amp;quot;tab_radio&amp;quot; type=&amp;quot;radio&amp;quot; name=&amp;quot;tab_system&amp;quot;&amp;gt;&amp;lt;label class=&amp;quot;tab_label&amp;quot; for=&amp;quot;tab_radio_1&amp;quot;&amp;gt;タブ1&amp;lt;/label&amp;gt; &amp;lt;input id=&amp;quot;tab_radio_2&amp;quot; class=&amp;quot;tab_radio&amp;quot; type=&amp;quot;radio&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>Djangoで多対多のリレーションを含むデータをAjax(jQuery)&#43;DRFで送信させる</title>
+      <link>https://noauto-nolife.com/post/django-m2m-restful/</link>
+      <pubDate>Tue, 01 Dec 2020 17:17:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-m2m-restful/</guid>
+      <description>本記事では多対多のリレーションを含んだウェブアプリで、Django REST FrameworkとAjaxを使用した非同期データ送信を実現させる方法を書く。 ソースコードは『【Django】一対多、多対多のリレーションでforms.pyを使ったバリデーションとフォームを表示』の『【2】forms.pyを使用したフォームバリデーション+独自に作ったテンプレート』から流用した。 Ajax(jQuery)+Restf</description>
+    </item>
+    
+    <item>
+      <title>【Django】一対多、多対多のリレーションでforms.pyを使ったバリデーションとフォームを表示</title>
+      <link>https://noauto-nolife.com/post/django-m2m-form/</link>
+      <pubDate>Tue, 01 Dec 2020 16:03:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-m2m-form/</guid>
+      <description>本記事ではDjangoで一対多、多対多のリレーションを実装した上で、forms.pyを使用し、フォームをバリデーションする。 また、単にforms.pyからフォームのテンプレートを作るだけでなく、複数指定が要求されるフォームの作り方についても解説する。 コードはDjangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】から流用。 【1】forms.pyを使用したフォ</description>
+    </item>
+    
+    <item>
+      <title>Django-allauthのログインページの装飾を装飾する【テンプレートの追加】</title>
+      <link>https://noauto-nolife.com/post/django-allauth-loginpage/</link>
+      <pubDate>Wed, 11 Nov 2020 17:59:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-loginpage/</guid>
+      <description>django-allauthにより、比較的簡単に認証関係の機能を実装できる。だが、装飾まではサポートされていない。 このような殺風景なログイン画面が表示されてしまうのだ。これをそのままにして顧客に納品させるわけにはいかない。 本記事ではこのdjango-allauthのログインページを装飾させる方法を解説する。 Django-allauthのインストールとsettings.py、urls.pyの設定 まず</description>
+    </item>
+    
+    <item>
+      <title>【CSS3】スクロール時に奥行きを感じる背景(background)の作り方</title>
+      <link>https://noauto-nolife.com/post/css3-deep-bg/</link>
+      <pubDate>Thu, 29 Oct 2020 16:39:03 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/css3-deep-bg/</guid>
+      <description>最近流行のスクロールしたら背景がスクロールせず、ページ全体に奥行きを感じることができるモダンデザインの背景を作る。 それほど難しくない。CSS習いたての初心者でも簡単に実装できるので、是非とも試してみたいところ。 奥行きのある背景の作り方 まず、HTML。bodyタグ内のみ記述する。 &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;fixed_bg bg_1&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;見出し&amp;lt;/h1&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;scroll_bg&amp;quot;&amp;gt; &amp;lt;p&amp;gt;コンテンツ&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;fixed_bg bg_2&amp;quot;&amp;gt; &amp;l</description>
+    </item>
+    
+  </channel>
+</rss>

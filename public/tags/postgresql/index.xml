@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgresql on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/postgresql/</link>
+    <description>Recent content in Postgresql on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 10 Sep 2021 11:21:51 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【Django】SQLiteでも特定フィールドに対してのdistinctっぽい事(重複除去)を行う【通常はPostgreSQLのみ有効】</title>
+      <link>https://noauto-nolife.com/post/django-distinct-on-sqlite/</link>
+      <pubDate>Fri, 10 Sep 2021 11:21:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-distinct-on-sqlite/</guid>
+      <description>以下のクエリはPostgreSQLのみ有効。 Topic.objects.all().distinct(&amp;quot;comment&amp;quot;) このように.disitinct()に引数としてフィールド名を指定できるのは、PostgreSQLだけ。.values()を使う方法もあるが、モデルオブジェクトでなくなる時点で汎用性に乏しい。 そこで、重複するフィールドを除外したいのであれば、こうする。 topics = Topic.objects.all().order_by(&amp;quot;-dt&amp;quot;) d_list = [] n_list = [] for t in topics: if t.comment in d_list: continue d_list.append(t.comment) n_list.append(t) context[&amp;quot;topics&amp;quot;] = n_list これで重複するコメントを除外して新しいモデルオブジェクトの</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQLインストールから、ユーザーとDBを作る</title>
+      <link>https://noauto-nolife.com/post/startup-postgresql/</link>
+      <pubDate>Fri, 16 Apr 2021 15:14:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-postgresql/</guid>
+      <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。dockerを使用して</description>
+    </item>
+    
+    <item>
+      <title>LaravelをUbuntuにデプロイする【Nginx&#43;PostgreSQL】</title>
+      <link>https://noauto-nolife.com/post/laravel-ubuntu-deploy/</link>
+      <pubDate>Tue, 13 Apr 2021 19:09:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ubuntu-deploy/</guid>
+      <description>構成について タイトルの通り、下記構成にてデプロイを行う Laravel Framework 7.30.4 Ubuntu 18.04 nginx version: nginx/1.14.0 (Ubuntu) psql (PostgreSQL) 10.16 (Ubuntu 10.16-0ubuntu0.18.04.1) なぜPostgreSQLなのか？(MySQLではないのか？) MySQLは使わない。なぜなら、Laravelのtimestamp型とMySQLが組み合わさると2038年問題が発生するから。 コード側を合わせるという方法もあるが、今回はデプロイが主目的であるため、安全なPostgreSQLでデプロイする。 https://qiita.com/ucan-lab/items/99ee14ad6bb24614980c デプロイまでの流</description>
+    </item>
+    
+    <item>
+      <title>LaravelをHerokuにデプロイする【Heroku-postgresql使用】</title>
+      <link>https://noauto-nolife.com/post/laravel-heroku-deploy/</link>
+      <pubDate>Sat, 13 Feb 2021 14:01:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-heroku-deploy/</guid>
+      <description>LaravelをHerokuにデプロイする。DBにはHerokuPostgresを使用する。 本記事の対象読者はHerokuCLIはインストール済み、基本的なコマンドは習得済みとする。 流れ Herokuからアプリを作る HerokuPostgresを実装 起動用のProcfileを作る ローカルリポジトリとHerokuのリモートリポジトリの関連付け デプロイ 環境変数の設定を施す(多いのでシェルスクリプトを実装</description>
+    </item>
+    
+    <item>
+      <title>Djangoでデフォルト数値型のid(主キー)からUUID型にする【データ移行】</title>
+      <link>https://noauto-nolife.com/post/django-id-to-uuid/</link>
+      <pubDate>Thu, 24 Dec 2020 16:42:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-id-to-uuid/</guid>
+      <description>PostgreSQL等のDBサーバーで、1対多等のリレーションを組んだウェブアプリを作る時、Djangoのデフォルトの数値型のidではエラーが出てしまう。つまり、UUIDの使用は不可避。 しかし、既にデータがいくらか存在しているため、DB内のデータを全削除してUUIDにマイグレーションし直すのは不可能。困った。 こういう、数値型の主キーが割り当てられた既存データを保持したまま、UUID型の主キーに書き</description>
+    </item>
+    
+    <item>
+      <title>Herokuのデータベース(herokupostgres)の実装と設定方法【Hobby-Plan】</title>
+      <link>https://noauto-nolife.com/post/heroku-postgres-settings/</link>
+      <pubDate>Thu, 05 Nov 2020 12:05:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-postgres-settings/</guid>
+      <description>Heroku postgresの実装方法 プロジェクトのResourcesからHeroku Postgresを指定。 続いて、Submit Order Formを指定する。プランはHobbyを選択。 Add-onsのHerokuPostgresのリンクをクリック、SettingsタブのDatabaseCredentialsのView Credentialsをクリック データベース名などの認証情報が表示される。これをプロジェクトの設定</description>
+    </item>
+    
+    <item>
+      <title>Djangoのマイグレーションのエラー時の対処法</title>
+      <link>https://noauto-nolife.com/post/django-migrate-error/</link>
+      <pubDate>Thu, 05 Nov 2020 08:46:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-migrate-error/</guid>
+      <description>Djangoで開発を進めている時、マイグレーションのエラーにぶち当たるときがあるが、大抵はmigrationsディレクトリを編集していけばいいだけなので、それほど難しいものではない。 本記事ではmigrationsディレクトリ内のファイル編集を行うことで、マイグレーションのエラー時の対処法をまとめる。 サンプルコード まず、マイグレーションエラーの再現をするために、サンプルのコードを下記に公開した。プロ</description>
+    </item>
+    
+    <item>
+      <title>DjangoをLinux(Ubuntu)サーバーにデプロイする方法【Nginx&#43;PostgreSQL】</title>
+      <link>https://noauto-nolife.com/post/django-deploy-linux/</link>
+      <pubDate>Mon, 26 Oct 2020 11:16:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-linux/</guid>
+      <description>DjangoをLinuxサーバーにデプロイできれば、クラウドとは違ってハードウェアの性能を余すこと無く使うことができる。 高度なAIを運用したり、それなりにセキュリティが求められるウェブアプリを運用する予定であれば実機のLinuxサーバーにデプロイしたほうが良い。 デプロイまでの流れ PostgreSQLとNginxのインストール settings.pyの修正 ホームディレクトリにプロジェクト一式を設置 必要</description>
+    </item>
+    
+  </channel>
+</rss>

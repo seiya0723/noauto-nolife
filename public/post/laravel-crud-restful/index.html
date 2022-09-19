@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<meta name="generator" content="Hugo 0.40.1" />
+
+
+
+<link rel="canonical" href="https://noauto-nolife.com/post/laravel-crud-restful/">
+
+
+        <link href="https://noauto-nolife.com/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="https://noauto-nolife.com/css/bootstrap-grid.css"> 
+
+        <script src="https://noauto-nolife.com/data/search.js"></script>
+        <script src="https://noauto-nolife.com/js/script.js"></script>
+
+        <title>初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】 - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】 - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://noauto-nolife.com/post/laravel-crud-restful/">
+<meta property="og:image" content="https://noauto-nolife.com/images/laravel.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="https://noauto-nolife.com/post/laravel-crud-restful/">
+<meta name="twitter:title" content="初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】 - 自動化無しに生活無し">
+<meta name="twitter:image" content="https://noauto-nolife.com/images/laravel.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"https://noauto-nolife.com/"
+    },
+    "headline": "初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】 - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://noauto-nolife.com/images/laravel.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2021-02-01T13:11:30JST",
+    "dateModified": "2021-02-01T13:11:30JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://noauto-nolife.com/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="https://noauto-nolife.com/css/style.css" rel="stylesheet">
+        
+
+        
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="https://noauto-nolife.com/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEBとかAIとかLinux関係をひたすら書く備忘録系ブログ</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="https://noauto-nolife.com/">HOME</a></li>
+                
+                <li><a href="https://noauto-nolife.com/post/">post</a></li>
+                
+                <li class="active">初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+        <li>投稿日時：<time datetime="2021-02-01T13:11:30JST">2021年2月1日 13時11分</time></li>
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/laravel/">laravel</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/restful/">Restful</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91/">初心者向け</a>
+            
+            <a class="taxonomies_link" href="https://noauto-nolife.com/tags/php/">php</a>
+            
+        </li>
+        
+        
+    </ul>
+
+    <div class="img-center"><img src="https://noauto-nolife.com/images/laravel.jpg" alt="thumbnail"></div>
+
+	<div class="article_body">
+
+<p>リハビリがてらlaravelでCRUDに対応した簡易掲示板を作る。この記事の手順に沿ってやれば、45分もあれば作れる。</p>
+
+<p>本記事ではlaravel 7.X系を使用している。</p>
+
+<h2 id="流れ">流れ</h2>
+
+<ol>
+<li>プロジェクトを作る</li>
+<li>DBはSQliteを読み込むように設定する</li>
+<li>Restful対応コントローラーを作る</li>
+<li>ルーティングの設定</li>
+<li>モデル定義とマイグレーション実行</li>
+<li>リクエストを作る</li>
+<li>ビューを作る</li>
+<li>コントローラーの修正</li>
+<li>タイムゾーンの修正</li>
+</ol>
+
+<h2 id="プロジェクトを作る">プロジェクトを作る</h2>
+
+<pre><code>composer create-project --prefer-dist laravel/laravel laravel_crud_restful
+</code></pre>
+
+<p>コンポーザーコマンドを実行してプロジェクトを作る。</p>
+
+<h2 id="dbはsqliteを読み込むように設定する">DBはSQliteを読み込むように設定する</h2>
+
+<p>デフォルトではMySQLが設定されているので、SQLiteを使うようにする。まずは下記コマンドで<code>database.sqlite</code>ファイルを作る。このファイル名(database.sqlite)の通りに作らないと動かないので注意。</p>
+
+<pre><code>touch ./database/database.sqlite
+</code></pre>
+
+<p>続いて、<code>.env</code>ファイルの9行目付近にあるMySQL設定を全てコメントアウト、SQLiteを読み出すよう設定する。</p>
+
+<pre><code># DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=laravel
+# DB_USERNAME=root
+# DB_PASSWORD=
+DB_CONNECTION=sqlite
+</code></pre>
+
+<p>これでDBの準備は完了。</p>
+
+<h2 id="restful対応コントローラーを作る">Restful対応コントローラーを作る</h2>
+
+<p><code>make:controller</code>コマンドを使用してコントローラーを作る。今回はRestfulに対応したコントローラーを作るため、<code>--resource</code>オプションを指定することを忘れなく。</p>
+
+<pre><code>php artisan make:controller TopicsController --resource
+</code></pre>
+
+<h2 id="ルーティングの設定">ルーティングの設定</h2>
+
+<p><code>--resource</code>オプションで作ったコントローラーをルーティング設定する際には、下記一行を追加すれば良いだけ。</p>
+
+<pre><code>Route::resource('/topics', 'TopicsController');
+</code></pre>
+
+<p><code>resource()</code>メソッドを使用するだけでアクションとURIの対応付けをまとめてやってくれる。そのため<code>resource()</code>メソッドの第二引数に<code>@index</code>等のアクション名を指定する必要はない。</p>
+
+<p>ちなみに、この&ndash;resourceを実行することで、まとめて書かれたルーティング情報、分解して記述したい場合は、下記記事に倣って、このように書く。</p>
+
+<p><a href="/post/laravel-to-resource/">Laravelで&ndash;resourceで作ったコントローラのルーティングを解体する</a></p>
+
+<pre><code>#Route::resource('/topics', 'TopicsController');
+
+# ↑と↓は等価
+
+Route::get('/topics', 'TopicsController@index')-&gt;name('topics.index');
+Route::get('/topics/create', 'TopicsController@create')-&gt;name('topics.create');
+Route::post('/topics', 'TopicsController@store')-&gt;name('topics.store');
+Route::get('/topics/{id}', 'TopicsController@show')-&gt;name('topics.show');
+Route::get('/topics/{id}/edit', 'TopicsController@edit')-&gt;name('topics.edit');
+Route::put('/topics/{id}', 'TopicsController@update')-&gt;name('topics.update');
+Route::delete('/topics/{id}', 'TopicsController@destroy')-&gt;name('topics.destroy');
+</code></pre>
+
+<p>これは、VScodeのスニペットにも登録しておくと即変換ができて便利で良いだろう。VScodeのスニペット登録の方法は下記記事を参照。</p>
+
+<p><a href="/post/vscode-config/">VisualStudioCode(VScode)を使う前にやっておきたい設定と覚えておくと良い操作方法</a></p>
+
+<h2 id="モデル定義とマイグレーション実行">モデル定義とマイグレーション実行</h2>
+
+<p>下記コマンドを実行して、<code>Topic</code>モデルを作る。<code>--migration</code>コマンドでマイグレーションファイルも同時に作る。</p>
+
+<pre><code>php artisan make:model Topic --migration
+</code></pre>
+
+<p>まず、モデルの定義から。<code>app/Topic.php</code>を下記のように編集する。</p>
+
+<pre><code>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Topic extends Model
+{
+    protected $fillable = [
+        &quot;name&quot;,&quot;content&quot;
+    ];
+}
+</code></pre>
+
+<p>モデルの役割は、コントローラーがクライアントからデータを受け取った後、受け取ったデータをDBに入れてよいかどうかを決めること。上記のコードは<code>name</code>と<code>content</code>のみクライアントからの編集を許可する。それ以外のデータは受け取った時に全て破棄する。</p>
+
+<p>続いて、マイグレーションファイルを編集する。<code>database/migrations/[タイムスタンプ]_create_topics_table.php</code>にテーブルのカラムと挿入するデータを記述する。<code>[タイムスタンプ]</code>はマイグレーションファイルを作った日時なので、適宜解釈するように。</p>
+
+<pre><code>&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateTopicsTable extends Migration
+{
+    /** 
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {   
+        Schema::create('topics', function (Blueprint $table) {
+            $table-&gt;id();
+            $table-&gt;string(&quot;name&quot;,10);
+            $table-&gt;string(&quot;content&quot;,200);
+            $table-&gt;timestamps();
+        });
+    }   
+
+    /** 
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {   
+        Schema::dropIfExists('topics');
+    }   
+}
+</code></pre>
+
+<p>上記コードにより、topicsテーブルにオートインクリメント数値型の<code>id</code>、10文字までの<code>name</code>、200文字までの<code>content</code>。<code>timestamps()</code>で投稿日を意味する<code>created_at</code>、編集日を意味する<code>updated_at</code>の5つのカラムが作られる。</p>
+
+<p>コード下の方に書かれてある<code>down()</code>メソッドはマイグレーションを元に戻すときのテーブル削除処理。そのままで良い。</p>
+
+<p>定義したマイグレーションファイルに基づき、マイグレーションを実行する。</p>
+
+<pre><code>php artisan migrate
+</code></pre>
+
+<h2 id="リクエストを作る">リクエストを作る</h2>
+
+<p>ユーザーから受け取ったリクエストをバリデーション(検証)して、DBに格納させるか否かを判定する。それがLaravelのリクエスト。下記コマンドを実行してリクエストを作る。</p>
+
+<pre><code>php artisan make:request CreateTopicRequest
+</code></pre>
+
+<p>続いて、<code>app/Http/Requests/CreateTopicRequest.php</code>を下記のように編集</p>
+
+<pre><code>&lt;?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class CreateTopicRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        #↓trueに書き換える
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name'      =&gt; 'required|max:15',
+            'content'   =&gt; 'required|max:2000',
+        ];
+    }
+    public function messages() {
+        return [
+            'name.required'     =&gt; '名前を入力してください',
+            'name.max'          =&gt; '名前は15文字でお願いします。',
+            'content.required'  =&gt; 'コメントを入力してください',
+            'content.max'       =&gt; 'コメントは2000文字でお願いします。',
+        ];
+    }
+}
+</code></pre>
+
+<p>バリデーション対象とバリデーションルール、バリデーション失敗したときのメッセージが表示される。</p>
+
+<h2 id="ビューを作る">ビューを作る</h2>
+
+<p>Restful化に対応させるため、作る必要のあるビューが5つある。ただ、今回はテンプレートの継承機能を使うので、1ファイル当たりのコード行数は30行程度。</p>
+
+<p>まず、<code>resources/views/base.blade.php</code>を作る。この<code>base</code>を継承して、残り4つのファイルを作る。</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ja&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot;&gt;
+    &lt;title&gt;簡易掲示板&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&quot; integrity=&quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&quot; crossorigin=&quot;anonymous&quot;&gt;
+    @yield(&quot;extra_head&quot;)
+
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;a href=&quot;{{ route('topics.index') }}&quot;&gt;&lt;h1 style=&quot;background:orange;color:white;text-align:center;&quot;&gt;簡易掲示板&lt;/h1&gt;&lt;/a&gt;
+    &lt;main class=&quot;container&quot;&gt;@yield(&quot;main&quot;)&lt;/main&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>ディレクティブの<code>@yield([任意の文字列])</code>を記述することで、その部分は継承したビューが自由に内容を追加することができる。例えば、上記<code>base</code>を継承した<code>index</code>が<code>@yield(&quot;main&quot;)</code>の部分にトップページである旨を表示させることが可能になる。</p>
+
+<p><code>resources/views/index.blade.php</code>は下記のように記述する。</p>
+
+<pre><code>@extends(&quot;base&quot;)
+
+@section(&quot;main&quot;)
+
+&lt;a class=&quot;btn btn-outline-success&quot;  href=&quot;{{ route('topics.create') }}&quot;&gt;＋ トピックを作る&lt;/a&gt;
+
+@forelse( $topics as $topic )
+&lt;div class=&quot;border my-2 p-2&quot;&gt;
+    &lt;div class=&quot;text-secondary&quot;&gt;{{ $topic-&gt;name }} さん&lt;/div&gt;
+    &lt;div class=&quot;p-2&quot;&gt;{!! nl2br(e($topic-&gt;content)) !!}&lt;/div&gt;
+    &lt;div class=&quot;text-secondary&quot;&gt;投稿日:{{ $topic-&gt;created_at }}&lt;/div&gt;
+    &lt;div class=&quot;text-secondary&quot;&gt;編集日:{{ $topic-&gt;updated_at }}&lt;/div&gt;
+    &lt;a class=&quot;btn btn-outline-primary&quot; href=&quot;{{ route('topics.show',$topic-&gt;id) }}&quot;&gt;詳細&lt;/a&gt;
+    &lt;a class=&quot;btn btn-outline-success&quot; href=&quot;{{ route('topics.edit',$topic-&gt;id) }}&quot;&gt;編集&lt;/a&gt;
+    &lt;form action=&quot;{{ route('topics.destroy',$topic-&gt;id) }}/&quot; method=&quot;POST&quot; style=&quot;display:inline-block;&quot;&gt;
+        {{ csrf_field() }}
+        {{ method_field(&quot;delete&quot;) }}
+        &lt;button class=&quot;btn btn-outline-danger&quot; type=&quot;submit&quot;&gt;削除&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+@empty
+&lt;p&gt;投稿はありません&lt;/p&gt;
+@endforelse
+
+@endsection
+</code></pre>
+
+<p>冒頭に、<code>@extends()</code>で継承元になる<code>base</code>を指定する。続いて、<code>@section()</code>に<code>main</code>を指定する。<code>base.blade.php</code>には<code>@yield(&quot;main&quot;)</code>と指定してある部分に当たる。つまり<code>main</code>タグの中に<code>@section(&quot;main&quot;)</code>から<code>@endsection</code>までの内容が入るのだ。</p>
+
+<p>ちなみに、<code>@forelse()</code>以下はコントローラーが受け取った内容を全て記述している。この処理はまだ書いていないので次項にて解説する。</p>
+
+<p>削除ボタンの<code>method_field(&quot;DELETE&quot;)</code>はフォーム送信時HTTPリクエストのDELETEメソッドを使用してリクエストを送る指定をしている。</p>
+
+<p>続いて、<code>resources/views/create.blade.php</code>を作る。こちらも<code>base</code>を継承して作っている。</p>
+
+<pre><code>@extends(&quot;base&quot;)
+
+@section(&quot;main&quot;)
+
+@if( count($errors) )
+&lt;ul&gt;
+    @foreach($errors-&gt;all() as $error)
+    &lt;li&gt;{{ $error }}&lt;/li&gt;
+    @endforeach
+&lt;/ul&gt;
+@endif
+
+&lt;form class=&quot;&quot; action=&quot;{{ route('topics.store') }}&quot; method=&quot;POST&quot;&gt;
+    {{ csrf_field() }}
+    &lt;input class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;名前&quot;&gt;
+    &lt;textarea id=&quot;&quot; class=&quot;form-control&quot; name=&quot;content&quot; rows=&quot;4&quot; placeholder=&quot;コメント&quot;&gt;&lt;/textarea&gt;
+    &lt;input class=&quot;form-control&quot; type=&quot;submit&quot; value=&quot;送信&quot;&gt;
+&lt;/form&gt;
+@endsection
+</code></pre>
+
+<p><code>create</code>は新しいトピックを作るフォーム。<code>input</code>タグ等の<code>name</code>属性はマイグレーションフィールドで定義したカラムに基づいている。</p>
+
+<p>ここでバリデーションに失敗したときのメッセージを表示させている。</p>
+
+<p>続いて、<code>resources/views/show.blade.php</code>を作る。こちらも<code>base</code>を継承して作っている。</p>
+
+<pre><code>@extends(&quot;base&quot;)
+
+@section(&quot;main&quot;)
+
+@forelse($topics as $topic )
+&lt;div class=&quot;border my-2 p-2&quot;&gt;
+    &lt;div class=&quot;text-secondary&quot;&gt;{{ $topic-&gt;name }} さん&lt;/div&gt;
+    &lt;div class=&quot;p-2&quot;&gt;{!! nl2br(e($topic-&gt;content)) !!}&lt;/div&gt;
+    &lt;div class=&quot;text-secondary&quot;&gt;投稿日:{{ $topic-&gt;created_at }}&lt;/div&gt;
+&lt;/div&gt;
+@empty
+&lt;p&gt;ありません。&lt;/p&gt;
+@endforelse
+
+@endsection
+</code></pre>
+
+<p><code>show</code>は個別ページを表示する。</p>
+
+<p>続いて、<code>resources/views/edit.blade.php</code>を作る。こちらも<code>base</code>を継承して作っている。</p>
+
+<pre><code>@extends(&quot;base&quot;)
+
+@section(&quot;main&quot;)
+
+@if( count($errors) )
+&lt;ul&gt;
+    @foreach($errors-&gt;all() as $error)
+    &lt;li&gt;{{ $error }}&lt;/li&gt;
+    @endforeach
+&lt;/ul&gt;
+@endif
+
+@forelse($topics as $topic )
+&lt;form action=&quot;{{ route('topics.update',$topic-&gt;id) }}&quot; method=&quot;POST&quot;&gt;
+    {{ csrf_field() }}
+    {{ method_field(&quot;put&quot;) }}
+    &lt;input class=&quot;form-control&quot; type=&quot;text&quot; name=&quot;name&quot; placeholder=&quot;名前&quot; value=&quot;{{ $topic-&gt;name }}&quot;&gt;
+    &lt;textarea id=&quot;&quot; class=&quot;form-control&quot; name=&quot;content&quot; rows=&quot;4&quot; placeholder=&quot;コメント&quot;&gt;{{ $topic-&gt;content }}&lt;/textarea&gt;
+    &lt;input class=&quot;form-control&quot; type=&quot;submit&quot; value=&quot;送信&quot;&gt;
+&lt;/form&gt;
+@empty
+&lt;p&gt;ありません。&lt;/p&gt;
+@endforelse
+
+@endsection
+</code></pre>
+
+<p>その名の通り、編集用のフォーム。<code>method_field(&quot;PUT&quot;)</code>はフォーム送信時HTTPリクエストのPUTメソッドを使用してリクエストを送る指定をしている。</p>
+
+<p>作成時と同様に入力値にエラーがあった時、エラー文を表示させている。</p>
+
+<p>これで一通りのビューは完成した。後はこのビューに値を入れるコントローラーを修正していく。</p>
+
+<h2 id="コントローラーの修正">コントローラーの修正</h2>
+
+<pre><code>&lt;?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Topic;
+use App\Http\Requests\CreateTopicRequest;
+
+class TopicsController extends Controller
+{
+    public function index()
+    {
+        $topics     = Topic::latest()-&gt;get();
+        $context    = [ &quot;topics&quot; =&gt; $topics ];
+
+        return view(&quot;index&quot;,$context);
+    }
+    public function create()
+    {
+        return view(&quot;create&quot;);
+    }
+    public function store(CreateTopicRequest $request)
+    {
+        Topic::create($request-&gt;all());
+
+        return redirect(route(&quot;topics.index&quot;));
+    }
+    public function show($id)
+    {
+        $context            = []; 
+        $context[&quot;topics&quot;]  = Topic::where(&quot;id&quot;,$id)-&gt;get();
+
+        #HACK:↑と↓は等価。
+        #contextに仕込むモデルオブジェクトが増えるたび、context定義時の行数が増えるので、混乱を防ぐために↑のやり方のほうが良いかもしれない。
+
+        /*            
+        $topics     = Topic::where(&quot;id&quot;,$id)-&gt;get();
+        $context    = [ &quot;topics&quot; =&gt; $topics ];
+        */
+
+        return view(&quot;show&quot;,$context);
+    }
+    public function edit($id)
+    {
+        $topics     = Topic::where(&quot;id&quot;,$id)-&gt;get();
+        $context    = [ &quot;topics&quot; =&gt; $topics ];
+
+        return view(&quot;edit&quot;,$context);
+    }
+    public function update(CreateTopicRequest $request, $id)
+    {
+
+        #編集処理のベストプラクティス
+        Topic::find($id)-&gt;update($request-&gt;all());
+
+        #HACK:このやり方ではモデルフィールドが増えると対処しきれない。
+        /*
+        $topic  = Topic::find($id);
+        $topic-&gt;name    = $request-&gt;name;
+        $topic-&gt;content = $request-&gt;content;
+        $topic-&gt;save();
+        */
+
+        return redirect(route(&quot;topics.index&quot;));
+    }
+    public function destroy($id)
+    {
+
+        #削除のベストプラクティス
+        Topic::destroy($id);
+
+        #HACK:もっと短く書ける
+        #Topic::find($id)-&gt;delete();
+
+        #HACK:deleteメソッドはつなげ書いても良い。
+        /*
+        $topic  = Topic::find($id);
+        $topic-&gt;delete();
+        */
+
+        return redirect(route(&quot;topics.index&quot;));
+    }
+}
+</code></pre>
+
+<p>長いのでそれぞれの処理内容は省略し、共通するものだけ解説する。</p>
+
+<p><code>Topic::latest()-&gt;get();</code>はDBからデータを全て抜き取り、最新が上になるように並び替える。間に<code>where()</code>メソッドが入ることで、絞り込みができる。<code>find()</code>メソッドに<code>$id</code>を指定することで一意に特定もできる。</p>
+
+<p><code>create</code>及び<code>update</code>はリクエストのバリデーションを経由しているので、不適切な値であればフォーム入力欄にそのままエラー文が表示される仕組みになっている。</p>
+
+<p>モデルのメソッドには、<code>save()</code>メソッド、<code>delete()</code>メソッドが用意されている。それぞれ、指定した値でデータを保存、削除することができる。</p>
+
+<p><code>route(&quot;topics.index&quot;)</code>は名前解決によって、<code>topics</code>を意味する。<code>route/web.php</code>に定義した内容に基づいている。<code>Route::resource(&quot;/topics&quot;, &quot;TopicsController&quot;);</code>のみだが、<code>resource()</code>メソッドにより、下記の名前とURIが対応付けられているのだ。</p>
+
+<pre><code>+--------+-----------+---------------------+----------------+-----------------------------------------------+------------+
+| Domain | Method    | URI                 | Name           | Action                                        | Middleware |
++--------+-----------+---------------------+----------------+-----------------------------------------------+------------+
+|        | GET|HEAD  | /                   |                | Closure                                       | web        |
+|        | GET|HEAD  | api/user            |                | Closure                                       | api        |
+|        |           |                     |                |                                               | auth:api   |
+|        | GET|HEAD  | topics              | topics.index   | App\Http\Controllers\TopicsController@index   | web        |
+|        | POST      | topics              | topics.store   | App\Http\Controllers\TopicsController@store   | web        |
+|        | GET|HEAD  | topics/create       | topics.create  | App\Http\Controllers\TopicsController@create  | web        |
+|        | GET|HEAD  | topics/{topic}      | topics.show    | App\Http\Controllers\TopicsController@show    | web        |
+|        | PUT|PATCH | topics/{topic}      | topics.update  | App\Http\Controllers\TopicsController@update  | web        |
+|        | DELETE    | topics/{topic}      | topics.destroy | App\Http\Controllers\TopicsController@destroy | web        |
+|        | GET|HEAD  | topics/{topic}/edit | topics.edit    | App\Http\Controllers\TopicsController@edit    | web        |
++--------+-----------+---------------------+----------------+-----------------------------------------------+------------+
+</code></pre>
+
+<p>つまり、<code>Route(&quot;topics.index&quot;)</code>は<code>topics</code>を返し、<code>Route(&quot;topics.create&quot;)</code>は<code>topics/create</code>を返すのだ。<code>{topic}</code>は引数になっており、ここには数値が入る。この引数指定により、ビューにて、<code>{{ route('topics.show',$topic-&gt;id) }}</code>と指定して、idに応じたパスを返すことができる。</p>
+
+<h2 id="タイムゾーンの修正">タイムゾーンの修正</h2>
+
+<p>最後に、日付の問題を解決するため、<code>config/app.php</code>のタイムゾーンを修正する。</p>
+
+<pre><code>'timezone' =&gt; 'Asia/Tokyo',
+</code></pre>
+
+<p>これで日本時間に設定できた。</p>
+
+<h2 id="実際に動かしてみる">実際に動かしてみる</h2>
+
+<p>開発用サーバーを起動する。</p>
+
+<pre><code>php artisan serve
+</code></pre>
+
+<div class="img-center"><img src="/images/Screenshot from 2021-02-01 15-18-36.png" alt="簡易掲示板"></div>
+
+<p>編集したら編集日時が記録されるようになっている。</p>
+
+<h2 id="結論">結論</h2>
+
+<p>laravelには『Web職人のためのフレームワーク』というキャッチコピーがあるが、調べれば調べるほど開発メソッドの選択肢が多く存在する。初学者からしてみれば選択肢の多さは、学習進捗に関わるので、ベストプラクティスのようなものがあると良いのだが。</p>
+
+<p>とは言え、Djangoよりも自由度が高く、編集と作成の日時がまとめて指定できる<code>timestamps()</code>は良いと思った。</p>
+
+<p>だが、timestamp型はデプロイするときにMySQLを使うと<a href="https://ja.wikipedia.org/wiki/2038%E5%B9%B4%E5%95%8F%E9%A1%8C">2038年問題</a>を引き起こしてしまう。Laravelのデプロイ時にはDBはMySQLではなく、PostgreSQLを使いましょう。</p>
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    <div class="article_share_area">
+        <h2>シェアボタン</h2>
+        <a class="article_share_link link_twitter" target="_blank" rel="nofollow noopener noreferrer" href="https://twitter.com/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2flaravel-crud-restful%2f&text=%e5%88%9d%e5%bf%83%e8%80%85%e3%81%a7%e3%82%82laravel%207.x%20%e3%82%92%e4%bd%bf%e3%81%84%e3%80%8145%e5%88%86%e3%81%a7CRUD%e7%b0%a1%e6%98%93%e6%8e%b2%e7%a4%ba%e6%9d%bf%e3%82%92%e4%bd%9c%e3%82%8b%e3%80%90Restful%e5%af%be%e5%bf%9c%e3%80%91">Twitter</a>
+        <a class="article_share_link link_line" target="_blank" rel="nofollow noopener noreferrer" href="https://social-plugins.line.me/lineit/share?url=https%3a%2f%2fnoauto-nolife.com%2fpost%2flaravel-crud-restful%2f">LINEで送る</a>
+        <a class="article_share_link link_facebook" target="_blank" rel="nofollow noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fnoauto-nolife.com%2fpost%2flaravel-crud-restful%2f">Facebook</a>
+        <a class="article_share_link link_hatena" target="_blank" rel="nofollow noopener noreferrer" href="https://b.hatena.ne.jp/add?mode=confirm&url=https%3a%2f%2fnoauto-nolife.com%2fpost%2flaravel-crud-restful%2f&title=%e5%88%9d%e5%bf%83%e8%80%85%e3%81%a7%e3%82%82laravel%207.x%20%e3%82%92%e4%bd%bf%e3%81%84%e3%80%8145%e5%88%86%e3%81%a7CRUD%e7%b0%a1%e6%98%93%e6%8e%b2%e7%a4%ba%e6%9d%bf%e3%82%92%e4%bd%9c%e3%82%8b%e3%80%90Restful%e5%af%be%e5%bf%9c%e3%80%91">はてなブログ</a>
+    </div>
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/php-not-found-mb-strlen/">PHPでmb_strlenもしくはstrlenがNotFoundのときの対策<time class="relate_time">2022年9月2日 09時07分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/windows-python-and-pycharm-install/">WindowsでPythonとPycharmをインストールする<time class="relate_time">2022年9月1日 08時49分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/pycharm-config/">Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法<time class="relate_time">2022年8月10日 17時50分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/startup-create-rdd/">要件定義書の書き方<time class="relate_time">2022年6月4日 17時13分</time></a>
+        
+        <a class="relate_link" href="https://noauto-nolife.com/post/django-filter-method/">【Django】モデルクラスのfilterメソッドで検索・絞り込みをする<time class="relate_time">2022年5月16日 10時19分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/laravel-fileupload/">次の投稿<br><span class="summary_pg">Laravelで画像とファイルをアップロードする</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/laravel-log/">前の投稿<br><span class="summary_pg">laravelで開発中、ログを表示させる【エラー箇所の確認・デバッグ作業に】</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="https://noauto-nolife.com/information/introduction/"><img class="author_img" src="https://noauto-nolife.com/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: We are not your kind.</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%B8%8A%E7%B4%9A%E8%80%85%E5%90%91%E3%81%91">上級者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ai">ai</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/raspberry-pi">raspberry-pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/centos">centos</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/geodjango">geodjango</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%93%E3%83%A5%E3%83%BC">ビュー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%AA%E3%82%AA">ポートフォリオ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%A4%9C%E7%B4%A2">検索</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E7%A7%81%E8%A6%8B">私見</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="https://noauto-nolife.com/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/rtcwake-and-crontab/">rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/javascript-dynamic-element-change-detect/">【JavaScript】動的に要素が変化した時に何か処理をさせたいならMutationObserverを使う</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/javascript-sortablejs/">JavaScriptで並び替えをするならSortable.js【jQuery不要のライブラリ】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-vim/">vimの操作方法</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/django-search-querybuilder-custom-templates-js/">Djangoでクエリビルダを使い、スペース区切りの文字列検索と絞り込みを同時に行う【JSとカスタムテンプレートタグを使用】</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/">FFmpegを使ってUbuntuサーバーにUSBで接続されたウェブカメラで映像を録画する</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/netplan-wireless-settings/">【Ubuntu】netplanに無線LAN(wifi)で固定IPアドレスを割り当てる</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/startup-nano-editor/">nanoエディタの操作方法</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/css3-chat-web-design/">【CSS3】チャットのウェブデザインを作る</a>
+        
+        <a class="news_link" href="https://noauto-nolife.com/post/ubuntu-env-read-python/">Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>無線lan on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E7%84%A1%E7%B7%9Alan/</link>
+    <description>Recent content in 無線lan on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 10 Sep 2022 17:48:36 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E7%84%A1%E7%B7%9Alan/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【Ubuntu】netplanに無線LAN(wifi)で固定IPアドレスを割り当てる</title>
+      <link>https://noauto-nolife.com/post/netplan-wireless-settings/</link>
+      <pubDate>Sat, 10 Sep 2022 17:48:36 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/netplan-wireless-settings/</guid>
+      <description>有線であれば以下のように書く。 network: ethernets: eth0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 version: 2 無線LANの場合、ip addrで表示される無線LANのデバイス名を控えた上で下記のように記す network: wifis: wlan0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 access-points: &amp;quot;SSIDname&amp;quot;: password: &amp;quot;password&amp;quot; version: 2</description>
+    </item>
+    
+  </channel>
+</rss>

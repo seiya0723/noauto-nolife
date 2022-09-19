@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/javascript/</link>
+    <description>Recent content in Javascript on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 11 Sep 2022 21:23:32 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【JavaScript】動的に要素が変化した時に何か処理をさせたいならMutationObserverを使う</title>
+      <link>https://noauto-nolife.com/post/javascript-dynamic-element-change-detect/</link>
+      <pubDate>Sun, 11 Sep 2022 21:23:32 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-dynamic-element-change-detect/</guid>
+      <description>例えば、特定の要素内のHTMLがJavaScriptの処理によって変わった時。 こんな時に何か処理を実行したい場合、MutationObserverを使うと良い。 ソースコード //特定の要素が動的に変化した時、何らかの発動させる let body = document.getElementsByTagName(&#39;body&#39;)[0]; let target = new MutationObserver(function(){ detail_sortable() }); target.observe(body, { &amp;quot;childList&amp;quot;:true,&amp;quot;subtree&amp;quot;:true }); 結論 例えば、Ajaxが発動して、ページがレンダリングされた時に何かを発動させることができる。(Ajaxのdoneの時に処理を書くという方法もあるが</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptで並び替えをするならSortable.js【jQuery不要のライブラリ】</title>
+      <link>https://noauto-nolife.com/post/javascript-sortablejs/</link>
+      <pubDate>Sun, 11 Sep 2022 21:21:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-sortablejs/</guid>
+      <description>CDN &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.6.0.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;sort_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;6&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; let sort_areas = $(&amp;quot;.sort_area&amp;quot;); for (let area of sort_areas ){ new Sortable(area, { animation: 150, ghostClass: &#39;dragging&#39;, onEnd: function(){ console.log(&amp;quot;ソート完了&amp;quot;) }, }); } &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる 結論 ソート終了時、onEndで何か処理を実行する事ができる。ただこの処理で要素を特定しても、並び替える前の要素を取得してしまうので、そのままAjaxをという考えは通用しない模様。 ドラッ</description>
+    </item>
+    
+    <item>
+      <title>JavaScript(jQuery)でストップウォッチとタイマーを作る【勉強や運動の記録などに】</title>
+      <link>https://noauto-nolife.com/post/javascript-stopwatch-and-timer/</link>
+      <pubDate>Sun, 31 Jul 2022 16:26:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-stopwatch-and-timer/</guid>
+      <description>記録系のウェブアプリに欠かせないストップウォッチとタイマー これをJavaScript(jQuery)で再現する。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.6.0.min.js&amp;quot; integrity=&amp;quot;sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;p-2 my-2&amp;quot;&amp;gt; &amp;lt;h2&amp;gt;タイマー&amp;lt;/h2&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_hour&amp;quot; type=&amp;quot;number&amp;quot; min=&amp;quot;0&amp;quot; max=&amp;quot;99&amp;quot; value=&amp;quot;0&amp;quot;&amp;gt;時間&amp;lt;/label&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_minute&amp;quot; type=&amp;quot;number&amp;quot; min=&amp;quot;0&amp;quot; max=&amp;quot;59&amp;quot; value=&amp;quot;0&amp;quot;&amp;gt;分&amp;lt;/label&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_second&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>【保存版】Ajax(jQuery)の仕組みと仕様</title>
+      <link>https://noauto-nolife.com/post/jquery-ajax-detail/</link>
+      <pubDate>Fri, 15 Jul 2022 11:42:54 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-ajax-detail/</guid>
+      <description>本記事は、たびたび忘れがちなAjaxのパラメータや引数などの意味を思い返すための備忘録である。 let form_elem = &amp;quot;#form_area&amp;quot;; let data = new FormData( $(form_elem).get(0) ); let url = $(form_elem).prop(&amp;quot;action&amp;quot;); let method = $(form_elem).prop(&amp;quot;method&amp;quot;); $.ajax({ url: url, // リクエストの送信先 type: method, // 送信するリクエストのメソッド data: data, // 送信するデータ(FormDataオブジェクト型) processData: false, // dataに指定した内容をURLエンコードして送信(?page=2などの形式)にするかの指定。FormDataオブジェクトの場合はfalseを指定 contentType: false,</description>
+    </item>
+    
+    <item>
+      <title>【JavaScript】.replace()で検索した文字列すべてを置換したい場合は正規表現を使う</title>
+      <link>https://noauto-nolife.com/post/javascript-replace-trap/</link>
+      <pubDate>Thu, 14 Jul 2022 17:30:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-replace-trap/</guid>
+      <description>例えば、以下の文字列の,をに書き換えたいとする。 let data = &amp;quot;aaa,bbb,ccc&amp;quot;; 文字列の置換処理は.replace()で実現できるから、こうすれば良いと思いがちだが実は違う。 console.log(data.replace(&amp;quot;,&amp;quot;,&amp;quot; &amp;quot;)); // aaa bbb,ccc デフォルトでは最初にヒットした文字列しか置換してくれない。検索した文字列を全て置換したい場合、このようにする。 console.log(data.replace( /,/g , &amp;quot; &amp;quot;)); // aaa bbb ccc ちなみにPythonでは.replace()を使うと全て置換してくれる。だから、Pythonでreplaceを使</description>
+    </item>
+    
+    <item>
+      <title>JavaScript(jQuery)で神経衰弱</title>
+      <link>https://noauto-nolife.com/post/javascript-memory-weakness/</link>
+      <pubDate>Thu, 30 Jun 2022 14:57:25 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-memory-weakness/</guid>
+      <description>canvas未使用、JavaScript(jQuery)で神経衰弱を作ってみた。 突貫で作ったためかなり雑ではあるが、トランプを使用したゲームに流用できそうだ。 デモページ カードの素材は ( https://opengameart.org/content/playing-cards-vector-png )より。ウラ面は自前で作った。 https://seiya0723.github.io/memory_cards_game/ ソースコード https://github.com/seiya0723/memory_cards_game HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; img { width:200px; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;table id=&amp;quot;table&amp;quot;&amp;gt;&amp;lt;/table&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ // カードの画像: https://opengameart.org/content/playing-cards-vector-png //カードのデータ形式 var CARD_DATA = [ { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_clubs.png&amp;quot; }, { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_diamonds.png&amp;quot; }, { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_hearts.png&amp;quot; }, { &amp;quot;number&amp;quot;:1,&amp;quot;src&amp;quot;:&amp;quot;img/ace_of_spades.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_clubs.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_diamonds.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_hearts.png&amp;quot; }, { &amp;quot;number&amp;quot;:2,&amp;quot;src&amp;quot;:&amp;quot;img/2_of_spades.png&amp;quot; }, {</description>
+    </item>
+    
+    <item>
+      <title>JavaScript(jQuery)でQRコードを表示させる</title>
+      <link>https://noauto-nolife.com/post/javascript-qrcode/</link>
+      <pubDate>Mon, 23 May 2022 11:23:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-qrcode/</guid>
+      <description>例えば、ユーザーの一部がPCでの操作をやめて、スマホで操作したいと思ったとする。 こういう時QRコードを表示させる、ブラウザのアドオンや機能を使えば良いが、ユーザーにそれを強いるのはやや酷である。 そこで、jQueryを使用して、QRコードを簡単に表示させると良いだろう。 コード &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; window.addEventListener(&amp;quot;load&amp;quot; , function (){ let qrtext = location.href; let utf8qrtext = unescape(encodeURIComponent(qrtext)); $(&amp;quot;#qrcode&amp;quot;).html(&amp;quot;&amp;quot;); $(&amp;quot;#qrcode&amp;quot;).qrcode({width:160,height:160,text:utf8qrtext}); }); &amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;qrcode&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる。 結論 下記を参照。 https://github.com/jeromeetienne/jquery-qrcode</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】半径5km圏内の領域に円を描画する【circle】</title>
+      <link>https://noauto-nolife.com/post/leaflet-draw-circle-5000m/</link>
+      <pubDate>Sun, 01 May 2022 19:50:53 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-draw-circle-5000m/</guid>
+      <description>半径5km圏内に円を描画する。これで指定したポイントからの距離がつかめる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;コメント付きマップ&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&amp;quot; integrity=&amp;quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&amp;quot; crossorigin=&amp;quot;&amp;quot;/&amp;gt; &amp;lt;script src=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&amp;quot; integrity=&amp;quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&amp;quot; crossorigin=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; #map { height:90vh; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1 class=&amp;quot;bg-success text-white text-center&amp;quot;&amp;gt;コメント付きマップ&amp;lt;/h1&amp;gt; &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;row mx-0&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;map&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;set_gps&amp;quot; type=&amp;quot;button&amp;quot; value=&amp;quot;GPSを使って入力&amp;quot;&amp;gt; &amp;lt;form</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】クリックした地図上に画像を配置する【overlays】</title>
+      <link>https://noauto-nolife.com/post/leaflet-overlays/</link>
+      <pubDate>Sun, 01 May 2022 18:49:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-overlays/</guid>
+      <description>用途がいまいち思いつかないが、leaflet.jsでは地図上に画像を描画する事ができる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;コメント付きマップ&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.css&amp;quot; integrity=&amp;quot;sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==&amp;quot; crossorigin=&amp;quot;&amp;quot;/&amp;gt; &amp;lt;script src=&amp;quot;https://unpkg.com/leaflet@1.7.1/dist/leaflet.js&amp;quot; integrity=&amp;quot;sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==&amp;quot; crossorigin=&amp;quot;&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; #map { height:90vh; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1 class=&amp;quot;bg-success text-white text-center&amp;quot;&amp;gt;コメント付きマップ&amp;lt;/h1&amp;gt; &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;row mx-0&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;div id=&amp;quot;map&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;col-sm-6&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;set_gps&amp;quot; type=&amp;quot;button&amp;quot; value=&amp;quot;GPSを使って入力&amp;quo</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptでクエリパラメータを書き換え、GETメソッドを送信する【通販サイトなどの絞り込み検索に有効】</title>
+      <link>https://noauto-nolife.com/post/javascript-query-change-and-get-method/</link>
+      <pubDate>Thu, 07 Apr 2022 13:31:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-query-change-and-get-method/</guid>
+      <description>クエリパラメータ(クエリ文字列、もしくはクエリストリング)はサーバーサイドだけのデータではない、JavaScriptも操作できる。 これを利用することで、サイトの絞り込み検索を作ることができる。 HTML 下記のように価格帯の入力欄を作る。 &amp;lt;h2&amp;gt;下限&amp;lt;/h2&amp;gt; &amp;lt;input class=&amp;quot;url_replace&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;min_price&amp;quot;&amp;gt; &amp;lt;h2&amp;gt;上限&amp;lt;/h2&amp;gt; &amp;lt;input class=&amp;quot;url_replace&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;max_price&amp;quot;&amp;gt; そして、次項のJavaScriptを読んでおく。 JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;.url_replace&amp;quot;).on(&amp;quot;keydown&amp;quot;, function(e) {</description>
+    </item>
+    
+    <item>
+      <title>素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】</title>
+      <link>https://noauto-nolife.com/post/django-xmlhttprequest-ajax-not-use-jquery/</link>
+      <pubDate>Fri, 01 Apr 2022 09:17:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-xmlhttprequest-ajax-not-use-jquery/</guid>
+      <description>CSRFトークンを取得する POSTメソッドを送信する時必要になるCSRFトークン。 前もって取得しておく。下記コードをページロードと同時に実行する。 function getCookie(name) { var cookieValue = null; if (document.cookie &amp;amp;&amp;amp; document.cookie !== &#39;&#39;) { var cookies = document.cookie.split(&#39;;&#39;); for (var i = 0; i &amp;lt; cookies.length; i++) { var cookie = cookies[i].trim(); // Does this cookie string begin with the name we want? if (cookie.substring(0, name.length + 1) === (name + &#39;=&#39;)) { cookieValue = decodeURIComponent(cookie.substring(name.length + 1)); break; } } } return cookieValue; } const csrftoken = getCookie(&#39;csrftoken&#39;); ちなみに、このコードはDjango公式からの受け売りである。 https://docs.djangoproject.com/en/4.0/ref/csrf/ POSTメソッドを送信する 前項で取得したCSRFトーク</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】Ajaxで郵便番号検索を行う【通販サイトなどの住所登録に有効】</title>
+      <link>https://noauto-nolife.com/post/jquery-ajax-postcode/</link>
+      <pubDate>Fri, 18 Feb 2022 17:40:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-ajax-postcode/</guid>
+      <description>通販サイトなどでは、郵便番号を入力すると、住所の入力を自動で行ってくれる。 本記事では郵便番号検索の実装を解説する。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;quot;postcode&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;postcode&amp;quot; placeholder=&amp;quot;ここに郵便番号を入力する(ハイフン不要)&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;postcode_search&amp;quot; type=&amp;quot;button&amp;quot; value=&amp;quot;郵便番号検索&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;prefecture&amp;quot; type=&amp;quot;text&amp;quot; name=&amp;quot;prefecture&amp;quot; placeholder=&amp;quot;都道府県&amp;quot;&amp;gt</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】selectタグで年月日検索をする【うるう年対応】</title>
+      <link>https://noauto-nolife.com/post/jquery-ymd-search/</link>
+      <pubDate>Tue, 15 Feb 2022 16:14:29 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-ymd-search/</guid>
+      <description>年月日検索をする時、年だけ、月だけ指定して検索する場合がある。この場合、年月日全てを指定するflatpickrでは対応できない。 この場合はselectタグを使用して検索をする。だが、月ごとに日数は異なる。うるう年では2月は29日になる。それに対応させるためには、JavaScriptを書く必要がある。 本記事ではjQueryを使用して、なるべく短く年月日検索を行うselectタグを作る。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta</description>
+    </item>
+    
+    <item>
+      <title>chart.jsでグラフ表示幅と高さを指定する。</title>
+      <link>https://noauto-nolife.com/post/chartjs-responsive-chart/</link>
+      <pubDate>Thu, 23 Dec 2021 09:46:30 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/chartjs-responsive-chart/</guid>
+      <description>まず、公式によると下記の方法ではchart.jsの横幅と高さ指定は通用しない。 &amp;lt;canvas id=&amp;quot;graph&amp;quot; height=&amp;quot;40vh&amp;quot; width=&amp;quot;80vw&amp;quot;&amp;gt; 他にもクラス名を指定して、そのクラス名に幅などの装飾を施す方法も通用しない。 対策 対策1:親要素でstyle属性にposition:relativeとwidth及びheightを合わせて指定する。 クラス名にCSSで装飾を施すのではなく、親要素のstyle属性に指定しなければうまく行かないので注意。 &amp;lt;div style=&amp;quot;position:relative;width:250px;height:250px;&amp;quot;&amp;gt; &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; 対策2:</description>
+    </item>
+    
+    <item>
+      <title>HTMLのformタグで送信(submit)をする際に、確認をとった上で送信を行う【onsubmit属性】</title>
+      <link>https://noauto-nolife.com/post/form-tags-onsubmit/</link>
+      <pubDate>Mon, 20 Dec 2021 15:21:08 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/form-tags-onsubmit/</guid>
+      <description>例えば、下記のような削除ボタンであれば、削除ボタンが押されると同時に削除が実行される。 &amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;POST&amp;quot;&amp;gt; &amp;lt;!--CSRF_token--&amp;gt; &amp;lt;input class=&amp;quot;btn btn-outline-danger&amp;quot; type=&amp;quot;submit&amp;quot; value=&amp;quot;削除&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; これでは間違えて押してしまった時に取り返しが付かない。 そこで下記のようにformタグにonsubmit属性を付与する。これで削除の送信前に確認をとった上で送信を行う事ができる。 &amp;lt;form action=&amp;quot;&amp;quot; method=&amp;quot;POST&amp;quot; onsubmit=&amp;quot;if(confirm(&#39;本当に削除し</description>
+    </item>
+    
+    <item>
+      <title>【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】</title>
+      <link>https://noauto-nolife.com/post/startup-chartjs/</link>
+      <pubDate>Thu, 09 Dec 2021 14:20:07 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-chartjs/</guid>
+      <description>インストールとチュートリアル 下記CDNをインストールする。 &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 続いて、グラフを表示させたい場所に下記、canvasタグを配置。 &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。 棒グラフ 公式から拝借。 実行させるJavaScriptが下記。 const ctx = document.getElementById(&#39;graph&#39;).getContext(&#39;2d&#39;); const myChart = new Chart(ctx, { type: &#39;bar&#39;, data: { labels: [&#39;Red&#39;, &#39;Blue&#39;, &#39;Yellow&#39;, &#39;Green&#39;, &#39;Purple&#39;, &#39;Orange&#39;], datasets: [{ label: &#39;# of Votes&#39;, data: [12, 19, 3, 5, 2, 3], backgroundColor: [ &#39;rgba(255, 99, 132, 0.2)&#39;, &#39;rgba(54, 162, 235, 0.2)&#39;, &#39;rgba(255, 206, 86, 0.2)&#39;, &#39;rgba(75, 192, 192, 0.2)&#39;, &#39;rgba(153, 102, 255, 0.2)&#39;, &#39;rgba(255, 159, 64, 0.2)&#39;</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】オリジナルのアイコン画像を使用して、地図上に表示させる【飲食店のマッピングであれば食べ物の画像を使って視認性UP】</title>
+      <link>https://noauto-nolife.com/post/leaflet-marker-original-icon/</link>
+      <pubDate>Mon, 06 Dec 2021 06:51:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-marker-original-icon/</guid>
+      <description>Leaflet.jsをそのまま使うと、配置されるマーカーはどこにでもあるような普通のマーカーになる。 これでは、どれも同じマーカーなので、パッと見でなにを意味しているのかはわからない。 例えば、飲食店のレビューサイトを投稿するウェブアプリとして、寿司屋でも、ラーメン屋でも、カレー屋でも、皆同じ青色の普通のマーカーになってしまう。寿司屋であれば寿司っぽいアイコンを、ラーメン屋であればラーメンっぽいアイコ</description>
+    </item>
+    
+    <item>
+      <title>【Leaflet.js】地図をクリックしてマーカーを配置した時、古いマーカーを削除する</title>
+      <link>https://noauto-nolife.com/post/leaflet-marker-delete/</link>
+      <pubDate>Thu, 02 Dec 2021 14:43:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/leaflet-marker-delete/</guid>
+      <description>以前紹介したLeaflet.js+OSMでマッピングアプリを作る記事 DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る では、2度以上地図をクリックすると、前にクリックして配置されたマーカーが残ってしまう問題があった。そこで、今回はこの古いマーカーを削除して、新しくクリックされた位置にマーカーを配置させる。 ソースコード 要するに、マーカーを配置したと</description>
+    </item>
+    
+    <item>
+      <title>【Django】canvasで描画した画像をAjax(jQuery)で送信【お絵かきBBS、イラストチャット、ゲームのスクショ共有などに】</title>
+      <link>https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/</link>
+      <pubDate>Thu, 21 Oct 2021 07:25:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-canvas-send-img-by-ajax/</guid>
+      <description>例えば、チャットサイト、掲示板サイトでユーザーが描画したイラストを投稿できる形式にしたい時。 ユーザーが手元の端末でペイントツールを起動して画像を保存して、サイトに添付して貼り付けるのはやや面倒。それだけでなく、サイト独自のレギュレーション(お題に沿ってイラストを付け加える形式、指定された色しか使ってはいけないなど)がある場合、ユーザーのペイントツールでそれを強いるのは不可能に近い。 そこで、サイト上</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】ボタン式の横スライダーを自作する【通販サイト・コンテンツ共有サイトなどに】</title>
+      <link>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</link>
+      <pubDate>Sun, 26 Sep 2021 03:09:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</guid>
+      <description>通販サイトなどでよくある。横スクロール型のスライダーを作る。slick.jsなどを使えば簡単に実現できるが、かえって複雑なので、自作した。 ソースコード HTML。jQueryを読み込み、別途JavaScriptとCSSを読み込む。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;!--jquery読み込み--&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;preview_control_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_frame&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;data_preview_content&amp;qu</description>
+    </item>
+    
+    <item>
+      <title>【jQuery】HTML、CSS、JS合わせて100行以内でカルーセルを自作する【自動スライド】</title>
+      <link>https://noauto-nolife.com/post/javascript-carousel-origin/</link>
+      <pubDate>Tue, 31 Aug 2021 14:22:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-carousel-origin/</guid>
+      <description>カルーセルと言えば、slick.js等のライブラリがあるが、たかだか自動的にスライドするだけのシンプルなカルーセルをサイトの一部分に実装させるためだけにライブラリをインストールさせるのはやや大げさだ。 そこで、今回はカルーセルをjQueryを使用した上で自作する。書く必要のあるコードはHTMLが約30行、CSSが約20行、JSが約40行の合計100行足らずで実現できる。 ソースコードと解説 HTML。C</description>
+    </item>
+    
+    <item>
+      <title>FormDataをformタグではなく、オブジェクトにキーと値をセットした上でAjax送信</title>
+      <link>https://noauto-nolife.com/post/javascript-formdata-obj-set/</link>
+      <pubDate>Sat, 14 Aug 2021 11:48:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-formdata-obj-set/</guid>
+      <description>タイトルの説明。 通常、Ajaxでサーバーにリクエストを送信する時、下記のようにFormDataクラスを使用して送信する。 let form_elem = &amp;quot;#form_area&amp;quot;; let data = new FormData( $(form_elem).get(0) ); let url = $(form_elem).prop(&amp;quot;action&amp;quot;); let method = $(form_elem).prop(&amp;quot;method&amp;quot;); $.ajax({ url: url, type: method, data: data, processData: false, contentType: false, dataType: &#39;json&#39; }).done( function(data, status, xhr ) { //Done }).fail( function(xhr, status, error) { //Fail }); しかし、送信したいデータがいつもこのようにformタグで囲まれているとも限らない。 そこで、FormDataクラスに引数を入れずにオブジェクトを作り、オブジェクトにキーと値をセットしてAja</description>
+    </item>
+    
+    <item>
+      <title>Javascriptを使ってCSVを生成してダウンロードする</title>
+      <link>https://noauto-nolife.com/post/javascript-download-csv/</link>
+      <pubDate>Sat, 31 Jul 2021 20:43:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-download-csv/</guid>
+      <description>CSVの生成とダウンロードであれば、あえてサーバーサイドでやらなくても、JavaScriptだけでことは足りる。 ソースコード 下記関数を実行すれば良い。 //現在スタックされているデータをCSVに変換してダウンロードする function create_csv(){ //文字列型で二次元配列のデータ data = [ [&amp;quot;A&amp;quot;,&amp;quot;B&amp;quot;,&amp;quot;C&amp;quot;], [&amp;quot;A1&amp;quot;,&amp;quot;B1&amp;quot;,&amp;quot;C1&amp;quot;], [&amp;quot;A2&amp;quot;,&amp;quot;B2&amp;quot;,&amp;quot;C2&amp;quot;], [&amp;quot;A3&amp;quot;,&amp;quot;B3&amp;quot;,&amp;quot;C3&amp;quot;], [&amp;quot;A4&amp;quot;,&amp;quot;B4&amp;quot;,&amp;quot;C4&amp;quot;], ] console.log(data); //作った二次元配列をCSV文字列に直す。 let csv_string = &amp;quot;&amp;quot;; for (let d of data) { csv_string += d.join(&amp;quot;,&amp;quot;); csv_string += &#39;\r\n&#39;; } //ファイル名の指定 let file_name = &amp;quot;test.csv&amp;quot;; //CSVのバイナリデー</description>
+    </item>
+    
+    <item>
+      <title>video.jsを実装させ、コントローラをカスタムする【Brightcove Player】</title>
+      <link>https://noauto-nolife.com/post/js-video-controller/</link>
+      <pubDate>Wed, 09 Jun 2021 11:48:19 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/js-video-controller/</guid>
+      <description>通常、videoタグを使用する場合、controls属性を付与することで、動画の操作(再生、音量調整等)が可能なコントローラを表示できる。 しかし、再生速度の操作やコントローラの装飾関係を一から作っていくには時間がかかりすぎる。 そこで、videoタグの拡張が可能なvideo.jsというライブラリを実装させる。すでにAmazon等の大手サイトでも採用実績のある完成度の高いvideoタグ専用のjsライブ</description>
+    </item>
+    
+    <item>
+      <title>JavascriptからCookieを扱う【動画の設定音量の記録と読み込み】</title>
+      <link>https://noauto-nolife.com/post/javascript-cookie/</link>
+      <pubDate>Tue, 13 Apr 2021 18:59:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/javascript-cookie/</guid>
+      <description>JavaScriptからCookieを扱う。これで、サイトのデータをユーザーのブラウザに保存できる。 Cookieにvideoタグで設定した音量情報を格納、読み込みするコード 実例を交えながら解説する。下記はvideoタグで指定した音量をCookieに記録する。 window.addEventListener(&amp;quot;load&amp;quot; , function (){ const video = document.querySelector(&amp;quot;video&amp;quot;); video.addEventListener(&amp;quot;volumechange&amp;quot;,(event) =&amp;gt; { document.cookie = &amp;quot;volume=&amp;quot; + decodeURIComponent(event.target.volume) + &amp;quot;;Path=/single;SameSite=strict&amp;quot;; }); set_video_volume(); }); function set_video_volume(){ let cookies = document.cookie; console.log(cookies); let cookiesArray = cookies.split(&#39;;&#39;); let volume = 0; for(let c of cookiesArray) { console.log(c); let cArray = c.split(&#39;=&#39;); if( cArray[0] === &amp;quot;volume&amp;quot;){ volume = Number(cArray[1]); console.log(volume); break; } } const video = document.querySelector(&amp;quot;video&amp;quot;); video.volume = volume; } Cookie</description>
+    </item>
+    
+    <item>
+      <title>jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】</title>
+      <link>https://noauto-nolife.com/post/jquery-to-javascript/</link>
+      <pubDate>Tue, 13 Apr 2021 18:32:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-to-javascript/</guid>
+      <description>jQueryに依存したコードをそのままにするのは再利用性に欠け、開発効率にも関わる。そこで、今回はjQueryのコードを適宜javascriptに書き換える。 セレクタ まずは基本のセレクタ以下のように書き換える。 var test = $(&amp;quot;.test&amp;quot;); //↓以下に書き換え var test = document.querySelectorAll(&amp;quot;.test&amp;quot;); //←全ての.textクラスの要素を抜き取る var test = document.querySelector(&amp;quot;.test&amp;quot;); //←.testクラスの1番最初の要素を抜き取る jQueryが提供するメソッドや属性などは使用できなく</description>
+    </item>
+    
+    <item>
+      <title>HUGOにシェルスクリプトとJavaScriptの記事検索機能を実装させる</title>
+      <link>https://noauto-nolife.com/post/hugo-js-search-system/</link>
+      <pubDate>Tue, 13 Apr 2021 08:18:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/hugo-js-search-system/</guid>
+      <description>タイトルの通り。 静的サイトジェネレーターのHUGOはサーバーサイドのスクリプトが存在しない(全てフロント言語)。そのため、検索機能を実装させるとなると、検索対象と検索機能の全てをフロントに記述する必要がある。フロントで完結する検索機能に必要になるのが、JavaScript。 それから、検索対象である記事の文字列をJSが読み取れる形式でジェネレートしてあげる必要もある。その際にコマンド一発でジェネレー</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu18.04にnode.jsとnpm、vue-cliをインストールする</title>
+      <link>https://noauto-nolife.com/post/startup-npm-install/</link>
+      <pubDate>Thu, 11 Mar 2021 16:10:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-npm-install/</guid>
+      <description>環境 Ubuntu 18.04 Bash インストール nodejsとnpmをインストールする。 sudo apt install -y nodejs npm npmからnパッケージをインストール sudo npm install n -g nパッケージを使ってnodeをインストール sudo n stable 旧バージョンのnodejs及びnpmをアンインストールする。 sudo apt purge -y nodejs npm exec $SHELL -l 下記コマンドを実行して、バージョンが表示されれば完了 node -v permission denied問題への対処 下記コマンドを実行する。 npm config get prefix 出力された文字列が/usr/localで</description>
+    </item>
+    
+    <item>
+      <title>Djangoで動画投稿時にサムネイルもセットでアップロードする【DRF&#43;Ajax(jQuery)&#43;canvas】</title>
+      <link>https://noauto-nolife.com/post/django-ajax-thumbnail-upload/</link>
+      <pubDate>Mon, 01 Mar 2021 15:03:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax-thumbnail-upload/</guid>
+      <description>Djangoで動画をアップロードする時、ffmpegなどを使ってサムネイルの自動生成を行うが、クライアントが自分で動画のサムネイルを指定したいときはこの限りではない。 サムネイルに指定したい画像は動画内にあり、クライアントがサムネイルの画像をまだ作っていない場合、アップロードフォームでサムネイルを作る必要がある。 本記事では動画を投稿する際、サムネイルをクライアントが指定した上でアップロードする手法を</description>
+    </item>
+    
+    <item>
+      <title>Vue.jsでTODOを作る【CRUD】</title>
+      <link>https://noauto-nolife.com/post/vuejs-todo-crud/</link>
+      <pubDate>Tue, 26 Jan 2021 15:43:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vuejs-todo-crud/</guid>
+      <description>Codepenに掲載されていた偉い人のコードを元に、Todoを作ってみた。変数名がベストプラクティスとは異なる可能性があるため、あくまでもvue.jsの全体の機能確認用としている。 ソースコード まずはindex.html &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Vue.jsでTodo&amp;lt;/title&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;header class=&amp;quot;text-center&amp;quot; style=&amp;quot;background:orange;color:white;&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;Vue.jsでTodo&amp;lt;/h1</description>
+    </item>
+    
+    <item>
+      <title>Vue.jsでモーダルダイアログを作る</title>
+      <link>https://noauto-nolife.com/post/vuejs-modal/</link>
+      <pubDate>Mon, 18 Jan 2021 14:36:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/vuejs-modal/</guid>
+      <description>jQueryであれば、モーダルダイアログを実装する時、対象の要素(DOM)を指定して、.show()と.hide()を行えば良いのでそれほど難しくはないが、vue.jsの場合はそうは行かない。 本記事ではvue.jsを使用したモーダルダイアログの実装方法をまとめる。 ソースコード 今回はモーダルダイアログの範囲外をクリックしたら閉じるように仕立てた。 まず、HTML。開発版のvue.jsのCDNを指定して</description>
+    </item>
+    
+    <item>
+      <title>【日付入力】flatpickrの実装方法(ロケール日本語化、日時入力対応化)</title>
+      <link>https://noauto-nolife.com/post/flatpickr-install/</link>
+      <pubDate>Thu, 24 Dec 2020 16:37:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/flatpickr-install/</guid>
+      <description>ウェブアプリを開発していると、避けて通ることができない日付もしくは日時入力。HTMLのSELECTタグを使用しても良いが、うるう年に対応させないといけないし、何よりユーザビリティに問題がある。 そんな時、flatpickrを実装すれば、日時入力が非常に簡単になる。しかもjQueryに依存していないので、流行のvue.jsなどを使いたい場合にも有効。 flatpickrの実装方法 まずHTML。flatp</description>
+    </item>
+    
+    <item>
+      <title>Djangoで多対多のリレーションを含むデータをAjax(jQuery)&#43;DRFで送信させる</title>
+      <link>https://noauto-nolife.com/post/django-m2m-restful/</link>
+      <pubDate>Tue, 01 Dec 2020 17:17:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-m2m-restful/</guid>
+      <description>本記事では多対多のリレーションを含んだウェブアプリで、Django REST FrameworkとAjaxを使用した非同期データ送信を実現させる方法を書く。 ソースコードは『【Django】一対多、多対多のリレーションでforms.pyを使ったバリデーションとフォームを表示』の『【2】forms.pyを使用したフォームバリデーション+独自に作ったテンプレート』から流用した。 Ajax(jQuery)+Restf</description>
+    </item>
+    
+    <item>
+      <title>jQueryでオートコンプリート(入力補正)を実装させる【表記ゆれ対策にも有効】</title>
+      <link>https://noauto-nolife.com/post/jquery-autocomplete/</link>
+      <pubDate>Thu, 29 Oct 2020 16:52:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/jquery-autocomplete/</guid>
+      <description>ウェブアプリを作って、ユーザーに何かを文字列を入力させる時、大抵表記ゆれが起こる。 例えば、JAと農業協同組合と農協、ラズパイとラズベリーパイとRaspberry Piとraspberry piなど。 このような表記ゆれを一度でも許すと、検索で引っかからなくなる。しかし、SELECTタグを使うと、項目が増えた時、選択に時間がかかりすぎる。 そこで、文字入力(入力補正)と選択が同時にできるオートコンプリートを</description>
+    </item>
+    
+    <item>
+      <title>JavaScriptほぼ不使用のサイトを作ってGoogle PageSpeed Insightsでスコアを調べてみた</title>
+      <link>https://noauto-nolife.com/post/nonjs-pagespeed/</link>
+      <pubDate>Thu, 22 Oct 2020 16:27:53 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nonjs-pagespeed/</guid>
+      <description>先日作った自分のサイトなんですけどね。使っているJavaScriptはせいぜいAnalyticsとAdsenceぐらいです。 パソコンのスコア ご覧ください。パソコンのスコア、99点です。直すべきは画像の圧縮とBootstrapの読み込み場所ぐらいでしょう。 改善できる項目、『サーバーの応答時間を速くしてください』&amp;hellip;.。Netlifyさんなんとかできませんか？とは言え、無料だからやむなし。</description>
+    </item>
+    
+  </channel>
+</rss>

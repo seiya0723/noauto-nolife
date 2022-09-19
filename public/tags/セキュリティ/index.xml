@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>セキュリティ on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/</link>
+    <description>Recent content in セキュリティ on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 04 Sep 2022 15:49:58 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】</title>
+      <link>https://noauto-nolife.com/post/ubuntu-env-read-python/</link>
+      <pubDate>Sun, 04 Sep 2022 15:49:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-env-read-python/</guid>
+      <description>例えば、gitで管理しているプロジェクトをgitでデプロイする時。 たとえローカルサーバーのDBのパスワードとは言え、ハードコードした状態でコミットするわけには行かない。(gitignoreに入れてしまうとパスワードが含まれない) そこで、環境変数をセットし、Python側でそれを読む。 環境変数をセットする。 #変数名=値 ZZZ=test #変数を環境変数としてセットする。 export ZZZ #↑2つは下記でも可 export ZZZ=test セットした環境変数</description>
+    </item>
+    
+    <item>
+      <title>【Django】セッションの有効期限をセット、もしくはブラウザを閉じた時にセッションを無効化【settings.py】</title>
+      <link>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</link>
+      <pubDate>Sun, 01 May 2022 20:09:59 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</guid>
+      <description>セキュリティを担保したいサイトであれば、ブラウザが閉じてもセッションが残るデフォルトのDjango設定を疎ましく思うだろう。 そういう時は、settings.pyからセッションの有効期限の設定もしくは、ブラウザの終了を検知して無効化する設定を施せばよい。 セッションに有効期限をセットする【単位:秒】 例えば60秒後にセッションを切って、再ログインを要求させる場合はこうする。 SESSION_COOKIE_AGE = 60 デフォルトでは2週間にな</description>
+    </item>
+    
+    <item>
+      <title>Djangoでpython3のsubprocessモジュールを使い、任意のコマンドをなるべく安全に配慮して実行させる</title>
+      <link>https://noauto-nolife.com/post/django-secure-subprocess/</link>
+      <pubDate>Tue, 04 Jan 2022 10:16:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-secure-subprocess/</guid>
+      <description>ふと思った。 毎度毎度、SSHクライアントがインストールされている端末を起動させ、サーバーにログイン、コマンドで操作するめんどくささ、どうにかできないだろうかと。 ウェブアプリから任意のコマンドを実行することができれば、わざわざSSHを使わなくても、ブラウザだけで簡単にコマンドが実行できる。ただ、問題になってくるのがセキュリティ。 不適切なコマンドを実行されてしまうと、当然システムは壊れる。そこで、なる</description>
+    </item>
+    
+    <item>
+      <title>【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】</title>
+      <link>https://noauto-nolife.com/post/django-auth-not-allauth/</link>
+      <pubDate>Sat, 01 Jan 2022 07:00:48 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-auth-not-allauth/</guid>
+      <description>Djangoでは、サードパーティー製ライブラリとしてdjango-allauthを使用することで、誰でも簡単にユーザー認証機能を実装させることができる。 とはいえ、事情によってライブラリの使用が制限されていたり、単なるユーザーIDとパスワードによるログインを行いたいだけであれば、デフォルトのLoginView及び、LogoutViewを使えば簡単に実装できる。 本記事ではallauthよりも手っ取り早</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】IPアドレスを取得して、DBへ記録する【犯罪・不正利用の抑止、荒らし対策などに】</title>
+      <link>https://noauto-nolife.com/post/laravel-ipaddress/</link>
+      <pubDate>Wed, 24 Nov 2021 07:08:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-ipaddress/</guid>
+      <description>クライアントのIPアドレスを記録できれば、認証が無くても犯罪行為の抑止につながるし、事案が発生してもすぐに対応できるだろう。 本記事ではLaravelにクライアントのIPアドレスを記録する方法を解説する。 コードは『初心者でもlaravelを使い、45分でCRUD簡易掲示板を作る【Restful対応】』から流用している。 IPアドレスのカラムを追加(モデル編集とマイグレーションファイル作成) まずマイグレ</description>
+    </item>
+    
+    <item>
+      <title>ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】</title>
+      <link>https://noauto-nolife.com/post/startup-web-application-framework/</link>
+      <pubDate>Thu, 21 Oct 2021 14:44:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-web-application-framework/</guid>
+      <description>DjangoやLaravel、Ruby on Rails等のウェブアプリケーションフレームワーク(以下、フレームワーク)を使うことで、効率的にウェブアプリの開発ができる。 しかし、前提となる知識をおろそかにしているようでは大したものは作れないし、問題だらけのウェブアプリを知らぬ間に世に出してしまうことになるだろう。 本記事ではフレームワークを扱う際に知っておきたい知識を記す。 ネットワーク ウェブが動く仕組み ま</description>
+    </item>
+    
+    <item>
+      <title>Djangoでスクレイピング対策をする【MIDDLEWAREでUA除外、ランダムでHTML構造変化等】</title>
+      <link>https://noauto-nolife.com/post/django-anti-scraping/</link>
+      <pubDate>Sat, 02 Oct 2021 19:05:06 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-anti-scraping/</guid>
+      <description>最近ではPythonのスクレイピング関係の書籍が増えてきて、誰でも簡単にスクレイピングできるようになってきている。 その影響か、私が管理しているサイトもしょっちゅうスクレイピングかと思われるアクセスがログから確認できる。 放置しているとさらにエスカレートし、ただの負荷にしかならないので、スクレイピングには対策が必要。本記事では、とりわけ私の得意なDjangoでその方法を記す。 MIDDLEWAREにPy</description>
+    </item>
+    
+    <item>
+      <title>CloudinaryでPDF等の画像や動画以外のファイルをアップロードし、共有する方法【blocked for delivery】</title>
+      <link>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</link>
+      <pubDate>Thu, 30 Sep 2021 09:11:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</guid>
+      <description>どうやらPDF等の画像や動画以外の一部のファイルは配信拒否されてしまうらしい。セキュリティ対策の一貫として行われているそうな。 しかし、PDFを共有する前提のウェブアプリであればただの足かせでしか無いし、ユーザー認証や管理者が管理をきちんとしていればセキュリティ的な事案はある程度は低減できる。 本記事ではCloudinaryを使用してPDFを配信する方法を記す。 対策 対策は至ってシンプル。Cloudin</description>
+    </item>
+    
+    <item>
+      <title>Nginxで特定IPアドレスのリクエストを拒否する</title>
+      <link>https://noauto-nolife.com/post/nginx-deny-ip-address/</link>
+      <pubDate>Tue, 28 Sep 2021 11:20:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-deny-ip-address/</guid>
+      <description>特定IPアドレスのリクエストを拒否したいのであれば、ロードバランサーやリバースプロキシなどのセキュリティ設定を書き換えれば済む話だが、環境によっては他のサービスなどに影響を及ぼす可能性もある。 そこで、Nginxの設定を書き換え、特定のサービスだけで特定のIPアドレスを使用したリクエストを拒否する方法をここに記す。 設定ファイルに追加する Nginxの設定ファイル( /etc/nginx/nginx.conf )に下記を追加する。 deny 192.168.XXX.XXX; /etc/n</description>
+    </item>
+    
+    <item>
+      <title>Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check-by-awk/</link>
+      <pubDate>Thu, 23 Sep 2021 13:51:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check-by-awk/</guid>
+      <description>Nginxのログはスペース区切りで送信元IPアドレス、アクセス対象のURLなどが書かれてある。これはスペース区切りで文字を扱うことができるawkコマンドと相性が良い。 本記事では、awkコマンドを使用して、特定の条件下のログを報告したり、ログの情報を見やすくさせる方法を記す。 awkコマンドを使用して、表示する情報を絞る 基本。 cat access.log | awk &#39;{print $1}&#39; これで送信元IPアドレス(スペース区切りで1番目のデータ)が表示</description>
+    </item>
+    
+    <item>
+      <title>【Django】デプロイ後に管理サイトを管理者以外がアクセスできないようにする【UUID&#43;MIDDLEWAREによるURL複雑化とIPアドレス制限】</title>
+      <link>https://noauto-nolife.com/post/django-admin-protect/</link>
+      <pubDate>Wed, 22 Sep 2021 21:55:24 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-admin-protect/</guid>
+      <description>Djangoの管理サイトのURLはデフォルトでは、admin/となっている。そのため、誰でも簡単に管理サイトにアクセスできる。しかもIDとパスワードのフォームしか表示されていないので、総当りすればいずれ突破されてしまう。 だからこそ、アクセス制限と推測されないURLというものが重要になってくる。本記事ではなるべくシステムに依存せず、Djangoのみで管理サイトの保護が完結する方法を記す。 方法論 以下の</description>
+    </item>
+    
+    <item>
+      <title>Nginxのログをチェックする、ログの出力設定を変更する</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check/</link>
+      <pubDate>Tue, 21 Sep 2021 07:19:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check/</guid>
+      <description>事案が発生した時、まっさきに確認するべきがサーバーのログ。とりわけウェブサーバーのNginxのログ確認方法、設定方法をここに記す。 Nginxのログの見方 Nginxの設定ファイル(/etc/nginx/nginx.conf)にログのパスが書かれてある ## # Logging Settings ## access_log /var/log/nginx/access.log; error_log /var/log/nginx/error.log; ログは/var/log/nginx/access.logに保管されてある事がわかる。中身はこんな感じ。 左から順にこうなっている。 送信元</description>
+    </item>
+    
+    <item>
+      <title>独自ドメインのサイトにreCAPTCHAを実装させる方法と仕組み【ボット対策】</title>
+      <link>https://noauto-nolife.com/post/recaptcha-setting/</link>
+      <pubDate>Sun, 19 Sep 2021 18:21:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/recaptcha-setting/</guid>
+      <description>CAPTCHAとして特に名高いGoogleのreCAPTCHAを使用する。これで不正なアカウントの大量作成や、Selenium等のスクレイピングツールの使用をある程度制限させることができる。 reCAPTCHA実装までの流れ カードの登録を済ませたグーグルアカウントを用意 独自ドメインを取得してサイトに設定 グーグルアカウントからreCAPTCHAを使用する サイトにreCAPTCHAのscriptタグ、フ</description>
+    </item>
+    
+    <item>
+      <title>UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】</title>
+      <link>https://noauto-nolife.com/post/uuid-generate/</link>
+      <pubDate>Sun, 19 Sep 2021 18:14:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/uuid-generate/</guid>
+      <description>Ubuntuであれば、下記コマンドを実行するだけで自動的にUUIDが生成される。 uuidgen 用途 秘匿する必要のあるページ(管理サイト等)にURLとして割り当てることで、総当たりでヒットされにくくなる。 UUIDが重複する確立は途方もなく低いので、他のセキュリティ対策ができない場合の代替案として有効であると思われる。 例えば、sedコマンドなどを使用して、Djangoのurls.pyから管理サイトを割り当てている</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】GitHubにプッシュする時.gitignoreに追加する必要のあるファイル、ディレクトリ</title>
+      <link>https://noauto-nolife.com/post/laravel-gitignore-add/</link>
+      <pubDate>Sat, 18 Sep 2021 11:11:14 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-gitignore-add/</guid>
+      <description>GitHubにプッシュする時、.gitignoreに追加する必要のあるファイル、ディレクトリをここにまとめる。 そんなものはどうでも良いから、もともとあったものと、追加したものを含めた完全版を見せてくれと思う人は、ページ末尾の結論へ。 対象に追加するべき、ファイル *.log *.sqlite .htaccess .logには開発用サーバーで動かしたログが残る。.sqliteは言わずもがなデータが残っている。 対象に追加するべき、ディレクトリ /storage /config /</description>
+    </item>
+    
+    <item>
+      <title>サーバーを本格的に運用するようになったらやること・守ること</title>
+      <link>https://noauto-nolife.com/post/startup-server-manage/</link>
+      <pubDate>Tue, 14 Sep 2021 06:54:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-server-manage/</guid>
+      <description>圧倒的に人手不足な組織でありがちなのが、『開発とデプロイができるならサーバー管理もできるだろう』と言わんばかりに経験も無いのにサーバー管理まで任されること。 そんな時に一通りチェックしておくと良いものを列挙する。 事前対策編【予防・抑止】 OSにインストールされているパッケージのアップデート(更新) OSにインストールされているパッケージは問題がなければ定期的にアップデートしておく。 sudo apt update &amp;amp;&amp;amp; sudo apt -y upgrade &amp;amp;&amp;amp; sudo apt</description>
+    </item>
+    
+    <item>
+      <title>【Django&#43;AWS】独自ドメインを割り当てHTTPS通信を実現した状態で、EC2(Ubuntu&#43;Nginx)へデプロイする</title>
+      <link>https://noauto-nolife.com/post/django-deploy-ec2-origin-domain/</link>
+      <pubDate>Mon, 13 Sep 2021 08:19:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-deploy-ec2-origin-domain/</guid>
+      <description>既に、【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 + Certificate Manager + ロードバランサ(ELB)】の内容を終え、独自ドメインでHTTPS通信が可能な状態である前提で解説する。 一部、DjangoをAWSのEC2(Ubuntu)にデプロイすると内容が重複しているが、AWS側の設定は一切行わない。書き換えが必要なのは、settings.pyのALLOWED_HO</description>
+    </item>
+    
+    <item>
+      <title>DjangoでサイトにアクセスしたクライアントのIPアドレス、ユーザーエージェント(UA)、プロバイダ名(ゲートウェイ名)を表示する【犯罪・不正行為の抑止とセキュリティ】</title>
+      <link>https://noauto-nolife.com/post/django-show-ip-ua-gateway/</link>
+      <pubDate>Mon, 13 Sep 2021 07:21:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-show-ip-ua-gateway/</guid>
+      <description>不正行為や犯罪などの抑止力として効果を発揮する、クライアントのUA、IPアドレス及びプロバイダ名の表示。その方法をここに記す。 グローバルIPアドレスを表示 ビュー側で以下のように取得する。 ip_list = request.META.get(&#39;HTTP_X_FORWARDED_FOR&#39;) if ip_list: ip = ip_list.split(&#39;,&#39;)[0] else: ip = request.META.get(&#39;REMOTE_ADDR&#39;) もし、ip_listに記録されたIPアドレスが複数ある場合は、ネットワーク構成などを考慮して添字を指定する。 ユーザーエージェント(UA)を表示 ビュー側で以下のように取得する。 user_agent = request.META.get(&#39;HTTP_USER_AGENT&#39;) リクエスト</description>
+    </item>
+    
+    <item>
+      <title>【Django】カスタムテンプレートタグ(フィルタ)でリンク付きのハッシュタグを実現する。【#から始まる正規表現】</title>
+      <link>https://noauto-nolife.com/post/django-custom-template-tags-hashtags/</link>
+      <pubDate>Sun, 05 Sep 2021 17:30:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-template-tags-hashtags/</guid>
+      <description>Djangoのカスタムテンプレートタグ(フィルタ)を使うことでTwitterやyoutube等のハッシュタグを実現できる。 だが、ちょっとでも間違えると、簡単にXSS脆弱性を生み出してしまう可能性があるため、十分注意して実装する。 方法論 まず、普通のDTLはXSS対策のため、&amp;lt;や&amp;gt;等の特殊記号をエスケープしている。ハッシュタグを実現させるのであれば、まずはこれを除外する。そのため、mark</description>
+    </item>
+    
+    <item>
+      <title>【Django】MIDDLEWAREを自作、未ログインユーザーにメディアファイルへのアクセスを拒否する【settings.py】</title>
+      <link>https://noauto-nolife.com/post/django-create-middleware/</link>
+      <pubDate>Sat, 28 Aug 2021 17:17:41 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-create-middleware/</guid>
+      <description>未ログインユーザーに対して動画や画像等のメディアファイルは公開したくない。しかし、何も対策をしていないとメディアファイルは誰でも見放題の状態になってしまう。 たとえそれが有料コンテンツであったとしても、mp4やpngのリンクを直接アクセスするだけで誰でも見れる。これではユーザーは離反する。 そこで、どんなリクエストでも必ず通るDjangoのMIDDLEWAREを利用する。本記事ではMIDDLEWARE</description>
+    </item>
+    
+    <item>
+      <title>【Django】同一人物による工作(再生数の水増しなど)をいかにして防ぐか、方法と対策【unique_together,Recaptcha,UA,IPアドレス等】</title>
+      <link>https://noauto-nolife.com/post/django-same-user-operate-prevent/</link>
+      <pubDate>Thu, 26 Aug 2021 12:24:05 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-same-user-operate-prevent/</guid>
+      <description>例えば、動画サイトを運営していて、動画の再生回数を記録する機能を実装したとする。 動画の検索で、再生数の多い順に並び替えて表示する機能が既にある場合、再生回数の水増しによって、全く面白くない動画が検索の上位に表示されるなどの問題が発生する。 それだけでなく、再生回数の水増しを放置してしまうと、ランキングも荒れ果て、結果的にユーザーが離反してしまう恐れもある。(※ただし、ランキングの集計方法によってある</description>
+    </item>
+    
+    <item>
+      <title>【Django】allauthのurls.pyをカスタムする【新規アカウント作成、パスワード変更処理の無効化など】</title>
+      <link>https://noauto-nolife.com/post/django-allauth-custom-urls/</link>
+      <pubDate>Tue, 25 May 2021 09:49:51 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-allauth-custom-urls/</guid>
+      <description>Django-allauth。とても便利ではあるが、運用する場所によっては必要のない処理も含まれている。 例えば、新規アカウント作成の処理。これは限られた人間しかアクセスを許されないサイト(例:社員用のウェブアプリ等)の場合、部外者が勝手にアカウントを作り、内部へのアクセスを許してしまう。 そこで、新規アカウント作成処理やパスワード変更処理などを無効化させる。そのためには、allauthのurls.p</description>
+    </item>
+    
+    <item>
+      <title>DjangoでUUIDを主キーとし、first_nameとlast_nameを1つにまとめたカスタムユーザーモデルを作る【AbstractBaseUserとallauth】</title>
+      <link>https://noauto-nolife.com/post/django-custom-user-model-uuid/</link>
+      <pubDate>Mon, 15 Feb 2021 15:47:57 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-user-model-uuid/</guid>
+      <description>Djangoでユーザーを作ったとき、デフォルトでは数値型オートインクリメントの主キーになる。 身内だけで使う小さなウェブアプリであれば大した問題にはならないと思うが、基本主キーが数値型かつオートインクリメントであれば、簡単に予測されてしまう。セキュリティリスクは最小限に留めるためにも、なるべく主キーはUUID型にしたい。 そこで、本記事ではユーザーの主キーにUUIDを使用したカスタムユーザーモデルの作</description>
+    </item>
+    
+    <item>
+      <title>Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】</title>
+      <link>https://noauto-nolife.com/post/django-fileupload/</link>
+      <pubDate>Thu, 05 Nov 2020 15:30:14 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-fileupload/</guid>
+      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 40分Djangoを理解している方向け。 流れ 必要なライブラリのインストール settings.pyの編集 urls.pyの編集 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール pip install Pillow pip install python-magic P</description>
+    </item>
+    
+    <item>
+      <title>【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】</title>
+      <link>https://noauto-nolife.com/post/startup-django-allauth/</link>
+      <pubDate>Sat, 24 Oct 2020 16:32:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-django-allauth/</guid>
+      <description>ここに、Django-allauthの実装方法をまとめる。主にsettings.pyを操作することになる。 また、allauth付属のテンプレートではHTMLのみなのでテンプレート及びCSSによる装飾も付せて説明する。 はじめに django-allauthは外部ライブラリなので、pipコマンドでインストールする必要がある。 pip install django-allauth ユーザーIDとパスワードを使用した認証方法の実装 ユーザーIDとパスワードを</description>
+    </item>
+    
+  </channel>
+</rss>

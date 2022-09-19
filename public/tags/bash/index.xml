@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bash on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/bash/</link>
+    <description>Recent content in Bash on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 23 Sep 2021 13:51:44 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check-by-awk/</link>
+      <pubDate>Thu, 23 Sep 2021 13:51:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check-by-awk/</guid>
+      <description>Nginxのログはスペース区切りで送信元IPアドレス、アクセス対象のURLなどが書かれてある。これはスペース区切りで文字を扱うことができるawkコマンドと相性が良い。 本記事では、awkコマンドを使用して、特定の条件下のログを報告したり、ログの情報を見やすくさせる方法を記す。 awkコマンドを使用して、表示する情報を絞る 基本。 cat access.log | awk &#39;{print $1}&#39; これで送信元IPアドレス(スペース区切りで1番目のデータ)が表示</description>
+    </item>
+    
+    <item>
+      <title>UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】</title>
+      <link>https://noauto-nolife.com/post/uuid-generate/</link>
+      <pubDate>Sun, 19 Sep 2021 18:14:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/uuid-generate/</guid>
+      <description>Ubuntuであれば、下記コマンドを実行するだけで自動的にUUIDが生成される。 uuidgen 用途 秘匿する必要のあるページ(管理サイト等)にURLとして割り当てることで、総当たりでヒットされにくくなる。 UUIDが重複する確立は途方もなく低いので、他のセキュリティ対策ができない場合の代替案として有効であると思われる。 例えば、sedコマンドなどを使用して、Djangoのurls.pyから管理サイトを割り当てている</description>
+    </item>
+    
+    <item>
+      <title>シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】</title>
+      <link>https://noauto-nolife.com/post/shellscript-server-checker/</link>
+      <pubDate>Sun, 19 Sep 2021 08:51:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/shellscript-server-checker/</guid>
+      <description>サーバーが応答不能になった時、すぐに対処できるよう、通知機能が欲しい。そういうときのシェルスクリプト。 pingで応答不能をチェックする #! /bin/bash while true ; do ping -c 1 192.168.11.99 rc=$? if [[ $rc -eq 0 ]] ; then echo &amp;quot;正常です&amp;quot; else echo &amp;quot;失敗しました&amp;quot; fi sleep 1 done 後は『正常です』『失敗しました』のいずれかに任意の処理を書き込む。 curlで応答不能をチェックする curlはHTTPのステータスコードも手に入るの</description>
+    </item>
+    
+    <item>
+      <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】</title>
+      <link>https://noauto-nolife.com/post/laravel-database-regenerate/</link>
+      <pubDate>Sat, 18 Sep 2021 08:42:15 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-database-regenerate/</guid>
+      <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 プロジェクトのディレクトリで下記コマンドを実行する。 find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \; bashのaliasに登録すれば上記コマンドをさらに短くできる。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行するこ</description>
+    </item>
+    
+    <item>
+      <title>【Django】settings.pyのSECRET_KEYを再発行(リジェネレート)する【alias登録で即生成・即実装からの再起動】</title>
+      <link>https://noauto-nolife.com/post/django-secret-key-regenerate/</link>
+      <pubDate>Fri, 17 Sep 2021 11:19:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-secret-key-regenerate/</guid>
+      <description>うっかり、SECRET_KEYをバージョン管理対象に含ませてしまった。このままではクラウドサーバーにデプロイしたSECRET_KEYが予測され、CSRFトークン等が機能不全になってしまう。 そんな時に備えておきたい、SECRET_KEYの再発行の方法を解説する。 ソースコード Qiitaより拝借。 from django.core.management.utils import get_random_secret_key secret_key = get_random_secret_key() text = &#39;SECRET_KEY = \&#39;{0}\&#39;&#39;.format(secret_key) print(text) 実行すると、 SECRET_KEY = &#39;07y^y0#_7b74jy)d6z0lu5*r$#azfyt1*1f+g1-3w+l@&amp;amp;hs^2!&#39; 等の文言が出てくる。 aliasに登録して、どこでも再発行できるよ</description>
+    </item>
+    
+    <item>
+      <title>サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】</title>
+      <link>https://noauto-nolife.com/post/startup-ubuntu2004-server/</link>
+      <pubDate>Sat, 21 Aug 2021 17:39:30 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-ubuntu2004-server/</guid>
+      <description>デスクトップ版のUbuntuとサーバー版のUbuntuは完全に別物である。 デスクトップ版はGUIでラクラク固定IPアドレス設定できたり、作業しながらブラウザで検索できる一方で、サーバー版のUbuntuはただ無機質なターミナルが全画面を覆っているだけである。 本記事ではインストールからIPアドレスの固定化、bashの設定やタイムゾーン設定、別端末からSSHでログインするまでを解説する。 対象読者は、既に</description>
+    </item>
+    
+    <item>
+      <title>HUGOにシェルスクリプトとJavaScriptの記事検索機能を実装させる</title>
+      <link>https://noauto-nolife.com/post/hugo-js-search-system/</link>
+      <pubDate>Tue, 13 Apr 2021 08:18:45 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/hugo-js-search-system/</guid>
+      <description>タイトルの通り。 静的サイトジェネレーターのHUGOはサーバーサイドのスクリプトが存在しない(全てフロント言語)。そのため、検索機能を実装させるとなると、検索対象と検索機能の全てをフロントに記述する必要がある。フロントで完結する検索機能に必要になるのが、JavaScript。 それから、検索対象である記事の文字列をJSが読み取れる形式でジェネレートしてあげる必要もある。その際にコマンド一発でジェネレー</description>
+    </item>
+    
+    <item>
+      <title>【AWS】Cloud9使う時にすぐやる設定【bashrc、Django等】</title>
+      <link>https://noauto-nolife.com/post/cloud9-first-config/</link>
+      <pubDate>Tue, 16 Feb 2021 09:42:06 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/cloud9-first-config/</guid>
+      <description>Cloud9を使う時にやっておく設定をまとめる。 注意事項としてAWS、Cloud9はいずれも頻繁にバージョンアップを行っている仕様上、ここに書かれている情報では再現できない可能性がある。もし、Cloud9のバージョンアップによる不具合や動作不良などを気にされる場合は、ローカル環境に開発環境を構築すると良い。 Bashの設定関係 コマンド履歴に日時を表示させる ~/.bashrcを下記のように編集する。 export</description>
+    </item>
+    
+    <item>
+      <title>laravelコマンドをUbuntuで実行可能にする方法</title>
+      <link>https://noauto-nolife.com/post/laravel-command-ubuntu/</link>
+      <pubDate>Thu, 28 Jan 2021 14:52:39 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-command-ubuntu/</guid>
+      <description>laravelで新しいプロジェクトを生成するとき、 composer create-project --prefer-dist laravel/laravel [プロジェクト名] このように実行するのだが、とても長い。 laravel new [プロジェクト名] そこで上記コマンドを実行しようとしてもlaravelコマンドがインストールされていないと言う。laravelコマンドを使えるようにするにはまずはcomposerからのインストールが必要。 composer global require &amp;quot;laravel/installer&amp;quot; そしてその上で、~/.bashrcにてパスを通す。~/.bashrcの</description>
+    </item>
+    
+  </channel>
+</rss>

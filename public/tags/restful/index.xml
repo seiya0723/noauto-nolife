@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Restful on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/restful/</link>
+    <description>Recent content in Restful on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 27 Feb 2022 15:05:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/restful/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【Restful化】DjangoRestframeworkの導入・移行作業【ビュークラス継承元の書き換え、Serializerの運用】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-changing/</link>
+      <pubDate>Sun, 27 Feb 2022 15:05:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-changing/</guid>
+      <description>Restful化のためには、DjangoRestframeworkをインストールする必要がある。(素のDjangoでもAjaxでDELETE,PUT,PATCHメソッドの送信は可能だが、リクエストボディの読み込みに難があるため。) だが、素のDjangoで開発している状態であれば、コードの一部をDRF仕様に書き換えを行う必要がある。 本記事では、40分Djangoを元にDRF移行手続きを解説する。 予め</description>
+    </item>
+    
+    <item>
+      <title>DjangoRestFrameworkは本当に必要なのか？【Restful化とAjaxでデータを送信するときの問題】</title>
+      <link>https://noauto-nolife.com/post/django-rest-framework-need-ajax/</link>
+      <pubDate>Sat, 26 Feb 2022 08:40:27 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-rest-framework-need-ajax/</guid>
+      <description>結論 DjangoはデフォルトでRestfulに対応している(Ajaxを使ってPUT,DELETE,PATCHメソッドの送信ができる)。 ただし、PUT,DELETE,PATCHのリクエストボディを参照するのはやや複雑。 そのため、それらのメソッドを使ってリクエストを送信する場合、DRFを使ったほうが良い。 素のDjangoはRestfulに対応している AjaxでPUT,DELETE,PATCHメソッドを</description>
+    </item>
+    
+    <item>
+      <title>Django Rest Frameworkにて、APIを提供する</title>
+      <link>https://noauto-nolife.com/post/django-drf-api/</link>
+      <pubDate>Fri, 28 Jan 2022 15:12:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-drf-api/</guid>
+      <description>Serializerクラスのオブジェクトを返却することで、簡単にAPIを提供することができる。 また、投稿されたデータのバリデーションもSerializerを使えば良いのでとても楽。Ajaxも処理してくれるので、HTMLのフォームを提供するフォームクラスが不要であれば、Serializerに変換しても問題はない。 DRFのシリアライザを使用してAPIを作る 40分簡易掲示板にDELETE、PUTメソッド</description>
+    </item>
+    
+    <item>
+      <title>【Django】PUT、PATCH、DELETEメソッドのリクエストを送信する【Django REST Framework】</title>
+      <link>https://noauto-nolife.com/post/django-method-put-delete-patch/</link>
+      <pubDate>Mon, 24 Jan 2022 13:18:55 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-method-put-delete-patch/</guid>
+      <description>前提 まず前提として、PUT、PATCH、DELETEのメソッドはHTMLのformタグから送信することはできない。 例外として、Laravelでは下記のようにしてformタグでDELETEメソッドを送信するが、Djangoではそれは通用しない。これから解説するDjango Rest Frameworkを使用しても。 &amp;lt;form action=&amp;quot;{{ route(&#39;topics.destroy&#39;,$topic-&amp;gt;id) }}/&amp;quot; method=&amp;quot;POST&amp;quot; style=&amp;quot;display:inline-block;&amp;quot;&amp;gt; {{ csrf_field() }} {{ method_field(&amp;quot;delete&amp;quot;) }} &amp;lt;button class=&amp;quot;btn btn-outline-danger&amp;quot; type=&amp;quot;submit&amp;quot;&amp;gt;削除&amp;lt;</description>
+    </item>
+    
+    <item>
+      <title>Djangoで動画投稿時にサムネイルもセットでアップロードする【DRF&#43;Ajax(jQuery)&#43;canvas】</title>
+      <link>https://noauto-nolife.com/post/django-ajax-thumbnail-upload/</link>
+      <pubDate>Mon, 01 Mar 2021 15:03:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax-thumbnail-upload/</guid>
+      <description>Djangoで動画をアップロードする時、ffmpegなどを使ってサムネイルの自動生成を行うが、クライアントが自分で動画のサムネイルを指定したいときはこの限りではない。 サムネイルに指定したい画像は動画内にあり、クライアントがサムネイルの画像をまだ作っていない場合、アップロードフォームでサムネイルを作る必要がある。 本記事では動画を投稿する際、サムネイルをクライアントが指定した上でアップロードする手法を</description>
+    </item>
+    
+    <item>
+      <title>初心者でもlaravel 7.x を使い、45分でCRUD簡易掲示板を作る【Restful対応】</title>
+      <link>https://noauto-nolife.com/post/laravel-crud-restful/</link>
+      <pubDate>Mon, 01 Feb 2021 13:11:30 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/laravel-crud-restful/</guid>
+      <description>リハビリがてらlaravelでCRUDに対応した簡易掲示板を作る。この記事の手順に沿ってやれば、45分もあれば作れる。 本記事ではlaravel 7.X系を使用している。 流れ プロジェクトを作る DBはSQliteを読み込むように設定する Restful対応コントローラーを作る ルーティングの設定 モデル定義とマイグレーション実行 リクエストを作る ビューを作る コントローラーの修正 タイムゾーンの修正 プロジェクトを作</description>
+    </item>
+    
+    <item>
+      <title>Djangoで多対多のリレーションを含むデータをAjax(jQuery)&#43;DRFで送信させる</title>
+      <link>https://noauto-nolife.com/post/django-m2m-restful/</link>
+      <pubDate>Tue, 01 Dec 2020 17:17:52 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-m2m-restful/</guid>
+      <description>本記事では多対多のリレーションを含んだウェブアプリで、Django REST FrameworkとAjaxを使用した非同期データ送信を実現させる方法を書く。 ソースコードは『【Django】一対多、多対多のリレーションでforms.pyを使ったバリデーションとフォームを表示』の『【2】forms.pyを使用したフォームバリデーション+独自に作ったテンプレート』から流用した。 Ajax(jQuery)+Restf</description>
+    </item>
+    
+    <item>
+      <title>DRF(Django REST Framework)&#43;Ajax(jQuery)で画像とファイルをアップロードする方法</title>
+      <link>https://noauto-nolife.com/post/drf-ajax-fileupload/</link>
+      <pubDate>Tue, 01 Dec 2020 17:06:20 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/drf-ajax-fileupload/</guid>
+      <description>本記事では、DRF(Django REST Framework)とAjaxを使用して画像とファイルを非同期でアップロードする方法をまとめる。 コードはDjangoで画像及びファイルをアップロードする方法から引用している。外見はほとんど変わっていない。 テンプレートとJSのコード まずテンプレート。下記はimage.html {% load static %} &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;画像アップロードのテスト&amp;lt;/ti</description>
+    </item>
+    
+    <item>
+      <title>【Restful】DjangoでAjax(jQuery)を実装する方法【Django REST Framework使用】</title>
+      <link>https://noauto-nolife.com/post/django-ajax-restful/</link>
+      <pubDate>Tue, 10 Nov 2020 14:01:19 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-ajax-restful/</guid>
+      <description>先日の記事にて、DjangoでAjax(jQuery)を実装する方法を解説した。 ただ、RestfulAPIを使用すれば、さらに少ないコードでAjaxを実装することができる。 RestfulAPI、Django REST Frameworkとは RestfulAPIとは、HTTPリクエストに応じてサーバーの処理を切り分けることができるAPIのこと。 HTTPリクエストのヘッダ部には、リクエスト送信先のURLとリクエ</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>インフラ on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/</link>
+    <description>Recent content in インフラ on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 17 Sep 2022 10:20:08 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】</title>
+      <link>https://noauto-nolife.com/post/rtcwake-and-crontab/</link>
+      <pubDate>Sat, 17 Sep 2022 10:20:08 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/rtcwake-and-crontab/</guid>
+      <description>私のサーバーは夜中は操作しないので、crontabでshutdownすることにしている。 そして、朝になったらラズパイなどの常時動いている端末にWakeOnLanを送信して起動させている。 だが、そのサーバーが無線LANになった時、WakeOnLanは通用しない。 ではいかにして、終了と起動を指定時間に行わせるか。そこで、rtcwakeを使う。 今すぐ終了して7時間後に起動して欲しい場合 sudo rtcwake -m off -s 25200 これを</description>
+    </item>
+    
+    <item>
+      <title>vimの操作方法</title>
+      <link>https://noauto-nolife.com/post/startup-vim/</link>
+      <pubDate>Sun, 11 Sep 2022 18:24:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-vim/</guid>
+      <description>前提 vimは通常のテキストエディタと違って、主に3つのモードを使い分けて編集を行う コマンドモード 挿入モード ビジュアルモード コマンドモード vimを起動した時、デフォルトでこのモードになっている。 保存や終了、検索やマクロなどのコマンドを実行する事ができる。 挿入モード テキスト入力をするモード。i、o、aキーのいずれかでこのモードに入る。 挿入モードを終了してコマンドモードに移行するにはEscキーを押す。 ビ</description>
+    </item>
+    
+    <item>
+      <title>FFmpegを使ってUbuntuサーバーにUSBで接続されたウェブカメラで映像を録画する</title>
+      <link>https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/</link>
+      <pubDate>Sat, 10 Sep 2022 20:48:19 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/</guid>
+      <description>Ubuntu 22.04 Serverでやった ハードはラズパイ3B+ インストール FFmpegとv4l2-utilsをインストール sudo apt install ffmpeg v4l-utils デバイスを特定する v4l2-ctl --list-devices こんなふうに表示される(一部省略) BUFFALO BSWHD06M USB Camera : (usb-3f980000.usb-1.4): /dev/video0 /dev/video1 /dev/media3 対応しているフォーマットと解像度を特定する ffmpeg -f v4l2 -list_formats all -i /dev/video0 こんなふうに表示される(一部省略) [video4linux2,v4l2 @ 0xaaaad7c25420] Raw : yuyv422 : YUYV 4:2:2 : 1280x720 800x600 640x480 640x360 352x288 320x240 176x144 160x120 [video4linux2,v4l2 @ 0xaaaad7c25420] Compressed: mjpeg : Motion-JPEG : 1280x960 1280x720 800x600 640x480 640x360 352x288 320x240 176x144 160x120 映像を録画する ffmpeg -f v4l2 -framerate 30 -video_size 352x288 -i /dev/video0 output.mkv 後はこの映像をs</description>
+    </item>
+    
+    <item>
+      <title>【Ubuntu】netplanに無線LAN(wifi)で固定IPアドレスを割り当てる</title>
+      <link>https://noauto-nolife.com/post/netplan-wireless-settings/</link>
+      <pubDate>Sat, 10 Sep 2022 17:48:36 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/netplan-wireless-settings/</guid>
+      <description>有線であれば以下のように書く。 network: ethernets: eth0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 version: 2 無線LANの場合、ip addrで表示される無線LANのデバイス名を控えた上で下記のように記す network: wifis: wlan0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 access-points: &amp;quot;SSIDname&amp;quot;: password: &amp;quot;password&amp;quot; version: 2</description>
+    </item>
+    
+    <item>
+      <title>nanoエディタの操作方法</title>
+      <link>https://noauto-nolife.com/post/startup-nano-editor/</link>
+      <pubDate>Thu, 08 Sep 2022 11:47:22 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-nano-editor/</guid>
+      <description>急にnanoエディタが立ち上がり、ふだんvimを使っている身としては、調べながら終了させるのは手間になる。 Ctrl+Xで終了できる 保存するかどうか聞かれるので、nを押して保存せずに終了する。 保存する時は、yを押してEnterキーを推せば保存して終了できる。 nanoエディタはWindowsのメモ帳とほぼ同様に扱うことができ、管理者権限が必要なファイルの編集もできる。 vimが使いづらいなと思う場合にお</description>
+    </item>
+    
+    <item>
+      <title>Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】</title>
+      <link>https://noauto-nolife.com/post/ubuntu-env-read-python/</link>
+      <pubDate>Sun, 04 Sep 2022 15:49:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-env-read-python/</guid>
+      <description>例えば、gitで管理しているプロジェクトをgitでデプロイする時。 たとえローカルサーバーのDBのパスワードとは言え、ハードコードした状態でコミットするわけには行かない。(gitignoreに入れてしまうとパスワードが含まれない) そこで、環境変数をセットし、Python側でそれを読む。 環境変数をセットする。 #変数名=値 ZZZ=test #変数を環境変数としてセットする。 export ZZZ #↑2つは下記でも可 export ZZZ=test セットした環境変数</description>
+    </item>
+    
+    <item>
+      <title>WindowsでPythonとPycharmをインストールする</title>
+      <link>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</link>
+      <pubDate>Thu, 01 Sep 2022 08:49:01 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</guid>
+      <description>Pythonのインストール Pythonのインストーラーを配布しているサイト( https://www.python.org/downloads/ )へ行く。 Download Python 3.10.6 の部分をクリックする。インストーラーがDLされる。 ( ※下記画像の赤枠部分。3.10.6は2022年9月現在のバージョンであり、今後バージョンが更新される。最新版のPythonインストーラーをDLする。 ) ダウンロードフォルダにて、先ほどDLしたインストーラーのファイルがあるので、ダブルクリックしてPytho</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにSambaをインストールしてファイルサーバー化させる</title>
+      <link>https://noauto-nolife.com/post/ubuntu-samba/</link>
+      <pubDate>Sat, 27 Aug 2022 10:04:40 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-samba/</guid>
+      <description>本記事はプライベート用として運用するため、セキュリティは全く考慮していない。 本記事に倣って作ったファイルサーバーは、LAN内の端末であれば、いずれも自由に読み書きできてしまうので注意。 インストールする sudo apt install samba 共有ディレクトリを作る 今回はホームディレクトリに作った mkdir ~/share chmod 777 ~/share 設定する sudo vi /etc/samba/smb.conf を開いて、末尾に下記を記入。UserNameには任意のユーザー名を指定 [share] path = /home/UserName/share browseable = yes writable = yes guest ok = yes guest only = yes create mode = 0777</description>
+    </item>
+    
+    <item>
+      <title>Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</title>
+      <link>https://noauto-nolife.com/post/heroku-counter-plan/</link>
+      <pubDate>Fri, 26 Aug 2022 17:37:46 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-counter-plan/</guid>
+      <description>2022年8月26日、メールボックスを見るとHerokuからメールが届いていた。内容は下記。 まとめると、こうなる 2022年11月28日からHerokuの一部サービスで無料プランが無くなる 対象はHerokuDynos、HerokuPostgres、Redisの3つ 有料化以降、WEB(7$)+DB(9$)のウェブアプリをデプロイする時、一ヶ月につき16$支払う必要がある さあ困った。 これまでHeroku</description>
+    </item>
+    
+    <item>
+      <title>別のUbuntuにデータを輸送する</title>
+      <link>https://noauto-nolife.com/post/ubuntu-data-transport/</link>
+      <pubDate>Mon, 15 Aug 2022 18:20:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-data-transport/</guid>
+      <description>別のPCのUbuntuにデータを全て輸送する必要があったりする。 そういう時、手順をまとめておかないと手直しに返って時間がかかる。 よって、必要なデータ移行作業をここに列挙しておく。 準備編 前もって、下記をやっておく(任意) サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 【保存版】Ubuntu18.04をインストールした後に真</description>
+    </item>
+    
+    <item>
+      <title>Sendgridのアカウントが一時的に凍結された場合の対処法と対策</title>
+      <link>https://noauto-nolife.com/post/sendgrid-account-suspended/</link>
+      <pubDate>Tue, 28 Jun 2022 07:03:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/sendgrid-account-suspended/</guid>
+      <description>某日、Sendgridからメールが届く。内容は下記。 Dear Twilio SendGrid Customer, Your Twilio SendGrid account has been temporarily suspended as we have detected that your account&#39;s credentials (password and/or API key) are publicly listed on the code repository GitHub. This is a dangerous practice which may result in your account being used by unauthorized third parties to send malicious content and which may incur damage to your reputation as a quality sender and charges against your account for high usage that you did not perform. Before you ask for your account&#39;s reactivation, please ensure that you: 1) Change your account&#39;s password: https://sendgrid.com/docs/ui/account-and-settings/resetting-your-username-and-password. If your account was created using Heroku or IBM BlueMix, you must use our password reset form. 2) Delete and update exposed API keys in your account [APIのID] : https://sendgrid.com/docs/ui/account-and-settings/api-keys/#delete-an-api-key 3) Enable two-factor authentication for your account 4) Remove your account credentials and API keys from any public listings on code repositories or associated comments on sites such as GitHub or BitBucket. Please see the following link(s) for locations where your credentials</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする</title>
+      <link>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</link>
+      <pubDate>Mon, 25 Apr 2022 10:56:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</guid>
+      <description>5年以上前にやったきり、完全に忘れているNginxでPHPを動かす方法。 本記事ではその手順をまとめる。 必要なパッケージのインストール sudo apt install nginx php php-fpm Nginxはサーバー、phpはPHP処理系、php-fpmはNginxから動作させるために必要なもの Nginxの設定 /etc/nginx/sites-available/defaultを書き換える。 sudo vi /etc/nginx/sites-available/default TODOと書かれた場所だけ編集する。 ## # You should look at the following</description>
+    </item>
+    
+    <item>
+      <title>Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】</title>
+      <link>https://noauto-nolife.com/post/linux-commandline-clipboard/</link>
+      <pubDate>Wed, 30 Mar 2022 09:13:28 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/linux-commandline-clipboard/</guid>
+      <description>とてつもなく長いコードをクリップボードにコピーして、誰かと共有したい時、エディタのカーソルを上に持っていって下まで下げてコピーするのはとても面倒。 だから、コマンド一発でファイルの内容全てをコピーする。xselを使って。 sudo apt install xsel これでOK。後はコピペしたいファイルを用意して、下記コマンドを実行する。 cat ./index.html | xsel --clipboard --input これでindex.htmlの中身が全部コピーできた。bashrcにエイリアスで登録しておく</description>
+    </item>
+    
+    <item>
+      <title>Herokuの無料プランで独自ドメインを設定し、HTTPS通信を行う方法【ムームードメイン&#43;Cloudflare】</title>
+      <link>https://noauto-nolife.com/post/heroku-origin-domain/</link>
+      <pubDate>Tue, 22 Feb 2022 08:13:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/heroku-origin-domain/</guid>
+      <description>無料プランでは独自ドメインのセットは出来てもHTTPS通信を行うことは出来ない。 そのため、Cloudflareをリバースプロキシとして機能させ、クライアントからCloudflare間まで暗号化させる。 一見安全性に欠けるような形だが、AWSにデプロイした際も、クライアントからリバースプロキシ間までしか暗号化はされないので、それほど問題ではない。 気になるなら、有料プランを使用してHTTPS通信を行うと</description>
+    </item>
+    
+    <item>
+      <title>dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</title>
+      <link>https://noauto-nolife.com/post/docker-image-file-share/</link>
+      <pubDate>Sun, 13 Feb 2022 16:54:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/docker-image-file-share/</guid>
+      <description>dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに</description>
+    </item>
+    
+    <item>
+      <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
+      <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
+      <pubDate>Thu, 03 Feb 2022 11:22:31 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
+      <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
+    </item>
+    
+    <item>
+      <title>CloudinaryでPDF等の画像や動画以外のファイルをアップロードし、共有する方法【blocked for delivery】</title>
+      <link>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</link>
+      <pubDate>Thu, 30 Sep 2021 09:11:38 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</guid>
+      <description>どうやらPDF等の画像や動画以外の一部のファイルは配信拒否されてしまうらしい。セキュリティ対策の一貫として行われているそうな。 しかし、PDFを共有する前提のウェブアプリであればただの足かせでしか無いし、ユーザー認証や管理者が管理をきちんとしていればセキュリティ的な事案はある程度は低減できる。 本記事ではCloudinaryを使用してPDFを配信する方法を記す。 対策 対策は至ってシンプル。Cloudin</description>
+    </item>
+    
+    <item>
+      <title>Nginxで特定IPアドレスのリクエストを拒否する</title>
+      <link>https://noauto-nolife.com/post/nginx-deny-ip-address/</link>
+      <pubDate>Tue, 28 Sep 2021 11:20:12 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-deny-ip-address/</guid>
+      <description>特定IPアドレスのリクエストを拒否したいのであれば、ロードバランサーやリバースプロキシなどのセキュリティ設定を書き換えれば済む話だが、環境によっては他のサービスなどに影響を及ぼす可能性もある。 そこで、Nginxの設定を書き換え、特定のサービスだけで特定のIPアドレスを使用したリクエストを拒否する方法をここに記す。 設定ファイルに追加する Nginxの設定ファイル( /etc/nginx/nginx.conf )に下記を追加する。 deny 192.168.XXX.XXX; /etc/n</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi Zeroに搭載したNginxの限界を試す【curlコマンド】</title>
+      <link>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</link>
+      <pubDate>Tue, 28 Sep 2021 10:20:02 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</guid>
+      <description>Raspberry Pi Zeroの性能は無料プランのEC2やHerokuとほぼ同じ。Raspberry Pi Zeroの限界を知れば、ある程度EC2やHerokuの限界が予測できる。今回はウェブサーバーとして仕立てたRaspberry Pi Zeroにcurlコマンドでリクエストを大量送信し、サーバーダウンするまでのデータをここに記す。 なお、この行為は自分が管理していないサーバーで行うと、普通にDos攻撃になってしまうので、宛先</description>
+    </item>
+    
+    <item>
+      <title>Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check-by-awk/</link>
+      <pubDate>Thu, 23 Sep 2021 13:51:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check-by-awk/</guid>
+      <description>Nginxのログはスペース区切りで送信元IPアドレス、アクセス対象のURLなどが書かれてある。これはスペース区切りで文字を扱うことができるawkコマンドと相性が良い。 本記事では、awkコマンドを使用して、特定の条件下のログを報告したり、ログの情報を見やすくさせる方法を記す。 awkコマンドを使用して、表示する情報を絞る 基本。 cat access.log | awk &#39;{print $1}&#39; これで送信元IPアドレス(スペース区切りで1番目のデータ)が表示</description>
+    </item>
+    
+    <item>
+      <title>Nginxのログをチェックする、ログの出力設定を変更する</title>
+      <link>https://noauto-nolife.com/post/nginx-log-check/</link>
+      <pubDate>Tue, 21 Sep 2021 07:19:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/nginx-log-check/</guid>
+      <description>事案が発生した時、まっさきに確認するべきがサーバーのログ。とりわけウェブサーバーのNginxのログ確認方法、設定方法をここに記す。 Nginxのログの見方 Nginxの設定ファイル(/etc/nginx/nginx.conf)にログのパスが書かれてある ## # Logging Settings ## access_log /var/log/nginx/access.log; error_log /var/log/nginx/error.log; ログは/var/log/nginx/access.logに保管されてある事がわかる。中身はこんな感じ。 左から順にこうなっている。 送信元</description>
+    </item>
+    
+    <item>
+      <title>UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】</title>
+      <link>https://noauto-nolife.com/post/uuid-generate/</link>
+      <pubDate>Sun, 19 Sep 2021 18:14:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/uuid-generate/</guid>
+      <description>Ubuntuであれば、下記コマンドを実行するだけで自動的にUUIDが生成される。 uuidgen 用途 秘匿する必要のあるページ(管理サイト等)にURLとして割り当てることで、総当たりでヒットされにくくなる。 UUIDが重複する確立は途方もなく低いので、他のセキュリティ対策ができない場合の代替案として有効であると思われる。 例えば、sedコマンドなどを使用して、Djangoのurls.pyから管理サイトを割り当てている</description>
+    </item>
+    
+    <item>
+      <title>リモートサーバーのデータを自動的にバックアップする方法論【scp&#43;crontab】</title>
+      <link>https://noauto-nolife.com/post/shellscript-auto-backup/</link>
+      <pubDate>Sun, 19 Sep 2021 18:12:35 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/shellscript-auto-backup/</guid>
+      <description>手順 crontabを使って、一定時間おきにリモートサーバーがバックアップを取る crontabを使って、一定時間おきに任意の端末がscpでリモートサーバーのバックアップファイルをDL crontabを使って、一定時間おきにリモートサーバーがバックアップしたデータを削除 方法 例えば、Djangoであればこうなる。 リモートサーバーの/etc/crontabに以下の設定を施す。 00 * * * * ubuntu cd ~/Document/django/ &amp;amp;&amp;amp; python3 manage.py dumpdata [任意の</description>
+    </item>
+    
+    <item>
+      <title>シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】</title>
+      <link>https://noauto-nolife.com/post/shellscript-server-checker/</link>
+      <pubDate>Sun, 19 Sep 2021 08:51:18 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/shellscript-server-checker/</guid>
+      <description>サーバーが応答不能になった時、すぐに対処できるよう、通知機能が欲しい。そういうときのシェルスクリプト。 pingで応答不能をチェックする #! /bin/bash while true ; do ping -c 1 192.168.11.99 rc=$? if [[ $rc -eq 0 ]] ; then echo &amp;quot;正常です&amp;quot; else echo &amp;quot;失敗しました&amp;quot; fi sleep 1 done 後は『正常です』『失敗しました』のいずれかに任意の処理を書き込む。 curlで応答不能をチェックする curlはHTTPのステータスコードも手に入るの</description>
+    </item>
+    
+    <item>
+      <title>サーバーを本格的に運用するようになったらやること・守ること</title>
+      <link>https://noauto-nolife.com/post/startup-server-manage/</link>
+      <pubDate>Tue, 14 Sep 2021 06:54:42 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-server-manage/</guid>
+      <description>圧倒的に人手不足な組織でありがちなのが、『開発とデプロイができるならサーバー管理もできるだろう』と言わんばかりに経験も無いのにサーバー管理まで任されること。 そんな時に一通りチェックしておくと良いものを列挙する。 事前対策編【予防・抑止】 OSにインストールされているパッケージのアップデート(更新) OSにインストールされているパッケージは問題がなければ定期的にアップデートしておく。 sudo apt update &amp;amp;&amp;amp; sudo apt -y upgrade &amp;amp;&amp;amp; sudo apt</description>
+    </item>
+    
+    <item>
+      <title>【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 &#43; Certificate Manager &#43; ロードバランサ(ELB)】</title>
+      <link>https://noauto-nolife.com/post/ec2-origin-domain-https/</link>
+      <pubDate>Sun, 05 Sep 2021 15:32:11 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ec2-origin-domain-https/</guid>
+      <description>タイトルの通り。 手順 EC2のインスタンスを作る セキュリティグループを書き換える ElasticIPを割り当てる Route53に独自ドメインを割り当てる SSHで独自ドメインでログインしてみる Certificate Managerとロードバランサを使ってHTTPS通信を実現させる EC2のインスタンスを作る まず、EC2のインスタンスを作る。インスタンスの作り方はDjangoをAWSのEC2(Ubuntu)にデプロイするに倣う。</description>
+    </item>
+    
+    <item>
+      <title>AWSでなるべくお金がかからないようにウェブアプリを運用する方法</title>
+      <link>https://noauto-nolife.com/post/aws-do-not-spend-money/</link>
+      <pubDate>Sun, 05 Sep 2021 11:45:44 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/aws-do-not-spend-money/</guid>
+      <description>気づいたらAWSの請求額が数百ドルを超えてた。ということはよくある。 そこで、なるべくお金がかからないように運用する方法を即効性がある運用編、開発編、セキュリティ編、その他編に分けて解説する。 運用編 基本的に運用編に書いてある内容を実践すれば、ほぼ課金されることはない。マウスクリックだけで簡単に実践できるので、ぜひともやっておきたい。 インスタンスを多重起動しない まず、前提としてEC2やRDS等のインス</description>
+    </item>
+    
+    <item>
+      <title>サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】</title>
+      <link>https://noauto-nolife.com/post/startup-ubuntu2004-server/</link>
+      <pubDate>Sat, 21 Aug 2021 17:39:30 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-ubuntu2004-server/</guid>
+      <description>デスクトップ版のUbuntuとサーバー版のUbuntuは完全に別物である。 デスクトップ版はGUIでラクラク固定IPアドレス設定できたり、作業しながらブラウザで検索できる一方で、サーバー版のUbuntuはただ無機質なターミナルが全画面を覆っているだけである。 本記事ではインストールからIPアドレスの固定化、bashの設定やタイムゾーン設定、別端末からSSHでログインするまでを解説する。 対象読者は、既に</description>
+    </item>
+    
+    <item>
+      <title>VirtualBoxにUbuntuをインストールする</title>
+      <link>https://noauto-nolife.com/post/virtualbox-ubuntu-install/</link>
+      <pubDate>Sat, 19 Jun 2021 16:49:00 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/virtualbox-ubuntu-install/</guid>
+      <description>作ったウェブアプリをデプロイする時、実機のLinuxサーバーでも良いが、VirtualBox上のLinux系OSのいずれかにデプロイして試験運用するのも良いだろう。 そこでその前段階としてVirtualBoxにUbuntuをインストールさせる。 用意する物 Ubuntuのisoファイル VirtualBoxのインストーラー(パッケージファイル) メモリ4GB以上の空きがあり、なおかつ20GB以上のストレージ</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQLインストールから、ユーザーとDBを作る</title>
+      <link>https://noauto-nolife.com/post/startup-postgresql/</link>
+      <pubDate>Fri, 16 Apr 2021 15:14:58 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-postgresql/</guid>
+      <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。dockerを使用して</description>
+    </item>
+    
+    <item>
+      <title>SQLiteの操作方法【テーブル一覧表示、SQLなど】</title>
+      <link>https://noauto-nolife.com/post/startup-sqlite3/</link>
+      <pubDate>Mon, 26 Oct 2020 13:51:50 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/startup-sqlite3/</guid>
+      <description>インストールと基本操作 Ubuntuであればaptコマンドで簡単にインストールできる。 sudo apt install sqlite3 ファイルの閲覧はsqlite3コマンドで実行できる。対象のsqlite3ファイルを指定するだけ。 sqlite3 db.sqlite3 テーブル一覧表示 テーブル一覧表示。 .table 基本的なSQL文 SELECT文。指定したテーブルを参照する。 SELECT カラム名 FROM テーブル名 INSERT文。指定したレコードを追加する。文字列型はダブルクオーテーションでくくる。数値</description>
+    </item>
+    
+    <item>
+      <title>UbuntuにSSHでリモートログインする方法【パスワード認証&#43;公開鍵認証&#43;scpコマンド】</title>
+      <link>https://noauto-nolife.com/post/ubuntu-ssh/</link>
+      <pubDate>Thu, 20 Sep 2018 18:22:19 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/ubuntu-ssh/</guid>
+      <description>SSH（Secure Shell）とはネットワークに接続されている端末にリモートログインをするための技術のことを言います。 SSHにより直接端末を操作しなくても遠隔地から端末にログインを行い、コマンド入力で簡単に操作できるようになります。それだけでなく、SSHを使用した際にはネットワークを流れる通信がすべて暗号化されるようになるのです。SSHでは暗号化された通信経路を使用するので、通信経路が暗号化され</description>
+    </item>
+    
+  </channel>
+</rss>

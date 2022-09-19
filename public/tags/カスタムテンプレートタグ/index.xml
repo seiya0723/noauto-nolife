@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>カスタムテンプレートタグ on 自動化無しに生活無し</title>
+    <link>https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0/</link>
+    <description>Recent content in カスタムテンプレートタグ on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 05 Sep 2021 17:30:49 +0900</lastBuildDate>
+    
+	<atom:link href="https://noauto-nolife.com/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>【Django】カスタムテンプレートタグ(フィルタ)でリンク付きのハッシュタグを実現する。【#から始まる正規表現】</title>
+      <link>https://noauto-nolife.com/post/django-custom-template-tags-hashtags/</link>
+      <pubDate>Sun, 05 Sep 2021 17:30:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-template-tags-hashtags/</guid>
+      <description>Djangoのカスタムテンプレートタグ(フィルタ)を使うことでTwitterやyoutube等のハッシュタグを実現できる。 だが、ちょっとでも間違えると、簡単にXSS脆弱性を生み出してしまう可能性があるため、十分注意して実装する。 方法論 まず、普通のDTLはXSS対策のため、&amp;lt;や&amp;gt;等の特殊記号をエスケープしている。ハッシュタグを実現させるのであれば、まずはこれを除外する。そのため、mark</description>
+    </item>
+    
+    <item>
+      <title>【Django】views.pyの事前処理 VS (埋め込み型)カスタムテンプレートタグ・フィルタ</title>
+      <link>https://noauto-nolife.com/post/django-custom-template-tags-vs-before-view-calc/</link>
+      <pubDate>Tue, 15 Jun 2021 03:08:14 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-template-tags-vs-before-view-calc/</guid>
+      <description>思考停止状態でカスタムテンプレートタグを作っているとき、ふと気づいた。 『これ、views.pyで事前に処理をしたほうが良いのではないか』と。 考察に至った背景 カスタムテンプレートタグは基本的にviews.pyがレンダリングをする段階で動作する。 つまりそれは、クライアントにレスポンスが届く直前であり、サーバーサイドが介入できる最後の処理である。 故に、『カスタムテンプレートタグを実行した後に、任意の処理</description>
+    </item>
+    
+    <item>
+      <title>【Django】16進カラーコードから色名に書き換えるフィルタを自作する【カスタムテンプレートフィルタ】</title>
+      <link>https://noauto-nolife.com/post/django-custom-template-tags-color/</link>
+      <pubDate>Wed, 12 May 2021 17:35:56 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-template-tags-color/</guid>
+      <description>models.pyにて、色の指定を16進数のカラーコードで受け入れる。その16進数カラーコードを、色名(orangeとかforestgreenとか)に書き換える。 そういうカスタムテンプレートフィルタを自作する方法を解説する。 models.pyのカラーコード受け入れ from django.db import models from django.core.validators import RegexValidator &amp;quot;&amp;quot;&amp;quot; 省略 &amp;quot;&amp;quot;&amp;quot; color_regex = RegexValidator(regex=r&#39;^#(?:[0-9a-fA-F]{3}){1,2}$&#39;) color = models.CharField(verbose_name=&amp;quot;リボン色&amp;quot;,max_</description>
+    </item>
+    
+    <item>
+      <title>【django.core.paginator】一度に2ページ以上ジャンプできるように改良する【inclusion_tag()】</title>
+      <link>https://noauto-nolife.com/post/django-paginator-custom/</link>
+      <pubDate>Fri, 07 May 2021 09:50:13 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-paginator-custom/</guid>
+      <description>以前のページネーション実装記事では、検索とページのパラメーターの両立を行った。 しかし、このページネーションは1ページずつしか移動できない。つまり、1ページ目の状態から2ページ目に行くことはできても、3ページ目にジャンプすることはできないのだ。 そこでページネーションを改良させ、一度に2ページ以上ジャンプできるように改良する。 やりたいことと方法論の解説 やりたいこと 要するに、本記事でやりたいのはこういう</description>
+    </item>
+    
+    <item>
+      <title>Djangoで埋め込みカスタムテンプレートタグを実装する方法</title>
+      <link>https://noauto-nolife.com/post/django-custom-template-tags/</link>
+      <pubDate>Tue, 26 Jan 2021 15:55:04 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-custom-template-tags/</guid>
+      <description>Djangoでデータの値に応じて文字列を返したい場合は、カスタムテンプレートタグを使用すれば良い。下記記事は、ページ移動と検索を両立させるため、文字列を返す、カスタムテンプレートタグを実装している。 Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】 しかし、データの値に応じてHTMLタグを返却するには、上記の方法では成立しない。safeフィル</description>
+    </item>
+    
+    <item>
+      <title>Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】</title>
+      <link>https://noauto-nolife.com/post/django-paginator/</link>
+      <pubDate>Wed, 11 Nov 2020 17:57:49 +0900</pubDate>
+      
+      <guid>https://noauto-nolife.com/post/django-paginator/</guid>
+      <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。 しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されない。例えば、検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態で、ページネーションを実装する術を解説する。 流れ views</description>
+    </item>
+    
+  </channel>
+</rss>
