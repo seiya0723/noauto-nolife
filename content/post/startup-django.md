@@ -14,7 +14,6 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 ## 注意事項
 
 40分はあくまでも私見に基づく目安である点をご留意いただきたい。
- 
 
 ## 流れ
 
@@ -47,12 +46,17 @@ tags: [ "django","スタートアップシリーズ","初心者向け" ]
 
     django-admin startproject myproject  #この場合、myprojectの中に設定ファイルを含むmyprojectディレクトリが作られる。
 
-
 ## アプリを作る(5分)
 
-下記コマンドでbbsアプリを作る。(※Windowsの場合、`python3`ではなく`python`コマンドを使う)
+下記コマンドでbbsアプリを作る。
 
     python3 manage.py startapp bbs
+
+Windowsの場合、`python3`ではなく`python`コマンドを使う
+
+    python manage.py startapp bbs
+
+※本記事はLinux及びMacユーザー向けとしているため、以降は`python3`と書かれてあるが、Windowsの場合は`python`と実行する。
 
 
 ## settings.pyの書き換え(5分)
@@ -582,7 +586,6 @@ https://github.com/seiya0723/startup_bbs
 
 [【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】](/post/django-models-origin-validators/)
 
-
 ### admin.pyで管理サイトから簡単に投稿されたデータを読み書き、削除、編集を行う
 
 管理サイトを使用すれば、指定したモデルを簡単に読み書き、削除、編集ができる。検索や絞り込み、並び替えなどのも可能。
@@ -598,6 +601,14 @@ https://github.com/seiya0723/startup_bbs
 画像の表示もできるようになるので、実装しておいたほうが良いだろう。
 
 [【Django】テンプレートからstaticディレクトリに格納したCSSやJSを読み込む【静的ファイル】](/post/django-static-file-settings/)
+
+### Topicの個別ページを作る
+
+urls.pyのパスコンバータを使うことで個別ページを作ることができる。
+
+[【Django】パスコンバータ(URLに含まれた引数)を使って個別ページを表示させる](/post/django-single-page/)
+
+この個別ページを作ることで、後続の削除と編集、リプライなどの機能の実装ができる。
 
 ### クライアント側からの削除と編集を実装させる
 
