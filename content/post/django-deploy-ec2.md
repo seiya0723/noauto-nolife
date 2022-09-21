@@ -60,7 +60,6 @@ https://github.com/seiya0723/django_fileupload
 1. 静的ファイル配信
 1. インバウンドにHTTPアクセスの許可
 
-
 インスタンスを作ってSSHでログインするまでは、下記リンクに書かれたUbuntuへのデプロイと差異は殆ど無い。
 
 [UbuntuにDjangoをデプロイする【PostgreSQL+Nginx、Virtualenv使用】](/post/django-deploy-ubuntu-venv/)
@@ -70,7 +69,6 @@ https://github.com/seiya0723/django_fileupload
 
 ただし、今回はUbuntuに直にpip3コマンドを実行してPythonライブラリをインストールするのではなく、仮想環境virtualenvを使用してライブラリをインストールする。これで開発環境とデプロイ環境でライブラリのバージョンが一致する。
 -->
-
 
 ## EC2にてインスタンスを作る
 
@@ -85,7 +83,6 @@ Amazonマシンイメージ(OSのこと)はUbuntuを選択する。スクロー�
 インスタンスタイプはデフォルトの無料枠の対象のままでOK、『次のステップ』をクリックして任意の設定を施す。
 
 <div class="img-center"><img src="/images/Screenshot from 2021-07-12 10-44-30.png" alt="インスタンスタイプの選択"></div>
-
 
 インスタンスの設定、及び、ストレージの追加、タグの追加はそのままデフォルトでOK、セキュリティグループの設定ではSSHのアクセスをマイIPからのみ許すように設定。
 
@@ -112,15 +109,23 @@ SSHを利用するには専用の秘密鍵を生成する必要がある。先�
 
 ## インスタンスへSSH接続
 
-自分のPCの端末(Windowsの場合はPowerShell)から、先ほど生成したSSHの秘密鍵を使ってインスタンスへ接続を行う。
+自分のPCの端末(Windowsの場合はPowerShellもしくはTeraterm)から、先ほど生成したSSHの秘密鍵を使ってインスタンスへ接続を行う。
 
-まず、先ほどDLした秘密鍵のディレクトリまで移動して、権限を所有者のみ読み取り権限に変更する。この所有者のみ読み取りの権限ありに設定しないと、SSHでログインはできない。(英語で権限が多すぎると言われる。)
+まず、先ほどDLした秘密鍵のディレクトリまで移動して、権限を所有者のみ読み取り権限に変更する。
+
+この所有者のみ読み取りの権限ありに設定しないと、SSHでログインはできない。(英語で権限が多すぎると言われる。)
 
     chmod 400 seiya0723-aws.pem
 
-Windowsの場合はファイルのプロパティから所有者の読み取り権限のみ付与する。
-
 <div class="img-center"><img src="/images/Screenshot from 2021-07-12 11-10-37.png" alt="所有者読み取りのみ可"></div>
+
+権限をこのようなすれば完了。
+
+Windowsの場合は`icacls`コマンドから秘密鍵に所有者の読み取り権限のみを付与する。詳細は下記
+
+- 参照1: https://qiita.com/sumomomomo/items/28d54e35bfa5bc524cf5
+- 参照2: https://qiita.com/uttne/items/7bfa4e820834f7f54be8
+
 
 そして、その秘密鍵を使って`ssh`コマンドを実行する。
 
@@ -137,6 +142,9 @@ Windowsの場合はファイルのプロパティから所有者の読み取り�
 <div class="img-center"><img src="/images/Screenshot from 2021-07-12 11-20-23.png" alt="ログイン成功"></div>
 
 ## インスタンスの.bashrcの設定変更、Python等の必要なパッケージをインストールする
+
+
+### bashの設定を変更する
 
 まず、インスタンスのbashの設定を変更する。
 
@@ -155,6 +163,9 @@ nanoエディタを使いたい場合は下記。使い方は『[nanoエディ�
 この設定を読み込ませる。これでhistoryコマンドを打つとコマンドを打った日付が確認できて便利。
 
     source ~/.bashrc
+
+
+### パッケージの更新とインストール
 
 全パッケージの更新
 
@@ -179,23 +190,25 @@ PostgreSQLにて、DBとそのDBにアクセスするユーザーを作る。
 
 ## プロジェクトディレクトリをscpでアップロード 
 
-scpコマンドを実行し、Djangoのプロジェクトのディレクトリを任意の場所にアップロードする。今回は、[DjangoをLinux(Ubuntu)サーバーにデプロイする方法【Nginx+PostgreSQL】](/post/django-deploy-linux/)に倣って、`~/Documents/`に格納する。
+scpコマンドを実行し、Djangoのプロジェクトのディレクトリを任意の場所にアップロードする。今回は、[UbuntuにDjangoをデプロイする【PostgreSQL+Nginx、Virtualenv使用】](/post/django-deploy-ubuntu-venv/)に倣って、`~/Documents/`に格納する。
 
-まず、EC2へログインした状態でDocumentsディレクトリを作る
+まず、EC2へログインした状態でDocumentsディレクトリを作る。
 
     mkdir ~/Documents
 
 Ctrl+Dを押してログアウトをする。
 
-`~/Documents/プロジェクト名/`にプロジェクトのファイル一式をコピーする。再帰的にアップロードする`-r`オプションをお忘れなく。(※`-ri`であり`-ir`ではない)。
+`~/Documents/プロジェクト名/`にプロジェクトのファイル一式をコピーする。再帰的にアップロードする`-r`オプションもつける。(※`-ri`であり`-ir`ではない)。
 
     scp -ri "seiya0723-aws.pem" ./[プロジェクト名]/ ubuntu@[パブリックIPv4 DNS]:~/Documents/
+
+### Djangoプロジェクトに必要なライブラリのインストール
 
 再びSSHでEC2へログインし、先ほどアップロードしたディレクトリに移動して、仮想環境を作成し、有効にしておく。必要なライブラリをインストール。(※pycharm等ですでに手元で仮想環境を使っている場合、この工程はスキップする。)
 
     virtualenv venv
     source ./venv/bin/activate
-    pip install django gunicorn psycopg2 psycopg2-binary Pillow
+    pip install django gunicorn psycopg2 psycopg2-binary
     
 もし、すでにvenvがある場合、ファイル数が多いvenvはscpでアップロードせず、予めrequirements.txtを作っておき、以下のようにrequirements.txtに書かれてあるライブラリをインストールさせる。
 
@@ -305,18 +318,27 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
         listen 80;
         server_name [ここにパブリックIPv4アドレスを記入(※DNSではない)];
     
+        #favicon.icoのログは記録しない
         location = /favicon.ico { access_log off; log_not_found off; }
+
+        #静的ファイルの読み込み
         location /static/ {
             root /var/www/[プロジェクト名];
         }
+
+        #以下はファイルアップロード機能を有する場合にのみ書く
         location /media/ {
             root /var/www/[プロジェクト名];
         }
+
+
+        #前項で作ったgunicornのサービスがsocketを作るので、Nginxはそのsocketを読み取る。
         location / {
             include proxy_params;
             proxy_pass http://unix:/home/ubuntu/Documents/[プロジェクト名]/[プロジェクト名].socket;
         }
-    
+
+        #アップロード可能なファイルサイズの上限値 100MB
         client_max_body_size 100M;
     }
 
@@ -345,7 +367,6 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
     python3 manage.py migrate
 
 これの実行を忘れていると、もれなくサーバーエラーが表示されてしまう。
-
 
 ## 静的ファイル配信
 
@@ -389,13 +410,19 @@ staticファイルを配信する、下記コマンドを実行
 
 Nginxの設定で指定したとおり、100MBまでのファイルのアップロードできる。
 
-## AWSのあれこれ
+## AWS(EC2)の問題と解決策
 
-### 1:インスタンスを削除するには
+最後に、EC2利用時における問題と解決策をまとめる。
+
+### インスタンスを削除するには
 
 インスタンスを終了させる。その後、自動的に削除される。そのため、EC2を一時停止にしたい場合は、インスタンスを停止を選ぶ。
 
 https://qiita.com/shizen-shin/items/549087e77f1397bc1d92
+
+終了は削除を意味する。
+
+デプロイを終えた段階でインスタンスをうっかり終了してしまうと、また一からやり直しになってしまうので注意。
 
 ### 502 Bad Gatewayエラーはどうすればいい？
 
@@ -403,9 +430,55 @@ https://qiita.com/shizen-shin/items/549087e77f1397bc1d92
 
     less /var/log/nginx/error.log
 
-sockファイルのアクセス権に関するエラーが書かれてある場合、`~/Documents/[プロジェクト名]/`までのパーミッションが755になっていることを確認する。
+socketファイルのアクセス権に関するエラーが書かれてある場合、`~/Documents/[プロジェクト名]/`までのパーミッションが755になっていることを確認する。
 
 もし、755になっていない場合はそのように修正する。
+
+とりわけ、最近のEC2インスタンスは、ホームディレクトリのアクセス権が、その他のユーザーの実行と読み込みの権限が割り当てられていないため、nginxがsocketファイルのアクセスに失敗してしまう。
+
+この問題を解決するには、このコマンドを実行する。
+
+    chmod 755 ~
+
+### Djangoのファイルを変更したのに、サイトに反映されない
+
+Djangoのプロジェクト内に含まれるファイルを変更したにも関わらず、反映されないのは、サーバーを再起動していないから。
+
+    sudo systemctl restart nginx gunicorn 
+
+これを実行して、Djangoプロジェクトを再読込、サイトに反映させる。
+
+特にsettings.pyを書き換えた後は、必ず上記コマンドを実行しないと反映されないので、注意。
+
+### インスタンスを停止して、再起動したらSSHでログインできなくなった。
+
+EC2のインスタンスに割り当てられているパブリックIPv4アドレスを使用して、SSHにログインをするが、このパブリックIPv4アドレスは、インスタンスの停止と再起動をもって、変わってしまう。
+
+そのため、停止と再起動をした場合は、新しく割り当てられたパブリックIPv4アドレスをコピーしてsshコマンドを実行してログインをする必要がある。
+
+もし、停止と再起動を繰り返しても、固定されたIPアドレスでSSHログインをしたい場合は、ElasticIPを使うと良いだろう。
+
+[【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 + Certificate Manager + ロードバランサ(ELB)】](/post/ec2-origin-domain-https/)
+
+### インスタンスをつけっぱなしにしていても、ある日突然SSHでログインできなくなった。
+
+おそらく、SSHにログインするPCのグローバルIPアドレスが変わった可能性がある。
+
+セキュリティグループの設定で、SSHをマイIPのみ許可していた場合、そのマイIPが変わったため、拒否されてしまった。
+
+問題のインスタンスのセキュリティグループの設定へアクセスして、SSHを許可するIPアドレスを新しいマイIPに修正する。
+
+これでログインできるようになる。
+
+### 請求金額が尋常じゃない
+
+おそらく、無料利用枠ではないインスタンスタイプ、マシンイメージを選んだか、インスタンスを多重起動してしまった可能性がある。
+
+とりわけ、インスタンスの多重起動をすると、その数だけ無料で利用できる750時間を消費していくので、使用していないインスタンスは、その都度停止しておくと良い。
+
+下記にお金がかからないようにAWSを利用する方法が書かれてある。
+
+[AWSでなるべくお金がかからないようにウェブアプリを運用する方法](/post/aws-do-not-spend-money/)
 
 ## 結論
 
