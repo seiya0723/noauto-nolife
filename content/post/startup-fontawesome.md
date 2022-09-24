@@ -23,6 +23,19 @@ fontawesome CDN などで検索してくると、下記サイトが出てくる�
 https://fontawesome.com/v5.15/how-to-use/customizing-wordpress/snippets/setup-cdn-webfont#load-all-styles
 
 
+### 追記
+
+2022年9月現在、fontawesome 6.20が最新である、下記から
+
+https://cdnjs.com/libraries/font-awesome
+
+
+このCSSをコピーしてheadタグに貼り付ける
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
 ## 使い方
 
 fontawesomeのアイコン一覧が掲載されているページ( https://fontawesome.com/icons?d=gallery )からアイコンを選ぶ。無料版しか選べないので、サイドバーのFreeを予めクリックして絞り込むと見やすい。
