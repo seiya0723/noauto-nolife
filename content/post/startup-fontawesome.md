@@ -35,7 +35,6 @@ https://cdnjs.com/libraries/font-awesome
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-
 ## 使い方
 
 fontawesomeのアイコン一覧が掲載されているページ( https://fontawesome.com/icons?d=gallery )からアイコンを選ぶ。無料版しか選べないので、サイドバーのFreeを予めクリックして絞り込むと見やすい。

@@ -167,6 +167,11 @@ Route53にて、エイリアスを設定する。Aレコードをクリックし
 
 <div class="img-center"><img src="/images/Screenshot from 2021-09-08 21-13-45.png" alt=""></div>
 
+この時、既にAレコードとして、独自ドメインとElasticIPが紐づくようになっているため、エラーが出る。
+
+そのため、独自ドメインとElasticIPのAレコードは削除して、上記の独自ドメインとELBのAレコードを追加しておく。
+
+
 この状態でHTTPSで独自ドメインに対してアクセスを行い、ページが表示されれば完了。ただし、表示までに時間がかかる可能性がある。
 
 <div class="img-center"><img src="/images/Screenshot from 2021-09-09 09-43-23.png" alt=""></div>
