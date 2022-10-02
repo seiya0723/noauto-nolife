@@ -105,6 +105,29 @@ tags: [ "ウェブデザイン","JavaScript","初心者向け" ]
     flatpickr("#date",config_date);
 
 
+### 【補足3】時間と分までデフォルトで入れるには？
+
+前項の改良型。
+
+    let today   = new Date();
+
+    let year    = String(today.getFullYear());
+    let month   = ("0" + String(today.getMonth() + 1) ).slice(-2);
+    let day     = ("0" + String(today.getDate()) ).slice(-2);
+    let hour    = ("0" + String(today.getHours()) ).slice(-2);
+    let minute  = ("0" + String(today.getMinutes()) ).slice(-2);
+
+    let date    = year + "-" + month + "-" + day + " " + hour + ":" + minute;
+
+    let config_date = { 
+        locale: "ja",
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        defaultDate: date,
+    }
+
+    flatpickr("#date",config_date);
+
 
 ## 結論
 
