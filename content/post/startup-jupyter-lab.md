@@ -4,7 +4,7 @@ date: 2022-08-22T12:14:16+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "python","スタートアップシリーズ" ]
+tags: [ "python","スタートアップシリーズ","Pythonライブラリ" ]
 ---
 
 

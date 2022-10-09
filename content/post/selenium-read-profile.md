@@ -4,7 +4,7 @@ date: 2021-03-29T08:37:13+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "web全般" ]
-tags: [ "python","selenium","スクレイピング" ]
+tags: [ "python","selenium","スクレイピング","Pythonライブラリ" ]
 ---
 
 めったに使うことのないSeleniumではあるが、いざ使おうとするとかなり手間取る。

@@ -4,7 +4,7 @@ date: 2021-04-13T18:59:38+09:00
 draft: false
 thumbnail: "images/js.jpg"
 categories: [ "フロントサイド" ]
-tags: [ "javascript","tips","初心者向け" ]
+tags: [ "javascript","tips","初心者向け","Cookie" ]
 ---
 
 

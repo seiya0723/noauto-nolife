@@ -4,7 +4,7 @@ date: 2021-02-12T17:48:49+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","Sendgrid","tips","Python","allauth" ]
+tags: [ "django","Sendgrid","tips","Python","allauth","Pythonライブラリ" ]
 ---
 
 Sendgridのパスワードを使用したメール送信が廃止され、APIを使用した2段階認証が強制されるため、ここに対策を記す。本記事はDjango(Python)を対象とした対策について解説する。

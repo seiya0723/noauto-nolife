@@ -4,7 +4,7 @@ date: 2021-12-16T16:31:27+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "python","スタートアップシリーズ","django" ]
+tags: [ "python","スタートアップシリーズ","django","Pythonライブラリ" ]
 ---
 
 Pythonを使えばExcelファイルの新規作成や編集、読み込みなどもできる。
@@ -48,7 +48,6 @@ Pythonを使えばExcelファイルの新規作成や編集、読み込みなど
     ws["B3"].value  = "商品B"
     ws["C3"].value  = 1
     ws["D3"].value  = 30000
-    
     
     #セルの値を入手。計算結果を入力
     ws["F2"].value  = "請求金額"

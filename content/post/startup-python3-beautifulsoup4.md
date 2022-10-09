@@ -4,7 +4,7 @@ date: 2022-08-11T09:27:27+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Python","スクレイピング","BeautifulSoup" ]
+tags: [ "Python","スクレイピング","BeautifulSoup","Pythonライブラリ" ]
 ---
 
 スクレイピングの用途は様々。

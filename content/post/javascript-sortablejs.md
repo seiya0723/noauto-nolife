@@ -4,14 +4,13 @@ date: 2022-09-11T21:21:48+09:00
 draft: false
 thumbnail: "images/js.jpg"
 categories: [ "フロントサイド" ]
-tags: [ "JavaScript","ウェブデザイン" ]
+tags: [ "JavaScript","ウェブデザイン","JavaScriptライブラリ" ]
 ---
 
 
 ## CDN
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-
 
 ## HTML
 
@@ -60,10 +59,18 @@ tags: [ "JavaScript","ウェブデザイン" ]
 <div class="img-center"><img src="/images/Screenshot from 2022-09-13 15-29-46.png" alt=""></div>
 
 
+
 ## 結論
 
-ソート終了時、onEndで何か処理を実行する事ができる。ただこの処理で要素を特定しても、並び替える前の要素を取得してしまうので、そのままAjaxをという考えは通用しない模様。
+ソート終了時、onEndで何か処理を実行する事ができる。例えば、Ajaxとか。
 
 ドラッグ中にクラスを割り当てる事ができるので、色を変えるとか色々できると思う。
+
+詳細は公式にて。
+
+https://sortablejs.github.io/Sortable/
+
+
+
 
 

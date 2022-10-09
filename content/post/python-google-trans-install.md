@@ -4,7 +4,7 @@ date: 2022-08-03T15:25:52+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Python","tips" ]
+tags: [ "Python","tips","Pythonライブラリ" ]
 ---
 
 グーグル翻訳を手軽に試すことができる、Pythonライブラリのgoogletrans。

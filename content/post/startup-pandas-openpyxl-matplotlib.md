@@ -4,7 +4,7 @@ date: 2021-10-14T12:47:15+09:00
 draft: false
 thumbnail: "images/pandas.jpg"
 categories: [ "others" ]
-tags: [ "スタートアップシリーズ","pandas","matplotlib","AI","初心者向け" ]
+tags: [ "スタートアップシリーズ","pandas","matplotlib","AI","初心者向け","Python","Pythonライブラリ" ]
 ---
 
 pandasでファイルの読み込み、演算、グラフ描画、ファイル書き込みの基本操作関係を記す。
