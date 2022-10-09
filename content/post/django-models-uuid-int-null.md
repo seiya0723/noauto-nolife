@@ -25,13 +25,13 @@ tags: [ "Django","上級者向け","アンチパターン" ]
 ## null=Trueとblank=Trueの組み合わせと結果
 
 
-
-|フィールド     |null=Trueだけ                                          |blank=Trueだけ                 |null=Trueとblank=True          |未指定|
+|フィールド       |null=Trueだけ                                          |blank=Trueだけ                 |null=Trueとblank=True          |未指定|
 |----|----|----|----|----|
-|CharField      |クライアントのフォーム未入力不可(バリデーション必ずNG) |未入力可(空文字列として扱う)   |未入力の場合、null(None)扱い   |入力必須|
-|IntegerField   |クライアントのフォーム未入力不可(バリデーション必ずNG) |マイグレーションすらできない   |未入力の場合、null(None)扱い   |入力必須|
-|UUIDField      |クライアントのフォーム未入力不可(バリデーション必ずNG) |マイグレーションすらできない   |未入力の場合、null(None)扱い   |入力必須|
-|DateTimeField  |クライアントのフォーム未入力不可(バリデーション必ずNG) |マイグレーションすらできない   |未入力の場合、null(None)扱い   |入力必須|
+|CharField        |クライアントのフォーム未入力不可(バリデーション必ずNG) |未入力可(空文字列として扱う)   |未入力の場合、null(None)扱い   |入力必須|
+|IntegerField     |クライアントのフォーム未入力不可(バリデーション必ずNG) |マイグレーションすらできない   |未入力の場合、null(None)扱い   |入力必須|
+|UUIDField        |クライアントのフォーム未入力不可(バリデーション必ずNG) |マイグレーションすらできない   |未入力の場合、null(None)扱い   |入力必須|
+|DateTimeField    |クライアントのフォーム未入力不可(バリデーション必ずNG) |マイグレーションすらできない   |未入力の場合、null(None)扱い   |入力必須|
+|ManyToManyField  |効果なし                                               |未入力可                       |null=Trueは効果なしなので警告  |入力必須|
 
 
 ### null=Trueだけ
@@ -77,10 +77,22 @@ tags: [ "Django","上級者向け","アンチパターン" ]
 
 この選択を許可するメリットは、未分類などのカテゴリを前もって作っておき、[loaddataコマンド](/post/django-loaddata/)を使ってDBへリストアしなくてもよいことにある。
 
-
 ### 未指定
 
 入力必須になる。Charfieldの場合も未入力は許可されない。当然サーバーサイドのコードからも入力は必須になるため、`null=True`だけの場合と違ってどのような場合でも値が入る。
+
+
+## 【例外】ManyToManyFieldはnullは意味なし
+
+`ManyToManyField`の場合に限って`null=True`の指定は効果がない。
+
+もし、未入力化としたい場合は、`blank=True`のみとする。
+
+これは`ManyToManyField`の仕様を考えるとわかる。
+
+
+
+
 
 
 ## 結論

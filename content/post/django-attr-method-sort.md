@@ -1,5 +1,5 @@
 ---
-title: "【Django】operatorでモデルのフィールド、メソッドを指定してソーティングをする【ランキングの実装に有効】"
+title: "【Django】sorted関数とoperatorでモデルのフィールド、メソッドを指定してソーティング・並び替えをする【ランキングの実装に有効】"
 date: 2022-07-30T17:48:17+09:00
 draft: false
 thumbnail: "images/django.jpg"

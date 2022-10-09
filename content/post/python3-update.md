@@ -58,6 +58,18 @@ tags: [ "python","ubuntu" ]
 
 こうすることで、python3で実行されるPythonのバージョンは先ほどインストールした新しい物になる。
 
+
+## 【補足2】Ubuntuのアップグレードをすれば、Pythonのバージョンアップもされる
+
+この記事を書いた当時は、Ubuntu18.04を使っていた。
+
+そのため、Pythonの更新がされないまま放置されていた。そこで、Ubuntuのアップグレードをする。
+
+Pythonはバージョンアップされた。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-10-09 13-44-34.png" alt=""></div>
+
+
 ## 参照元
 
 - https://stackoverflow.com/questions/43743509/how-to-make-python3-command-run-python-3-6-instead-of-3-5
