@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-m2m-search-and-add/", "title" : "【Django】ManyToManyFieldで検索をする方法、追加・削除を行う方法【多対多はクエリビルダの検索は通用しない】" }, 
+{ "link": "/post/django-models-uuid-int-null/", "title" : "Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するにはnull=Trueとblank=Trueのオプションを" }, 
 { "link": "/post/django-attr-method-sort/", "title" : "【Django】sorted関数とoperatorでモデルのフィールド、メソッドを指定してソーティング・並び替えをする【ランキングの実装に有効】" }, 
 { "link": "/post/ubuntu-upgrade-config-replace/", "title" : "Ubuntuのアップグレード時の設定を置き換えてはいけない" }, 
 { "link": "/post/python3-update/", "title" : "UbuntuにインストールされているPythonをアップデートする" }, 
@@ -16,7 +18,6 @@ const SEARCH_LIST = [
 { "link": "/post/aws-do-not-spend-money/", "title" : "AWSでなるべくお金がかからないようにウェブアプリを運用する方法" }, 
 { "link": "/post/django-deploy-ec2/", "title" : "DjangoをAWSのEC2(Ubuntu)にデプロイする" }, 
 { "link": "/post/ec2-origin-domain-https/", "title" : "【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 + Certificate Manager + ロードバランサ(ELB)】" }, 
-{ "link": "/post/django-m2m-search-and-add/", "title" : "【Django】ManyToManyFieldで検索をする方法、追加・削除を行う方法【多対多はクエリビルダの検索は通用しない】" }, 
 { "link": "/post/flatpickr-install/", "title" : "【日付入力】flatpickrの実装方法(ロケール日本語化、日時入力対応化)" }, 
 { "link": "/post/django-csrf-trusted-origins/", "title" : "【Django】Django4.0以上はsettings.pyにて、CSRF_TRUSTED_ORIGINSにオリジンを指定しないとPOSTリクエスト時に403Forbiddenになる" }, 
 { "link": "/post/startup-fontawesome/", "title" : "fontawesomeの実装と利用例のまとめ" }, 
@@ -251,7 +252,6 @@ const SEARCH_LIST = [
 { "link": "/post/css3-tab-system-transition/", "title" : "CSS3とHTML5のタブシステムをtransitionでアニメーション表示に仕立てる" }, 
 { "link": "/post/django-foreign-count-distinct/", "title" : "Djangoで複数の外部キーに対応したフィールドの個数をカウントする【annotate(Count)+DISTINCT】" }, 
 { "link": "/post/django-models-save-delete-override/", "title" : "DjangoでDBへデータ格納時(save)、削除時(delete)に処理を追加する【models.py、forms.py、serializer.pyのメソッドオーバーライド】" }, 
-{ "link": "/post/django-models-uuid-int-null/", "title" : "Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するにはnull=Trueとblank=Trueのオプションを" }, 
 { "link": "/post/django-admin-custom-action/", "title" : "【Django】admin.pyからカスタムアクションを追加し、管理サイトから実行【crontab、BaseCommandが使えない場合の対処法】" }, 
 { "link": "/post/django-deploy-heroku-s3/", "title" : "DjangoをS3(AWS)ストレージ付きのHerokuにデプロイする" }, 
 { "link": "/post/django-id-list-filter/", "title" : "Djangoで主キーのリスト型を作り、合致するレコードを検索する【values_list + filter】" }, 
