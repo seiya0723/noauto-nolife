@@ -284,6 +284,42 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
     [Install]
     WantedBy=multi-user.target
 
+
+例えば、`[プロジェクト名]`が`startup_bbs`であればこうなる。
+
+    [Unit]
+    Description=gunicorn daemon
+    After=network.target
+    
+    [Service]
+    User=ubuntu
+    Group=www-data
+    WorkingDirectory=/home/ubuntu/Documents/startup_bbs
+    ExecStart       =/home/ubuntu/Documents/startup_bbs/venv/bin/gunicorn --access-logfile - --workers 3 \
+                     --bind unix:/home/ubuntu/Documents/startup_bbs/startup_bbs.socket config.wsgi:application
+    
+    [Install]
+    WantedBy=multi-user.target
+
+
+ちなみにこのように書いてもOKだ。
+
+    [Unit]
+    Description=gunicorn daemon
+    After=network.target
+    
+    [Service]
+    User=ubuntu
+    Group=www-data
+    WorkingDirectory=/home/ubuntu/Documents/startup_bbs
+    ExecStart=/home/ubuntu/Documents/startup_bbs/venv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/ubuntu/Documents/startup_bbs/startup_bbs.socket config.wsgi:application
+    
+    [Install]
+    WantedBy=multi-user.target
+
+
+
+
 プロジェクトの`wsgi.py`は`config`ディレクトリの中に`urls.py`や`settings.py`と含まれているので、`config.wsgi.application`になる点にご注意。
 
 仮想環境(`venv`)の場所は、プロジェクトディレクトリ(`[プロジェクト名]`)にあるので、そちらに指定している。
@@ -423,6 +459,26 @@ https://qiita.com/shizen-shin/items/549087e77f1397bc1d92
 終了は削除を意味する。
 
 デプロイを終えた段階でインスタンスをうっかり終了してしまうと、また一からやり直しになってしまうので注意。
+
+
+### gunicornでエラーが発生する場合はどうしたら良い？
+
+もし`/etc/systemd/system/gunicorn.service`の内容を間違えずに記述して、それでもgunicornが立ち上がらないエラーが出てしまう時がある。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-10-10 12-43-42.png" alt=""></div>
+
+こういう時は、Djangoの構文エラーを疑った方が良いだろう。
+
+gunicornがDjangoのwsgi.pyを読み込む時、Djangoの中に構文エラーがあると、このように起動に失敗する。しかもこのようにDjango側の具体的なエラーメッセージが表示されないため、gunicornに問題があると思ってしまう。
+
+ハマる原因になるので、Djangoの構文エラーを確かめる
+
+```
+python3 manage.py runserver
+```
+
+これで表示されるエラー内容を確認し、適宜修正をする。
+
 
 ### 502 Bad Gatewayエラーはどうすればいい？
 
