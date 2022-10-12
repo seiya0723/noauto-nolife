@@ -9,7 +9,12 @@ tags: [ "javascript","ウェブデザイン","初心者向け","スタートア�
 
 ## インストールとチュートリアル
 
-下記CDNをインストールする。
+
+最新版のCDNなら以下サイトから入手できる
+
+https://www.jsdelivr.com/package/npm/chart.js?path=dist
+
+とりあえず試したい場合は下記CDNをインストールする。(※一部仕様が現行バージョンと異なるため注意)
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
 
@@ -18,7 +23,6 @@ tags: [ "javascript","ウェブデザイン","初心者向け","スタートア�
     <canvas id="graph"></canvas>
 
 これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。
-
 
 ## 棒グラフ
 
