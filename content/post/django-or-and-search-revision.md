@@ -31,9 +31,7 @@ tags: [ "django","上級者向け","検索" ]
             query   = Q()
     
             if "search" in request.GET:
-                search      = request.GET["search"]
-    
-                raw_words   = search.replace("　"," ").split(" ")
+                raw_words   = request.GET["search"].replace("　"," ").split(" ")
                 words       = [ w for w in raw_words if w != "" ]
     
                 for w in words:
@@ -66,6 +64,8 @@ tags: [ "django","上級者向け","検索" ]
 searchに何か記述されている場合、検索のクエリを追加する。そうでなければ検索のクエリは追加しない。
 
 後続に追加の絞り込み処理(カテゴリ検索、価格帯など)を書けば良いだろう。
+
+
 
 ## ボツ案
 
