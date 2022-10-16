@@ -62,7 +62,7 @@ tags: [ "ウェブデザイン","CSS3" ]
     border-bottom-right-radius:0;
 }
 .others_speech_bubble_area .speech_bubble {
-    /* 自分が送った時は右下の角をつける */
+    /* 相手が送った時は左上の角をつける */
     background:silver;
     border-top-left-radius:0;
 }

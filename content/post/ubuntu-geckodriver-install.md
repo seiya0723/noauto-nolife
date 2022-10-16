@@ -12,6 +12,11 @@ tags: [ "Python","Selenium","スクレイピング" ]
 https://github.com/mozilla/geckodriver/releases
 
 
+コマンドで動かす時はこうする。
+
+    wget https://github.com/mozilla/geckodriver/releases/download/v0.32.0/geckodriver-v0.32.0-linux64.tar.gz
+    tar -zxvf  geckodriver-v0.32.0-linux64.tar.gz 
+
 DLしたら圧縮ファイルを展開し、中に有るgeckodriverを`/usr/local/bin/`にコピーする。
 
     sudo cp geckodriver /usr/local/bin/
