@@ -1,7 +1,7 @@
 ---
 title: "【Ubuntu】tesseractをインストールして、pyocrから画像の文字起こしを試す【Python】"
 date: 2022-10-17T08:59:10+09:00
-draft: false
+draft: true
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Python","Ubuntu","Pythonライブラリ","画像認識","OCR" ]
