@@ -1,5 +1,5 @@
 ---
-title: "JavaScriptで文字数をカウントする【サロゲートペアに注意】"
+title: "JavaScriptで文字数をカウントする【サロゲートペアと改行コードに注意】"
 date: 2022-10-16T20:32:18+09:00
 draft: false
 thumbnail: "images/Screenshot from 2022-10-16 20-45-41.png"
