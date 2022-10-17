@@ -1,5 +1,5 @@
 ---
-title: "【Chart.js】棒グラフと折れ線グラフの複合型で、左右の横軸にタイトルとメモリ表示"
+title: "【Chart.js】棒グラフと折れ線グラフの複合型で、左右の横軸にタイトルと目盛を表示"
 date: 2022-10-16T19:22:28+09:00
 draft: false
 thumbnail: "images/Screenshot from 2022-10-16 20-03-15.png"

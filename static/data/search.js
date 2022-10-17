@@ -1,10 +1,10 @@
 const SEARCH_LIST = [
+{ "link": "/post/chartjs-mix-graph-axes/", "title" : "【Chart.js】棒グラフと折れ線グラフの複合型で、左右の横軸にタイトルと目盛を表示" }, 
 { "link": "/post/python-tesseract-ocr-by-ubuntu/", "title" : "【Ubuntu】tesseractをインストールして、Pythonから画像の文字起こし(OCR)を試す【pytesseract】" }, 
 { "link": "/post/django-markdown/", "title" : "DjangoでPythonライブラリのマークダウンを試してみる【pip install Markdown】" }, 
 { "link": "/post/javascript-string-counter/", "title" : "JavaScriptで文字数をカウントする【サロゲートペアと改行コードに注意】" }, 
 { "link": "/post/django-m2m-add-validators/", "title" : "【Django】ManyToManyFieldにはフィールドオプションvalidatorsは効果なしなので、フォームクラスに追加のバリデーションを【多対多は特殊】" }, 
 { "link": "/post/why-use-ubuntu/", "title" : "なぜUbuntuを使うのか？WindowsやMacにはない〇〇がある" }, 
-{ "link": "/post/chartjs-mix-graph-axes/", "title" : "【Chart.js】棒グラフと折れ線グラフの複合型で、左右の横軸にタイトルとメモリ表示" }, 
 { "link": "/post/javascript-easytimer/", "title" : "EasyTimer.jsを使ってストップウォッチとタイマーを作る" }, 
 { "link": "/post/github-repo-easy-delete/", "title" : "Tempermonkeyを使ってGitHubのリポジトリ削除を簡単にする。" }, 
 { "link": "/post/css3-chat-web-design/", "title" : "【CSS3】チャットのウェブデザインを作る" }, 
