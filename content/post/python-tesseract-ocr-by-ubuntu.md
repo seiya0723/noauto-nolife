@@ -1,5 +1,5 @@
 ---
-title: "【Ubuntu】tesseractをインストールして、Pythonから画像の文字起こしを試す【pytesseract】"
+title: "【Ubuntu】tesseractをインストールして、Pythonから画像の文字起こし(OCR)を試す【pytesseract】"
 date: 2022-10-17T08:59:10+09:00
 draft: false
 thumbnail: "images/python.jpg"

@@ -1,6 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/python-tesseract-ocr-by-ubuntu/", "title" : "【Ubuntu】tesseractをインストールして、Pythonから画像の文字起こし(OCR)を試す【pytesseract】" }, 
+{ "link": "/post/django-markdown/", "title" : "DjangoでPythonライブラリのマークダウンを試してみる【pip install Markdown】" }, 
 { "link": "/post/javascript-string-counter/", "title" : "JavaScriptで文字数をカウントする【サロゲートペアと改行コードに注意】" }, 
-{ "link": "/post/python-tesseract-ocr-by-ubuntu/", "title" : "【Ubuntu】tesseractをインストールして、Pythonから画像の文字起こしを試す【pytesseract】" }, 
 { "link": "/post/django-m2m-add-validators/", "title" : "【Django】ManyToManyFieldにはフィールドオプションvalidatorsは効果なしなので、フォームクラスに追加のバリデーションを【多対多は特殊】" }, 
 { "link": "/post/why-use-ubuntu/", "title" : "なぜUbuntuを使うのか？WindowsやMacにはない〇〇がある" }, 
 { "link": "/post/chartjs-mix-graph-axes/", "title" : "【Chart.js】棒グラフと折れ線グラフの複合型で、左右の横軸にタイトルとメモリ表示" }, 
@@ -12,7 +13,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-or-and-search-revision/", "title" : "【Django】スペース区切りでOR・AND検索を改定する" }, 
 { "link": "/post/startup-chartjs/", "title" : "【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】" }, 
 { "link": "/post/ubuntu-beep-command/", "title" : "Ubuntuにbeepコマンドをインストール【crontabで時報を作る】" }, 
-{ "link": "/post/django-markdown/", "title" : "DjangoでPythonライブラリのマークダウンを試してみる【pip install Markdown】" }, 
 { "link": "/post/django-deploy-ec2/", "title" : "DjangoをAWSのEC2(Ubuntu)にデプロイする" }, 
 { "link": "/post/django-m2m-search-and-add/", "title" : "【Django】ManyToManyFieldで検索をする方法、追加・削除を行う方法【多対多はクエリビルダの検索は通用しない】" }, 
 { "link": "/post/django-models-uuid-int-null/", "title" : "Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するにはnull=Trueとblank=Trueのオプションを" }, 
