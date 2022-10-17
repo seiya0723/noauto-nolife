@@ -80,6 +80,8 @@ ManyToManyFieldにはvalidatorsフィールドオプションは通用しない�
             #タグは2個まで
             if len(tags) > 2:
                 raise ValidationError("タグは2個まで")
+
+            return self.cleaned_data
     
 
 追加のバリデーションは`clean`メソッドに記述する。
