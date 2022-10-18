@@ -124,10 +124,6 @@ Djangoでは新規会員登録したとき、記録できるのはユーザーID
     from .models import Topic
     from .forms import CustomUserForm
     
-    
-    from users.models import CustomUser
-    
-    
     class IndexView(View):
     
         def get(self, request, *args, **kwargs):
@@ -135,9 +131,6 @@ Djangoでは新規会員登録したとき、記録できるのはユーザーID
             context = {}
     
             context["topics"]   = Topic.objects.all()
-            context["users"]    = CustomUser.objects.all()
-    
-            print(context["users"])
     
     
             return render(request,"bbs/index.html",context)
@@ -148,8 +141,8 @@ Djangoでは新規会員登録したとき、記録できるのはユーザーID
                 print("未認証")
                 return redirect("account_login")
     
-            user    = CustomUser.objects.filter(id=request.user.id).first()
-            form    = CustomUserForm(request.POST,instance=user)
+            #instanceにはrequest.userを指定する。
+            form    = CustomUserForm(request.POST,instance=request.user)
     
             if form.is_valid():
                 print("バリデーションOK")
@@ -241,16 +234,13 @@ Djangoでは新規会員登録したとき、記録できるのはユーザーID
             fields  = [ "first_name","last_name" ]
 
 
-そして、ビュー側では、デフォルトのユーザーモデルに対して、モデルオブジェクトを特定し、編集する。
+そして、ビュー側では、request.userを使って編集する。
 
     from django.shortcuts import render,redirect
     
     from django.views import View
     from .models import Topic
     from .forms import UserForm
-    
-    from django.contrib.auth.models import User
-    
     
     class IndexView(View):
     
@@ -259,9 +249,6 @@ Djangoでは新規会員登録したとき、記録できるのはユーザーID
             context = {}
     
             context["topics"]   = Topic.objects.all()
-            context["users"]    = User.objects.all()
-    
-            print(context["users"])
     
             return render(request,"bbs/index.html",context)
     
@@ -271,8 +258,7 @@ Djangoでは新規会員登録したとき、記録できるのはユーザーID
                 print("未認証")
                 return redirect("account_login")
     
-            user    = User.objects.filter(id=request.user.id).first()
-            form    = UserForm(request.POST,instance=user)
+            form    = UserForm(request.POST,instance=request.user)
     
             if form.is_valid():
                 print("バリデーションOK")

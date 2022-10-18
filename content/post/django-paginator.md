@@ -4,7 +4,7 @@ date: 2020-11-11T17:57:49+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","tips","初心者向け","カスタムテンプレートタグ" ]
+tags: [ "django","tips","上級者向け","カスタムテンプレートタグ" ]
 ---
 
 殆どのプロジェクトで実装必須になるページネーション。
@@ -18,7 +18,7 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 ## 流れ
 
 1. views.pyを書き換える
-1. カスタムテンプレートタグを追加、インストールさせる
+1. カスタムテンプレートタグを作成、インストールさせる
 1. テンプレートの修正
 
 ## views.pyを書き換える
@@ -82,16 +82,16 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 
 他にも似たようなものに、`.page()`メソッドがあるがこちらは不適切な値を入力すると例外処理が発生する。処理時間とコードが長くなるため非推奨。
 
-
-## 普通にページネーションを表示する【問題ありの方法】
+## 【アンチパターン】普通にページネーションを表示する
 
 まず、普通にページネーションを実装させたらどうなるか、その挙動を確認する。
 
 実践ではこの方法は使い物にならないので、とにかくページネーションを実装させたい場合は、次の項へスキップすると良い。
 
-テンプレート上で、下記を追加する。
+テンプレート上で、下記を追加する。(クラス名にBootstrapを使用している)
 
     <ul class="pagination justify-content-center">
+
         {% if products.has_previous %}
         <li class="page-item"><a class="page-link" href="?page=1">最初のページ</a></li>
         <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">前のページ</a></li>
@@ -99,7 +99,9 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
         <li class="page-item"><a class="page-link">最初のページ</a></li>
         <li class="page-item"><a class="page-link">前のページ</a></li>
         {% endif %}
+
         <li class="page-item"><a class="page-link">{{ products.number }}</a></li>
+
         {% if products.has_next %}
         <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">次のページ</a></li>
         <li class="page-item"><a class="page-link" href="?page={{ products.paginator.num_pages }}">最後のページ</a></li>
@@ -107,6 +109,7 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
         <li class="page-item"><a class="page-link">次のページ</a></li>
         <li class="page-item"><a class="page-link">最後のページ</a></li>
         {% endif %}
+
     </ul>
 
 これで、ページネーションが実装できる。
@@ -119,8 +122,7 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 
 この問題を解消するため、カスタムテンプレートタグを使う。
 
-
-## ページネーション用のカスタムテンプレートタグを追加、インストール
+## 【正攻法】ページネーション用のカスタムテンプレートタグを追加、インストール
 
 前項で説明したとおり、今回は単にページネーションを実装するのではなく、検索のパラメーターも維持した状態でページ移動も行わなければならない。
 
@@ -163,7 +165,6 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 つまり、デコレータである`@register.simple_tag()`は、関数の`def url_replace(request, key, value):`に対して、テンプレートタグとしての機能を追加している。
 
 このデコレータを追加していなければ、Djangoのテンプレート側から、`url_replace`を呼び出すことはできない。
-
 
 ### 【補足2】関数のurl_replaceは何をしているのか。
 
@@ -266,6 +267,13 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
 どちらが先でも問題はない。
 
 ただ、テンプレートの継承を意味する、`{% extends %}`は一番最初に書かなければならない。loadよりも後にextendsを書いてはならない。
+
+
+    {% extends "common/base.html" %}
+
+    {% load static %}
+    {% load param_change %}
+
 
 ## 動作
 
