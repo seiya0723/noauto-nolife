@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-openpyxl/", "title" : "【openpyxl】PythonからExcelファイルを読み書きする" }, 
+{ "link": "/post/ogp-thumbnail-created-by-python/", "title" : "OGP(Open Graph Protocol)情報から動画のサムネイル等を抽出する【Python使用】" }, 
+{ "link": "/post/jquery-objects-loop/", "title" : "jQueryのオブジェクトをfor~of文でループするとJavaScriptになる問題の対処" }, 
 { "link": "/post/python-regex-findall/", "title" : "【Python】正規表現モジュールreでパターンに一致した文字列を全て取り出す・全て置換する" }, 
 { "link": "/post/django-search-querybuilder-custom-templates-js/", "title" : "Djangoでクエリビルダを使い、スペース区切りの文字列検索と絞り込みを同時に行う【JSとカスタムテンプレートタグを使用】" }, 
 { "link": "/post/django-paginator/", "title" : "Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】" }, 
@@ -30,7 +33,6 @@ const SEARCH_LIST = [
 { "link": "/post/startup-pandas-openpyxl-matplotlib/", "title" : "【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】" }, 
 { "link": "/post/django-sendgrid/", "title" : "DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】" }, 
 { "link": "/post/selenium-read-profile/", "title" : "SeleniumでFirefoxブラウザのプロファイルを読み込む【Recaptcha突破、Cookie+アドオン読み込み】" }, 
-{ "link": "/post/startup-openpyxl/", "title" : "【openpyxl】PythonからExcelファイルを読み書きする" }, 
 { "link": "/post/startup-python3-beautifulsoup4/", "title" : "【Python3】BeautifulSoup4の使い方、検証のコード作成方法、役立つリンク集のまとめ【保存版】" }, 
 { "link": "/post/python-google-trans-install/", "title" : "【Python】pipで翻訳系ライブラリのgoogletransをインストールする【※バージョン指定しないとエラー】" }, 
 { "link": "/post/startup-jupyter-lab/", "title" : "Jupyter Labを始める" }, 
