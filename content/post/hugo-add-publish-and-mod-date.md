@@ -18,7 +18,13 @@ SEO対策として、記事の更新日を記録することにした。
 
 このギミックが動作するHUGOのバージョン。
 
+ローカルでのバージョン
+
     Hugo Static Site Generator v0.68.3/extended linux/amd64 BuildDate: 2020-03-25T06:15:45Z
+
+デプロイ先のNetlifyのHUGOのバージョン
+
+    hugo v0.85.0-724D5DB5+extended linux/amd64 BuildDate=2021-07-05T10:46:28Z VendorInfo=gohugoio
 
 
 ## 記事ヘッダーにlastmodを追加する
