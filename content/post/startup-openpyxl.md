@@ -1,6 +1,7 @@
 ---
 title: "【openpyxl】PythonからExcelファイルを読み書きする"
 date: 2021-12-16T16:31:27+09:00
+lastmod: 2022-10-28T16:31:27+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
@@ -167,6 +168,27 @@ forループを二重にすることで、二次元データを格納するこ�
     ws.column_dimensions["A"].width = 40
 
 値が列幅をはみ出して表示されてしまう時は、このように調整するとよいだろう。
+
+
+## セルに色をつける
+
+別途 PatternFillクラスをimportすることで、セルに装飾を行う事ができる。
+
+    #PatternFillクラスをimportする
+    from openpyxl.styles import PatternFill
+    
+    ws["A1"].fill   = PatternFill(patternType='solid', fgColor='00FFCC')
+
+
+    for x in range(1,11):
+        for y in range(11,14):
+            ws.cell(row=y, column=x).fill  = PatternFill(patternType='solid', fgColor='00FFCC')
+
+
+ちなみに、fgColorに入れる事ができる値は16進数のカラーコードのみ。下記のようにHTMLカラーを入れることはできない。
+
+    #これはエラー
+    #ws["A1"].fill   = PatternFill(patternType='solid', fgColor='orange')
 
 
 ## 結論

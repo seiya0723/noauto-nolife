@@ -1,5 +1,9 @@
 const SEARCH_LIST = [
 { "link": "/post/startup-openpyxl/", "title" : "【openpyxl】PythonからExcelファイルを読み書きする" }, 
+{ "link": "/post/hugo-add-publish-and-mod-date/", "title" : "【HUGO】作成日時と最終更新日時を表示させる【SEO対策】" }, 
+{ "link": "/post/matplotlib-font-easy-settings/", "title" : "【matplotlib】フォントファイルを用意して日本語の豆腐化を修正する" }, 
+{ "link": "/post/pandas-for-loop/", "title" : "【Pandas】DataFrameをループして取り出す【列ごと、行ごとに取り出すにはdf.items()とdf.itertuples()でOK】" }, 
+{ "link": "/post/django-modelform-add-required/", "title" : "【Django】モデルを使用したフォームクラスで、required属性を付与する" }, 
 { "link": "/post/ogp-thumbnail-created-by-python/", "title" : "OGP(Open Graph Protocol)情報から動画のサムネイル等を抽出する【Python使用】" }, 
 { "link": "/post/jquery-objects-loop/", "title" : "jQueryのオブジェクトをfor~of文でループするとJavaScriptになる問題の対処" }, 
 { "link": "/post/python-regex-findall/", "title" : "【Python】正規表現モジュールreでパターンに一致した文字列を全て取り出す・全て置換する" }, 
