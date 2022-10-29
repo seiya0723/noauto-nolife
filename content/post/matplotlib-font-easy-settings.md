@@ -1,6 +1,7 @@
 ---
 title: "【matplotlib】フォントファイルを用意して日本語の豆腐化を修正する"
 date: 2022-10-27T19:13:17+09:00
+lastmod: 2022-10-28T19:13:17+09:00
 draft: false
 thumbnail: "images/matplotlib.jpg"
 categories: [ "others" ]
