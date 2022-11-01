@@ -32,7 +32,7 @@ tags: [ "Python","スクレイピング","BeautifulSoup","Pythonライブラリ"
         print("ERROR_DOWNLOAD:{}".format(e))
     else:
         soup    = bs4.BeautifulSoup(result.content, "html.parser")
-        main    = soup.select(main)
+        main    = soup.select("main")
     
     
         print(main)

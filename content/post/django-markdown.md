@@ -1,10 +1,11 @@
 ---
 title: "DjangoでPythonライブラリのマークダウンを試してみる【pip install Markdown】"
 date: 2022-10-16T22:51:20+09:00
+lastmod: 2022-10-30T20:18:20+09:00
 draft: false
-thumbnail: "images/django.jpg"
+thumbnail: "images/Screenshot from 2022-10-30 20-08-23.png"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","Pythonライブラリ","ウェブデザイン","追記予定" ]
+tags: [ "Django","Pythonライブラリ","ウェブデザイン","マークダウン" ]
 ---
 
 どうやらPythonライブラリにマークダウンを実現させるライブラリがあるそうだ。これがDjangoで扱えるらしい。
@@ -127,26 +128,133 @@ scriptタグの部分はエスケープしてくれない。そのため、Djang
 
 ## では、実際にDjangoでマークダウンを運用するにはどうしたら良い？
 
-近日追記予定。
+まずは[カスタムテンプレートフィルタ(カスタムテンプレートタグ)](/post/django-custom-template-tags-hashtags/)を実装する必要がある。
+
+実験台になってもらうのは、いつもの[40分Django](/post/startup-django/)。
 
 
+### マークダウン記法をHTMLに変換するカスタムテンプレートフィルタを作る
+
+`bbs/templatetags/markdown.py`を作る。
+
+中身は下記。
 
 
+    import markdown
+    from django import template
+    
+    from django.utils.html import escape
+    from django.utils.safestring import mark_safe
+    
+    register = template.Library()
+    
+    @register.filter()
+    def md(value):
+    
+        # まずDBに投稿されているデータをescapeでエスケープする(HTML直書きを無効化)
+        escaped     = escape(value)
+    
+        # 続いて、マークダウンをHTMLに直す markdown.markdown
+        marked      = markdown.markdown( escaped , extensions=["extra"])
+    
+        # その上で、HTMLをエスケープさせずにレンダリングする  mark_safe
+        return mark_safe( marked )
 
 
+動かすとこうなる。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-10-30 20-08-23.png" alt=""></div>
+
+しっかり、XSS対策をしつつ、マークダウン記法が反映された。
+
+
+ただ、これだと、改行が1回だけ、例えば以下みたいな文章だと、1行で表示されてしまう問題がある。
+
+
+    こんな
+    文章だと
+    1行で表示される。
+
+
+<div class="img-center"><img src="/images/Screenshot from 2022-10-30 20-10-07.png" alt=""></div>
+
+
+原因は、pタグ内の改行がbrタグに変換されないから。
+
+だから、こんなふうに施しをするとよいだろう。
+
+    import markdown
+    from django import template
+    
+    from django.utils.html import escape
+    from django.utils.safestring import mark_safe
+    
+    register = template.Library()
+    
+    @register.filter()
+    def md(value):
+    
+        # まずDBに投稿されているデータをescapeでエスケープする(HTML直書きを無効化)
+        escaped     = escape(value)
+    
+        # 続いて、マークダウンをHTMLに直す markdown.markdown
+        marked      = markdown.markdown( escaped , extensions=["extra"])
+    
+        #bs4を使ってpタグの改行に対してのみ、BRタグに書き換える。
+        import bs4,re
+    
+        soup    = bs4.BeautifulSoup(marked, "html.parser")
+        p_elems = soup.select("p")
+    
+        for p_elem in p_elems:
+            p_elem_br   = re.sub( "\n","<br>", str(p_elem) )
+    
+            #markedは"を&quot;としている。そのため、置換でヒットさせるためには、エスケープする必要がある。
+            #FIXME:他にもreplaceでヒットしないエスケープ文字がいくらかあるっぽい
+    
+            marked      = marked.replace( str(p_elem).replace("\"","&quot;"), p_elem_br)
+    
+        # その上で、HTMLをエスケープさせずにレンダリングする  mark_safe
+        return mark_safe( marked )
+
+
+ご覧の通り、まだまだ完全とは程遠いが、先ほどの文章はこんなふうに表示される。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-10-30 20-10-56.png" alt=""></div>
+
+他にもエスケープされている文字列があるようだが、これ以上対策をしても次項の問題は解決されないので、放置することにした。
+
+
+## マークダウン入力と同時にプレビューをするには？
+
+エンジニア向けの質問投稿サイトなどは、マークダウンで入力できるようになっている。
+
+そのマークダウン入力時に、隣でプレビューを表示する事が多いだろう。
+
+JavaScriptがテキストエリアの入力を検知して、リアルタイムでマークダウンをHTMLに変換、それを表示しているのだ。
+
+このPythonライブラリのMarkdownで、同じことをやろうとすると、Ajaxを使うしかない。
+
+しかし、キー入力をするたびにAjaxでリクエストを飛ばしているようでは、クライアント、サーバーともに甚大な負荷がかかる。
+
+よって、マークダウンの入力と同時にプレビューをするには、JavaScriptのmarked.jsを使うしか方法はないのだ。
+
+今回のPythonのMarkdownは、このプレビューを考慮するとあまり得策とは言えないだろう。
 
 
 ## 結論
 
-これで、Djangoでマークダウンを運用する兆しが見えてきたと思う。
+これで、Djangoでマークダウンを使って表現をする事ができたが、まだまだ課題は山積みである。
 
+とりわけ、JavaScriptでマークダウンを表現したほうが良いかもしれない。
+
+一応、方法論の1つとして知っておく程度で良いだろう。
+
+あとは、適当にCSSを用意する。
 
 ## 参照元
 
 - https://pypi.org/project/Markdown/
 - https://learndjango.com/tutorials/django-markdown-tutorial
 - https://python-markdown.github.io/extensions/
-
-
-
 
