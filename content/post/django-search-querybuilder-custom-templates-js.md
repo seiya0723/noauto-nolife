@@ -12,7 +12,6 @@ tags: [ "Django" ]
 
 ## ビュー
 
-
 ```
 from django.shortcuts import render
 from django.views import View
@@ -72,6 +71,20 @@ class IndexView(View):
 
 index   = IndexView.as_view()
 ```
+
+[1対多のリレーション](/post/django-models-foreignkey/)を組んだモデルの検索をする場合、予めフォームクラスを作った上で、バリデーションを行い検索を行う必要がある。
+
+
+    from django import forms 
+    from .models import Topic
+    
+    class CategorySearchForm(forms.ModelForm):
+    
+        class Meta:
+            model   = Topic
+            fields  = [ "category" ]
+    
+
 
 ## テンプレート
 
