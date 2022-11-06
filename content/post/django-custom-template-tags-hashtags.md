@@ -70,6 +70,14 @@ DTLでは自動的にエスケープ処理を行ってくれるので、正規�
 
 この方法を応用すれば、Djangoのマークダウン実装もカスタムテンプレートタグ(フィルタ)で実現できそうだ。正規表現が大変なことになりそうだが。
 
-参照元:https://stackoverflow.com/questions/42137455/make-all-hashtags-clickable-in-template-with-templatetags
+参照元: https://stackoverflow.com/questions/42137455/make-all-hashtags-clickable-in-template-with-templatetags
+
+
+追記: Djangoにマークダウンを実装させた。Pythonライブラリを使った。
+
+[DjangoでPythonライブラリのマークダウンを試してみる【pip install Markdown】](/post/django-markdown/)
+
+
+
 
 

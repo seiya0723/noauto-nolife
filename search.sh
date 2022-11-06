@@ -31,6 +31,7 @@ sed -i -e "s/\"$/\" \}, /g" $generate
 sed -i "1iconst SEARCH_LIST = [" $generate
 
 #末端に配列終端
+#TODO:後にここへ広告を挿入する
 
 echo "];" >> $generate
 

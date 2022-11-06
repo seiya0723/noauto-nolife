@@ -155,7 +155,20 @@ unicodeでエンコーディングされてはいるものの、出力されて�
 そしてログのチェックでもgrepコマンドを多用する。正規表現が使えるので、送信元のIPアドレス、パラメータの値の表記ゆれも含めてまとめてヒットさせる際にとても便利だ。
 
 
-以下、参照元
+## 関連記事
+
+ちなみに、特定のIPアドレスを拒否したい場合はこちら。
+
+[Nginxで特定IPアドレスのリクエストを拒否する](/post/nginx-deny-ip-address/)
+
+
+awkコマンドで特定条件下のログを取り出したい場合はこちら。
+
+[Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】](/post/nginx-log-check-by-awk/)
+
+
+
+## 参照元
 
 - https://qiita.com/hito3/items/0e539e82ee3c410cccf1
 - https://qiita.com/nanaco/items/b30e160ab2c0ea026f3d
