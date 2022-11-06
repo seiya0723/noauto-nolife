@@ -131,3 +131,20 @@ jQueryで簡単にJSのコードが書けるが、後日再利用するとなる
 
 素のJSで書けるのであれば、それに越したことはないだろう。多少長くても統合開発環境などを使えば、属性名等の補正もしてくれる。
 
+
+## 関連記事
+
+### 素のJavaScriptでAjaxを送信するには？
+
+下記はサーバーサイドとしてDjangoを使っているが、jQueryのAjaxを使用した場合と全く変わらないように作っている。
+
+[素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】](/post/django-xmlhttprequest-ajax-not-use-jquery/)
+
+### モダンな構文
+
+JavaScriptのモダンな構文を知りたい場合は下記を見ると良いだろう。一部の構文は脱jQueryにも使えると思う。
+
+[Reactに必要なJavaScript構文【ES2015(ES6)のテンプレート文字列、アロー関数、スプレッド構文、letとconstなど、脱jQueryにも有効】](/post/react-essential-javascript/)
+
+
+

@@ -65,12 +65,21 @@ tags: [ "python","ubuntu" ]
 
 そのため、Pythonの更新がされないまま放置されていた。そこで、Ubuntuのアップグレードをする。
 
-Pythonはバージョンアップされた。
+この通り、Pythonはバージョンアップされた。
 
 <div class="img-center"><img src="/images/Screenshot from 2022-10-09 13-44-34.png" alt=""></div>
 
+ちなみに、Ubuntuのアップグレードの際に表示されるダイアログの選択肢を誤ると、crontabやvimrcに書いた設定が全て白紙になってしまう。詳細は下記をご覧頂きたい。
+
+[Ubuntuのアップグレード時の設定を置き換えてはいけない](/post/ubuntu-upgrade-config-replace/)
+
+18.04から20.04へのアップグレードの作業は、およそ3時間ぐらいかかった。
+
+その間、ブラウザやターミナルなど全てのソフトウェアは、ほぼ使用できない点に注意したい。
 
 ## 参照元
 
 - https://stackoverflow.com/questions/43743509/how-to-make-python3-command-run-python-3-6-instead-of-3-5
 - https://computingforgeeks.com/how-to-install-python-on-ubuntu-linux-system/
+
+

@@ -1,6 +1,7 @@
 ---
 title: "Ubuntuにreactをインストールして動作確認する"
-date: 2022-10-26T15:43:47+09:00
+date: 2022-11-05T15:43:47+09:00
+lastmod: 2022-11-05T15:43:47+09:00
 draft: true
 thumbnail: "images/react.jpg"
 categories: [ "フロントサイド" ]
@@ -9,7 +10,6 @@ tags: [ "Ubuntu","react","JavaScript","環境構築","初心者向け" ]
 
 
 Ubuntu20.04にインストールしている
-
 
 ## npmのインストール
 
