@@ -491,6 +491,10 @@ body_elem.removeChild(elem);
 
 [jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】](/post/jquery-to-javascript/)
 
+後は、Reactの開発環境を整える。
+
+[Ubuntuにreactをインストールして動作確認する](/post/ubuntu-react-install/)
+
 ## 関連書籍
 
 
