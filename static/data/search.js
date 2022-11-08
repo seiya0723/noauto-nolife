@@ -337,4 +337,5 @@ const SEARCH_LIST = [
 { "link": "/post/django-scraping/", "title" : "DjangoにPythonスクレイピングを実装した簡易検索エンジンの作り方【BeautifulSoup】" }, 
 { "link": "/post/django-ajax-restful/", "title" : "【Restful】DjangoでAjax(jQuery)を実装する方法【Django REST Framework使用】" }, 
 { "link": "/post/django-comma/", "title" : "Djangoで数値のカンマ区切りを実装させる" }, 
+{ "link": "https://www.amazon.co.jp/dp/B09BV2HGN3/?tag=m68371ti-22", "title" : "【広告】モダンJavaScriptの基本から始める　React実践の教科書　（最新ReactHooks対応）" },
 ];

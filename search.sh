@@ -27,11 +27,13 @@ sed -i -e "s/^/\{ \"link\": \"/g" $generate
 sed -i -e "s/\"$/\" \}, /g" $generate
 
 #冒頭に定数定義
-
 sed -i "1iconst SEARCH_LIST = [" $generate
 
-#末端に配列終端
-#TODO:後にここへ広告を挿入する
 
+#広告を挿入する(必ず"【広告】"を入れること)
+echo '{ "link": "https://www.amazon.co.jp/dp/B09BV2HGN3/?tag=m68371ti-22", "title" : "【広告】モダンJavaScriptの基本から始める　React実践の教科書　（最新ReactHooks対応）" },' >> $generate
+
+
+#末端に配列終端
 echo "];" >> $generate
 
