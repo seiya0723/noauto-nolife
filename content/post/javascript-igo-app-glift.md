@@ -5,7 +5,7 @@ lastmod: 2022-11-05T10:02:21+09:00
 draft: false
 thumbnail: "images/Screenshot from 2022-11-05 10-15-30.png"
 categories: [ "フロントサイド" ]
-tags: [ "JavaScript","JavaScriptライブラリ","HTML","囲碁" ]
+tags: [ "JavaScript","JavaScriptライブラリ","HTML","囲碁","ゲーム" ]
 ---
 
 

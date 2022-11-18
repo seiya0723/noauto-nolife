@@ -3,9 +3,9 @@ title: "【Linux】grepとsedとxargsで複数のファイルに点在する誤�
 date: 2022-11-02T09:13:31+09:00
 lastmod: 2022-11-02T09:13:31+09:00
 draft: false
-thumbnail: "images/noimage.jpg"
+thumbnail: "images/ubuntu.jpg"
 categories: [ "インフラ" ]
-tags: [ "Linux","tips","作業効率化" ]
+tags: [ "Linux","tips","作業効率化","Ubuntu" ]
 ---
 
 

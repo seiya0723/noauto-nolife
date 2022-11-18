@@ -1,5 +1,5 @@
 ---
-title: "Djangoで現在時刻以降の日時入力を促すのであれば、MinValueValidatorを使用する【DateTimeField】"
+title: "Djangoで現在時刻以降の日時入力を促すのであれば、MinValueValidatorとMaxValueValidatorを使用する【DateTimeFieldで予約システム開発に】"
 date: 2022-02-07T07:28:47+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -137,8 +137,6 @@ forms.pyには、モデルを継承したフォームクラスを作る
 - [【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】](/post/django-year-month-search-and-list/)
 
 validatorsを使用すれば、受け付ける値に正規表現などが利用できる。これで正確に電話番号や郵便番号、ISBNなどの入力ができる。
-
-
 
 
 
