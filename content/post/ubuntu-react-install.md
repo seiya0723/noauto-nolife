@@ -37,6 +37,97 @@ Ubuntu20.04にインストールしている
 
 <div class="img-center"><img src="/images/Screenshot from 2022-11-06 11-49-50.png" alt=""></div>
 
+
+`src/App.js`を下記のように修正するとHelloWorldが表示される。
+
+
+```
+import React from 'react';
+
+const App = () => {
+  return (
+    <div>
+      <h1>Hello World</h1>
+    </div>
+  );
+}
+
+export default App;
+```
+
+ちなみに、このHelloWorldが表示されるhtmlは`public/index.html`から来ている。
+
+
+
+
+
+### 【補足1】Nodeが古いと言われたら？
+
+```
+You are running Node 10.19.0.
+Create React App requires Node 14 or higher. 
+Please update your version of Node.
+```
+
+と言われた。
+
+こういう時は、Nodeをアップデートする。
+
+```
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n stable
+
+sudo n latest
+
+sudo apt-get install --reinstall nodejs-legacy
+
+sudo n rm 6.0.0 #ここをバージョンを変えておく
+sudo npm uninstall -g n
+```
+
+参照元: https://askubuntu.com/questions/426750/how-can-i-update-my-nodejs-to-the-latest-version
+
+<!--
+### 【補足2】tarが古いと言われたら？
+
+reactをインストールした時、
+
+```
+npm WARN deprecated tar@2.2.2: This version of tar is no longer supported, and will not receive security updates. Please upgrade asap.
+```
+
+と表示されることがある。
+
+これは
+
+```
+npm install tar
+```
+と実行すればOK。ちなみに、
+```
+npm i tar
+```
+としてもOK
+
+参照元: https://stackoverflow.com/questions/68857411/npm-warn-deprecated-tar2-2-2-this-version-of-tar-is-no-longer-supported-and-w
+
+
+### 【補足3】脆弱性があると言われたら？
+
+```
+6 high severity vulnerabilities
+```
+
+などと表示されたら。
+
+```
+npm audit fix --force
+```
+
+-->
+
+
 ## 結論
 
 これでインストール完了である。
