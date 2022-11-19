@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/beautifulsoup-get-attribute/", "title" : "【BeautifulSoup】属性を取得する【class,src,valueなど】" }, 
+{ "link": "/post/ubuntu-react-install/", "title" : "Ubuntuにreactをインストールして動作確認する" }, 
 { "link": "/post/grep-sed-xargs-all-file-replace/", "title" : "【Linux】grepとsedとxargsで複数のファイルに点在する誤字を一括修正(置換)する" }, 
 { "link": "/post/javascript-igo-app-glift/", "title" : "【JavaScript】囲碁ライブラリGliftを使ってSGF形式の詰碁WEBアプリを作る" }, 
 { "link": "/post/django-thereafter-timezone-now/", "title" : "Djangoで現在時刻以降の日時入力を促すのであれば、MinValueValidatorとMaxValueValidatorを使用する【DateTimeFieldで予約システム開発に】" }, 
@@ -8,7 +10,6 @@ const SEARCH_LIST = [
 { "link": "/post/nginx-deny-ip-address/", "title" : "Nginxで特定IPアドレスのリクエストを拒否する" }, 
 { "link": "/post/nginx-log-check-by-awk/", "title" : "Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】" }, 
 { "link": "/post/react-essential-javascript/", "title" : "Reactに必要なJavaScript構文【ES2015(ES6)のテンプレート文字列、アロー関数、スプレッド構文、letとconstなど、脱jQueryにも有効】" }, 
-{ "link": "/post/ubuntu-react-install/", "title" : "Ubuntuにreactをインストールして動作確認する" }, 
 { "link": "/post/python3-update/", "title" : "UbuntuにインストールされているPythonをアップデートする" }, 
 { "link": "/post/jquery-to-javascript/", "title" : "jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】" }, 
 { "link": "/post/css3-new-sidebar/", "title" : "【CSS3】checkboxとlabelを使ってサイドバーを作る【コンパクト】" }, 
