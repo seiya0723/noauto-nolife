@@ -1,6 +1,7 @@
 ---
 title: "UbuntuにSeleniumで使用するFirefox用のgeckodriverをインストールする【Python】"
 date: 2022-10-13T10:11:45+09:00
+lastmod: 2022-11-19T10:11:45+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
