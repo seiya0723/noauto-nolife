@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/beautifulsoup-img-download/", "title" : "【BeautifulSoup】imgタグをスクレイピングして画像をダウンロードする" }, 
 { "link": "/post/beautifulsoup-get-attribute/", "title" : "【BeautifulSoup】属性を取得する【class,src,valueなど】" }, 
 { "link": "/post/ubuntu-react-install/", "title" : "Ubuntuにreactをインストールして動作確認する" }, 
 { "link": "/post/grep-sed-xargs-all-file-replace/", "title" : "【Linux】grepとsedとxargsで複数のファイルに点在する誤字を一括修正(置換)する" }, 
