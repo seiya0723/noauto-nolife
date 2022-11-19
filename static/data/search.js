@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/ubuntu-geckodriver-install/", "title" : "UbuntuにSeleniumで使用するFirefox用のgeckodriverをインストールする【Python】" }, 
 { "link": "/post/beautifulsoup-img-download/", "title" : "【BeautifulSoup】imgタグをスクレイピングして画像をダウンロードする" }, 
 { "link": "/post/beautifulsoup-get-attribute/", "title" : "【BeautifulSoup】属性を取得する【class,src,valueなど】" }, 
 { "link": "/post/ubuntu-react-install/", "title" : "Ubuntuにreactをインストールして動作確認する" }, 
@@ -43,7 +44,6 @@ const SEARCH_LIST = [
 { "link": "/post/javascript-easytimer/", "title" : "EasyTimer.jsを使ってストップウォッチとタイマーを作る" }, 
 { "link": "/post/github-repo-easy-delete/", "title" : "Tempermonkeyを使ってGitHubのリポジトリ削除を簡単にする。" }, 
 { "link": "/post/css3-chat-web-design/", "title" : "【CSS3】チャットのウェブデザインを作る" }, 
-{ "link": "/post/ubuntu-geckodriver-install/", "title" : "UbuntuにSeleniumで使用するFirefox用のgeckodriverをインストールする【Python】" }, 
 { "link": "/post/django-or-and-search/", "title" : "Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】" }, 
 { "link": "/post/django-or-and-search-revision/", "title" : "【Django】スペース区切りでOR・AND検索を改定する" }, 
 { "link": "/post/startup-chartjs/", "title" : "【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】" }, 
