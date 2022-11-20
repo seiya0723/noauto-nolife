@@ -275,9 +275,9 @@ const obj3 = { ...obj1 , ...obj2 };
 どうやらPythonの辞書型において、`.copy()`を使う理屈と同じようだ。
 
 
-## map関数
+## mapメソッド
 
-配列内の要素を順に処理したい場合、map関数を使うことで、更に短く表現できる。
+配列内の要素を順に処理したい場合、mapメソッドを使うことで、更に短く表現できる。
 
 ```
 const numbers   = [ 10,20,30,40,50 ];
@@ -298,14 +298,14 @@ numbers.map( (n) => { console.log(n) });
 
 これはつまるところ、querySelectorAllで取得したDOMをループして、内部のテキストを書き換える時に使える。
 
-ただし、querySelectorAllは、そのままではmap関数は使えない。スプレッド構文を使用し、配列に直してから発動させる必要がある。
+ただし、querySelectorAllは、そのままではmapメソッドは使えない。スプレッド構文を使用し、配列に直してから発動させる必要がある。
 ```
 const tests = document.querySelectorAll(".test"); //←全ての.textクラスの要素を抜き取る
 
 //これではエラーになる
 //tests.map( (t) => { t.innerText = "test !!!!"; } ); 
 
-//スプレッド構文を使用して配列に直して、map関数は正常に動作する。
+//スプレッド構文を使用して配列に直して、mapメソッドは正常に動作する。
 [...tests].map( (t) => { t.innerText = "test !!!!"; } ); 
 
 /*
@@ -329,7 +329,7 @@ for (let t of tests){
 //console.log([...obj])
 ```
 
-## filter関数
+## filterメソッド
 
 配列から特定の条件に一致した値のみ取り出したい場合がある。そういう時はfilterを使用する。
 
@@ -342,7 +342,7 @@ console.log(numbers5.filter( (n) => { return n >= 20; }) );
 
 Pythonのリストの内包表記を彷彿させる。
 
-ちなみに、map関数でreturnの分岐をしようとすると、このように表記すると思われるが
+ちなみに、mapメソッドでreturnの分岐をしようとすると、このように表記すると思われるが
 
 ```
 console.log(numbers5.map( (n) => { if (n >= 20){ return n; } } ));
@@ -352,15 +352,15 @@ console.log(numbers5.map( (n) => { if (n >= 20){ return n; } } ));
 
 <div class="img-center"><img src="/images/Screenshot from 2022-11-06 09-17-13.png" alt=""></div>
 
-map関数の方は、配列の先頭がundefinedになってしまう。
+mapメソッドの方は、配列の先頭がundefinedになってしまう。
 
-- map関数: 配列内の全ての値に処理を行いたい時
-- filter関数: 配列内から特定の値を取り出したい時
+- mapメソッド: 配列内の全ての値に処理を行いたい時
+- filterメソッド: 配列内から特定の値を取り出したい時
 
 このように使い分けをする必要がある。
 
 
-ちなみに、map関数やfilter関数を使用して配列のループをする時、indexが必要な時がある。そういう時はこうする。
+ちなみに、mapメソッドやfilterメソッドを使用して配列のループをする時、indexが必要な時がある。そういう時はこうする。
 
 ```
 console.log(numbers5.filter( (n,index) => { console.log(index); return n >= 20; }))
@@ -482,8 +482,8 @@ body_elem.removeChild(elem);
 |functionを使用した関数・無名関数|[アロー関数を使う](#アロー関数)|
 |既に宣言された変数をオブジェクトにする|[オブジェクトの省略記法を使う](#オブジェクトの省略記法)|
 |配列・オブジェクトのコピーと連結|[スプレッド構文を使う](#スプレッド構文)|
-|配列内の全要素に順に処理をする|[map関数を使う](#map関数)|
-|配列内から条件に一致するものだけ取り出す|[filter関数を使う](#filter関数)|
+|配列内の全要素に順に処理をする|[mapメソッドを使う](#mapメソッド)|
+|配列内から条件に一致するものだけ取り出す|[filterメソッドを使う](#filterメソッド)|
 |条件式を使用したあとに代入|[三項演算子を使う](#三項演算子)もしくは[\|\|と&&の使い分けを使う](#との使い分け)|
 
 
