@@ -72,6 +72,8 @@ JavaScriptからCookieを扱う。これで、サイトのデータをユーザ�
 
 先のコードは`volume=[音量の値];Path=/single;SameSite=strict`が格納される。
 
+ちなみに、PathはこのCookieが有効なパス。今回は`ドメイン/single`で有効になるように指定した。
+
 ### Cookieの読み込み
 
 `set_video_volume()`でCookieを読み込み、`video`タグに音量をセットしている。

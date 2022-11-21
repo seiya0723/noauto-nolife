@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/javascript-cookie/", "title" : "JavascriptからCookieを扱う【動画の設定音量の記録と読み込み】" }, 
+{ "link": "/post/react-essential-javascript/", "title" : "Reactに必要なJavaScript構文【ES2015(ES6)のテンプレート文字列、アロー関数、スプレッド構文、letとconstなど、脱jQueryにも有効】" }, 
 { "link": "/post/ubuntu-geckodriver-install/", "title" : "UbuntuにSeleniumで使用するFirefox用のgeckodriverをインストールする【Python】" }, 
 { "link": "/post/beautifulsoup-img-download/", "title" : "【BeautifulSoup】imgタグをスクレイピングして画像をダウンロードする" }, 
 { "link": "/post/beautifulsoup-get-attribute/", "title" : "【BeautifulSoup】属性を取得する【class,src,valueなど】" }, 
@@ -11,7 +13,6 @@ const SEARCH_LIST = [
 { "link": "/post/nginx-log-check/", "title" : "Nginxのログをチェックする、ログの出力設定を変更する" }, 
 { "link": "/post/nginx-deny-ip-address/", "title" : "Nginxで特定IPアドレスのリクエストを拒否する" }, 
 { "link": "/post/nginx-log-check-by-awk/", "title" : "Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】" }, 
-{ "link": "/post/react-essential-javascript/", "title" : "Reactに必要なJavaScript構文【ES2015(ES6)のテンプレート文字列、アロー関数、スプレッド構文、letとconstなど、脱jQueryにも有効】" }, 
 { "link": "/post/python3-update/", "title" : "UbuntuにインストールされているPythonをアップデートする" }, 
 { "link": "/post/jquery-to-javascript/", "title" : "jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】" }, 
 { "link": "/post/css3-new-sidebar/", "title" : "【CSS3】checkboxとlabelを使ってサイドバーを作る【コンパクト】" }, 
@@ -54,7 +55,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-attr-method-sort/", "title" : "【Django】sorted関数とoperatorでモデルのフィールド、メソッドを指定してソーティング・並び替えをする【ランキングの実装に有効】" }, 
 { "link": "/post/ubuntu-upgrade-config-replace/", "title" : "Ubuntuのアップグレード時の設定を置き換えてはいけない" }, 
 { "link": "/post/javascript-sortablejs/", "title" : "JavaScriptで並び替えをするならSortable.js【jQuery不要のライブラリ】" }, 
-{ "link": "/post/javascript-cookie/", "title" : "JavascriptからCookieを扱う【動画の設定音量の記録と読み込み】" }, 
 { "link": "/post/django-batch-thumbnail-create/", "title" : "【Django】バッチ処理でPS、AI(PDF)ファイルのサムネイルを自動生成させる【BaseCommand】" }, 
 { "link": "/post/django-batch-opencv/", "title" : "【Django】バッチ処理のOpenCVが撮影した画像をDBに保存する" }, 
 { "link": "/post/startup-pandas-openpyxl-matplotlib/", "title" : "【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】" }, 
