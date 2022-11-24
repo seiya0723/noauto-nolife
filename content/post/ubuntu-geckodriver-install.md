@@ -1,5 +1,5 @@
 ---
-title: "UbuntuにSeleniumで使用するFirefox用のgeckodriverをインストールする【Python】"
+title: "Ubuntu、WindowsにSeleniumで使用するFirefox用のgeckodriverをインストールする【Python】"
 date: 2022-10-13T10:11:45+09:00
 lastmod: 2022-11-19T10:11:45+09:00
 draft: false
@@ -7,6 +7,36 @@ thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Python","Selenium","スクレイピング","Firefox" ]
 ---
+
+
+## Seleniumとは？
+
+Seleniumとは、ウェブブラウザの操作を自動化するツールのひとつ。
+
+とりわけ、Pythonライブラリとしても提供されている。(JavaやRuby用のライブラリもある。)
+
+つまり、Seleniumを使えば、Pythonでブラウザの操作を自動化できる。
+
+### 必要な物は？
+
+Seleniumを使ったブラウザの自動化に必要な物は以下の4つ
+
+- Pythonのコード
+- SeleniumのPythonライブラリ(`pip install selenium`でインストールできる)
+- 自動化させたいブラウザ(今回はFirefoxを使用する)
+- Seleniumからブラウザを操作するためのドライバー(今回はgeckodriverをインストールする)
+
+<div class="img-center"><img src="/images/Screenshot from 2022-11-24 15-36-49.png" alt=""></div>
+
+上記図のように、Python上で動作させているSeleniumが、ブラウザを操作する際にドライバーを使う。
+
+
+## Firefoxのインストール
+
+Firefoxをまだインストールしていない場合は下記からDLできる。
+
+https://www.mozilla.org/ja/firefox/new/
+
 
 ## ドライバーのインストーラーをDL
 
@@ -43,7 +73,6 @@ Ubuntuの場合はDLしたら圧縮ファイルを展開し、中に有るgeckod
 pip install selenium
 ```
 
-
 ## 実際に動かす
 
 このコードを動作させる
@@ -79,4 +108,6 @@ Windowsの場合は以下でも解説がされている。
 https://scraping-for-beginner.readthedocs.io/ja/latest/src/0.html
 
 chromedriverのインストール方法も書かれてあるので、FirefoxよりもChromeが使いたい場合はこちらが良いだろう。
+
+
 
