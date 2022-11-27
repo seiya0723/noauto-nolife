@@ -187,6 +187,51 @@ index   = IndexView.as_view()
 こちらは、JavaScriptを使わなくて済むとは言え、このやり方は少々回りくどいかもしれない。
 
 
+## hours minutes seconds が複数ある場合は？
+
+例えば、以下のようなフォームの場合。
+
+<div class="img-center"><img src="/images/Screenshot from 2022-11-27 09-32-23.png" alt=""></div>
+
+このhours,minutes,secondsをtimeに変換させるには、次のようにすればよい。
+
+
+    //form_elemは送信するformタグのDOM
+
+    let data        = new FormData( $(form_elem).get(0) );
+    let url         = $(form_elem).prop("action");
+    let method      = $(form_elem).prop("method");
+
+
+    //===========================
+
+    //複数ある hours minutes seconds を組み合わせる。
+    let hours_list      = data.getAll("hours");
+    let minutes_list    = data.getAll("minutes");
+    let seconds_list    = data.getAll("seconds");
+
+    let length          = hours_list.length;
+
+    let time_list       = []; 
+    for (let i=0;i<length;i++){
+        time_list.push( Number(hours_list[i])*3600 + Number(minutes_list[i])*60 + Number(seconds_list[i]) );
+    }   
+
+    //timeをリストにするには、.set()で上書きするのではなく、.appendで追加する。
+    for (let time of time_list){
+        data.append("time", time);
+    }   
+
+    //===========================
+
+
+`.getAll()`を使ってFormDataから配列で取得する。ただの`.get()`では、1つしか取れない。JavaScriptの`.getAll()`はDjangoの`.getlist()`をイメージするとわかりやすいだろう。
+
+そして、FormDataに配列で追加するには、`.append()`を使って1つずつ追加する。それで配列で送信されるようになる。
+
+参照元: [【Django】1回のリクエストで複数のデータを投稿する【request.POST.getlist()】](/post/django-multi-send/)
+
+
 ## 結論
 
 おそらく、JavaScriptを使った方法が無難かと思われる。

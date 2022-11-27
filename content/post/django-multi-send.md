@@ -121,4 +121,9 @@ tags: [ "Django","コスト削減" ]
 [【Django】Ajaxで複数枚の画像を一回のリクエストでアップロードする。](/post/django-ajax-multi-img-upload/)
 
 
+ちなみに、JavaScript側で、同じname属性の複数の値を取り扱いたい場合、FormDataに対して、`.getAll()`と`.append`を使うとよいだろう。
+
+[【Django】DurationFieldのフォームの最適解を考えてみる【JSを使うか、Django側で制御するか】](/post/django-duration-fields-form/)
+
+
 
