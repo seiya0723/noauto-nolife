@@ -1,11 +1,11 @@
 ---
-title: "【Python】virtualenvをactivateせずに、venvにインストールしたライブラリを読み込んで実行する"
+title: "【Python】virtualenvをactivateせずに、venvにインストールしたライブラリを読み込んで実行する【aliasやcrontabなどに】"
 date: 2022-11-03T17:33:53+09:00
 lastmod: 2022-11-03T17:33:53+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Python","tips" ]
+tags: [ "Python","tips","Ubuntu" ]
 ---
 
 例えば、システムに直インストールするわけには行かないPythonライブラリを使うとする。
