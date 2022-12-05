@@ -8,7 +8,6 @@ categories: [ "フロントサイド" ]
 tags: [ "React","JavaScript","追記予定" ]
 ---
 
-
 勉強途中で書いているものなので、やや間違いがあるかも
 
 ## Reactの内部構造
@@ -134,4 +133,10 @@ const App = () => {
 ReactDOM.render(<App />, document.getElementById("root"));
 ```
 
+
+## 結論
+
+HelloWorldは下記書籍にも書かれてある。
+
+[モダンJavaScriptの基本から始める　React実践の教科書　（最新ReactHooks対応）](https://www.amazon.co.jp/dp/B09BV2HGN3/?tag=m68371ti-22)
 
