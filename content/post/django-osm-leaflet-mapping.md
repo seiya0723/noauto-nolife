@@ -1,6 +1,7 @@
 ---
 title: "DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る"
 date: 2021-11-15T17:57:22+09:00
+lastmod: 2022-12-07T16:57:22+09:00
 draft: false
 thumbnail: "images/Screenshot from 2021-11-16 08-47-12.png"
 categories: [ "サーバーサイド" ]
@@ -32,9 +33,15 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
         def __str__(self):
             return self.comment
 
+
 緯度と経度はデータベースへ負担をかけないよう`DecimalField`を使ったが、JavaScript上で小数点以下の処理が煩雑になるので、`FloatField`でも良いだろう。
 
+FloatFieldの`max_digits`は最大桁数、`decimal_places`は小数部の値を意味している。
+
+`lat`は緯度を意味する`latitude`、`lon`は経度を意味する`longitude`からきている。
+
 これをマイグレーションする。
+
 
 ### フォームクラスを作り、ビューでバリデーションをする
 
@@ -102,9 +109,9 @@ Djangoでマッピングを実現する方法としてGeoDjangoがある。だ�
     <script>
         const topics = [
             {% for topic in topics %}
-            { "lat":{{ topic.lat }},"lon":{{ topic.lon }},"comment":"{{ topic.comment }}" },
+            { lat:{{ topic.lat }}, lon:{{ topic.lon }}, comment:"{{ topic.comment }}" },
             {% endfor %}
-        ]
+        ];
     </script>
     <style>
     #map {
@@ -199,7 +206,6 @@ https://leafletjs.com/reference.html
 指定した領域を囲んだりすることも、マーカーのデザインを変えることもできるようだ。
 
 [【Leaflet.js】オリジナルのアイコン画像を使用して、地図上に表示させる【飲食店のマッピングであれば食べ物の画像を使って視認性UP】](/post/leaflet-marker-original-icon/)
-
 
 <!--
 
