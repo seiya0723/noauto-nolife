@@ -1,6 +1,7 @@
 ---
 title: "Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】"
 date: 2022-09-04T15:49:58+09:00
+lastmod: 2022-12-14T13:20:58+09:00
 draft: false
 thumbnail: "images/ubuntu.jpg"
 categories: [ "インフラ" ]
@@ -54,6 +55,16 @@ tags: [ "Ubuntu","Python","git","tips","デプロイ","セキュリティ" ]
     import os
 
     os.environ["ZZZ"]
+
+
+## /etc/crontabで環境変数を読むには？
+
+/etc/crontabでは、`~/.bashrc`に書いた環境変数は読み込んでくれない。そのため、crontabの冒頭に以下のように記述する。
+
+    ZZZ=test
+
+これで実行するPythonプログラムは環境変数`ZZZ`を読み込むことができる。
+
 
 
 ## 結論

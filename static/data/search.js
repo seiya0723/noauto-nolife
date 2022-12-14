@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/ubuntu-env-read-python/", "title" : "Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】" }, 
 { "link": "/post/django-osm-leaflet-mapping/", "title" : "DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る" }, 
 { "link": "/post/react-helloworld/", "title" : "【React】Helloworldの仕組みの解説" }, 
 { "link": "/post/react-essential-javascript/", "title" : "Reactに必要なJavaScript構文【ES2015(ES6)のテンプレート文字列、アロー関数、スプレッド構文、letとconstなど、脱jQueryにも有効】" }, 
@@ -86,7 +87,6 @@ const SEARCH_LIST = [
 { "link": "/post/ffmpeg-ubuntu-server-webcamera/", "title" : "FFmpegを使ってUbuntuサーバーにUSBで接続されたウェブカメラで映像を録画する" }, 
 { "link": "/post/netplan-wireless-settings/", "title" : "【Ubuntu】netplanに無線LAN(wifi)で固定IPアドレスを割り当てる" }, 
 { "link": "/post/django-forms-validate/", "title" : "【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】" }, 
-{ "link": "/post/ubuntu-env-read-python/", "title" : "Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】" }, 
 { "link": "/post/startup-git/", "title" : "【git/GitHub】コマンドと使い方の一覧" }, 
 { "link": "/post/heroku-counter-plan/", "title" : "Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】" }, 
 { "link": "/post/php-not-found-mb-strlen/", "title" : "PHPでmb_strlenもしくはstrlenがNotFoundのときの対策" }, 
