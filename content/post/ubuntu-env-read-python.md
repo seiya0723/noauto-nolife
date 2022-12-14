@@ -1,5 +1,5 @@
 ---
-title: "Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】"
+title: "Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ使用、crontabにも対応】"
 date: 2022-09-04T15:49:58+09:00
 lastmod: 2022-12-14T13:20:58+09:00
 draft: false
