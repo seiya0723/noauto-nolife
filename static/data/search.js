@@ -1,5 +1,8 @@
 const SEARCH_LIST = [
-{ "link": "/post/ubuntu-env-read-python/", "title" : "Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】" }, 
+{ "link": "/post/react-concept-summary/", "title" : "【React】Props、State(useState)、useEffectなどの概念の解説" }, 
+{ "link": "/post/ubuntu-2204-font-line-height/", "title" : "Ubuntu 22.04 LTS でTakaoフォントをインストールして行間を詰める。" }, 
+{ "link": "/post/react-component/", "title" : "【React】component(コンポーネント)の仕組み" }, 
+{ "link": "/post/ubuntu-env-read-python/", "title" : "Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ使用、crontabにも対応】" }, 
 { "link": "/post/django-osm-leaflet-mapping/", "title" : "DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る" }, 
 { "link": "/post/react-helloworld/", "title" : "【React】Helloworldの仕組みの解説" }, 
 { "link": "/post/react-essential-javascript/", "title" : "Reactに必要なJavaScript構文【ES2015(ES6)のテンプレート文字列、アロー関数、スプレッド構文、letとconstなど、脱jQueryにも有効】" }, 
