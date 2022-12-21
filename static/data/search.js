@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/react-global-state/", "title" : "【React】グローバルなStateを使って、Propsバケツリレー問題を解決する" }, 
 { "link": "/post/react-concept-summary/", "title" : "【React】Props、State(useState)、useEffectなどの概念の解説" }, 
 { "link": "/post/ubuntu-2204-font-line-height/", "title" : "Ubuntu 22.04 LTS でTakaoフォントをインストールして行間を詰める。" }, 
 { "link": "/post/react-component/", "title" : "【React】component(コンポーネント)の仕組み" }, 
