@@ -1,4 +1,10 @@
 const SEARCH_LIST = [
+{ "link": "/post/docker-wordpress-create/", "title" : "【所要時間3分未満】dockerでWordpressの環境を構築する【docker-compose.ymlを書いて実行するだけ】" }, 
+{ "link": "/post/docker-tutorial-learn/", "title" : "【Docker】公式チュートリアルを起動して使い方を学ぶ【docker run --name tutorial -d -p 80:80 docker/getting-started】" }, 
+{ "link": "/post/selenium-webdriver-install-chrome/", "title" : "【Selenium】webdriver-managerを使ってPythonコードからChromeドライバーをインストールする" }, 
+{ "link": "/post/react-native-phone-app-helloworld/", "title" : "【ReactNative + Expo】スマホアプリでHelloWorldをやってみる【iOS、Android両対応】" }, 
+{ "link": "/post/wordpress-japanese-title-404/", "title" : "【Wordpress】日本語タイトルで404になる問題はパーマリンクを修正して日本語URLをやめる" }, 
+{ "link": "/post/react-typescript/", "title" : "【React】Typescript仕様のReactアプリを作る" }, 
 { "link": "/post/react-global-state/", "title" : "【React】グローバルなStateを使って、Propsバケツリレー問題を解決する" }, 
 { "link": "/post/react-concept-summary/", "title" : "【React】Props、State(useState)、useEffectなどの概念の解説" }, 
 { "link": "/post/ubuntu-2204-font-line-height/", "title" : "Ubuntu 22.04 LTS でTakaoフォントをインストールして行間を詰める。" }, 
