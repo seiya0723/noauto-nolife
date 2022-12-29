@@ -68,6 +68,8 @@ docker-compose up -d
 
 <div class="img-center"><img src="/images/Screenshot from 2022-12-29 23-07-13.png" alt=""></div>
 
+8000番はよく使うので、8500とかにすればポート番号の重複が無くなると思った。
+
 ## 結論
 
 こんなふうにマッハでWordpress環境が作れるのであれば、今後ますますWordpress案件はレッドオーシャンになるんだろうなあって思った。
@@ -78,4 +80,4 @@ docker-compose up -d
 
 ## 参照元
 
-https://dev.classmethod.jp/articles/beginner-docker-wordpress/
+https://docs.docker.jp/compose/wordpress.html
