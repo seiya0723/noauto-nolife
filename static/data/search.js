@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/transform-centering/", "title" : "position:relativeとabsoluteとtransform:translateを使ったセンタリング【どんな画面幅でも中央に配置する】" }, 
+{ "link": "/post/mysql-login-by-ubuntu/", "title" : "【MySQL】Ubuntuからrootユーザーでログインをするコマンド" }, 
 { "link": "/post/docker-wordpress-create/", "title" : "【所要時間3分未満】dockerでWordpressの環境を構築する【docker-compose.ymlを書いて実行するだけ】" }, 
 { "link": "/post/docker-tutorial-learn/", "title" : "【Docker】公式チュートリアルを起動して使い方を学ぶ【docker run --name tutorial -d -p 80:80 docker/getting-started】" }, 
 { "link": "/post/selenium-webdriver-install-chrome/", "title" : "【Selenium】webdriver-managerを使ってPythonコードからChromeドライバーをインストールする" }, 
