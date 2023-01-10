@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-one-to-one-field/", "title" : "【Django】OneToOneFieldでつながっているデータの取得方法【モデル名を小文字にした属性名で取得できる】" }, 
 { "link": "/post/python-arrow-def/", "title" : "【Python】def関数に、PHPやJavaScriptでよく見るアロー関数(->)っぽいものはアノテーション" }, 
 { "link": "/post/javascript-document/", "title" : "Javascriptで自由にHTMLを操作する、DOMについて" }, 
 { "link": "/post/transform-centering/", "title" : "position:relativeとabsoluteとtransform:translateを使ったセンタリング【どんな画面幅でも中央に配置する】" }, 
