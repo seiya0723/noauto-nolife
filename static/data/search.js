@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/python-arrow-def/", "title" : "【Python】def関数に、PHPやJavaScriptでよく見るアロー関数(->)っぽいものはアノテーション" }, 
+{ "link": "/post/javascript-document/", "title" : "Javascriptで自由にHTMLを操作する、DOMについて" }, 
 { "link": "/post/transform-centering/", "title" : "position:relativeとabsoluteとtransform:translateを使ったセンタリング【どんな画面幅でも中央に配置する】" }, 
 { "link": "/post/mysql-login-by-ubuntu/", "title" : "【MySQL】Ubuntuからrootユーザーでログインをするコマンド" }, 
 { "link": "/post/docker-wordpress-create/", "title" : "【所要時間3分未満】dockerでWordpressの環境を構築する【docker-compose.ymlを書いて実行するだけ】" }, 
