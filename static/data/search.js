@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-create-method/", "title" : "【Django】createメソッドを使用して、新規作成する【バリデーションしない点に注意】" }, 
+{ "link": "/post/pandas-for-loop/", "title" : "【Pandas】DataFrameをループして取り出す【列ごと、行ごとに取り出すにはdf.items()とdf.itertuples()でOK】" }, 
 { "link": "/post/django-one-to-one-field/", "title" : "【Django】OneToOneFieldでつながっているデータの取得方法【モデル名を小文字にした属性名で取得できる】" }, 
 { "link": "/post/python-arrow-def/", "title" : "【Python】def関数に、PHPやJavaScriptでよく見るアロー関数(->)っぽいものはアノテーション" }, 
 { "link": "/post/javascript-document/", "title" : "Javascriptで自由にHTMLを操作する、DOMについて" }, 
@@ -55,7 +57,6 @@ const SEARCH_LIST = [
 { "link": "/post/startup-openpyxl/", "title" : "【openpyxl】PythonからExcelファイルを読み書きする" }, 
 { "link": "/post/hugo-add-publish-and-mod-date/", "title" : "【HUGO】作成日時と最終更新日時を表示させる【SEO対策】" }, 
 { "link": "/post/matplotlib-font-easy-settings/", "title" : "【matplotlib】フォントファイルを用意して日本語の豆腐化を修正する" }, 
-{ "link": "/post/pandas-for-loop/", "title" : "【Pandas】DataFrameをループして取り出す【列ごと、行ごとに取り出すにはdf.items()とdf.itertuples()でOK】" }, 
 { "link": "/post/django-modelform-add-required/", "title" : "【Django】モデルを使用したフォームクラスで、required属性を付与する" }, 
 { "link": "/post/ogp-thumbnail-created-by-python/", "title" : "OGP(Open Graph Protocol)情報から動画のサムネイル等を抽出する【Python使用】" }, 
 { "link": "/post/jquery-objects-loop/", "title" : "jQueryのオブジェクトをfor~of文でループするとJavaScriptになる問題の対処" }, 
