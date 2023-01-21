@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/react-dom-render-is-no-longer-supported/", "title" : "【React】警告文の『Warning: ReactDOM.render is no longer supported in React 18 』の対処法【createRootを使用する】" }, 
+{ "link": "/post/react-html-close-tag/", "title" : "【React】閉じタグがないHTML要素は/(スラッシュ)をタグの末尾に書く【inputタグ、imgタグ等】" }, 
 { "link": "/post/django-create-method/", "title" : "【Django】createメソッドを使用して、新規作成する【バリデーションしない点に注意】" }, 
 { "link": "/post/pandas-for-loop/", "title" : "【Pandas】DataFrameをループして取り出す【列ごと、行ごとに取り出すにはdf.items()とdf.itertuples()でOK】" }, 
 { "link": "/post/django-one-to-one-field/", "title" : "【Django】OneToOneFieldでつながっているデータの取得方法【モデル名を小文字にした属性名で取得できる】" }, 
