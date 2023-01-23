@@ -20,8 +20,9 @@ tags: [ "react","スタートアップシリーズ","初心者向け" ]
 
 1. プロジェクトを作る(1分)
 1. srcディレクトリ内のファイルを全て削除、index.jsとApp.jsxの2つだけにする(3分)
-1. index.jsはApp.jsxを読み込んでレンダリング(5分)
-1. App.jsxはStateを使ってデータ管理とレンダリング(5分)
+1. index.jsはApp.jsxを読み込んでレンダリング(4分)
+1. App.jsxはStateを使ってデータ管理とレンダリング(4分)
+1. public/index.htmlを書き換える
 1. reactサーバーを起動する(1分)
 
 
@@ -35,7 +36,7 @@ cd startup_bbs
 
 プロジェクトを作って、そのプロジェクトに移動する。
 
-## srcディレクトリ内のファイルを全て削除、index.jsとApp.jsxの2つだけにする(3分)
+## srcディレクトリ内のファイルを全て削除、index.jsとApp.jsxの2つだけにする(4分)
 
 srcディレクトリの中身は使わないファイルが多いので、全て削除する。
 
@@ -79,7 +80,7 @@ React.StrictModeを使うことで、潜在的な問題点(非推奨・レガシ
 参照元: [【React】警告文の『Warning: ReactDOM.render is no longer supported in React 18 』の対処法【createRootを使用する】](/post/react-dom-render-is-no-longer-supported/)
 
 
-## App.jsxはStateを使ってデータ管理とレンダリング(5分)
+## App.jsxはStateを使ってデータ管理とレンダリング(4分)
 
 App.jsxの内容を下記とする。
 
@@ -135,14 +136,38 @@ Stateなので、topicsの変化と同時に、レンダリングが発動する
 参照元: [【React】リストをレンダリングする時は、key属性を付与する【Warning: Each child in a list should have a unique 'key' prop.】](/post/react-list-rendering-unique-key-prop/)
 
 
+## public/index.htmlを書き換える(2分)
+
+CDN版のBootstrapを読み込み、HTMLを整形する。
+
+```
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>簡易掲示板</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+    <main class="container">
+        <div id="root"></div>
+    </main>
+</body>
+</html>
+```
+
+
 ## reactサーバーを起動する(1分)
 
 ```
 npm start 
 ```
 
-<div class="img-center"><img src="/images/Screenshot from 2023-01-23 11-04-14.png" alt="Reactで簡易掲示板が動いている"></div>
+動かすとこうなる。
 
+<div class="img-center"><img src="/images/Screenshot from 2023-01-23 11-04-14.png" alt="Reactで簡易掲示板が動いている"></div>
 
 
 ## 結論

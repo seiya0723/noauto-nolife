@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-react-methodology/", "title" : "DjangoとReactを組み合わせる方法論と問題の考察" }, 
+{ "link": "/post/react-class-and-function-components/", "title" : "【React】関数コンポーネント(function App)とクラスコンポーネント(class App extends Component)の違い" }, 
 { "link": "/post/startup-react/", "title" : "Reactビギナーが15分で掲示板アプリを作る方法" }, 
 { "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
 { "link": "/post/react-list-rendering-unique-key-prop/", "title" : "【React】リストをレンダリングする時は、key属性を付与する【Warning: Each child in a list should have a unique 'key' prop.】" }, 
