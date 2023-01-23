@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-react/", "title" : "Reactビギナーが15分で掲示板アプリを作る方法" }, 
+{ "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
+{ "link": "/post/react-list-rendering-unique-key-prop/", "title" : "【React】リストをレンダリングする時は、key属性を付与する【Warning: Each child in a list should have a unique 'key' prop.】" }, 
 { "link": "/post/react-dom-render-is-no-longer-supported/", "title" : "【React】警告文の『Warning: ReactDOM.render is no longer supported in React 18 』の対処法【createRootを使用する】" }, 
 { "link": "/post/react-html-close-tag/", "title" : "【React】閉じタグがないHTML要素は/(スラッシュ)をタグの末尾に書く【inputタグ、imgタグ等】" }, 
 { "link": "/post/django-create-method/", "title" : "【Django】createメソッドを使用して、新規作成する【バリデーションしない点に注意】" }, 
@@ -95,7 +98,6 @@ const SEARCH_LIST = [
 { "link": "/post/flatpickr-install/", "title" : "【日付入力】flatpickrの実装方法(ロケール日本語化、日時入力対応化)" }, 
 { "link": "/post/django-csrf-trusted-origins/", "title" : "【Django】Django4.0以上はsettings.pyにて、CSRF_TRUSTED_ORIGINSにオリジンを指定しないとPOSTリクエスト時に403Forbiddenになる" }, 
 { "link": "/post/startup-fontawesome/", "title" : "fontawesomeの実装と利用例のまとめ" }, 
-{ "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
 { "link": "/post/django-single-page/", "title" : "【Django】パスコンバータ(URLに含まれた引数)を使って個別ページを表示させる" }, 
 { "link": "/post/python-requests-post-method/", "title" : "【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】" }, 
 { "link": "/post/startup-nano-editor/", "title" : "nanoエディタの操作方法" }, 

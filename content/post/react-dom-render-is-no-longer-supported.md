@@ -58,6 +58,11 @@ root.render(
 1. その際、React.StrictModeを使って潜在的な問題点をあぶり出す
 
 
+React.StrictModeに関しては下記を参照。
+
+参照元: https://ja.reactjs.org/docs/strict-mode.html
+
+
 
 ## 結論
 
