@@ -4,7 +4,7 @@ date: 2021-10-26T15:13:33+09:00
 draft: false
 thumbnail: "images/laravel.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "スタートアップシリーズ","laravel","php","初心者向け" ]
+tags: [ "スタートアップシリーズ","laravel","php","初心者向け","ubuntu" ]
 ---
 
 laravelはDjangoと違って初っ端から大量のファイルやディレクトリが表示され、気後れしそうになるが、編集する部分さえ分かれば大したことはない見掛け倒し。
@@ -57,6 +57,18 @@ DBの設定関係をスキップするため、SQLiteを使用する。プロジ
     DB_CONNECTION=sqlite
 
 既に書き込まれているDB設定は#でコメントアウトする。
+
+
+### 【補足1】マイグレーション時にcould not find driver というエラーが出た場合
+
+後述の`php artisan migrate`実行時に could not find driver というエラーが出た場合、php-sqlite3がインストールされていない
+
+```
+sudo apt install php8.1-sqlite3
+```
+
+このようにphpのsqlite3ドライバーをインストールしておく。
+
 
 ## ルーティングを作る(4分)
 
