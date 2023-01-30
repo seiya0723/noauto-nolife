@@ -1,5 +1,5 @@
 ---
-title: "DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】"
+title: "Django・PythonでSendgridを実装しメールを送信する方法【APIキーと2段階認証を利用する】"
 date: 2021-02-12T17:48:49+09:00
 draft: false
 thumbnail: "images/django.jpg"

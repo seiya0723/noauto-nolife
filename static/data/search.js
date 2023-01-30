@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-sendgrid/", "title" : "Django・PythonでSendgridを実装しメールを送信する方法【APIキーと2段階認証を利用する】" }, 
 { "link": "/post/css3-use-variable/", "title" : "【CSS】変数を使用する【テーマカラーの統一、スキンの作成などに】" }, 
 { "link": "/post/javascript-document-event-keydown/", "title" : "【JavaScript】Enterキーが押されたときにイベントを実行する【.addEventListener('keydown')】" }, 
 { "link": "/post/javascript-document-event-dynamic/", "title" : "JavaScriptで動的に増減する要素に対してイベントを発動させる【Vanilla.js】" }, 
@@ -99,7 +100,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-batch-thumbnail-create/", "title" : "【Django】バッチ処理でPS、AI(PDF)ファイルのサムネイルを自動生成させる【BaseCommand】" }, 
 { "link": "/post/django-batch-opencv/", "title" : "【Django】バッチ処理のOpenCVが撮影した画像をDBに保存する" }, 
 { "link": "/post/startup-pandas-openpyxl-matplotlib/", "title" : "【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】" }, 
-{ "link": "/post/django-sendgrid/", "title" : "DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】" }, 
 { "link": "/post/selenium-read-profile/", "title" : "SeleniumでFirefoxブラウザのプロファイルを読み込む【Recaptcha突破、Cookie+アドオン読み込み】" }, 
 { "link": "/post/python-google-trans-install/", "title" : "【Python】pipで翻訳系ライブラリのgoogletransをインストールする【※バージョン指定しないとエラー】" }, 
 { "link": "/post/startup-jupyter-lab/", "title" : "Jupyter Labを始める" }, 
