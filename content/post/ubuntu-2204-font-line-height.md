@@ -29,7 +29,8 @@ Ubuntu22.04にて日本語版を使用していると、これまでのUbuntuと
 
 Firefox のフォント指定を戻す。
 
-<div class="img-center"><img src="/images/Screenshot from 2023-01-29 16-32-32.png" alt=""></div>
+<div class="img-center"><img src="/images/Screenshot from 2023-01-30 10-48-23.png" alt=""></div>
+
 
 
 

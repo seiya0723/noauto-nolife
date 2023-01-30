@@ -30,9 +30,9 @@ Ubuntu22.04は問題が多すぎる。
 ```
 gnome-screenshot
 
-gnome-screenshot -a 
-
 gnome-screenshot -w
+
+gnome-screenshot -a 
 ```
 
 でOK。これでShift+PrintScreenで以前のように範囲選択をしてのスクリーンショットが可能になる。
@@ -42,7 +42,7 @@ gnome-screenshot -w
 
 Ubuntu22.04にアップグレードしたが、正直後悔している。
 
-Firefoxがsnapで管理されるようになったので不具合が多々あり、VLCは映像が乱れて視聴できない、ターミナルのフォントはtakaoフォントを入れないと行間が広すぎて使い物にならない。
+Firefoxがsnapで管理されるようになったので不具合が多々あり(CSSのcursor:pointer;が発動しないなど)、VLCは映像が乱れて視聴できない(こちらはsnapからインストールすれば対処できる)、ターミナルのフォントはtakaoフォントを入れないと行間が広すぎて使い物にならない。
 
 他にもまだまだ大量の不具合がありそうなので、今Ubuntu20.04を使用している場合、無理に22.04にアップグレードしないほうが良いだろう。
 

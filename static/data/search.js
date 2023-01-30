@@ -1,5 +1,8 @@
 const SEARCH_LIST = [
 { "link": "/post/css3-use-variable/", "title" : "【CSS】変数を使用する【テーマカラーの統一、スキンの作成などに】" }, 
+{ "link": "/post/javascript-document-event-keydown/", "title" : "【JavaScript】Enterキーが押されたときにイベントを実行する【.addEventListener('keydown')】" }, 
+{ "link": "/post/javascript-document-event-dynamic/", "title" : "JavaScriptで動的に増減する要素に対してイベントを発動させる【Vanilla.js】" }, 
+{ "link": "/post/javascript-document/", "title" : "Javascriptで自由にHTMLを操作する、DOMについて" }, 
 { "link": "/post/ubuntu-2204-font-line-height/", "title" : "Ubuntu 22.04 LTS でTakaoフォントをインストールして行間を詰める。" }, 
 { "link": "/post/ubuntu2204-screenshot-custom/", "title" : "【Ubuntu22.04】スクリーンショットのショートカットキーを修正する" }, 
 { "link": "/post/laravel-github-download/", "title" : "【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？" }, 
@@ -17,7 +20,6 @@ const SEARCH_LIST = [
 { "link": "/post/pandas-for-loop/", "title" : "【Pandas】DataFrameをループして取り出す【列ごと、行ごとに取り出すにはdf.items()とdf.itertuples()でOK】" }, 
 { "link": "/post/django-one-to-one-field/", "title" : "【Django】OneToOneFieldでつながっているデータの取得方法【モデル名を小文字にした属性名で取得できる】" }, 
 { "link": "/post/python-arrow-def/", "title" : "【Python】def関数に、PHPやJavaScriptでよく見るアロー関数(->)っぽいものはアノテーション" }, 
-{ "link": "/post/javascript-document/", "title" : "Javascriptで自由にHTMLを操作する、DOMについて" }, 
 { "link": "/post/transform-centering/", "title" : "position:relativeとabsoluteとtransform:translateを使ったセンタリング【どんな画面幅でも中央に配置する】" }, 
 { "link": "/post/mysql-login-by-ubuntu/", "title" : "【MySQL】Ubuntuからrootユーザーでログインをするコマンド" }, 
 { "link": "/post/docker-wordpress-create/", "title" : "【所要時間3分未満】dockerでWordpressの環境を構築する【docker-compose.ymlを書いて実行するだけ】" }, 
