@@ -55,7 +55,7 @@ sudo apt-add-repository ppa:ondrej/php
 
 ## .env.sampleから.envファイルを作る
 
-    cp .env.sample .env
+    cp .env.example .env
 
 を実行して.envファイルを作る。
 
@@ -115,6 +115,28 @@ php artisan serve
 - [Laravelビギナーが30分で掲示板アプリを作る方法](/post/startup-laravel/)
 - [【Ubuntu】最新版PHPがインストールできるようにリポジトリを追加する](/post/ubuntu-add-php-repository/)
 
+
+
+
+### すべてをまとめたalias
+
+自分用に。clipcopyはbashでクリップボードにコピーするコマンド
+
+[Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】](/post/linux-commandline-clipboard/)
+
+
+
+```
+alias laravelgithub='composer update && cp .env.example .env && echo "
+#DB_CONNECTION=mysql
+#DB_HOST=127.0.0.1
+#DB_PORT=8889
+#DB_DATABASE=
+#DB_USERNAME=root
+#DB_PASSWORD=root
+DB_CONNECTION=sqlite" | clipcopy && vi .env && php artisan key:generate && touch ./database/database.sqlite && php artisan migrate && php artisan serve
+'
+```
 
 
 
