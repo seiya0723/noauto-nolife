@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/react-github-pages-deploy/", "title" : "【React】GithubPagesへデプロイする【ビルドしてプッシュする】" }, 
+{ "link": "/post/react-route-dom-how-to-use/", "title" : "react-route-domの使い方【Reactでルーティング】" }, 
+{ "link": "/post/startup-create-rdd/", "title" : "要件定義書の書き方" }, 
 { "link": "/post/css3-use-variable/", "title" : "【CSS】変数を使用する【テーマカラーの統一、スキンの作成などに】" }, 
 { "link": "/post/laravel-github-download/", "title" : "【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？" }, 
 { "link": "/post/django-sendgrid/", "title" : "Django・PythonでSendgridを実装しメールを送信する方法【APIキーと2段階認証を利用する】" }, 
@@ -157,7 +160,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-many-to-many/", "title" : "Djangoで多対多のリレーションの構造と作り方、テンプレートで表示する方法【ManyToManyField】" }, 
 { "link": "/post/startup-wordpress-ubuntu/", "title" : "UbuntuにWordpressをインストールする【MariaDB+Apache】" }, 
 { "link": "/post/django-admin-custom/", "title" : "Djangoの管理サイト(admin)をカスタムする【全件表示、全フィールド表示、並び替え、画像表示、検索など】" }, 
-{ "link": "/post/startup-create-rdd/", "title" : "要件定義書の書き方" }, 
 { "link": "/post/django-templates-extends-and-block/", "title" : "【Django】DTLのextendsとblockを使って、テンプレートを継承をする" }, 
 { "link": "/post/django-login-required-mixin/", "title" : "【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】" }, 
 { "link": "/post/django-deploy-heroku-cloudinary/", "title" : "DjangoをHeroku+Cloudinary(基本無料ストレージ)の環境にデプロイする【ウェブアプリのデモを一般公開したい場合などに】" }, 
