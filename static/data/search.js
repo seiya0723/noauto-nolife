@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/javascript-arrow-func-this/", "title" : "JavaScriptのイベントリスナのアロー関数でthisは使わない【event.targetを使おう】" }, 
+{ "link": "/post/django-git-deploy-ubuntu-venv/", "title" : "【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】" }, 
+{ "link": "/post/jquery-animation/", "title" : "【jQuery】.animate()の使い方【アニメーション】" }, 
 { "link": "/post/react-github-pages-deploy/", "title" : "【React】GithubPagesへデプロイする【ビルドしてプッシュする】" }, 
 { "link": "/post/react-route-dom-how-to-use/", "title" : "react-route-domの使い方【Reactでルーティング】" }, 
 { "link": "/post/startup-create-rdd/", "title" : "要件定義書の書き方" }, 
