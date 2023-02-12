@@ -1,7 +1,7 @@
 ---
 title: "【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】"
-date: 2023-02-11T16:50:19+09:00
-lastmod: 2023-02-11T16:50:19+09:00
+date: 2023-02-12T16:50:19+09:00
+lastmod: 2023-02-12T16:50:19+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
