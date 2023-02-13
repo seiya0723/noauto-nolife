@@ -1,6 +1,6 @@
 const SEARCH_LIST = [
 { "link": "/post/django-git-deploy-ubuntu-venv/", "title" : "【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】" }, 
-{ "link": "/post/jquery-slick/", "title" : "jQueryのslick.jsでカルーセルを表示する" }, 
+{ "link": "/post/jquery-slick/", "title" : "jQueryのslick.jsでカルーセルを表示する【.slick-dotsのCSS付きでボタンを押しやすく】" }, 
 { "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
 { "link": "/post/startup-openpyxl/", "title" : "【openpyxl】PythonからExcelファイルを読み書きする" }, 
 { "link": "/post/startup-nextjs/", "title" : "Next.jsのインストール方法とプロジェクトの作成" }, 
