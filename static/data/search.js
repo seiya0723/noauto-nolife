@@ -1,5 +1,7 @@
 const SEARCH_LIST = [
 { "link": "/post/django-git-deploy-ubuntu-venv/", "title" : "【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】" }, 
+{ "link": "/post/django-deploy-ec2/", "title" : "DjangoをAWSのEC2(Ubuntu)にデプロイする" }, 
+{ "link": "/post/jquery-ajax-postcode/", "title" : "【jQuery】Ajaxで郵便番号検索を行う【通販サイトなどの住所登録に有効】" }, 
 { "link": "/post/jquery-slick/", "title" : "jQueryのslick.jsでカルーセルを表示する【.slick-dotsのCSS付きでボタンを押しやすく】" }, 
 { "link": "/post/startup-django/", "title" : "Djangoビギナーが40分で掲示板アプリを作る方法" }, 
 { "link": "/post/startup-openpyxl/", "title" : "【openpyxl】PythonからExcelファイルを読み書きする" }, 
@@ -99,7 +101,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-or-and-search-revision/", "title" : "【Django】スペース区切りでOR・AND検索を改定する" }, 
 { "link": "/post/startup-chartjs/", "title" : "【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】" }, 
 { "link": "/post/ubuntu-beep-command/", "title" : "Ubuntuにbeepコマンドをインストール【crontabで時報を作る】" }, 
-{ "link": "/post/django-deploy-ec2/", "title" : "DjangoをAWSのEC2(Ubuntu)にデプロイする" }, 
 { "link": "/post/django-m2m-search-and-add/", "title" : "【Django】ManyToManyFieldで検索をする方法、追加・削除を行う方法【多対多はクエリビルダの検索は通用しない】" }, 
 { "link": "/post/django-models-uuid-int-null/", "title" : "Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するにはnull=Trueとblank=Trueのオプションを" }, 
 { "link": "/post/django-attr-method-sort/", "title" : "【Django】sorted関数とoperatorでモデルのフィールド、メソッドを指定してソーティング・並び替えをする【ランキングの実装に有効】" }, 
@@ -200,7 +201,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-models-origin-validators/", "title" : "【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】" }, 
 { "link": "/post/django-foreignkey-user/", "title" : "【Django】ユーザーモデルと1対多のリレーションを組む方法【カスタムユーザーモデル不使用】" }, 
 { "link": "/post/django-year-month-search-and-list/", "title" : "【Django】年月検索と、年別、月別アーカイブを表示させる【最新と最古のデータから年月リストを作成(Trunc不使用)】" }, 
-{ "link": "/post/jquery-ajax-postcode/", "title" : "【jQuery】Ajaxで郵便番号検索を行う【通販サイトなどの住所登録に有効】" }, 
 { "link": "/post/django-xmlhttprequest-ajax-not-use-jquery/", "title" : "素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】" }, 
 { "link": "/post/startup-django-stripe/", "title" : "【Stripe】Djangoにクレジットカード決済機能を実装させる" }, 
 { "link": "/post/linux-commandline-clipboard/", "title" : "Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】" }, 
