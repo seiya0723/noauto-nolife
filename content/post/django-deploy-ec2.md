@@ -252,6 +252,10 @@ settings.pyの末端に下記を追記する。
         MEDIA_ROOT          = "/var/www/{}/media".format(BASE_DIR.name)
 
 
+`SECRET_KEY`はここで再度ジェネレートしておく。
+
+参照: [【Django】settings.pyのSECRET_KEYを再発行(リジェネレート)する【alias登録で即生成・即実装からの再起動】](/post/django-secret-key-regenerate/)
+
 この`STATIC_ROOT`及び`MEDIA_ROOT`で指定している`/var/www/[プロジェクト名]/`は存在しないので、作る必要がある。
 
     sudo mkdir /var/www/[プロジェクト名]/
@@ -262,9 +266,16 @@ settings.pyの末端に下記を追記する。
 
 mediaとstaticまでは作る必要はない。Djangoが自動的に作ってくれる。
 
+
 ## systemdにgunicornの自動起動を指定
 
-先ほど仮想環境にインストールさせたgunicornを自動起動させるsystemdを書く。
+systemdとは、Linuxにおいてシステムを起動する際、同時に起動させる仕組みのこと。
+
+- https://www.designet.co.jp/faq/term/?id=c3lzdGVtZA
+- https://qiita.com/bluesDD/items/eaf14408d635ffd55a18
+- https://hogetech.info/linux/base/systemd
+
+先ほど仮想環境にインストールさせたgunicornを自動起動させるため、以下の`.service`ファイルを作る。これをsystemdに登録する。
 
     sudo vi /etc/systemd/system/gunicorn.service
 
@@ -318,8 +329,6 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
     WantedBy=multi-user.target
 
 
-
-
 プロジェクトの`wsgi.py`は`config`ディレクトリの中に`urls.py`や`settings.py`と含まれているので、`config.wsgi.application`になる点にご注意。
 
 仮想環境(`venv`)の場所は、プロジェクトディレクトリ(`[プロジェクト名]`)にあるので、そちらに指定している。
@@ -339,6 +348,10 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
 下記の画像のように動いていればOK。
 
 <div class="img-center"><img src="/images/Screenshot from 2021-07-20 14-38-53.png" alt="gunicorn.serviceが動いている"></div>
+
+ここから離脱したいときは、qキーを押す。
+
+もしここで赤丸でエラーが出る場合は、先程の`gunicorn.service`ファイルに何らかの誤りがあるか、Djangoプロジェクトのディレクトリ構造が誤っている可能性がある。
 
 これで、DjangoとNginxをつなぐgunicornが動くようになった。次はNginxの設定である。
 
@@ -384,10 +397,15 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
 
     sudo ln -s /etc/nginx/sites-available/[プロジェクト名] /etc/nginx/sites-enabled/
 
-デフォルト設定のシンボリックリンクは除外して、設定を再読込、nginxを再起動させる。
+デフォルト設定のシンボリックリンクファイル( `/etc/nginx/sites-enabled/default` )は除外して、設定を再読込、nginxを再起動させる。
 
+    # デフォルト設定を無効化(先程作った設定ファイルを有効にするため) 
     sudo unlink /etc/nginx/sites-enabled/default
-    sudo nginx -t
+
+    # Nginxの設定ファイルの動作確認(設定ファイル構文に問題なければsyntax is okと出る)
+    sudo nginx -t 
+
+    # 設定を再読込する
     sudo systemctl reload nginx
 
 先ほどのgunicornと同様に、statusを確認して、動いていれば設定完了。
@@ -395,6 +413,10 @@ mediaとstaticまでは作る必要はない。Djangoが自動的に作ってく
     sudo systemctl status nginx
 
 <div class="img-center"><img src="/images/Screenshot from 2021-07-20 14-50-11.png" alt="Nginxが動いている。"></div>
+
+qキーを押して離脱できる。
+
+ここで赤丸のエラーが出る場合は、Nginxの設定ファイルに何らかの誤りがある可能性が高い。
 
 ## マイグレーション
 
@@ -550,7 +572,6 @@ AWSで作業をしている時、急にこれまであったインスタンス�
 その場合、リージョンが間違っている事が原因であることが多い。まずは画面の右上から東京リージョンになっていることを確認する。
 
 例えば、リージョンがオハイオであれば、オハイオのEC2のインスタンスが表示されるため、これまで作ってきたリージョンが消えたように見える。
-
 
 
 
