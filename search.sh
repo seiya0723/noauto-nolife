@@ -1,6 +1,6 @@
 #! /bin/bash
 
-#TODO:ここにターゲットのパスと、ジェネレートする先を記述
+# TODO:ここにターゲットのパスと、ジェネレートする先を記述
 
 target="./content/post/*"
 generate="./static/data/search.js"

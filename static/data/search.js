@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/lpic-level1-command/", "title" : "【LPIC】Level1で出てくるコマンドと用語の一覧" }, 
+{ "link": "/post/lpic-set-command-shell-option/", "title" : "【LPIC】setコマンドを使用してシェルオプションを設定する" }, 
+{ "link": "/post/lpic-set-and-env/", "title" : "【LPIC】シェル変数と環境変数の違い【setコマンドとenvコマンド】" }, 
 { "link": "/post/startup-create-rdd/", "title" : "要件定義書の書き方" }, 
 { "link": "/post/movie-convert-mp3/", "title" : "コマンド一発で動画をmp3に変換する" }, 
 { "link": "/post/django-git-deploy-ubuntu-venv/", "title" : "【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】" }, 
