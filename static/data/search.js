@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/vim-snipmate-plugin/", "title" : "【Vimでスニペット】snipmateプラグインをインストールして使ってみる【爆速コーディング】" }, 
+{ "link": "/post/vim-plugin/", "title" : "vimプラグインのemmetとsurroundのインストール方法と使い方【NeoBundleは不要】" }, 
+{ "link": "/post/django-paginator/", "title" : "Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】" }, 
 { "link": "/post/lpic-level1-command/", "title" : "【LPIC】Level1で出てくるコマンドと用語の一覧" }, 
 { "link": "/post/lpic-set-command-shell-option/", "title" : "【LPIC】setコマンドを使用してシェルオプションを設定する" }, 
 { "link": "/post/lpic-set-and-env/", "title" : "【LPIC】シェル変数と環境変数の違い【setコマンドとenvコマンド】" }, 
@@ -90,7 +93,6 @@ const SEARCH_LIST = [
 { "link": "/post/ogp-thumbnail-created-by-python/", "title" : "OGP(Open Graph Protocol)情報から動画のサムネイル等を抽出する【Python使用】" }, 
 { "link": "/post/jquery-objects-loop/", "title" : "jQueryのオブジェクトをfor~of文でループするとJavaScriptになる問題の対処" }, 
 { "link": "/post/python-regex-findall/", "title" : "【Python】正規表現モジュールreでパターンに一致した文字列を全て取り出す・全て置換する" }, 
-{ "link": "/post/django-paginator/", "title" : "Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】" }, 
 { "link": "/post/django-custom-user-model-mydata-edit/", "title" : "【Django】カスタムユーザーモデルに記録した自分のユーザー情報を編集する【ユーザー情報変更画面に】" }, 
 { "link": "/post/chartjs-mix-graph-axes/", "title" : "【Chart.js】棒グラフと折れ線グラフの複合型で、左右の横軸にタイトルと目盛を表示" }, 
 { "link": "/post/python-tesseract-ocr-by-ubuntu/", "title" : "【Ubuntu】tesseractをインストールして、Pythonから画像の文字起こし(OCR)を試す【pytesseract】" }, 

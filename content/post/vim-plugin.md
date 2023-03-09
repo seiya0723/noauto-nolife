@@ -1,7 +1,7 @@
 ---
 title: "vimプラグインのemmetとsurroundのインストール方法と使い方【NeoBundleは不要】"
 date: 2019-01-11T19:19:12+09:00
-draft: true
+draft: false
 thumbnail: "images/vim.jpg"
 categories: [ "others" ]
 tags: [ "vim", "作業効率化" ]
@@ -20,7 +20,6 @@ tags: [ "vim", "作業効率化" ]
 	<li><a href="#chapter5">surround.vimの使い方</a></li>
 	<li><a href="#chapter6">surround.vimの活用例</a></li>
 	<li><a href="#chapter7">結論</a></li>
-	<li><a href="#chapter8">関連記事</a></li>
 </ul>
 
 <h2 id="chapter1">emmet.vimの概要とインストール方法</h2>
@@ -496,6 +495,8 @@ unzip ~/surround.zip</code></pre>
 
 <p>基本的にはプラグインのzipを<code>~/.vim/</code>に展開すればいいだけなので簡単です。後は使い方を覚えるまでチートシートを紙に印刷してそのへんに貼り付けておきましょう。</p>
 
+
+<!--
 <h2 id="chapter8">関連記事</h2>
 
 <h3>vimの操作方法について</h3>
@@ -503,4 +504,4 @@ unzip ~/surround.zip</code></pre>
 <p>【内部リンク】<a href="/post/20181001/">Small版vimの基本的な操作方法について</a></p>
 
 <p>プラグインを使ったとしても、基本的な操作方法をマスターしていないと、GUIのテキストエディタにも劣ります。操作方法の習得が不十分の場合は復習しておきましょう。</p>
-
+-->
