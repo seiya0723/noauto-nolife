@@ -52,7 +52,7 @@ Djangoではdjango.core.paginatorが用意されているので比較的簡単�
     
     
             #TIPS: .order_by()で並び替えしないと、paginatorでWARNINGが出る。
-            products    = Product.obejcts.filter(query).order_by("id")
+            products    = Product.objects.filter(query).order_by("id")
 
             #===========ここからページネーション処理================
             paginator   = Paginator(products,4)
