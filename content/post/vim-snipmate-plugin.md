@@ -89,10 +89,9 @@ snippetの表示が邪魔ならawkコマンドで切り取る。
 NeoBundleはなくてもプラグインのインストールはできる。
 
 
-
 ## 参照元
 
-https://zenn.dev/shougo/articles/snippet-plugins-2020
-https://yhara.jp/2021/05/31/vim-snipmate
+- https://zenn.dev/shougo/articles/snippet-plugins-2020
+- https://yhara.jp/2021/05/31/vim-snipmate
 
 

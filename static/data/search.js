@@ -1,8 +1,10 @@
 const SEARCH_LIST = [
+{ "link": "/post/lpic-level1-command/", "title" : "【LPIC】Level1で出てくるコマンドと用語の一覧" }, 
+{ "link": "/post/lpic-tr-command/", "title" : "【LPIC】trコマンドの使い方【標準入力したものを変換して出力する】" }, 
+{ "link": "/post/lpic-redirection/", "title" : "【LPIC】リダイレクションとは？ 【>と<の違い、>>など】" }, 
 { "link": "/post/vim-snipmate-plugin/", "title" : "【Vimでスニペット】snipmateプラグインをインストールして使ってみる【爆速コーディング】" }, 
 { "link": "/post/vim-plugin/", "title" : "vimプラグインのemmetとsurroundのインストール方法と使い方【NeoBundleは不要】" }, 
 { "link": "/post/django-paginator/", "title" : "Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】" }, 
-{ "link": "/post/lpic-level1-command/", "title" : "【LPIC】Level1で出てくるコマンドと用語の一覧" }, 
 { "link": "/post/lpic-set-command-shell-option/", "title" : "【LPIC】setコマンドを使用してシェルオプションを設定する" }, 
 { "link": "/post/lpic-set-and-env/", "title" : "【LPIC】シェル変数と環境変数の違い【setコマンドとenvコマンド】" }, 
 { "link": "/post/startup-create-rdd/", "title" : "要件定義書の書き方" }, 
