@@ -24,6 +24,10 @@ snipmateはtlibとvim-addon-mw-utilsに依存しているので、まとめて�
     git clone https://github.com/garbas/vim-snipmate
 
 
+クローンされた中身のファイル・ディレクトリを全て`~/.vim/`へコピーしてマージしておく。
+
+
+
 .vimrcにて、下記を追加しておく
 
     let g:snipMate = { 'snippet_version' : 1 } 
@@ -81,6 +85,9 @@ snippetの表示が邪魔ならawkコマンドで切り取る。
 長くてコマンド入力が面倒なら、これをbashのaliasにでも登録しておくと良いだろう。
 
     alias python_snip="grep -h 'snippet' ~/.vim/after/snippets/python* | awk '{print $2}'"
+
+
+
 
 
 

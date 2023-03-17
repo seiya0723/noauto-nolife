@@ -129,7 +129,7 @@ DBのテーブルをここでまとめる。
 
 これが後のDBにおけるテーブル間の1対多、多対多のリレーション構築に繋がる。
 
-
+<div class="img-center"><img src="/images/er.jpg" alt=""></div>
 
 
 ### 非機能要件

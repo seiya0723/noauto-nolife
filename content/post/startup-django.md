@@ -517,7 +517,7 @@ DTL(Django Template Language)を使用し、`for`文でデータを並べる。P
 
 そこで登場するのが、`forms.py`。バリデーションを行い、ルールに則っていないデータをデータベースへ保存させないようにすることができる。詳しくは下記を参照する。
 
-[【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】](/post/django-forms-validate/)
+[【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】](/post/django-forms-validate/)
 
 
 ## 開発用サーバーを起動する(3分)
@@ -584,7 +584,7 @@ https://github.com/seiya0723/startup_bbs
 
 どんなウェブアプリでも、バリデーションを行ってからDBにデータを格納するのが基本のため、受け取った値のバリデーションは早めに実装したほうが良いだろう。(※本記事では、とりあえずクライアント側からのデータの格納を最短で行う事を重視したため、あえて省略した。)
 
-[【Django】forms.pyでバリデーションをする【モデルを継承したFormクラス】](/post/django-forms-validate/)
+[【Django】forms.pyでバリデーションをする【モデルを利用したFormクラス】](/post/django-forms-validate/)
 
 ちなみに、独自のバリデーションを用意して使うことができる。
 

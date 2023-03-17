@@ -5,7 +5,7 @@ lastmod: 2023-03-07T11:28:39+09:00
 draft: false
 thumbnail: "images/lpic.jpg"
 categories: [ "インフラ" ]
-tags: [ "LPIC試験対策","Linux" ]
+tags: [ "LPIC","Linux" ]
 ---
 
 ## シェル変数と環境変数の違い
