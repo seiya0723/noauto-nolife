@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-admin-origin-js-css/", "title" : "【Django】管理サイトで任意のJavaScript、CSSを発動させる【管理サイトのカスタム】" }, 
+{ "link": "/post/django-ajax/", "title" : "DjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】" }, 
 { "link": "/post/lpic-level1-command/", "title" : "【LPIC】Level1で出てくるコマンドと用語の一覧" }, 
 { "link": "/post/lpic-file-command/", "title" : "【LPIC】fileコマンドでMIMEタイプを調べておく" }, 
 { "link": "/post/startup-create-rdd/", "title" : "要件定義書の書き方" }, 
@@ -290,7 +292,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-loaddata/", "title" : "Djangoで開発中、データベースへ初期データを入力する【バックアップしたデータをloaddataコマンドでリストア】" }, 
 { "link": "/post/vim-comment-settings/", "title" : "Vimのコメントの自動補完を無効化させる【JavaScriptやCSS、シェルスクリプトでコメントアウトした後、Enter押すと自動で出てくるアレ】" }, 
 { "link": "/post/django-request-get-and-post/", "title" : "【Django】formタグを使ってHTTPリクエストのGETメソッド、POSTメソッドを送信する" }, 
-{ "link": "/post/django-ajax/", "title" : "DjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】" }, 
 { "link": "/post/django-models-do-not-set-table-name/", "title" : "【Django】複数のアプリを作る場合、models.pyのモデルクラスにテーブル名を指定するべきではない【重複問題】" }, 
 { "link": "/post/django-shell/", "title" : "Djangoのインタラクティブシェルを使う【python3 manage.py shell】" }, 
 { "link": "/post/startup-geodjango/", "title" : "【地理空間情報】GeoDjangoの実装方法【PostGIS+PostgreSQL+国土地理院データ】" }, 

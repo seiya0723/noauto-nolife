@@ -109,6 +109,7 @@ https://docs.djangoproject.com/en/3.1/ref/csrf/#ajax
     }
 
 
+
 ## テンプレート修正
 
 ### ベースのHTML(index.html)
@@ -176,46 +177,46 @@ https://docs.djangoproject.com/en/3.1/ref/csrf/#ajax
 
 ## view.pyの修正
 
+```
+from django.shortcuts import render
+from django.views import View
 
-    from django.shortcuts import render
-    from django.views import View
-    
-    from django.http.response import JsonResponse
-    from django.template.loader import render_to_string
-    
-    from .models import Topic
-    from .forms import TopicForm
-    
-    class BbsView(View):
-    
-        def get(self, request, *args, **kwargs):
-    
-            topics  = Topic.objects.all()
-            context = { "topics":topics }
-    
-            return render(request,"bbs/index.html",context)
-    
-        def post(self, request, *args, **kwargs):
-    
-            json    = { "error":True }
-            form    = TopicForm(request.POST)
-    
-            if not form.is_valid():
-                print("Validation Error")
-                return JsonResponse(json)
-    
-            form.save()
-            json["error"]   = False
-    
-            topics          = Topic.objects.all()
-            context         = { "topics":topics }
-            content         = render_to_string("bbs/content.html",context,request)
-    
-            json["content"] = content
-    
+from django.http.response import JsonResponse
+from django.template.loader import render_to_string
+
+from .models import Topic
+from .forms import TopicForm
+
+class IndexView(View):
+
+    def get(self, request, *args, **kwargs):
+
+        context             = {}
+        context["topics"]   = Topic.objects.all()
+
+        return render(request,"bbs/index.html",context)
+
+    def post(self, request, *args, **kwargs):
+
+        json    = { "error":True }
+        form    = TopicForm(request.POST)
+
+        if not form.is_valid():
+            print("Validation Error")
             return JsonResponse(json)
-    
-    index   = BbsView.as_view()
+
+        form.save()
+        json["error"]   = False
+
+        context             = {}
+        context["topics"]   = Topic.objects.all()
+
+        json["content"]     = render_to_string("bbs/content.html",context,request)
+
+        return JsonResponse(json)
+
+index   = IndexView.as_view()
+```
 
 `views.py`のPOSTメソッドでは受け取ったAjaxのリクエストを処理する。
 
@@ -255,5 +256,10 @@ Ajaxが実用できれば、送信のたびに画面全体が切り替わるこ�
 JavaScript側で一定時間経ったら再度Ajaxを送信する仕掛けにすれば、画面放ったらかしでも自動的に最新情報が表示されるようになる。チャットやトレード等の情報の共有にリアルタイム性を求めるのであれば必須の技術である。
 
 【関連記事】[Djangoビギナーが40分で掲示板アプリを作る方法](/post/startup-django/)
+
+
+## ソースコード
+
+https://github.com/seiya0723/startup_bbs_ajax
 
 
