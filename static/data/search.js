@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/javascript-frappe-gantt-chart/", "title" : "frappe-ganttを使ってJavaScriptでガントチャートを表現する" }, 
 { "link": "/post/django-admin-origin-js-css/", "title" : "【Django】管理サイトで任意のJavaScript、CSSを発動させる【管理サイトのカスタム】" }, 
 { "link": "/post/django-ajax/", "title" : "DjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】" }, 
 { "link": "/post/lpic-level1-command/", "title" : "【LPIC】Level1で出てくるコマンドと用語の一覧" }, 
