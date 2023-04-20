@@ -74,6 +74,9 @@ tags: [ "JavaScript","JavaScriptライブラリ","マークダウン","追記予
     });
 
 
+
+
+
 ### 動かすとこうなる
 
 一応、入力したら即時プレビューしてくれる。
@@ -83,6 +86,53 @@ tags: [ "JavaScript","JavaScriptライブラリ","マークダウン","追記予
 <div class="img-center"><img src="/images/Screenshot from 2022-11-03 16-48-37.png" alt=""></div>
 
 onclick属性の削除は良いが、コード欄のscriptタグまで消すのはダメだ。
+
+
+
+### 【追記】サニタイズはしなくても良い？
+
+DOMPurifyを使うことでサニタイズ(無害化)できるが、コードブロックの中まで消されてしまうのはとても実用に堪えない。
+
+公式はDOMPurifyを推奨しているが、『marked.js』で検索してみると、サニタイズせずにマークダウンを解釈している例もあるようだ。
+
+- https://qiita.com/samuraibrass/items/d40d54aa0754692d5439
+- https://mebee.info/2020/07/21/post-14683/
+- https://kannokanno.hatenablog.com/entry/2013/06/19/132042
+
+そこで、サニタイズせずに解釈することにした。それから改行一つで改行するようにオプションを書いてみた。
+
+```
+window.addEventListener("load" , function (){ 
+
+    const textarea  = document.querySelector("textarea");
+    const markdown  = document.querySelector(".markdown");
+
+    textarea.addEventListener("input", function(){ 
+        //console.log(this.value);
+
+        //素のHTMLを無害化
+        //let cleaned         = DOMPurify.sanitize(this.value);
+
+        // 公式はDOMPurtifyを使用してサニタイズをしたほうが良いと
+        // だが、DOMPurifyを使うと、かえってHTMLのコードブロックが正常に機能しなくなる。
+        // 直にscriptタグを書くと無効化されるので、サニタイズしなくても良いのでは？
+        let cleaned         = this.value;
+
+        console.log(cleaned);
+
+        //マークダウンを解釈して、隣のプレビュー欄にレンダリング
+
+        //改行一つで改行する。
+        //https://marked.js.org/using_advanced
+        marked.setOptions({
+            breaks: true,
+        });
+
+        markdown.innerHTML  = marked.parse(cleaned);
+
+    }); 
+});
+```
 
 ## 結論
 
