@@ -3,7 +3,7 @@ title: "inputタグのtype='file'で画像のサムネイルを表示させる"
 date: 2023-04-18T16:28:27+09:00
 lastmod: 2023-04-18T16:28:27+09:00
 draft: false
-thumbnail: "images/js.jpg"
+thumbnail: "images/Screenshot from 2023-04-18 16-34-09.png"
 categories: [ "フロントサイド" ]
 tags: [ "jQuery","HTML","CSS","ウェブデザイン" ]
 ---

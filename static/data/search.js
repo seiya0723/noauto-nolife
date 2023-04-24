@@ -1,4 +1,9 @@
 const SEARCH_LIST = [
+{ "link": "/post/javascript-fullcalendar/", "title" : "【JavaScriptカレンダー】fullcalendarを使ってみる【ライブラリ】" }, 
+{ "link": "/post/startup-django-stripe-subscription/", "title" : "【Django】Stripeでサブスクリプション決済を行う" }, 
+{ "link": "/post/input-tag-type-file-thumbnail/", "title" : "inputタグのtype='file'で画像のサムネイルを表示させる" }, 
+{ "link": "/post/django-summernote/", "title" : "【django】summernoteを使用してwysiwygエディタを表示させる【マークダウンよりも簡単】" }, 
+{ "link": "/post/javascript-markdown/", "title" : "【JavaScript】marked.jsでマークダウン記法をHTML上でプレビューしてみる" }, 
 { "link": "/post/javascript-frappe-gantt-chart/", "title" : "frappe-ganttを使ってJavaScriptでガントチャートを表現する" }, 
 { "link": "/post/django-admin-origin-js-css/", "title" : "【Django】管理サイトで任意のJavaScript、CSSを発動させる【管理サイトのカスタム】" }, 
 { "link": "/post/django-ajax/", "title" : "DjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】" }, 
@@ -84,7 +89,6 @@ const SEARCH_LIST = [
 { "link": "/post/python3-update/", "title" : "UbuntuにインストールされているPythonをアップデートする" }, 
 { "link": "/post/jquery-to-javascript/", "title" : "jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】" }, 
 { "link": "/post/css3-new-sidebar/", "title" : "【CSS3】checkboxとlabelを使ってサイドバーを作る【コンパクト】" }, 
-{ "link": "/post/javascript-markdown/", "title" : "【JavaScript】marked.jsでマークダウン記法をHTML上でプレビューしてみる" }, 
 { "link": "/post/ubuntu-version-check/", "title" : "Ubuntuのバージョンチェックは lsb_release -a もしくは、cat /etc/os-release でOK" }, 
 { "link": "/post/ubuntu-disk-read-speed-check/", "title" : "【Ubuntu】ディスクの読み込みスピードをチェックする【sudo hdparm -tT デバイス名】" }, 
 { "link": "/post/django-models-foreignkey/", "title" : "Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】" }, 
