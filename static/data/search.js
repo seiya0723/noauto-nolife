@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-message-framework-javascript-css/", "title" : "DjangoMessageFrameworkにJavaScriptとCSSを当てる【ボタンを押して消せるようにする】" }, 
+{ "link": "/post/django-models-add-field/", "title" : "【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】" }, 
 { "link": "/post/javascript-fullcalendar/", "title" : "【JavaScriptカレンダー】fullcalendarを使ってみる【ライブラリ】" }, 
 { "link": "/post/startup-django-stripe-subscription/", "title" : "【Django】Stripeでサブスクリプション決済を行う" }, 
 { "link": "/post/input-tag-type-file-thumbnail/", "title" : "inputタグのtype='file'で画像のサムネイルを表示させる" }, 
@@ -200,7 +202,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-session-expire-second-and-browser-close/", "title" : "【Django】セッションの有効期限をセット、もしくはブラウザを閉じた時にセッションを無効化【settings.py】" }, 
 { "link": "/post/leaflet-draw-circle-5000m/", "title" : "【Leaflet.js】半径5km圏内の領域に円を描画する【circle】" }, 
 { "link": "/post/leaflet-overlays/", "title" : "【Leaflet.js】クリックした地図上に画像を配置する【overlays】" }, 
-{ "link": "/post/django-models-add-field/", "title" : "【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】" }, 
 { "link": "/post/django-ajax-long-polling/", "title" : "【Django】Ajax(jQuery)でロングポーリングを実装させる【チャットサイトの開発に】" }, 
 { "link": "/post/django-custom-user-model-foreignkey/", "title" : "Djangoでカスタムユーザーモデルを外部キーとして指定する方法【1対多】" }, 
 { "link": "/post/startup-web-application-framework/", "title" : "ウェブアプリケーションフレームワークを使う前に知っておきたい知識【Django/Laravel/Rails】" }, 
