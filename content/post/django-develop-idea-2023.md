@@ -2,7 +2,7 @@
 title: "【2023年度】Djangoを使用したポートフォリオのアイデア"
 date: 2023-04-26T19:01:05+09:00
 lastmod: 2023-04-26T19:01:05+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","JavaScript","ポートフォリオ" ]
