@@ -5,7 +5,7 @@ lastmod: 2023-01-23T11:27:22+09:00
 draft: false
 thumbnail: "images/django-react.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","React","初心者向け","追記予定" ]
+tags: [ "Django","React","初心者向け" ]
 ---
 
 DjangoとReactを組み合わせることで、画面遷移の全く無いSPA(シングルページアプリケーション)を作ることができる。
@@ -57,9 +57,36 @@ httpやhttpsなどのプロトコル、noauto-nolife.comなどのドメイン、
 そこで、この同一オリジンポリシーに対処するためPythonライブラリの`corsheaders`を使う。`127.0.0.1:3000`から`127.0.0.1:8000`へのリクエストの送信を許可する。
 
 
+## 実際にReactとDjangoを組み合わせてみる
+
+https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
+
+このサイトの内容を元に実際にReactとDjangoを組み合わせてSPAを作ってみるとこうなる。
+
+<div class="img-center"><img src="/images/Screenshot from 2023-04-28 16-19-59.png" alt=""></div>
+
+
+### ソースコード
+
+https://github.com/seiya0723/react_django_todo
+
+### 必要なもの
+
+このReactとDjangoの連携に必要最小限のものだけ列挙する。なお、React及びDjango本体は除外する。
+
+当初の想定通りとなった。
+
+#### Django側
+
+- djangorestframework
+- django-cors-headers
+
+#### React側
+
+- axios
+
 
 ## 参照元
 
 https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
-
 
