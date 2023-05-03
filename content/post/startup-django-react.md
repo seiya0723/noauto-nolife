@@ -220,6 +220,12 @@ class Topic(models.Model):
 
 ```
 
+マイグレーションしておく
+
+```
+python3 manage.py makemigrations 
+python3 manage.py migrate
+```
 
 ## Djangoのserializers.pyの編集
 
