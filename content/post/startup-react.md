@@ -178,11 +178,26 @@ npm start
 
 だからこそ、サーバーサイドとの連携を行い、投稿したデータはDBに保存するように仕立てる必要がある。
 
+
+
+## この先のロードマップ
+
+
 ### Djangoで同様の簡易掲示板を作るには？
 
 Djangoで同様の物を作るには、下記を参照。
 
 [Djangoビギナーが40分で掲示板アプリを作る方法](/post/startup-django/)
+
+
+
+### DjangoとReactを連携してSPAを作るには？
+
+下記記事が良いだろう。
+
+[DjangoとReactを組み合わせる方法論と問題の考察](https://noauto-nolife.com/post/django-react-methodology/)
+
+
 
 
 

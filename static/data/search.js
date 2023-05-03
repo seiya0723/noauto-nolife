@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-django-react/", "title" : "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法" }, 
+{ "link": "/post/django-react-todo-analysis/", "title" : "DjangoとReactのTodoアプリ(SPA)を解析する" }, 
+{ "link": "/post/startup-react/", "title" : "Reactビギナーが15分で掲示板アプリを作る方法" }, 
 { "link": "/post/django-react-methodology/", "title" : "DjangoとReactを組み合わせる方法論と問題の考察" }, 
 { "link": "/post/django-message-framework-javascript-css/", "title" : "DjangoMessageFrameworkにJavaScriptとCSSを当てる【ボタンを押して消せるようにする】" }, 
 { "link": "/post/django-models-add-field/", "title" : "【Django】models.pyにフィールドを追加・削除する【マイグレーションできないときの原因と対策も】" }, 
@@ -44,7 +47,6 @@ const SEARCH_LIST = [
 { "link": "/post/startup-laravel/", "title" : "Laravelビギナーが30分で掲示板アプリを作る方法" }, 
 { "link": "/post/ubuntu-add-php-repository/", "title" : "【Ubuntu】最新版PHPがインストールできるようにリポジトリを追加する" }, 
 { "link": "/post/npm-command/", "title" : "【Node.js】npmとは、npmコマンドについて" }, 
-{ "link": "/post/startup-react/", "title" : "Reactビギナーが15分で掲示板アプリを作る方法" }, 
 { "link": "/post/react-class-and-function-components/", "title" : "【React】関数コンポーネント(function App)とクラスコンポーネント(class App extends Component)の違い" }, 
 { "link": "/post/react-list-rendering-unique-key-prop/", "title" : "【React】リストをレンダリングする時は、key属性を付与する【Warning: Each child in a list should have a unique 'key' prop.】" }, 
 { "link": "/post/react-dom-render-is-no-longer-supported/", "title" : "【React】警告文の『Warning: ReactDOM.render is no longer supported in React 18 』の対処法【createRootを使用する】" }, 
