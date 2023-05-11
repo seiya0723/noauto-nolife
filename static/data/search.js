@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/javascript-arrow-func-this/", "title" : "JavaScriptのイベントリスナのアロー関数でthisは使わない【event.currentTargetを使おう】" }, 
+{ "link": "/post/django-fullcalendar-todo/", "title" : "Djangoでfullcalendar.jsを使いTodoアプリを作る" }, 
+{ "link": "/post/learning-framework-and-language/", "title" : "フレームワークと言語の学習方法" }, 
 { "link": "/post/startup-django-react/", "title" : "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法" }, 
 { "link": "/post/django-react-todo-analysis/", "title" : "DjangoとReactのTodoアプリ(SPA)を解析する" }, 
 { "link": "/post/startup-react/", "title" : "Reactビギナーが15分で掲示板アプリを作る方法" }, 
@@ -32,7 +35,6 @@ const SEARCH_LIST = [
 { "link": "/post/jquery-slick/", "title" : "jQueryのslick.jsでカルーセルを表示する【.slick-dotsのCSS付きでボタンを押しやすく】" }, 
 { "link": "/post/startup-openpyxl/", "title" : "【openpyxl】PythonからExcelファイルを読み書きする" }, 
 { "link": "/post/startup-nextjs/", "title" : "Next.jsのインストール方法とプロジェクトの作成" }, 
-{ "link": "/post/javascript-arrow-func-this/", "title" : "JavaScriptのイベントリスナのアロー関数でthisは使わない【event.targetを使おう】" }, 
 { "link": "/post/jquery-animation/", "title" : "【jQuery】.animate()の使い方【アニメーション】" }, 
 { "link": "/post/react-github-pages-deploy/", "title" : "【React】GithubPagesへデプロイする【ビルドしてプッシュする】" }, 
 { "link": "/post/react-route-dom-how-to-use/", "title" : "react-route-domの使い方【Reactでルーティング】" }, 

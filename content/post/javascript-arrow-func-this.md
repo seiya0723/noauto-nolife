@@ -1,5 +1,5 @@
 ---
-title: "JavaScriptのイベントリスナのアロー関数でthisは使わない【event.targetを使おう】"
+title: "JavaScriptのイベントリスナのアロー関数でthisは使わない【event.currentTargetを使おう】"
 date: 2023-02-06T14:16:31+09:00
 lastmod: 2023-02-06T14:16:31+09:00
 draft: false
@@ -46,7 +46,7 @@ tags: [ "JavaScript","jQuery","アンチパターン","tips" ]
 
             // アロー関数ではthisは使えない。
             // console.log( this.value );
-            console.log( event.target.value );
+            console.log( event.currentTarget.value );
         });
     }
 </script>
@@ -60,13 +60,45 @@ tags: [ "JavaScript","jQuery","アンチパターン","tips" ]
 
 jQueryでアロー関数を使用するときも同様で、thisは使えない。
 
-`this`ではなく、`event.target`を使おう。
+`this`ではなく、`event.currentTarget`を使おう。
 
 ```
 $(".button").on("click", (event) => {
-    console.log( $(event.target).val() );
+    console.log( $(event.currentTarget).val() );
 });
 ```
 
 アロー関数。短く書けるメリットがあると言われているが、個人的にはミスタイプ多発でfunction関数の方が早く書けたりする。
 
+
+### 補足
+
+`event.target`の場合、実際にクリックされた場所になる。
+
+つまり、親要素のイベントで発火した場合、`.target`であれば実際にクリックされた子要素を返却することになる。
+
+```
+    <div class="button">
+        <button value="1">ボタン1</button>
+    </div>
+
+<script>
+
+    const buttons   = document.querySelectorAll(".button");
+
+    for (let button of buttons){
+
+        // .buttonがクリックされたとき(実際には子要素のbuttonタグをクリックしたとき)
+        button.addEventListener("click", (event) => {
+            console.log( event.target ); // .targetで取得できるのはイベントが発火した要素ではなく、子要素のbuttonタグが返却される。
+        });
+    }
+</script>
+```
+
+そのため、jQueryのthisとは挙動が異なる点に注意する。
+
+
+### 参照元
+
+https://rachicom.net/frontend/jquery-this.html
