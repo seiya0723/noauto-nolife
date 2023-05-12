@@ -17,6 +17,30 @@ Djangoのハローワールドは、やり方が何通りもある。
 
 一般的な開発においてはテンプレートのレンダリングが主流である。しかし、Django初心者、フレームワーク未経験者には難度が高い。故に、本記事では難度の低いHttpResponseから解説する。
 
+
+## 前提
+
+
+前もってプロジェクトとアプリを作り、settings.pyの`INSTALLED_APPS`にアプリを追加しておく
+
+```
+django-admin startproject myproject
+cd myproject
+python3 manage.py startapp home
+```
+
+
+```
+INSTALLED_APPS = [
+    "home.apps.HomeConfig",
+
+    # ...省略
+]
+```
+
+
+
+
 ## Djangoのハローワールドの方法一覧
 
 以下がDjangoにおけるハローワールドの方法一覧である。難度の低い順に並べる。
