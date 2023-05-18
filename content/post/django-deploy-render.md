@@ -1,7 +1,7 @@
 ---
-title: "DjangoをRender.comへデプロイする【Herokuの代替クラウド、アカウント作成から解説】"
+title: "poetryなしでDjangoをRender.comへデプロイする【Herokuの代替クラウド、アカウント作成から解説】"
 date: 2022-11-24T15:50:04+09:00
-lastmod: 2022-11-26T15:50:04+09:00
+lastmod: 2023-05-14T15:50:04+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "インフラ" ]
@@ -28,8 +28,6 @@ tags: [ "Django","render.com","デプロイ","クラウド","追記予定" ]
 - 有料だが、cron(タスクスケジューラー)が用意されている
 - アカウントはGitHubのアカウントから簡単に作ることができる(パスワード不要)
 - デプロイはHerokuとは違い、GitHubからリポジトリを登録してデプロイする
-
-
 
 ## Render.comのアカウント作成
 
@@ -69,6 +67,30 @@ https://dashboard.render.com/select-repo?type=web
 
 
 ## Djangoをデプロイする
+
+### 流れ
+
+1. ダッシュボードからウェブサービスとPostgreSQLを作る
+1. 環境変数の設定
+1. Djangoのsettings.pyの編集
+1. 必要なライブラリを仮想環境にinstallしてrequirements.txtを作る
+1. GitHubにプッシュする
+1. ウェブサービスとGitHubのリポジトリを連携させる
+
+
+
+
+### 注意点
+
+- Herokuではできていたコマンドがrenderでは実行できない
+- 挙動が遅い
+- データベースは3ヶ月で消える
+- GitHubにプッシュするので、機密情報のプッシュに注意
+
+
+
+
+<!--
 
 ### 流れ
 
@@ -121,5 +143,6 @@ curl -sSL https://install.python-poetry.org | python3
 - https://render.com/docs/deploy-django
 - https://render.com/docs/github
 
+-->
 
 

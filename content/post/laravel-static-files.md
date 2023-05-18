@@ -27,7 +27,7 @@ Laravelにはpublicというディレクトリが用意されており、通常�
 assetを使用すれば読み込みができる。
 
     <link rel="stylesheet" href="{{ asset('static/common/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('static/common/js/script.js') }}">
+    <script src="{{ asset('static/common/js/script.js') }}"></script>
 
 これだけでOK。特別な設定は不要。
 
