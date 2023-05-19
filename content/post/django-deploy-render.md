@@ -128,6 +128,7 @@ SECRET_KEY : settings.pyのSECRET_KEYをリジェネレートして当てる
 WEB_CONCURRENCY : 4 を指定(どこで使うのか不明、未検証)
 ```
 
+<div class="img-center"><img src="/images/Screenshot from 2023-05-19 15-05-07.png" alt=""></div>
 
 ### Djangoのsettings.pyの編集
 
