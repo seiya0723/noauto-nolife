@@ -87,16 +87,26 @@ Nautilusを起動して、パス欄に下記を記入
 
 ## 起動時にディスクをマウントさせる
 
-各ディスクのUUIDを確認
+`/etc/fstab`に起動時にマウントするように書いておく。
+
+    /dev/sda         /home/UserName/share/sda   ext4    defaults        0 0
+    /dev/sdb1        /home/UserName/share/sdb1  ext4    defaults        0 0
+
+UUIDを指定してマウントしたい場合、各ディスクのUUIDを確認して
 
     sudo blkid /dev/sda1
     sudo blkid /dev/sdb
 
-`/etc/fstab`に起動時にマウントするように書いておく。
+このように指定する。
 
-    /dev/sda         /home/UserName/share/sda   ext4    defaults        1 1
-    /dev/sdb1        /home/UserName/share/sdb1  ext4    defaults        1 1
+    UUID=b7f7e47d-adee-4991-8631-65963bda99e2       /home/UserName/share/sda     ext4   defaults        0 0
+    UUID=117b5be9-cc41-4670-b2f4-57413506025c       /home/UserName/share/sdb1    ext4   defaults        0 0
 
+
+ちなみに、最後の5列目と6列目はdumpコマンドでバックアップ対象になるかどうか、起動時にfsckコマンドでチェックを行う際の順序を指定している
+    
+- 参照1: https://atmarkit.itmedia.co.jp/flinux/rensai/linuxtips/756fstabnum.html
+- 参照2: https://qiita.com/kakkie/items/768fa330f1e1832b702c
 
 ## 補足
 

@@ -86,11 +86,10 @@ tags: [ "django","初心者向け" ]
 
 特定の文字列を含む物を取り出したい場合、`__icontains`もしくは`__contains`を使う。
 
-    topics  = Topic.objects.filter(comment__icontains="django") #Djangoはヒットする
-
 `__icontains`は大文字と小文字を区別せず、`__contains`は大文字と小文字を区別する。
 
-    topics  = Topic.objects.filter(comment__icontains="django") #Djangoはヒットしない
+    topics  = Topic.objects.filter(comment__icontains="django") #Djangoはヒットする
+    topics  = Topic.objects.filter(comment__contains="django") #Djangoはヒットしない
 
 
 
