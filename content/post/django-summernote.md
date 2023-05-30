@@ -247,6 +247,12 @@ Djangoで、Wordpressのようなコンテンツ管理システムを運用し�
 [Djangoの管理サイト(admin)のフォームをforms.pyを使用してカスタムする【文字列入力フォームをtextareaタグで表現】](/post/django-admin-custom-form/)
 
 
+
+## 参照元
+
+- https://bleach.readthedocs.io/en/latest/clean.html#sanitizing-css
+
+
 ## ソースコード
 
 https://github.com/seiya0723/summernote_test
