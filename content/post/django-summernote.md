@@ -31,7 +31,11 @@ MSwordのようなエディタをウェブ上で扱うことができる。(.doc
 pip install django-summernote
 ```
 
-同時に、HTMLのタグを判定するbleachというライブラリもインストールされる。
+同時に、HTMLのタグを判定するbleachというライブラリもインストールされる。また、style属性のCSSを解析するためのtinycss2をインストールしておく
+
+```
+pip install tinycss2
+```
 
 
 ### settings.py
@@ -45,8 +49,6 @@ INSTALLED_APPS = [
 
     # 以下略
 ]
-
-
 
 ## 中略 ## 
 
@@ -73,7 +75,7 @@ ALLOWED_TAGS = [
     'abbr', 'acronym', 'b', 'blockquote', 'code', 'strike', 'u', 'sup', 'sub','font'
 ]
 ATTRIBUTES = { 
-    '*': ['style', 'align', 'title', ],
+    '*': ['style', 'align', 'title', 'style' ],
     'a': ['href', ],
     'img': ['src', ],
 }
@@ -113,6 +115,13 @@ from .models import Topic
 
 import bleach
 
+# style属性を許可する場合、 CSSSanitizerをbleach.clean()の引数に入れる
+# 前もって、 pip install tinycss2 を実行しておく
+from bleach.css_sanitizer import CSSSanitizer
+#css = CSSSanitizer(allowed_css_properties=[ "color" ]) # 個別に許可をしたい場合はここに文字列型で許可するCSSのプロパティを入れる
+css = CSSSanitizer() # styleから指定されるすべてのCSSを許可する場合はこうする。
+
+
 class HTMLField(forms.CharField):
 
     def __init__(self, *args, **kwargs):
@@ -122,7 +131,7 @@ class HTMLField(forms.CharField):
     # ここで.clean()内にstyles引数を入れるとエラー(bleachではすでにstyle引数は廃止されている)
     def to_python(self, value):
         value       = super(HTMLField, self).to_python(value)
-        return bleach.clean(value, tags=settings.ALLOWED_TAGS, attributes=settings.ATTRIBUTES)
+        return bleach.clean(value, tags=settings.ALLOWED_TAGS, attributes=settings.ATTRIBUTES, css_sanitizer=css)
 
 
 class TopicForm(forms.ModelForm):
@@ -216,8 +225,12 @@ img{ max-width:100%; }
 
 ## 動かすとこうなる。
 
+<div class="img-center"><img src="/images/Screenshot from 2023-05-30 16-08-37.png" alt=""></div>
 
-<div class="img-center"><img src="/images/Screenshot from 2023-04-24 10-22-50.png" alt=""></div>
+このフォームを投稿するとこうなる。
+
+<div class="img-center"><img src="/images/Screenshot from 2023-05-30 16-08-42.png" alt=""></div>
+
 
 ## 結論
 
