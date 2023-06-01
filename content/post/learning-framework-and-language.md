@@ -1,7 +1,7 @@
 ---
 title: "フレームワークと言語の学習方法"
-date: 2023-05-03T11:45:50+09:00
-lastmod: 2023-05-03T11:45:50+09:00
+date: 2022-05-03T11:45:50+09:00
+lastmod: 2022-05-03T11:45:50+09:00
 draft: false
 thumbnail: "images/noimage.jpg"
 categories: [ "others" ]
