@@ -113,6 +113,11 @@ Documents配下にプッシュ先のリポジトリを作る
 
 参照: [UbuntuにDjangoをデプロイする【PostgreSQL+Nginx、Virtualenv使用】](/post/django-deploy-ubuntu-venv/)
 
+1度クローンしたことがある場合は、プロジェクトのディレクトリに移動して、pullする
+
+    cd ~/Documents/myproject
+    git pull origin master 
+
 
 ### 必要に応じて`migrate`等のコマンドを実行
 

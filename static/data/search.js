@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/ubuntu-local-wordpress-install/", "title" : "【Ubuntu】Localをインストールする【WordPressのローカル環境構築】" }, 
+{ "link": "/post/django-git-deploy-ubuntu-venv/", "title" : "【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】" }, 
 { "link": "/post/learning-framework-and-language/", "title" : "フレームワークと言語の学習方法" }, 
 { "link": "/post/django-summernote/", "title" : "【django】summernoteを使用してwysiwygエディタを表示させる【マークダウンよりも簡単】" }, 
 { "link": "/post/javascript-frappe-gantt-chart/", "title" : "frappe-ganttを使ってJavaScriptでガントチャートを表現する" }, 
@@ -34,7 +36,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-paginator/", "title" : "Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】" }, 
 { "link": "/post/lpic-set-command-shell-option/", "title" : "【LPIC】setコマンドを使用してシェルオプションを設定する" }, 
 { "link": "/post/movie-convert-mp3/", "title" : "コマンド一発で動画をmp3に変換する" }, 
-{ "link": "/post/django-git-deploy-ubuntu-venv/", "title" : "【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】" }, 
 { "link": "/post/django-deploy-ec2/", "title" : "DjangoをAWSのEC2(Ubuntu)にデプロイする" }, 
 { "link": "/post/jquery-ajax-postcode/", "title" : "【jQuery】Ajaxで郵便番号検索を行う【通販サイトなどの住所登録に有効】" }, 
 { "link": "/post/jquery-slick/", "title" : "jQueryのslick.jsでカルーセルを表示する【.slick-dotsのCSS付きでボタンを押しやすく】" }, 
