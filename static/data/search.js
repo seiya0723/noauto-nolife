@@ -1,9 +1,9 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-summernote/", "title" : "【django】summernoteを使用してwysiwygエディタを表示させる【マークダウンよりも簡単】" }, 
 { "link": "/post/django-csvfile-download-views/", "title" : "【Django】2次元配列をCSVファイルとしてダウロードできるようにする【HttpResponse】" }, 
 { "link": "/post/ubuntu-local-wordpress-install/", "title" : "【Ubuntu】Localをインストールする【WordPressのローカル環境構築】" }, 
 { "link": "/post/django-git-deploy-ubuntu-venv/", "title" : "【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】" }, 
 { "link": "/post/learning-framework-and-language/", "title" : "フレームワークと言語の学習方法" }, 
-{ "link": "/post/django-summernote/", "title" : "【django】summernoteを使用してwysiwygエディタを表示させる【マークダウンよりも簡単】" }, 
 { "link": "/post/javascript-frappe-gantt-chart/", "title" : "frappe-ganttを使ってJavaScriptでガントチャートを表現する" }, 
 { "link": "/post/django-filter-method/", "title" : "【Django】モデルクラスのfilterメソッドで検索・絞り込みをする" }, 
 { "link": "/post/ubuntu-samba/", "title" : "UbuntuにSambaをインストールしてファイルサーバー化させる" }, 

@@ -38,7 +38,7 @@ pip install tinycss2
 ```
 
 
-### settings.py
+### config/settings.py
 
 settings.pyでは許可をするHTMLタグを指定する。
 
@@ -50,11 +50,13 @@ INSTALLED_APPS = [
     # 以下略
 ]
 
+
 ## 中略 ## 
 
 # summernoteで保存する画像の設定
 MEDIA_URL   = "/media/"
 MEDIA_ROOT  = BASE_DIR / "media"
+
 
 
 # summernoteの設定(エディタのサイズ調整)
@@ -86,6 +88,38 @@ ATTRIBUTES = {
 上記の通りにやれば、特に問題はない。
 
 
+`django_summernote`の中にはモデルが有るので、マイグレーションをしておく。
+
+```
+python3 manage.py migrate
+```
+
+
+### config/urls.py
+
+Django-summernoteのパスと画像のパスを追加する
+
+```
+from django.contrib import admin
+from django.urls import path,include
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [ 
+    path('admin/', admin.site.urls),
+
+    # 中略
+
+    path('summernote/', include('django_summernote.urls')),
+]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+```
+
+Django-summernoteのエディタで添付された画像は、django-summernoteのモデルに記録される。
+
+
+
 ### models.py
 
 DBに保存されるのは、膨大なHTMLの羅列になるので、文字数制限を排除したTextFieldを採用した。
@@ -96,7 +130,6 @@ from django.db import models
 class Topic(models.Model):
     comment         = models.TextField(verbose_name="コメント")
 ```
-
 
 
 ### forms.py
@@ -118,8 +151,8 @@ import bleach
 # style属性を許可する場合、 CSSSanitizerをbleach.clean()の引数に入れる
 # 前もって、 pip install tinycss2 を実行しておく
 from bleach.css_sanitizer import CSSSanitizer
-#css = CSSSanitizer(allowed_css_properties=[ "color" ]) # 個別に許可をしたい場合はここに文字列型で許可するCSSのプロパティを入れる
-css = CSSSanitizer() # styleから指定されるすべてのCSSを許可する場合はこうする。
+
+#css = CSSSanitizer(allowed_css_properties=[ "color" ]) # 個別に許可をしたい場合はここに文字列型で許可するCSSのプロパティを入れる。すべて許可する場合は、引数なし。
 
 
 class HTMLField(forms.CharField):
@@ -131,7 +164,7 @@ class HTMLField(forms.CharField):
     # ここで.clean()内にstyles引数を入れるとエラー(bleachではすでにstyle引数は廃止されている)
     def to_python(self, value):
         value       = super(HTMLField, self).to_python(value)
-        return bleach.clean(value, tags=settings.ALLOWED_TAGS, attributes=settings.ATTRIBUTES, css_sanitizer=css)
+        return bleach.clean(value, tags=settings.ALLOWED_TAGS, attributes=settings.ATTRIBUTES, css_sanitizer=CSSSanitizer())
 
 
 class TopicForm(forms.ModelForm):
@@ -245,7 +278,6 @@ Djangoで、Wordpressのようなコンテンツ管理システムを運用し�
 先ほどのTopicFormをカスタムアドミンで採用する。
 
 [Djangoの管理サイト(admin)のフォームをforms.pyを使用してカスタムする【文字列入力フォームをtextareaタグで表現】](/post/django-admin-custom-form/)
-
 
 
 ## 参照元
