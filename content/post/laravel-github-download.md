@@ -139,4 +139,25 @@ DB_CONNECTION=sqlite" | clipcopy && vi .env && php artisan key:generate && touch
 ```
 
 
+## 問題と対処法
+
+### 【問題1】Vite manifest not found とエラーが表示される
+
+npmが存在しないため、このエラーが出てくる。まず、
+
+```
+npm start
+```
+
+を実行。その上で
+
+```
+npm run build
+```
+を実行する。これで動く。
+
+
+参照元: https://biz.addisteria.com/laravel_vite_errors/https://biz.addisteria.com/laravel_vite_errors/
+
+
 
