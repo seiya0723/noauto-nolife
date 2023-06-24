@@ -116,7 +116,7 @@ tags: [ "django","allauth","上級者向け" ]
     class SignupForm(UserCreationForm):
         class Meta(UserCreationForm.Meta):
             model   = CustomUser
-            fields  = ("username")
+            fields  = ("username", )
     
 会員登録時に入力するのはデフォルトのユーザーネームのみ。
 
