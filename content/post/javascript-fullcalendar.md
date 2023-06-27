@@ -32,7 +32,7 @@ JavaScriptを使ってカレンダーを表示する。
 
             // オブジェクトを作成 FullCalendar.Calendar() を実行。引数として要素と表示するカレンダーの設定
             const calendar      = new FullCalendar.Calendar(calendarEl, {
-                                        initialView: 'dayGridMonth'
+                                        initialView: 'dayGridMonth',
                                         events: [
                                                 {
                                                         title  : 'イベント1',
