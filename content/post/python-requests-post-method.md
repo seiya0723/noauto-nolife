@@ -57,6 +57,46 @@ Pythonのrequestsライブラリはスクレイピング(GETメソッド)で使�
 
 コード上にはIDとパスワードの変数が直接ハードコードされているが、実運用時にはセキュリティ上の問題があるので、別ファイルに書いたほうが良いだろう。
 
+
+
+## 管理サイトにログインした後、データを投稿したい場合はどうする？
+
+先のPythonのコードに追記する。
+
+例えば、ユーザーを自動的に作りたい場合は、このようにする。
+
+```
+
+# 前略(前項のコード)
+
+
+#(4) ログインに使用したセッションでフォームにアクセス。name属性はモデルのフィールド名とほぼ同じ。
+POST_URL    = URL + "/admin/auth/user/add/"
+
+
+#ログインした後、新規作成フォームのページにアクセスする。(CSRFトークンを手に入れるため。)
+r = client.get(POST_URL,headers=HEADERS)
+
+#CSRFトークンをセットし直す。
+if 'csrftoken' in client.cookies:
+    csrftoken = client.cookies['csrftoken']
+    print(csrftoken)
+
+post_data   = { 
+        "csrfmiddlewaretoken":csrftoken,
+        "username":"ここにユーザー名を",
+        "password1":"パスワード",
+        "password2":"パスワード",
+        }
+
+r   = client.post(POST_URL,data=post_data,headers=HEADERS)
+print(r)
+```
+
+`post_data`の部分の値をCSVからループして取得した値にすることで、まとめて一気にユーザーを作ることができるだろう。
+
+
+
 ## 結論
 
 テスト以外の用途としては、Herokuのような常駐スクリプトが動作しない環境下で、サーバーに対してデータを格納したい場合などに有効。
