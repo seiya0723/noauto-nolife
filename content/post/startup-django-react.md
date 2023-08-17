@@ -1,5 +1,5 @@
 ---
-title: "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法"
+title: "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios】"
 date: 2023-05-01T17:25:46+09:00
 lastmod: 2023-05-01T17:25:46+09:00
 draft: false

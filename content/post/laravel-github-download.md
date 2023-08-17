@@ -156,6 +156,15 @@ npm run build
 ```
 を実行する。これで動く。
 
+vite not found と表示される場合は以下を実行
+
+```
+npm install vite
+
+npm run dev 
+```
+
+
 
 参照元: https://biz.addisteria.com/laravel_vite_errors/https://biz.addisteria.com/laravel_vite_errors/
 

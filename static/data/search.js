@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-django-react/", "title" : "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios】" }, 
+{ "link": "/post/laravel-github-download/", "title" : "【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？" }, 
 { "link": "/post/django-summernote-upload-limit-config/", "title" : "Django-summernoteでアップロード上限を設定する" }, 
 { "link": "/post/python-requests-post-method/", "title" : "【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】" }, 
 { "link": "/post/javascript-fullcalendar/", "title" : "【JavaScriptカレンダー】fullcalendarを使ってみる【ライブラリ】" }, 
@@ -6,7 +8,6 @@ const SEARCH_LIST = [
 { "link": "/post/startup-create-rdd-todo/", "title" : "Todoリストのウェブアプリの要件定義書の書き方" }, 
 { "link": "/post/startup-create-rdd/", "title" : "要件定義書の書き方" }, 
 { "link": "/post/django-custom-user-model-allauth-bbs/", "title" : "【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】" }, 
-{ "link": "/post/laravel-github-download/", "title" : "【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？" }, 
 { "link": "/post/django-summernote/", "title" : "【django】summernoteを使用してwysiwygエディタを表示させる【マークダウンよりも簡単】" }, 
 { "link": "/post/django-csvfile-download-views/", "title" : "【Django】2次元配列をCSVファイルとしてダウロードできるようにする【HttpResponse】" }, 
 { "link": "/post/ubuntu-local-wordpress-install/", "title" : "【Ubuntu】Localをインストールする【WordPressのローカル環境構築】" }, 
@@ -20,7 +21,6 @@ const SEARCH_LIST = [
 { "link": "/post/startup-django-helloworld/", "title" : "DjangoでHelloWorld【HttpResponse及びレンダリング】" }, 
 { "link": "/post/javascript-arrow-func-this/", "title" : "JavaScriptのイベントリスナのアロー関数でthisは使わない【event.currentTargetを使おう】" }, 
 { "link": "/post/django-fullcalendar-todo/", "title" : "Djangoでfullcalendar.jsを使いTodoアプリを作る" }, 
-{ "link": "/post/startup-django-react/", "title" : "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法" }, 
 { "link": "/post/django-react-todo-analysis/", "title" : "DjangoとReactのTodoアプリ(SPA)を解析する" }, 
 { "link": "/post/startup-react/", "title" : "Reactビギナーが15分で掲示板アプリを作る方法" }, 
 { "link": "/post/django-react-methodology/", "title" : "DjangoとReactを組み合わせる方法論と問題の考察" }, 
