@@ -164,6 +164,19 @@ nanoエディタを使いたい場合は下記。使い方は『[nanoエディ�
 
     source ~/.bashrc
 
+### タイムゾーンの設定
+
+ここで、`history`コマンドを打つと、
+
+    history 
+
+
+表示される日時は9時間遅れ(UTC)になっている。これを日本時間に直す。
+
+    sudo timedatectl set-timezone Asia/Tokyo
+
+これで、再度`history`コマンドを打つと、日本時間で表示されるようになる。
+
 
 ### パッケージの更新とインストール
 
@@ -178,6 +191,8 @@ pip、PostgreSQL、Nginx等、必要なパッケージをインストール
 virtualenvのインストール
 
     sudo pip3 install virtualenv
+
+
 
 ## PostgreSQLの設定
 
