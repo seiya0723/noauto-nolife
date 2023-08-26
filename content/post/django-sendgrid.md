@@ -26,6 +26,16 @@ settings.pyの任意の場所に下記のコードを記述する。
 
 これで[Django-allauthのメール認証](/post/startup-django-allauth/)も動く。
 
+ハードコードを避けたい場合は環境変数を使うと良い。
+
+```
+import os
+
+if "SENDGRID_API_KEY" in os.environ:
+    SENDGRID_API_KEY  = os.environ["SENDGRID_API_KEY"]
+```
+
+
 ## Djangoでメール送信をする
 
 先の項目をsettings.pyに格納し、例えば、viewsであれば下記のようにすればIndexViewにGETメソッドがリクエストされるたび、メールが送信される仕組みになる。

@@ -24,11 +24,24 @@ settings.pyにて下記をセットしておく。Stripeの秘密鍵は.gitignor
 
     from .local_settings import *
     """
-    STRIPE_API_KEY          = "sadadadadadada"
     STRIPE_PUBLISHABLE_KEY  = "asdasdasdadsas"
+    STRIPE_API_KEY          = "sadadadadadada"
     """
 
 ハードコードするのであれば基本共有はしないようにする。
+
+今回は以下のように環境変数を使った。
+
+```
+import os
+
+if "STRIPE_PUBLISHABLE_KEY" in os.environ and "STRIPE_API_KEY" in os.environ:
+    STRIPE_PUBLISHABLE_KEY  = os.environ["STRIPE_PUBLISHABLE_KEY"]
+    STRIPE_API_KEY          = os.environ["STRIPE_API_KEY"]
+```
+
+参照: [Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ使用、crontabにも対応】](https://noauto-nolife.com/post/ubuntu-env-read-python/)
+
 
 ## 最新版のやり方
 
@@ -361,4 +374,10 @@ https://stripe.com/docs/testing
 
 - https://stripe.com/docs/payments/accept-a-payment?platform=web&ui=checkout
 - https://stripe.com/docs/payments/checkout/migration#api-products
+
+
+## ソースコード
+
+https://github.com/seiya0723/django-stripe
+
 
