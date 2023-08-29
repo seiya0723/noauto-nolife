@@ -92,8 +92,8 @@ git clone myproject.git
 
 ## 参照
 
-https://noauto-nolife.com/post/django-git-deploy-ubuntu-venv/
-https://alphacoder.xyz/git-push-to-an-aws-ec2-remote-using-a-pem-file/
+- https://noauto-nolife.com/post/django-git-deploy-ubuntu-venv/
+- https://alphacoder.xyz/git-push-to-an-aws-ec2-remote-using-a-pem-file/
 
 
 
