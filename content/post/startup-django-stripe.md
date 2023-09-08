@@ -140,14 +140,23 @@ if "STRIPE_PUBLISHABLE_KEY" in os.environ and "STRIPE_API_KEY" in os.environ:
             except:
                 return redirect("bbs:index")
     
-    
+            """
             #ここで決済完了かどうかチェックできる。(何らかの方法でセッションIDを取得し、URLに直入力した場合、ここでエラーが出る。)
             try:
                 customer    = stripe.Customer.retrieve(session.customer)
                 print(customer)
             except:
                 return redirect("bbs:index")
-    
+            """
+            
+            # XXX: 2回目以降の連続決済の場合、↑のsession.customerがnullになるため、この方法では決済の確認ができない
+            # session.payment_status で確認をする
+
+
+            print( session.payment_status )
+            if session.payment_status != "paid":
+                return redirect('shop:session', order.id)
+
     
             #この時点で、セッションが存在しており、なおかつ決済している状態であることがわかる。
             #TODO:実践ではここで『カート内の商品を削除する』『顧客へ注文承りましたという趣旨のメールを送信する』『注文が入った旨を関係者にメールで報告する』等の処理を書く。
