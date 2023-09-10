@@ -94,6 +94,9 @@ class CheckoutView(LoginRequiredMixin,View):
             cancel_url=request.build_absolute_uri(reverse_lazy("bbs:index")),
         )
 
+        # セッションid
+        print( checkout_session["id"] )
+
         return redirect(checkout_session.url)
 
 checkout    = CheckoutView.as_view()
@@ -113,6 +116,15 @@ class SuccessView(LoginRequiredMixin,View):
         except:
             print( "このセッションIDは無効です。")
             return redirect("bbs:index")
+
+
+        # statusをチェックする。未払であれば拒否する。(未払いのsession_idを入れられたときの対策)
+        if checkout_session["status"] != "paid":
+            print("未払い")
+            return redirect("bbs:index")
+
+        print("支払い済み")
+
 
         # 有効であれば、セッションIDからカスタマーIDを取得。ユーザーモデルへカスタマーIDを記録する。
         user            = CustomUser.objects.filter(id=request.user.id).first()
