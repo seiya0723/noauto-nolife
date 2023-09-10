@@ -225,3 +225,10 @@ urlpatterns = [
 Djangoでセッションを作ってStripeへ誘導する点はいずれも同じ。
 
 
+## ソースコード
+
+カスタムユーザーモデルとDjango-allauthを使用している。
+
+https://noauto-nolife.com/post/startup-django-stripe-subscription/
+
+
