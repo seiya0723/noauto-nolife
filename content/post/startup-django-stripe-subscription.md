@@ -241,6 +241,4 @@ Djangoでセッションを作ってStripeへ誘導する点はいずれも同�
 
 カスタムユーザーモデルとDjango-allauthを使用している。
 
-https://noauto-nolife.com/post/startup-django-stripe-subscription/
-
-
+https://github.com/seiya0723/django-stripe-subscription
