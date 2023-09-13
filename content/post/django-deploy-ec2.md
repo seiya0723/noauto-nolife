@@ -48,6 +48,7 @@ https://github.com/seiya0723/django_fileupload
 
 ## 手順
 
+1. EC2のリージョンが東京になっていることを確認
 1. EC2にてインスタンスを作る
 1. インスタンスへSSH接続
 1. インスタンスの.bashrcの設定変更、Python等の必要なパッケージをインストールする
@@ -70,7 +71,16 @@ https://github.com/seiya0723/django_fileupload
 ただし、今回はUbuntuに直にpip3コマンドを実行してPythonライブラリをインストールするのではなく、仮想環境virtualenvを使用してライブラリをインストールする。これで開発環境とデプロイ環境でライブラリのバージョンが一致する。
 -->
 
+## EC2のリージョンが東京になっていることを確認
+
+まず、インスタンスを作る前にリージョンが東京になっていることを確認する。
+
+<div class="img-center"><img src="/images/Screenshot from 2023-09-13 19-03-17.png" alt=""></div>
+
+デフォルトでは『シドニー』になっている可能性がある。もし『シドニー』リージョンを選んでしまうと、後続のOSのパッケージ更新時にエラーが出るので、確認を厳にしておく。
+
 ## EC2にてインスタンスを作る
+
 
 オレンジ色のインスタンスの起動をクリック、
 
@@ -150,7 +160,7 @@ Windowsの場合は`icacls`コマンドから秘密鍵に所有者の読み取�
 
     vi ~/.bashrc
 
-nanoエディタを使いたい場合は下記。使い方は『[nanoエディタの操作方法](/post/startup-nano-editor/)』へ
+nanoエディタを使いたい場合は下記。使い方は『[nanoエディタの操作方法](/post/startup-nano-editor/)』へ。以降nanoエディタでコマンドを表記している。
 
     nano ~/.bashrc
 
@@ -192,8 +202,6 @@ virtualenvのインストール
 
     sudo pip3 install virtualenv
 
-
-
 ## PostgreSQLの設定
 
 PostgreSQLにて、DBとそのDBにアクセスするユーザーを作る。
@@ -217,6 +225,13 @@ Ctrl+Dを押してログアウトをする。
 
     scp -ri "seiya0723-aws.pem" ./[プロジェクト名]/ ubuntu@[パブリックIPv4 DNS]:~/Documents/
 
+### git でアップロードするにはどうする？
+
+下記を参照。
+
+[【Django】EC2インスタンスへgitを使ってデプロイする](/post/django-aws-ec2-git-deploy/)
+
+
 ### Djangoプロジェクトに必要なライブラリのインストール
 
 再びSSHでEC2へログインし、先ほどアップロードしたディレクトリに移動して、仮想環境を作成し、有効にしておく。必要なライブラリをインストール。(※pycharm等ですでに手元で仮想環境を使っている場合、この工程はスキップする。)
@@ -236,10 +251,8 @@ Ctrl+Dを押してログアウトをする。
     pip install -r requirements.txt
 
 こうすることで、venvをそのままアップロードするよりも時間がかからない。
-    
 
 ## settings.pyの書き換え
-
 
 settings.pyの末端に下記を追記する。
 
@@ -292,7 +305,9 @@ systemdとは、Linuxにおいてシステムを起動する際、同時に起�
 
 先ほど仮想環境にインストールさせたgunicornを自動起動させるため、以下の`.service`ファイルを作る。これをsystemdに登録する。
 
-    sudo vi /etc/systemd/system/gunicorn.service
+    sudo nano /etc/systemd/system/gunicorn.service
+
+
 
 中身は下記
 
@@ -374,7 +389,7 @@ systemdとは、Linuxにおいてシステムを起動する際、同時に起�
 
 次のファイルを作成し、Nginxの設定ファイルを作る。
 
-    sudo vi /etc/nginx/sites-available/[プロジェクト名]
+    sudo nano /etc/nginx/sites-available/[プロジェクト名]
 
 中身は下記
 
@@ -587,8 +602,6 @@ AWSで作業をしている時、急にこれまであったインスタンス�
 その場合、リージョンが間違っている事が原因であることが多い。まずは画面の右上から東京リージョンになっていることを確認する。
 
 例えば、リージョンがオハイオであれば、オハイオのEC2のインスタンスが表示されるため、これまで作ってきたリージョンが消えたように見える。
-
-
 
 ## 結論
 

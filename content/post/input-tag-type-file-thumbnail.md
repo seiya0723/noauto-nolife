@@ -71,6 +71,40 @@ $(".image_input").change(function() {
 });
 ```
 
+### 【別解】JavaScript(バニラ)
+
+
+```
+window.addEventListener("load" , function (){
+
+    document.addEventListener("change", (event) => {
+        // type="file"のinputタグがchengeした時。クラス名の中に image_input が含まれている場合。
+        if (event.target && event.target.classList.contains("image_input") ) {
+            image_input(event);
+        }
+    });
+
+
+});
+
+const image_input = (e) => {
+
+    // 直近の親要素を取得する。
+    const label = e.target.closest(".image_input_area");
+
+    // https://qiita.com/noobar/items/afe7fc9994b448672c88
+    if (e.target.files && e.target.files[0]) {
+        const reader    = new FileReader();
+        reader.onload   = function() {
+            label.querySelector(".image_input_preview").src = reader.result
+        };
+        reader.readAsDataURL(e.target.files[0]);
+    }
+
+}
+```
+
+
 
 ## 動かすとこうなる。
 
@@ -80,5 +114,15 @@ $(".image_input").change(function() {
 ## 結論
 
 これをコピペでサムネイル表示までできるので、それなりに汎用性は高いと思われる。
+
+
+
+## 【改修】画像の指定がされたら入力欄を1つ増やす。
+
+一気に画像を複数枚投稿したい場合、画像の指定と同時に次の入力欄を用意する。
+
+
+
+
 
 

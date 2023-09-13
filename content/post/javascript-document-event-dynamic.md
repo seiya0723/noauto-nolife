@@ -79,7 +79,7 @@ Vanilla.jsではこのように書く
     //動的に増減する要素に対してイベントを発動させる
     document.addEventListener('click', (e) => {
 
-        if (event.target && event.target.classList.contains("test") ) {
+        if (e.target && e.target.classList.contains("test") ) {
                 document.body.innerHTML += "<button class='test'>test</button>";
         }
     });
