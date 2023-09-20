@@ -131,15 +131,23 @@ SSHを利用するには専用の秘密鍵を生成する必要がある。先�
 
 権限をこのようなすれば完了。
 
+<!--
 Windowsの場合は`icacls`コマンドから秘密鍵に所有者の読み取り権限のみを付与する。詳細は下記
 
 - 参照1: https://qiita.com/sumomomomo/items/28d54e35bfa5bc524cf5
 - 参照2: https://qiita.com/uttne/items/7bfa4e820834f7f54be8
 
+-->
 
-そして、その秘密鍵を使って`ssh`コマンドを実行する。
+Windowsは下記qiitaを参考に。.pemファイルのアクセス権をログインするWindowsユーザーのみ、フルコントロールとしておく。(ここで、AdministratorやSystemが含まれていると、permission deniedになってしまうため)
+
+https://qiita.com/eltociear/items/02e8b1f5590b49eb9d87
+
+
+正しく権限設定をした秘密鍵を使って`ssh`コマンドを実行する。
 
     ssh -i "seiya0723-aws.pem" ubuntu@[パブリックIPv4 DNS]
+
 
 パブリックIPv4 DNSはインスタンスの画面から確認できる。赤で塗りつぶした部分から、amazonaws.comまでをパブリックIPv4 DNSに指定
 

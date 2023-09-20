@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-m2m-field-take-through/", "title" : "DjangoでManyToManyFieldを使い、中間テーブルのモデルを取得する【多対多のthrough】" }, 
+{ "link": "/post/django-bootstrap/", "title" : "DjangoでBootstrapを使う【pip install django-bootstrap-form】" }, 
 { "link": "/post/django-deploy-ec2/", "title" : "DjangoをAWSのEC2(Ubuntu)にデプロイする" }, 
 { "link": "/post/input-tag-type-file-thumbnail/", "title" : "inputタグのtype='file'で画像のサムネイルを表示させる" }, 
 { "link": "/post/javascript-document-event-dynamic/", "title" : "JavaScriptで動的に増減する要素に対してイベントを発動させる【Vanilla.js】" }, 
