@@ -1,13 +1,12 @@
 #! /bin/bash
 
 # TODO:ここにターゲットのパスと、ジェネレートする先を記述
-
 target="./content/post/*"
 generate="./static/data/search.js"
 
 
 #下書きではないものを選び、そのタイトル行を抜き取って、test.jsへリダイレクト生成
-
+# tオプションで新しい順になっている。
 ls -1t $target | xargs grep -l "draft: false" | xargs grep -m1 "^title:" > $generate
 
 #中央のタイトルを消してキーを指定。

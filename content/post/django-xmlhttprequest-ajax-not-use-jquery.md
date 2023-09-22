@@ -1,6 +1,6 @@
 ---
-title: "素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】"
-date: 2022-04-01T09:17:45+09:00
+title: "【VanillaJS】素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】"
+date: 2022-09-01T09:17:45+09:00
 draft: false
 thumbnail: "images/js.jpg"
 categories: [ "サーバーサイド" ]

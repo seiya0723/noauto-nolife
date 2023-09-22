@@ -67,3 +67,10 @@ memberships = group.membership_set.all()
 
 こうすれば良い。
 
+
+
+## 関連記事
+
+[【Django】ManyToManyFieldで検索をする方法、追加・削除を行う方法【多対多はクエリビルダの検索は通用しない】](/post/django-m2m-search-and-add/)
+
+
