@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-getlist-checkbox/", "title" : "【Django】.getlist()でtype=\"checkbox\"のチェックの有無を調べる【複数人の権限の指定に有効】" }, 
 { "link": "/post/django-multi-send-img-and-form/", "title" : "【Django】getlistを使って複数枚の画像をまとめて送信する【サムネイルが表示される専用フォームあり】" }, 
 { "link": "/post/django-m2m-field-take-through/", "title" : "DjangoでManyToManyFieldを使い、中間テーブルのモデルを取得する【多対多のthrough】" }, 
 { "link": "/post/textarea-tab-insert/", "title" : "テキストエリアに入力時に、Tabキーを押してタブを入力する【マークダウンやコードの入力に有効】" }, 
