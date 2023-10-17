@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/systemd-run-django-command/", "title" : "Djangoのmanage.pyのコマンドをsystemdから動かして常駐化【データを常にチェックし、Sendgridでメール送信】" }, 
+{ "link": "/post/systemd-run-python/", "title" : "【Ubuntu】systemdでPythonファイルを動作させる【常駐スクリプトに】" }, 
 { "link": "/post/django-getlist-checkbox/", "title" : "【Django】.getlist()でtype=\"checkbox\"のチェックの有無を調べる【複数人の権限の指定に有効】" }, 
 { "link": "/post/django-multi-send-img-and-form/", "title" : "【Django】getlistを使って複数枚の画像をまとめて送信する【サムネイルが表示される専用フォームあり】" }, 
 { "link": "/post/django-m2m-field-take-through/", "title" : "DjangoでManyToManyFieldを使い、中間テーブルのモデルを取得する【多対多のthrough】" }, 
