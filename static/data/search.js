@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-deploy-windows-server/", "title" : "DjangoをWindowsServerへデプロイする【EC2】" }, 
+{ "link": "/post/startup-django-allauth/", "title" : "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】" }, 
+{ "link": "/post/django-auto-create-models-forms-admin/", "title" : "【Django】models.pyからforms.py及びadmin.pyを自動的に作る【コマンド1発で生成】" }, 
 { "link": "/post/systemd-run-django-command/", "title" : "Djangoのmanage.pyのコマンドをsystemdから動かして常駐化【データを常にチェックし、Sendgridでメール送信】" }, 
 { "link": "/post/systemd-run-python/", "title" : "【Ubuntu】systemdでPythonファイルを動作させる【常駐スクリプトに】" }, 
 { "link": "/post/django-getlist-checkbox/", "title" : "【Django】.getlist()でtype=\"checkbox\"のチェックの有無を調べる【複数人の権限の指定に有効】" }, 
@@ -198,7 +201,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-calendar-ui/", "title" : "DjangoでカレンダーのUIを作る" }, 
 { "link": "/post/css3-modal-dialog/", "title" : "CSS3とHTML5だけでモーダルダイアログを作る【JS不要】" }, 
 { "link": "/post/django-openpyxl/", "title" : "【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする" }, 
-{ "link": "/post/startup-django-allauth/", "title" : "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】" }, 
 { "link": "/post/javascript-memory-weakness/", "title" : "JavaScript(jQuery)で神経衰弱" }, 
 { "link": "/post/django-settings-installed-apps/", "title" : "【Django】settings.pyのINSTALLED_APPSにはどのように書くのが適切か【順番とapps】" }, 
 { "link": "/post/django-createuser-save-method-override/", "title" : "【Django】ユーザー作成時に何らかの処理を行う方法【saveメソッドオーバーライド】" }, 

@@ -18,6 +18,13 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
     pip install django-allauth
 
 
+### 追記(2023年11月) 最新版ではsettings.pyの設定がこれまでと異なる
+
+そのため、バージョンを指定してインストールしておいたほうが無難。
+
+    pip install django-allauth==0.54
+
+
 ## ユーザーIDとパスワードを使用した認証方法の実装
 
 ユーザーIDとパスワードを使用した認証方法の実装は簡単。
