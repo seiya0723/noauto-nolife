@@ -2,7 +2,7 @@
 title: "DjangoをWindowsServerへデプロイする【EC2】"
 date: 2023-11-23T15:55:18+09:00
 lastmod: 2023-11-23T15:55:18+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "インフラ" ]
 tags: [ "デプロイ","Django","WindowsServer" ]

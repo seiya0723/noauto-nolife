@@ -1,5 +1,5 @@
 ---
-title: "【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】"
+title: "【Django】allauth不使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】"
 date: 2022-01-01T07:00:48+09:00
 draft: false
 thumbnail: "images/django.jpg"

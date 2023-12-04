@@ -1,5 +1,8 @@
 const SEARCH_LIST = [
-{ "link": "/post/django-deploy-windows-server/", "title" : "DjangoをWindowsServerへデプロイする【EC2】" }, 
+{ "link": "/post/django-auth-not-allauth-add-custom-user-model/", "title" : "【Django】デフォルトの認証機能を網羅し、カスタムユーザーモデルとメール認証も実装させる【脱allauth】" }, 
+{ "link": "/post/django-login-mail-by-signal/", "title" : "【Django】ログイン時にメールを送信するには、signal.pyを作ってapps.pyに登録しておく【セキュリティ通知】" }, 
+{ "link": "/post/django-views-import-usermodel/", "title" : "【Django】views.pyでユーザーモデルを扱う時は get_user_model を使う【importはダメ】" }, 
+{ "link": "/post/django-auth-not-allauth/", "title" : "【Django】allauth不使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】" }, 
 { "link": "/post/startup-django-allauth/", "title" : "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】" }, 
 { "link": "/post/django-auto-create-models-forms-admin/", "title" : "【Django】models.pyからforms.py及びadmin.pyを自動的に作る【コマンド1発で生成】" }, 
 { "link": "/post/systemd-run-django-command/", "title" : "Djangoのmanage.pyのコマンドをsystemdから動かして常駐化【データを常にチェックし、Sendgridでメール送信】" }, 
@@ -274,7 +277,6 @@ const SEARCH_LIST = [
 { "link": "/post/startup-mogrify/", "title" : "mogrifyコマンドを使って画像を一括クロップ(トリミング)する" }, 
 { "link": "/post/django-secure-subprocess/", "title" : "Djangoでpython3のsubprocessモジュールを使い、任意のコマンドをなるべく安全に配慮して実行させる" }, 
 { "link": "/post/django-add-context/", "title" : "【Django】ビュークラスの継承を使い、予めcontextを追加させる" }, 
-{ "link": "/post/django-auth-not-allauth/", "title" : "【Django】allauth未使用でユーザー認証機能を実装した簡易掲示板【ログインとログアウトのみ】" }, 
 { "link": "/post/chartjs-responsive-chart/", "title" : "chart.jsでグラフ表示幅と高さを指定する。" }, 
 { "link": "/post/django-admin-custom-form/", "title" : "Djangoの管理サイト(admin)のフォームをforms.pyを使用してカスタムする【文字列入力フォームをtextareaタグで表現】" }, 
 { "link": "/post/laravel-heroku-cloudinary-deploy/", "title" : "LaravelをCloudinaryを使用したHerokuにデプロイ、画像やファイルをアップロードする" }, 
