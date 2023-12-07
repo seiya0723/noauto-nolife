@@ -1,5 +1,5 @@
 ---
-title: "【Django】views.pyでユーザーモデルを扱う時は get_user_model を使う【importはダメ】"
+title: "【Django】views.pyでユーザーモデルを扱う時は get_user_model を使う【importはしない】"
 date: 2023-11-26T20:30:24+09:00
 lastmod: 2023-11-26T20:30:24+09:00
 draft: false
