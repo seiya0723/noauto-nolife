@@ -16,18 +16,30 @@ models.pyからforms.py、admin.pyを作る時がすごいめんどくさいと�
 
 故に、本記事ではmodels.pyからforms.py及びadmin.pyを自動生成するPythonコードをまとめる。
 
-
 ※ファイルを読み込んで追記する仕様上、実行は自己責任でお願いします。
+
+## 更新情報
+
+- 2023年11月11日: ツール完成
+- 2023年12月09日: 引数を指定してアプリ単体のみ、発動させることもできるように仕様変更 
+
+
 
 ## ソースコード
 
 ### models.pyからforms.pyを自動生成
 
 ```
-import glob, re
+import glob, re, sys 
 
-## プロジェクトの全アプリのmodels.pyに対して実行する。
-models_paths    = glob.glob("./*/models.py")
+## 引数の指定がある場合: 特定のアプリのmodels.pyに対して実行する。
+## 引数の指定が無い場合: プロジェクトの全アプリのmodels.pyに対して実行する。
+
+if len(sys.argv) > 1:
+    models_paths    = glob.glob(f"./{sys.argv[1]}/models.py")
+else:
+    models_paths    = glob.glob("./*/models.py")
+
 forms_paths     = [ models_path.replace("models", "forms") for models_path in models_paths ]
 
 # すべてのmodels.pyを順次読み込み
@@ -145,6 +157,12 @@ class Reply(models.Model):
     comment     = models.CharField(verbose_name="リプライコメント",max_length=2000)
 ```
 
+先程のPythonコードを実行する。引数にアプリ名を指定することで、指定したアプリだけ発動できる。
+```
+python create_forms bbs
+```
+引数が指定されていない場合は、プロジェクト内の全アプリに対して実行される。
+
 
 作られるforms.pyはこんな感じ
 ```
@@ -169,6 +187,9 @@ class ReplyForm(forms.ModelForm):
         fields	= [ "topic", "comment" ]
 ```
 
+
+
+
 ### models.pyからadmin.pyを自動生成
 
 続いて、admin.pyを作る。カスタムアドミンを用意して、list_displayを含めておく。
@@ -176,10 +197,16 @@ class ReplyForm(forms.ModelForm):
 やり方はforms.pyのときと同様、正規表現を使う。
 
 ```
-import glob, re
+import glob, re, sys 
 
-## プロジェクトの全アプリのmodels.pyに対して実行する。
-models_paths    = glob.glob("./*/models.py")
+## 引数の指定がある場合: 特定のアプリのmodels.pyに対して実行する。
+## 引数の指定が無い場合: プロジェクトの全アプリのmodels.pyに対して実行する。
+
+if len(sys.argv) > 1:
+    models_paths    = glob.glob(f"./{sys.argv[1]}/models.py")
+else:
+    models_paths    = glob.glob("./*/models.py")
+
 admin_paths     = [ models_path.replace("models", "admin") for models_path in models_paths ]
 
 # すべてのmodels.pyを順次読み込み

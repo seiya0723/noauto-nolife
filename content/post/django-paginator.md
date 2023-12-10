@@ -323,9 +323,14 @@ https://docs.djangoproject.com/en/3.1/howto/custom-template-tags/
 
 https://stackoverflow.com/questions/2047622/how-to-paginate-django-with-other-get-variables
 
-<!--
 
 ## ソースコード
+
+下記ソースコードは、簡易掲示板仕様になっているので注意。
+
+- https://github.com/seiya0723/django_search_and_paginator
+
+<!-- 
 
 https://github.com/seiya0723/simple_ecsite
 
