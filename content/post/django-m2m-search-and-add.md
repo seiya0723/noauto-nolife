@@ -17,8 +17,9 @@ TopicとTagの多対多のリレーションを組んだ状況で。
 data = Topic.objects.filter(tag=1)
 print(data)
 
-# この場合、1もしくは3を含むデータが手に入るが、重複してしまうため使えない。(1で検索後、3でも検索、1と3両方指定したものはいずれもヒットするため重複する。)
-data = Topic.objects.filter(tag__in=[1,3])
+# この場合、1もしくは3を含むデータが手に入るが、重複する。.distinct() で除外できる。
+# しかし1だけ、3だけのデータも取得できてしまう。ほしいのは1と3を含むデータ
+data = Topic.objects.filter(tag__in=[1,3]).distinct()
 print(data)
 ```
 
@@ -34,11 +35,11 @@ test_query &= Q(tag=3)
 data = Topic.objects.filter(test_query)
 print(data)
 
-# こちらも2番目の方法と同様、データが重複してしまう
+# 2番目の方法と同様？
 test_query = Q()
 test_query |= Q(tag=1)
 test_query |= Q(tag=3)
-data = Topic.objects.filter(test_query)
+data = Topic.objects.filter(test_query).distinct()
 print(data)
 ```
 
