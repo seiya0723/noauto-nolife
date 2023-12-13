@@ -7,6 +7,49 @@ categories: [ "サーバーサイド" ]
 tags: [ "django","上級者向け" ]
 ---
 
+
+## 背景
+
+TopicとTagの多対多のリレーションを組んだ状況で。
+
+```
+# この場合、1を含んでいるという意味になる
+data = Topic.objects.filter(tag=1)
+print(data)
+
+
+# この場合、1と3を含むデータが手に入るが、重複してしまうため使えない。
+data = Topic.objects.filter(tag__in=[1,3])
+print(data)
+```
+
+複数のタグ検索が正常に機能してくれない状況にある。
+
+仮にクエリビルダを使っても、
+
+```
+# この場合、1と3を含むデータ、1と3のみ指定しているデータいずれも取り出せない。
+test_query = Q()
+test_query &= Q(tag=1)
+test_query &= Q(tag=3)
+data = Topic.objects.filter(test_query)
+print(data)
+
+# こちらも2番目の方法と同様、データが重複してしまう
+test_query = Q()
+test_query |= Q(tag=1)
+test_query |= Q(tag=3)
+data = Topic.objects.filter(test_query)
+print(data)
+```
+
+タグ検索をするとき、1つだけタグを指定して検索をするのであれば、1番目の方法が妥当だ。
+
+しかし、複数のタグを検索し、そのタグを含むTopicを検索するケースが多い。
+
+複数のタグ検索に対応した方法を解説する。
+
+
 ## 多対多の検索をする
 
 
