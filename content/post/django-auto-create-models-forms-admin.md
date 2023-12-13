@@ -22,8 +22,8 @@ models.pyからforms.py、admin.pyを作る時がすごいめんどくさいと�
 
 - 2023年11月11日: ツール完成
 - 2023年12月09日: 引数を指定してアプリ単体のみ、発動させることもできるように仕様変更 
-
-
+- 2023年12月10日: モデルフィールドの `=` の前後にスペースが含まれていない場合も機能するよう正規表現を修正
+- 2023年12月10日: admin.pyにて、idが含まれていない問題の修正。
 
 ## ソースコード
 
@@ -93,7 +93,7 @@ for models_path,forms_path in zip(models_paths, forms_paths):
                 forms_code.append( f"        model\t= {model_name.group(1)}" )
 
             # モデルフィールド名を取得
-            field_name = re.search(r'(\w+).*= models\.', models_code)
+            field_name = re.search(r'(\w+).*=\s*models\.', models_code)
             if field_name:
                 fields_list.append(field_name.group(1))
 
@@ -251,14 +251,14 @@ for models_path,admin_path in zip(models_paths, admin_paths):
             
                 # バリデーション対象のフィールドがあれば追加。
                 if fields_list:
-                    admin_code.append(f"    list_display\t= " + str(fields_list) + "\n")
+                    admin_code.append(f"    list_display\t= " + str(["id"]+fields_list) + "\n")
                     fields_list = []
                 
                 # モデルクラス名を元に、フォームクラスを作る。
                 admin_code.append( f"class {model_name.group(1)}Admin(admin.ModelAdmin):")
 
             # モデルフィールド名を取得
-            field_name = re.search(r'(\w+).*= models\.', models_code)
+            field_name = re.search(r'(\w+).*=\s*models\.', models_code)
             if field_name:
                 # ここでManyToManyは除外
                 if "ManyToManyField" not in field_name.group(1):
@@ -267,7 +267,7 @@ for models_path,admin_path in zip(models_paths, admin_paths):
 
         # バリデーション対象のフィールドがあれば追加。
         if fields_list:
-            admin_code.append(f"    list_display\t= " + str(fields_list) + "\n")
+            admin_code.append(f"    list_display\t= " + str(["id"]+fields_list) + "\n")
             fields_list = []
         
         admin_code.append( "" )
