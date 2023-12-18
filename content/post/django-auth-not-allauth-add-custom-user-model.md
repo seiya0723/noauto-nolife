@@ -553,17 +553,18 @@ signals.pyを扱えるようにする。
 
 
 |テンプレートファイルパス|役割|
-|:--:|:--:|
+|----|----|
 |`templates/registration/base.html`|全てのテンプレートの継承元|
 |`templates/registration/login.html`|ログイン時のテンプレート|
 |`templates/registration/signup.html`|アカウント新規作成用のテンプレート|
 |`templates/registration/password_change_form.html`|パスワード変更用のテンプレート|
+|`templates/registration/password_change_done.html`|パスワード変更完了のテンプレート|
 |`templates/registration/password_reset_form.html`|パスワードリセットをするメールアドレスを指定するテンプレート|
 |`templates/registration/password_reset_done.html`|パスワードリセットの申請完了を表示するテンプレート|
 |`templates/registration/password_reset_confirm.html`|新しいパスワードを入力するテンプレート|
 |`templates/registration/password_reset_complete.html`|パスワードリセット完了のテンプレート|
 
-パスワードリセットのテンプレートが多いが、
+パスワードリセットのテンプレートは多いが、
 
 1. `templates/registration/password_reset_form.html`
 1. `templates/registration/password_reset_done.html`
@@ -593,3 +594,5 @@ https://github.com/seiya0723/django-auth/tree/main/templates/registration
 メール認証+カスタムユーザーモデル実装と、とても複雑になっているため、下記ソースコードをもとによく確認しておく。
 
 https://github.com/seiya0723/django-auth
+
+
