@@ -8,11 +8,9 @@ categories: [ "フロントサイド" ]
 tags: [ "JavaScript","tips","上級者向け" ]
 ---
 
-前に作った、[jQueryの年月日検索](/post/jquery-ymd-search/)の作りがガバガバだったので、JavaScriptで作り直した。
+前に作った、[jQueryの年月日検索](/post/jquery-ymd-search/)の作りが甘かったので、JavaScriptで作り直した。
 
 ## JavaScript
-
-Reactのスプレッド構文も使用し、極力短く表現している。
 
 ```
 window.addEventListener("load" , () => {
@@ -33,7 +31,8 @@ window.addEventListener("load" , () => {
 
     // スプレッド構文を使用して配列に直し、イベントをセットする。
     // 年月日 全ての要素にオプションを追加している。
-    [...years].map( (elem) => {
+
+    for ( elem of years){
         elem.innerHTML  = ini;
 
         for (let i=now_year-range;i<now_year+range;i++){
@@ -44,11 +43,10 @@ window.addEventListener("load" , () => {
                 elem.innerHTML += `<option value="${i}">${i}年</option>`;
             }
         }
-
         elem.addEventListener("input", (e) => { day_change(e) });
-    });
+    };
 
-    [...months].map( (elem) => {
+    for ( elem of months){
         elem.innerHTML  = ini;
 
         for (let i=1;i<13;i++){
@@ -60,9 +58,9 @@ window.addEventListener("load" , () => {
             }
         }
         elem.addEventListener("input", (e) => { day_change(e) });
-    });
+    };
 
-    [...days].map( (elem) => {
+    for ( elem of days){
         elem.innerHTML  = ini;
 
         for (let i=1;i<32;i++){
@@ -75,7 +73,7 @@ window.addEventListener("load" , () => {
         }
 
         //elem.addEventListener("input", (e) => { day_change(e) });
-    });
+    };
 
 });
 
