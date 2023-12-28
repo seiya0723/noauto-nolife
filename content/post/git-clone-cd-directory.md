@@ -22,7 +22,7 @@ echo $1
 repo=$(echo "$1" | sed s/tree.*//g)
 
 # 移動対象のディレクトリを取り出す。
-destination=$(echo ./"$1" | sed "s/tree\/\w*\///g" | sed "s/https:\/\/github.com\/\w*\///g" )
+destination=$(echo ./"$1" | sed "s/tree\/[[:alnum:]_-]*\///g" | sed "s/https:\/\/github.com\/[[:alnum:]_-]*\///g")
 
 
 git clone $repo
