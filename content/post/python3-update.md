@@ -1,7 +1,7 @@
 ---
 title: "UbuntuにインストールされているPythonをアップデートする"
 date: 2022-05-07T22:33:21+09:00
-draft: false
+draft: true
 thumbnail: "images/python.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "python","ubuntu" ]

@@ -1,10 +1,10 @@
 ---
-title: "WindowsでPythonとPycharmをインストールする"
+title: "WindowsでPythonをインストールする"
 date: 2022-09-01T08:49:01+09:00
 draft: false
 thumbnail: "images/python.jpg"
 categories: [ "インフラ" ]
-tags: [ "Windows","開発環境","Python","pycharm","初心者向け" ]
+tags: [ "Windows","開発環境","Python","初心者向け" ]
 ---
 
 ## Pythonのインストール
@@ -30,6 +30,9 @@ Add Python 3.10 to PATHにチェックを入れた上で(1の部分)、Install N
 インストールが完了した。そのままcloseをクリックして終わる。
 
 <div class="img-center"><img src="/images/Screenshot from 2022-09-01 09-02-55.png" alt=""></div>
+
+
+<!--
 
 ## Pycharmのインストール
 
@@ -123,3 +126,4 @@ python test.py
 
 [Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法](/post/pycharm-config/)
 
+-->
