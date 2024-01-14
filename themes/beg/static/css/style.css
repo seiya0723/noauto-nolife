@@ -36,10 +36,39 @@ pre {
     background:black;
     padding:0.5rem;
     overflow:auto;
+
+    position:relative;
 }
 pre code {
     color:#0fc;
 }
+.copy_button{
+    user-select: none;
+    display:inline-block;
+    position:absolute;
+    top:0;
+    right:0;
+    color:white;
+
+    cursor:pointer;
+    margin:0.25rem;
+    padding:0.25rem 0.5rem;
+
+    border:solid 0.1rem white;
+    border-radius:0.5rem;
+    
+    transition:0.2s;
+
+}
+.copy_button:hover{
+    background:#0fc;
+    color:black;
+}
+.copy_button:active{
+    background:black;
+    color:white;
+}
+
 p code {
     display:inline-block;
     background:black;

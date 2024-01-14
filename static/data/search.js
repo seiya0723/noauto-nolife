@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/bash-mkdir-add-cd-command/", "title" : "【Bash】mkdirコマンドで作ったディレクトリに即移動(cd)するコマンドを作る【mkcdをaliasに登録】" }, 
 { "link": "/post/django-foreignkey-related-name/", "title" : "【Django】逆参照のrelated_nameを使用して1側から多側のデータを取り出す【models.ForeignKey()】" }, 
 { "link": "/post/django-admin-custom-foreign-m2m/", "title" : "【Django】管理サイトで1対多(ForeignKey)、多対多(ManyToManyField)のフォームを扱いやすくする【admin】" }, 
 { "link": "/post/django-message-framework-javascript-css/", "title" : "DjangoMessageFrameworkにJavaScriptとCSSを当てる【ボタンを押して消せるようにする】" }, 
