@@ -138,7 +138,6 @@ DB_CONNECTION=sqlite" | clipcopy && vi .env && php artisan key:generate && touch
 '
 ```
 
-
 ## 問題と対処法
 
 ### 【問題1】Vite manifest not found とエラーが表示される
@@ -164,7 +163,20 @@ npm install vite
 npm run dev 
 ```
 
+この問題1に対応した上で、aliasを修正するとこうなる。
 
+```
+alias laravelgithub='composer update && cp .env.example .env && echo "
+#DB_CONNECTION=mysql
+#DB_HOST=127.0.0.1
+#DB_PORT=8889
+#DB_DATABASE=
+#DB_USERNAME=root
+#DB_PASSWORD=root
+DB_CONNECTION=sqlite" | clipcopy && vi .env && php artisan key:generate && touch ./database/database.sqlite && php artisan migrate && gnome-terminal --tab -- bash -c "npm install vite && npm run dev; exec bash" &&  php artisan serve'
+```
+
+新しいターミナルのタブを開いて、そちらで`npm install vite && npm run dev`を実行している。
 
 参照元: https://biz.addisteria.com/laravel_vite_errors/https://biz.addisteria.com/laravel_vite_errors/
 
