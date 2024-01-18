@@ -1,4 +1,8 @@
 const SEARCH_LIST = [
+{ "link": "/post/java-package/", "title" : "Javaのpackage(パッケージ)の実行方法" }, 
+{ "link": "/post/javascript-fetchapi-django/", "title" : "【Django】JavaScriptのfetchAPIでリクエストを送る【XMLHttpRequest、jQuery.Ajax、axiosはもう古い？】" }, 
+{ "link": "/post/django-xmlhttprequest-ajax-not-use-jquery/", "title" : "【VanillaJS】Djangoで素のJavaScriptのXMLHttpRequest(Ajax)を使ってリクエストを送信【jQuery不使用】" }, 
+{ "link": "/post/javascript-clipcopy/", "title" : "Javascriptでクリックした時、要素内文字列をクリップボードにコピーさせる" }, 
 { "link": "/post/bash-mkdir-add-cd-command/", "title" : "【Bash】mkdirコマンドで作ったディレクトリに即移動(cd)するコマンドを作る【mkcdをaliasに登録】" }, 
 { "link": "/post/django-foreignkey-related-name/", "title" : "【Django】逆参照のrelated_nameを使用して1側から多側のデータを取り出す【models.ForeignKey()】" }, 
 { "link": "/post/django-admin-custom-foreign-m2m/", "title" : "【Django】管理サイトで1対多(ForeignKey)、多対多(ManyToManyField)のフォームを扱いやすくする【admin】" }, 
@@ -25,7 +29,6 @@ const SEARCH_LIST = [
 { "link": "/post/systemd-run-python/", "title" : "【Ubuntu】systemdでPythonファイルを動作させる【常駐スクリプトに】" }, 
 { "link": "/post/django-getlist-checkbox/", "title" : "【Django】.getlist()でtype=\"checkbox\"のチェックの有無を調べる【複数人の権限の指定に有効】" }, 
 { "link": "/post/django-m2m-field-take-through/", "title" : "DjangoでManyToManyFieldを使い、中間テーブルのモデルを取得する【多対多のthrough】" }, 
-{ "link": "/post/django-xmlhttprequest-ajax-not-use-jquery/", "title" : "【VanillaJS】素のJavaScriptのXMLHttpRequest(Ajax)で通信する【jQuery不使用】" }, 
 { "link": "/post/javascript-carousel-origin-slider/", "title" : "【jQuery】ボタン式の横スライダーを自作する【通販サイト・コンテンツ共有サイトなどに】" }, 
 { "link": "/post/django-bootstrap/", "title" : "DjangoでBootstrapを使う【pip install django-bootstrap-form】" }, 
 { "link": "/post/django-deploy-ec2/", "title" : "DjangoをAWSのEC2(Ubuntu)にデプロイする" }, 
