@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/ubuntu-bash-new-tab-command/", "title" : "UbuntuのBash(gnome-terminal)で新しいタブを開き、新しいタブでコマンドを実行する" }, 
+{ "link": "/post/laravel-github-download/", "title" : "【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？" }, 
 { "link": "/post/java-package/", "title" : "Javaのpackage(パッケージ)の実行方法" }, 
 { "link": "/post/javascript-fetchapi-django/", "title" : "【Django】JavaScriptのfetchAPIでリクエストを送る【XMLHttpRequest、jQuery.Ajax、axiosはもう古い？】" }, 
 { "link": "/post/django-xmlhttprequest-ajax-not-use-jquery/", "title" : "【VanillaJS】Djangoで素のJavaScriptのXMLHttpRequest(Ajax)を使ってリクエストを送信【jQuery不使用】" }, 
@@ -39,7 +41,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-aws-ec2-git-deploy/", "title" : "【Django】EC2インスタンスへgitを使ってデプロイする" }, 
 { "link": "/post/django-sendgrid/", "title" : "Django・PythonでSendgridを実装しメールを送信する方法【APIキーと2段階認証を利用する】" }, 
 { "link": "/post/startup-django-react/", "title" : "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios】" }, 
-{ "link": "/post/laravel-github-download/", "title" : "【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？" }, 
 { "link": "/post/django-summernote-upload-limit-config/", "title" : "Django-summernoteでアップロード上限を設定する" }, 
 { "link": "/post/python-requests-post-method/", "title" : "【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】" }, 
 { "link": "/post/javascript-fullcalendar/", "title" : "【JavaScriptカレンダー】fullcalendarを使ってみる【ライブラリ】" }, 
