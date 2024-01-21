@@ -1,10 +1,10 @@
 ---
 title: "【保存版】追加しておくべきvimrcの設定【検索ハイライト、タブはスペース4つ、拡張子ごとの初期データ】"
 date: 2019-10-10T18:21:46+09:00
-draft: true
+draft: false
 thumbnail: "images/vim.jpg"
 categories: [ "others" ]
-tags: [ "vim","作業効率化" ]
+tags: [ "vim","作業効率化","追記予定" ]
 ---
 
 
@@ -56,6 +56,24 @@ tags: [ "vim","作業効率化" ]
     </body>
     </html>
 
+
+
 レスポンシブデザインに必要なviewport指定の他に、Bootstrap、jQueryのURLが指定されているので、開発がスムーズに進む。
 
+
+## 補足
+
+### 開いているファイルのファイルタイプの確認
+
+```
+:set filetype?
+```
+
+をコマンドモードで実行すると、開いているファイルのファイルタイプが確認できる。
+
+ここで、markdownと表示されたものは、こちらが発動する。
+
+```
+autocmd! FileType markdown hi! def link markdownItalic Nomal
+```
 

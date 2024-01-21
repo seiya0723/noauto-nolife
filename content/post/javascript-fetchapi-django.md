@@ -83,6 +83,7 @@ const send  = () => {
     // fetchを使用してPOSTリクエストを送信
     fetch( url, { method , body } )
     .then( response => {
+        // レスポンスのステータスコードが200番代ではないとき、↓を実行。
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -95,6 +96,7 @@ const send  = () => {
         }
     })
     .catch( error => {
+        // .then内でエラーが起きているとき、実行(throw new Error()も含む)
         console.log(error);
     });
 
