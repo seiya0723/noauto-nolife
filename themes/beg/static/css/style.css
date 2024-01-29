@@ -274,7 +274,8 @@ li code {
     flex-wrap:wrap;
 }
 .thumb {
-    width:20%;
+
+    width:13rem;
     height: 7.5rem;
     background-position: center;
     background-size: 100% 100%;
@@ -283,7 +284,7 @@ li code {
     align-items:center;
 }
 .summary {
-    width:80%;
+    width: calc(100% - 13rem);
     padding:0 1rem;
     display:flex;
     align-items:center;
@@ -291,8 +292,11 @@ li code {
 }
 @media (max-width:768px){
     .thumb{
+        /*
         width:100%;
         height:10rem;
+        */
+        margin:auto;
     }
     .summary{
         width:100%;
