@@ -13,9 +13,9 @@ tags: [ "Django","Stripe","上級者向け" ]
 
 [【Stripe】Djangoにクレジットカード決済機能を実装させる](/post/startup-django-stripe/)
 
-対象読者は、カスタムユーザーモデルと認証機能(django-allauthも可)をすでに実装済みとする。
+対象読者は、カスタムユーザーモデルとDjangoのデフォルトの認証機能を実装済みとする。
 
-参照: [【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】](/post/django-custom-user-model-allauth-bbs/)
+[【Django】デフォルトの認証機能を網羅し、カスタムユーザーモデルとメール認証も実装させる【脱allauth】](/post/django-auth-not-allauth-add-custom-user-model/)
 
 ## Stripeにてサブスクリプション商品を作る
 
