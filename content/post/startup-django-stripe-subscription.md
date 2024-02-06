@@ -278,10 +278,12 @@ Djangoでセッションを作ってStripeへ誘導する点はいずれも同�
 
 ## ソースコード
 
+<!--
 ~~カスタムユーザーモデルとDjango-allauthを使用している。~~
 
 ~~https://github.com/seiya0723/django-stripe-subscription~~
 
+-->
 
 Django-allauthの仕様変更に伴い、カスタムユーザーモデルとDjangoのデフォルトの認証機能を実装したものに変更した。
 
@@ -291,3 +293,12 @@ https://github.com/seiya0723/django-auth-stripe-subscription
 デフォルトの認証機能の実装は下記にて。
 
 [【Django】デフォルトの認証機能を網羅し、カスタムユーザーモデルとメール認証も実装させる【脱allauth】](/post/django-auth-not-allauth-add-custom-user-model/)
+
+
+## 参考文献
+
+- https://stripe.com/docs/api/checkout/sessions/create
+- https://stripe.com/docs/api/checkout/sessions/retrieve
+- https://stripe.com/docs/api/subscriptions/list
+- https://stripe.com/docs/api/customer_portal/sessions/create
+
