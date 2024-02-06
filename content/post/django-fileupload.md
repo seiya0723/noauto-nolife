@@ -72,7 +72,9 @@ Django2.x以前の場合は下記のように書く
         path('admin/', admin.site.urls),
         path('',include('upload.urls')),
     ]
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 やっていることは、`settings.py`で指定した`MEDIA_URL`と`MEDIA_ROOT`に倣って、`urlpatterns`にパスを追加している。
 

@@ -59,20 +59,17 @@ STRIPE_PRICE_ID         = ""
 from django.shortcuts import render, redirect
 from django.views import View
 
-from users.models import CustomUser
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
-
 from django.urls import reverse_lazy
 
 import stripe
+
 stripe.api_key  = settings.STRIPE_API_KEY
 
 
 class IndexView(LoginRequiredMixin,View):
     def get(self, request, *args, **kwargs):
-
         return render(request, "bbs/index.html")
 
 index   = IndexView.as_view()
@@ -109,6 +106,7 @@ class SuccessView(LoginRequiredMixin,View):
             print("セッションIDがありません。")
             return redirect("bbs:index")
 
+
         # そのセッションIDは有効であるかチェック。
         try:
             checkout_session_id = request.GET['session_id']
@@ -117,9 +115,10 @@ class SuccessView(LoginRequiredMixin,View):
             print( "このセッションIDは無効です。")
             return redirect("bbs:index")
 
+        print(checkout_session)
 
         # statusをチェックする。未払であれば拒否する。(未払いのsession_idを入れられたときの対策)
-        if checkout_session["status"] != "paid":
+        if checkout_session["payment_status"] != "paid":
             print("未払い")
             return redirect("bbs:index")
 
@@ -127,9 +126,8 @@ class SuccessView(LoginRequiredMixin,View):
 
 
         # 有効であれば、セッションIDからカスタマーIDを取得。ユーザーモデルへカスタマーIDを記録する。
-        user            = CustomUser.objects.filter(id=request.user.id).first()
-        user.customer   = checkout_session["customer"]
-        user.save()
+        request.user.customer   = checkout_session["customer"]
+        request.user.save()
 
         print("有料会員登録しました！")
 
@@ -150,11 +148,35 @@ class PortalView(LoginRequiredMixin,View):
         portalSession   = stripe.billing_portal.Session.create(
             customer    = request.user.customer,
             return_url  = request.build_absolute_uri(reverse_lazy("bbs:index")),
-            )
+        )
 
         return redirect(portalSession.url)
 
 portal      = PortalView.as_view()
+
+
+class PremiumView(View):
+    def get(self, request, *args, **kwargs):
+        
+        # カスタマーIDを元にStripeに問い合わせ
+        try:
+            subscriptions = stripe.Subscription.list(customer=request.user.customer)
+        except:
+            print("このカスタマーIDは無効です。")
+            return redirect("bbs:index")
+        
+        # ステータスがアクティブであるかチェック。
+        for subscription in subscriptions.auto_paging_iter():
+            if subscription.status == "active":
+                print("サブスクリプションは有効です。")
+
+                return render(request, "bbs/premium.html")
+            else:
+                print("サブスクリプションが無効です。")
+
+        return redirect("bbs:index")
+
+premium     = PremiumView.as_view()
 ```
 
 それぞれurls.pyに登録しておく。
@@ -163,9 +185,9 @@ portal      = PortalView.as_view()
 - CheckoutView: セッションを作り、Stripeの決済ページへリダイレクトする
 - SuccessView: 決済を確認し、カスタマーIDをユーザーモデルに登録
 - PortalView: セッションを作り、Stripeのポータルページへリダイレクトする。
+- PremiumView: サブスクリプションが有効かチェックしてページを表示する。
 
 ポータルページとは、契約済みのサブスクリプションを確認・解約するためのページのこと。
-
 
 ## urls.py
 
@@ -175,12 +197,12 @@ from django.urls import path
 from . import views
 
 app_name    = "bbs"
-urlpatterns = [ 
+urlpatterns = [
     path("", views.index, name="index"),
     path("checkout/", views.checkout, name="checkout"),
     path("success/", views.success, name="success"),
     path("portal/", views.portal, name="portal"),
-
+    path("premium/", views.premium, name="premium"),
 ]
 ```
 
@@ -195,13 +217,29 @@ urlpatterns = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Hello World test!!</title>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
 
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="ログアウト">
+    </form>
+
+    <a href="{% url 'password_change' %}">パスワードの変更</a>
+
+
+    <hr>
+
+
+{# すでに有料会員登録している場合は、プランにアクセスできるようにする。有料会員ではない場合は、そのリンクを表示させる。#}
 {% if request.user.customer %}
 <div>
-    <a class="button" href="{% url 'bbs:portal' %}">有料会員登録設定をする</a>
+    <a class="button" href="{% url 'bbs:portal' %}">有料会員登録の設定をする</a>
+
+
+    <a href="{% url 'bbs:premium' %}">有料会員のサービスを使う</a>
+
 </div>
 {% else %}
 <form action="{% url 'bbs:checkout' %}" method="post">
@@ -209,6 +247,7 @@ urlpatterns = [
     <input type="submit" value="有料会員登録する">
 </form>
 {% endif %}
+
 
 </body>
 </html>
@@ -239,6 +278,16 @@ Djangoでセッションを作ってStripeへ誘導する点はいずれも同�
 
 ## ソースコード
 
-カスタムユーザーモデルとDjango-allauthを使用している。
+~~カスタムユーザーモデルとDjango-allauthを使用している。~~
 
-https://github.com/seiya0723/django-stripe-subscription
+~~https://github.com/seiya0723/django-stripe-subscription~~
+
+
+Django-allauthの仕様変更に伴い、カスタムユーザーモデルとDjangoのデフォルトの認証機能を実装したものに変更した。
+
+https://github.com/seiya0723/django-auth-stripe-subscription
+
+
+デフォルトの認証機能の実装は下記にて。
+
+[【Django】デフォルトの認証機能を網羅し、カスタムユーザーモデルとメール認証も実装させる【脱allauth】](/post/django-auth-not-allauth-add-custom-user-model/)
