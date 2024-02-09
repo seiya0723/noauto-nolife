@@ -15,6 +15,7 @@ Djangoで画像やファイルをアップロードする方法をまとめる�
 ## 流れ
 
 1. 必要なライブラリのインストール
+1. アプリの作成
 1. settings.pyの編集
 1. urls.pyの編集
 1. models.pyでフィールドの定義
@@ -37,11 +38,38 @@ MIMEとはファイルの種類のこと。このMIMEの値をチェックする
 
 python-magicは後述のFileFieldには必須ではないが、MIMEの判定によって受取するファイルを絞り込まないとセキュリティ上の問題を引き起こすので、このライブラリを使用しておいたほうが良いだろう。
 
+
+
+## アプリの作成
+
+本記事では、uploadアプリを作った上で作業を行っている。
+
+
+```
+python manage.py startapp upload
+```
+
+こちらを実行しておく。
+
+
 ## settings.pyの編集
 
-ファイルをアップロードするには、アップロード先となるディレクトリを指定して、それからアップロードしたファイルを公開するにはパスを指定しなければならない。そのためにも、まずは`settings.py`と`config/urls.py`に追記する。
+INSTALLED_APPS にupload アプリを追加しておく。
 
-以下、`settings.py`に書き込む。
+
+
+```
+INSTALLED_APPS = [
+
+    # 省略
+
+    "upload",
+]
+```
+
+ファイルをアップロードするには、『アップロード先となるディレクトリ』、『アップロードしたファイルを公開するパス』を設定する必要がある。
+
+以下を`settings.py`に書き込む。
 
     MEDIA_URL   = "/media/"
     MEDIA_ROOT  = BASE_DIR / "media"
@@ -235,7 +263,7 @@ ImageFieldはもともとFileFieldを継承して作られている。
 
 ### 画像アップロード用テンプレート
 
-`templates/album.html`を作る。これが画像ファイルのアップロードページ。内容は下記。
+`templates/upload/album.html`を作る。これが画像ファイルのアップロードページ。内容は下記。
     
     <!DOCTYPE html>
     <html lang="ja">
@@ -272,7 +300,7 @@ ImageFieldはもともとFileFieldを継承して作られている。
 
 ### ファイルのアップロード用テンプレート
     
-`templates/document.html`を作る。これがファイルアップロードページ。
+`templates/upload/document.html`を作る。これがファイルアップロードページ。
 
     <!DOCTYPE html>
     <html lang="ja">
@@ -329,10 +357,10 @@ ImageFieldはもともとFileFieldを継承して作られている。
 
 ## マイグレーション
 
-後は普通にマイグレーションを実行する。
+マイグレーションを実行し、DBにモデルの内容を反映させる。
 
-    python3 manage.py makemigrations
-    python3 manage.py migrate 
+    python manage.py makemigrations
+    python manage.py migrate 
 
 
 ### 【補足1】マイグレーション時の警告が出る場合はどうする？

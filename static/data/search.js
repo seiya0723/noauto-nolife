@@ -1,7 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-fileupload/", "title" : "Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】" }, 
 { "link": "/post/startup-django-stripe-subscription/", "title" : "【Django】Stripeでサブスクリプション決済を行う" }, 
 { "link": "/post/python-pdf-merge/", "title" : "複数のPDFファイルを1つのPDFファイルにまとめる" }, 
-{ "link": "/post/django-fileupload/", "title" : "Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】" }, 
 { "link": "/post/input-type-file-multiple/", "title" : "【HTML】inputタグで画像を複数枚指定する【multiple】" }, 
 { "link": "/post/django-orderby-foreignkey-count/", "title" : "【Django】使用頻度の高いカテゴリをプルダウンメニューの上部に表示させる【.annotate(count=Count(\"topic\")).order_by(\"-count\")】" }, 
 { "link": "/post/jscolor-javascript-color-picker/", "title" : "【jscolor】カラーピッカーを実装できるJavaScriptライブラリ【シンプル】" }, 
