@@ -2,7 +2,7 @@
 title: "【Django】ビューで生成した画像ファイルをバリデーションを経て、DBとメディアディレクトリに保存する【FileObject】"
 date: 2024-02-15T11:40:32+09:00
 lastmod: 2024-02-15T11:40:32+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","上級者向け","tips" ]
