@@ -1,5 +1,5 @@
 ---
-title: "【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする"
+title: "【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする【FileResponse】"
 date: 2022-07-08T08:15:03+09:00
 draft: false
 thumbnail: "images/django.jpg"

@@ -1,5 +1,7 @@
 const SEARCH_LIST = [
 { "link": "/post/django-fileupload/", "title" : "Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】" }, 
+{ "link": "/post/django-file-object-save/", "title" : "【Django】ビューで生成した画像ファイルをバリデーションを経て、DBとメディアディレクトリに保存する【FileObject】" }, 
+{ "link": "/post/django-openpyxl/", "title" : "【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする【FileResponse】" }, 
 { "link": "/post/startup-django-stripe-subscription/", "title" : "【Django】Stripeでサブスクリプション決済を行う" }, 
 { "link": "/post/python-pdf-merge/", "title" : "複数のPDFファイルを1つのPDFファイルにまとめる" }, 
 { "link": "/post/input-type-file-multiple/", "title" : "【HTML】inputタグで画像を複数枚指定する【multiple】" }, 
@@ -226,7 +228,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-allauth-why-not-verify-email/", "title" : "Django-allauthのメールを使用したログイン方式で、アカウント新規作成時、確認URLにアクセスしていないにもかかわらず、ログインできてしまうのはなぜか？" }, 
 { "link": "/post/django-calendar-ui/", "title" : "DjangoでカレンダーのUIを作る" }, 
 { "link": "/post/css3-modal-dialog/", "title" : "CSS3とHTML5だけでモーダルダイアログを作る【JS不要】" }, 
-{ "link": "/post/django-openpyxl/", "title" : "【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする" }, 
 { "link": "/post/javascript-memory-weakness/", "title" : "JavaScript(jQuery)で神経衰弱" }, 
 { "link": "/post/django-settings-installed-apps/", "title" : "【Django】settings.pyのINSTALLED_APPSにはどのように書くのが適切か【順番とapps】" }, 
 { "link": "/post/django-createuser-save-method-override/", "title" : "【Django】ユーザー作成時に何らかの処理を行う方法【saveメソッドオーバーライド】" }, 
