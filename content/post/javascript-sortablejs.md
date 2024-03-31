@@ -22,10 +22,7 @@ tags: [ "JavaScript","ウェブデザイン","JavaScriptライブラリ" ]
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Hello World test!!</title>
     
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
         <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    
     </head>
     <body>
     
@@ -39,7 +36,7 @@ tags: [ "JavaScript","ウェブデザイン","JavaScriptライブラリ" ]
         </div>
     
     <script>
-    let sort_areas  = $(".sort_area");
+    const sort_areas    = document.querySelectorAll(".sort_area");
     
     for (let area of sort_areas ){
         new Sortable(area, {

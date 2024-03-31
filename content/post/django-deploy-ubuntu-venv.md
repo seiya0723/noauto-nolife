@@ -70,8 +70,8 @@ settings.pyを書き換える。
     from pathlib import Path
     
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
-    BASE_DIR = Path(__file__).resolve().parent.parent
-    
+    BASE_DIR        = Path(__file__).resolve().parent.parent
+    PROJECT_NAME    = BASE_DIR.name
     
     # Quick-start development settings - unsuitable for production
     # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -192,18 +192,15 @@ settings.pyを書き換える。
 
     #TODO:静的ファイル、メディアファイルの扱いを書き換える
     
-    import os
-    PROJECT_NAME = os.path.basename(BASE_DIR)
-    
     # Static files (CSS, JavaScript, Images)
     # https://docs.djangoproject.com/en/3.2/howto/static-files/
     
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = [ BASE_DIR / "static" ]
+    STATIC_URL          = '/static/'
+    STATICFILES_DIRS    = [ BASE_DIR / "static" ]
 
     if not DEBUG:
-        STATIC_ROOT = '/var/www/{}/static'.format(PROJECT_NAME)
-    
+        STATIC_ROOT = f"/var/www/{PROJECT_NAME}/static"
+
     # Default primary key field type
     # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
     
@@ -212,9 +209,9 @@ settings.pyを書き換える。
     
     MEDIA_URL   = "/media/"
     if DEBUG:
-        MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+        MEDIA_ROOT  = BASE_DIR / "media"
     else:
-        MEDIA_ROOT  = "/var/www/{}/media".format(PROJECT_NAME)
+        MEDIA_ROOT  = f"/var/www/{PROJECT_NAME}/media"
 
 
 
