@@ -1,5 +1,6 @@
 const SEARCH_LIST = [
 { "link": "/post/django-sortablejs/", "title" : "【Django】任意の順番で並び替えて表示させる【Sortable.js + FetchAPI 】" }, 
+{ "link": "/post/react-errors/", "title" : "よく出るReactのエラー一覧" }, 
 { "link": "/post/javascript-sortablejs/", "title" : "JavaScriptで並び替えをするならSortable.js【jQuery不要のライブラリ】" }, 
 { "link": "/post/django-deploy-ubuntu-venv/", "title" : "UbuntuにDjangoをデプロイする【PostgreSQL+Nginx、Virtualenv使用】" }, 
 { "link": "/post/django-fileupload/", "title" : "Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】" }, 
