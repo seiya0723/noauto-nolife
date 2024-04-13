@@ -80,6 +80,57 @@ HTMLと打って、スニペットを登録する。すると、html.jsonが出�
 	}
 
 これを保存する。
+
+最終的に、html.jsonがこうなる。外側の`{}`を忘れずに。
+
+
+```
+{
+	// Place your snippets for html here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+
+	"html": {
+		"prefix": "htmldefault",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html lang=\"ja\">",
+			"<head>",
+			"\t<meta charset=\"UTF-8\">",
+			"\t<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">",
+			"\t<title>Hello World test!!</title>",
+			"",
+			"\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">",
+			"\t<link rel=\"stylesheet\" href=\"https://pro.fontawesome.com/releases/v5.10.0/css/all.css\" integrity=\"sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p\" crossorigin=\"anonymous\">",
+			"",
+			"\t<script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>",
+			"",
+			"\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js\"></script>",
+			"\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/vue-router/2.2.1/vue-router.js\"></script>",
+			"",
+			"\t<script src=\"script.js\"></script>",
+			"\t<link rel=\"stylesheet\" href=\"style.css\">",
+			"</head>",
+			"<body>",
+			"\t<p>Hello World !!</p>",
+			"</body>",
+			"</html>",
+		]
+	}
+}
+```
+
+
 	
 続いて、適当なHTMLファイルを開く。HTMLファイル内で、先ほどのスニペットに指定した`prefix`の`htmld`まで書くと`htmldefault`が出てくる。
 
