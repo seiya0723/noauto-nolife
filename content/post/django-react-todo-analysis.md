@@ -437,5 +437,14 @@ Stateがコードをやや複雑にしているが、やっていることは
 
 https://github.com/seiya0723/react_django_todo
 
+## 参考元
+
+https://www.digitalocean.com/community/tutorials/build-a-to-do-application-using-django-and-react
+
+## 関連記事
+
+[Reactビギナーが15分で掲示板アプリを作る方法](/post/startup-react/)
+
+このDjango+ReactのTodoアプリを元に簡易掲示板を作ってみた。(ただし、編集機能が不足している)
 
 

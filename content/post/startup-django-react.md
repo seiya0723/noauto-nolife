@@ -477,3 +477,8 @@ npm start
 <div class="img-center"><img src="/images/Screenshot from 2023-05-03 11-36-12.png" alt=""></div>
 
 
+## 関連記事
+
+[DjangoとReactのTodoアプリ(SPA)を解析する](/post/django-react-todo-analysis/)
+
+

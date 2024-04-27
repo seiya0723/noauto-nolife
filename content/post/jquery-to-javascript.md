@@ -56,7 +56,7 @@ jQueryに用意されている属性値の参照、メソッドの実行は`.set
 
 ## 要素のstyle属性の設定
 
-要素に`style`属性を設定する場合`.style.cssText()`を使う。`.setAttribute()`で`style`属性を指定することはできない
+要素に`style`属性を設定する場合`.style.cssText()`を使う。
 
     $(".button").css({"background":"orange"});
 
@@ -64,10 +64,28 @@ jQueryに用意されている属性値の参照、メソッドの実行は`.set
 
     document.querySelector(".button").style.cssText("background:orange;");
 
-オブジェクト型でなくなっただけ、こちらのほうが書きやすいか？
+`.setAttribute()`で`style`属性を指定することもできる
 
+    document.querySelector(".button").setAttribute("style","background:orange;");
 
 - 参照: https://developer.mozilla.org/ja/docs/Web/API/ElementCSSInlineStyle/style
+
+
+## クラスの追加・削除
+
+jQueryでクラスを追加・削除をする方法
+
+```
+$(".button").addClass("bg-orange");
+$(".button").removeClass("bg-orange");
+```
+
+JavaScriptでクラスを追加・削除する方法
+
+```
+document.querySelector(".button").classList.add("bg-orange");
+document.querySelector(".button").classList.remove("bg-orange");
+```
 
 
 ## レンダリング
@@ -87,22 +105,18 @@ HTMLを書き込むため、書き込む際にはユーザーから受け取っ�
 
 ## テキスト書き換え
 
-`.text()`は`innerText`に書き換える。前項のレンダリングと同様である。
+.text() は .textContent に当たる。
+
+```
+$("#textarea").text("テスト");
+
+document.querySelector("#textarea").textContent   = "テスト";
+```
 
 
-    $("#textarea").text(text_data);
+JavaScriptには、.innerTextというものがあるが、これはCSSで非表示になっている部分は省かれる。
 
-    //↓以下に書き換え
-    
-    document.querySelector("#textarea").innerText   = text_data;
-
-`textarea`タグの中身、`display:none`状態のテキスト、HTMLタグ、style属性で囲まれた内容などの、ブラウザに表示されない文字列は`.innerText`では扱われない。
-
-逆に言うと、`textarea`タグの中身は例外として、`.innerText`は人間が読める要素のみ返す。
-
-
-- 参照1: https://developer.mozilla.org/ja/docs/Web/API/HTMLElement/innerText
-- 参照2: https://developer.mozilla.org/ja/docs/Web/API/Node/textContent#differences_from_innertext
+そのため、jQueryの.text() は JavaScriptの .innerText とは違う。
 
 
 ## イベント
@@ -112,25 +126,34 @@ HTMLを書き込むため、書き込む際にはユーザーから受け取っ�
     //↓以下に書き換え
     
     //単一要素にイベント設定する場合はこちら
-    var button  = document.querySelector("#button");
-    button.addEventListener( "click", function(){ console.log("clicked"); } );
+    const button    = document.querySelector("#button");
+    button.addEventListener( "click", () => { console.log("clicked"); } );
 
     //複数要素にイベント設定する場合はこちら
-    var button  = document.querySelectorAll(".button");
-    for (let b of button){
-        b.addEventListener( "click", function(){ console.log("clicked"); } );
+    const buttons    = document.querySelectorAll(".button");
+    for (let button of buttons){
+        button.addEventListener( "click", () => { console.log("clicked"); } );
     }
 
-一旦セレクタで要素のオブジェクトを作った後、`.addEventListener( [発火条件], function(){ [処理] })`メソッドを実行してイベントリスナをセットする。クラス名など複数ヒットする場合はforループでそれぞれイベントをセットする。
+
+一旦セレクタで要素のオブジェクトを作った後、`.addEventListener( [発火条件], () => { [処理] })`メソッドを実行してイベントリスナをセットする。
+
+クラス名など複数ヒットする場合はforループでそれぞれイベントをセットする。
 
 - 参照: https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener
+
+jQueryでは、アロー関数ではなくfunction関数を使うことが多い。理由は
+
+- thisの挙動が違う
+- jQuery開発者の間で、アロー関数に馴染みがない
+
+などがある。
 
 ## 結論
 
 jQueryで簡単にJSのコードが書けるが、後日再利用するとなるとjQueryを予め読み込まなければならない。これが足かせになる場合もある。
 
 素のJSで書けるのであれば、それに越したことはないだろう。多少長くても統合開発環境などを使えば、属性名等の補正もしてくれる。
-
 
 ## 関連記事
 

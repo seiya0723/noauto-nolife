@@ -38,16 +38,16 @@ pre code {
     top:0;
     right:0;
     color:white;
+    background:black;
 
     cursor:pointer;
-    margin:0.25rem;
+    margin:0.25rem 0.75rem;
     padding:0.25rem 0.5rem;
 
     border:solid 0.1rem white;
     border-radius:0.5rem;
     
     transition:0.2s;
-
 }
 .copy_button:hover{
     background:#0fc;
@@ -61,7 +61,7 @@ pre code {
 
 </head>
 <body>
-    <pre><code>console.log("HelloWorld");</code></pre>
+    <pre><code>console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");console.log("HelloWorld");</code></pre>
 <script>
 
 const pre_elems     = document.querySelectorAll("pre");
@@ -82,16 +82,13 @@ for (let copy_button of copy_buttons){
         }
     });
 }
-
 </script>
 
 
 </body>
 </html>
+
 ```
-
-
-
 
 
 ## 結論
