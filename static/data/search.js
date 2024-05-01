@@ -1,6 +1,8 @@
 const SEARCH_LIST = [
-{ "link": "/post/django-react-todo-analysis/", "title" : "DjangoとReactのTodoアプリ(SPA)を解析する" }, 
+{ "link": "/post/javascript-fetchapi-django/", "title" : "【Django】JavaScriptのfetchAPIでリクエストを送る" }, 
+{ "link": "/post/startup-django-react-fetchapi/", "title" : "【Restful】Django+Reactビギナーが40分でCRUD掲示板アプリ(SPA)を作る方法【FetchAPI】" }, 
 { "link": "/post/startup-django-react/", "title" : "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios】" }, 
+{ "link": "/post/django-react-todo-analysis/", "title" : "DjangoとReactのTodoアプリ(SPA)を解析する" }, 
 { "link": "/post/nginx-rtmp-module/", "title" : "Nginxにrtmp-moduleを加えてmake install。ffmpegでRTMP配信する映像をVLCで再生【ライブストリーミング再生】" }, 
 { "link": "/post/javascript-clipcopy/", "title" : "Javascriptでクリックした時、要素内文字列をクリップボードにコピーさせる" }, 
 { "link": "/post/jquery-to-javascript/", "title" : "jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】" }, 
@@ -22,7 +24,6 @@ const SEARCH_LIST = [
 { "link": "/post/vimrc-setting/", "title" : "【保存版】追加しておくべきvimrcの設定【検索ハイライト、タブはスペース4つ、拡張子ごとの初期データ】" }, 
 { "link": "/post/react-github/", "title" : "GitHubからクローンしたReactを動作させる方法" }, 
 { "link": "/post/startup-react/", "title" : "Reactビギナーが15分で掲示板アプリを作る方法" }, 
-{ "link": "/post/javascript-fetchapi-django/", "title" : "【Django】JavaScriptのfetchAPIでリクエストを送る【XMLHttpRequest、jQuery.Ajax、axiosはもう古い？】" }, 
 { "link": "/post/django-react-not-available-django-tech/", "title" : "DjangoとReactのSPAウェブアプリで、使用することができない(と思われる)Djangoの技術" }, 
 { "link": "/post/ubuntu-bash-new-tab-command/", "title" : "UbuntuのBash(gnome-terminal)で新しいタブを開き、新しいタブでコマンドを実行する" }, 
 { "link": "/post/laravel-github-download/", "title" : "【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？" }, 

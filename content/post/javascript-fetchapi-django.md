@@ -1,5 +1,5 @@
 ---
-title: "【Django】JavaScriptのfetchAPIでリクエストを送る【XMLHttpRequest、jQuery.Ajax、axiosはもう古い？】"
+title: "【Django】JavaScriptのfetchAPIでリクエストを送る"
 date: 2024-01-14T21:13:50+09:00
 lastmod: 2024-01-14T21:13:50+09:00
 draft: false
@@ -8,13 +8,13 @@ categories: [ "サーバーサイド" ]
 tags: [ "JavaScript","Django" ]
 ---
 
-XMLHttpRequestはAjaxの初期のAPIでちょっとコードが長くて複雑。jQuery.ajaxはjQuery離れが深刻で、そもそもjQueryは重い。axiosはXHRやjQueryよりも優秀であるが、ライブラリなのでインストールが必要。
+XMLHttpRequest(XHR)はAjaxの初期のAPIでコードが長くて複雑。jQuery.ajaxは昨今のjQuery離れが深刻。
 
-では、何でAjaxを実装すれば良いか。
+では、何でリクエスト送信機能を実装すれば良いか。
 
 FetchAPIである。
 
-軽量で簡潔に書ける上に、CORSに対応しており、なおかつインストールは不要。できればこれからはFetchAPIを使うほうが良いだろう。
+軽量で簡潔に書ける上に、CORSに対応しており、なおかつインストールは不要。
 
 本記事では、DjangoでFetchAPIを使ってPOSTメソッドのリクエストを送信してみた。
 
@@ -62,7 +62,6 @@ FetchAPIである。
 ```
 
 ## script.js
-
 
 ```
 window.addEventListener("load" , function (){
