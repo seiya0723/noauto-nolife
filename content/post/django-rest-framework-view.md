@@ -3,7 +3,7 @@ title: "Django Rest FrameworkのViewの書き方【APIViewと汎用APIView、Mod
 date: 2024-05-01T13:10:52+09:00
 lastmod: 2024-05-01T13:10:52+09:00
 draft: false
-thumbnail: "images/django.jpg"
+thumbnail: "images/drf.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "django","react","Restful" ]
 ---
