@@ -626,6 +626,63 @@ npm start
 <div class="img-center"><img src="/images/Screenshot from 2024-04-30 16-59-06.png" alt=""></div>
 
 
+## 結論
+
+ご覧の通り、fetchではインストールが不要になる反面、リクエスト処理のコードが長くなってしまう。
+
+```
+fetch(url, { method, headers, body })
+.then( (res) => {
+    if (!res.ok) {
+        throw new Error("Network response was not ok");
+    }
+    return res.json();
+})
+.then( (data) => {
+    this.refreshList();
+})
+.catch( (error) => {
+    console.log(error);
+});
+```
+
+```
+axios
+    .post("/api/topics/", item)
+    .then((res) => {
+        this.refreshList();
+    })
+    .catch((err) => console.log(err));
+```
+
+投稿処理(fetchは変数を使って編集も兼ねているが)ひとつを考えても、レスポンスを受け取ったときの挙動が少し煩雑になっている。
+
+もっとも、fetchの場合は2つ目のthenを省略できるので、書き方によっては大差ない。
+
+しかし、1つ目のthenで、ステータスコードが200番台以外のレスポンスも受け取ってしまう。これを防ぐために
+
+```
+    if (!res.ok) {
+        throw new Error("Network response was not ok");
+    }
+    return res.json();
+```
+
+このようにifで分岐をしなければならない。(ステータスコードが200番台以外の場合は、res.okがfalseになる。) 
+
+一方、axiosの場合はステータスコードが200番台の場合のみ、1つ目のthenを通るようになっている。
+
+```
+    .then((res) => {
+        // この処理が実行されている時点で、すべてステータスコードは200番台
+        this.refreshList();
+    })
+```
+
+故に、余計な分岐を用意する必要がなくなり、ネストが浅くなる。少なくともコードの視認性ではaxiosのほうが有利のようだ。
+
+
+
 ## ソースコード
 
 https://github.com/seiya0723/react-django-startup-bbs-fetchapi

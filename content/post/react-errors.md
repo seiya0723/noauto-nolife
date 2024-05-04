@@ -72,4 +72,22 @@ renderItems = () => {
 ```
 
 
+## onClick属性を加えただけで、同じ処理が何度も何度も実行されてしまう(無限ループ)
+
+
+onClick属性の値に与える処理は、アロー関数でラップしておく必要がある
+
+```
+<button onClick={() => handleClick()}>クリックしてください</button>
+```
+
+このアロー関数を忘れると、何度も何度も実行されてしまう。
+
+onChange属性の場合はラップする必要はないため、混同しないように
+
+```
+<input type="text" onChange={handleChange} />
+```
+
+
 
