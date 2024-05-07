@@ -49,7 +49,7 @@ class IndexView(View):
         if form.is_valid():
             cleaned     = form.clean()
 
-            query &= Q(category=cleaned["category"].id)
+            query &= Q(category=cleaned["category"])
 
 
         #金額の上限
