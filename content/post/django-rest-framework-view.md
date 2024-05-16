@@ -64,8 +64,6 @@ class TopicSerializer(serializers.ModelSerializer):
 
 もっとも詳細な書き方ができるのは、APIViewを継承する書き方。
 
-検索やページネーション、ビューの処理の途中で何らかの処理を加えたい場合は、このAPIViewを継承する方法が妥当。
-
 ```
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -111,6 +109,10 @@ class TopicView(APIView):
 
         return Response(status=status.HTTP_204_NO_CONTENT)
 ```
+
+しかし、これではRestfulの設計思想からは離れてしまう。
+
+普段からViewを継承したビュークラスを使っている場合、馴染みやすいが、保守の観点ではあまりよろしくはない。
 
 ### ルーティング
 
@@ -191,6 +193,8 @@ class TopicView(viewsets.ModelViewSet):
 
 これだけで、CRUDが実現される。
 
+Restfulの設計思想通り、メソッドごとにシンプルな機能(CRUD)を提供している。
+
 ### ルーティング
 
 ModelViewSetの場合、APIViewと違ってルーティングの書き方も異なる
@@ -221,7 +225,9 @@ urlpatterns = [
 - PATCH api/topics/{id}/: 特定のトピックの一部を更新するためのエンドポイント
 - DELETE api/topics/{id}/: 特定のトピックを削除するためのエンドポイント
 
-この6個分のURL設定に対応している。laravelのRestfulのような書き方だ。
+この6個分のURL設定に対応している。
+
+laravelの --resource のような書き方だ。laravelの--resourceも機能を最小限に絞ることで、Restfulなコントローラを作ることができる。
 
 ## 結論
 
@@ -229,5 +235,10 @@ urlpatterns = [
 
 このModelViewSetはモデルを元に作ったシリアライザを指定するだけでCRUDを実現してくれる。
 
-しかし、より詳細な機能を実装させたい場合は、viewsets.ModelViewSet ではなく、 views.APIView を継承して作ったほうが確実だ。
+Restfulの設計思想に従うのであれば、このModelViewSetを使う。
+
+より詳細な機能を実装させたい場合は、views.APIView を使う。ただし、Restfulの設計思想とは離れてしまうため、保守が難しくなるだろう。
+
+基本は、ModelViewSetを使い、複雑な機能が必要になった場合は、その都度APIViewを使うほうが無難と思われる。
+
 
