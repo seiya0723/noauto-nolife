@@ -1,6 +1,7 @@
 const SEARCH_LIST = [
-{ "link": "/post/django-search-querybuilder-custom-templates-js/", "title" : "Djangoでクエリビルダを使い、スペース区切りの文字列検索と絞り込みを同時に行う【JSとカスタムテンプレートタグを使用】" }, 
+{ "link": "/post/django-livestreamer/", "title" : "【Django】OpenCVとyieldを使い、ウェブカメラの映像をライブ配信する" }, 
 { "link": "/post/django-rest-framework-view/", "title" : "Django Rest FrameworkのViewの書き方【APIViewと汎用APIView、ModelViewSetの違い】" }, 
+{ "link": "/post/django-search-querybuilder-custom-templates-js/", "title" : "Djangoでクエリビルダを使い、スペース区切りの文字列検索と絞り込みを同時に行う【JSとカスタムテンプレートタグを使用】" }, 
 { "link": "/post/react-errors/", "title" : "よく出るReactのエラー一覧" }, 
 { "link": "/post/startup-django-react-fetchapi/", "title" : "【Restful】Django+Reactビギナーが40分でCRUD掲示板アプリ(SPA)を作る方法【FetchAPI】" }, 
 { "link": "/post/javascript-fetchapi-django/", "title" : "【Django】JavaScriptのfetchAPIでリクエストを送る" }, 
