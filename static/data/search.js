@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-clean-method-validator/", "title" : "【Django】モデルクラスのcleanメソッドでバリデーションをする" }, 
 { "link": "/post/django-livestreamer/", "title" : "【Django】OpenCVとyieldを使い、ウェブカメラの映像をライブ配信する" }, 
 { "link": "/post/django-rest-framework-view/", "title" : "Django Rest FrameworkのViewの書き方【APIViewと汎用APIView、ModelViewSetの違い】" }, 
 { "link": "/post/django-search-querybuilder-custom-templates-js/", "title" : "Djangoでクエリビルダを使い、スペース区切りの文字列検索と絞り込みを同時に行う【JSとカスタムテンプレートタグを使用】" }, 
