@@ -53,6 +53,19 @@ Cloudinaryのリンクから作られたアカウントへ行き着く。ダッ�
 
 <div class="img-center"><img src="/images/Screenshot from 2021-09-25 12-32-39.png" alt="APIキーが表示されるダッシュボード"></div>
 
+
+#### 確認できない場合
+
+HerokuのSettingsから Config Vars (環境変数設定)から、CLOUDINARY_URL が確認できる
+
+
+```
+cloudinary://[API_KEY]:[API_SECRET]@[CLOUD_NAME]
+```
+
+この構成になっているので、これをコピペして貼り付ける
+
+
 ### settings.pyを修正とライブラリインストール
 
 ストレージとしてCloudinaryを使用するので、その設定を書き込む必要がある。

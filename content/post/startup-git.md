@@ -306,3 +306,39 @@ SSHはデフォルトでパスワード認証が有効になっている。
 - https://qiita.com/y-okudera/items/0b57830d2f56d1d51692
 - https://git-scm.com/book/ja/v2/Git%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%AE%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97
 - https://softwarenote.info/p2433/
+
+
+## その他、状況に応じた対応
+
+### Q: リモートリポジトリの内容をローカルリポジトリに反映したい、リモートの内容で上書きもする
+
+A: git stash を使う。
+
+`git pull`を実行すると、こんなエラーが出てくる。
+
+```
+error: Your local changes to the following files would be overwritten by merge:
+	project/db.sqlite3
+Please commit your changes or stash them before you merge.
+Aborting
+```
+
+ローカルリポジトリの内容が、リモートリポジトリの内容よりも進んでいた場合。このようなエラーが出てくる。
+
+リモートリポジトリの内容で上書きしても良い場合。以下の手順を踏む
+
+```
+# 現在の変更を一時保存する。
+git stash 
+
+# リモートリポジトリの内容をローカルに反映
+git pull 
+
+# stashしたデータを破棄する
+git stash drop
+```
+
+これで、リモートリポジトリの内容をローカルに反映させることができる。
+
+とにかくリモートの内容を優先にしたい場合はこれで良い。
+

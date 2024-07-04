@@ -60,7 +60,7 @@ setTimeout( function(){ $(".notify_message").remove(); }, "5000");
         for (let message of messages){
             message.remove();
         }
-    }, "5000");
+    }, 5000);
 ```
 
 
