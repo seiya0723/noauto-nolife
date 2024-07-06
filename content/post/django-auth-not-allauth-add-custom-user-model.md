@@ -589,10 +589,19 @@ https://github.com/seiya0723/django-auth/tree/main/templates/registration
 
 後は、適度に装飾を施すだけ。
 
+
 ## ソースコード
 
 メール認証+カスタムユーザーモデル実装と、とても複雑になっているため、下記ソースコードをもとによく確認しておく。
 
 https://github.com/seiya0723/django-auth
 
+
+## 関連記事
+
+このコードでは、メール検証が行われていない。
+
+下記を参照。
+
+[【Django】デフォルトの認証機能を網羅し、カスタムユーザーモデルとメール認証、メール検証(確認)も実装する【脱allauth】](/post/django-auth-not-allauth-add-custom-user-model-mail-verify/)
 
