@@ -18,12 +18,14 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
     pip install django-allauth
 
 
+<!--
 ### 追記(2023年11月) 最新版ではsettings.pyの設定がこれまでと異なる
 
 そのため、バージョンを指定してインストールしておいたほうが無難。
 
     pip install django-allauth==0.54
 
+-->
 
 ## ユーザーIDとパスワードを使用した認証方法の実装
 
@@ -50,6 +52,24 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
         'allauth.socialaccount', # ←追加
         
     ]
+
+
+
+MIDDLEWARE の末端に、`"allauth.account.middleware.AccountMiddleware",` を追加する。
+
+```
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "allauth.account.middleware.AccountMiddleware",
+]
+```
 
 プロジェクト直下の`urls.py`に下記を追加する。
 
@@ -231,6 +251,8 @@ GitHubからgit cloneコマンドを実行し、ログを確認、特定のバ�
 
 まず、[公式のGitHub](https://github.com/pennersr/django-allauth)からソースをDL。ソース内の`allauth/templates/`の中身全てを、新たに作ったallauthというディレクトリの中に入れる。
 
+この時、インストールされているdjango-allauthのバージョンと一致したテンプレートをDLする。
+
 <div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-57-58.png" alt="Djangoallauthのテンプレートの中身"></div>
 
 続いて、settings.pyのTEMPLATESのDIRを修正する。下記を追加。allauthのテンプレートを明示的に読み込ませることでテンプレート修正と装飾が可能になる。
@@ -238,7 +260,6 @@ GitHubからgit cloneコマンドを実行し、ログを確認、特定のバ�
     os.path.join(BASE_DIR, 'templates', 'allauth')
 
 後は、先程templatesに格納したHTMLファイルを修正していくだけ。ちなみに、メール送信時の文言も`templates/allauth/account/email/`から修正できる。
-
 
 ### 【補足1】ログイン画面を中央寄せにする
 
@@ -251,9 +272,10 @@ GitHubからgit cloneコマンドを実行し、ログを確認、特定のバ�
 
 基本settings.py中心に修正を加えるだけで簡単に実装できるdjango-allauthだが、そのままでは装飾なしなので、公式のコードを持ってきて改造する必要がある。
 
+
+<!--
 それから本格的にサービスを展開するのであれば、ボット対策として認証時にRecaptchaなどを用意する必要があるだろう。
-
-
+-->
 
 
 ## ソースコード
