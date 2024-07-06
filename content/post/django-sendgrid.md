@@ -53,8 +53,8 @@ if "SENDGRID_API_KEY" in os.environ:
             subject = "ここに件名を入れる"
             message = "ここに本文を入れる"
     
-            from_email = huga@gmail.com
-            recipient_list = [ "hoge@gmail.com" ]
+            from_email      = "huga@gmail.com"
+            recipient_list  = [ "hoge@gmail.com" ]
             send_mail(subject, message, from_email, recipient_list)
     
             return render(request,"bbs/index.html")
