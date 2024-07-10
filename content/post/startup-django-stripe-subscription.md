@@ -25,6 +25,7 @@ https://dashboard.stripe.com/test/products?active=true
 
 商品を追加ボタンを押す。
 
+<!--
 <div class="img-center"><img src="/images/Screenshot from 2023-04-24 14-18-53.png" alt=""></div>
 
 商品情報に商品名と価格を指定
@@ -37,6 +38,21 @@ https://dashboard.stripe.com/test/products?active=true
 
 `API_ID`(上記画像の赤で伏せた部分)を控えておく。
 
+-->
+
+<div class="img-center"><img src="/images/Screenshot from 2024-07-10 10-27-20.png" alt=""></div>
+
+名前と金額、請求期間を指定して、商品を追加する。
+
+<div class="img-center"><img src="/images/Screenshot from 2024-07-10 10-40-52.png" alt=""></div>
+
+追加した商品の詳細ページにアクセス。詳細ページから料金をクリック。
+
+<div class="img-center"><img src="/images/Screenshot from 2024-07-10 10-38-13.png" alt=""></div>
+
+`price_.....`と書かれてある部分をクリック。これが 後にsettings.pyに入れる。`STRIPE_PRICE_ID` になる。
+
+<div class="img-center"><img src="/images/Screenshot from 2024-07-10 10-39-00.png" alt=""></div>
 
 ## settings.py
 
@@ -48,8 +64,15 @@ STRIPE_PUBLISHABLE_KEY  = ""
 STRIPE_PRICE_ID         = ""
 ```
 
-`STRIPE_PRICE_ID`に先ほどの商品の`API_ID`を入れる。
+先ほどの商品の`STRIPE_PRICE_ID`を入れる。
 
+`STRIPE_API_KEY` と `STRIPE_PUBLISHABLE_KEY`は
+
+https://dashboard.stripe.com/test/dashboard からアクセスして表示されている。
+
+<div class="img-center"><img src="/images/Screenshot from 2024-07-10 10-45-10.png" alt=""></div>
+
+公開可能キーは`STRIPE_PUBLISHABLE_KEY`、シークレットキーは`STRIPE_API_KEY`に 入力。
 
 ## views.py
 
@@ -158,13 +181,23 @@ portal      = PortalView.as_view()
 class PremiumView(View):
     def get(self, request, *args, **kwargs):
         
+        if not request.user.customer:
+            print("カスタマーIDがセットされていません。")
+            return redirect("bbs:index")
+
+
         # カスタマーIDを元にStripeに問い合わせ
         try:
             subscriptions = stripe.Subscription.list(customer=request.user.customer)
         except:
             print("このカスタマーIDは無効です。")
+
+            request.user.customer   = ""
+            request.user.save()
+
             return redirect("bbs:index")
-        
+
+
         # ステータスがアクティブであるかチェック。
         for subscription in subscriptions.auto_paging_iter():
             if subscription.status == "active":
@@ -173,6 +206,7 @@ class PremiumView(View):
                 return render(request, "bbs/premium.html")
             else:
                 print("サブスクリプションが無効です。")
+
 
         return redirect("bbs:index")
 

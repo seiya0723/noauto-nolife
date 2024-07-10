@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-django-stripe-subscription/", "title" : "【Django】Stripeでサブスクリプション決済を行う" }, 
 { "link": "/post/django-clean-method-validator/", "title" : "【Django】モデルクラスのcleanメソッドでバリデーションをする" }, 
 { "link": "/post/django-auth-not-allauth-add-custom-user-model-mail-verify/", "title" : "【Django】デフォルトの認証機能を網羅し、カスタムユーザーモデルとメール認証、メール検証(確認)も実装する【脱allauth】" }, 
 { "link": "/post/django-auth-not-allauth-add-custom-user-model/", "title" : "【Django】デフォルトの認証機能を網羅し、カスタムユーザーモデルとメール認証も実装させる【脱allauth】" }, 
@@ -28,7 +29,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-deploy-ubuntu-venv/", "title" : "UbuntuにDjangoをデプロイする【PostgreSQL+Nginx、Virtualenv使用】" }, 
 { "link": "/post/django-fileupload/", "title" : "Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】" }, 
 { "link": "/post/django-openpyxl/", "title" : "【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする【FileResponse】" }, 
-{ "link": "/post/startup-django-stripe-subscription/", "title" : "【Django】Stripeでサブスクリプション決済を行う" }, 
 { "link": "/post/python-pdf-merge/", "title" : "複数のPDFファイルを1つのPDFファイルにまとめる" }, 
 { "link": "/post/input-type-file-multiple/", "title" : "【HTML】inputタグで画像を複数枚指定する【multiple】" }, 
 { "link": "/post/django-orderby-foreignkey-count/", "title" : "【Django】使用頻度の高いカテゴリをプルダウンメニューの上部に表示させる【.annotate(count=Count(\"topic\")).order_by(\"-count\")】" }, 
