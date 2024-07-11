@@ -34,7 +34,9 @@ pip install django-bootstrap-form
 として呼び出す。 
 
 
+<!--
 ## 結論
 
 もっとも私は、フォームオブジェクトのレンダリングもしないし、BootstrapならCDNを使うので、この方法は常用しない。
 
+-->
