@@ -90,6 +90,36 @@ ManyToManyFieldにはvalidatorsフィールドオプションは通用しない�
 
 これでタグの指定は2個までと制限を課すことができる。
 
+
+
+## 【アンチパターン】モデルに追加したcleanメソッドでは、バリデーションできない
+
+[【Django】モデルクラスのcleanメソッドでバリデーションをする](/post/django-clean-method-validator/)
+ 
+この記事の、モデルクラスにcleanメソッドを追加する方法では、多対多に対して追加のバリデーションは実装できない。
+
+```
+class Topic(models.Model):
+    
+    title       = models.CharField(verbose_name="タイトル",max_length=100)
+    comment     = models.CharField(verbose_name="コメント",max_length=2000)
+    dt          = models.DateTimeField(verbose_name="投稿日時",default=timezone.now)
+    user        = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name="投稿者",on_delete=models.CASCADE)
+    tag         = models.ManyToManyField(Tag,verbose_name="タグ",blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+    def clean(self):
+        super().clean()
+
+        # XXX: ここでエラーが起こる。
+        if len(self.tag.count()) > 2: 
+            raise ValidationError("タグは2個まで")
+```
+
+
 ## 結論
 
 やはり、フォームクラスにバリデーションを追加する方法が一番強力と思われる

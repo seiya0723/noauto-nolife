@@ -146,7 +146,18 @@ heroku login
 heroku run python manage.py migrate --app seiya0723-django-fileupload
 ```
 
+## エラーの対処
+
+### .gitignore に `__init__.py`を含めると、マイグレーションできない。
+
+.gitignore に`__init__.py`を含めると、マイグレーションができなくなる。
+
+本来、一般的なPCでは`__init__.py`は自動的に作られるものだが、Herokuサーバー内では作られることはない。
+
+結果、アプリの読み込み不良が起こって、マイグレーションに失敗する。
+
 
 ## ソースコード
 
 https://github.com/seiya0723/django_fileupload_hrk
+
