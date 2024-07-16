@@ -93,8 +93,6 @@ if not DEBUG:
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'
 ```
 
-
-
 ## HerokuとGitHubの連携
 
 Deployタブで、『Deployment method』 からGitHubを選ぶ。
@@ -119,6 +117,23 @@ Authorize heroku をクリックする。
 ## 環境変数の設定
 
 https://dashboard.heroku.com/apps/アプリ名/settings の  Config Vars  から設定できる。
+
+<div class="img-center"><img src="/images/Screenshot from 2024-07-16 09-32-26.png" alt=""></div>
+
+
+### Cloudinary の 環境変数
+
+Cloudinaryを追加することで、最初から`CLOUDINARY_URL`が追加される。
+
+`CLOUDINARY_URL`は
+```
+CLOUDINARY_URL = cloudinary://[API_KEY]:[API_SECRET]@[CLOUD_NAME]
+```
+この構成になっている。
+
+この3つの環境変数を追加すると、今回のsettings.pyに合わせることができる。
+
+参照: https://pypi.org/project/django-cloudinary-storage/
 
 
 ## デプロイ完了後

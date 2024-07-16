@@ -58,7 +58,6 @@ Cloudinaryのリンクから作られたアカウントへ行き着く。ダッ�
 
 HerokuのSettingsから Config Vars (環境変数設定)から、CLOUDINARY_URL が確認できる
 
-
 ```
 cloudinary://[API_KEY]:[API_SECRET]@[CLOUD_NAME]
 ```
