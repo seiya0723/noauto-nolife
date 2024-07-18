@@ -261,6 +261,25 @@ GitHubからgit cloneコマンドを実行し、ログを確認、特定のバ�
 
 後は、先程templatesに格納したHTMLファイルを修正していくだけ。ちなみに、メール送信時の文言も`templates/allauth/account/email/`から修正できる。
 
+
+### 【追記: 2024年7月18日】 最新のallauthでは、テンプレートの構造が異なる。
+
+
+最新のallauth(`django-allauth==0.63.4`)ではテンプレートのディレクトリ構成が以下のようになっている。
+
+```
+account
+allauth
+mfa
+openid
+socialaccount
+tests
+usersessions
+```
+
+base.htmlの場所は、 `allauth/layouts/base.html `に変わっている。
+
+
 ### 【補足1】ログイン画面を中央寄せにする
 
 テンプレートの設定を行った後、適当にHTMLとCSSを書き換える。下記記事に詳細が書かれている。
