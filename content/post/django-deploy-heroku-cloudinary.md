@@ -166,9 +166,12 @@ gunicorn(ウェブサーバーとDjangoをつなげるライブラリ)の設定�
 
     echo "web: gunicorn config.wsgi:application --log-file -" > Procfile
 
+
+<!--
 サーバー起動用のファイルを作る。
 
     echo "web: python manage.py runserver 0.0.0.0:5000" > Procfile.windows
+    -->
 
 
 ### デプロイ

@@ -1,11 +1,11 @@
 ---
-title: "Django(DRF)+ReactのSPAでJWTを使った認証を実装させる"
+title: "Django(DRF)+ReactのSPAでJWTを使った認証を実装する"
 date: 2024-07-08T09:38:06+09:00
 lastmod: 2024-07-08T09:38:06+09:00
 draft: false
 thumbnail: "images/django-react.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","React","SPA","JWT" ]
+tags: [ "Django","React","SPA","JWT","追記予定" ]
 ---
 
 
@@ -236,6 +236,77 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ```
 
+下記設定を追加している。
+
+```
+REST_FRAMEWORK = {
+
+    # 全てのエンドポイントで認証を必須とする。
+    # (ビュークラスで、`permission_classes  = [IsAuthenticated]` が無い場合でも、↓の設定が有効なので、認証必須となる)
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+
+    # 認証の際には、JWTを使用する。
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+
+}
+
+from datetime import timedelta
+
+# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html
+SIMPLE_JWT = {
+    # アクセストークンの有効期限
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50),
+
+    # リフレッシュトークンの有効期限(このリフレッシュトークンを使ってアクセストークンを生成できる)
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+
+    # リフレッシュトークンが使われる時、新しいリフレッシュトークンを生成するか？ → いいえ
+    'ROTATE_REFRESH_TOKENS': False,
+}
+```
+
+
+
+
+
+
+### views.py
+
+
+```
+from django.shortcuts import render
+from rest_framework import viewsets
+from .serializers import TopicSerializer
+from .models import Topic
+
+
+from rest_framework.permissions import IsAuthenticated
+
+class TopicView(viewsets.ModelViewSet):
+
+    permission_classes  = [IsAuthenticated]
+
+    serializer_class    = TopicSerializer
+    queryset            = Topic.objects.all()
+```
+
+この`permission_classes`の指定で、未ログイン状態だと実行しない。
+
+ただ、今回はsettings.pyで
+
+```
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+```
+
+があるため、この`permission_classes`が無くても、未ログインでは実行しないようになっている。
+
+今回は、ビュー単位でも未ログイン時には実行しない設定ができることを説明するため、あえて追加した。
 
 
 ## Reactのソースコード
@@ -247,7 +318,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+
+
+
 ## 結論
+
+
+
+
+
+
+
 
 ### Reactライブラリ jwt-decode は無くても良い？
 
