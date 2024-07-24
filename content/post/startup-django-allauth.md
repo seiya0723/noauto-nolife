@@ -1,6 +1,7 @@
 ---
 title: "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】"
 date: 2020-10-24T16:32:35+09:00
+lastmod: 2024-07-24T08:46:07+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
@@ -46,10 +47,11 @@ django-allauthは外部ライブラリなので、pipコマンドでインスト
 
         # 省略 
 
-        'django.contrib.sites', # ←追加
-        'allauth', # ←追加
-        'allauth.account', # ←追加
-        'allauth.socialaccount', # ←追加
+        # ↓追加
+        'django.contrib.sites',
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
         
     ]
 
@@ -78,7 +80,7 @@ MIDDLEWARE = [
 
 後はマイグレーションを実行する。
 
-    python3 manage.py migrate
+    python manage.py migrate
 
 これだけでOK。http://127.0.0.1:8000/accounts/signup/ にアクセスする。
 
@@ -157,7 +159,7 @@ APIキーを入力し、指定したメールアドレスが実在するもの�
 
 
 
-### パスワードを使用した方法【Sendgridには使用不可】
+### 【補足1】パスワードを使用した方法【Sendgridには使用不可】
 
 パスワードを使用したメール送信の場合は下記のようにする。2021年を境にパスワードを使用したSendgridのメール送信は受け付けなくなったため、Sendgridにはこの方法は通用しない。
 
@@ -209,8 +211,61 @@ APIキーを入力し、指定したメールアドレスが実在するもの�
     ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 
 
+### 【補足2】Gmailのアプリパスワードを使用した設定
 
-### 【補足1】アカウント作成時の確認メールが英語になっている。
+
+Gmailのアプリパスワードを使った方法の場合こうなる。補足1のコードとほぼ同じ
+
+```
+#################django-allauthでのメール認証設定ここから###################
+
+#djangoallauthでメールでユーザー認証する際に必要になる認証バックエンド
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+#ログイン時の認証方法はemailとパスワードとする
+ACCOUNT_AUTHENTICATION_METHOD   = "email"
+
+#ログイン時にユーザー名(ユーザーID)は使用しない
+ACCOUNT_USERNAME_REQUIRED       = False
+
+#ユーザー登録時に入力したメールアドレスに、確認メールを送信する事を必須(mandatory)とする
+ACCOUNT_EMAIL_VARIFICATION  = "mandatory"
+
+#ユーザー登録画面でメールアドレス入力を要求する(True)
+ACCOUNT_EMAIL_REQUIRED      = True
+
+
+#DEBUGがTrueのとき、メールの内容は全て端末に表示させる
+if DEBUG:
+    EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
+
+else:
+    #ここにメール送信設定を入力する(Sendgridを使用する場合)
+    EMAIL_BACKEND   = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST      = 'smtp.gmail.com'
+
+    #メールを暗号化する
+    EMAIL_USE_TLS   = True
+    EMAIL_PORT      = 587
+
+    #【重要】メールのパスワードとメールアドレスの入力後、GitHubへのプッシュは厳禁
+    EMAIL_HOST_USER     = 'ここに送信元のgmailのメールアドレスを'
+    EMAIL_HOST_PASSWORD = 'ここにアプリパスワードを'
+
+#################django-allauthでのメール認証設定ここまで###################
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/'
+```
+
+くれぐれもGitHubにプッシュしたりしないようにする。
+
+
+### 【補足3】アカウント作成時の確認メールが英語になっている。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-46-00.png" alt="Sendgridを使用したメール送信"></div>
 
