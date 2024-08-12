@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-django-react-func-component/", "title" : "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios + 関数コンポーネント】" }, 
+{ "link": "/post/drf-serializer-method/", "title" : "【Django Rest Framework】モデルメソッドはシリアライザメソッドで代用する" }, 
 { "link": "/post/startup-django-allauth/", "title" : "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】" }, 
 { "link": "/post/django-deploy-heroku-cloudinary/", "title" : "DjangoをHeroku+Cloudinary(基本無料ストレージ)の環境にデプロイする【ウェブアプリのデモを一般公開したい場合などに】" }, 
 { "link": "/post/django-deploy-heroku/", "title" : "DjangoをDEBUG=FalseでHerokuにデプロイする方法" }, 
