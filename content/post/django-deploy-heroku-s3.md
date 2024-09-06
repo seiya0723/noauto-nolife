@@ -33,10 +33,9 @@ Herokuデプロイの詳しい流れは、[DjangoをDEBUG=FalseでHerokuにデ�
 
     pip freeze > requirements.txt
 
-ProcfileとProcfile.windowsを作成する。
+Procfileを作成する。
 
     echo "web: gunicorn config.wsgi:application --log-file -" > Procfile
-    echo "web: python manage.py runserver 0.0.0.0:5000" > Procfile.windows
 
 ## settings.pyの中身
 

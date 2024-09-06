@@ -1,5 +1,5 @@
 ---
-title: "【Django】同一人物による工作(再生数の水増しなど)をいかにして防ぐか、方法と対策【unique_together,Recaptcha,UA,IPアドレス等】"
+title: "【Django】同一人物による工作(再生数の水増しなど)をいかにして防ぐか、方法と対策【UniqueConstraint,Recaptcha,UA,IPアドレス等】"
 date: 2021-08-26T12:24:05+09:00
 draft: false
 thumbnail: "images/django.jpg"
@@ -23,9 +23,6 @@ tags: [ "Django","上級者向け","システム管理","認証","セキュリ�
 
     class Video(models.Model):
     
-        class Meta:
-            db_table    = "video"
-    
         id          = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
         #===========省略=====================
@@ -41,9 +38,6 @@ tags: [ "Django","上級者向け","システム管理","認証","セキュリ�
 
     class Video(models.Model):
     
-        class Meta:
-            db_table    = "video"
-    
         id          = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
         #===========省略=====================
@@ -58,9 +52,6 @@ tags: [ "Django","上級者向け","システム管理","認証","セキュリ�
     
     class VideoView(models.Model):
     
-        class Meta:
-            db_table        = "video_view"
-
         id          = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
         date        = models.DateField(verbose_name="再生日")
         target      = models.ForeignKey(Video,verbose_name="再生する動画",on_delete=models.CASCADE)
@@ -132,15 +123,25 @@ tags: [ "Django","上級者向け","システム管理","認証","セキュリ�
     class VideoView(models.Model):
     
         class Meta:
-            db_table        = "video_view"
-            unique_together = ("target","date","ip")
-    
+
+            # unique_together はDjango 2.2から非推奨
+            #unique_together = ("target","date","ip")
+
+            # constraints を使う
+            constraints = [
+                models.UniqueConstraint(fields=['target', 'date', 'ip'], name='unique_target_date_ip')
+            ]
+
+
         id          = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
         #↓ バリデーション時ユニーク判定に失敗するので、再生日はビューが代入すること。
         date        = models.DateField(verbose_name="再生日")
         target      = models.ForeignKey(Video,verbose_name="再生する動画",on_delete=models.CASCADE)
         user        = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name="再生した人",on_delete=models.CASCADE,null=True,blank=True)
         ip          = models.GenericIPAddressField(verbose_name="再生した人のIPアドレス")
+
+
+
 
     
 これで特定のIPアドレスは一日に一回しか特定の動画の再生回数がカウントされない。
@@ -152,8 +153,13 @@ tags: [ "Django","上級者向け","システム管理","認証","セキュリ�
     class VideoView(models.Model):
     
         class Meta:
-            db_table        = "video_view"
-            unique_together = (("target","date","user"),("target","date","ip"))
+            #unique_together = (("target","date","user"),("target","date","ip"))
+
+            constraints = [
+                models.UniqueConstraint(fields=['target', 'date', 'user'], name='unique_target_date_user'),
+                models.UniqueConstraint(fields=['target', 'date', 'ip'], name='unique_target_date_ip'),
+            ]
+
     
         id          = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     
@@ -235,7 +241,6 @@ Recaptchaを設置することで、ボットを使用したアカウント大�
 通常アクセス時、まずRecaptchaなどを使用してボットであるかどうかを判定する。その上で、ボットではないと判定されれば一定期間有効のセッションを配布する。もし、ボットであれば別ページへリダイレクトする等の処理を実行。
 
 ログイン時だけでなく、他のページにもボット判定を追加することでさらに工作対策を強化した状態。
-
 
 ## 結論
 

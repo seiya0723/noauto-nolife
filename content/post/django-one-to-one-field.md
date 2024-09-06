@@ -17,7 +17,10 @@ OneToOneFieldを使う機会は限定されているので、備忘録として�
     class StoreData(models.Model):
     
         class Meta:
-            unique_together = ("store","date")
+            constraints = [
+                models.UniqueConstraint(fields=["store","date"], name="unique_store_date"),
+            ]
+
     
         store   = models.ForeignKey(Store,verbose_name="店舗",on_delete=models.CASCADE)
         date    = models.DateField(verbose_name="記録年月", validators=[check_day])
@@ -56,9 +59,11 @@ Saleモデルオブジェクトから見たら、StoreDataに紐付いている�
     # 店舗データテーブル
     class StoreData(models.Model):
     
-        #対象店舗と年月で重複した記録を許さない場合、このようにunique_togetherを使う。
+        #対象店舗と年月で重複した記録を許さない場合、このようにUniqueConstraintを使う。
         class Meta:
-            unique_together = ("store","date")
+            constraints = [
+                models.UniqueConstraint(fields=["store","date"], name="unique_store_date"),
+            ]
     
         store   = models.ForeignKey(Store,verbose_name="店舗",on_delete=models.CASCADE)
         date    = models.DateField(verbose_name="記録年月", validators=[check_day])
@@ -66,5 +71,3 @@ Saleモデルオブジェクトから見たら、StoreDataに紐付いている�
         def get_sale(self):
             return Sale.objects.filter(store_data=self.id)
     
-
-
