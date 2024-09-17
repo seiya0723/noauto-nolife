@@ -82,7 +82,7 @@ MIDDLEWARE = [
 
     python manage.py migrate
 
-これだけでOK。http://127.0.0.1:8000/accounts/signup/ にアクセスする。
+これだけでOK。http://127.0.0.1:8000/accounts/login/ にアクセスする。
 
 <div class="img-center"><img src="/images/Screenshot from 2020-10-26 10-38-58.png" alt="ユーザーIDとパスワードによる認証画面"></div>
 
@@ -312,7 +312,12 @@ GitHubからgit cloneコマンドを実行し、ログを確認、特定のバ�
 
 続いて、settings.pyのTEMPLATESのDIRを修正する。下記を追加。allauthのテンプレートを明示的に読み込ませることでテンプレート修正と装飾が可能になる。
 
-    os.path.join(BASE_DIR, 'templates', 'allauth')
+```
+        'DIRS': [ BASE_DIR / "templates",
+                  BASE_DIR / "templates" / "allauth",  # ←追加
+        ],
+```
+
 
 後は、先程templatesに格納したHTMLファイルを修正していくだけ。ちなみに、メール送信時の文言も`templates/allauth/account/email/`から修正できる。
 
@@ -342,14 +347,20 @@ base.htmlの場所は、 `allauth/layouts/base.html `に変わっている。
 [Django-allauthにてログイン画面を中央寄せにさせる【テンプレートのカスタマイズ】](/post/django-allauth-center-loginpage/)
 
 
+## allauthのURL設定について
+
+allauthのurls.pyは内蔵されていて、その構造は以下のようになっている。
+
+https://github.com/pennersr/django-allauth/blob/main/allauth/account/urls.py
+
+会員登録を無効化させたい場合、このURL設定を書き換えて対応することもできる。
+
+[【Django】allauthのurls.pyをカスタムする【新規アカウント作成、パスワード変更処理の無効化など】](/post/django-allauth-custom-urls/)
+
+
 ## 結論
 
 基本settings.py中心に修正を加えるだけで簡単に実装できるdjango-allauthだが、そのままでは装飾なしなので、公式のコードを持ってきて改造する必要がある。
-
-
-<!--
-それから本格的にサービスを展開するのであれば、ボット対策として認証時にRecaptchaなどを用意する必要があるだろう。
--->
 
 
 ## ソースコード
