@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/javascript-localstorage/", "title" : "【JavaScript】localStorageを使ってブラウザにデータを記録する【Cookieが使えないときに】" }, 
+{ "link": "/post/django-prefetch-related/", "title" : "【Django】逆参照で効率的にDBにアクセスする【`.prefetch_related()` 】" }, 
+{ "link": "/post/startup-django-allauth/", "title" : "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】" }, 
 { "link": "/post/django-same-user-operate-prevent/", "title" : "【Django】同一人物による工作(再生数の水増しなど)をいかにして防ぐか、方法と対策【UniqueConstraint,Recaptcha,UA,IPアドレス等】" }, 
 { "link": "/post/django-one-to-one-field/", "title" : "【Django】OneToOneFieldでつながっているデータの取得方法【モデル名を小文字にした属性名で取得できる】" }, 
 { "link": "/post/django-deploy-heroku-s3/", "title" : "DjangoをS3(AWS)ストレージ付きのHerokuにデプロイする" }, 
@@ -6,7 +9,6 @@ const SEARCH_LIST = [
 { "link": "/post/react-2times-request/", "title" : "Reactでaxiosを使ってリクエストをすると、2回送られる問題" }, 
 { "link": "/post/startup-django-react-func-component/", "title" : "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios + 関数コンポーネント】" }, 
 { "link": "/post/drf-serializer-method/", "title" : "【Django Rest Framework】モデルメソッドはシリアライザメソッドで代用する" }, 
-{ "link": "/post/startup-django-allauth/", "title" : "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】" }, 
 { "link": "/post/django-deploy-heroku-cloudinary/", "title" : "DjangoをHeroku+Cloudinary(基本無料ストレージ)の環境にデプロイする【ウェブアプリのデモを一般公開したい場合などに】" }, 
 { "link": "/post/django-deploy-heroku/", "title" : "DjangoをDEBUG=FalseでHerokuにデプロイする方法" }, 
 { "link": "/post/startup-django-react-jwt/", "title" : "Django(DRF)+ReactのSPAでJWTを使った認証を実装する" }, 
