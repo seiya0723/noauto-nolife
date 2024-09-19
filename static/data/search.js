@@ -1,6 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-prefetch-related/", "title" : "【Django】逆参照で効率的にDBにアクセスする【.prefetch_related() 】" }, 
 { "link": "/post/javascript-localstorage/", "title" : "【JavaScript】localStorageを使ってブラウザにデータを記録する【Cookieが使えないときに】" }, 
-{ "link": "/post/django-prefetch-related/", "title" : "【Django】逆参照で効率的にDBにアクセスする【`.prefetch_related()` 】" }, 
 { "link": "/post/startup-django-allauth/", "title" : "【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】" }, 
 { "link": "/post/django-same-user-operate-prevent/", "title" : "【Django】同一人物による工作(再生数の水増しなど)をいかにして防ぐか、方法と対策【UniqueConstraint,Recaptcha,UA,IPアドレス等】" }, 
 { "link": "/post/django-one-to-one-field/", "title" : "【Django】OneToOneFieldでつながっているデータの取得方法【モデル名を小文字にした属性名で取得できる】" }, 
