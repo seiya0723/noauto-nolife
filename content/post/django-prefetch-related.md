@@ -1,5 +1,5 @@
 ---
-title: "【Django】逆参照で効率的にDBにアクセスする【`.prefetch_related()` 】"
+title: "【Django】逆参照で効率的にDBにアクセスする【.prefetch_related() 】"
 date: 2024-09-19T10:56:02+09:00
 lastmod: 2024-09-19T10:56:02+09:00
 draft: false
