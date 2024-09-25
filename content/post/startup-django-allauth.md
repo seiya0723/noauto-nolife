@@ -192,7 +192,6 @@ APIキーを入力し、指定したメールアドレスが実在するもの�
         EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
 
     else:
-        #ここにメール送信設定を入力する(Sendgridを使用する場合)
         EMAIL_BACKEND   = 'django.core.mail.backends.smtp.EmailBackend'
         EMAIL_HOST      = 'ここにメールのホストを書く'
 
@@ -243,8 +242,8 @@ if DEBUG:
     EMAIL_BACKEND   = "django.core.mail.backends.console.EmailBackend"
 
 else:
-    #ここにメール送信設定を入力する(Sendgridを使用する場合)
     EMAIL_BACKEND   = 'django.core.mail.backends.smtp.EmailBackend'
+    #  ホストはgmail.com 
     EMAIL_HOST      = 'smtp.gmail.com'
 
     #メールを暗号化する
