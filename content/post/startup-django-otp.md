@@ -9,7 +9,6 @@ tags: [ "Django" ]
 ---
 
 
-ZZ
 
 https://github.com/django-otp/django-otp/tree/master/src/django_otp
 

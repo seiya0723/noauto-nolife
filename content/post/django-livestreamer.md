@@ -1,5 +1,5 @@
 ---
-title: "【Django】OpenCVとyieldを使い、ウェブカメラの映像をライブ配信する"
+title: "【Django】OpenCVとyieldを使い、ウェブカメラの映像をライブ配信する【imutils.video.VideoStreamer】"
 date: 2024-05-31T11:46:52+09:00
 lastmod: 2024-05-31T11:46:52+09:00
 draft: false
@@ -9,7 +9,7 @@ tags: [ "django" ]
 ---
 
 
-Djangoで、OpenCVで撮影した映像をライブ配信させる。
+Djangoで、VideoStreamerで撮影した映像をライブ配信させる。
 
 仕組みはyieldとマルチスレッド処理を使い、サーバー起動とライブ配信処理を並行して行っている。
 
