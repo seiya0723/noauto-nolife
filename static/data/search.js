@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-django-otp/", "title" : "【Django】django-otpで多要素認証(二要素認証)を実現させる【GoogleAuthenticator】" }, 
 { "link": "/post/django-livestreamer/", "title" : "【Django】OpenCVとyieldを使い、ウェブカメラの映像をライブ配信する【imutils.video.VideoStreamer】" }, 
 { "link": "/post/django-livestreamer-custom/", "title" : "【Django】任意のタイミングでサーバーのカメラでライブ配信する【imutils.video.VideoStreamer】" }, 
 { "link": "/post/django-storage-file-editor/", "title" : "【Django】ストレージに保存されているファイルにアクセス、編集して保存する【InMemoryUploadedFile】" }, 
