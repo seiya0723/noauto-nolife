@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-upload-python-subprocess/", "title" : "【Django】アップロードしたPythonファイルを動かす【subprocessと動的import】" }, 
+{ "link": "/post/django-createsuperuser-auto/", "title" : "Djangoのcreatesuperuserでインタラクティブシェルを省略する。" }, 
+{ "link": "/post/heroku-procfile-release/", "title" : "【Heroku】デプロイ直後にコマンドを実行する【Procfile編集】" }, 
 { "link": "/post/startup-django-otp/", "title" : "【Django】django-otpで多要素認証(二要素認証)を実現させる【GoogleAuthenticator】" }, 
 { "link": "/post/django-livestreamer/", "title" : "【Django】OpenCVとyieldを使い、ウェブカメラの映像をライブ配信する【imutils.video.VideoStreamer】" }, 
 { "link": "/post/django-livestreamer-custom/", "title" : "【Django】任意のタイミングでサーバーのカメラでライブ配信する【imutils.video.VideoStreamer】" }, 
