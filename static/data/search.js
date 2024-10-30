@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/javascript-await-async/", "title" : "【JavaScript】awaitとasyncの違い【非同期処理のコールバック地獄対処】" }, 
 { "link": "/post/django-upload-python-subprocess/", "title" : "【Django】アップロードしたPythonファイルを動かす【subprocessと動的import】" }, 
 { "link": "/post/django-createsuperuser-auto/", "title" : "Djangoのcreatesuperuserでインタラクティブシェルを省略する。" }, 
 { "link": "/post/heroku-procfile-release/", "title" : "【Heroku】デプロイ直後にコマンドを実行する【Procfile編集】" }, 
