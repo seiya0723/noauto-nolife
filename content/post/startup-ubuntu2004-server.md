@@ -125,8 +125,12 @@ dateコマンドを実行すると、時刻が9時間遅れになっている。
 
 netplanを編集し、IPアドレスを固定に仕立てる。オリジナルの設定をコピーしてから編集する。
 
-    sudo cp /etc/netplan/01-network-manager-all.yaml /etc/netplan/01-network-manager-all_origin.yaml
+    sudo cp /etc/netplan/01-network-manager-all.yaml /etc/netplan/01-network-manager-all.yaml_bak
     sudo vi /etc/netplan/01-network-manager-all.yaml
+
+ここで気をつけたいのが、 `/etc/netplan/` 内のすべてのyaml がnetplanの設定として読み込みされる。
+
+オリジナルの設定は、拡張子を書き換えておくことで、netplanの設定として読ませないようにしておく。
 
 下記のように書き換える。
 
@@ -171,7 +175,7 @@ gateway4が廃止されており、routesを使用するようにとのこと。
 
     network:
       ethernets:
-        eth0:
+        enp0s3:
           addresses:
           - 192.168.11.246/24
           routes:
