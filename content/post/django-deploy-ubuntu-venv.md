@@ -231,19 +231,26 @@ settings.pyを書き換える。
 
 内容は下記
 
-    [Unit]
-    Description=gunicorn daemon
-    After=network.target
-    
-    [Service]
-    User=[ここにユーザー名]
-    Group=www-data
-    WorkingDirectory=/home/[ここにユーザー名]/Documents/[ここにプロジェクト名]
-    ExecStart       =/home/[ここにユーザー名]/Documents/[ここにプロジェクト名]/venv/bin/gunicorn --access-logfile - --workers 3 \
-                     --bind unix:/home/[ここにユーザー名]/Documents/[ここにプロジェクト名]/[ここにプロジェクト名].socket config.wsgi:application
-    
-    [Install]
-    WantedBy=multi-user.target
+
+```
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=[ここにユーザー名]
+Group=www-data
+WorkingDirectory=/home/[ここにユーザー名]/Documents/[ここにプロジェクト名]
+ExecStart       =/home/[ここにユーザー名]/Documents/[ここにプロジェクト名]/venv/bin/gunicorn --access-logfile - --workers 3 \
+                 --bind unix:/home/[ここにユーザー名]/Documents/[ここにプロジェクト名]/[ここにプロジェクト名].socket config.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+```
+
+
+
+
 
 
 下記コマンドを実行して動かす。
@@ -256,6 +263,42 @@ settings.pyを書き換える。
 
     sudo systemctl status gunicorn
 
+
+### 【補足】UNIXドメインソケットとTCPソケット
+
+今回、gunicornはsocketファイルを作り、Nginxがアクセスするようにした。
+
+このsocketファイルのことを、UNIXドメインソケットという。
+
+gunicornとNginxが同一サーバー内にある場合は、UNIXソケットが使う。
+
+一方で、gunicornとNginxが別のサーバーになっている場合、この方法は使えない。TCPソケットを使う。
+
+TCPソケットで動かしたい場合は、こうする。
+
+```
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=[ここにユーザー名]
+Group=www-data
+WorkingDirectory=/home/[ここにユーザー名]/Documents/[ここにプロジェクト名]
+ExecStart       =/home/[ここにユーザー名]/Documents/[ここにプロジェクト名]/venv/bin/gunicorn --access-logfile - --workers 3 --bind 0.0.0.0:8000
+
+[Install]
+WantedBy=multi-user.target
+```
+
+`--bind`の箇所を`--bind 0.0.0.0:8000`とする。
+
+これにより同一ネットワーク上の全ての端末は、gunicornにアクセスできる。後にNginxを別サーバーに移動することを想定し、あえて、`0.0.0.0:8000`としている。
+
+もし、同一ネットワーク上の全ての端末がgunicornにアクセスできる状況が好ましくないのであれば、`--bind 127.0.0.1:8000`とすると良いだろう。
+
+
+ちなみに、同一サーバー上で完結する仕様上、TCPソケットよりUNIXソケットが高速。
 
 ## Nginxの設定
 
@@ -307,6 +350,29 @@ settings.pyを書き換える。
 Nginxの動作確認
 
     sudo systemctl status nginx
+
+
+
+### 【補足】TCPソケットにアクセスするには？
+
+先の設定、`location /` の部分を
+
+```
+    location / {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:8000;
+    }
+```
+こうする。これは、同一サーバー上にgunicornが起動している場合に限る。別のサーバー(192.168.11.100)でgunicornが起動している場合、
+
+```
+    location / {
+        include proxy_params;
+        proxy_pass http://192.168.11.100:8000;
+    }
+```
+とする。
+
 
 
 ## マイグレーションと静的ファイルの配信

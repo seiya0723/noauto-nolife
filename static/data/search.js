@@ -1,5 +1,8 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-websocket-chatsite/", "title" : "DjangoでWebSocketを使って、チャットサイトを作る" }, 
 { "link": "/post/startup-django-channels-web-socket/", "title" : "django-channelsを使ってWebSocketを実現させる【チャットサイト開発に】" }, 
+{ "link": "/post/django-deploy-ubuntu-venv/", "title" : "UbuntuにDjangoをデプロイする【PostgreSQL+Nginx、Virtualenv使用】" }, 
+{ "link": "/post/react-fullcalendar/", "title" : "ReactでFullcalendar.jsを使う" }, 
 { "link": "/post/django-sse-local-caches-realtime/", "title" : "DjangoでServerSentEvents(SSE)とローカルキャッシュを使い、リアルタイムでDB内の情報を表示する" }, 
 { "link": "/post/startup-ubuntu2004-server/", "title" : "サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】" }, 
 { "link": "/post/react-essential-javascript/", "title" : "Reactに必要なJavaScript構文【ES2015(ES6)のテンプレート文字列、アロー関数、スプレッド構文、letとconstなど、脱jQueryにも有効】" }, 
@@ -51,7 +54,6 @@ const SEARCH_LIST = [
 { "link": "/post/vscode-config/", "title" : "VisualStudioCode(VScode)を使う前にやっておきたい設定と覚えておくと良い操作方法" }, 
 { "link": "/post/django-sortablejs/", "title" : "【Django】任意の順番で並び替えて表示させる【Sortable.js + FetchAPI 】" }, 
 { "link": "/post/javascript-sortablejs/", "title" : "JavaScriptで並び替えをするならSortable.js【jQuery不要のライブラリ】" }, 
-{ "link": "/post/django-deploy-ubuntu-venv/", "title" : "UbuntuにDjangoをデプロイする【PostgreSQL+Nginx、Virtualenv使用】" }, 
 { "link": "/post/django-fileupload/", "title" : "Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】" }, 
 { "link": "/post/django-openpyxl/", "title" : "【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする【FileResponse】" }, 
 { "link": "/post/python-pdf-merge/", "title" : "複数のPDFファイルを1つのPDFファイルにまとめる" }, 

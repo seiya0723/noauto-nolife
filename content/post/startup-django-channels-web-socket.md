@@ -12,19 +12,14 @@ tags: [ "Django","WebSocket","上級者向け","スタートアップシリー�
 
 とても実装難易度が高い。実装手順の備忘録として本記事をまとめる。
 
-## ソースコード
 
-一部は公式チュートリアルから改変し、私のブログ内で解説している書き方に倣っている。(ビュークラスを使用する、設定ディレクトリをconfigにする等)
-
-https://github.com/seiya0723/django-channels-websocket-sample
+## 解説
 
 ### ライブラリのインストール
 
 ```
 pip install django channels daphne
 ```
-
-
 
 ### config/settings.py
 
@@ -352,85 +347,6 @@ urlpatterns = [
 ```
 # chat/consumers.py
 import json
-from channels.generic.websocket import WebsocketConsumer
-
-"""
-class ChatConsumer(WebsocketConsumer):
-    def connect(self):
-
-        # Websocketを受け取り、経路を作る
-        self.accept()
-
-    def disconnect(self, close_code):
-        pass
-
-    def receive(self, text_data):
-
-        # チャットの投稿を受け取り、それを返却する。
-        
-        text_data_json  = json.loads(text_data)
-        message         = text_data_json['message']
-
-        self.send(text_data=json.dumps({ 'message': "Anonymous > " + message }))
-        #self.send(text_data=json.dumps({ 'message': "検閲済み" }))
-
-"""
-
-
-"""
-# chat/consumers.py
-import json
-from asgiref.sync import async_to_sync
-from channels.generic.websocket import WebsocketConsumer
-
-class ChatConsumer(WebsocketConsumer):
-    def connect(self):
-
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = 'chat_%s' % self.room_name
-
-        # Join room group
-        async_to_sync(self.channel_layer.group_add)(
-            self.room_group_name,
-            self.channel_name
-        )
-
-        self.accept()
-
-    def disconnect(self, close_code):
-        # Leave room group
-        async_to_sync(self.channel_layer.group_discard)(
-            self.room_group_name,
-            self.channel_name
-        )
-
-    # Receive message from WebSocket
-    def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
-
-        # Send message to room group
-        async_to_sync(self.channel_layer.group_send)(
-            self.room_group_name,
-            {
-                'type': 'chat_message',
-                'message': message
-            }
-        )
-
-    # Receive message from room group
-    def chat_message(self, event):
-        message = event['message']
-
-        # Send message to WebSocket
-        self.send(text_data=json.dumps({
-            'message': message
-        }))
-
-"""
-
-# chat/consumers.py
-import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -640,4 +556,9 @@ ROOMを作り、コメントを投稿することでそれが全てに反映さ�
 
 これらWebSocketやSSEに、Reactを追加してSPAにするには、メッセージ受信時にStateを書き換えすれば良い。
 
+## ソースコード
+
+一部は公式チュートリアルから改変し、私のブログ内で解説している書き方に倣っている。(ビュークラスを使用する、設定ディレクトリをconfigにする等)
+
+https://github.com/seiya0723/django-channels-websocket-sample
 
