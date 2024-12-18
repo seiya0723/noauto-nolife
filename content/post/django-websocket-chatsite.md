@@ -3,7 +3,7 @@ title: "DjangoでWebSocketを使って、チャットサイトを作る"
 date: 2024-12-17T16:33:35+09:00
 lastmod: 2024-12-17T16:33:35+09:00
 draft: false
-thumbnail: "images/django.jpg"
+thumbnail: "/images/Screenshot from 2024-12-17 16-32-56.png"
 categories: [ "サーバーサイド" ]
 tags: [ "WebSocket","django","JavaScript" ]
 ---
@@ -13,6 +13,9 @@ tags: [ "WebSocket","django","JavaScript" ]
 ここで、チャットサイトを作ったが、ページリロードで全て消えてしまう。
 
 チャンネルレイヤーにメッセージを与えるだけでなく、DBにも記録するように仕立てた。
+
+
+
 
 ## consumers.py 
 
@@ -129,6 +132,8 @@ DBに保存後、保存したデータをsendしている。
 一部、非効率な箇所(テンプレートの継承してないなど)があるが、後に、DRF+Reactでの開発を考慮して、あえて細かく作り込まないようにした。
 
 https://github.com/seiya0723/django-websocket-chatsite
+
+DRF+ReactのSPAでWebSocketを実現する場合。SerializerやStateなどが加わるため、ここからコードの内容は大きく変わる。
 
 ## 結論
 
