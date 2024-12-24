@@ -1,9 +1,9 @@
 ---
 title: "【Node.js】npmとは、npmコマンドについて"
-date: 2023-01-28T10:41:58+09:00
-lastmod: 2023-01-28T10:41:58+09:00
+date: 2022-01-28T10:41:58+09:00
+lastmod: 2022-01-28T10:41:58+09:00
 draft: false
-thumbnail: "images/noimage.jpg"
+thumbnail: "images/npm.jpg"
 categories: [ "others" ]
 tags: [ "npm","tips", ]
 ---

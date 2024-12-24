@@ -2,7 +2,7 @@
 title: "DjangoとReactを組み合わせる方法論と問題の考察"
 date: 2023-01-23T11:27:22+09:00
 lastmod: 2023-01-23T11:27:22+09:00
-draft: false
+draft: true
 thumbnail: "images/django-react.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","React","初心者向け" ]

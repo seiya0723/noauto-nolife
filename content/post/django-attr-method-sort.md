@@ -79,3 +79,13 @@ tags: [ "Django","tips" ]
 - https://docs.python.org/3/library/operator.html#operator.methodcaller
 - https://stackoverflow.com/questions/2412770/good-ways-to-sort-a-queryset-django
 
+
+## 補足
+
+ちなみに、外部キーで紐付いているモデルのフィールドを元に並び替えをしたい場合は、
+
+```
+Topic.objects.order_by("category__created_at")
+```
+と、`フィールド__紐付いているモデルのフィールド` とする。
+

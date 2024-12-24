@@ -224,6 +224,9 @@ class SingleMotionDetector:
 
 リソースを削減するには、カメラをON、OFFにする仕組みが別途必要になる。
 
+[【Django】任意のタイミングでサーバーのカメラでライブ配信する【imutils.video.VideoStreamer】](/post/django-livestreamer-custom/)
+
+
 しかし、映像のラグはほとんどない。
 
 

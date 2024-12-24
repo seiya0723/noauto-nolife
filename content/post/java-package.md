@@ -1,7 +1,7 @@
 ---
 title: "Javaのpackage(パッケージ)の実行方法"
-date: 2024-01-17T14:28:00+09:00
-lastmod: 2024-01-17T14:28:00+09:00
+date: 2022-01-17T14:28:00+09:00
+lastmod: 2022-01-17T14:28:00+09:00
 draft: false
 thumbnail: "images/noimage.jpg"
 categories: [ "サーバーサイド" ]

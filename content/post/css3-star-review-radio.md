@@ -2,7 +2,7 @@
 title: "HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】【flex-direction:row-reverseで逆順対応可】"
 date: 2022-02-11T14:51:05+09:00
 draft: false
-thumbnail: "images/Screenshot from 2022-02-08 14-55-00.png"
+thumbnail: "images/Screenshot from 2022-02-13 17-49-59.png"
 categories: [ "フロントサイド" ]
 tags: [ "html5","css3","fontawesome","ウェブデザイン" ]
 ---

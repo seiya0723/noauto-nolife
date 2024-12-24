@@ -2,7 +2,7 @@
 title: "DjangoとReactのSPAウェブアプリで、使用することができない(と思われる)Djangoの技術"
 date: 2024-01-21T09:49:12+09:00
 lastmod: 2024-01-21T09:49:12+09:00
-draft: false
+draft: true
 thumbnail: "images/django-react.jpg"
 categories: [ "others" ]
 tags: [ "django","react","アンチパターン" ]

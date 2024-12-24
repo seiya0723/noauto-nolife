@@ -1,7 +1,7 @@
 ---
 title: "Netlifyと静的サイトジェネレーターHUGOで1ヶ月約100円でブログ運営をする方法【独自ドメイン使用】"
 date: 2020-10-22T14:28:18+09:00
-draft: false
+draft: true
 thumbnail: "images/hugo.jpg"
 categories: [ "web全般" ]
 tags: [ "スタートアップシリーズ","netlify","静的サイトジェネレーター","HUGO" ]

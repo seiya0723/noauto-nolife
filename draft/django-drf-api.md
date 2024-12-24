@@ -1,7 +1,7 @@
 ---
 title: "Django Rest Frameworkにて、APIを提供する"
 date: 2022-01-28T15:12:00+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "django","restful","api" ]

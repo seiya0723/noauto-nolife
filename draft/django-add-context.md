@@ -1,7 +1,7 @@
 ---
 title: "【Django】ビュークラスの継承を使い、予めcontextを追加させる"
 date: 2021-12-31T08:29:13+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "django","tips" ]

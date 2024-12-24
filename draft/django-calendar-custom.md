@@ -1,7 +1,7 @@
 ---
 title: "【Django】カレンダーを更に改良する"
 date: 2022-08-08T16:16:36+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "django","上級者向け","追記予定" ]

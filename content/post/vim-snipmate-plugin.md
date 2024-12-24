@@ -1,5 +1,5 @@
 ---
-title: "【Vimでスニペット】snipmateプラグインをインストールして使ってみる【爆速コーディング】"
+title: "【Vimでスニペット】snipmateプラグイン"
 date: 2023-03-09T13:33:55+09:00
 lastmod: 2023-03-09T13:33:55+09:00
 draft: false
@@ -85,9 +85,6 @@ snippetの表示が邪魔ならawkコマンドで切り取る。
 長くてコマンド入力が面倒なら、これをbashのaliasにでも登録しておくと良いだろう。
 
     alias python_snip="grep -h 'snippet' ~/.vim/after/snippets/python* | awk '{print $2}'"
-
-
-
 
 
 

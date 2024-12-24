@@ -2,7 +2,7 @@
 title: "Todoリストのウェブアプリの要件定義書の書き方"
 date: 2023-06-24T13:02:06+09:00
 lastmod: 2023-06-24T13:02:06+09:00
-draft: false
+draft: true
 thumbnail: "images/noimage.jpg"
 categories: [ "others" ]
 tags: [ "要件定義書","tips","初心者向け" ]

@@ -2,7 +2,7 @@
 title: "フレームワークと言語の学習方法"
 date: 2022-05-03T11:45:50+09:00
 lastmod: 2022-05-03T11:45:50+09:00
-draft: false
+draft: true
 thumbnail: "images/noimage.jpg"
 categories: [ "others" ]
 tags: [ "私見","初心者向け" ]

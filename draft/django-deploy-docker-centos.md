@@ -1,7 +1,7 @@
 ---
 title: "docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる"
 date: 2022-02-03T15:11:00+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","デプロイ","CentOS","docker" ]

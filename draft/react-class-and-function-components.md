@@ -2,7 +2,7 @@
 title: "【React】関数コンポーネント(function App)とクラスコンポーネント(class App extends Component)の違い"
 date: 2023-01-23T16:11:15+09:00
 lastmod: 2023-01-23T16:11:15+09:00
-draft: false
+draft: true
 thumbnail: "images/react.jpg"
 categories: [ "フロントサイド" ]
 tags: [ "react","tips","初心者向け" ]

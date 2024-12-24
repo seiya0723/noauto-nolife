@@ -1,7 +1,7 @@
 ---
 title: "要件定義書の書き方"
 date: 2022-06-04T17:13:16+09:00
-draft: false
+draft: true
 thumbnail: "images/noimage.jpg"
 categories: [ "others" ]
 tags: [ "初心者向け","スタートアップシリーズ" ]

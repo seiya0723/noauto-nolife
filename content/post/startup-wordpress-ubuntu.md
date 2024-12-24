@@ -85,3 +85,10 @@ DLと展開
 
 参照元: https://qiita.com/cherubim1111/items/b259493a39e36f5d524b
 
+
+## 補足
+
+ちなみに、単にWordpressの開発が目当てであれば、Localをインストールする方法もある。
+
+
+[【Ubuntu】Localをインストールする【WordPressのローカル環境構築】](/post/ubuntu-local-wordpress-install/)

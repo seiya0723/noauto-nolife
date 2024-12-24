@@ -2,7 +2,7 @@
 title: "Javascriptで自由にHTMLを操作する、DOMについて"
 date: 2023-01-07T09:59:59+09:00
 lastmod: 2023-01-07T09:59:59+09:00
-draft: false
+draft: true
 thumbnail: "images/js.jpg"
 categories: [ "フロントサイド" ]
 tags: [ "JavaScript","初心者向け" ]

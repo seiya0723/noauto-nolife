@@ -1,7 +1,7 @@
 ---
 title: "【Django】スペース区切りでOR・AND検索を改定する"
 date: 2022-04-15T16:42:39+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "django","上級者向け","検索" ]

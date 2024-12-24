@@ -7,7 +7,7 @@ categories: [ "インフラ" ]
 tags: [ "システム管理","ffmpeg","SSH","Ubuntu" ]
 ---
 
-Ubuntu 22.04 Serverでやった
+Ubuntu 22.04 Server
 
 ハードはラズパイ3B+
 
@@ -51,9 +51,10 @@ FFmpegとv4l2-utilsをインストール
 
 フレームレートは30fpsだったので、ヒートシンクでも取り付けて冷却を考慮すれば、一応RTMPサーバーとして運用はできそうだ。
 
-どうせならラズパイのUSBポートの4つ全部使ってみたいところだが、欲張るのはよそう。
 
-あーあ。どっかにファンレス無音で高性能、かつ小型のPCがあったらなぁー
+もし、カメラが取得した映像をリアルタイムで配信し続けたいのであれば、下記の方法もある。
+
+[【Django】任意のタイミングでサーバーのカメラでライブ配信する【imutils.video.VideoStreamer】](/post/django-livestreamer-custom/)
 
 
 参照元: https://trac.ffmpeg.org/wiki/Capture/Webcam

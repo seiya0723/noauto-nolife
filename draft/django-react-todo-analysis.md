@@ -2,7 +2,7 @@
 title: "DjangoとReactのTodoアプリ(SPA)を解析する"
 date: 2023-04-29T15:59:32+09:00
 lastmod: 2023-04-29T15:59:32+09:00
-draft: false
+draft: true
 thumbnail: "images/django-react.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","React","初心者向け","追記予定" ]

@@ -144,5 +144,9 @@ VLCのネットワークから `rtmp://127.0.0.1/live/1` へアクセスする�
 
 ただし映像は10秒ほど遅れているが。
 
+もし、サーバーのカメラが取得した映像をリアルタイムで表示させたい場合、下記記事を使う方法もある。
+
+[【Django】任意のタイミングでサーバーのカメラでライブ配信する【imutils.video.VideoStreamer】](/post/django-livestreamer-custom/)
+
 
 

@@ -1,7 +1,7 @@
 ---
 title: "なぜUbuntuを使うのか？WindowsやMacにはない〇〇がある"
 date: 2022-10-15T09:18:24+09:00
-draft: false
+draft: true
 thumbnail: "images/ubuntu.jpg"
 categories: [ "インフラ" ]
 tags: [ "Ubuntu","私見","初心者向け","コラム" ]

@@ -1,23 +1,16 @@
 ---
-title: "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios】"
-date: 2023-05-01T17:25:46+09:00
-lastmod: 2024-04-30T17:10:46+09:00
-draft: false
+title: "【Restful】Django+Reactビギナーが40分でCRUD掲示板アプリ(SPA)を作る方法【FetchAPI】"
+date: 2024-04-28T08:46:07+09:00
+lastmod: 2024-04-28T08:46:07+09:00
+draft: true
 thumbnail: "images/django-react.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","react","SPA","Restful","初心者向け" ]
+tags: [ "django","react","SPA","Restful" ]
 ---
 
+本記事は、[【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios】](/post/startup-django-react/)のFetchAPI版である。
 
-『[Djangoビギナーが40分で掲示板アプリを作る方法](/post/startup-django/) 』を終え、DjangoとReactを組み合わせ、SPAを作りたいと思った方向け。
-
-40分はあくまでも目安。
-
-内部構造に関しては、『[DjangoとReactを組み合わせる方法論と問題の考察](/post/django-react-methodology/) 』に解説がある。
-
-~~2023年5月3日現在、編集機能の実装を考慮中。近日追記予定。~~
-
-2024年4月30日追記。モーダルダイアログを使用して編集機能を搭載。
+axiosを別途インストールせず、FetchAPIを使っている。
 
 ## 流れ
 
@@ -39,7 +32,6 @@ tags: [ "django","react","SPA","Restful","初心者向け" ]
 
 
 ## React、Djangoの各プロジェクトを作る
-
 
 ```
 mkdir django_react_todo
@@ -295,7 +287,6 @@ urlpatterns = [
 ## Reactの必要なライブラリをインストール
 
 ```
-npm install axios@1.4.0
 npm install bootstrap@5.2.3
 npm install reactstrap@9.1.9
 ```
@@ -381,7 +372,7 @@ reportWebVitals();
 import React, { Component } from "react";
 
 import Modal from "./components/Modal";
-import axios from "axios";
+//import axios from "axios";
 
 // リクエスト送信用のaxiosとモーダルをimport
 class App extends Component {
@@ -402,39 +393,69 @@ class App extends Component {
     }
 
     refreshList     = () => {
-        axios
-            .get("/api/topics/")
-            .then((res) => this.setState({ topicList: res.data }))
-            .catch((err) => console.log(err));
+
+        const url       = "/api/topics/";
+        const method    = "GET";
+        const headers   = { "Content-Type": "application/json" };
+
+        fetch(url, { method, headers })
+        .then( (res) => {
+            if (!res.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return res.json();
+        })
+        .then( (data) => {
+            this.setState({ topicList: data })
+        })
+        .catch( (error) => {
+            console.log(error);
+        });
+
     };
 
-    // モーダルダイアログを表示させ、idがあれば編集処理のダイアログを、なければ新規作成のダイアログを表示させる
     handleSubmit    = (item) => {
+        const url       = item.id ? `/api/topics/${item.id}/` : "/api/topics/";
+        const method    = item.id ? "PUT" : "POST";
+        const headers   = { "Content-Type": "application/json" };
+        const body      = JSON.stringify(item);
 
-        if (item.id){
-            axios
-                .put(`/api/topics/${item.id}/`, item)
-                .then((res) => {
-                    this.refreshList();
-                })
-                .catch((err) => console.log(err));
-        }
-        else{
-            axios
-                .post("/api/topics/", item)
-                .then((res) => {
-                    this.refreshList();
-                })
-                .catch((err) => console.log(err));
-        }
+        fetch(url, { method, headers, body })
+        .then( (res) => {
+            if (!res.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return res.json();
+        })
+        .then( (data) => {
+            this.refreshList();
+        })
+        .catch( (error) => {
+            console.log(error);
+        });
 
         this.closeModal();
     };
 
     handleDelete    = (item) => {
-        axios
-            .delete(`/api/topics/${item.id}/`)
-            .then((res) => this.refreshList());
+
+        const url       = `/api/topics/${item.id}/`;
+        const method    = "DELETE";
+        const headers   = { "Content-Type": "application/json", };
+
+        fetch(url, { method, headers })
+        .then( (res) => {
+            if (!res.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            // レスポンスのボディは空なので、.then( data => {} ) につなげる必要はない。
+            this.refreshList();
+        })
+        .catch( (error) => {
+            console.log(error);
+        });
+
     };
 
 
@@ -447,6 +468,7 @@ class App extends Component {
             this.setState({ activeItem: { comment:"" }, modal: true });
         }
     };
+
     closeModal      = () => {
         this.setState({ activeItem: { comment:"" }, modal: false });
     };
@@ -466,8 +488,8 @@ class App extends Component {
 
     renderItems     = () => {
         return this.state.topicList.map((item) => (
-            <div className="border" key={item.id}>
-                <div>{item.id}</div>
+            <div className="border" key={ item.id }>
+                <div>{ item.id }</div>
                 <div>{ this.linebreaksbr(item.comment) }</div>
                 <div className="text-end">
                     <input type="button" className="mx-1 btn btn-success" value="編集" onClick={ () => this.openModal(item) } />
@@ -483,9 +505,9 @@ class App extends Component {
                 <main className="container">
 
                     <input className="btn btn-primary" type="button" onClick={ () => this.openModal(this.state.activeItem) } value="新規作成" />
-                    { this.state.modal ? ( <Modal activeItem    = {this.state.activeItem}
-                                                  handleSubmit  = {this.handleSubmit}
-                                                  closeModal    = {this.closeModal} /> ): null }
+                    { this.state.modal ? ( <Modal activeItem    = { this.state.activeItem }
+                                                  handleSubmit  = { this.handleSubmit }
+                                                  closeModal    = { this.closeModal } /> ): null }
                     { this.renderItems() }
 
                 </main>
@@ -497,6 +519,7 @@ class App extends Component {
 export default App;
 ```
 
+deleteメソッドで送信する際には、レスポンスは空になるため、中身を取り出さずにそのままrefreshList()を実行する。
 
 
 
@@ -598,8 +621,6 @@ npm start
 
 ## 動かすとこうなる。
 
-<!-- <div class="img-center"><img src="/images/Screenshot from 2023-05-03 11-36-12.png" alt=""></div> -->
-
 新規作成用のボタンを押して、モーダルダイアログが表示される。テキストに入力をして投稿する。
 
 <div class="img-center"><img src="/images/Screenshot from 2024-04-30 16-59-06.png" alt=""></div>
@@ -607,14 +628,68 @@ npm start
 
 ## 結論
 
-説明不足感があるので、また後日説明を追記する予定。
+ご覧の通り、fetchではインストールが不要になる反面、リクエスト処理のコードが長くなってしまう。
+
+```
+fetch(url, { method, headers, body })
+.then( (res) => {
+    if (!res.ok) {
+        throw new Error("Network response was not ok");
+    }
+    return res.json();
+})
+.then( (data) => {
+    this.refreshList();
+})
+.catch( (error) => {
+    console.log(error);
+});
+```
+
+```
+axios
+    .post("/api/topics/", item)
+    .then((res) => {
+        this.refreshList();
+    })
+    .catch((err) => console.log(err));
+```
+
+投稿処理(fetchは変数を使って編集も兼ねているが)ひとつを考えても、レスポンスを受け取ったときの挙動が少し煩雑になっている。
+
+もっとも、fetchの場合は2つ目のthenを省略できるので、書き方によっては大差ない。
+
+しかし、1つ目のthenで、ステータスコードが200番台以外のレスポンスも受け取ってしまう。これを防ぐために
+
+```
+    if (!res.ok) {
+        throw new Error("Network response was not ok");
+    }
+    return res.json();
+```
+
+このようにifで分岐をしなければならない。(ステータスコードが200番台以外の場合は、res.okがfalseになる。) 
+
+一方、axiosの場合はステータスコードが200番台の場合のみ、1つ目のthenを通るようになっている。
+
+```
+    .then((res) => {
+        // この処理が実行されている時点で、すべてステータスコードは200番台
+        this.refreshList();
+    })
+```
+
+故に、余計な分岐を用意する必要がなくなり、ネストが浅くなる。少なくともコードの視認性ではaxiosのほうが有利のようだ。
+
+
 
 ## ソースコード
 
-https://github.com/seiya0723/react-django-startup-bbs/
+https://github.com/seiya0723/react-django-startup-bbs-fetchapi
 
 ## 関連記事
 
-[DjangoとReactのTodoアプリ(SPA)を解析する](/post/django-react-todo-analysis/)
+- [DjangoとReactのTodoアプリ(SPA)を解析する](/post/django-react-todo-analysis/)
+- [【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios】](/post/startup-django-react/)
 
 

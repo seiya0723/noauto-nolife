@@ -1,7 +1,7 @@
 ---
 title: "【PR】ElementTube 一般公開"
 date: 2021-12-30T20:47:09+09:00
-draft: false
+draft: true
 thumbnail: "images/Screenshot from 2022-01-02 14-14-16.png"
 categories: [ "others" ]
 tags: [ "ポートフォリオ","私について","django" ]

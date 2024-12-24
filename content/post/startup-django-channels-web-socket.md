@@ -562,3 +562,9 @@ ROOMを作り、コメントを投稿することでそれが全てに反映さ�
 
 https://github.com/seiya0723/django-channels-websocket-sample
 
+
+このコードは、ページをリロードするとチャットの内容が全て消える。そこで、下記では、投稿内容を全てDBに記録するようにした。
+
+
+[DjangoでWebSocketを使って、チャットサイトを作る](/post/django-websocket-chatsite/)
+

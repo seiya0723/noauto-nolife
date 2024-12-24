@@ -1,7 +1,7 @@
 ---
 title: "DjangoでカレンダーのUIを作る"
 date: 2022-07-09T15:42:16+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "django","ウェブデザイン" ]

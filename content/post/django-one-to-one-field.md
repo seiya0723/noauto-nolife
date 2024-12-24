@@ -1,7 +1,7 @@
 ---
 title: "【Django】OneToOneFieldでつながっているデータの取得方法【モデル名を小文字にした属性名で取得できる】"
-date: 2023-01-10T14:03:08+09:00
-lastmod: 2023-01-10T14:03:08+09:00
+date: 2022-01-10T14:03:08+09:00
+lastmod: 2022-01-10T14:03:08+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]

@@ -2,7 +2,7 @@
 title: "【Vim】ReactでHTMLをコーディングするときだけ改行でインデントしてほしい"
 date: 2024-01-21T15:32:31+09:00
 lastmod: 2024-01-21T15:32:31+09:00
-draft: false
+draft: true
 thumbnail: "images/vim.jpg"
 categories: [ "others" ]
 tags: [ "vim","react","開発効率化","追記予定" ]

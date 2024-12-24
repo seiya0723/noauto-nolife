@@ -148,3 +148,7 @@ tags: [ "django","上級者向け","tips" ]
 一応管理画面のテンプレートの改造も可能な模様。デフォルトでもいたれりつくせりなのであえてテンプレートまでカスタムする必要はなさそうだが。
 
 
+## 関連記事
+
+[【Django】管理サイトで1対多(ForeignKey)、多対多(ManyToManyField)のフォームを扱いやすくする【admin】](/post/django-admin-custom-foreign-m2m/)
+

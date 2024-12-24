@@ -1,7 +1,7 @@
 ---
 title: "Django-allauthのメールを使用したログイン方式で、アカウント新規作成時、確認URLにアクセスしていないにもかかわらず、ログインできてしまうのはなぜか？"
 date: 2022-06-19T16:12:44+09:00
-draft: false
+draft: true
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","allauth","tips" ]

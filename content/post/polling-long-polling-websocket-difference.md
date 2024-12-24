@@ -73,5 +73,11 @@ WebSocketは通信経路を確立させるため、前もってHTTP通信を行�
 |WebSocket|低い|低い|リアルタイム|とても難しい|
 
 
+## djangoでWebSocketを動かす。
+
+下記では、実際にdjangoでWebSocketを使い、チャットサイトを作っている。
+
+[DjangoでWebSocketを使って、チャットサイトを作る](/post/django-websocket-chatsite/)
+
 
 

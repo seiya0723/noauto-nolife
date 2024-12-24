@@ -1,7 +1,7 @@
 ---
 title: "別のUbuntuにデータを輸送する"
 date: 2022-08-15T18:20:02+09:00
-draft: false
+draft: true
 thumbnail: "images/ubuntu.jpg"
 categories: [ "インフラ" ]
 tags: [ "開発環境","Ubuntu","私見","追記予定" ]
