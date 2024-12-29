@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/drf-400-error-serializer/", "title" : "DRFで400 Bad Request エラーが出る時は、Serializerのフィールドを確認する" }, 
+{ "link": "/post/drf-csrf-validation/", "title" : "DRFはいつCSRF検証をするのか？" }, 
+{ "link": "/post/threading-sqlite3/", "title" : "SQliteはマルチスレッド・マルチプロセスに対応していない" }, 
 { "link": "/post/css3-star-review-radio/", "title" : "HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】【flex-direction:row-reverseで逆順対応可】" }, 
 { "link": "/post/startup-django-channels-web-socket/", "title" : "django-channelsを使ってWebSocketを実現させる【チャットサイト開発に】" }, 
 { "link": "/post/polling-long-polling-websocket-difference/", "title" : "WebSocketとポーリング、ロングポーリングの違い【非同期通信と双方向通信】" }, 
@@ -16,7 +19,6 @@ const SEARCH_LIST = [
 { "link": "/post/java-package/", "title" : "Javaのpackage(パッケージ)の実行方法" }, 
 { "link": "/post/nginx-rtmp-module/", "title" : "Nginxにrtmp-moduleを加えてmake install。ffmpegでRTMP配信する映像をVLCで再生【ライブストリーミング再生】" }, 
 { "link": "/post/django-livestreamer/", "title" : "【Django】OpenCVとyieldを使い、ウェブカメラの映像をライブ配信する【imutils.video.VideoStreamer】" }, 
-{ "link": "/post/drf-400-error-serializer/", "title" : "DRFで400 Bad Request エラーが出る時は、Serializerのフィールドを確認する" }, 
 { "link": "/post/npm-install-fontawesome/", "title" : "npm で Fontawesomeを使う" }, 
 { "link": "/post/npm-install-save-option/", "title" : "npm install --save パッケージ名 の--saveは必要か？" }, 
 { "link": "/post/react-2times-request/", "title" : "Reactでaxiosを使ってリクエストをすると、2回送られる問題【React.StrictMode問題】" }, 

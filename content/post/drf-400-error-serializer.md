@@ -46,29 +46,131 @@ class TodoSerializer(serializers.ModelSerializer):
   "created_at": "2024年12月25日 12:00:00",
   "content": "aaaa",
   "deadline": "2024年12月25日 12:00:00",
-  "is_done": false
-  "is_editing": false
-  "edit_text": "aaaaaa"
+  "is_done": false,
+  "is_editing": false,
+  "edit_text": "aaaaaa",
 }
 ```
 400 Bad Request エラーになる。
 
 エラーの理由は、
 
-- Serializerに存在しないフィールドが含まれている ( is_editing, edit_text )
+- ~~Serializerに存在しないフィールドが含まれている ( is_editing, edit_text )~~ ←含まれていても問題はない。切り捨てられる
 - ネストされたフィールドは送信できない
-- 日付のフォーマットに従っていない？ ←要検証
+- 日時フォーマットが ISO 8601 に沿っていない
+
+この2つにある。
 
 
+## ネストしたフィールドは送信できない
+
+```
+class TodoSerializer(serializers.ModelSerializer):
+    category    = CategorySerializer()
+
+    class Meta:
+        model   = Todo
+        fields  = ("id", "category", "created_at", "content", "deadline", "is_done")
+```
+
+このようにネストしたフィールドを含んでいる場合、GETメソッドの場合は、
+
+```
+{
+  "id": 2,
+  "category": {
+    "id": 1,
+    "created_at": "2024-12-23T12:00:00+09:00",
+    "name": "テスト",
+    "color": "#00ffcc"
+  },
+  "created_at": "2024年12月25日 12:00:00",
+  "content": "aaaa",
+  "deadline": "2024年12月25日 12:00:00",
+  "is_done": false,
+}
+```
+
+CategorySerializerのフィールドがネストされて手に入る。
+
+ただ、このSerializerはバリデーション(POSTとPUT)には使えない。先のようにリクエストを送信しても
+
+```
+{
+  "id": 2,
+  "category": 1,
+  "created_at": "2024年12月25日 12:00:00",
+  "content": "aaaa",
+  "deadline": "2024年12月25日 12:00:00",
+  "is_done": false,
+}
+```
+
+このようにリクエストを送信しても、400エラーになる。対策として、Serializerを書き換える必要がある。
+
+
+このようにかえって複雑になってしまうため、ハイブリッド型のSerializerを使う。
+
+## 日時フォーマットが ISO 8601 に沿っていない
+
+```
+  "deadline": "2024年12月25日 12:00:00",
+```
+
+このように年月日を含む日時は受け付けられない。
+
+## TIPS: DRFのModelViewSetはバリデーションエラーは400エラーを出すようになっている
+
+DRFのviews.pyは、以下のようにModelViewSetを継承して作る。
+
+
+```
+from rest_framework import viewsets
+
+from .models import Category,Todo
+from .serializers import CategorySerializer,TodoSerializer
+
+class CategoryView(viewsets.ModelViewSet):
+    serializer_class    = CategorySerializer
+    queryset            = Category.objects.all()
+
+
+class TodoView(viewsets.ModelViewSet):
+    serializer_class    = TodoSerializer
+    queryset            = Todo.objects.all()
+```
+
+
+このModelViewSet、以下を多重継承して作られている。
+
+
+```
+mixins.CreateModelMixin,
+mixins.RetrieveModelMixin,
+mixins.UpdateModelMixin,
+mixins.DestroyModelMixin,
+mixins.ListModelMixin,
+GenericViewSet
+```
+
+https://github.com/encode/django-rest-framework/blob/master/rest_framework/viewsets.py#L245
+
+このCreateModelMixinは、serializer.is_valid() 時に 例外を出すようにしている。
+
+https://github.com/encode/django-rest-framework/blob/master/rest_framework/mixins.py#L12
+
+ただし、APIViewはこれらのMixinを継承していないため、400エラーは出ない。
+
+Restfulの観念に従うのであれば、APIViewでも例外と400エラーをレスポンスするように仕立てたほうが良いだろう。
 
 
 ## 結論
 
 まとめると、
 
-- Serializerのfieldsに存在しないフィールドは含めてはいけない。
 - 1対多などで、ネストしたフィールドはリクエスト時に送信できない。
-- 
+- 日付のフォーマットを送信する場合は、フォーマットを考慮する。
 
+この2つを徹底する。でないと400エラーになる。
 
 
