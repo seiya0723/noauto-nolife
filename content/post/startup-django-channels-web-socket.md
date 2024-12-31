@@ -21,6 +21,10 @@ tags: [ "Django","WebSocket","上級者向け","スタートアップシリー�
 pip install django channels daphne
 ```
 
+djangoとdjango-channels、それからdaphne(ダフネ)をインストールする。
+
+daphneは ASGI（Asynchronous Server Gateway Interface）に準拠したサーバー。
+
 ### config/settings.py
 
 ```

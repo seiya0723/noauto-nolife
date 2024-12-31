@@ -1,5 +1,5 @@
 ---
-title: "DRFで400 Bad Request エラーが出る時は、Serializerのフィールドを確認する"
+title: "DRFで400 Bad Request エラーが出る時、Serializerを確認する"
 date: 2024-12-24T09:21:14+09:00
 lastmod: 2024-12-24T09:21:14+09:00
 draft: false
@@ -33,7 +33,7 @@ class TodoSerializer(serializers.ModelSerializer):
         fields  = ("id", "category", "created_at", "content", "deadline", "is_done")
 ```
 
-オブジェクトを送信すると
+このオブジェクトを送信すると
 ```
 {
   "id": 2,
@@ -159,10 +159,42 @@ https://github.com/encode/django-rest-framework/blob/master/rest_framework/views
 
 https://github.com/encode/django-rest-framework/blob/master/rest_framework/mixins.py#L12
 
-ただし、APIViewはこれらのMixinを継承していないため、400エラーは出ない。
+
+この例外を、キャッチしているのが、exception_handler() 。ここでレスポンスを返している。
+
+https://github.com/encode/django-rest-framework/blob/master/rest_framework/views.py#L72
+
+ただし、APIViewはこれらのMixinを継承していないため、400エラーは出ない。(DRFのAPIViewは、django.generic.views.View を継承している。)
+
+https://github.com/encode/django-rest-framework/blob/master/rest_framework/views.py#L105
 
 Restfulの観念に従うのであれば、APIViewでも例外と400エラーをレスポンスするように仕立てたほうが良いだろう。
 
+
+## バリデーションエラー(400エラー)にならないようにするには？
+
+```
+class TodoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model   = Todo
+        fields  = ("id", "category", "created_at", "content", "deadline", "is_done")
+```
+
+シリアライザがこの場合、idを除いた全てのフィールドを指定する
+
+```
+{ 
+  "category": 1,
+  "content": "タスクの内容",
+  "deadline": "2025-01-09T05:00",
+  "created_at": "2025-01-09T05:00",
+  "is_done": false,
+},
+```
+
+モデルのフィールドオプションでdefaultを指定していたとしても、null=True,blank=Trueではないものは入力必須扱い。
+
+よって、サーバー側で値を入れる予定のcreated_atもフロント側で指定する必要がある。
 
 ## 結論
 

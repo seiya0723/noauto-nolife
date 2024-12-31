@@ -5,7 +5,7 @@ lastmod: 2024-11-26T17:17:26+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django" ]
+tags: [ "Django","SSE","JavaScript" ]
 ---
 
 ## 【前置き】Djangoでリアルタイム通信する場合
@@ -22,7 +22,7 @@ DjangoでDB内の情報をリアルタイムで表示させる場合、
 
 [【Django】Ajax(jQuery)でロングポーリングを実装させる【チャットサイトの開発に】](/post/django-ajax-long-polling/)
 
-Web Socketは実装難度が高い。
+WebSocketは実装難度が高い。
 
 [【Django】channelsを使ってWebSocketを実現させる【チャットサイト開発に】](/post/startup-django-channels-web-socket/)
 
@@ -330,7 +330,6 @@ JSONで得られるため、オブジェクトに変換し、データをレン�
 
 するとこのように、更新ボタンを押していないのに投稿内容がほぼリアルタイムで反映されている。
 
-
 <div class="img-center"><img src="/images/Screenshot from 2024-11-27 10-16-53.png" alt=""></div>
 
 
@@ -348,6 +347,11 @@ JSONで得られるため、オブジェクトに変換し、データをレン�
 などの対策も必要だ。
 
 更にリアルタイム性を追求するのであれば、負荷を低減させるため、プロセス単位ではなく、サーバー単位でメモリが共有されるRedisの実装も考える。
+
+また、SSEではなく、WebSocketの実装も視野に入れたい。
+
+[DjangoでWebSocketを使って、チャットサイトを作る](/post/django-websocket-chatsite/)
+
 
 ## ソースコード
 

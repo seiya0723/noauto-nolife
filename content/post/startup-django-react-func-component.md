@@ -8,9 +8,7 @@ categories: [ "サーバーサイド" ]
 tags: [ "Django","React","SPA" ]
 ---
 
-[【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios】](/post/startup-django-react/) ではクラスベースのコンポーネントを使っている。
-
-最近の開発では関数ベースのコンポーネントが主流のため、一部を書き換えた。
+最近(2018年以降)の開発では関数ベースのコンポーネントが主流のため、一部を書き換えた。
 
 ## React
 
