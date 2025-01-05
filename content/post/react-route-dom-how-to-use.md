@@ -1,5 +1,5 @@
 ---
-title: "react-route-domの使い方【Reactでルーティング】"
+title: "react-router-domの使い方【Reactでルーティング】"
 date: 2023-02-02T17:29:38+09:00
 lastmod: 2023-02-02T17:29:38+09:00
 draft: false
@@ -9,12 +9,11 @@ tags: [ "react","JavaScript","追記予定" ]
 ---
 
 
-ページが複数あるサイトをReactで作る場合、react-route-domでルーティングを行うと良いだろう。
+ページが複数あるサイトをReactで作る場合、react-router-domでルーティングを行うと良いだろう。
 
 ```
-npm install react-route-dom
+npm install react-router-dom
 ```
-
 
 ## 使い方
 

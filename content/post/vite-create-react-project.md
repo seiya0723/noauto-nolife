@@ -72,6 +72,36 @@ export default defineConfig({
 })
 ```
 
+## 8000番ポートのサーバーサイドにプロキシするには？
+
+create-react-app では、 package.jsonのproxy設定に、サーバーサイドのIPアドレスとポート番号を指定すれば良かったが、Viteではその設定は無効。
+
+先の項目と同じく、vite.config.js で設定をする。
+
+```
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+    plugins: [react()],
+
+    server: {
+        port: 3000, // 使用するポート番号を指定
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8000/',
+                changeOrigin: true,
+            },
+        },
+
+    },
+})
+```
+
+これにより、CRAのときと同じように 3000ポートに対して、 /api でリクエストが送られた時、8000ポートへリクエストを送る。
+
+
 ## React単体で使うのはもう時代遅れ？
 
 どうやら、今のReactの開発はNext.jsなどのフレームワーク上で動作させるのが主流らしい。
