@@ -12,10 +12,10 @@ tags: [ "JavaScript","jQuery","Ajax","Django" ]
 通常、Ajaxでサーバーにリクエストを送信する時、下記のようにFormDataクラスを使用して送信する。
 
 
-    let form_elem   = "#form_area";
-    let data        = new FormData( $(form_elem).get(0) );
-    let url         = $(form_elem).prop("action");
-    let method      = $(form_elem).prop("method");
+    const form_elem   = "#form_area";
+    const data        = new FormData( $(form_elem).get(0) );
+    const url         = $(form_elem).prop("action");
+    const method      = $(form_elem).prop("method");
 
     $.ajax({
         url: url,
@@ -39,27 +39,25 @@ tags: [ "JavaScript","jQuery","Ajax","Django" ]
 
 下記のようにすれば、引数なしのFormDataから作られたオブジェクトにキーと値をセットできる。
 
-    let data    = new FormData();
+    const data    = new FormData();
     data.set("comment","これは.set()によって追加されました");
 
     console.log(data);
 
 なお、FormDataオブジェクトのメソッドには`.set()`の他に`.append()`がある。
 
-`.set()`は同じキーの場合は上書きされるが、`.append()`の場合は追加になる。そのため同じキーが複数存在するというおかしな状況になってしまうので、`.set()`のほうが望ましいと思われる。
+`.set()`は同じキーの場合は上書きされるが、`.append()`の場合は追加になる。
 
-他にもキーを指定して削除する`.delete()`があるので、下記リンクを参考に。
-
+他にもキーを指定して削除する`.delete()`があるので、下記リンクを参考。
 
 https://developer.mozilla.org/ja/docs/Web/API/FormData
-
 
 ### オブジェクト内のキーと値の確認
 
 FormDataオブジェクトにセットされたキーと値は`for of`を使えば参照できる。
 
-    for (let v of data ){ console.log(v); }
-    for (let v of data.entries() ){ console.log(v); }
+    for (const v of data ){ console.log(v); }
+    for (const v of data.entries() ){ console.log(v); }
 
 いずれも出力される内容は同じである。
 
@@ -100,9 +98,4 @@ FormDataオブジェクトにセットされたキーと値は`for of`を使え�
         }
     });
     
-## 結論
-
-これでDjangoで、DRFのシリアライザクラスを使用しなくてもフォームクラスだけでバリデーションを行うことができる。
-
-DRFのシリアライザはモデルのsaveメソッドを継承していないので、早い段階でフォームクラスに統一したい。
 

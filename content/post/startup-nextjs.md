@@ -2,7 +2,7 @@
 title: "Next.jsのインストール方法とプロジェクトの作成"
 date: 2023-02-09T21:48:32+09:00
 lastmod: 2023-02-09T21:48:32+09:00
-draft: false
+draft: true
 thumbnail: "images/js.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "next.js","JavaScript","スタートアップシリーズ" ]

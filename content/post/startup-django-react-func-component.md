@@ -1,5 +1,5 @@
 ---
-title: "【Restful】Django+Reactビギナーが40分で掲示板アプリ(SPA)を作る方法【axios + 関数コンポーネント】"
+title: "DRF+ReactのSPAで簡易掲示板を作る"
 date: 2024-08-12T10:33:30+09:00
 lastmod: 2024-08-12T10:33:30+09:00
 draft: false
