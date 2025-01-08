@@ -195,6 +195,29 @@ class TopicView(viewsets.ModelViewSet):
 
 Restfulの設計思想通り、メソッドごとにシンプルな機能(CRUD)を提供している。
 
+参照: https://www.django-rest-framework.org/api-guide/viewsets/#modelviewset
+
+ModelViewSetの中に含まれるメソッドは
+
+- .list()
+- .retrieve()
+- .create()
+- .update()
+- .partial_update()
+- .destroy()
+
+であり、それぞれ
+
+- .get() : .list()
+- .get() : .retrieve()
+- .post() : .create()
+- .put() : .update()
+- .patch() : .partial_update()
+- .delete() : .destroy()
+
+に対応している。2つあるgetのうち、idが指定されているものは.retrieve() そうでないものは.listで対応。
+
+
 ### ルーティング
 
 ModelViewSetの場合、APIViewと違ってルーティングの書き方も異なる
