@@ -208,10 +208,25 @@ class ReplyView(viewsets.ModelViewSet):
     #permission_classes  = [IsAuthenticated]
     serializer_class    = ReplySerializer
     queryset            = Reply.objects.all()
+
+    def get_queryset(self):
+        topic_id    = self.request.query_params.get('id')
+
+        try:
+            if topic_id:
+                return Reply.objects.filter(topic=topic_id)
+        except Exception as e:
+            print(e)
+
+        # idの指定なしの場合はNoneを返す
+        return Reply.objects.none()
 ```
 
 
 今回、CSRFの挙動を確認するため、JWT認証は行っていない。
+
+ReplyViewはidを指定してTopicに紐づくReplyのみ返すようにしている。パラメータの指定がない場合は、何も返さない。
+
 
 ### ModelViewSetでは、基本CSRF検証は免除されている。だが、JWT認証をしない場合、CSRF検証はされる。
 
@@ -278,7 +293,10 @@ router.register(r"topics", views.TopicView, "topic")
 router.register(r"categories", views.CategoryView, "category")
 router.register(r"replies", views.ReplyView, "reply")
 ```
-このルーティング設定、複数形ではなく単数形のほうがわかりやすいかもしれない。
+
+RESTの原則に従い、URLは全て名詞の複数形で対応している。
+
+https://ja.wikipedia.org/wiki/Representational_State_Transfer
 
 
 ## settings.py 
@@ -1024,7 +1042,7 @@ const Detail = () => {
 
     const loadReplies = async () => {
         try {
-            const response = await axios.get("/api/replies/");
+            const response = await axios.get(`/api/replies/?id=${id}`);
 
             const processed = {};
             for (let reply of response.data){
