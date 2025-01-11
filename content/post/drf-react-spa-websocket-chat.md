@@ -1163,3 +1163,9 @@ DRFはAPIを返しているだけなので、Reactだけでなくネイティブ
 
 スマホアプリ開発の勉強もしたいと思う。
 
+
+## ソースコード
+
+https://github.com/seiya0723/drf-react-spa-websocket-chatsite
+
+
