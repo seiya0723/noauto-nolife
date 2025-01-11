@@ -1146,7 +1146,6 @@ webSocketのオブジェクトが変わるわけではないが、useStateに格
 
 ルームの作成と削除ができる。
 
-
 <div class="img-center"><img src="/images/2025-01-11_15-05_02.png" alt=""></div>
 
 ルーム内の画面。メッセージのやり取りができる。
@@ -1155,7 +1154,11 @@ webSocketのオブジェクトが変わるわけではないが、useStateに格
 
 後はJWT認証を実装させれば完璧。
 
-カスタムユーザーモデルを使ってプロフィールを用意し、アイコンなどもつければ、LINEなどのメッセンジャーアプリとやっていることに変わりないだろう。
+JWT認証とWebSocketを両立させるには、Sec-WebSocket-Protocol というものを使えば良いらしい。もしくはWebSocket確立後に、メッセージに含ませる方法。
+
+https://nykergoto.hatenablog.jp/entry/2021/05/12/Websocket_%E3%81%AE%E8%AA%8D%E8%A8%BC_%28Authentication%29_%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%83%A1%E3%83%A2
+
+JWT認証を実装後、カスタムユーザーモデルを使ってプロフィールを用意し、アイコンなどもつければ、LINEなどのメッセンジャーアプリとやっていることに変わりないだろう。
 
 DRFはAPIを返しているだけなので、Reactだけでなくネイティブアプリとも連携はできる。
 
@@ -1163,9 +1166,7 @@ DRFはAPIを返しているだけなので、Reactだけでなくネイティブ
 
 スマホアプリ開発の勉強もしたいと思う。
 
-
 ## ソースコード
 
 https://github.com/seiya0723/drf-react-spa-websocket-chatsite
-
 
