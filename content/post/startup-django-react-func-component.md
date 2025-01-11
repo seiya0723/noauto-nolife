@@ -3,7 +3,7 @@ title: "DRF+ReactのSPAで簡易掲示板を作る"
 date: 2024-08-12T10:33:30+09:00
 lastmod: 2024-08-12T10:33:30+09:00
 draft: false
-thumbnail: "images/django-react.jpg"
+thumbnail: "images/drf-react.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","React","SPA" ]
 ---
