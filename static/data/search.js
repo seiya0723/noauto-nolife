@@ -1,6 +1,8 @@
 const SEARCH_LIST = [
+{ "link": "/post/drf-react-spa-crud-bbs-jwt/", "title" : "DRF+ReactのCRUD簡易掲示板SPAでJWT認証を実装する" }, 
+{ "link": "/post/react-usecontext-custom-hook/", "title" : "【React】Contextとカスタムフックでログイン・ログアウト、認証状態を扱う" }, 
 { "link": "/post/drf-react-spa-websocket-chat/", "title" : "DRF+ReactのSPAでWebsocketのチャットサイトをつくる" }, 
-{ "link": "/post/startup-django-react-jwt/", "title" : "Django(DRF)+ReactのSPAでJWTを使った認証を実装する" }, 
+{ "link": "/post/django-websocket-chatsite/", "title" : "DjangoでWebSocketを使って、チャットサイトを作る" }, 
 { "link": "/post/startup-django-react-func-component/", "title" : "DRF+ReactのSPAで簡易掲示板を作る" }, 
 { "link": "/post/drf-react-spa-crud-bbs/", "title" : "DRF+ReactのSPAでCRUD簡易掲示板をつくる" }, 
 { "link": "/post/drf-modelviewset-dynamic-routing/", "title" : "DRFでModelViewSetの動的ルーティング(URL内引数)を作る" }, 
@@ -36,7 +38,6 @@ const SEARCH_LIST = [
 { "link": "/post/react-2times-request/", "title" : "Reactでaxiosを使ってリクエストをすると、2回送られる問題【React.StrictMode問題】" }, 
 { "link": "/post/drf-datetime-serializers/", "title" : "DateTimeFieldで、フォーマットを指定したserializers.pyを作る" }, 
 { "link": "/post/drf-foreignkey-serializers/", "title" : "1対多のモデル構造で、ネストしたserializers.pyを作る" }, 
-{ "link": "/post/django-websocket-chatsite/", "title" : "DjangoでWebSocketを使って、チャットサイトを作る" }, 
 { "link": "/post/django-deploy-ubuntu-venv/", "title" : "UbuntuにDjangoをデプロイする【PostgreSQL+Nginx、Virtualenv使用】" }, 
 { "link": "/post/react-fullcalendar/", "title" : "ReactでFullcalendar.jsを使う" }, 
 { "link": "/post/startup-ubuntu2004-server/", "title" : "サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】" }, 

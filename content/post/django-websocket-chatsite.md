@@ -15,8 +15,6 @@ tags: [ "WebSocket","django","JavaScript" ]
 チャンネルレイヤーにメッセージを与えるだけでなく、DBにも記録するように仕立てた。
 
 
-
-
 ## consumers.py 
 
 ```
@@ -141,4 +139,9 @@ DRF+ReactのSPAでWebSocketを実現する場合。SerializerやStateなどが�
 
 次はDRF+ReactのSPAでWebSocketを作る。
 
+### 追記: 2025年1月11日
+
+作った。DRF+ReactのSPAでWebSocketのチャットサイト。
+
+[DRF+ReactのSPAでWebsocketのチャットサイトをつくる](/post/drf-react-spa-websocket-chat/)
 

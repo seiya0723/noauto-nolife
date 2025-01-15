@@ -2,7 +2,7 @@
 title: "Django(DRF)+ReactのSPAでJWTを使った認証を実装する"
 date: 2024-07-08T09:38:06+09:00
 lastmod: 2024-07-08T09:38:06+09:00
-draft: false
+draft: true
 thumbnail: "images/drf-react.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Django","React","SPA","JWT","追記予定" ]
