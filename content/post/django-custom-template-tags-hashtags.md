@@ -4,7 +4,7 @@ date: 2021-09-05T17:30:49+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","カスタムテンプレートタグ","XSS","セキュリティ" ]
+tags: [ "django","カスタムテンプレートタグ","XSS","セキュリティ" ]
 ---
 
 Djangoのカスタムテンプレートタグ(フィルタ)を使うことでTwitterやyoutube等のハッシュタグを実現できる。

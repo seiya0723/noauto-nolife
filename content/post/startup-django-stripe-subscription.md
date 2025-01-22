@@ -5,7 +5,7 @@ lastmod: 2023-04-22T15:47:44+09:00
 draft: false
 thumbnail: "images/screenshot_2023-04-24_15-02-05.png"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","Stripe","上級者向け" ]
+tags: [ "Django","Stripe" ]
 ---
 
 

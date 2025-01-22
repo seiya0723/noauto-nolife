@@ -5,7 +5,7 @@ lastmod: 2024-12-04T17:17:26+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","WebSocket","上級者向け","スタートアップシリーズ","コスト削減","追記予定" ]
+tags: [ "Django","WebSocket","スタートアップシリーズ","コスト削減","追記予定" ]
 ---
 
 [django-channelsのチュートリアル](https://channels.readthedocs.io/en/stable/tutorial/index.html)に倣って、WebSocketのチャットサイトを作った。

@@ -4,7 +4,7 @@ date: 2021-02-15T15:47:57+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","allauth","上級者向け","セキュリティ","認証" ]
+tags: [ "Django","allauth","セキュリティ","認証" ]
 ---
 
 Djangoでユーザーを作ったとき、デフォルトでは数値型オートインクリメントの主キーになる。

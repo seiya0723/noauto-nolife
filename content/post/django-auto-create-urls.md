@@ -5,7 +5,7 @@ lastmod: 2023-12-09T18:01:14+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","作業効率化" ]
+tags: [ "django","作業効率化" ]
 ---
 
 views.pyからurls.pyを作る。

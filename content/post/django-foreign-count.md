@@ -4,7 +4,7 @@ date: 2021-01-26T17:02:16+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","tips","上級者向け" ]
+tags: [ "django","tips" ]
 ---
 
 例えば、Djangoで掲示板サイトを作り、[投稿した内容に対してリプライできる機能を付けた](/post/django-models-foreignkey/)とする。そのリプライ数を一覧表示時に合わせて表示させる時、どうする？

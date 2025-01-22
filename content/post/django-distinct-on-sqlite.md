@@ -4,7 +4,7 @@ date: 2021-09-10T11:21:51+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","PostgreSQL","SQLite","モデル" ]
+tags: [ "django","PostgreSQL","SQLite","モデル" ]
 ---
 
 以下のクエリはPostgreSQLのみ有効。

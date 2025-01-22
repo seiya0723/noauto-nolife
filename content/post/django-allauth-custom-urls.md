@@ -4,7 +4,7 @@ date: 2021-05-25T09:49:51+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","allauth","上級者向け","セキュリティ" ]
+tags: [ "django","allauth","セキュリティ" ]
 ---
 
 Django-allauth。とても便利ではあるが、運用する場所によっては必要のない処理も含まれている。

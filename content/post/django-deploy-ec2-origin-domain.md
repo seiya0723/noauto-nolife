@@ -4,7 +4,7 @@ date: 2021-09-13T08:19:27+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","セキュリティ","ec2","nginx" ]
+tags: [ "django","セキュリティ","ec2","nginx" ]
 ---
 
 既に、[【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 + Certificate Manager + ロードバランサ(ELB)】](/post/ec2-origin-domain-https/)の内容を終え、独自ドメインでHTTPS通信が可能な状態である前提で解説する。

@@ -4,7 +4,7 @@ date: 2022-10-09T21:22:54+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け" ]
+tags: [ "django" ]
 ---
 
 ManyToManyFieldにはvalidatorsフィールドオプションは通用しない。

@@ -4,7 +4,7 @@ date: 2022-08-20T17:55:28+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","tips","追記予定" ]
+tags: [ "django","tips","追記予定" ]
 ---
 
 最終的にこのようになる。

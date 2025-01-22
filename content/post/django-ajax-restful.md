@@ -1,16 +1,16 @@
 ---
-title: "【Restful】DjangoでAjax(jQuery)を実装する方法【Django REST Framework使用】"
+title: "DjangoでAjax(jQuery)を実装する方法【Django REST Framework使用】"
 date: 2020-11-10T14:01:19+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","Ajax","Restful","上級者向け" ]
+tags: [ "Django","Ajax" ]
 ---
 
 
 先日の記事にて、[DjangoでAjax(jQuery)を実装する方法](/post/django-ajax/)を解説した。
 
-ただ、RestfulAPIを使用すれば、さらに少ないコードでAjaxを実装することができる。
+ただ、DjangoRESTFrameworkを使用すれば、さらに少ないコードでAjaxを実装することができる。
 
 
 ## RestfulAPI、Django REST Frameworkとは

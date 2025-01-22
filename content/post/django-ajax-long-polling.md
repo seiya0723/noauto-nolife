@@ -4,7 +4,7 @@ date: 2022-04-28T16:06:12+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","ajax","上級者向け","コスト削減" ]
+tags: [ "django","ajax","コスト削減" ]
 ---
 
 Ajaxを使えば、ページを部分的に更新させることができる。

@@ -4,7 +4,7 @@ date: 2022-08-13T14:44:47+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","models","上級者向け","追記予定" ]
+tags: [ "Django","models","追記予定" ]
 ---
 
 例えば、勉強時間や筋トレ時間を記録するウェブアプリを作るとする。

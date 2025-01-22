@@ -5,7 +5,7 @@ lastmod: 2022-11-26T15:51:28+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","ウェブデザイン" ]
+tags: [ "django","ウェブデザイン" ]
 ---
 
 

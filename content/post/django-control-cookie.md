@@ -4,7 +4,7 @@ date: 2022-08-12T16:32:07+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","上級者向け","Cookie" ]
+tags: [ "Django","Cookie" ]
 ---
 
 カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。

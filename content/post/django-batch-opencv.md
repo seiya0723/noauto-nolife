@@ -4,7 +4,7 @@ date: 2021-03-16T16:15:03+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","システム管理","上級者向け","tips","AI","OpenCV","Pythonライブラリ" ]
+tags: [ "Django","システム管理","tips","AI","OpenCV","Pythonライブラリ" ]
 ---
 
 Djangoのバッチ処理を実行し、DBにデータを格納させる。ただし、OpenCVで撮影した画像をDBに保存させる。本記事ではその手順を記す。

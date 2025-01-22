@@ -5,7 +5,7 @@ lastmod: 2023-11-11T16:46:34+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "作業効率化","django","上級者向け","Linux" ]
+tags: [ "作業効率化","django","Linux" ]
 ---
 
 Djangoプロジェクトを何度も何度も作っていてふと思う。

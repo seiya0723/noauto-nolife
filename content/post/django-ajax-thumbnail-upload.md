@@ -4,7 +4,7 @@ date: 2021-03-01T15:03:31+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","JavaScript","上級者向け","ajax","restful","Canvas","Blob" ]
+tags: [ "Django","JavaScript","ajax","Canvas","Blob" ]
 ---
 
 Djangoで動画をアップロードする時、ffmpegなどを使ってサムネイルの自動生成を行うが、クライアントが自分で動画のサムネイルを指定したいときはこの限りではない。

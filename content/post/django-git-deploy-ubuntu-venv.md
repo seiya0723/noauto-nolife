@@ -5,7 +5,7 @@ lastmod: 2023-02-14T13:50:19+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","git","デプロイ","Ubuntu","上級者向け","追記予定" ]
+tags: [ "django","git","デプロイ","Ubuntu","追記予定" ]
 ---
 
 要求される知識が非常に多いため、下記`対象読者`に該当する方のみ、閲覧を推奨します。

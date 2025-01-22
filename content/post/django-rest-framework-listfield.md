@@ -4,7 +4,7 @@ date: 2021-12-14T15:04:59+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","tips","上級者向け" ]
+tags: [ "django","tips" ]
 ---
 
 例えば、Ajaxを使用して複数選択削除を行いたい場合、idもしくはuuidのリスト型をサーバーサイドに送信することになるだろう。

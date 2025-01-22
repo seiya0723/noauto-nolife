@@ -4,7 +4,7 @@ date: 2021-12-25T20:57:33+09:00
 draft: false
 thumbnail: "images/Screenshot from 2021-12-25 21-39-54.png"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け" ]
+tags: [ "django" ]
 ---
 
 Djangoで月別アーカイブと年月計算を実装させる

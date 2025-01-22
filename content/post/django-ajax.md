@@ -1,10 +1,10 @@
 ---
-title: "DjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】"
+title: "DjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する"
 date: 2021-11-13T07:05:15+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "ajax","django","上級者向け" ]
+tags: [ "ajax","django" ]
 ---
 
 ウェブアプリケーションでAjaxが使えるようになれば、ページ内の一部の要素のみを更新させることができる。

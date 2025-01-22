@@ -4,7 +4,7 @@ date: 2022-05-03T17:23:44+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","上級者向け" ]
+tags: [ "Django" ]
 ---
 
 Djangoでは新規会員登録したとき、記録できるのはユーザーIDとパスワードだけで、会員登録フォームの追加をしない限り、姓名の記録はできない。

@@ -4,7 +4,7 @@ date: 2021-09-02T19:20:58+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","ビュー" ]
+tags: [ "django","tips" ]
 ---
 
 `kwargs`を使うことで似たような処理のビューを使いまわしできる。これによりビューのコード行数を大幅に削減可能。

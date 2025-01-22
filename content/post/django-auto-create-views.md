@@ -5,7 +5,7 @@ lastmod: 2023-12-09T14:51:10+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","作業効率化","上級者向け" ]
+tags: [ "django","作業効率化" ]
 ---
 
 以前の自動生成ツール

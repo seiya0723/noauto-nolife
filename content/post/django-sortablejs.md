@@ -5,7 +5,7 @@ lastmod: 2024-03-30T20:58:10+09:00
 draft: false
 thumbnail: "images/Screenshot from 2024-03-31 10-06-29.png"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","JavaScript","JavaScriptライブラリ","上級者向け","FetchAPI" ]
+tags: [ "Django","JavaScript","JavaScriptライブラリ","FetchAPI" ]
 ---
 
 

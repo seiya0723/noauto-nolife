@@ -4,7 +4,7 @@ date: 2021-12-21T16:28:13+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","tips","上級者向け" ]
+tags: [ "django","tips" ]
 ---
 
 通常、DjangoTemplateLanguageのforループは数値型のループは許さない。ループが許されているのは、文字列型かリスト型、イテラブルなオブジェクトに限定される。

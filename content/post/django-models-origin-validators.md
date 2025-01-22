@@ -4,7 +4,7 @@ date: 2022-04-15T14:33:20+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","tips","上級者向け" ]
+tags: [ "django","tips" ]
 ---
 
 例えば、簡易掲示板にて、特定の禁止ワードを含んだ投稿を拒否したい場合。

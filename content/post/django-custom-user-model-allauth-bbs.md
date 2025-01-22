@@ -4,7 +4,7 @@ date: 2022-07-30T08:46:59+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","allauth","上級者向け" ]
+tags: [ "django","allauth" ]
 ---
 
 手元のディレクトリ内で雛形が分散していたので、自分用に作った。

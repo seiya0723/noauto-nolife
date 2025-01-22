@@ -4,7 +4,7 @@ date: 2021-07-31T16:30:47+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け" ]
+tags: [ "django" ]
 ---
 
 [【Django】外部キーに対応したデータの個数をカウントして表示【リプライ・コメント数の表示に有効】【annotate+Count】](/post/django-foreign-count/)から

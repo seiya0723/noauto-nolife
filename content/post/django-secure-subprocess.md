@@ -4,7 +4,7 @@ date: 2022-01-04T10:16:48+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","システム管理","セキュリティ" ]
+tags: [ "django","システム管理","セキュリティ" ]
 ---
 
 ふと思った。

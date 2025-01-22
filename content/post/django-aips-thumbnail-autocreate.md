@@ -4,7 +4,7 @@ date: 2021-05-10T10:01:41+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け" ]
+tags: [ "django" ]
 ---
 
 ファイルをアップロードした後、ファイル名だけ表示されている状態では、それが何なのかパット見でよくわからない。

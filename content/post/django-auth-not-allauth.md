@@ -4,7 +4,7 @@ date: 2022-01-01T07:00:48+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","allauth","セキュリティ","上級者向け" ]
+tags: [ "Django","allauth","セキュリティ" ]
 ---
 
 Djangoでは、サードパーティー製ライブラリとしてdjango-allauthを使用することで、誰でも簡単にユーザー認証機能を実装させることができる。

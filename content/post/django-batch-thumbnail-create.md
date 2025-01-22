@@ -4,7 +4,7 @@ date: 2021-05-23T12:02:33+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","システム管理","上級者向け","Pythonライブラリ" ]
+tags: [ "Django","システム管理","Pythonライブラリ" ]
 ---
 
 [PS、AIファイルのサムネイルを作る処理](/post/django-aips-thumbnail-autocreate/)を[manage.pyコマンドに追加](/post/django-command-add/)することで、ビューの負担を軽減する。

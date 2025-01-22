@@ -4,7 +4,7 @@ date: 2022-02-26T08:40:27+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "上級者向け","django","restful","ajax" ]
+tags: [ "django","restful","ajax" ]
 ---
 
 ## 結論

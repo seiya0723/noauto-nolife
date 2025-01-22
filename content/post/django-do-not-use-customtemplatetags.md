@@ -5,7 +5,7 @@ lastmod: 2023-12-08T17:13:10+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","アンチパターン","上級者向け","作業効率化" ]
+tags: [ "django","アンチパターン","作業効率化" ]
 ---
 
 以前の[ページネーションを実装する方法(他パラメータとの両立)](/post/django-paginator/)は、実装に手間がかかる。

@@ -4,7 +4,7 @@ date: 2020-12-01T17:06:20+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","restful","ajax" ]
+tags: [ "django","restful","ajax" ]
 ---
 
 

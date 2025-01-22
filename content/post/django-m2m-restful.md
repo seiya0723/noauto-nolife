@@ -4,7 +4,7 @@ date: 2020-12-01T17:17:52+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","restful","ajax","上級者向け","css3","html5","JavaScript" ]
+tags: [ "django","restful","ajax","css3","html5","JavaScript" ]
 ---
 
 本記事では多対多のリレーションを含んだウェブアプリで、Django REST FrameworkとAjaxを使用した非同期データ送信を実現させる方法を書く。

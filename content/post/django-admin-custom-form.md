@@ -4,7 +4,7 @@ date: 2021-07-31T15:57:27+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","上級者向け" ]
+tags: [ "Django" ]
 ---
 
 管理サイトのフォームはとりわけ何もしなければ、registerするモデルフィールドに依存する。

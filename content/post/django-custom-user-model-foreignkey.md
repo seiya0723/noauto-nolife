@@ -4,7 +4,7 @@ date: 2021-02-20T11:13:37+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","tips","上級者向け","認証" ]
+tags: [ "django","tips","認証" ]
 ---
 
 例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。

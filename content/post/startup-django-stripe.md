@@ -4,7 +4,7 @@ date: 2022-02-03T08:08:33+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","Stripe","スタートアップシリーズ","上級者向け" ]
+tags: [ "django","Stripe","スタートアップシリーズ" ]
 ---
 
 DjangoでECサイトや課金ゲームサイト等を展開しようと考えているのであれば、避けて通ることができないのがカード決済。

@@ -4,7 +4,7 @@ date: 2021-09-01T18:23:58+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","データベース","モデル","上級者向け" ]
+tags: [ "django","データベース","モデル" ]
 ---
 
 日付でソートして売上を表示するとして、その日付になるまでの累計(累積)売上金額を表示したいとする。

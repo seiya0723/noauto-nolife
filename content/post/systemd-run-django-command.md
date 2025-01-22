@@ -5,7 +5,7 @@ lastmod: 2023-10-13T13:56:41+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","インフラ","Ubuntu","システム管理","デプロイ","上級者向け","systemd" ]
+tags: [ "django","インフラ","Ubuntu","システム管理","デプロイ","systemd" ]
 ---
 
 

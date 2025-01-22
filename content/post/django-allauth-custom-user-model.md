@@ -4,7 +4,7 @@ date: 2020-12-14T16:28:15+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","allauth","上級者向け","認証" ]
+tags: [ "django","allauth","認証" ]
 ---
 
 

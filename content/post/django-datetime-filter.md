@@ -4,7 +4,7 @@ date: 2021-11-06T09:01:37+09:00
 draft: True
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け" ]
+tags: [ "django" ]
 ---
 
 

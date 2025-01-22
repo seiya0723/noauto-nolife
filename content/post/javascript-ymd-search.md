@@ -5,7 +5,7 @@ lastmod: 2023-12-20T13:22:08+09:00
 draft: false
 thumbnail: "images/js.jpg"
 categories: [ "フロントサイド" ]
-tags: [ "JavaScript","tips","上級者向け" ]
+tags: [ "JavaScript","tips" ]
 ---
 
 前に作った、[jQueryの年月日検索](/post/jquery-ymd-search/)の作りが甘かったので、JavaScriptで作り直した。

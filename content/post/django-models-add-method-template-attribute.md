@@ -4,7 +4,7 @@ date: 2021-08-07T16:28:40+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け","tips" ]
+tags: [ "django","tips" ]
 ---
 
 モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。

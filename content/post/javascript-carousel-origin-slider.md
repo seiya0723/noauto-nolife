@@ -4,7 +4,7 @@ date: 2021-09-26T03:09:45+09:00
 draft: false
 thumbnail: "/images/Screenshot from 2021-09-27 11-57-15.png"
 categories: [ "フロントサイド" ]
-tags: [ "javascript","jQuery","HTML5","CSS3","ウェブデザイン","上級者向け" ]
+tags: [ "javascript","jQuery","HTML5","CSS3","ウェブデザイン" ]
 ---
 
 通販サイトなどでよくある。横スクロール型のスライダーを作る。slick.jsなどを使えば簡単に実現できるが、かえって複雑なので、自作した。

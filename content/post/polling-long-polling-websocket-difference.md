@@ -4,7 +4,7 @@ date: 2022-05-05T08:53:28+09:00
 draft: false
 thumbnail: "images/noimage.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "上級者向け","コスト削減","Ajax","非同期通信" ]
+tags: [ "コスト削減","Ajax","非同期通信" ]
 ---
 
 ## 前説

@@ -4,7 +4,7 @@ date: 2022-02-07T07:28:47+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "django","上級者向け" ]
+tags: [ "django" ]
 ---
 
 予約システムなどでは、指定した日時以降の日時を入れてもらう必要がある。

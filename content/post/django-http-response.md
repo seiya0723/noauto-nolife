@@ -4,7 +4,7 @@ date: 2021-10-02T18:56:03+09:00
 draft: false
 thumbnail: "images/django.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Django","上級者向け","tips" ]
+tags: [ "Django","tips" ]
 ---
 
 あまり需要が無いかも知れないが、状況によっては手動でHTTPResponseを指定して返却したい場合もあるだろう。
