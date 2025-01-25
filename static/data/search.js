@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/threading-vs-processing-vs-asyncio/", "title" : "非同期処理(async、await)とマルチスレッド(threading)とマルチプロセス(multiprocessing)の違い" }, 
 { "link": "/post/fastapi-helloworld/", "title" : "FastAPIでHelloworldとインストール" }, 
 { "link": "/post/polling-long-polling-websocket-difference/", "title" : "WebSocketとポーリング、ロングポーリングの違い【非同期通信と双方向通信】" }, 
 { "link": "/post/django-rest-framework-need-ajax/", "title" : "DjangoRestFrameworkは本当に必要なのか？【Restful化とAjaxでデータを送信するときの問題】" }, 
