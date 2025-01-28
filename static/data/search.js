@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/fastapi-use-django-orm/", "title" : "FastAPIでDjangoのORMを使う" }, 
 { "link": "/post/fastapi-helloworld/", "title" : "FastAPIでHelloworldとインストール" }, 
 { "link": "/post/aiohttp-vs-threading-vs-serial-request/", "title" : "非同期リクエスト vs マルチスレッドリクエスト vs 直列リクエスト" }, 
 { "link": "/post/threading-vs-processing-vs-asyncio/", "title" : "非同期処理(async、await)とマルチスレッド(threading)とマルチプロセス(multiprocessing)の違い" }, 
