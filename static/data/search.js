@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/python-async-rules/", "title" : "Python非同期プログラミングのルール" }, 
 { "link": "/post/fastapi-use-django-orm/", "title" : "FastAPIでDjangoのORMを使う" }, 
 { "link": "/post/fastapi-helloworld/", "title" : "FastAPIでHelloworldとインストール" }, 
 { "link": "/post/aiohttp-vs-threading-vs-serial-request/", "title" : "非同期リクエスト vs マルチスレッドリクエスト vs 直列リクエスト" }, 
