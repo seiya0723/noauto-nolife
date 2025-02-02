@@ -1,8 +1,9 @@
 const SEARCH_LIST = [
+{ "link": "/post/python-profile-detect-bottleneck/", "title" : "Pythonで処理速度のボトルネックを特定する" }, 
+{ "link": "/post/aiohttp-vs-threading-vs-serial-request/", "title" : "非同期リクエスト vs マルチスレッドリクエスト vs 直列リクエスト" }, 
 { "link": "/post/python-async-rules/", "title" : "Python非同期プログラミングのルール" }, 
 { "link": "/post/fastapi-use-django-orm/", "title" : "FastAPIでDjangoのORMを使う" }, 
 { "link": "/post/fastapi-helloworld/", "title" : "FastAPIでHelloworldとインストール" }, 
-{ "link": "/post/aiohttp-vs-threading-vs-serial-request/", "title" : "非同期リクエスト vs マルチスレッドリクエスト vs 直列リクエスト" }, 
 { "link": "/post/threading-vs-processing-vs-asyncio/", "title" : "非同期処理(async、await)とマルチスレッド(threading)とマルチプロセス(multiprocessing)の違い" }, 
 { "link": "/post/polling-long-polling-websocket-difference/", "title" : "WebSocketとポーリング、ロングポーリングの違い【非同期通信と双方向通信】" }, 
 { "link": "/post/django-rest-framework-need-ajax/", "title" : "DjangoRestFrameworkは本当に必要なのか？【Restful化とAjaxでデータを送信するときの問題】" }, 

@@ -329,7 +329,7 @@ async def main():
 
 ```
 async def load_topics():
-    # モデルオブジェクトをそのまま返しているのでエラー。
+    # モデルオブジェクトを配列に変換して返す。
     return list(Topic.objects.all().values())
 
 async def main():

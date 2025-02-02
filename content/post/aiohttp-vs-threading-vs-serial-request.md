@@ -225,3 +225,6 @@ print("直列処理時間:", time.time() - start)
 - https://apidog.com/jp/blog/python-aiohttpt/
 
 
+## ソースコード
+
+https://github.com/seiya0723/fastapi-async-request
