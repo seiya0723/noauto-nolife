@@ -31,7 +31,7 @@ tags: [ "django","tips" ]
             super().save(*args, **kwargs)  # Call the "real" save() method.
             do_something_else()
 
-下記`views.py`にて、モデルオブジェクトが`.save()`を実行する時、`do_something()`、実行した後`do_something_else()`が実行される。
+下記`views.py`にて、モデルが`.save()`を実行する時、`do_something()`、実行した後`do_something_else()`が実行される。
 
     from .models import Blog
 
@@ -41,7 +41,9 @@ tags: [ "django","tips" ]
         blog.save() #←ここでsaveメソッドのオーバーライドした内容が実行される。
     
 
-ちなみに、Djangoのモデルを継承したフォームクラスは、saveメソッドの内容を継承する事ができる。そのため、モデルを継承したフォームクラスの場合、下記でもsaveメソッドでオーバーライドした内容が発動する。
+ちなみに、モデルを使用したフォームクラスは、モデルのsaveメソッドが継承されている。
+
+そのため、モデルでsaveメソッドをオーバーライド、フォームクラスはそのままの場合、下記コードではモデルでオーバーライドしたsaveメソッドが動く。
 
     from .forms import BlogForm
 
@@ -133,7 +135,7 @@ tags: [ "django","tips" ]
 
         #===省略=======
 
-ちなみに、このモデルを継承したフォームクラスはモデルでオーバーライドしたsaveメソッドを継承しているので、saveメソッドを実行したときの処理結果はこうなる。
+ちなみに、このモデルを使用したフォームクラスはモデルでオーバーライドしたsaveメソッドを継承しているので、saveメソッドを実行したときの処理結果はこうなる。
 
     バリデーションOK、ログに保存する。  #print("バリデーションOK、ログに保存する。")
     name                                #print(self.name)
@@ -160,12 +162,16 @@ tags: [ "django","tips" ]
 
 ## DjangoRESTframeworkのSerializerはどうなる？
 
-`serializer.py`もモデルを継承したものであれば、モデルにsaveメソッドを書けばそのまま継承してくれるだろうと思ったら大間違い。
+<!--
+`serializer.py`もモデルを使用したものであれば、モデルにsaveメソッドを書けばそのまま継承してくれるだろうと思ったら大間違い。
 
 DjangoRESTframeworkのSerializerクラスにはこの方法は通用しない。モデルのsaveメソッドをオーバーライドしたとしても、モデルを継承したシリアライザのsaveメソッドはモデルのsaveメソッドまで継承していない。
+-->
 
+モデルを使用したシリアライザで、saveメソッドをオーバーライドしたい場合は、下記のようにシリアライザクラスにsaveメソッドをオーバーライドする。
 
-モデルを継承したシリアライザで、saveメソッドをオーバーライドしたい場合は、下記のようにシリアライザクラスにsaveメソッドをオーバーライドする。`forms.py`と違って、`.clean()`ではなく`.validated_data`から参照する点に注意。
+`forms.py`と違って、`.clean()`ではなく`.validated_data`から参照する点に注意。
+
 
     from rest_framework import serializers
     from .models import Contact
@@ -245,15 +251,20 @@ DjangoRESTframeworkのSerializerクラスにはこの方法は通用しない。
 
 複数のビューからモデルクラスを呼び出して保存や削除をした後に、処理を書いているようでは書き損じたりコードが長くなってしまうので、これにより大幅にコードが見やすくなりミスも減ると思われる。
 
-注意するべきは、saveやdeleteのメソッドを実行した時、別のモデルクラスにデータを保存するなどする時。オブジェクト指向の基本であるimportの関係、継承の関係を意識して正しくオーバーライドを行いたいところだ。
+注意するべきは、saveやdeleteのメソッドを実行した時、別のモデルクラスにデータを保存するなどする時。オブジェクト指向の基本であるimportの関係、継承の関係を意識して正しくオーバーライドを行いたい。
 
-また、DjangoRESTframeworkのSerializerはモデルを継承したSerializerでも、saveメソッドまでは継承していない。オーバーライドを行うのであればSerializerクラスへ行う。
+また、DjangoRESTframeworkのSerializerはモデルを使用したSerializerでも、saveメソッドまでは継承していない。オーバーライドを行うのであればSerializerクラスへ行う。
 
-
+<!--
 この継承関係を図に示すとこうなる。
 
 <div class="img-center"><img src="/images/Screenshot from 2021-08-14 10-53-48.png" alt="継承関係"></div>
 
 図のようにモデルを継承したシリアライザは、モデルのsaveメソッドまで継承しない。
+-->
+
+ちなみに、このDB保存時、削除時に何かを実行して欲しい場合、Signals でも対応できる。
+
+[【Django】DBの保存(投稿と編集)、削除に対して任意の動作をする【signals】](/post/django-signals-by-sending-data/)
 
 

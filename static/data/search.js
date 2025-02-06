@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/django-models-save-delete-override/", "title" : "DjangoでDBへデータ格納時(save)、削除時(delete)に処理を追加する【models.py、forms.py、serializer.pyのメソッドオーバーライド】" }, 
+{ "link": "/post/django-signals-by-sending-data/", "title" : "【Django】DBの保存(投稿と編集)、削除に対して任意の動作をする【signals】" }, 
 { "link": "/post/python-profile-detect-bottleneck/", "title" : "Pythonで処理速度のボトルネックを特定する" }, 
 { "link": "/post/aiohttp-vs-threading-vs-serial-request/", "title" : "非同期リクエスト vs マルチスレッドリクエスト vs 直列リクエスト" }, 
 { "link": "/post/python-async-rules/", "title" : "Python非同期プログラミングのルール" }, 
@@ -45,7 +47,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-models-add-method-template-attribute/", "title" : "Djangoのモデルに独自メソッドを追加、テンプレートに表示【フィールド間の計算、他モデルの値の表示などに有効】" }, 
 { "link": "/post/django-models-origin-validators/", "title" : "【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】" }, 
 { "link": "/post/django-models-regex-validate/", "title" : "【Django】モデルフィールドに正規表現によるバリデーションを指定する【カラーコード・電話番号に有効】" }, 
-{ "link": "/post/django-models-save-delete-override/", "title" : "DjangoでDBへデータ格納時(save)、削除時(delete)に処理を追加する【models.py、forms.py、serializer.pyのメソッドオーバーライド】" }, 
 { "link": "/post/django-models-time-calc/", "title" : "【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】" }, 
 { "link": "/post/django-models-uuid-int-null/", "title" : "Djangoで数値型もしくはUUID型等のフィールドに、クライアント側から未入力を許可するにはnull=Trueとblank=Trueのオプションを" }, 
 { "link": "/post/django-models-window/", "title" : "【Django】Windowを使ってレコードの累計値を計算して出力【売上の累計表示、小計(累積)表示などに有効】" }, 
