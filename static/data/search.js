@@ -1,4 +1,8 @@
 const SEARCH_LIST = [
+{ "link": "/post/python-ai-memo/", "title" : "Pythonで画像認識AI(深層学習)の速習をするためのメモ" }, 
+{ "link": "/post/ubuntu-nvidia-drivers-install/", "title" : "UbuntuでNvidiaのドライバーをインストールする" }, 
+{ "link": "/post/django-livestreamer-custom-2/", "title" : "Djangoでサーバーのウェブカメラを使ってライブ配信、クライアント側からON・OFF操作" }, 
+{ "link": "/post/javascript-debounce/", "title" : "デバウンスしてキー入力の度にイベントを発火し続けないようにする【再レンダリング地獄対策】" }, 
 { "link": "/post/django-models-save-delete-override/", "title" : "DjangoでDBへデータ格納時(save)、削除時(delete)に処理を追加する【models.py、forms.py、serializer.pyのメソッドオーバーライド】" }, 
 { "link": "/post/django-signals-by-sending-data/", "title" : "【Django】DBの保存(投稿と編集)、削除に対して任意の動作をする【signals】" }, 
 { "link": "/post/python-profile-detect-bottleneck/", "title" : "Pythonで処理速度のボトルネックを特定する" }, 
