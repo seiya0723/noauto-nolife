@@ -4,7 +4,7 @@ date: 2025-01-09T15:40:22+09:00
 lastmod: 2025-01-09T15:40:22+09:00
 draft: false
 thumbnail: "images/drf-react.jpg"
-categories: [ "サーバーサイド" ]
+categories: [ "フルスタック" ]
 tags: [ "drf","React","spa","WebSocket" ]
 ---
 

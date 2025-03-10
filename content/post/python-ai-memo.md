@@ -1,9 +1,9 @@
 ---
-title: "Pythonで画像認識AI(深層学習)の速習をするためのメモ"
+title: "Pythonで画像認識AI(深層学習)の速習をするためのメモ【pytorchで画像認識学習・推論のサンプルあり】"
 date: 2025-02-24T18:27:37+09:00
 lastmod: 2025-02-24T18:27:37+09:00
 draft: false
-thumbnail: "images/python.jpg"
+thumbnail: "images/pytorch.jpg"
 categories: [ "サーバーサイド" ]
 tags: [ "Python","tips","AI","追記予定" ]
 ---
