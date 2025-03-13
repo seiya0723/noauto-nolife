@@ -5,7 +5,7 @@ lastmod: 2025-02-24T18:27:37+09:00
 draft: false
 thumbnail: "images/pytorch.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "Python","tips","AI","追記予定" ]
+tags: [ "Python","tips","AI開発","追記予定" ]
 ---
 
 

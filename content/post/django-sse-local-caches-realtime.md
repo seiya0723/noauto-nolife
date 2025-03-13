@@ -1,5 +1,5 @@
 ---
-title: "DjangoでServerSentEvents(SSE)とローカルキャッシュを使い、リアルタイムでDB内の情報を表示する"
+title: "DjangoでServerSentEvents(SSE)とローカルメモリキャッシュを使い、リアルタイムでDB内の情報を表示する"
 date: 2024-11-26T17:17:26+09:00
 lastmod: 2024-11-26T17:17:26+09:00
 draft: false

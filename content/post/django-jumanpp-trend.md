@@ -4,7 +4,7 @@ date: 2021-09-13T19:42:36+09:00
 draft: false
 thumbnail: "images/Screenshot from 2021-09-13 20-23-43.png"
 categories: [ "サーバーサイド" ]
-tags: [ "django","AI","自然言語処理","JUMAN" ]
+tags: [ "django","AI開発","自然言語処理","JUMAN" ]
 ---
 
 [Djangoの独自コマンドの作成](/post/django-command-add/)とAIを組み合わせることで、ウェブアプリ上でAIの恩恵を受けることができる。

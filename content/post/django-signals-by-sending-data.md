@@ -74,3 +74,9 @@ class BbsConfig(AppConfig):
 
 - [【Django】ログイン時にメールを送信するには、signal.pyを作ってapps.pyに登録しておく【セキュリティ通知】](/post/django-login-mail-by-signal/)
 - https://docs.djangoproject.com/en/5.1/topics/signals/
+
+
+## 関連記事
+
+[DjangoでServerSentEvents(SSE)とローカルメモリキャッシュを使い、リアルタイムでDB内の情報を表示する](/post/django-sse-local-caches-realtime/)
+

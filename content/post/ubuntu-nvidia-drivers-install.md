@@ -71,4 +71,19 @@ nvidia-smi
 <div class="img-center"><img src="/images/Screenshot from 2025-03-06 14-28-14.png" alt=""></div>
 
 
+## 【監視】リアルタイムでGPUの使用率を確認するには？
+
+0.5秒おきにGPUの使用率を監視するには watchコマンドを使う。
+
+```
+watch -n 0.5 nvidia-smi
+```
+
+-l オプションでも使用率のリアルタイムな確認ができるが、標準出力を続け、ログが流れていくのであまり使い勝手は良くない。
+
+```
+nvidia-smi -l 1
+```
+
+
 

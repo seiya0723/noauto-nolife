@@ -4,7 +4,7 @@ date: 2022-10-27T09:29:04+09:00
 draft: false
 thumbnail: "images/pandas.jpg"
 categories: [ "others" ]
-tags: [ "pandas","Python","AI","初心者向け" ]
+tags: [ "pandas","Python","AI開発","初心者向け" ]
 ---
 
 よくあるpandasの行ごと、列ごとにデータを取り出す方法。
