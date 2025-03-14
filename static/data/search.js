@@ -1,5 +1,5 @@
 const SEARCH_LIST = [
-{ "link": "/post/ubuntu-redis-install-use-django/", "title" : "UbuntuへRedisをインストールし、Djangoで使う" }, 
+{ "link": "/post/ubuntu-redis-install-use-django/", "title" : "UbuntuへRedisをインストールし、Django上でキャッシュサーバーとして扱う" }, 
 { "link": "/post/django-local-memory-caching/", "title" : "Djangoでローカルメモリキャッシュを使う" }, 
 { "link": "/post/django-signals-by-sending-data/", "title" : "【Django】DBの保存(投稿と編集)、削除に対して任意の動作をする【signals】" }, 
 { "link": "/post/django-sse-local-caches-realtime/", "title" : "DjangoでServerSentEvents(SSE)とローカルメモリキャッシュを使い、リアルタイムでDB内の情報を表示する" }, 

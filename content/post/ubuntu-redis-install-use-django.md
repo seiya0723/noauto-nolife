@@ -1,5 +1,5 @@
 ---
-title: "UbuntuへRedisをインストールし、Djangoで使う"
+title: "UbuntuへRedisをインストールし、Django上でキャッシュサーバーとして扱う"
 date: 2025-03-13T09:54:37+09:00
 lastmod: 2025-03-13T09:54:37+09:00
 draft: false
