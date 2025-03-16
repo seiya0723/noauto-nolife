@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/fastapi-websocket/", "title" : "FastAPIでWebSocketを実現する" }, 
 { "link": "/post/ubuntu-redis-install-use-django/", "title" : "UbuntuへRedisをインストールし、Django上でキャッシュサーバーとして扱う" }, 
 { "link": "/post/django-local-memory-caching/", "title" : "Djangoでローカルメモリキャッシュを使う" }, 
 { "link": "/post/django-signals-by-sending-data/", "title" : "【Django】DBの保存(投稿と編集)、削除に対して任意の動作をする【signals】" }, 
