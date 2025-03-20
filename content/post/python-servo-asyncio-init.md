@@ -21,7 +21,7 @@ tags: [ "Python","サーボモーター","非同期処理" ]
 
 ## 環境構築
 
-今回は、 [Subfolder のPiCar-x](https://www.amazon.co.jp/dp/B0CGLPF29H/?tag=m68371ti-22) というロボットのサンプルコードから一部を非同期化させることで対応している。
+今回は、 [Sunfounder のPiCar-x](https://www.amazon.co.jp/dp/B0CGLPF29H/?tag=m68371ti-22) というロボットのサンプルコードから一部を非同期化させることで対応している。
 
 そのため、リポジトリをクローンしてインストールを実行しておく。
 
@@ -76,4 +76,6 @@ Servoクラスは特段の設定は必要なく、そのまま非同期処理内
 そのため、Djangoだけでなく、FastAPIから動作させることも可能であると考えている。
 
 
+## 参考文献
 
+https://docs.sunfounder.com/projects/picar-x/ja/latest/python/python_start/py_servo_adjust.html#id1
