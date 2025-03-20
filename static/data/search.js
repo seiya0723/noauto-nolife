@@ -1,6 +1,9 @@
 const SEARCH_LIST = [
-{ "link": "/post/fastapi-websocket/", "title" : "FastAPIでWebSocketを実現する" }, 
+{ "link": "/post/python-servo-asyncio-init/", "title" : "【Python】サーボモーターを非同期で動かす、初期化する" }, 
+{ "link": "/post/csharp-environment/", "title" : "UbuntuでC#の開発環境を整え、C#の基本構文をまとめる" }, 
+{ "link": "/post/django-session-with-redis/", "title" : "DjangoのセッションをRedisで管理する" }, 
 { "link": "/post/ubuntu-redis-install-use-django/", "title" : "UbuntuへRedisをインストールし、Django上でキャッシュサーバーとして扱う" }, 
+{ "link": "/post/fastapi-websocket/", "title" : "FastAPIでWebSocketを実現する" }, 
 { "link": "/post/django-local-memory-caching/", "title" : "Djangoでローカルメモリキャッシュを使う" }, 
 { "link": "/post/django-signals-by-sending-data/", "title" : "【Django】DBの保存(投稿と編集)、削除に対して任意の動作をする【signals】" }, 
 { "link": "/post/django-sse-local-caches-realtime/", "title" : "DjangoでServerSentEvents(SSE)とローカルメモリキャッシュを使い、リアルタイムでDB内の情報を表示する" }, 
