@@ -5,7 +5,7 @@ lastmod: 2025-03-19T09:22:48+09:00
 draft: false
 thumbnail: "images/csharp.jpg"
 categories: [ "インフラ" ]
-tags: [ "C#","Ubuntu" ]
+tags: [ "C＃","Ubuntu" ]
 ---
 
 
