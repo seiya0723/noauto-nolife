@@ -1,5 +1,5 @@
 const SEARCH_LIST = [
-{ "link": "/post/python-servo-asyncio-init/", "title" : "【Python】サーボモーターを非同期で動かす、初期化する" }, 
+{ "link": "/post/python-servo-asyncio-init/", "title" : "【Python】サーボモーターを非同期で動かし、初期化する" }, 
 { "link": "/post/csharp-environment/", "title" : "UbuntuでC#の開発環境を整え、C#の基本構文をまとめる" }, 
 { "link": "/post/django-session-with-redis/", "title" : "DjangoのセッションをRedisで管理する" }, 
 { "link": "/post/ubuntu-redis-install-use-django/", "title" : "UbuntuへRedisをインストールし、Django上でキャッシュサーバーとして扱う" }, 
