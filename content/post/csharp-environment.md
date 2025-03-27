@@ -54,6 +54,17 @@ dotnet run
 
 開発用サーバーが起動するので、URLをクリックしてブラウザで確認をする。
 
+ちなみに、上記はPagesのみのウェブアプリであり、MVCのウェブアプリを作りたい場合は
+
+```
+dotnet new mvc -o MyApp
+cd MyApp
+dotnet run
+```
+
+と new mvc を実行する。本格的にウェブアプリを作りたい場合は、こちらが良いだろう。
+
+
 ### ネイティブアプリの開発
 
 Windows Forms アプリの開発ができる

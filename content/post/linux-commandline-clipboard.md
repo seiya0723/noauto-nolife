@@ -55,4 +55,11 @@ ssh user@raspberrypi 'cat ./index.html' | clipcopy
 
 ただし、この方法は毎度毎度パスワードを打つ必要が出てくる。そこでパスフレーズなしの公開鍵認証を使うと便利。
 
+## 指定した範囲の行をクリップボードにコピーするには？
+
+```
+sed -n "100,120p" ./bbs/views.py | clipcopy
+```
+
+参照: [sedコマンドで指定した範囲の行だけ標準出力をする。xselと組み合わせて部分的にクリップボードにコピー](/post/sed-line-output/)
 
