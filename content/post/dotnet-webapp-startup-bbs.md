@@ -635,4 +635,22 @@ dotnet run
 dotnet watch run
 ```
 
+## 動かすとこうなる
+
+<div class="img-center"><img src="/images/Screenshot from 2025-03-27 10-11-02.png" alt=""></div>
+
+
+## 結論
+
+ウェブアプリケーションフレームワークなので覚える点が多い。
+
+とはいえ.NETは他FWと同じような仕組みになっており、LINQはC#でも使えるため無駄は少ないと思われる。
+
+次はWindowsのネイティブアプリをつくる。
+
+## ソースコード
+
+https://github.com/seiya0723/dotnet-startup-bbs
+
+
 
