@@ -1,8 +1,11 @@
 const SEARCH_LIST = [
+{ "link": "/post/dotnet-webapp-startup-bbs/", "title" : "ASP .NET Coreで簡易掲示板をつくる" }, 
+{ "link": "/post/startup-nextjs-typescript/", "title" : "Next.jsとTypeScriptで簡易掲示板をつくる" }, 
+{ "link": "/post/ubuntu-node-js-install/", "title" : "Ubuntuにnode.jsを手動でインストールする【tar.xz ファイルの解凍と】" }, 
+{ "link": "/post/startup-nextjs/", "title" : "Next.jsのインストール方法とプロジェクトの作成" }, 
 { "link": "/post/ubuntu-to-windows-develop-env-migrate/", "title" : "UbuntuからWindows開発環境への移行作業" }, 
 { "link": "/post/ubuntu-2404-python-venv/", "title" : "Ubuntu 24.04 LTS での python仮想環境構築" }, 
 { "link": "/post/linux-du-command/", "title" : "duコマンドでディレクトリのサイズ・容量を調べる【ファイルサーバーのストレージディスク整理に】" }, 
-{ "link": "/post/dotnet-webapp-startup-bbs/", "title" : "ASP .NET Coreで簡易掲示板をつくる" }, 
 { "link": "/post/anywhere-ubuntu/", "title" : "【USBブート】NVMe SSD とUSB3.2 Gen.2 の変換器でどこでもUbuntu" }, 
 { "link": "/post/sed-line-output/", "title" : "sedコマンドで指定した範囲の行だけ標準出力をする。xselと組み合わせて部分的にクリップボードにコピー" }, 
 { "link": "/post/linux-commandline-clipboard/", "title" : "Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】" }, 

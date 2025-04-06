@@ -2,16 +2,15 @@
 title: "Next.jsのインストール方法とプロジェクトの作成"
 date: 2023-02-09T21:48:32+09:00
 lastmod: 2023-02-09T21:48:32+09:00
-draft: true
+draft: false
 thumbnail: "images/js.jpg"
 categories: [ "サーバーサイド" ]
-tags: [ "next.js","JavaScript","スタートアップシリーズ" ]
+tags: [ "Next.js","JavaScript" ]
 ---
 
 本記事ではUbuntu22.04にインストールする。
 
 ## インストール
-
 
 パッケージの更新
 
@@ -51,7 +50,6 @@ nodeのインストール
 ## 結論
 
 next.jsはHUGOのような静的サイトジェネレーターとしても使える上に、Djangoのようにサーバーサイドありのウェブアプリとしても扱うことができる。
-
 
 参照元: https://www.hostnextra.com/kb/easy-to-install-next-js-on-ubuntu-20-04/
 

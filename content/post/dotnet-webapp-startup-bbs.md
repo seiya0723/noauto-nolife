@@ -126,8 +126,8 @@ namespace StartupBBS.Models
     public class Comment
     {
         public int Id { get; set; }  // プライマリキー
-        public string UserName { get; set; }  // 投稿者の名前
-        public string Content { get; set; }  // コメント内容
+        public required string UserName { get; set; }  // 投稿者の名前
+        public required string Content { get; set; }  // コメント内容
         public DateTime PostedAt { get; set; }  // 投稿日時
     }
 }
@@ -150,10 +150,66 @@ namespace StartupBBS.Models
 よって、今回プロジェクト名をStartupBBSとしたが、これは後から変更することもできる。
 
 
+### 【補足】モデルクラスのプロパティには、nullが許容されるか、入力必須とするかを明示的にしておく
+
+今回、
+```
+using System;
+
+namespace StartupBBS.Models
+{
+    public class Comment
+    {
+        public int Id { get; set; }  // プライマリキー
+        public required string UserName { get; set; }  // 投稿者の名前
+        public required string Content { get; set; }  // コメント内容
+        public DateTime PostedAt { get; set; }  // 投稿日時
+    }
+}
+```
+このようにしたが、
+
+
+```
+using System;
+
+namespace StartupBBS.Models
+{
+    public class Comment
+    {
+        public int Id { get; set; }  // プライマリキー
+        public string UserName { get; set; }  // 投稿者の名前
+        public string Content { get; set; }  // コメント内容
+        public DateTime PostedAt { get; set; }  // 投稿日時
+    }
+}
+```
+
+これでは警告が出てしまう。
+
+```
+/home/akagi/Documents/programming/csharp/StartupBBS/Models/Comment.cs(8,23): warning CS8618: null 非許容の プロパティ 'UserName' には、コンストラクターの終了時に null 以外の値が入っていなければなりません。'required' 修飾子を追加するか、プロパティ を Null 許容として宣言することを検討してください。 [/home/akagi/Documents/programming/csharp/StartupBBS/StartupBBS.csproj]
+/home/akagi/Documents/programming/csharp/StartupBBS/Models/Comment.cs(9,23): warning CS8618: null 非許容の プロパティ 'Content' には、コンストラクターの終了時に null 以外の値が入っていなければなりません。'required' 修飾子を追加するか、プロパティ を Null 許容として宣言することを検討してください。 [/home/akagi/Documents/programming/csharp/StartupBBS/StartupBBS.csproj]
+```
+
+なぜ
+
+```
+        public string UserName { get; set; }  // 投稿者の名前
+        public string Content { get; set; }  // コメント内容
+```
+これではいけないかというと、null 禁止であることを明示的に指定していないから。
+
+コンストラクタの終了時になにか値を入れるか、もしくはrequiredを追加するか string? として未入力OKとしなければならない。
+
+
 
 ### 【補足】 { get; set; } とは？
 
-その名の通り、データの取得と設定を許可するという意味。
+その名の通り、データの取得と設定を許可するという意味。アクセサメソッドという。
+
+get で読み取りをする。setで新しい値を代入する。
+
 
 ## マイグレーション
 
@@ -201,13 +257,13 @@ dotnet ef migrations add InitialCreate
 dotnet ef database update
 ```
 
-
 ### 【補足】DbContextとModelの関係は？
 
-DbContextは、テーブルの作成やカラムの追加などのDB設計をするためのもの。
+DbContext(データベースコンテキスト)は、DBの操作をするためのもの。
 
 Modelはデータの読み書きをするためのもの。
 
+このデータベースコンテキストを元に、`dotnet ef migrations add InitialCreate`でマイグレーションファイルを作り、`dotnet ef database update `とすることでマイグレーション(DBに更新)とする。
 
 
 ### マイグレーションのコマンドでエラーが出る場合は？
@@ -256,7 +312,6 @@ $ dotnet build
 このようなエラーが出る。
 
 
-
 ```
 dotnet add package Microsoft.EntityFrameworkCore
 ```
@@ -273,12 +328,9 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 ```
 
 
-
-
 ## コントローラ
 
 コントローラ作成 (Controllers/HomeController.cs)
-
 
 ```
 using Microsoft.AspNetCore.Mvc;
@@ -329,6 +381,13 @@ namespace StartupBBS.Controllers
 
 IActionResult は アクションメソッドの戻り値のデータ型である。戻り値である View() や RedirectToAction() も IActionResult 型である。これでコントローラのアクションをつくることができる。
 
+POSTメソッドでCommentが使えるのは、冒頭で
+
+```
+using StartupBBS.Models;
+```
+としているから。
+
 
 ### 【補足】 [HttpPost] とは何か？
 
@@ -347,6 +406,12 @@ IActionResult は アクションメソッドの戻り値のデータ型であ�
 ```
 
 ただし、通常のformタグではGETとPOSTしかサポートしていないため、DELETE、PUT、PATCHメソッドを送信したい場合はJavaScriptのFetchAPIなどを使う。
+
+ちなみに、GETメソッドの場合、アクションメソッドのアトリビュート`[HttpGet]`は省略しても良い。
+
+今回のIndexアクションメソッドは一般的にGETメソッドであると決まっているので、省略することが多い。
+
+可読性を高めるため、あえて`[HttpGet]`と書くこともある。
 
 
 ### 【補足】このコントローラではバリデーションはしていない
@@ -370,7 +435,7 @@ public IActionResult PostComment(Comment, comment)
 }
 ```
 
-このModelStateはアクションメソッド内で使用することができる。あえてusingをする必要はない。
+このModelStateはアクションメソッド内で使用することができる。だから、あえて`using`する必要はない。
 
 
 ### 【補足】モデル名の複数形はどういう理屈で変換されているのか？
@@ -463,9 +528,85 @@ var comment = _context.Comments.Where(c => c.UserName == "Alice").FirstOrDefault
 int count = _context.Comments.Where(c => c.UserName == "Alice").Count();
 ```
 
+### 【補足】このコントローラはどのビューにレンダリングされるのか？
+
+今回、コントローラは `Controllers/HomeController.cs` このように作られているため、レンダリングされるビューは `Views/Home/Index.cshtml` になる。
+
+レンダリングをするビューの場所を書き換えるには
+
+```
+    return View("~/Views/Shared/Index.cshtml");
+```
+
+とする。 パスの中の `~` というのは、通常Linuxなどにおけるホームディレクトリを意味するが、ASP.NETではプロジェクトディレクトリまでのパスを意味している。
+
+
+### 【補足】コンテキストが複数ある場合、どのような引数をreturn すれば良いのか？
+
+例えば、CommentだけでなくCategory など複数のモデルオブジェクトを返したい場合がある。
+
+`ViewModels/CommentCategoryViewModel.cs` ここでビューモデルを作り、
+
+```
+namespace StartupBBS.ViewModels
+{
+    public class CommentCategoryViewModel
+    {
+        public IEnumerable<Comment> Comments { get; set; } = new List<Comment>();
+        public IEnumerable<Category> Categories { get; set; } = new List<Category>();
+    }
+}
+```
+
+コントローラでビューモデルを渡す。
+
+```
+public IActionResult Index()
+{
+    var comments = _context.Comments.ToList();
+    var categories = _context.Categories.ToList();
+
+    var viewModel = new CommentCategoryViewModel
+    {
+        Comments = comments,
+        Categories = categories
+    };
+
+    return View(viewModel);
+}
+```
+
+ビューでViewModelを受取する。
+
+```
+@model StartupBBS.ViewModels.CommentCategoryViewModel
+
+<h1>コメント掲示板</h1>
+
+<!-- コメント一覧の表示 -->
+@foreach (var comment in Model.Comments)
+{
+    <div>
+        <strong>@comment.UserName</strong> (@comment.PostedAt)
+        <p>@comment.Content</p>
+    </div>
+}
+
+<h2>カテゴリ一覧</h2>
+@foreach (var category in Model.Categories)
+{
+    <div>
+        <p>@category.Name</p>
+    </div>
+}
+```
+
+なんでこんな回りくどい仕様になっているかというと、.NET は本来複数のモデルオブジェクトをコンテキストとして与える仕様になっていないためである。
+
+どうやら.NET は djangoのコンテキストとは違い、辞書型でまとめて一気にコンテキストを送るということはできないようだ。
+
 
 ## ビュー
-
 
 Views/Home/Index.cshtml
 
@@ -501,7 +642,31 @@ Views/Home/Index.cshtml
 
 ```
 
-### HTMLのname属性はスネークケースでは？
+
+### 【補足】冒頭の@ とは？
+
+```
+@model IEnumerable<StartupBBS.Models.Comment>
+```
+これはRazor構文である。ビューに渡すモデルのデータ型を指定するためのディレクティブである。
+
+Index.cshtml のビューに `IEnumerable<Comment>` 型のモデルが渡される ことを示しています。
+
+アイイニューマレーターと読む。これによりModelを使って1件ずつデータを取り出せる。
+
+
+```
+    @foreach (var comment in Model)
+    {
+        <div>
+            <strong>@comment.UserName</strong> (@comment.PostedAt)
+            <p>@comment.Content</p>
+        </div>
+    }
+```
+
+
+### 【補足】HTMLのname属性はスネークケースでは？
 
 コントローラのアクションメソッドの引数で
 
@@ -530,7 +695,7 @@ userName , content としたため同じname属性にした。
 .NETでは基本キャメルケースが使われるため、HTMLもそれに合わせる形になる。
 
 
-### テンプレート言語 Razorでコメントアウトするには？
+### 【補足】テンプレート言語 Razorでコメントアウトするには？
 
 
 ```
@@ -539,7 +704,7 @@ userName , content としたため同じname属性にした。
 
 こうする。HTMLコメントでもよいが、ページソースから丸見え。
 
-### action属性のルーティング逆引き
+### 【補足】action属性のルーティング逆引き
 
 
 もし直にURLを書きたくない場合はこうする。
@@ -550,6 +715,13 @@ userName , content としたため同じname属性にした。
 以下略
 ```
 
+つまり
+
+```
+@Url.Action("アクションメソッド名", "コントローラ名")
+```
+
+このように表記することで逆引きできる。
 
 ## ルーティング
 
@@ -627,13 +799,31 @@ Indexは明示的に設定されているからわかるが、PostCommentはな�
 dotnet run
 ```
 
-でサーバーが起動する。ただしファイルを途中で編集した場合、再度コマンドを実行して、サーバーを起動し直さないといけない。
+でサーバーが起動する。 http://localhost:5043/ サーバーは
+
+
+ただしファイルを途中で編集した場合、再度コマンドを実行して、サーバーを起動し直さないといけない。
 
 そこで、ファイルの編集を監視する以下のコマンドをおすすめする。
 
 ```
 dotnet watch run
 ```
+
+### 【補足】ターミナルのログには何が表示されている？
+
+このサーバーを起動した状態で、ターミナルを確認すると
+
+```
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT "c"."Id", "c"."Content", "c"."PostedAt", "c"."UserName"
+      FROM "Comments" AS "c"
+
+```
+
+これは、Entity Framework Coreがデータベースとやり取りを行う際に、デフォルトでSQLクエリをログに出力する設定がされているから。
+
 
 ## 動かすとこうなる
 
@@ -651,6 +841,4 @@ dotnet watch run
 ## ソースコード
 
 https://github.com/seiya0723/dotnet-startup-bbs
-
-
 
