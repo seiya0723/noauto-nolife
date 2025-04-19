@@ -130,7 +130,6 @@ export default db;
 
 これを使って、APIサーバー側はDBの読み書きをしている。
 
-
 ## データ型の宣言
 
 src/types/topic.d.ts というファイルをつくる。 宣言のみしているtypescriptなので、.d.ts という拡張子にする。
@@ -226,7 +225,6 @@ export async function POST(req: Request) {
 }
 ```
 
-
 ## UIのコンポーネントをつくる
 
 今回は後の拡張性も考慮して、ボタンとテキストエリアのコンポーネントを用意した。
@@ -242,7 +240,6 @@ Textarea
 ## トップページをつくる
 
 後日追記予定。
-
 
 ## ソースコード
 
