@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/docker-oracle-silver-env/", "title" : "UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える" }, 
 { "link": "/post/ai-exam-rank-a/", "title" : "AI実装検定A級のメモ" }, 
 { "link": "/post/database-sql-basic/", "title" : "【データベース】基本的なSQL文の一覧【SELECT, INSERT INTO, DELETE, UPDATE, UNION, JOIN】" }, 
 { "link": "/post/csharp-linq-method/", "title" : "【C＃】LINQのメソッドのまとめ" }, 
