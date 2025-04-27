@@ -1,6 +1,11 @@
 const SEARCH_LIST = [
-{ "link": "/post/dotnet-webapp-startup-bbs/", "title" : "ASP .NET Coreで簡易掲示板をつくる" }, 
+{ "link": "/post/ai-exam-rank-a/", "title" : "AI実装検定A級のメモ" }, 
+{ "link": "/post/database-sql-basic/", "title" : "【データベース】基本的なSQL文の一覧【SELECT, INSERT INTO, DELETE, UPDATE, UNION, JOIN】" }, 
+{ "link": "/post/csharp-linq-method/", "title" : "【C＃】LINQのメソッドのまとめ" }, 
+{ "link": "/post/selenium-basic-control/", "title" : "Seleniumの基本操作のまとめ" }, 
+{ "link": "/post/clip-ffmpeg/", "title" : "ffmpeg で すべてのmp4ファイルをまとめて加工するシェルスクリプト" }, 
 { "link": "/post/startup-nextjs-typescript/", "title" : "Next.jsとTypeScriptで簡易掲示板をつくる" }, 
+{ "link": "/post/dotnet-webapp-startup-bbs/", "title" : "ASP .NET Coreで簡易掲示板をつくる" }, 
 { "link": "/post/ubuntu-node-js-install/", "title" : "Ubuntuにnode.jsを手動でインストールする【tar.xz ファイルの解凍と】" }, 
 { "link": "/post/startup-nextjs/", "title" : "Next.jsのインストール方法とプロジェクトの作成" }, 
 { "link": "/post/ubuntu-to-windows-develop-env-migrate/", "title" : "UbuntuからWindows開発環境への移行作業" }, 
