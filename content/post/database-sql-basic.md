@@ -10,14 +10,18 @@ tags: [ "SQL","tips","データベース","docker" ]
 
 
 
+## 【導入】dockerでDatabaseを用意する。
+
+
+### Oracle DBを用意する
+
+
+[UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える](/post/docker-oracle-silver-env/)
+
 <!--
-
 ## 【導入】SQLite を用意する。
-
 今回はすでにdjangoで構築済みのDBが用意できるSQLiteを採用した。
-
 https://github.com/seiya0723/django_m2m_customforms
-
 -->
 
 
