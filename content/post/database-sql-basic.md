@@ -12,11 +12,11 @@ tags: [ "SQL","tips","データベース","docker" ]
 
 ## 【導入】dockerでDatabaseを用意する。
 
-
 ### Oracle DBを用意する
 
-
 [UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える](/post/docker-oracle-silver-env/)
+
+ただし、この記事ではPostgreSQLでの使用を想定しているため、SQLが若干違う点に注意。
 
 <!--
 ## 【導入】SQLite を用意する。
