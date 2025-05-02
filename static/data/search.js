@@ -1,5 +1,6 @@
 const SEARCH_LIST = [
 { "link": "/post/ai-exam-rank-a/", "title" : "AI実装検定A級のメモ" }, 
+{ "link": "/post/ubuntu-night-light-mode/", "title" : "Ubuntuの夜間モードが通用しない場合の対処法" }, 
 { "link": "/post/database-sql-basic/", "title" : "【データベース】基本的なSQL文の一覧【SELECT, INSERT INTO, DELETE, UPDATE, UNION, JOIN】" }, 
 { "link": "/post/oracle-database-sql-basic/", "title" : "OracleDBのSQLまとめ" }, 
 { "link": "/post/docker-oracle-silver-env/", "title" : "UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える" }, 
