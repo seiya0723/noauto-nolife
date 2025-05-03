@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/python-threading-vs-threadpoolexecutor/", "title" : "Pythonのthreading.Thread と concurrent.futures.Threadpoolexecutor の違い【マルチスレッド処理】" }, 
+{ "link": "/post/python-pillow-all-photo-cropped/", "title" : "【Pillow】画像をまとめてクロッピング(トリミング)する【マルチスレッド高速化】" }, 
 { "link": "/post/ai-exam-rank-a/", "title" : "AI実装検定A級のメモ" }, 
 { "link": "/post/ubuntu-night-light-mode/", "title" : "Ubuntuの夜間モードが通用しない場合の対処法" }, 
 { "link": "/post/database-sql-basic/", "title" : "【データベース】基本的なSQL文の一覧【SELECT, INSERT INTO, DELETE, UPDATE, UNION, JOIN】" }, 
