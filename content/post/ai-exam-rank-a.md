@@ -154,7 +154,6 @@ ILSVRC という画像認識の精度を競い合うコンペがあり、2012年
 
 #### 活性化関数の種類
 
-
 ##### ランプ関数(ReLU(Rectified Liner Unit))
 
 0以上の値はそのままに、0以下の値をすべて0として扱う関数。
@@ -165,8 +164,6 @@ ILSVRC という画像認識の精度を競い合うコンペがあり、2012年
 
 - 参照元1: https://appswingby.com/relu%E9%96%A2%E6%95%B0-%E4%BB%8A%E6%9B%B4%E8%81%9E%E3%81%91%E3%81%AA%E3%81%84it%E7%94%A8%E8%AA%9E%E9%9B%86/
 - 参照元2: https://mathlandscape.com/relu/
-
-
 
 ##### シグモイド関数(Sigmoid)
 
@@ -603,8 +600,7 @@ I = [
 
 AxI もしくはIxA でもAが得られる。
 
-
-逆行列は
+逆行列に関して、
 ```
 A = [
   a  b
@@ -612,8 +608,10 @@ A = [
 ]
 ```
 
-この場合、ad-bcが0でない場合に限り、det(A) は
+- 正方行列(3x3 や5x5などの行数と列数が同じ)
+- 行列式(ad-bc)が0でない(特異行列(singular matrix)ではない)
 
+に限り、逆行列 det(A) は
 ```
 A⁻¹ = (1 / (ad - bc)) × [
   d  -b
@@ -624,7 +622,6 @@ A⁻¹ = (1 / (ad - bc)) × [
 このように表現をする。det は デターミナント(determinant)のdetである。
 
 aとdを逆転、bとcをマイナスにする。
-
 
 3x3以上の逆行列は以下を参照。複雑なので、アプリやライブラリを活用することのほうが多い。
 
@@ -648,24 +645,470 @@ print(A_inv)
 #### 固有値と固有ベクトル
 
 
-
 ## Python
+
+試験範囲には
+
+- numpy
+- pandas 
+- matplotlib 
+- 
+
+### numpy 
+
+```
+pip install numpy 
+```
+numpy は数値計算を効率的に行うことができる。
+
+Cを元に作られているので、numpyの計算時にはPythonのGILの影響を受けず高速処理が可能である。
+
+- (公式) https://numpy.org/ja/
+- https://ja.wikipedia.org/wiki/NumPy
+- https://pypi.org/project/numpy/
+
+#### サンプルコード
+
+```
+import numpy as np 
+
+print("#===== 配列(行列)の生成 =====#")
+
+# 配列をつくる。
+x = np.array([1,2,3,4,5])
+print(x)
+
+# ↑ と↓は等価。arange は range関数と同じような仕組み。
+x = np.arange(1,6)
+print(x)
+
+# 0〜9までの値で配列をつくる
+x = np.arange(10)
+print(x)
+
+# 0から100までの偶数の配列をつくる。
+x = np.arange(0,101,2)
+print(x)
+
+
+# 要素数に合わせて、形状を変更する。10個の要素なので、2x5行列に変換。
+x = np.arange(10)
+x = x.reshape((2,5))
+print(x)
+
+# 更に形状を変える。
+x = x.reshape((5,2))
+print(x)
+
+# 行列から1次元配列にも戻せる。
+x = x.reshape((10))
+print(x)
+
+# 要素数が一致していない場合は例外。
+"""
+x = x.reshape((3,3))
+print(x)
+"""
+
+# 要素が5つある配列をつくる。値は0~9までのランダム
+x = np.random.randint(10, size=(5))
+print(x)
+
+# 3x5の行列をつくる。値は0~9までのランダム
+x = np.random.randint(10, size=(3,5))
+print(x)
+
+# ゼロ埋めして、行列をつくる。 dtype で型指定。
+x1 = np.zeros(5, dtype=np.float16)
+x2 = np.zeros((5,6), dtype=np.float32)
+x3 = np.zeros((2,3,4), dtype=np.uint8)
+
+"""
+# TIPS : dtype の型指定は Pythonの標準型(float, int など)でも可、自動変換される。 np.bool_ などブーリアン型もある。
+# 参照: https://kentei.ai/blog/archives/726
+"""
+
+print( x1 )
+print( x2 )
+print( x3 )
+
+print("#===== 行列(配列)の抽出・連結・比較 =====#")
+
+A = np.random.randint(10, size=(4,5) )
+B = np.random.randint(10, size=(4,2) )
+C = np.random.randint(10, size=(2,5) )
+
+print( A )
+print( B )
+print( C )
+
+# array[start_row:end_row, start_col:end_col] 行列の抽出ができる
+# 左上から2x3 の行列を抽出する。
+print( A[:2,:3] )
+
+
+# 行列の連結
+# axis が 0 縦方向(行方向)に結合 (列数が一致していないと例外)
+# axis が 1 横方向(列方向)に結合 (行数が一致していないと例外)
+print( np.concatenate([A, C], axis=0) )
+print( np.concatenate([A, B], axis=1) )
+
+
+# 行列内の要素の比較 最小値、最大値を取り出す。
+print( A.max() )
+print( A.min() )
+
+
+print("#===== 配列計算 =====#")
+
+# [0,1,2,3,4] の配列をつくる
+x = np.arange(5)
+
+print(x)
+
+# 各配列の要素に3を足す。
+print(x+3)
+
+# 2を引く
+print(x-2)
+
+# 5を掛ける
+print(x*5)
+
+# 2で割る
+print(x/2)
+
+# 2で割った整数部(小数切り捨て)
+print(x//2)
+
+# 2で割ったあまり
+print(x%2)
+
+# 4乗する
+print(x**4)
+
+
+print("#===== 行列計算 =====#")
+
+# 2次元配列で行列計算
+A = np.array([
+        [1,2,],
+        [3,4,],
+    ])
+
+B = np.array([
+        [1,2,3,],
+        [3,4,5,],
+    ])
+
+C = np.array([
+        [3,6, ],
+        [2,7, ],
+    ])
+
+
+# 行列の形状を調べる(タプル型)
+print( A.shape )
+print( B.shape )
+
+# 次元数の表示
+print( A.ndim ) 
+print( B.ndim ) 
+
+# 要素数の表示
+print( A.size ) 
+print( B.size ) 
+
+
+
+# ABの内積 ( ※Aの列数、Bの行数が一致していない場合ここで例外が出る。)
+print( A.dot(B) )
+
+# Python3.5以降では 内積は@を使って表現もできる
+print( A@(B) )
+
+# この表現でも可
+print( A @ B )
+
+
+# A B の外積(クロス積)
+print( np.outer(A, B) )
+
+# AとC のアダマール積
+# アダマール積は 普通に掛け算すれば良い。行列の形が一致していなければ例外。
+print( A*C )
+
+
+# Aの逆行列
+print( np.linalg.inv(A) )
+
+# 行列式(ad - bc)が0の場合 の逆行列は例外
+"""
+x = np.array([
+        [ 1, 3 ],
+        [ 3, 9 ],
+    ])
+print( np.linalg.inv(x) )
+"""
+
+# 行列式(ad - bc)の計算
+print( np.linalg.det(A) )
+
+# 5次元の単位行列
+print( np.eye(5) )
+```
+
 
 
 ### pandas 
 
-#### 行列計算
+```
+pip install pandas
+```
+
+pandas はデータフレームという構造を使って、表形式のデータを効率良く扱うことができる。
+
+CSV,Excel,テキストファイルやSQLデータベースまで扱うことができる。
+
+- (公式) https://pandas.pydata.org/ 
+- (ドキュメント) https://pandas.pydata.org/docs/reference/index.html
+- https://ja.wikipedia.org/wiki/Pandas
+- https://pypi.org/project/pandas/
+- [【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】](/post/startup-pandas-openpyxl-matplotlib/)
+
+
+#### サンプルコード
+
+このサンプルコードではタイタニック事件の乗客データが格納されているCSVを扱う。
+
+- データ元: https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv
+- データ元のGitHub: https://github.com/mwaskom/seaborn-data
+
+データのラベルは以下の通り。
+
+- survived: 生存したかどうか（0 = 死亡、1 = 生存）
+- pclass: チケットのクラス（1 = 上級、2 = 中級、3 = 下級）
+- sex: 性別（"male" = 男性、"female" = 女性）
+- age: 年齢（欠損値あり）
+- sibsp: 同乗していた兄弟・配偶者の数
+- parch: 同乗していた親・子供の数
+- fare: チケットの料金
+- embarked: 乗船地（C = Cherbourg、Q = Queenstown、S = Southampton）
+- class: pclass と同じ内容（文字列で "First"、"Second"、"Third"）
+- who: 年齢と性別をもとにした分類（"man"、"woman"、"child"）
+- adult_male: 成人男性かどうか（True / False）
+- deck: デッキ（客室のある階層、A〜G。欠損値多め）
+- embark_town: 乗船した港の名前（例: "Cherbourg"）
+- alive: 生存したかどうか（"yes" / "no"）
+- alone: 一人旅だったか（True = 一人、False = 家族などと同乗）
+
+```
+import pandas as pd 
+
+# CSVをデータフレームとして読み込みをする。
+df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv" )
+
+# ヘッダー(ラベル)を削除して読み込みする
+df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv", header=0 )
+
+print(df)
+
+# 列ラベルの一覧を取り出す。(index型オブジェクト、そのままforループできる)
+print(df.columns)
+
+# list 関数を使うことで配列として使える
+print(list(df.columns))
+
+
+# 行ラベルの一覧を取り出す
+print(df.index)
+
+print(list(df.index))
+
+
+
+# 各データのデータ型を調べる。
+print(df.dtypes)
+
+"""
+[891 rows x 15 columns]
+survived         int64
+pclass           int64
+sex             object
+age            float64
+sibsp            int64
+parch            int64
+fare           float64
+embarked        object
+class           object
+who             object
+adult_male        bool
+deck            object
+embark_town     object
+alive           object
+alone             bool
+dtype: object
+"""
+
+
+print("======= 列ごとに値の確認とカウント、値の変換 ===========")
+
+# alive の yesとnoを TrueとFalseに変換する。ただし、値の種類は本当にyesとnoだけなのか調べる。
+
+# 特定列の値の種類を表示(重複は除去)
+print(df["alive"].unique())
+
+# 特定列の値ごとに出現数をカウントする。NaNも含める。
+print(df["alive"].value_counts(dropna=False))
+
+# noとyes は TrueとFalseに変換する(元のaliveを上書きする。)
+df["alive"] = df["alive"].map({"yes": True, "no": False})
+
+print(df)
+
+
+print("======= NaNを含んだデータを除去する ===========")
+
+# 年齢がNaNになっているデータを削除、inplace=True で元データに上書きする。
+df.dropna(subset=["age"], inplace=True)
+# 客室のある階層がNaNのデータも削除
+#df.dropna(subset=["deck"], inplace=True)
+
+# 全列で 1つでもNaNが含まれる行を削除する。
+#df.dropna(inplace=True)
+
+print(df)
+
+# 列ごと削除する。
+df.drop("deck", axis=1 , inplace=True)
+
+# 行ごと削除する(インデックス番号を指定する) (※欠番になってしまう。)
+df.drop(3, axis=0, inplace=True)
+
+# 欠番になっているデータのインデックスを連番にし直す。
+df.reset_index(inplace=True)
+
+
+print("======= ファイルの保存をする =========")
+
+df.to_csv("test.csv")
+```
+
+
+
+
+### seaborn 
+
+```
+pip install seaborn
+```
+
+seabornはmatplotlib のラッパー系ライブラリ
+
+pandasのデータフレームを直接扱え、短いコードでグラフを描画することができる。
+
+- (公式) https://seaborn.pydata.org/
+- https://pypi.org/project/seaborn/
+
+```
+import seaborn as sns 
+import matplotlib.pyplot as plt 
+import matplotlib.font_manager as fm
+
+print("男性と女性での生存率を調べる")
+
+# x軸に性別、y軸に生存値(1なら生存、0なら死亡)とする。これで、棒グラフの平均を生成できる。
+sns.barplot(data=df, x='sex', y='survived')
+plt.title("Survival rates by Gender")
+plt.show()
+```
+
+<div class="img-center"><img src="/images/Screenshot from 2025-05-04 17-11-12.png" alt=""></div>
+
+この通り、男性は20%に対して、女性は75%以上。
+
+続いて、年齢別の生存率を確認する。
+
+```
+# 年齢ごとに区分けする。 0~12歳は子供、60歳までは大人、100歳までは高齢者
+df['age_group'] = pd.cut(df['age'], bins=[0, 12, 60, 100], labels=['child', 'adult', 'elderly'])
+
+sns.barplot(data=df, x='age_group', y='survived')
+plt.title("Survival rates by Age")
+plt.show()
+```
+
+<div class="img-center"><img src="/images/Screenshot from 2025-05-04 17-11-19.png" alt=""></div>
+
+全体的に見れば、子供の生存率のほうが高いように見える。
+
+では、年齢グループを更に男女で分け、かつ生存率ではなく生存者数で確認してみる。
+
+```
+# 積み上げ棒グラフ x軸は年齢グループ、更に性別ごとに分け、kind='count'として数をカウント。
+sns.catplot(data=df, x='age_group', hue='sex', col='alive', kind='count')
+plt.show()
+```
+
+<div class="img-center"><img src="/images/Screenshot from 2025-05-04 17-17-46.png" alt=""></div>
+
+
+```
+pivot = df.pivot_table(index='sex', columns='age_group', values='survived')
+sns.heatmap(pivot, annot=True, cmap="YlGnBu")
+plt.title("Survival Rate by Sex and Age Group")
+plt.show()
+```
+
+<div class="img-center"><img src="/images/Screenshot from 2025-05-04 17-37-38.png" alt=""></div>
+
+以上のグラフから、以下のことが言える。
+
+
+- 子供の生存率が高いように見えるのは、大人の男性の死亡率が高いため、相対的に高く見えるだけ
+- 高齢者はほとんど乗船していないし、ここでも男性の死亡率は高め、女性は生存率100%
+- 子供は男女関係なく生存・死亡している
+- 一番生存率が高いのは子供ではなく、大人の女性
+
+### matplotlib 
+
+```
+pip install matplotlib
+```
+matplotlib はグラフ描画ができるライブラリ。numpy配列のデータに対応している。
+
+日本語をグラフに表示させる場合は、別途フォントファイルを用意する必要がある。
+
+- (公式) https://matplotlib.org/
+- https://ja.wikipedia.org/wiki/Matplotlib 
+- https://pypi.org/project/matplotlib/
+- [【matplotlib】フォントファイルを用意して日本語の豆腐化を修正する](/post/matplotlib-font-easy-settings/)
+
+
+
+### scikit-learn
+
+```
+pip install scikit-learn
+```
+scikit-learnは機械学習を行うことができるライブラリ。
+
+強化学習・深層学習などには対応していないものの、基本的な回帰・分類問題には対応可能。
+
+- (公式) https://scikit-learn.org/stable/ 
+- https://ja.wikipedia.org/wiki/Scikit-learn
+- https://pypi.org/project/scikit-learn/ 
+
+
+
+
+#### 回帰問題に有効なモデル一覧
+#### 分類問題に有効なモデル一覧
 
 
 
 
 
-#### 
-
-
-
-<div class="img-center"><img src="" alt=""></div>
-<div class="img-center"><img src="" alt=""></div>
 <div class="img-center"><img src="" alt=""></div>
 <div class="img-center"><img src="" alt=""></div>
 <div class="img-center"><img src="" alt=""></div>

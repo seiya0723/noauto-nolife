@@ -11,6 +11,8 @@ tags: [ "Ubuntu" ]
 
 本記事に倣って作ったファイルサーバーは、LAN内の端末であれば、いずれも自由に読み書きできてしまうので注意。
 
+※ この記事の方法は非推奨です。マウントする箇所が /mnt/ になっておらず、権限もフルアクセスです。
+
 ## インストールする
 
     sudo apt install samba
@@ -66,6 +68,88 @@ Nautilusを起動して、パス欄に下記を記入
 
     sudo mount /dev/sda ~/share/sda
 
+
+### 新品のディスクを接続した直後の場合、マウントはできない
+
+新品のディスクをそのままマウントしようとした場合、
+
+```
+mount: /share/sda: wrong fs type, bad option, bad superblock on /dev/sda, missing codepage or helper program, or other error.
+       dmesg(1) may have more information after failed mount system call.
+```
+
+こんな感じのエラーが出てくる。
+
+まず、ディスクのファイルシステムを作成する必要がある。
+
+```
+lsblk
+```
+
+これで接続されたディスクを確認
+
+```
+$ lsblk
+
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sda           8:0    0  1.8T  0 disk 
+nvme0n1     259:0    0  1.8T  0 disk 
+├─nvme0n1p1 259:1    0    1G  0 part /boot/efi
+└─nvme0n1p2 259:2    0  1.8T  0 part /
+```
+
+
+fdiskを起動し、インタラクティブシェルに入る。
+```
+sudo fdisk /dev/sda
+```
+
+
+- n : 新しいパーティション
+- p : プライマリ
+- 1 : パーティション番号
+- Enter 2回押し
+- w : 書き込み
+
+```
+$ sudo fdisk /dev/sda
+
+Welcome to fdisk (util-linux 2.39.3).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS (MBR) disklabel with disk identifier 0x52fbf621.
+
+Command (m for help): n
+Partition type
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended (container for logical partitions)
+Select (default p): p
+Partition number (1-4, default 1): 1
+First sector (2048-3907029167, default 2048): 
+Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-3907029167, default 3907029167): 
+
+Created a new partition 1 of type 'Linux' and of size 1.8 TiB.
+
+Command (m for help): w
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+```
+
+続いて、ext4 でフォーマットする。
+
+```
+sudo mkfs.ext4 /dev/sda1
+```
+
+その上で、先のマウントのコマンドを打つ。
+
+```
+sudo /dev/sda1/ ~/share/disk1
+```
+
 ## アンマウントする
 
 間違えてマウントした場合はアンマウントする。dfコマンドでデバイスを特定
@@ -89,8 +173,8 @@ Nautilusを起動して、パス欄に下記を記入
 
 `/etc/fstab`に起動時にマウントするように書いておく。
 
-    /dev/sda         /home/UserName/share/sda   ext4    defaults        0 0
-    /dev/sdb1        /home/UserName/share/sdb1  ext4    defaults        0 0
+    /dev/sda         /home/UserName/share/sda   ext4    defaults,nofail       0 0
+    /dev/sdb1        /home/UserName/share/sdb1  ext4    defaults,nofail       0 0
 
 UUIDを指定してマウントしたい場合、各ディスクのUUIDを確認して
 
@@ -99,8 +183,8 @@ UUIDを指定してマウントしたい場合、各ディスクのUUIDを確認
 
 このように指定する。
 
-    UUID=b7f7e47d-adee-4991-8631-65963bda99e2       /home/UserName/share/sda     ext4   defaults        0 0
-    UUID=117b5be9-cc41-4670-b2f4-57413506025c       /home/UserName/share/sdb1    ext4   defaults        0 0
+    UUID=b7f7e47d-adee-4991-8631-65963bda99e2       /home/UserName/share/sda     ext4   defaults,nofail       0 0
+    UUID=117b5be9-cc41-4670-b2f4-57413506025c       /home/UserName/share/sdb1    ext4   defaults,nofail       0 0
 
 
 ちなみに、最後の5列目と6列目はdumpコマンドでバックアップ対象になるかどうか、起動時にfsckコマンドでチェックを行う際の順序を指定している

@@ -204,3 +204,16 @@ CSVやエクセルのファイルをそのまま読み込んで分析できる�
 - 公式: https://openpyxl.readthedocs.io/en/stable/
 - Qiita: https://qiita.com/taito273/items/07e4332293c2c59799d1
 
+
+## pandas 基本操作のまとめ
+
+基本操作をまとめたコード。
+
+
+## 関連記事
+
+- [AI実装検定A級のメモ](/post/ai-exam-rank-a/)
+- [【Pandas】DataFrameをループして取り出す【列ごと、行ごとに取り出すにはdf.items()とdf.itertuples()でOK】](/post/pandas-for-loop/)
+
+
+
