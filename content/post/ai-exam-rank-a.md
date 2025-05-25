@@ -109,6 +109,10 @@ ILSVRC という画像認識の精度を競い合うコンペがあり、2012年
 ##### 代表的な教師なし学習
 
 - k-means(クラスタリング、似たデータを自動でグループ化)
+    - 例1: 購買行動が似たものをグループ化(クラスタリング)して、DMを送るなど
+    - 例2: SNSの履歴から、興味のあるものをグループ化(クラスタリング)して、リコメンドの表示をするなど
+
+
 
 <!--前処理関係-->
 
@@ -652,7 +656,18 @@ print(A_inv)
 - numpy
 - pandas 
 - matplotlib 
-- 
+- seaborn
+- scikit-learn 
+
+この5つのライブラリが含まれる。
+
+参照: https://kentei.ai/
+
+### 対策に有効と思われる書籍
+
+- [Python 実践データ分析 100本ノック 第2版](https://www.amazon.co.jp/dp/479806727X/?tag=m68371ti-22)
+- [Python 実践AIモデル構築 100本ノック](https://www.amazon.co.jp/dp/4798064408/?tag=m68371ti-22)
+
 
 ### numpy 
 
@@ -995,8 +1010,6 @@ df.to_csv("test.csv")
 ```
 
 
-
-
 ### seaborn 
 
 ```
@@ -1100,12 +1113,8 @@ scikit-learnは機械学習を行うことができるライブラリ。
 - https://pypi.org/project/scikit-learn/ 
 
 
-
-
 #### 回帰問題に有効なモデル一覧
 #### 分類問題に有効なモデル一覧
-
-
 
 
 

@@ -1,7 +1,9 @@
 const SEARCH_LIST = [
+{ "link": "/post/python-k-means-clustering/", "title" : "【教師なし学習】k-means(k平均法)により似たデータをクラスタリング(グループ化)する" }, 
 { "link": "/post/python-matplotlib-seaborn-api/", "title" : "【Pythonでグラフ描画】matplotlibとseabornのAPIのまとめ" }, 
-{ "link": "/post/ubuntu-samba/", "title" : "UbuntuにSambaをインストールしてファイルサーバー化させる" }, 
 { "link": "/post/ai-exam-rank-a/", "title" : "AI実装検定A級のメモ" }, 
+{ "link": "/post/ubuntu-nvidia-drivers-install/", "title" : "UbuntuでNvidiaのドライバーをインストールする" }, 
+{ "link": "/post/ubuntu-samba/", "title" : "UbuntuにSambaをインストールしてファイルサーバー化させる" }, 
 { "link": "/post/startup-pandas-openpyxl-matplotlib/", "title" : "【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】" }, 
 { "link": "/post/python-threading-vs-threadpoolexecutor/", "title" : "Pythonのthreading.Thread と concurrent.futures.Threadpoolexecutor の違い【マルチスレッド処理】" }, 
 { "link": "/post/python-pillow-all-photo-cropped/", "title" : "【Pillow】画像をまとめてクロッピング(トリミング)する【マルチスレッド高速化】" }, 
@@ -35,7 +37,6 @@ const SEARCH_LIST = [
 { "link": "/post/django-batch-opencv/", "title" : "【Django】バッチ処理のOpenCVが撮影した画像をDBに保存する" }, 
 { "link": "/post/python-ai-memo/", "title" : "Pythonで画像認識AI(深層学習)の速習をするためのメモ【pytorchで画像認識学習・推論のサンプルあり】" }, 
 { "link": "/post/drf-react-spa-websocket-chat-jwt/", "title" : "【Sec-Websocket-Protocol】DRF+ReactのSPAでWebsocketのチャットサイトでJWT認証をする" }, 
-{ "link": "/post/ubuntu-nvidia-drivers-install/", "title" : "UbuntuでNvidiaのドライバーをインストールする" }, 
 { "link": "/post/react-useref-usememo/", "title" : "【React】値が変わっても再レンダリングをしないuseRefとuseMemoの違い【デバウンス向けなのは？】" }, 
 { "link": "/post/drf-react-spa-crud-bbs/", "title" : "DRF+ReactのSPAでCRUD簡易掲示板をつくる" }, 
 { "link": "/post/drf-react-spa-crud-bbs-jwt/", "title" : "DRF+ReactのCRUD簡易掲示板SPAでJWT認証を実装する" }, 

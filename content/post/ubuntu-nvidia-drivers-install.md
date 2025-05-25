@@ -87,3 +87,11 @@ nvidia-smi -l 1
 
 
 
+## 【不具合】マルチモニタ構成で、VirtualBoxやViewnior 起動時にログアウトされる問題の対処
+
+
+### 使用しているデスクトップ環境がX11であることを確認
+
+```
+echo $XDG_SESSION_TYPE
+```
