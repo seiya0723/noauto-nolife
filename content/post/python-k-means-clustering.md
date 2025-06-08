@@ -149,7 +149,7 @@ import seaborn as sns
 
 # ※: このグラフからわかること
 # どの品種でも、petal(花びら) のwidth とlength は比例している。 petalのwidthが大きければlength も大きくなる。
-# 一方、septal(がく)のwidthとlengthは比例しているというわけではない。
+# 一方、sepal(がく)のwidthとlengthは比例しているというわけではない。
 
 
 # ===================== クラスタリング ===============================================================
@@ -186,7 +186,7 @@ print(cluster_center)
 
 
 # クラスタセンターをグラフ化させる
-# 花びらの大きさをどのように分類したのか確認するため、 septalを指定する。
+# 花びらの大きさをどのように分類したのか確認するため、 sepalを指定する。
 
 # plt.scatter(
 #         cls_data['sepal length (cm)'],
@@ -331,7 +331,7 @@ print(cluster_center)
 
 
 # クラスタセンターをグラフ化させる
-# 花びらの大きさをどのように分類したのか確認するため、 septalを指定する。
+# 花びらの大きさをどのように分類したのか確認するため、 sepalを指定する。
 
 plt.scatter(
         cls_data['sepal length (cm)'],
@@ -380,7 +380,7 @@ cluster_center.columns = cls_data.columns[:4]
 print(cluster_center)
 
 # クラスタセンターをグラフ化させる
-# 花びらの大きさをどのように分類したのか確認するため、 septalを指定する。
+# 花びらの大きさをどのように分類したのか確認するため、 sepalを指定する。
 
 plt.scatter(
         cls_data['sepal length (cm)'],

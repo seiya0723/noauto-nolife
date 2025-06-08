@@ -1,6 +1,9 @@
 const SEARCH_LIST = [
-{ "link": "/post/python-k-means-clustering/", "title" : "【教師なし学習】k-means(k平均法)により似たデータをクラスタリング(グループ化)する" }, 
+{ "link": "/post/database-sql-having-group-count/", "title" : "【SQL】GROUP BY, HAVING, COUNTの3つでグループ化して集計、条件で絞り込みカウントする" }, 
+{ "link": "/post/oracle-database-function/", "title" : "【SQL】Oracleデータベースのファンクション(関数)の一覧" }, 
+{ "link": "/post/python-logistic-regressiion-liner-regression/", "title" : "【scikit-learn】ロジスティック回帰は二値分類問題に、線型回帰は回帰問題に【教師あり学習】" }, 
 { "link": "/post/python-matplotlib-seaborn-api/", "title" : "【Pythonでグラフ描画】matplotlibとseabornのAPIのまとめ" }, 
+{ "link": "/post/python-k-means-clustering/", "title" : "【教師なし学習】k-means(k平均法)により似たデータをクラスタリング(グループ化)する" }, 
 { "link": "/post/ai-exam-rank-a/", "title" : "AI実装検定A級のメモ" }, 
 { "link": "/post/ubuntu-nvidia-drivers-install/", "title" : "UbuntuでNvidiaのドライバーをインストールする" }, 
 { "link": "/post/ubuntu-samba/", "title" : "UbuntuにSambaをインストールしてファイルサーバー化させる" }, 
