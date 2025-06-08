@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/pandas-read-sql/", "title" : "【Pandas】read_sql で生のSQL(SELECT文)を実行、DBから直接DataFrameを作る" }, 
 { "link": "/post/database-sql-having-group-count/", "title" : "【SQL】GROUP BY, HAVING, COUNTの3つでグループ化して集計、条件で絞り込みカウントする" }, 
 { "link": "/post/oracle-database-function/", "title" : "【SQL】Oracleデータベースのファンクション(関数)の一覧" }, 
 { "link": "/post/python-logistic-regressiion-liner-regression/", "title" : "【scikit-learn】ロジスティック回帰は二値分類問題に、線型回帰は回帰問題に【教師あり学習】" }, 
