@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/python-pyside6-qt/", "title" : "PySide6のQtを使ってGUIアプリを作る" }, 
 { "link": "/post/pandas-read-sql/", "title" : "【Pandas】read_sql で生のSQL(SELECT文)を実行、DBから直接DataFrameを作る" }, 
 { "link": "/post/database-sql-having-group-count/", "title" : "【SQL】GROUP BY, HAVING, COUNTの3つでグループ化して集計、条件で絞り込みカウントする" }, 
 { "link": "/post/oracle-database-function/", "title" : "【SQL】Oracleデータベースのファンクション(関数)の一覧" }, 
