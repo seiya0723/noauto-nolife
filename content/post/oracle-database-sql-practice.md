@@ -121,6 +121,8 @@ WHERE E1.PHONE_NUMBER = E2.PHONE_NUMBER
 AND E1.EMPLOYEE_ID <> E2.EMPLOYEE_ID );
 ```
 
+E1のテーブル内から、サブクエリでヒットした行をそのまま表示している。
+
 ## 自己結合で組み合わせを調べる
 
 自己結合の用途
@@ -142,6 +144,8 @@ INNER JOIN EMPLOYEES E2
 先程の集約やサブクエリ、INやEXISTSを使う方法よりも遥かにシンプルだ。
 
 <div class="img-center"><img src="/images/Screenshot from 2025-08-31 12-02-52.png" alt=""></div>
+
+
 
 ### 補足1: クロス結合は注意
 
