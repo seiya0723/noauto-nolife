@@ -10,7 +10,7 @@ tags: [ "DB","SQL","Oracle" ]
 
 DBはOracle。
 
-## 存在チェック
+## 外部キーを使った存在チェック
 
 ```
 SELECT d.department_id, d.department_name
@@ -54,7 +54,7 @@ EXISTSの方は早期終了可能で、departmentを基準に動作している�
 
 どちらが高速であるかはあえて言うまでもない。
 
-## 存在しないチェック
+## 外部キーを使った存在しないチェック
 
 社員がいない部署を取得している。
 ```
@@ -180,5 +180,62 @@ WHERE d.department_id IN (
     - 【補足】 集約なしの場合、アーリーリターンが使える(全走しない)EXISTSが有利
 
 ポイントは全走をしているかしていないか。全走する状態での相関サブクエリは遅い。
+
+
+
+## 存在量化と全称量化
+
+- 存在量化: 条件に一致する行が1件でもある (EXISTS)
+- 全称量化: 全ての行はある条件に一致する (FORALL)
+
+存在量化の否定は全称量化に値する。つまりNOT EXISTS = FORALL である。
+
+NOT EXISTSを使えば、全ての行はある条件に一致するかを調べることができる。
+
+
+```
+-- 部署内の全員の給料が5000以上である、部署と社員を取り出す。
+
+SELECT 
+	e1.DEPARTMENT_ID
+	, e1.FIRST_NAME
+	, e1.SALARY
+FROM EMPLOYEES e1
+WHERE NOT EXISTS (
+	SELECT 1
+	FROM EMPLOYEES e2
+	WHERE e1.DEPARTMENT_ID = e2.DEPARTMENT_ID 
+	AND e2.SALARY < 5000
+);
+
+-- 部署内の全員の給料が5000以上である
+-- = 給料5000未満のリスト には存在していない人を取り出す。
+```
+条件を否定し、さらにEXISTSも否定すれば、二重否定で肯定になる。
+
+が、このSQLは非常に分かりづらい。
+
+一見5000未満の給料を取り出しているように見えるが、NOT EXISTSにより5000以上になる。
+
+しかも自己参照をしており、同一部署の全ての人が5000以上である場合に限定される。
+
+NOT EXISTSを使えば、このような表現は可能ではあるが、可読性だけでなくパフォーマンスの観点から考えても、下記の集約+HAVINGでも成立はする。
+
+```
+-- 集約してHAVINGを使う方法の方がわかりやすい。
+
+SELECT DEPARTMENT_ID
+	, FIRST_NAME
+	, SALARY
+FROM EMPLOYEES
+GROUP BY DEPARTMENT_ID
+HAVING MIN(SALARY) >= 5000;
+```
+
+直感的に表現できるこちらのほうが良い。
+
+
+
+
 
 
