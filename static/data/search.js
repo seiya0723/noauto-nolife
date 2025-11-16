@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/sql-exists/", "title" : "EXISTSの使い方" }, 
+{ "link": "/post/ms-access-memo/", "title" : "MicroSoft Accessの制約メモ" }, 
 { "link": "/post/oracle-database-sql-practice/", "title" : "Oracleデータベース演習" }, 
 { "link": "/post/python-pyside6-qt/", "title" : "PySide6のQtを使ってGUIアプリを作る" }, 
 { "link": "/post/pandas-read-sql/", "title" : "【Pandas】read_sql で生のSQL(SELECT文)を実行、DBから直接DataFrameを作る" }, 
