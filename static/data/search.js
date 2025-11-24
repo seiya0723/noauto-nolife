@@ -1,4 +1,6 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-nodejs/", "title" : "Node.jsでCRUD簡易掲示板を作る【RestfulAPI+SQLite】" }, 
+{ "link": "/post/ubuntu-gnome-install/", "title" : "サーバー版UbuntuにGNOMEをインストールする" }, 
 { "link": "/post/sql-exists/", "title" : "EXISTSの使い方" }, 
 { "link": "/post/ms-access-memo/", "title" : "MicroSoft Accessの制約メモ" }, 
 { "link": "/post/oracle-database-sql-practice/", "title" : "Oracleデータベース演習" }, 
