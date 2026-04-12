@@ -1,5 +1,5 @@
 ---
-title: "【pytorch】caltech-101 を使ってAIモデルの歴史を辿る【VGG16からEfficientNetまで】"
+title: "【pytorch】caltech-101 を使ってCNNモデルの歴史を辿る【VGG16からEfficientNetまで】"
 date: 2026-04-12T11:56:03+09:00
 lastmod: 2026-04-12T11:56:03+09:00
 draft: false

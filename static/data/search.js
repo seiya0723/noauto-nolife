@@ -1,5 +1,5 @@
 const SEARCH_LIST = [
-{ "link": "/post/pytorch-caltech101/", "title" : "【pytorch】caltech-101 を使ってAIモデルの歴史を辿る【VGG16からEfficientNetまで】" }, 
+{ "link": "/post/pytorch-caltech101/", "title" : "【pytorch】caltech-101 を使ってCNNモデルの歴史を辿る【VGG16からEfficientNetまで】" }, 
 { "link": "/post/pytorch-cnn-model-origin/", "title" : "pytorch の nn.moduleを継承して自作AIモデルを作り、CNNモデルの歴史を辿る" }, 
 { "link": "/post/learning-roadmap-for-handling-video-data/", "title" : "動画の扱い方の学習ロードマップ" }, 
 { "link": "/post/startup-nodejs/", "title" : "Node.jsでCRUD簡易掲示板を作る【RestfulAPI+SQLite】" }, 
