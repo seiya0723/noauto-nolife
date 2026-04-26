@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/pytorch-nlp-origin/", "title" : "pytorchコードでNLPモデルの歴史を辿る【word2vec から Transformerまで 】" }, 
 { "link": "/post/pytorch-torchvision-models/", "title" : "【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る" }, 
 { "link": "/post/pytorch-caltech101/", "title" : "【pytorch】caltech-101 を使ってCNNモデルの歴史を辿る【VGG16からEfficientNetまで】" }, 
 { "link": "/post/pytorch-cnn-model-origin/", "title" : "pytorch の nn.moduleを継承して自作AIモデルを作り、CNNモデルの歴史を辿る" }, 
