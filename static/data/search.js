@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/ai-jisso-kentei-a-grade/", "title" : "AI実装検定A級合格体験記" }, 
 { "link": "/post/cnn-nlp-question/", "title" : "CNNとNLPの問題" }, 
 { "link": "/post/pytorch-nlp-origin/", "title" : "pytorchコードでNLPモデルの歴史を辿る【word2vec から Transformerまで 】" }, 
 { "link": "/post/pytorch-torchvision-models/", "title" : "【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る" }, 

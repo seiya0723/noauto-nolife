@@ -17,21 +17,20 @@ tags: [ "私について" ]
 |:--:|:--|
 |名前|S.Asahina|
 |経験|2011年〜|
-|資格|ITパスポート(2012年6月),基本情報技術者(2013年春),応用情報技術者(2014年春)|
-|言語|HTML,CSS,JavaScript(jQuery,Vue.js,React),Python(Django,Flask),PHP(laravel),その他(C,COBOL,Javaなど)|
+|資格|ITパスポート(2012年6月),基本情報技術者(2013年春),応用情報技術者(2014年春),AI実装検定A級(2026年2月)|
+|言語|HTML,CSS,JavaScript(jQuery,Vue.js,React),Python(Django,Flask),PHP(laravel),C#(ASP.NET),その他(C,COBOL,Javaなど)|
 |その他技術|Apache,Nginx,MySQL,PostgreSQL,Ubuntu,Raspberry Pi,Heroku,AWS(EC2,RDS,S3),その他(debian,CentOSなど)|
-|やっている仕事|ウェブサイト・ウェブアプリ(業務用)の開発・保守・運用、PCの修理・改造、プログラミング・システム開発講師、技術記事の寄稿|
+|やっている仕事|システム開発(主にウェブアプリ)、最近はAIを中心に活動|
 |免責事項|本ブログサイトに書かれている内容は、完全性・正当性等を保証する物は一切ありません。コードの実行は自己責任でお願いします。|
 
 
-
-<!--
 ## このブログを応援したい方へ
 
 下記URLからAmazonでお買い物をしていただくと、Amazonアソシエイトにより数パーセントが報酬として私の懐に入ります。
 
 https://www.amazon.co.jp/?tag=m68371ti-22
 
+<!--
 ## お問い合わせ
 
 記事に関するお問い合わせなどは下記から受け付けております。
@@ -44,8 +43,5 @@ https://www.amazon.co.jp/?tag=m68371ti-22
 https://docs.google.com/forms/d/e/1FAIpQLSeniPR577bURxA1cNK9WA-6dgIRyP38rJ6ID5Vmhk9LwZzbIg/viewform?usp=sf_link
 
 -->
-
-
-
 
 
