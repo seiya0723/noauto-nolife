@@ -8,6 +8,7 @@ categories: [ "others" ]
 tags: [ "AI開発","資格試験","AI実装検定" ]
 ---
 
+
 もうすでに2ヶ月以上前のことではあるが、AI実装検定A級の合格をしたのでここにその過程をまとめる。
 
 <div class="img-center"><img src="/images/ai-jisso-a-grade.jpg" alt=""></div>
