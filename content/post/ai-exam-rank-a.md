@@ -5,7 +5,7 @@ lastmod: 2025-01-26T16:28:05+09:00
 draft: false
 thumbnail: "images/noimage.jpg"
 categories: [ "others" ]
-tags: [ "メモ","追記予定" ]
+tags: [ "メモ","追記予定","AI実装検定" ]
 ---
 
 ## AI概論
