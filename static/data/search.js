@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/keras-cnn-models/", "title" : "KerasのCNNモデルのコードを解釈する" }, 
 { "link": "/post/cnn-nlp-question/", "title" : "CNNとNLPの問題" }, 
 { "link": "/post/ms-access-memo/", "title" : "MicroSoft Accessの制約メモ" }, 
 { "link": "/post/ai-exam-rank-a/", "title" : "AI実装検定A級のメモ" }, 
