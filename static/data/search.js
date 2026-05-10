@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/nlp-model-feature/", "title" : "【箇条書き】NLPモデルの特徴まとめ" }, 
 { "link": "/post/keras-nlp-models/", "title" : "KerasでNLPモデルを再現する" }, 
 { "link": "/post/cnn-model-feature/", "title" : "【箇条書き】CNNモデルの特徴まとめ" }, 
 { "link": "/post/keras-cnn-models/", "title" : "KerasのCNNモデルのコードを解釈する" }, 
