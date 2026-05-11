@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/ai-exam-rank-s-mock/", "title" : "AI実装検定S級の模擬試験" }, 
 { "link": "/post/nlp-model-feature/", "title" : "【箇条書き】NLPモデルの特徴まとめ" }, 
 { "link": "/post/keras-nlp-models/", "title" : "KerasでNLPモデルを再現する" }, 
 { "link": "/post/cnn-model-feature/", "title" : "【箇条書き】CNNモデルの特徴まとめ" }, 
