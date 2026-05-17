@@ -8,10 +8,7 @@ categories: [ "others" ]
 tags: [ "AI開発","pytorch","keras","NLP" ]
 ---
 
-
-
 ## 前提と基礎知識
-
 
 ### NLPモデルに入力データが与えられるまでの過程
 
@@ -160,22 +157,18 @@ batch_sizeの定義: 文(ペア)の数
 ```
 
 `src_seq_len`、`tgt_seq_len` はトークン数を。`vocab_size`は語彙表に登録されているトークンの総数を意味している。
- 
 
 
-## 各モデルごとの特徴と用途
+## 各モデルの用途
 
-前項の内容をもとに、NLPモデルの特徴と用途をまとめる
+前項の内容をもとに、NLPモデルの用途をまとめる
 
-### Word2Vec (Skip-gram)
-### seq2seq
-### HRED (Hierarchical Recurrent Encoder-Decoder)
+- Word2Vec (Skip-gram): 単語(トークン)のベクトル化
+- seq2seq: 翻訳機
+- HRED (Hierarchical Recurrent Encoder-Decoder): チャットボット
+- Transformer: 長文読解、文章生成など幅広く利用
 
-
-
-### Transformer
-
-#### Attentionについて
+## Attentionについて
 
 Attentionは 特に注意を払うべきトークンを見つけるための手法。これにより語彙表から作られた埋め込み行列(ベクトル)では実現できなかった、「文脈の理解」が可能になっている。
 
