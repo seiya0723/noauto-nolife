@@ -17,7 +17,7 @@ tags: [ "私について" ]
 |:--:|:--|
 |名前|S.Asahina|
 |経験|2011年〜|
-|資格|ITパスポート(2012年6月),基本情報技術者(2013年春),応用情報技術者(2014年春),AI実装検定A級(2026年2月)|
+|資格|ITパスポート(2012年6月),基本情報技術者(2013年春),応用情報技術者(2014年春),AI実装検定A級(2026年2月),AI実装検定S級(2026年5月)|
 |言語|HTML,CSS,JavaScript(jQuery,Vue.js,React),Python(Django,Flask),PHP(laravel),C#(ASP.NET),その他(C,COBOL,Javaなど)|
 |その他技術|Apache,Nginx,MySQL,PostgreSQL,Ubuntu,Raspberry Pi,Heroku,AWS(EC2,RDS,S3),その他(debian,CentOSなど)|
 |やっている仕事|システム開発(主にウェブアプリ)、最近はAIを中心に活動|
