@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/local-llm-install/", "title" : "UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)" }, 
 { "link": "/post/ai-jisso-kentei-s-grade/", "title" : "AI実装検定S級合格体験記" }, 
 { "link": "/post/ai-exam-rank-s-question/", "title" : "AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】" }, 
 { "link": "/post/nlp-model-feature/", "title" : "【箇条書き】NLPモデルの特徴まとめ" }, 
