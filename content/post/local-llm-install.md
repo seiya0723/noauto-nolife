@@ -25,6 +25,12 @@ curl -fsSL https://ollama.com/install.sh | sh
 pip install ollama
 ```
 
+ollamaコマンドでgemma:2b をインストールしておく。
+
+```
+ollama run gemma:2b
+```
+
 以下コードを実行する。
 
 ```
