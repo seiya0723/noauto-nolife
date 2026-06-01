@@ -1,4 +1,5 @@
 const SEARCH_LIST = [
+{ "link": "/post/qdrant-rag-system/", "title" : "RTX A2000 12GBでOllama(Gemma7B:4bit量子化仕様)+QdrantでテキストファイルのRAGを実現" }, 
 { "link": "/post/python-local-llm-rag/", "title" : "OllamaでRAGを実現する。" }, 
 { "link": "/post/local-llm-install/", "title" : "UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)" }, 
 { "link": "/post/ai-jisso-kentei-s-grade/", "title" : "AI実装検定S級合格体験記" }, 
