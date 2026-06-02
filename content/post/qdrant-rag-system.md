@@ -244,4 +244,34 @@ https://github.com/seiya0723/noauto-nolife/tree/master/content/post
 
 チャンクする文字列長などを考慮するなどが必要と思われる。
 
+## 【補足】Gemma3:12B で再度動かしてみた。
+
+どうやらGemmaにはGemmaとGemma2、そしてGemma3があるようだ。
+
+アーキテクチャが根本から作り変えられており、無印のGemmaよりも日本語やコーディング能力等が向上しているようだ。
+
+そこで、早速Gemma3:12Bを動かしてみた。まずはDL。8.1GBもあるので、ストレージ残量には注意。パラメータは12Billionなので120億ある。
+
+```
+ollama pull gemma3:12b
+```
+
+先のコードでgemma3:12bを呼び出すように書き換え、実行してみた。
+
+<div class="img-center"><img src="/images/Screenshot from 2026-06-02 19-45-48.png" alt=""></div>
+
+文章の密度が段違いである。コードの添付は無いが、かなり詳しい解説を提供してくれたようだ。
+
+とはいえGPUの酷使が凄まじい。
+
+<div class="img-center"><img src="/images/Screenshot from 2026-06-02 19-53-22.png" alt=""></div>
+
+もっと質問をしてみた。
+
+<div class="img-center"><img src="/images/Screenshot from 2026-06-02 19-59-17.png" alt=""></div>
+
+この長文も、生成時間は1分ほどとまだまだ許容できるレベルの待ち時間だ。これは、かなり使えるかもしれない。
+
+私の拙い文章を与えるのではなく、文献の質と量を確保し、チャンクや近傍も調整して、他のパラメータも調整すれば、一昔前のChatGPTよりも遥かに良いものができるかもしれない。
+
 
