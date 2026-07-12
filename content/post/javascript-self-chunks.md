@@ -414,7 +414,7 @@ const render = () => {
 
         html += `<span class="chunk ${isSelected ? "selected" : "" }"
             data-id="${chunk.id}"
-            style="background:${chunk.color}"><span class="handle left"></span>${ text.slice(chunk.start, chunk.end) }<span class="handle right"></span></span>`;
+            style="background:${chunk.color}">${ text.slice(chunk.start, chunk.end) }`;
 
         pos = chunk.end;
     }
