@@ -1,4 +1,7 @@
 const SEARCH_LIST = [
+{ "link": "/post/startup-qdrant/", "title" : "QdrantのCRUD、コレクションとポイント、ハイブリッド検索について" }, 
+{ "link": "/post/fastapi-nextjs-crud/", "title" : "FastAPI+Next.js+Ollama(Gemma4:7B)でChatGPT風アプリを作る" }, 
+{ "link": "/post/startup-fastapi/", "title" : "FastAPIのプロジェクト構成、ルーティング、モデル、DB使用方法について" }, 
 { "link": "/post/javascript-self-chunks/", "title" : "RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた" }, 
 { "link": "/post/qdrant-rag-system/", "title" : "RTX A2000 12GBでOllama(Gemma7B:4bit量子化仕様)+QdrantでテキストファイルのRAGを実現" }, 
 { "link": "/post/python-local-llm-rag/", "title" : "OllamaでRAGを実現する。" }, 
