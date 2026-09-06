@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=43210&amp;path=livereload" data-no-instant defer></script>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="canonical" href="http://localhost:43210/post/drf-csrf-validation/">
+
+
+        <link href="http://localhost:43210/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="http://localhost:43210/css/bootstrap-grid.css"> 
+
+        <script src="http://localhost:43210/data/search.js"></script>
+        <script src="http://localhost:43210/js/script.js"></script>
+
+        <title>DRFはいつCSRF検証をするのか？ - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="DRFはいつCSRF検証をするのか？ - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:43210/post/drf-csrf-validation/">
+<meta property="og:image" content="http://localhost:43210/images/drf.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="http://localhost:43210/post/drf-csrf-validation/">
+<meta name="twitter:title" content="DRFはいつCSRF検証をするのか？ - 自動化無しに生活無し">
+<meta name="twitter:image" content="http://localhost:43210/images/drf.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/localhost:43210\/"
+    },
+    "headline": "DRFはいつCSRF検証をするのか？ - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/localhost:43210\/images\/drf.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2024-12-28T16:47:30JST",
+    "dateModified": "2024-12-28T16:47:30JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/localhost:43210\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="http://localhost:43210/css/style.css" rel="stylesheet">
+        
+
+        
+        
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDX0LW64ZT"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-HDX0LW64ZT');
+        </script>
+        
+
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="http://localhost:43210/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEB開発関係を中心に備忘録をまとめています</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="http://localhost:43210/">HOME</a></li>
+                
+                <li><a href="http://localhost:43210/post/">post</a></li>
+                
+                <li class="active">DRFはいつCSRF検証をするのか？</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">DRFはいつCSRF検証をするのか？</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+
+        
+
+        <li>作成日時：<time datetime="2024-12-28T16:47:30JST">2024年12月28日 16時47分</time></li>
+        <li>最終更新日時：<time datetime="2024-12-28T16:47:30JST">2024年12月28日 16時47分</time></li>
+
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/drf/">drf</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/">セキュリティ</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/tips/">tips</a>
+            
+        </li>
+        
+        
+    </ul>
+
+
+    
+    
+    
+
+
+
+
+    <div class="img-center"><img src="http://localhost:43210/images/drf.jpg" alt="thumbnail"></div>
+
+	<div class="article_body"><p>開発中、おかしなことが起こった。</p>
+<p>これまでCSRFトークン無しで、PUTやDELETEメソッドが送信できていた。</p>
+<p>だが、突然、同様の状況で403エラー(CSRF token missing)が起きた。</p>
+<p>CSRFトークン無しでリクエストできていたものが、急に403エラーになりCSRF検証を行うようになった。</p>
+<p>何故か？</p>
+<h2 id="drfのビューではcsrf検証が免除されている">DRFのビューでは、CSRF検証が免除されている</h2>
+<p><a href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/viewsets.py#L146">https://github.com/encode/django-rest-framework/blob/master/rest_framework/viewsets.py#L146</a></p>
+<p>DRFのビューは、このように <code>.as_view()</code>の戻り値に、csrf_exempt でCSRF検証が免除(無効化)されている。</p>
+<p>urls.pyで、</p>
+<pre tabindex="0"><code>from todolist import views as todolist_views
+
+router = routers.DefaultRouter()
+router.register(r&#34;todolist/todo&#34;, todolist_views.TodoView, &#34;todo&#34;)
+router.register(r&#34;todolist/category&#34;, todolist_views.CategoryView, &#34;category&#34;)
+
+urlpatterns = [
+    # api エンドポイント
+    path(&#39;api/&#39;, include(router.urls)),
+]
+</code></pre><p>このようにDefaultRouterのオブジェクトに登録をした時点で、内部で <code>.as_view()</code>が実行されている。</p>
+<p><a href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/routers.py#L373">https://github.com/encode/django-rest-framework/blob/master/rest_framework/routers.py#L373</a></p>
+<p>故に、DRFのビューを使っている以上、CSRF検証されない。それは下記サイトでも解説されていた。</p>
+<ul>
+<li><a href="https://zenn.dev/ktnyt/scraps/8ee5e79e09d7b9">https://zenn.dev/ktnyt/scraps/8ee5e79e09d7b9</a></li>
+<li><a href="https://qiita.com/romgaran/items/af48606b7188f420f24c">https://qiita.com/romgaran/items/af48606b7188f420f24c</a></li>
+</ul>
+<h2 id="ではなぜ突然-403-forbidden-csrf-token-missing-のエラーが出たのか">ではなぜ、突然 403 Forbidden CSRF token missing のエラーが出たのか？</h2>
+<p><a href="https://note.com/ym202110/n/nfdd86f4f99d1">https://note.com/ym202110/n/nfdd86f4f99d1</a></p>
+<p>こちらのサイトによると</p>
+<blockquote>
+<p>１．Cookie認証を利用する場合</p>
+<p>２．Basic認証やDigest認証を利用する場合</p>
+<p>３．トークン認証やJWT認証を利用し、かつトークンの保存先をCookieにした場合</p>
+</blockquote>
+<p>この場合に限り、CSRF検証を行う。この時はCSRFトークンをリクエストヘッダに用意する必要がある。</p>
+<p>つまり、JWT認証でLocalStorageに保存しない限り、CSRFトークンを用意する必要があるということ。</p>
+<p>以前、JWT認証を済ませトークンをLocalStorageに記録し、その有効期限が切れ、JWT認証をしていないなら、辻褄があう。</p>
+<p>なお、同様の内容が「<a href="https://www.amazon.co.jp/dp/B09KN9YRR4/?tag=m68371ti-22">現場で使えるdjangoの教科書 Django REST Framework</a> 」の102ページで解説されていた。</p>
+<h3 id="今回なぜ403エラーが起きたか時系列は">今回なぜ403エラーが起きたか？時系列は？</h3>
+<ol>
+<li>前もってJWT認証を済ませた</li>
+<li>CSRFトークン無しで、PUTやDELETEメソッドの送信ができた。</li>
+<li>JWT認証の部分を削除し、トークンの有効期限も切れる</li>
+<li>この状況でPOSTメソッドを送ったため、403エラーになった。</li>
+</ol>
+<p>という流れで今回は403エラーが出た。ということがわかる。</p>
+<h3 id="ではcsrf検証がされるという根拠ソースコードは">では、CSRF検証がされるという根拠(ソースコード)は？</h3>
+<p>先のサイトの引用文は、冒頭で説明したDRFのGitHubコードと矛盾している。</p>
+<ul>
+<li>冒頭のDRFのGitHubコードでは、全てのビューでCSRF検証は免除。</li>
+<li>先のサイトは、セッションベースの認証、未認証の場合はCSRF検証がされる。</li>
+</ul>
+<p>もし、全てのビューでCSRF検証がされなくなるのであれば、後者の説明がつかなくなる。</p>
+<p>セッションベースの認証、未認証の場合はCSRF検証がされるという根拠(ソースコード)が必要だ。さらに調べてみた。</p>
+<h4 id="djangoviewsdecoratorscsrfcsrf_exempt">django.views.decorators.csrf.csrf_exempt</h4>
+<p><a href="https://github.com/django/django/blob/main/django/views/decorators/csrf.py#L51">https://github.com/django/django/blob/main/django/views/decorators/csrf.py#L51</a></p>
+<p>この<code>csrf_exempt</code> は非同期、同期を問わず、CSRF検証を免除してくれる。</p>
+<p>このコード自体には問題はないようだ。</p>
+<h4 id="djangomiddlewarecsrfcsrfviewmiddleware">django.middleware.csrf.CsrfViewMiddleware</h4>
+<p><a href="https://github.com/django/django/blob/main/django/middleware/csrf.py#L165">https://github.com/django/django/blob/main/django/middleware/csrf.py#L165</a></p>
+<p>このコードからは、セッションベースの認証もしくは未認証の場合はCSRF検証がされる、とは確認できなかった。</p>
+<h4 id="rest_frameworkauthenticationsessionauthentication">rest_framework.authentication.SessionAuthentication</h4>
+<p>問題はここにあった。</p>
+<p><a href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/authentication.py#L112">https://github.com/encode/django-rest-framework/blob/master/rest_framework/authentication.py#L112</a></p>
+<p>ビューで免除したCSRF検証を、ここで実行しているようだ。</p>
+<pre tabindex="0"><code>    def enforce_csrf(self, request):
+        &#34;&#34;&#34;
+        Enforce CSRF validation for session based authentication.
+        &#34;&#34;&#34;
+        def dummy_get_response(request):  # pragma: no cover
+            return None
+
+        check = CSRFCheck(dummy_get_response)
+        # populates request.META[&#39;CSRF_COOKIE&#39;], which is used in process_view()
+        check.process_request(request)
+        reason = check.process_view(request, None, (), {})
+        if reason:
+            # CSRF failed, bail with explicit error message
+            raise exceptions.PermissionDenied(&#39;CSRF Failed: %s&#39; % reason)
+</code></pre><p>セッションをベースにした認証をしている場合、CSRF検証を強制にする。先の .csrf_exempt() でdjangoのデフォルトのCSRF検証は無効化される一方。</p>
+<p>rest_framework のデフォルト設定で有効になっている、 SessionAuthentication</p>
+<p><a href="https://github.com/encode/django-rest-framework/blob/master/rest_framework/settings.py#L40">https://github.com/encode/django-rest-framework/blob/master/rest_framework/settings.py#L40</a></p>
+<p>これが、代わりにCSRF検証をしているようだ。</p>
+<h2 id="結論">結論</h2>
+<p>セキュリティ上の話になるので、安易に鵜呑みにせず、公式のドキュメントとGitHubコードを活用して、根拠をしっかり確認していきたいところだ。</p>
+<p>まとめると、</p>
+<ul>
+<li>DRFのビューでは、djangoのデフォルトのCSRF検証は免除される。</li>
+<li>セッションをベースにした認証をしている時、DRF側の SessionAuthentication でCSRF検証がされる。</li>
+</ul>
+<p>ということになる。</p>
+<p>DRFでCSRF検証がされるのは、</p>
+<ul>
+<li>セッションをベースにした認証を使っている時</li>
+<li>認証情報がCookieに保存されている時</li>
+<li>そもそも認証をしていない時</li>
+</ul>
+<p>この3つである。</p>
+<p>よって、セッションベースの認証やCookieに認証情報を保存する場合、Ajax(fetchAPIやaxiosなども含む)リクエスト送信のたびに、ヘッダーにCSRFトークンを含める必要がある。</p>
+<p>それができない場合は、JWT認証でトークンをLocalStorageに保存する必要がある。</p>
+<p><a href="/post/startup-django-react-jwt/">Django(DRF)+ReactのSPAでJWTを使った認証を実装する</a></p>
+<h2 id="余談djangoでcsrfトークンがcookieに記録されるのは脆弱性ではないか">【余談】djangoでCSRFトークンがCookieに記録されるのは脆弱性ではないか？</h2>
+<p><a href="https://docs.djangoproject.com/ja/5.1/ref/csrf/#is-posting-an-arbitrary-csrf-token-pair-cookie-and-post-data-a-vulnerability">https://docs.djangoproject.com/ja/5.1/ref/csrf/#is-posting-an-arbitrary-csrf-token-pair-cookie-and-post-data-a-vulnerability</a></p>
+<blockquote>
+<p>中間者攻撃がなければ、攻撃者はCSRFトークンのCookieを被害者のブラウザに送信する方法はない。</p>
+<p>攻撃を成功させるには、XSSを使って被害者のブラウザのCookieを取得する必要がある。だが、その状況下ではCSRF攻撃を必要としていない。</p>
+<p>被害者が自分でCSRFトークンをCookieから取り出すこともできるが、それは脆弱性とは言わない。</p>
+</blockquote>
+<p>更に、djangoのテンプレートではXSS対策がされているため、被害者のCookieは読み取りできない。</p>
+<p>XSSが実現できる場合、あえてCSRF攻撃をする必要はない。というのが公式の見解。</p>
+<p>「Cookieを使っている = 危険」というのは、本質的ではないということだ。</p>
+<h3 id="drfでは">DRFでは？</h3>
+<ul>
+<li>DRF側は異なるオリジンからのリクエストを全て受け付ける設定にしておく</li>
+<li>セッションをCookieに保存している</li>
+<li>CSRFトークンの検証を免除している</li>
+</ul>
+<p>この場合CSRFが成立する。</p>
+<p>DRFではSPA開発のために別のオリジン(Reactサーバーなど)からのリクエストを許可しておく必要がある。</p>
+<p>この時、全てのオリジンを許可してしまう設定をしたとして、CSRF検証をしておらず、セッション情報をCookieの中に含めている場合、CSRFが成立する。</p>
+<p>django公式は、別オリジンからのCSRFはCORSの設定から成立せず、djangoサイト内でCSRFが成立する状況があれば、それはXSSができる状態なのでCSRFをあえてする必要はない(CSRF脆弱性は存在しない)と言っているのだ。</p>
+<h2 id="参考文献">参考文献</h2>
+<ul>
+<li><a href="https://qiita.com/romgaran/items/af48606b7188f420f24c">https://qiita.com/romgaran/items/af48606b7188f420f24c</a></li>
+<li><a href="https://zenn.dev/ryutaro_h/articles/43156e2924f14a">https://zenn.dev/ryutaro_h/articles/43156e2924f14a</a></li>
+<li><a href="https://note.com/ym202110/n/nfdd86f4f99d1">https://note.com/ym202110/n/nfdd86f4f99d1</a></li>
+<li><a href="https://docs.djangoproject.com/ja/5.1/ref/csrf/">https://docs.djangoproject.com/ja/5.1/ref/csrf/</a></li>
+</ul>
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="http://localhost:43210/post/pandas-read-sql/">【Pandas】read_sql で生のSQL(SELECT文)を実行、DBから直接DataFrameを作る<time class="relate_time">2025年6月8日 16時49分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/database-sql-having-group-count/">【SQL】GROUP BY, HAVING, COUNTの3つでグループ化して集計、条件で絞り込みカウントする<time class="relate_time">2025年6月2日 18時47分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/oracle-database-function/">【SQL】Oracleデータベースのファンクション(関数)の一覧<time class="relate_time">2025年6月1日 18時38分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/python-matplotlib-seaborn-api/">【Pythonでグラフ描画】matplotlibとseabornのAPIのまとめ<time class="relate_time">2025年5月31日 14時30分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/python-threading-vs-threadpoolexecutor/">Pythonのthreading.Thread と concurrent.futures.Threadpoolexecutor の違い【マルチスレッド処理】<time class="relate_time">2025年5月3日 11時05分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/vite-create-react-project/">次の投稿<br><span class="summary_pg">create-react-app コマンドはもう使えないので、ViteでReactプロジェクトをつくる</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/threading-sqlite3/">前の投稿<br><span class="summary_pg">SQliteはマルチスレッド・マルチプロセスに対応していない</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="http://localhost:43210/information/introduction/"><img class="author_img" src="http://localhost:43210/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: NaN</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF">フルスタック</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ </a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E9%96%8B%E7%99%BA">ロボット開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E6%98%A0%E5%83%8F%E5%87%A6%E7%90%86">映像処理</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/react">react</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E9%96%8B%E7%99%BA">ai開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">pythonライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/drf">drf</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">javascriptライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fastapi">fastapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pytorch">pytorch</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sql">sql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/keras">keras</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/lpic">lpic</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E5%AE%9F%E8%A3%85%E6%A4%9C%E5%AE%9A">ai実装検定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css">css</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/c">c＃</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/llm">llm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/next.js">next.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/oracle">oracle</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rag">rag</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/spa">spa</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A1%E3%83%A2">メモ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABllm">ローカルllm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/.net">.net</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cnn">cnn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/db">db</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nlp">nlp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qdrant">qdrant</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/raspberry-pi">raspberry pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/redis">redis</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/serializers.py">serializers.py</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/typescript">typescript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%A2%E3%83%87%E3%83%AB">カスタムユーザーモデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89">コマンド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3">マークダウン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%82%99%E5%BF%98%E9%8C%B2">備忘録</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E5%8B%95%E5%8C%96">自動化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%B3%87%E6%A0%BC%E8%A9%A6%E9%A8%93">資格試験</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E5%8A%B9%E7%8E%87%E5%8C%96">開発効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bootstrap">bootstrap</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fetchapi">fetchapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/firefox">firefox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fullcalendar">fullcalendar</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gnome">gnome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gui">gui</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/java">java</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jwt">jwt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/latex">latex</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linq">linq</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/microsoftaccess">microsoftaccess</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/modprobe">modprobe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/mysql">mysql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nodejs">nodejs</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ocr">ocr</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ogp">ogp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ollama">ollama</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pillow">pillow</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qt">qt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/reactnative">reactnative</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/render.com">render.com</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rtmp">rtmp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/scikit-learn">scikit-learn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seaborn">seaborn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seo%E5%AF%BE%E7%AD%96">seo対策</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlalchemy">sqlalchemy</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sse">sse</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/systemd">systemd</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tempermonkey">tempermonkey</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">webデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アニメーション</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89">クラウド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B5%E3%83%BC%E3%83%9C%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC">サーボモーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E8%8A%B8">シェル芸</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%83%9E%E3%83%9B%E3%82%A2%E3%83%97%E3%83%AA">スマホアプリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%99%E3%82%AF%E3%83%88%E3%83%ABdb">ベクトルdb</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%86%E9%A1%9E%E5%95%8F%E9%A1%8C">分類問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%9E%E5%B8%B0%E5%95%8F%E9%A1%8C">回帰問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%B2%E7%A2%81">囲碁</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%A4%9A%E5%AF%BE%E5%A4%9A">多対多</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92">教師あり学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%AA%E3%81%97%E5%AD%A6%E7%BF%92">教師なし学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E5%8A%A0%E5%B7%A5">画像加工</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98">画像認識</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86">非同期処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="http://localhost:43210/post/fastapi-nextjs-crud/">FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-fastapi/">FastAPIのプロジェクト構成、ルーティング、モデル、DB使用方法について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-qdrant/">QdrantのCRUD、コレクションとポイント、ハイブリッド検索について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/javascript-self-chunks/">RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/qdrant-rag-system/">RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/python-local-llm-rag/">OllamaでRAGを実現する。</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/local-llm-install/">UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-jisso-kentei-s-grade/">AI実装検定S級合格体験記</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-question/">AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-mock/">AI実装検定S級の模擬試験</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Books</div>
+
+        <div class="row">
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/481561072X/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/I/51Y0-P+m94L.jpg" alt="">
+                    </div>
+                    <div>モダンJavaScriptの基本から始める　React実践の教科書　（最新ReactHooks対応）</div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/B09K235CTP/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/P/B09K235CTP.jpg" alt="">
+                    </div>
+                    <div>現場で使える Django の教科書《基礎編》［3.2 LTS 対応版］</div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

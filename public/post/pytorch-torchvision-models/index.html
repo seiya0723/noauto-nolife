@@ -1,0 +1,2654 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=43210&amp;path=livereload" data-no-instant defer></script>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="canonical" href="http://localhost:43210/post/pytorch-torchvision-models/">
+
+
+        <link href="http://localhost:43210/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="http://localhost:43210/css/bootstrap-grid.css"> 
+
+        <script src="http://localhost:43210/data/search.js"></script>
+        <script src="http://localhost:43210/js/script.js"></script>
+
+        <title>【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:43210/post/pytorch-torchvision-models/">
+<meta property="og:image" content="http://localhost:43210/images/pytorch.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="http://localhost:43210/post/pytorch-torchvision-models/">
+<meta name="twitter:title" content="【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る - 自動化無しに生活無し">
+<meta name="twitter:image" content="http://localhost:43210/images/pytorch.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/localhost:43210\/"
+    },
+    "headline": "【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/localhost:43210\/images\/pytorch.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2026-04-12T16:32:53JST",
+    "dateModified": "2026-04-12T16:32:53JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/localhost:43210\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="http://localhost:43210/css/style.css" rel="stylesheet">
+        
+
+        
+        
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDX0LW64ZT"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-HDX0LW64ZT');
+        </script>
+        
+
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="http://localhost:43210/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEB開発関係を中心に備忘録をまとめています</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="http://localhost:43210/">HOME</a></li>
+                
+                <li><a href="http://localhost:43210/post/">post</a></li>
+                
+                <li class="active">【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+
+        
+
+        <li>作成日時：<time datetime="2026-04-12T16:32:53JST">2026年4月12日 16時32分</time></li>
+        <li>最終更新日時：<time datetime="2026-04-12T16:32:53JST">2026年4月12日 16時32分</time></li>
+
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/categories/others/">others</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/ai%E9%96%8B%E7%99%BA/">AI開発</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/pytorch/">pytorch</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/python/">python</a>
+            
+        </li>
+        
+        
+    </ul>
+
+
+    
+    
+    
+
+
+
+
+    <div class="img-center"><img src="http://localhost:43210/images/pytorch.jpg" alt="thumbnail"></div>
+
+	<div class="article_body"><h2 id="vgg">VGG</h2>
+<p>ソースコード: <a href="https://github.com/pytorch/vision/blob/main/torchvision/models/vgg.py">https://github.com/pytorch/vision/blob/main/torchvision/models/vgg.py</a></p>
+<p>VGGは3x3フィルタを重ねている単純なモデル。</p>
+<p>とりわけVGG16 はプーリング層を除いた、畳み込み層(13)+全結合層(3) の計16層で構成されている。</p>
+<p>VGGの全結合層は4096ユニットもあり、これが大量のメモリを消費している。</p>
+<p>また、パラメーター数は1億3000万を超えており、caltech-101程度のデータ量(1クラス50件)では過学習を起こす。</p>
+<p>期待をしている画像サイズは224x224。畳み込みを終えた時点で7x7に調整し、全結合を行う。</p>
+<pre tabindex="0"><code>class VGG(nn.Module):
+    def __init__(
+        self, features: nn.Module, num_classes: int = 1000, init_weights: bool = True, dropout: float = 0.5
+    ) -&gt; None:
+        super().__init__()
+        _log_api_usage_once(self)
+
+        # make_layer で生成したCNNを使う。VGGのバージョンごとに異なる。
+        self.features = features
+
+        # 7x7の平均プーリング層 (ここでどんなサイズが届いても7x7に再調整する。224/32=7x7であるが、例えば256が来たときなどで7x7でなくなり落ちてしまうのを防ぐため)
+        self.avgpool = nn.AdaptiveAvgPool2d((7, 7))
+
+        # 全結合層(分類を行う) 
+        self.classifier = nn.Sequential(
+            # 512次元 * 畳み込み+プーリングされた7x7画像を、4096のクラスに分類
+            nn.Linear(512 * 7 * 7, 4096),
+
+            # ReLU活性化関数
+            nn.ReLU(True),
+            # ドロップアウト
+            nn.Dropout(p=dropout),
+            # 次元を並び替え
+            nn.Linear(4096, 4096),
+            # ReLU活性化関数
+            nn.ReLU(True),
+            # ドロップアウト
+            nn.Dropout(p=dropout),
+
+            # 指定したクラスで分類
+            nn.Linear(4096, num_classes),
+        )
+        if init_weights:
+            for m in self.modules():
+                if isinstance(m, nn.Conv2d):
+                    nn.init.kaiming_normal_(m.weight, mode=&#34;fan_out&#34;, nonlinearity=&#34;relu&#34;)
+                    if m.bias is not None:
+                        nn.init.constant_(m.bias, 0)
+                elif isinstance(m, nn.BatchNorm2d):
+                    nn.init.constant_(m.weight, 1)
+                    nn.init.constant_(m.bias, 0)
+                elif isinstance(m, nn.Linear):
+                    nn.init.normal_(m.weight, 0, 0.01)
+                    nn.init.constant_(m.bias, 0)
+
+    def forward(self, x: torch.Tensor) -&gt; torch.Tensor:
+        x = self.features(x)
+        x = self.avgpool(x)
+        x = torch.flatten(x, 1)
+        x = self.classifier(x)
+        return x
+
+
+def make_layers(cfg: list[Union[str, int]], batch_norm: bool = False) -&gt; nn.Sequential:
+    layers: list[nn.Module] = []
+    in_channels = 3
+    for v in cfg:
+
+        if v == &#34;M&#34;:
+            # Mの場合はマックスプーリング
+            layers += [nn.MaxPool2d(kernel_size=2, stride=2)]
+        else:
+
+            # 数字の場合は 3x3の畳み込み。サイズはそのままにチャンネル数を増やす。
+            v = cast(int, v)
+            conv2d = nn.Conv2d(in_channels, v, kernel_size=3, padding=1)
+
+            # 
+            if batch_norm:
+                layers += [conv2d, nn.BatchNorm2d(v), nn.ReLU(inplace=True)]
+            else:
+                layers += [conv2d, nn.ReLU(inplace=True)]
+
+            # 増やしたチャンネル数を与えて次の層へ
+            in_channels = v
+
+
+    return nn.Sequential(*layers)
+
+
+# VGGの各バージョンのリスト
+&#34;&#34;&#34;
+A: VGG11
+B: VGG13
+D: VGG16
+E: VGG19
+&#34;&#34;&#34;
+
+# 数字 : 出力チャンネル数を指定した畳み込み層
+# M : マックスプーリングで画像サイズを半分にする層。ABDEそれぞれに5個用意されている。 224/32 = 7x7 になる。  
+cfgs: dict[str, list[Union[str, int]]] = {
+    &#34;A&#34;: [64, &#34;M&#34;, 128, &#34;M&#34;, 256, 256, &#34;M&#34;, 512, 512, &#34;M&#34;, 512, 512, &#34;M&#34;],
+    &#34;B&#34;: [64, 64, &#34;M&#34;, 128, 128, &#34;M&#34;, 256, 256, &#34;M&#34;, 512, 512, &#34;M&#34;, 512, 512, &#34;M&#34;],
+    &#34;D&#34;: [64, 64, &#34;M&#34;, 128, 128, &#34;M&#34;, 256, 256, 256, &#34;M&#34;, 512, 512, 512, &#34;M&#34;, 512, 512, 512, &#34;M&#34;],
+    &#34;E&#34;: [64, 64, &#34;M&#34;, 128, 128, &#34;M&#34;, 256, 256, 256, 256, &#34;M&#34;, 512, 512, 512, 512, &#34;M&#34;, 512, 512, 512, 512, &#34;M&#34;],
+}
+
+
+def _vgg(cfg: str, batch_norm: bool, weights: Optional[WeightsEnum], progress: bool, **kwargs: Any) -&gt; VGG:
+    if weights is not None:
+        kwargs[&#34;init_weights&#34;] = False
+        if weights.meta[&#34;categories&#34;] is not None:
+            _ovewrite_named_param(kwargs, &#34;num_classes&#34;, len(weights.meta[&#34;categories&#34;]))
+
+    # make_layers で畳み込み層を作る
+    model = VGG(make_layers(cfgs[cfg], batch_norm=batch_norm), **kwargs)
+
+    if weights is not None:
+        model.load_state_dict(weights.get_state_dict(progress=progress, check_hash=True))
+    return model
+
+
+_COMMON_META = {
+    &#34;min_size&#34;: (32, 32),
+    &#34;categories&#34;: _IMAGENET_CATEGORIES,
+    &#34;recipe&#34;: &#34;https://github.com/pytorch/vision/tree/main/references/classification#alexnet-and-vgg&#34;,
+    &#34;_docs&#34;: &#34;&#34;&#34;These weights were trained from scratch by using a simplified training recipe.&#34;&#34;&#34;,
+}
+</code></pre><p><a href="https://github.com/pytorch/vision/blob/main/torchvision/models/vgg.py">https://github.com/pytorch/vision/blob/main/torchvision/models/vgg.py</a></p>
+<h2 id="googlenet">GoogLeNet</h2>
+<p>VGGと違い、並列で畳み込みを行うことで、パラメーター数を大幅に削減したCNNモデル。</p>
+<p>PytorchのGoogLeNetでは、1x1,3x3,5x5 ではなく、1x1,3x3,3x3 の並列畳み込みが行われている。1x1畳み込みはチャンネル方向の削減を行っている。</p>
+<p>更に、VGGで使用されていた巨大な全結合層が廃止され、GoogLeNetでは、GlobalAveragePoolingを採用。</p>
+<p>これにより、VGGは1億3800万のパラメーターに対して、GoogLeNetは700万まで削減された。</p>
+<pre tabindex="0"><code>class GoogLeNet(nn.Module):
+    __constants__ = [&#34;aux_logits&#34;, &#34;transform_input&#34;]
+
+    def __init__(
+        self,
+        num_classes: int = 1000,
+        aux_logits: bool = True,
+        transform_input: bool = False,
+        init_weights: Optional[bool] = None,
+        blocks: Optional[list[Callable[..., nn.Module]]] = None,
+        dropout: float = 0.2,
+        dropout_aux: float = 0.7,
+    ) -&gt; None:
+        super().__init__()
+        _log_api_usage_once(self)
+        if blocks is None:
+            blocks = [BasicConv2d, Inception, InceptionAux]
+        if init_weights is None:
+            warnings.warn(
+                &#34;The default weight initialization of GoogleNet will be changed in future releases of &#34;
+                &#34;torchvision. If you wish to keep the old behavior (which leads to long initialization times&#34;
+                &#34; due to scipy/scipy#11299), please set init_weights=True.&#34;,
+                FutureWarning,
+            )
+            init_weights = True
+        if len(blocks) != 3:
+            raise ValueError(f&#34;blocks length should be 3 instead of {len(blocks)}&#34;)
+        conv_block = blocks[0]
+        inception_block = blocks[1]
+        inception_aux_block = blocks[2]
+
+        self.aux_logits = aux_logits
+        self.transform_input = transform_input
+
+        # 前処理
+        self.conv1 = conv_block(3, 64, kernel_size=7, stride=2, padding=3)
+        self.maxpool1 = nn.MaxPool2d(3, stride=2, ceil_mode=True)
+        self.conv2 = conv_block(64, 64, kernel_size=1)
+        self.conv3 = conv_block(64, 192, kernel_size=3, padding=1)
+        self.maxpool2 = nn.MaxPool2d(3, stride=2, ceil_mode=True)
+
+        # Inceptionブロック群
+        &#34;&#34;&#34;
+        引数: [入力値],[1x1の出力],[1x1の出力],[3x3の出力],[1x1の出力],[3x3の出力],[1x1の出力]
+
+        1x1 conv: 192 → 64
+
+        1x1 conv: 192 → 96
+        3x3 conv: 96 → 128
+
+        1x1 conv: 192 → 16
+        3x3 conv: 16 → 32
+
+        maxpool
+
+        1x1 conv: 192 → 32
+        &#34;&#34;&#34;
+        self.inception3a = inception_block(192, 64, 96, 128, 16, 32, 32)
+
+        self.inception3b = inception_block(256, 128, 128, 192, 32, 96, 64)
+        self.maxpool3 = nn.MaxPool2d(3, stride=2, ceil_mode=True)
+        
+        # Inceptionブロック群
+        self.inception4a = inception_block(480, 192, 96, 208, 16, 48, 64)
+        self.inception4b = inception_block(512, 160, 112, 224, 24, 64, 64)
+        self.inception4c = inception_block(512, 128, 128, 256, 24, 64, 64)
+        self.inception4d = inception_block(512, 112, 144, 288, 32, 64, 64)
+        self.inception4e = inception_block(528, 256, 160, 320, 32, 128, 128)
+        self.maxpool4 = nn.MaxPool2d(2, stride=2, ceil_mode=True)
+
+        # Inceptionブロック群
+        self.inception5a = inception_block(832, 256, 160, 320, 32, 128, 128)
+        self.inception5b = inception_block(832, 384, 192, 384, 48, 128, 128)
+
+        if aux_logits:
+            self.aux1 = inception_aux_block(512, num_classes, dropout=dropout_aux)
+            self.aux2 = inception_aux_block(528, num_classes, dropout=dropout_aux)
+        else:
+            self.aux1 = None  # type: ignore[assignment]
+            self.aux2 = None  # type: ignore[assignment]
+
+        # ここでVGGと違い、巨大な全結合をせず、一旦Global Average Poolingを行っている。
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+        self.dropout = nn.Dropout(p=dropout)
+
+        # GAP を使ったあとに全結合をしている。1024次元を必要クラス分
+        self.fc = nn.Linear(1024, num_classes)
+
+        if init_weights:
+            for m in self.modules():
+                if isinstance(m, nn.Conv2d) or isinstance(m, nn.Linear):
+                    torch.nn.init.trunc_normal_(m.weight, mean=0.0, std=0.01, a=-2, b=2)
+                elif isinstance(m, nn.BatchNorm2d):
+                    nn.init.constant_(m.weight, 1)
+                    nn.init.constant_(m.bias, 0)
+
+    def _transform_input(self, x: Tensor) -&gt; Tensor:
+        if self.transform_input:
+            x_ch0 = torch.unsqueeze(x[:, 0], 1) * (0.229 / 0.5) + (0.485 - 0.5) / 0.5
+            x_ch1 = torch.unsqueeze(x[:, 1], 1) * (0.224 / 0.5) + (0.456 - 0.5) / 0.5
+            x_ch2 = torch.unsqueeze(x[:, 2], 1) * (0.225 / 0.5) + (0.406 - 0.5) / 0.5
+            x = torch.cat((x_ch0, x_ch1, x_ch2), 1)
+        return x
+
+    def _forward(self, x: Tensor) -&gt; tuple[Tensor, Optional[Tensor], Optional[Tensor]]:
+        # N x 3 x 224 x 224
+        x = self.conv1(x)
+        # N x 64 x 112 x 112
+        x = self.maxpool1(x)
+        # N x 64 x 56 x 56
+        x = self.conv2(x)
+        # N x 64 x 56 x 56
+        x = self.conv3(x)
+        # N x 192 x 56 x 56
+        x = self.maxpool2(x)
+
+        # N x 192 x 28 x 28
+        x = self.inception3a(x)
+        # N x 256 x 28 x 28
+        x = self.inception3b(x)
+        # N x 480 x 28 x 28
+        x = self.maxpool3(x)
+        # N x 480 x 14 x 14
+        x = self.inception4a(x)
+        # N x 512 x 14 x 14
+        aux1: Optional[Tensor] = None
+        if self.aux1 is not None:
+            if self.training:
+                aux1 = self.aux1(x)
+
+        x = self.inception4b(x)
+        # N x 512 x 14 x 14
+        x = self.inception4c(x)
+        # N x 512 x 14 x 14
+        x = self.inception4d(x)
+        # N x 528 x 14 x 14
+        aux2: Optional[Tensor] = None
+        if self.aux2 is not None:
+            if self.training:
+                aux2 = self.aux2(x)
+
+        x = self.inception4e(x)
+        # N x 832 x 14 x 14
+        x = self.maxpool4(x)
+        # N x 832 x 7 x 7
+        x = self.inception5a(x)
+        # N x 832 x 7 x 7
+        x = self.inception5b(x)
+        # N x 1024 x 7 x 7
+
+        x = self.avgpool(x)
+        # N x 1024 x 1 x 1
+        x = torch.flatten(x, 1)
+        # N x 1024
+        x = self.dropout(x)
+        x = self.fc(x)
+        # N x 1000 (num_classes)
+        return x, aux2, aux1
+
+    @torch.jit.unused
+    def eager_outputs(self, x: Tensor, aux2: Tensor, aux1: Optional[Tensor]) -&gt; GoogLeNetOutputs:
+        if self.training and self.aux_logits:
+            return _GoogLeNetOutputs(x, aux2, aux1)
+        else:
+            return x  # type: ignore[return-value]
+
+    def forward(self, x: Tensor) -&gt; GoogLeNetOutputs:
+        x = self._transform_input(x)
+        x, aux2, aux1 = self._forward(x)
+        aux_defined = self.training and self.aux_logits
+        if torch.jit.is_scripting():
+            if not aux_defined:
+                warnings.warn(&#34;Scripted GoogleNet always returns GoogleNetOutputs Tuple&#34;)
+            return GoogLeNetOutputs(x, aux2, aux1)
+        else:
+            return self.eager_outputs(x, aux2, aux1)
+
+
+
+
+class Inception(nn.Module):
+    def __init__(
+        self,
+        in_channels: int,
+        ch1x1: int,
+        ch3x3red: int,
+        ch3x3: int,
+        ch5x5red: int,
+        ch5x5: int,
+        pool_proj: int,
+        conv_block: Optional[Callable[..., nn.Module]] = None,
+    ) -&gt; None:
+        super().__init__()
+        if conv_block is None:
+            conv_block = BasicConv2d
+
+        # 1x1 の層(チャンネル数削減、非線形変換、計算量削減目的)
+        self.branch1 = conv_block(in_channels, ch1x1, kernel_size=1)
+
+        # 3x3 の層(1x1を行った上で3x3を行う。)
+        self.branch2 = nn.Sequential(
+            conv_block(in_channels, ch3x3red, kernel_size=1), conv_block(ch3x3red, ch3x3, kernel_size=3, padding=1)
+        )
+        
+        # 5x5の層(※ 実際には3x3として計算をしている)
+        # (1x1を行った上で3x3を行う。)
+        self.branch3 = nn.Sequential(
+            conv_block(in_channels, ch5x5red, kernel_size=1),
+            # Here, kernel_size=3 instead of kernel_size=5 is a known bug.
+            # Please see https://github.com/pytorch/vision/issues/906 for details.
+            conv_block(ch5x5red, ch5x5, kernel_size=3, padding=1),
+        )
+
+        # マックスプーリング
+        self.branch4 = nn.Sequential(
+            nn.MaxPool2d(kernel_size=3, stride=1, padding=1, ceil_mode=True),
+            conv_block(in_channels, pool_proj, kernel_size=1),
+        )
+
+    def _forward(self, x: Tensor) -&gt; list[Tensor]:
+        branch1 = self.branch1(x)
+        branch2 = self.branch2(x)
+        branch3 = self.branch3(x)
+        branch4 = self.branch4(x)
+
+        outputs = [branch1, branch2, branch3, branch4]
+        return outputs
+
+    def forward(self, x: Tensor) -&gt; Tensor:
+        # 各種の並列処理をチャンネル方向に結合している。
+        outputs = self._forward(x)
+        return torch.cat(outputs, 1)
+</code></pre><p><a href="https://github.com/pytorch/vision/blob/main/torchvision/models/googlenet.py">https://github.com/pytorch/vision/blob/main/torchvision/models/googlenet.py</a></p>
+<h2 id="resnet">ResNet</h2>
+<p>PytorchのResNetは、層を深くしていった場合に発生する勾配消失に対応するため、掛け算ではなく足し算を使用している。</p>
+<p>BasicBlockとBottleneckという2つのクラスがある。</p>
+<p>BasicBlockは3x3畳み込みを2層重ねている。主に、浅いResNetで利用されている。</p>
+<p>Bottleneckは1x1,3x3,1x1 の順でチャンネル圧縮、畳み込みで空間方向の特徴抽出、チャンネル数を元に戻すという手法で畳み込みのコストを減らしている。</p>
+<pre tabindex="0"><code>
+
+class BasicBlock(nn.Module):
+    expansion: int = 1
+
+    def __init__(
+        self,
+        inplanes: int,
+        planes: int,
+        stride: int = 1,
+        downsample: Optional[nn.Module] = None,
+        groups: int = 1,
+        base_width: int = 64,
+        dilation: int = 1,
+        norm_layer: Optional[Callable[..., nn.Module]] = None,
+    ) -&gt; None:
+        super().__init__()
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+        if groups != 1 or base_width != 64:
+            raise ValueError(&#34;BasicBlock only supports groups=1 and base_width=64&#34;)
+        if dilation &gt; 1:
+            raise NotImplementedError(&#34;Dilation &gt; 1 not supported in BasicBlock&#34;)
+        # Both self.conv1 and self.downsample layers downsample the input when stride != 1
+        self.conv1 = conv3x3(inplanes, planes, stride)
+        self.bn1 = norm_layer(planes)
+        self.relu = nn.ReLU(inplace=True)
+        self.conv2 = conv3x3(planes, planes)
+        self.bn2 = norm_layer(planes)
+        self.downsample = downsample
+        self.stride = stride
+
+    def forward(self, x: Tensor) -&gt; Tensor:
+        identity = x
+
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+
+        if self.downsample is not None:
+            identity = self.downsample(x)
+
+        out += identity
+        out = self.relu(out)
+
+        return out
+
+
+class Bottleneck(nn.Module):
+    # Bottleneck in torchvision places the stride for downsampling at 3x3 convolution(self.conv2)
+    # while original implementation places the stride at the first 1x1 convolution(self.conv1)
+    # according to &#34;Deep residual learning for image recognition&#34; https://arxiv.org/abs/1512.03385.
+    # This variant is also known as ResNet V1.5 and improves accuracy according to
+    # https://ngc.nvidia.com/catalog/model-scripts/nvidia:resnet_50_v1_5_for_pytorch.
+
+    expansion: int = 4
+
+    def __init__(
+        self,
+        inplanes: int,
+        planes: int,
+        stride: int = 1,
+        downsample: Optional[nn.Module] = None,
+        groups: int = 1,
+        base_width: int = 64,
+        dilation: int = 1,
+        norm_layer: Optional[Callable[..., nn.Module]] = None,
+    ) -&gt; None:
+        super().__init__()
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+        width = int(planes * (base_width / 64.0)) * groups
+        # Both self.conv2 and self.downsample layers downsample the input when stride != 1
+        self.conv1 = conv1x1(inplanes, width)
+        self.bn1 = norm_layer(width)
+        self.conv2 = conv3x3(width, width, stride, groups, dilation)
+        self.bn2 = norm_layer(width)
+        self.conv3 = conv1x1(width, planes * self.expansion)
+        self.bn3 = norm_layer(planes * self.expansion)
+        self.relu = nn.ReLU(inplace=True)
+        self.downsample = downsample
+        self.stride = stride
+
+    def forward(self, x: Tensor) -&gt; Tensor:
+        identity = x
+
+        out = self.conv1(x)
+        out = self.bn1(out)
+        out = self.relu(out)
+
+        out = self.conv2(out)
+        out = self.bn2(out)
+        out = self.relu(out)
+
+        out = self.conv3(out)
+        out = self.bn3(out)
+
+        if self.downsample is not None:
+            identity = self.downsample(x)
+
+        out += identity
+        out = self.relu(out)
+
+        return out
+
+
+class ResNet(nn.Module):
+    def __init__(
+        self,
+        block: type[Union[BasicBlock, Bottleneck]],
+        layers: list[int],
+        num_classes: int = 1000,
+        zero_init_residual: bool = False,
+        groups: int = 1,
+        width_per_group: int = 64,
+        replace_stride_with_dilation: Optional[list[bool]] = None,
+        norm_layer: Optional[Callable[..., nn.Module]] = None,
+    ) -&gt; None:
+        super().__init__()
+        _log_api_usage_once(self)
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+        self._norm_layer = norm_layer
+
+        self.inplanes = 64
+        self.dilation = 1
+        if replace_stride_with_dilation is None:
+            # each element in the tuple indicates if we should replace
+            # the 2x2 stride with a dilated convolution instead
+            replace_stride_with_dilation = [False, False, False]
+        if len(replace_stride_with_dilation) != 3:
+            raise ValueError(
+                &#34;replace_stride_with_dilation should be None &#34;
+                f&#34;or a 3-element tuple, got {replace_stride_with_dilation}&#34;
+            )
+        self.groups = groups
+        self.base_width = width_per_group
+        self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=7, stride=2, padding=3, bias=False)
+        self.bn1 = norm_layer(self.inplanes)
+        self.relu = nn.ReLU(inplace=True)
+        self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+        self.layer1 = self._make_layer(block, 64, layers[0])
+        self.layer2 = self._make_layer(block, 128, layers[1], stride=2, dilate=replace_stride_with_dilation[0])
+        self.layer3 = self._make_layer(block, 256, layers[2], stride=2, dilate=replace_stride_with_dilation[1])
+        self.layer4 = self._make_layer(block, 512, layers[3], stride=2, dilate=replace_stride_with_dilation[2])
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+        self.fc = nn.Linear(512 * block.expansion, num_classes)
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode=&#34;fan_out&#34;, nonlinearity=&#34;relu&#34;)
+            elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
+
+        # Zero-initialize the last BN in each residual branch,
+        # so that the residual branch starts with zeros, and each residual block behaves like an identity.
+        # This improves the model by 0.2~0.3% according to https://arxiv.org/abs/1706.02677
+        if zero_init_residual:
+            for m in self.modules():
+                if isinstance(m, Bottleneck) and m.bn3.weight is not None:
+                    nn.init.constant_(m.bn3.weight, 0)  # type: ignore[arg-type]
+                elif isinstance(m, BasicBlock) and m.bn2.weight is not None:
+                    nn.init.constant_(m.bn2.weight, 0)  # type: ignore[arg-type]
+
+    def _make_layer(
+        self,
+        block: type[Union[BasicBlock, Bottleneck]],
+        planes: int,
+        blocks: int,
+        stride: int = 1,
+        dilate: bool = False,
+    ) -&gt; nn.Sequential:
+        norm_layer = self._norm_layer
+        downsample = None
+        previous_dilation = self.dilation
+        if dilate:
+            self.dilation *= stride
+            stride = 1
+        if stride != 1 or self.inplanes != planes * block.expansion:
+            downsample = nn.Sequential(
+                conv1x1(self.inplanes, planes * block.expansion, stride),
+                norm_layer(planes * block.expansion),
+            )
+
+        layers = []
+        layers.append(
+            block(
+                self.inplanes, planes, stride, downsample, self.groups, self.base_width, previous_dilation, norm_layer
+            )
+        )
+        self.inplanes = planes * block.expansion
+        for _ in range(1, blocks):
+            layers.append(
+                block(
+                    self.inplanes,
+                    planes,
+                    groups=self.groups,
+                    base_width=self.base_width,
+                    dilation=self.dilation,
+                    norm_layer=norm_layer,
+                )
+            )
+
+        return nn.Sequential(*layers)
+
+    def _forward_impl(self, x: Tensor) -&gt; Tensor:
+        # See note [TorchScript super()]
+        x = self.conv1(x)
+        x = self.bn1(x)
+        x = self.relu(x)
+        x = self.maxpool(x)
+
+        x = self.layer1(x)
+        x = self.layer2(x)
+        x = self.layer3(x)
+        x = self.layer4(x)
+
+        x = self.avgpool(x)
+        x = torch.flatten(x, 1)
+        x = self.fc(x)
+
+        return x
+
+    def forward(self, x: Tensor) -&gt; Tensor:
+        return self._forward_impl(x)
+
+
+def _resnet(
+    block: type[Union[BasicBlock, Bottleneck]],
+    layers: list[int],
+    weights: Optional[WeightsEnum],
+    progress: bool,
+    **kwargs: Any,
+) -&gt; ResNet:
+    if weights is not None:
+        _ovewrite_named_param(kwargs, &#34;num_classes&#34;, len(weights.meta[&#34;categories&#34;]))
+
+    model = ResNet(block, layers, **kwargs)
+
+    if weights is not None:
+        model.load_state_dict(weights.get_state_dict(progress=progress, check_hash=True))
+
+    return model
+
+
+_COMMON_META = {
+    &#34;min_size&#34;: (1, 1),
+    &#34;categories&#34;: _IMAGENET_CATEGORIES,
+}
+</code></pre><p><a href="https://github.com/pytorch/vision/blob/main/torchvision/models/resnet.py">https://github.com/pytorch/vision/blob/main/torchvision/models/resnet.py</a></p>
+<h2 id="densenet">DenseNet</h2>
+<p>前方の各層の出力がすべての後方の層の入力に使われるようになっている。</p>
+<pre tabindex="0"><code>
+class _DenseLayer(nn.Module):
+    def __init__(
+        self, num_input_features: int, growth_rate: int, bn_size: int, drop_rate: float, memory_efficient: bool = False
+    ) -&gt; None:
+        super().__init__()
+        self.norm1 = nn.BatchNorm2d(num_input_features)
+        self.relu1 = nn.ReLU(inplace=True)
+        self.conv1 = nn.Conv2d(num_input_features, bn_size * growth_rate, kernel_size=1, stride=1, bias=False)
+
+        self.norm2 = nn.BatchNorm2d(bn_size * growth_rate)
+        self.relu2 = nn.ReLU(inplace=True)
+        self.conv2 = nn.Conv2d(bn_size * growth_rate, growth_rate, kernel_size=3, stride=1, padding=1, bias=False)
+
+        self.drop_rate = float(drop_rate)
+        self.memory_efficient = memory_efficient
+
+    def bn_function(self, inputs: list[Tensor]) -&gt; Tensor:
+        concated_features = torch.cat(inputs, 1)
+        bottleneck_output = self.conv1(self.relu1(self.norm1(concated_features)))  # noqa: T484
+        return bottleneck_output
+
+    # todo: rewrite when torchscript supports any
+    def any_requires_grad(self, input: list[Tensor]) -&gt; bool:
+        for tensor in input:
+            if tensor.requires_grad:
+                return True
+        return False
+
+    @torch.jit.unused  # noqa: T484
+    def call_checkpoint_bottleneck(self, input: list[Tensor]) -&gt; Tensor:
+        def closure(*inputs):
+            return self.bn_function(inputs)
+
+        return cp.checkpoint(closure, *input, use_reentrant=False)
+
+    @torch.jit._overload_method  # noqa: F811
+    def forward(self, input: list[Tensor]) -&gt; Tensor:  # noqa: F811
+        pass
+
+    @torch.jit._overload_method  # noqa: F811
+    def forward(self, input: Tensor) -&gt; Tensor:  # noqa: F811
+        pass
+
+    # torchscript does not yet support *args, so we overload method
+    # allowing it to take either a List[Tensor] or single Tensor
+    def forward(self, input: Tensor) -&gt; Tensor:  # noqa: F811
+        if isinstance(input, Tensor):
+            prev_features = [input]
+        else:
+            prev_features = input
+
+        if self.memory_efficient and self.any_requires_grad(prev_features):
+            if torch.jit.is_scripting():
+                raise Exception(&#34;Memory Efficient not supported in JIT&#34;)
+
+            bottleneck_output = self.call_checkpoint_bottleneck(prev_features)
+        else:
+            bottleneck_output = self.bn_function(prev_features)
+
+        new_features = self.conv2(self.relu2(self.norm2(bottleneck_output)))
+        if self.drop_rate &gt; 0:
+            new_features = F.dropout(new_features, p=self.drop_rate, training=self.training)
+        return new_features
+
+
+# 入力値を結合しながら、下位層に渡し続ける。
+class _DenseBlock(nn.ModuleDict):
+    _version = 2
+
+    def __init__(
+        self,
+        num_layers: int,
+        num_input_features: int,
+        bn_size: int,
+        growth_rate: int,
+        drop_rate: float,
+        memory_efficient: bool = False,
+    ) -&gt; None:
+        super().__init__()
+        for i in range(num_layers):
+            layer = _DenseLayer(
+                # growth_rate をかけて勾配爆発を抑える。
+                num_input_features + i * growth_rate,
+                growth_rate=growth_rate,
+                bn_size=bn_size,
+                drop_rate=drop_rate,
+                # Trueの場合、中間結果を削減する(メモリ消費削減)
+                memory_efficient=memory_efficient,
+            )
+            self.add_module(&#34;denselayer%d&#34; % (i + 1), layer)
+
+    def forward(self, init_features: Tensor) -&gt; Tensor:
+        # ここ入力値をそのまま結合をして引き渡している。
+        features = [init_features]
+
+        for name, layer in self.items():
+            new_features = layer(features)
+            features.append(new_features)
+            # このfeatures リストには入力値がそのまま残っている。
+
+        return torch.cat(features, 1)
+
+
+# チャンネル数を削減しつつ、平均プーリングで圧縮。
+class _Transition(nn.Sequential):
+    def __init__(self, num_input_features: int, num_output_features: int) -&gt; None:
+        super().__init__()
+        self.norm = nn.BatchNorm2d(num_input_features)
+        self.relu = nn.ReLU(inplace=True)
+        self.conv = nn.Conv2d(num_input_features, num_output_features, kernel_size=1, stride=1, bias=False)
+        self.pool = nn.AvgPool2d(kernel_size=2, stride=2)
+
+
+class DenseNet(nn.Module):
+    r&#34;&#34;&#34;Densenet-BC model class, based on
+    `&#34;Densely Connected Convolutional Networks&#34; &lt;https://arxiv.org/pdf/1608.06993.pdf&gt;`_.
+
+    Args:
+        growth_rate (int) - how many filters to add each layer (`k` in paper)
+        block_config (list of 4 ints) - how many layers in each pooling block
+        num_init_features (int) - the number of filters to learn in the first convolution layer
+        bn_size (int) - multiplicative factor for number of bottle neck layers
+          (i.e. bn_size * k features in the bottleneck layer)
+        drop_rate (float) - dropout rate after each dense layer
+        num_classes (int) - number of classification classes
+        memory_efficient (bool) - If True, uses checkpointing. Much more memory efficient,
+          but slower. Default: *False*. See `&#34;paper&#34; &lt;https://arxiv.org/pdf/1707.06990.pdf&gt;`_.
+    &#34;&#34;&#34;
+
+    def __init__(
+        self,
+        growth_rate: int = 32,
+        block_config: tuple[int, int, int, int] = (6, 12, 24, 16),
+        num_init_features: int = 64,
+        bn_size: int = 4,
+        drop_rate: float = 0,
+        num_classes: int = 1000,
+        memory_efficient: bool = False,
+    ) -&gt; None:
+
+        super().__init__()
+        _log_api_usage_once(self)
+
+        # First convolution
+        self.features = nn.Sequential(
+            OrderedDict(
+                [
+                    (&#34;conv0&#34;, nn.Conv2d(3, num_init_features, kernel_size=7, stride=2, padding=3, bias=False)),
+                    (&#34;norm0&#34;, nn.BatchNorm2d(num_init_features)),
+                    (&#34;relu0&#34;, nn.ReLU(inplace=True)),
+                    (&#34;pool0&#34;, nn.MaxPool2d(kernel_size=3, stride=2, padding=1)),
+                ]
+            )
+        )
+
+        # Each denseblock
+        num_features = num_init_features
+        for i, num_layers in enumerate(block_config):
+            block = _DenseBlock(
+                num_layers=num_layers,
+                num_input_features=num_features,
+                bn_size=bn_size,
+                growth_rate=growth_rate,
+                drop_rate=drop_rate,
+                memory_efficient=memory_efficient,
+            )
+            self.features.add_module(&#34;denseblock%d&#34; % (i + 1), block)
+            num_features = num_features + num_layers * growth_rate
+            if i != len(block_config) - 1:
+                trans = _Transition(num_input_features=num_features, num_output_features=num_features // 2)
+                self.features.add_module(&#34;transition%d&#34; % (i + 1), trans)
+                num_features = num_features // 2
+
+        # Final batch norm
+        self.features.add_module(&#34;norm5&#34;, nn.BatchNorm2d(num_features))
+
+        # Linear layer
+        self.classifier = nn.Linear(num_features, num_classes)
+
+        # Official init from torch repo.
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight)
+            elif isinstance(m, nn.BatchNorm2d):
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
+            elif isinstance(m, nn.Linear):
+                nn.init.constant_(m.bias, 0)
+
+    def forward(self, x: Tensor) -&gt; Tensor:
+        features = self.features(x)
+        out = F.relu(features, inplace=True)
+        out = F.adaptive_avg_pool2d(out, (1, 1))
+        out = torch.flatten(out, 1)
+        out = self.classifier(out)
+        return out
+
+
+def _load_state_dict(model: nn.Module, weights: WeightsEnum, progress: bool) -&gt; None:
+    # &#39;.&#39;s are no longer allowed in module names, but previous _DenseLayer
+    # has keys &#39;norm.1&#39;, &#39;relu.1&#39;, &#39;conv.1&#39;, &#39;norm.2&#39;, &#39;relu.2&#39;, &#39;conv.2&#39;.
+    # They are also in the checkpoints in model_urls. This pattern is used
+    # to find such keys.
+    pattern = re.compile(
+        r&#34;^(.*denselayer\d+\.(?:norm|relu|conv))\.((?:[12])\.(?:weight|bias|running_mean|running_var))$&#34;
+    )
+
+    state_dict = weights.get_state_dict(progress=progress, check_hash=True)
+    for key in list(state_dict.keys()):
+        res = pattern.match(key)
+        if res:
+            new_key = res.group(1) + res.group(2)
+            state_dict[new_key] = state_dict[key]
+            del state_dict[key]
+    model.load_state_dict(state_dict)
+
+
+def _densenet(
+    growth_rate: int,
+    block_config: tuple[int, int, int, int],
+    num_init_features: int,
+    weights: Optional[WeightsEnum],
+    progress: bool,
+    **kwargs: Any,
+) -&gt; DenseNet:
+    if weights is not None:
+        _ovewrite_named_param(kwargs, &#34;num_classes&#34;, len(weights.meta[&#34;categories&#34;]))
+
+    model = DenseNet(growth_rate, block_config, num_init_features, **kwargs)
+
+    if weights is not None:
+        _load_state_dict(model=model, weights=weights, progress=progress)
+
+    return model
+
+
+_COMMON_META = {
+    &#34;min_size&#34;: (29, 29),
+    &#34;categories&#34;: _IMAGENET_CATEGORIES,
+    &#34;recipe&#34;: &#34;https://github.com/pytorch/vision/pull/116&#34;,
+    &#34;_docs&#34;: &#34;&#34;&#34;These weights are ported from LuaTorch.&#34;&#34;&#34;,
+}
+</code></pre><p>DenseNetはResNetと違って足し算ではなく結合によって入力値を下位層に伝播する。</p>
+<p>ResNetの足し算を使用した方法は、</p>
+<pre tabindex="0"><code>y = F(x) + x
+</code></pre><p>のように、その値は完全に残る。故に勾配消失は絶対に起こり得ない。</p>
+<p>が、入力値をそのまま利用できるか？という点では問題がある。</p>
+<p>DenseNetでは</p>
+<pre tabindex="0"><code>[x0, x1, x2, ...] → 分離されたまま保持
+</code></pre><p>このように配列として残すことで、どのような方法でも再利用が可能になる。</p>
+<p>ただ、このように値をそのまま残して保存をする方法はチャンネル数が線形的に増加していく。</p>
+<p>そこで growth_rate で制御をしている。勾配爆発を防ぐ。</p>
+<pre tabindex="0"><code>num_input_features + i * growth_rate
+</code></pre><p>BottleneckではGoogLeNetと同様に 1x1畳み込みを使って チャンネル数削減。</p>
+<p>Transitionでも1x1畳み込み＋平均プーリングを使ってチャンネル数削減+空間圧縮をしている。</p>
+<p>また、入力値をそのまま引き継ぐという点でメモリ消費量が増えてしまうため、memory_efficient で計算の中間結果を残さないようにしている。</p>
+<p>DenseNetではこれほどの工夫を施したが、ResNetのほうが実運用上のコストが低く、扱いやすかったため主流にはならなかった。</p>
+<p>現代GPUにおいて、計算は早いがメモリ帯域は相対的に遅い。メモリアクセスが支配的なDenseNetが流行しないのはハードウェア上の制限によるものでもある。</p>
+<p>更に、DenseNetは層が深くなればなるほど、メモリに残しておくべき値が増大していく。中間活性を保存しないmemory_efficientもあるが、逆伝播での計算は増えるため結果的に学習時間はのびてしまう。</p>
+<p>まとめると ResNet VS DenseNet は以下のようになる。</p>
+<ul>
+<li>ResNetの構造はシンプルで扱いやすい</li>
+<li>DenseNetはGPU処理性能よりもメモリ使用が多いため、ハードウェアの制限上の問題から扱いづらい</li>
+<li>入力値をそのまま残すというコンセプトは良いが、結果的にハードウェアコストが高くなってしまう</li>
+<li>精度を上げることに成功したが、結果的に支払うコストのほうが高いため、ResNetよりも普及はしなかった。</li>
+</ul>
+<p>最小コストである程度の深さと賢さを手に入れるResNet、入力値をそのまま残して最大限のコストを支払って賢くするDenseNet</p>
+<p>どちらが、普及しやすいかは明らかである。</p>
+<p>この限界から、次のEfficientNetでは単純に層を深くすれば良い、幅(チャンネル数)を広げれば良い、解像度を上げれば良いという問題ではなく、効率化が推進された。</p>
+<h2 id="mobilenet">MobileNet</h2>
+<p>MobileNet は</p>
+<ul>
+<li>GoogLeNet(計算削減)</li>
+<li>ResNet(勾配安定)</li>
+<li>DenseNet(特徴再利用)</li>
+</ul>
+<p>この3点を踏まえた上で、モバイル端末で動作するレベルまで計算コストを最小化している。</p>
+<pre tabindex="0"><code>
+# このInvertedResidual が後のEfficientNetのMBConvの原型である。
+# necessary for backwards compatibility
+class InvertedResidual(nn.Module):
+    def __init__(
+        self, inp: int, oup: int, stride: int, expand_ratio: int, norm_layer: Optional[Callable[..., nn.Module]] = None
+    ) -&gt; None:
+        super().__init__()
+        self.stride = stride
+        if stride not in [1, 2]:
+            raise ValueError(f&#34;stride should be 1 or 2 instead of {stride}&#34;)
+
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+
+        # 
+        hidden_dim = int(round(inp * expand_ratio))
+
+
+        self.use_res_connect = self.stride == 1 and inp == oup
+
+        layers: list[nn.Module] = []
+        if expand_ratio != 1:
+            # pw
+            layers.append(
+                Conv2dNormActivation(inp, hidden_dim, kernel_size=1, norm_layer=norm_layer, activation_layer=nn.ReLU6)
+            )
+        layers.extend(
+            [
+                # dw
+                Conv2dNormActivation(
+                    hidden_dim,
+                    hidden_dim,
+                    stride=stride,
+                    groups=hidden_dim,
+                    norm_layer=norm_layer,
+                    activation_layer=nn.ReLU6,
+                ),
+                # pw-linear
+                nn.Conv2d(hidden_dim, oup, 1, 1, 0, bias=False),
+                norm_layer(oup),
+            ]
+        )
+        self.conv = nn.Sequential(*layers)
+        self.out_channels = oup
+        self._is_cn = stride &gt; 1
+
+    def forward(self, x: Tensor) -&gt; Tensor:
+        if self.use_res_connect:
+            return x + self.conv(x)
+        else:
+            return self.conv(x)
+
+
+
+# MobileNet 本体。
+class MobileNetV2(nn.Module):
+    def __init__(
+        self,
+        num_classes: int = 1000,
+        width_mult: float = 1.0,
+        inverted_residual_setting: Optional[list[list[int]]] = None,
+        round_nearest: int = 8,
+        block: Optional[Callable[..., nn.Module]] = None,
+        norm_layer: Optional[Callable[..., nn.Module]] = None,
+        dropout: float = 0.2,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        MobileNet V2 main class
+
+        Args:
+            num_classes (int): Number of classes
+            width_mult (float): Width multiplier - adjusts number of channels in each layer by this amount
+            inverted_residual_setting: Network structure
+            round_nearest (int): Round the number of channels in each layer to be a multiple of this number
+            Set to 1 to turn off rounding
+            block: Module specifying inverted residual building block for mobilenet
+            norm_layer: Module specifying the normalization layer to use
+            dropout (float): The droupout probability
+
+        &#34;&#34;&#34;
+        super().__init__()
+        _log_api_usage_once(self)
+
+        if block is None:
+            block = InvertedResidual
+
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+
+        input_channel = 32
+        last_channel = 1280
+
+        if inverted_residual_setting is None:
+            inverted_residual_setting = [
+                # t, c, n, s
+                [1, 16, 1, 1],
+                [6, 24, 2, 2],
+                [6, 32, 3, 2],
+                [6, 64, 4, 2],
+                [6, 96, 3, 1],
+                [6, 160, 3, 2],
+                [6, 320, 1, 1],
+            ]
+
+        # only check the first element, assuming user knows t,c,n,s are required
+        if len(inverted_residual_setting) == 0 or len(inverted_residual_setting[0]) != 4:
+            raise ValueError(
+                f&#34;inverted_residual_setting should be non-empty or a 4-element list, got {inverted_residual_setting}&#34;
+            )
+
+        # building first layer
+        input_channel = _make_divisible(input_channel * width_mult, round_nearest)
+        self.last_channel = _make_divisible(last_channel * max(1.0, width_mult), round_nearest)
+        features: list[nn.Module] = [
+            Conv2dNormActivation(3, input_channel, stride=2, norm_layer=norm_layer, activation_layer=nn.ReLU6)
+        ]
+        # building inverted residual blocks
+        for t, c, n, s in inverted_residual_setting:
+            output_channel = _make_divisible(c * width_mult, round_nearest)
+            for i in range(n):
+                stride = s if i == 0 else 1
+                features.append(block(input_channel, output_channel, stride, expand_ratio=t, norm_layer=norm_layer))
+                input_channel = output_channel
+        # building last several layers
+        features.append(
+            Conv2dNormActivation(
+                input_channel, self.last_channel, kernel_size=1, norm_layer=norm_layer, activation_layer=nn.ReLU6
+            )
+        )
+        # make it nn.Sequential
+        self.features = nn.Sequential(*features)
+
+        # building classifier
+        self.classifier = nn.Sequential(
+            nn.Dropout(p=dropout),
+            nn.Linear(self.last_channel, num_classes),
+        )
+
+        # weight initialization
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode=&#34;fan_out&#34;)
+                if m.bias is not None:
+                    nn.init.zeros_(m.bias)
+            elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
+                nn.init.ones_(m.weight)
+                nn.init.zeros_(m.bias)
+            elif isinstance(m, nn.Linear):
+                nn.init.normal_(m.weight, 0, 0.01)
+                nn.init.zeros_(m.bias)
+
+    def _forward_impl(self, x: Tensor) -&gt; Tensor:
+        # This exists since TorchScript doesn&#39;t support inheritance, so the superclass method
+        # (this one) needs to have a name other than `forward` that can be accessed in a subclass
+        x = self.features(x)
+        # Cannot use &#34;squeeze&#34; as batch-size can be 1
+        x = nn.functional.adaptive_avg_pool2d(x, (1, 1))
+        x = torch.flatten(x, 1)
+        x = self.classifier(x)
+        return x
+
+    def forward(self, x: Tensor) -&gt; Tensor:
+        return self._forward_impl(x)
+
+
+_COMMON_META = {
+    &#34;num_params&#34;: 3504872,
+    &#34;min_size&#34;: (1, 1),
+    &#34;categories&#34;: _IMAGENET_CATEGORIES,
+}
+</code></pre><p>InvertedResidual は以下の構造になっている。</p>
+<pre tabindex="0"><code>(1) 1x1 expand（広げる）
+(2) depthwise conv
+(3) 1x1 project（戻す）
+(+ skip connection)
+</code></pre><p>GoogLeNet では、 1x1でチャンネル数を削減してから畳み込みをして、チャンネル数をもとに戻していた。</p>
+<p>が、このInvertedResidual は 1x1 でチャンネル数を増やしてから、depthwise Conv (畳み込み)を行い、1x1でもとに戻している。</p>
+<p>Depthwise Conv とはチャンネルごとに独立して畳み込みを行う手法。従来の畳み込みは、チャンネル間をまたいだ畳み込みを行っている。このDepthwise Conv はチャンネルごとに畳み込みを行っているため、従来型の畳込みより遥かに計算コストは低い。</p>
+<p>つまり</p>
+<ul>
+<li>1x1 チャンネル方向に増やす</li>
+<li>depthwise conv 空間方向に畳み込み(※チャンネルごとに独立して行う)</li>
+<li>1x1 チャンネル方向に元に戻す</li>
+</ul>
+<p>という工程を経ている。</p>
+<p>一見、GoogLeNetの思想とは異なるように見えるが、トータルで計算コストを下げるため1x1畳み込みを利用してチャンネル数を調整するという考え方は同じである。</p>
+<p>この計算工程が、後のEfficientNetのMBConv の源流となっている。あえてチャンネル方向に広げ、depthwise で空間にのみ畳み込みを行い、そして1x1で元に戻す。</p>
+<p>InvertedResidual のスキップ接続は、入力と出力のサイズ(チャンネル数、解像度)が完全に一致しているときだけスキップ接続を行う。</p>
+<h2 id="efficientnet">EfficientNet</h2>
+<pre tabindex="0"><code>
+# 分離型の設定
+class MBConvConfig(_MBConvConfig):
+    # Stores information listed at Table 1 of the EfficientNet paper &amp; Table 4 of the EfficientNetV2 paper
+    def __init__(
+        self,
+        expand_ratio: float,
+        kernel: int,
+        stride: int,
+        input_channels: int,
+        out_channels: int,
+        num_layers: int,
+        width_mult: float = 1.0,
+        depth_mult: float = 1.0,
+        block: Optional[Callable[..., nn.Module]] = None,
+    ) -&gt; None:
+
+
+        # Compound Scaling（複合スケーリング）
+        # width_mult: チャンネル数を何倍にするか。
+        # depth_mult: ブロックの繰り返し回数を何倍にするか。
+
+        input_channels = self.adjust_channels(input_channels, width_mult)
+        out_channels = self.adjust_channels(out_channels, width_mult)
+        num_layers = self.adjust_depth(num_layers, depth_mult)
+
+        if block is None:
+            block = MBConv
+        super().__init__(expand_ratio, kernel, stride, input_channels, out_channels, num_layers, block)
+
+    @staticmethod
+    def adjust_depth(num_layers: int, depth_mult: float):
+        return int(math.ceil(num_layers * depth_mult))
+
+
+# 統合型の設定
+class FusedMBConvConfig(_MBConvConfig):
+    # Stores information listed at Table 4 of the EfficientNetV2 paper
+    def __init__(
+        self,
+        expand_ratio: float,
+        kernel: int,
+        stride: int,
+        input_channels: int,
+        out_channels: int,
+        num_layers: int,
+        block: Optional[Callable[..., nn.Module]] = None,
+    ) -&gt; None:
+        if block is None:
+            block = FusedMBConv
+        super().__init__(expand_ratio, kernel, stride, input_channels, out_channels, num_layers, block)
+
+
+
+&#34;&#34;&#34;
+1×1 conv（拡張）
+depthwise conv（空間処理）
+1×1 conv（圧縮）
+非線形（SiLU）
+SE（場合による）
+&#34;&#34;&#34;
+# 分離型
+class MBConv(nn.Module):
+    def __init__(
+        self,
+        cnf: MBConvConfig,
+        stochastic_depth_prob: float,
+        norm_layer: Callable[..., nn.Module],
+        se_layer: Callable[..., nn.Module] = SqueezeExcitation,
+    ) -&gt; None:
+        super().__init__()
+
+        if not (1 &lt;= cnf.stride &lt;= 2):
+            raise ValueError(&#34;illegal stride value&#34;)
+
+        self.use_res_connect = cnf.stride == 1 and cnf.input_channels == cnf.out_channels
+
+        layers: list[nn.Module] = []
+
+        # X x SigmoidのSiLU関数を使っている。小さい負の値は弱く残すことで勾配がなめらかに伝わる。ReLUでは負の値がすべて死ぬ。
+        activation_layer = nn.SiLU
+
+        # 1x1 畳み込みでチャンネル数を増やす。(後続の depthwise のため)
+        # expand
+        expanded_channels = cnf.adjust_channels(cnf.input_channels, cnf.expand_ratio)
+        if expanded_channels != cnf.input_channels:
+            layers.append(
+                Conv2dNormActivation(
+                    cnf.input_channels,
+                    expanded_channels,
+                    kernel_size=1,
+                    norm_layer=norm_layer,
+                    activation_layer=activation_layer,
+                )
+            )
+
+        # depthwiseはチャンネル間の混合をせず、計算コストは低いが表現力が弱い。そこで活性化関数にSiLUを使用している。
+        # depthwise
+        layers.append(
+            Conv2dNormActivation(
+                expanded_channels,
+                expanded_channels,
+                kernel_size=cnf.kernel,
+                stride=cnf.stride,
+                groups=expanded_channels,
+                norm_layer=norm_layer,
+                activation_layer=activation_layer,
+            )
+        )
+        
+
+        # ここが、MobileNet のInvertedResidual との違い。
+        # depthwise ではチャンネル間の混合、チャンネル数を増やすことはしないため
+        # 全チャンネルを俯瞰して、チャンネルごとの重要度を学習する。
+        # squeeze and excitation
+        squeeze_channels = max(1, cnf.input_channels // 4)
+        layers.append(se_layer(expanded_channels, squeeze_channels, activation=partial(nn.SiLU, inplace=True)))
+
+
+        # 1x1 畳み込みでチャンネル数を元に戻す。
+        # project
+        layers.append(
+            Conv2dNormActivation(
+                expanded_channels, cnf.out_channels, kernel_size=1, norm_layer=norm_layer, activation_layer=None
+            )
+        )
+
+        self.block = nn.Sequential(*layers)
+        self.stochastic_depth = StochasticDepth(stochastic_depth_prob, &#34;row&#34;)
+        self.out_channels = cnf.out_channels
+
+    def forward(self, input: Tensor) -&gt; Tensor:
+        result = self.block(input)
+        if self.use_res_connect:
+            result = self.stochastic_depth(result)
+            result += input
+        return result
+
+
+# 統合型
+# 通常のMBConvでdepthwiseを行い、結果を統合して1つの3x3畳み込みに置き換える。
+class FusedMBConv(nn.Module):
+    def __init__(
+        self,
+        cnf: FusedMBConvConfig,
+        stochastic_depth_prob: float,
+        norm_layer: Callable[..., nn.Module],
+    ) -&gt; None:
+        super().__init__()
+
+        if not (1 &lt;= cnf.stride &lt;= 2):
+            raise ValueError(&#34;illegal stride value&#34;)
+
+        self.use_res_connect = cnf.stride == 1 and cnf.input_channels == cnf.out_channels
+
+        layers: list[nn.Module] = []
+
+        # X x SigmoidのSiLU関数を使っている。小さい負の値は弱く残すことで勾配がなめらかに伝わる。ReLUでは負の値がすべて死ぬ。
+        activation_layer = nn.SiLU
+
+        expanded_channels = cnf.adjust_channels(cnf.input_channels, cnf.expand_ratio)
+        if expanded_channels != cnf.input_channels:
+
+            # EfficientNet の高速化手法 
+            # Depthwise Conv は計算量が少ないもののGPUでのメモリ読み出し効率が悪い。
+            # そこで、ネットワークの初期そうではあえて通常の畳み込みに統合している。
+
+            # fused expand
+            layers.append(
+                Conv2dNormActivation(
+                    cnf.input_channels,
+                    expanded_channels,
+                    kernel_size=cnf.kernel,
+                    stride=cnf.stride,
+                    norm_layer=norm_layer,
+                    activation_layer=activation_layer,
+                )
+            )
+
+            # project
+            layers.append(
+                Conv2dNormActivation(
+                    expanded_channels, cnf.out_channels, kernel_size=1, norm_layer=norm_layer, activation_layer=None
+                )
+            )
+        else:
+            layers.append(
+                Conv2dNormActivation(
+                    cnf.input_channels,
+                    cnf.out_channels,
+                    kernel_size=cnf.kernel,
+                    stride=cnf.stride,
+                    norm_layer=norm_layer,
+                    activation_layer=activation_layer,
+                )
+            )
+
+        self.block = nn.Sequential(*layers)
+        self.stochastic_depth = StochasticDepth(stochastic_depth_prob, &#34;row&#34;)
+        self.out_channels = cnf.out_channels
+
+    def forward(self, input: Tensor) -&gt; Tensor:
+        result = self.block(input)
+        if self.use_res_connect:
+            result = self.stochastic_depth(result)
+            result += input
+        return result
+
+
+class EfficientNet(nn.Module):
+    def __init__(
+        self,
+        inverted_residual_setting: Sequence[Union[MBConvConfig, FusedMBConvConfig]],
+        dropout: float,
+        stochastic_depth_prob: float = 0.2,
+        num_classes: int = 1000,
+        norm_layer: Optional[Callable[..., nn.Module]] = None,
+        last_channel: Optional[int] = None,
+    ) -&gt; None:
+        &#34;&#34;&#34;
+        EfficientNet V1 and V2 main class
+
+        Args:
+            inverted_residual_setting (Sequence[Union[MBConvConfig, FusedMBConvConfig]]): Network structure
+            dropout (float): The droupout probability
+            stochastic_depth_prob (float): The stochastic depth probability
+            num_classes (int): Number of classes
+            norm_layer (Optional[Callable[..., nn.Module]]): Module specifying the normalization layer to use
+            last_channel (int): The number of channels on the penultimate layer
+        &#34;&#34;&#34;
+        super().__init__()
+        _log_api_usage_once(self)
+
+        if not inverted_residual_setting:
+            raise ValueError(&#34;The inverted_residual_setting should not be empty&#34;)
+        elif not (
+            isinstance(inverted_residual_setting, Sequence)
+            and all([isinstance(s, _MBConvConfig) for s in inverted_residual_setting])
+        ):
+            raise TypeError(&#34;The inverted_residual_setting should be List[MBConvConfig]&#34;)
+
+        if norm_layer is None:
+            norm_layer = nn.BatchNorm2d
+
+        layers: list[nn.Module] = []
+
+        # building first layer
+        firstconv_output_channels = inverted_residual_setting[0].input_channels
+        layers.append(
+            Conv2dNormActivation(
+                3, firstconv_output_channels, kernel_size=3, stride=2, norm_layer=norm_layer, activation_layer=nn.SiLU
+            )
+        )
+
+        # building inverted residual blocks
+        total_stage_blocks = sum(cnf.num_layers for cnf in inverted_residual_setting)
+        stage_block_id = 0
+        for cnf in inverted_residual_setting:
+            stage: list[nn.Module] = []
+            for _ in range(cnf.num_layers):
+                # copy to avoid modifications. shallow copy is enough
+                block_cnf = copy.copy(cnf)
+
+                # overwrite info if not the first conv in the stage
+                if stage:
+                    block_cnf.input_channels = block_cnf.out_channels
+                    block_cnf.stride = 1
+
+                # adjust stochastic depth probability based on the depth of the stage block
+                sd_prob = stochastic_depth_prob * float(stage_block_id) / total_stage_blocks
+
+                stage.append(block_cnf.block(block_cnf, sd_prob, norm_layer))
+                stage_block_id += 1
+
+            layers.append(nn.Sequential(*stage))
+
+        # building last several layers
+        lastconv_input_channels = inverted_residual_setting[-1].out_channels
+        lastconv_output_channels = last_channel if last_channel is not None else 4 * lastconv_input_channels
+        layers.append(
+            Conv2dNormActivation(
+                lastconv_input_channels,
+                lastconv_output_channels,
+                kernel_size=1,
+                norm_layer=norm_layer,
+                activation_layer=nn.SiLU,
+            )
+        )
+
+        self.features = nn.Sequential(*layers)
+        self.avgpool = nn.AdaptiveAvgPool2d(1)
+        self.classifier = nn.Sequential(
+            nn.Dropout(p=dropout, inplace=True),
+            nn.Linear(lastconv_output_channels, num_classes),
+        )
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode=&#34;fan_out&#34;)
+                if m.bias is not None:
+                    nn.init.zeros_(m.bias)
+            elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
+                nn.init.ones_(m.weight)
+                nn.init.zeros_(m.bias)
+            elif isinstance(m, nn.Linear):
+                init_range = 1.0 / math.sqrt(m.out_features)
+                nn.init.uniform_(m.weight, -init_range, init_range)
+                nn.init.zeros_(m.bias)
+
+    def _forward_impl(self, x: Tensor) -&gt; Tensor:
+        x = self.features(x)
+
+        x = self.avgpool(x)
+        x = torch.flatten(x, 1)
+
+        x = self.classifier(x)
+
+        return x
+
+    def forward(self, x: Tensor) -&gt; Tensor:
+        return self._forward_impl(x)
+
+
+def _efficientnet(
+    inverted_residual_setting: Sequence[Union[MBConvConfig, FusedMBConvConfig]],
+    dropout: float,
+    last_channel: Optional[int],
+    weights: Optional[WeightsEnum],
+    progress: bool,
+    **kwargs: Any,
+) -&gt; EfficientNet:
+    if weights is not None:
+        _ovewrite_named_param(kwargs, &#34;num_classes&#34;, len(weights.meta[&#34;categories&#34;]))
+
+    model = EfficientNet(inverted_residual_setting, dropout, last_channel=last_channel, **kwargs)
+
+    if weights is not None:
+        model.load_state_dict(weights.get_state_dict(progress=progress, check_hash=True))
+
+    return model
+
+
+def _efficientnet_conf(
+    arch: str,
+    **kwargs: Any,
+) -&gt; tuple[Sequence[Union[MBConvConfig, FusedMBConvConfig]], Optional[int]]:
+    inverted_residual_setting: Sequence[Union[MBConvConfig, FusedMBConvConfig]]
+    if arch.startswith(&#34;efficientnet_b&#34;):
+        bneck_conf = partial(MBConvConfig, width_mult=kwargs.pop(&#34;width_mult&#34;), depth_mult=kwargs.pop(&#34;depth_mult&#34;))
+        inverted_residual_setting = [
+            bneck_conf(1, 3, 1, 32, 16, 1),
+            bneck_conf(6, 3, 2, 16, 24, 2),
+            bneck_conf(6, 5, 2, 24, 40, 2),
+            bneck_conf(6, 3, 2, 40, 80, 3),
+            bneck_conf(6, 5, 1, 80, 112, 3),
+            bneck_conf(6, 5, 2, 112, 192, 4),
+            bneck_conf(6, 3, 1, 192, 320, 1),
+        ]
+        last_channel = None
+    elif arch.startswith(&#34;efficientnet_v2_s&#34;):
+        inverted_residual_setting = [
+            FusedMBConvConfig(1, 3, 1, 24, 24, 2),
+            FusedMBConvConfig(4, 3, 2, 24, 48, 4),
+            FusedMBConvConfig(4, 3, 2, 48, 64, 4),
+            MBConvConfig(4, 3, 2, 64, 128, 6),
+            MBConvConfig(6, 3, 1, 128, 160, 9),
+            MBConvConfig(6, 3, 2, 160, 256, 15),
+        ]
+        last_channel = 1280
+    elif arch.startswith(&#34;efficientnet_v2_m&#34;):
+        inverted_residual_setting = [
+            FusedMBConvConfig(1, 3, 1, 24, 24, 3),
+            FusedMBConvConfig(4, 3, 2, 24, 48, 5),
+            FusedMBConvConfig(4, 3, 2, 48, 80, 5),
+            MBConvConfig(4, 3, 2, 80, 160, 7),
+            MBConvConfig(6, 3, 1, 160, 176, 14),
+            MBConvConfig(6, 3, 2, 176, 304, 18),
+            MBConvConfig(6, 3, 1, 304, 512, 5),
+        ]
+        last_channel = 1280
+    elif arch.startswith(&#34;efficientnet_v2_l&#34;):
+        inverted_residual_setting = [
+            FusedMBConvConfig(1, 3, 1, 32, 32, 4),
+            FusedMBConvConfig(4, 3, 2, 32, 64, 7),
+            FusedMBConvConfig(4, 3, 2, 64, 96, 7),
+            MBConvConfig(4, 3, 2, 96, 192, 10),
+            MBConvConfig(6, 3, 1, 192, 224, 19),
+            MBConvConfig(6, 3, 2, 224, 384, 25),
+            MBConvConfig(6, 3, 1, 384, 640, 7),
+        ]
+        last_channel = 1280
+    else:
+        raise ValueError(f&#34;Unsupported model type {arch}&#34;)
+
+    return inverted_residual_setting, last_channel
+
+
+_COMMON_META: dict[str, Any] = {
+    &#34;categories&#34;: _IMAGENET_CATEGORIES,
+}
+
+
+_COMMON_META_V1 = {
+    **_COMMON_META,
+    &#34;min_size&#34;: (1, 1),
+    &#34;recipe&#34;: &#34;https://github.com/pytorch/vision/tree/main/references/classification#efficientnet-v1&#34;,
+}
+
+
+_COMMON_META_V2 = {
+    **_COMMON_META,
+    &#34;min_size&#34;: (33, 33),
+    &#34;recipe&#34;: &#34;https://github.com/pytorch/vision/tree/main/references/classification#efficientnet-v2&#34;,
+}
+</code></pre><h3 id="mbconvは何をしているのか">MBConvは何をしているのか？</h3>
+<p>端的に言うと、</p>
+<ol>
+<li>1x1畳み込みで 一旦チャンネル数(特徴)を増やし、</li>
+<li>depthwise で空間方向にのみ畳み込みを行い</li>
+<li>squeeze and excitation で全チャンネル内で重要度を振り分け</li>
+<li>1x1 畳み込みでチャンネル数を元に戻す(重要でないチャンネルの排除)</li>
+</ol>
+<p>もっと端的に言うと、<strong>考えられる特徴という特徴を挙げ、不必要な特徴は無視して学習をし続ける仕組み。</strong></p>
+<p>しかもdepthwise は通常の畳み込みとは違いチャンネル方向の混合や増減はさせない。空間方向にのみ計算を行うのでコストは非常に少なくて済む。</p>
+<p>このように、チャンネル方向の計算と空間方向の計算を分離して行うので、MBConvは分離型とされている。</p>
+<h3 id="fusedmbconv-は何をしているのか">FusedMBConv は何をしているのか？</h3>
+<p>通常の3x3畳み込みを使い、チャンネルと空間をまとめて畳み込みしている。そのため統合型とされている。</p>
+<p>そもそもMBConvは計算コストは低いが、層が細かいためデータをロード→計算→保存というサイクルを繰り返す必要がある。この点においてIOバウンドの待ち時間がかかる。</p>
+<p>一方で統合型は1回の処理で計算を行うためGPUコアをフル活用できる。計算量自体は増えるが、計算を1回で終わらせることができるため、バラバラに計算をしていくよりも早く終わる。</p>
+<p>流れをまとめると</p>
+<ul>
+<li>MBConv : 重要とされる特徴を見つける工程</li>
+<li>FusedMBConv : 見つけた重要な特徴を一気に計算する工程。</li>
+</ul>
+<p>IOバウンドが増える MBConv はスマホなどのGPUパワーの小さいエッジデバイスにおいては有効。しかし、IOバウンドがあまりにも多いとパワーのあるGPUの場合は持て余してしまう。</p>
+<ul>
+<li>統合型でパラメータを増やしてGPUをフルに使い、メモリ効率を優先するか</li>
+<li>分離型でパラメータをあまり増やさずメモリも適度に使いつつ、GPUの負荷を軽減するか</li>
+</ul>
+<p>この二者択一である。</p>
+<p>またEfficientNetV2には他にも工夫があり、最初の数ステージはIOバウンドが支配的なため統合型を利用して、後半は通常のMBConvを使うという方法を取っている。</p>
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="http://localhost:43210/post/startup-qdrant/">QdrantのCRUD、コレクションとポイント、ハイブリッド検索について<time class="relate_time">2026年8月22日 08時08分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/javascript-self-chunks/">RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた<time class="relate_time">2026年6月28日 14時50分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/qdrant-rag-system/">RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現<time class="relate_time">2026年6月1日 18時27分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/python-local-llm-rag/">OllamaでRAGを実現する。<time class="relate_time">2026年5月31日 14時41分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/local-llm-install/">UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)<time class="relate_time">2026年5月24日 14時44分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/pytorch-nlp-origin/">次の投稿<br><span class="summary_pg">pytorchコードでNLPモデルの歴史を辿る【word2vec から Transformerまで 】</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/pytorch-caltech101/">前の投稿<br><span class="summary_pg">【pytorch】caltech-101 を使ってCNNモデルの歴史を辿る【VGG16からEfficientNetまで】</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="http://localhost:43210/information/introduction/"><img class="author_img" src="http://localhost:43210/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: NaN</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF">フルスタック</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ </a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E9%96%8B%E7%99%BA">ロボット開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E6%98%A0%E5%83%8F%E5%87%A6%E7%90%86">映像処理</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/react">react</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E9%96%8B%E7%99%BA">ai開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">pythonライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/drf">drf</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">javascriptライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fastapi">fastapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pytorch">pytorch</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sql">sql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/keras">keras</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/lpic">lpic</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E5%AE%9F%E8%A3%85%E6%A4%9C%E5%AE%9A">ai実装検定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css">css</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/c">c＃</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/llm">llm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/next.js">next.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/oracle">oracle</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rag">rag</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/spa">spa</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A1%E3%83%A2">メモ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABllm">ローカルllm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/.net">.net</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cnn">cnn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/db">db</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nlp">nlp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qdrant">qdrant</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/raspberry-pi">raspberry pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/redis">redis</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/serializers.py">serializers.py</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/typescript">typescript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%A2%E3%83%87%E3%83%AB">カスタムユーザーモデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89">コマンド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3">マークダウン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%82%99%E5%BF%98%E9%8C%B2">備忘録</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E5%8B%95%E5%8C%96">自動化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%B3%87%E6%A0%BC%E8%A9%A6%E9%A8%93">資格試験</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E5%8A%B9%E7%8E%87%E5%8C%96">開発効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bootstrap">bootstrap</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fetchapi">fetchapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/firefox">firefox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fullcalendar">fullcalendar</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gnome">gnome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gui">gui</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/java">java</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jwt">jwt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/latex">latex</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linq">linq</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/microsoftaccess">microsoftaccess</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/modprobe">modprobe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/mysql">mysql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nodejs">nodejs</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ocr">ocr</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ogp">ogp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ollama">ollama</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pillow">pillow</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qt">qt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/reactnative">reactnative</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/render.com">render.com</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rtmp">rtmp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/scikit-learn">scikit-learn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seaborn">seaborn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seo%E5%AF%BE%E7%AD%96">seo対策</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlalchemy">sqlalchemy</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sse">sse</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/systemd">systemd</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tempermonkey">tempermonkey</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">webデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アニメーション</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89">クラウド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B5%E3%83%BC%E3%83%9C%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC">サーボモーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E8%8A%B8">シェル芸</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%83%9E%E3%83%9B%E3%82%A2%E3%83%97%E3%83%AA">スマホアプリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%99%E3%82%AF%E3%83%88%E3%83%ABdb">ベクトルdb</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%86%E9%A1%9E%E5%95%8F%E9%A1%8C">分類問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%9E%E5%B8%B0%E5%95%8F%E9%A1%8C">回帰問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%B2%E7%A2%81">囲碁</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%A4%9A%E5%AF%BE%E5%A4%9A">多対多</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92">教師あり学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%AA%E3%81%97%E5%AD%A6%E7%BF%92">教師なし学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E5%8A%A0%E5%B7%A5">画像加工</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98">画像認識</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86">非同期処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="http://localhost:43210/post/fastapi-nextjs-crud/">FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-fastapi/">FastAPIのプロジェクト構成、ルーティング、モデル、DB使用方法について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-qdrant/">QdrantのCRUD、コレクションとポイント、ハイブリッド検索について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/javascript-self-chunks/">RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/qdrant-rag-system/">RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/python-local-llm-rag/">OllamaでRAGを実現する。</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/local-llm-install/">UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-jisso-kentei-s-grade/">AI実装検定S級合格体験記</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-question/">AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-mock/">AI実装検定S級の模擬試験</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Books</div>
+
+        <div class="row">
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/481561072X/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/I/51Y0-P+m94L.jpg" alt="">
+                    </div>
+                    <div>モダンJavaScriptの基本から始める　React実践の教科書　（最新ReactHooks対応）</div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/B09K235CTP/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/P/B09K235CTP.jpg" alt="">
+                    </div>
+                    <div>現場で使える Django の教科書《基礎編》［3.2 LTS 対応版］</div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

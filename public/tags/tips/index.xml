@@ -1,1005 +1,1391 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tips on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/tips/</link>
+    <link>http://localhost:43210/tags/tips/</link>
     <description>Recent content in Tips on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 17 Sep 2022 10:20:08 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/tips/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 08 Jun 2025 16:49:40 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/tips/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Pandas】read_sql で生のSQL(SELECT文)を実行、DBから直接DataFrameを作る</title>
+      <link>http://localhost:43210/post/pandas-read-sql/</link>
+      <pubDate>Sun, 08 Jun 2025 16:49:40 +0900</pubDate>
+      <guid>http://localhost:43210/post/pandas-read-sql/</guid>
+      <description>分析するデータは常にCSVにあるわけではない。DBから取り出す必要もある。 そこで、Pandasからread_sql メソッドを使ってDBから直接DataFrameを作る。 pandasで.read_sql() を使うサンプルコード pip install pandas pip install sqlalchemy 事前にpandas とsqlalchemy をインストールしておく。 import pandas as pd from sqlalchemy import create_engine # 例: PostgreSQL に接続する場合（DB種類・ホスト・ポート・ユーザー・パスワードを変更） engine = create_engine(&amp;#39;postgresql://username:password@localhost:5432/mydb&amp;#39;)</description>
+    </item>
+    <item>
+      <title>【SQL】GROUP BY, HAVING, COUNTの3つでグループ化して集計、条件で絞り込みカウントする</title>
+      <link>http://localhost:43210/post/database-sql-having-group-count/</link>
+      <pubDate>Mon, 02 Jun 2025 18:47:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/database-sql-having-group-count/</guid>
+      <description>GROUP BY + HAVING + COUNT よくある手法の一つに、 売上データから営業担当者ごとに売上件数を集計し、売上件数が2件以上の人だけ表示したい。 というものがある。 id salesperson region amount 1 Alice East 100 2 Bob West 200 3 Alice East 150 4 Bob West 250 5 Carol East 300 データがこの場合、SQLで表現すると、 SELECT salesperson, COUNT(*) AS num_sales FROM sales GROUP BY salesperson HAVING COUNT(*) &amp;gt;= 2; 結果はこうなる。 salesperson num_sales Alice 2 Bob 2 GROUP BY カラムが同じ値ごとに集計 GROUP BY はカラムを指定し、同じ値ごとに集計をすることができる。 今回は salesperson を指定することで、同じ営業</description>
+    </item>
+    <item>
+      <title>【SQL】Oracleデータベースのファンクション(関数)の一覧</title>
+      <link>http://localhost:43210/post/oracle-database-function/</link>
+      <pubDate>Sun, 01 Jun 2025 18:38:32 +0900</pubDate>
+      <guid>http://localhost:43210/post/oracle-database-function/</guid>
+      <description>NVL(A,B) AがNULLならBを返す 以下は、bonus カラムの値がNULLの場合、そのまま表示させず、0を返すようにしている。 SELECT NVL(bonus, 0) AS bonus_value FROM employees; 文字列を返すこともできる。ただし元のカラムの値と同じデータ型に限る。 SELECT NVL(middle_name, &amp;#39;（なし）&amp;#39;) AS middle FROM users; つまり以下はエラー(暗黙的に型変換される可能性もあるが、エラーになることがあるため、推奨されない) SELECT NVL(bonus, &amp;#39;賞与なし&amp;#39;) AS bonus_value FROM employees; この場合、型変換を明</description>
+    </item>
+    <item>
+      <title>【Pythonでグラフ描画】matplotlibとseabornのAPIのまとめ</title>
+      <link>http://localhost:43210/post/python-matplotlib-seaborn-api/</link>
+      <pubDate>Sat, 31 May 2025 14:30:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-matplotlib-seaborn-api/</guid>
+      <description>matplotlib matplotlibは配列データを元に、グラフを描画することができる。 代表的な 棒グラフ、折れ線グラフ、散布図の3つを以下コードで描画している。 import numpy as np import matplotlib.pyplot as plt # データ準備 categories = [&amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;E&amp;#39;] values = [5, 7, 3, 8, 4] # 棒グラフ用 x = np.arange(0, 10, 1) # 折れ線グラフ・散布図用 y_line = np.sin(x) # 折れ線グラフ用 y_scatter = y_line + np.random.normal(0, 0.2, size=x.shape) # 散布図用（ノイズを加える） # --- 1. 棒グラフ --- plt.figure(figsize=(6, 4)) plt.bar(categories, values, color=&amp;#39;skyblue&amp;#39;) plt.title(&amp;#34;Bar Graph&amp;#34;) plt.xlabel(&amp;#34;Category&amp;#34;) plt.ylabel(&amp;#34;Value&amp;#34;) plt.grid(axis=&amp;#39;y&amp;#39;) plt.tight_layout() plt.show() # --- 2. 折れ線グラフ --- plt.figure(figsize=(6, 4)) plt.plot(x, y_line, marker=&amp;#39;o&amp;#39;, linestyle=&amp;#39;-&amp;#39;, color=&amp;#39;green&amp;#39;) plt.title(&amp;#34;Line Graph&amp;#34;) plt.xlabel(&amp;#34;X&amp;#34;) plt.ylabel(&amp;#34;Y&amp;#34;) plt.grid(True) plt.tight_layout() plt.show() #</description>
+    </item>
+    <item>
+      <title>Pythonのthreading.Thread と concurrent.futures.Threadpoolexecutor の違い【マルチスレッド処理】</title>
+      <link>http://localhost:43210/post/python-threading-vs-threadpoolexecutor/</link>
+      <pubDate>Sat, 03 May 2025 11:05:04 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-threading-vs-threadpoolexecutor/</guid>
+      <description>Pythonのマルチスレッドには2つの方法がある。 threading.Thread と concurrent.futures.Threadpoolexecutor の2つである。 本記事ではその比較をまとめる 比較項目 threading.Thread Threadpoolexecutor スレッドの管理 自分でスレッドの実行と終了の管理が必要 自動的に管理される 戻り値の扱い 基本取得できない(共有変数などを使う) 取得できる エラーハンドリング 各スレッドでtry-exceptをしなければならない Future.exception() で取得可能 スレッドの起動 個別に起動できる タスクをプールに投げるので、個別にはスレッドの起</description>
+    </item>
+    <item>
+      <title>Ubuntuの夜間モードが通用しない場合の対処法</title>
+      <link>http://localhost:43210/post/ubuntu-night-light-mode/</link>
+      <pubDate>Fri, 02 May 2025 07:02:16 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-night-light-mode/</guid>
+      <description>GUIから夜間モードの操作をする。 gnome-control-center display これで夜間モードの設定画面が開く。 コマンドから夜間モードを有効にする。 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true これでONになり、 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false これでOFFになる。ショートカットキーにも割り当てておけば便利かもしれない。 どうしても夜間モードが効かない場合は？ ログアウトして再度ログインする。これでデスクトップが起動し直され、夜間モードが正常に機能する。</description>
+    </item>
+    <item>
+      <title>OracleDBのSQLまとめ</title>
+      <link>http://localhost:43210/post/oracle-database-sql-basic/</link>
+      <pubDate>Tue, 29 Apr 2025 08:41:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/oracle-database-sql-basic/</guid>
+      <description>dockerにインストールしたOracle−XEを使用している。 UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える HR スキーマを搭載した。 雇用日時をもとに絞り込みをする 【非推奨】文字列を与えると、暗黙的にDATE型に変換する 例えば、2015年1月1日以降に雇用した従業員を出力するには、 SELECT * FROM employees WHERE hire_date &amp;gt;= &amp;#39;2015-01-01&amp;#39; ; そして、新人を上に表示させるため、降順に並び替える。 SELECT * FROM employees WHERE hire_date &amp;gt;= &amp;#39;2015-01-01&amp;#39;</description>
+    </item>
+    <item>
+      <title>【データベース】基本的なSQL文の一覧【SELECT, INSERT INTO, DELETE, UPDATE, UNION, JOIN】</title>
+      <link>http://localhost:43210/post/database-sql-basic/</link>
+      <pubDate>Sun, 20 Apr 2025 11:05:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/database-sql-basic/</guid>
+      <description>【導入】dockerでDatabaseを用意する。 Oracle DBを用意する UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える ただし、この記事ではPostgreSQLでの使用を想定しているため、SQLが若干違う点に注意。 テーブルをつくるCREATE TABLE文 CREATE TABLE テーブル名 ( カラム名1 データ型 [制約], カラム名2 データ型 [制約], ... ); この書き方に倣って、 CREATE TABLE categories ( id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT</description>
+    </item>
+    <item>
+      <title>duコマンドでディレクトリのサイズ・容量を調べる【ファイルサーバーのストレージディスク整理に】</title>
+      <link>http://localhost:43210/post/linux-du-command/</link>
+      <pubDate>Sat, 29 Mar 2025 13:57:07 +0900</pubDate>
+      <guid>http://localhost:43210/post/linux-du-command/</guid>
+      <description>ファイルサーバーなどを運用していると、ディスク容量が足りなくなることがよくある。 df -h --total でもストレージの残量を調べることはできるが、パーティション単位であり、どのファイルがどれぐらいの容量なのかがわからない。 こういうときはduコマンドを使って調べる。 du -sh ./* これでカレントディレクトリ内のすべてのファイルの容量を調べることができる。(hオプションで見やすく、sオプションで1階層のみ調べる)</description>
+    </item>
+    <item>
+      <title>sedコマンドで指定した範囲の行だけ標準出力をする。xselと組み合わせて部分的にクリップボードにコピー</title>
+      <link>http://localhost:43210/post/sed-line-output/</link>
+      <pubDate>Mon, 24 Mar 2025 14:18:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/sed-line-output/</guid>
+      <description>sed -n &amp;#34;開始行,終了行p&amp;#34; ファイル名 とすることで、指定したファイルの開始行から終了行までのテキストをそのまま標準出力できる。 そのため、xselと組み合わせ、指定したファイルの指定した範囲の行を、ワンライナーでクリップボードにコピーできる。 sed -n &amp;#34;100,120p&amp;#34; ./bbs/views.py | clipcopy</description>
+    </item>
+    <item>
+      <title>【USBブート】NVMe SSD とUSB3.2 Gen.2 の変換器でどこでもUbuntu</title>
+      <link>http://localhost:43210/post/anywhere-ubuntu/</link>
+      <pubDate>Sun, 23 Mar 2025 08:20:26 +0900</pubDate>
+      <guid>http://localhost:43210/post/anywhere-ubuntu/</guid>
+      <description>家のメインPCの開発環境を、外のPCでも実現させたいことがある。 これまでは、外用のPCに開発環境をインストールさせる必要があったが、とっても手間がかかる。 その上、家のメインPCの環境が変わるたび、手動で外用のPCの設定を変えていかないといけない。 そこで、メインPCでOSが入っているNVMeSSDを取り出し、USB3.2 Gen.2 に変換する変換器を用意して、以降USBブートさせる。 今回はこちらを使った。 ロジ</description>
+    </item>
+    <item>
+      <title>DjangoのセッションをRedisで管理する</title>
+      <link>http://localhost:43210/post/django-session-with-redis/</link>
+      <pubDate>Sun, 16 Mar 2025 21:15:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-session-with-redis/</guid>
+      <description>DjangoのセッションをRedisで管理するメリット DB(ディスク)ではなくRedis(RAM)になるので、セッション管理が高速化される 複数のアプリでセッション情報を共有できる マルチノード構成を使って、負荷分散・可用性を高めることができる TTLでセッションの削除を自動化できる。(DBの場合、能動的に削除しない限りセッション情報がそのまま残る) Django-Channelsなどの非同期セッションと</description>
+    </item>
+    <item>
+      <title>Djangoでローカルメモリキャッシュを使う</title>
+      <link>http://localhost:43210/post/django-local-memory-caching/</link>
+      <pubDate>Thu, 13 Mar 2025 10:31:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-local-memory-caching/</guid>
+      <description>djangoで一時的にデータをメモリに記録して欲しい場合、ローカルメモリキャッシュを使う。 Redisと違って、プロセス単位で動くため python manage.py runserver を止めたり再起動させたりするとすぐに揮発してしまうが、Pythonオブジェクトの保存もできるため、使いどころを考えればとても便利。 使い方 settings.py に以下を追記。 CACHES = { &amp;#39;default&amp;#39;: { &amp;#39;BACKEND&amp;#39;: &amp;#39;django.core.cache.backends.locmem.LocMemCache&amp;#39;, } } これでキャッシュの設定は完了。 続いて、ビューなどの任意の箇所で from django.core.cache import cache topics = Topic.objects.all() cache.set(&amp;#39;topics&amp;#39;, topics, timeout=60) などとキャ</description>
+    </item>
+    <item>
+      <title>【React】値が変わっても再レンダリングをしないuseRefとuseMemoの違い【デバウンス向けなのは？】</title>
+      <link>http://localhost:43210/post/react-useref-usememo/</link>
+      <pubDate>Fri, 07 Mar 2025 10:59:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-useref-usememo/</guid>
+      <description>入力欄に入力をするたび発火をする時、Stateに保存し続けると頻繁に再レンダリングが発動してパフォーマンスが落ちる。そこでデバウンスを採用する。 デバウンスしてキー入力の度にイベントを発火し続けないようにする【再レンダリング地獄対策】 このデバウンスをReactで実装し、setTimeoutのオブジェクトを記録するには、useRefが正解。 同じように値が変わっても再レンダリングをしないhookとしてu</description>
+    </item>
+    <item>
+      <title>UbuntuでNvidiaのドライバーをインストールする</title>
+      <link>http://localhost:43210/post/ubuntu-nvidia-drivers-install/</link>
+      <pubDate>Thu, 06 Mar 2025 14:18:53 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-nvidia-drivers-install/</guid>
+      <description>ubuntuにNvidiaグラフィックボードを搭載した時、ドライバーのインストールで詰まったので、まとめておく 【基本】推奨のドライバーをインストールする。 ubuntu-drivers devices NvidiaグラフィックボードをPCに挿し込んだ状態で、上記コマンドを実行する。 以下のように出力がされると思うので、recommendの表示があるドライバーをインストールする。 この場合 driver : nvidia-driver-570 - third-party non-free recommended ここから、nvidia-driver-570</description>
+    </item>
+    <item>
+      <title>Djangoでサーバーのウェブカメラを使ってライブ配信、クライアント側からON・OFF操作</title>
+      <link>http://localhost:43210/post/django-livestreamer-custom-2/</link>
+      <pubDate>Wed, 05 Mar 2025 10:03:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-livestreamer-custom-2/</guid>
+      <description>【Django】任意のタイミングでサーバーのカメラでライブ配信する【imutils.video.VideoStreamer】 ここで、クライアント側からサーバーのウェブカメラの電源をON/OFFできるようにしたが、コードがやや煩雑でわかりにくい。 不要な処理も含まれていたため、まずはサーバー側にあるウェブカメラの映像をブラウザに表示・非表示できるようにした。 ビューのソースコード 要になるビューのソースコ</description>
+    </item>
+    <item>
+      <title>デバウンスしてキー入力の度にイベントを発火し続けないようにする【再レンダリング地獄対策】</title>
+      <link>http://localhost:43210/post/javascript-debounce/</link>
+      <pubDate>Tue, 04 Mar 2025 10:57:59 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-debounce/</guid>
+      <description>ReactはStateの変化で再レンダリングをする仕様である。 Stateの高頻度な変更は、再レンダリングを頻繁に発生させ、表示が遅くなると言った問題が起こる。 この問題を防ぐためにも、キー入力の度にStateを書き換えるのではなく、最後のキー入力が終わって1秒経ってからStateを書き換えるという仕様に仕立てる。 このしくみをデバウンスという。 このデバウンスのしくみはsetTimeoutの操作で簡単に</description>
+    </item>
+    <item>
+      <title>Pythonで画像認識AI(深層学習)の速習をするためのメモ【pytorchで画像認識学習・推論のサンプルあり】</title>
+      <link>http://localhost:43210/post/python-ai-memo/</link>
+      <pubDate>Mon, 24 Feb 2025 18:27:37 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-ai-memo/</guid>
+      <description>急遽AI開発(特に画像認識)が必要になったため、それに必要な用語や概念的なものをまとめる。 ほとんどがChatGPTの受け売りである。自分用にまとめたのでかなり雑であることをお許しいただきたい。 そもそも機械学習と深層学習の違いは？ なんとなくだったため、この際はっきりさせる。 機械学習 簡単な表データを学習して推論したい場合、機械学習が有効。 データ量は数千〜数万件単位でOK。特徴量の設定は手動で行う必要が</description>
+    </item>
+    <item>
+      <title>【Django】DBの保存(投稿と編集)、削除に対して任意の動作をする【signals】</title>
+      <link>http://localhost:43210/post/django-signals-by-sending-data/</link>
+      <pubDate>Thu, 06 Feb 2025 09:35:41 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-signals-by-sending-data/</guid>
+      <description>モデルの保存時、削除時に任意の動作をしたい時、モデルのsaveメソッドをオーバーライドするなどで対応できる。 DjangoでDBへデータ格納時(save)、削除時(delete)に処理を追加する【models.py、forms.py、serializer.pyのメソッドオーバーライド】 ただ、別のモデルに対しても同じ処理を実行したい時、モデルの外部で処理をしたい場合などでは、singalsを使う。 実装</description>
+    </item>
+    <item>
+      <title>Pythonで処理速度のボトルネックを特定する</title>
+      <link>http://localhost:43210/post/python-profile-detect-bottleneck/</link>
+      <pubDate>Sun, 02 Feb 2025 09:34:11 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-profile-detect-bottleneck/</guid>
+      <description>Pythonの高速化には、ボトルネックの特定と改善が必要。 本記事ではボトルネックの特定をする。 関数の処理速度を調べるデコレータを用意する 以下のコードの関数をデコレータとして使うことで関数の処理時間を調べることができる。 from functools import wraps import time def timefn(fn): @wraps(fn) def meassure_time(*args, **kwargs): start = time.time() result = fn(*args, **kwargs) print(f&amp;#34;@timefn デコレータより {fn.__name__} : {time.time() - start} 秒&amp;#34;) return result return meassure_time try_count = 10000000 @timefn def create_numbers_for(): numbers = [] for i in range(try_count): numbers.append(i) create_numbers_for() このtimefnはデコレータとして機能する。 def timefn(fn): @wraps(fn) def meassure_time(*args, **kwargs): start = time.time() result =</description>
+    </item>
+    <item>
+      <title>Python非同期プログラミングのルール</title>
+      <link>http://localhost:43210/post/python-async-rules/</link>
+      <pubDate>Wed, 29 Jan 2025 09:53:19 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-async-rules/</guid>
+      <description>非同期プログラミングには守るべきルールがある。 同期プログラミングと同じように作るとエラーが出るため、ルール・作法をここにまとめる。 非同期処理のルール一覧 I/Oバウンドな同期処理は非同期処理にする 非同期関数を定義するには、async def 非同期関数を実行するには、await 同期関数から非同期関数を実行するには、 asyncio.run() 非同期関数をまとめて実行するには、 asyncio.gather() 同期関数を非同期化させるには、@sync_to_asyn</description>
+    </item>
+    <item>
+      <title>FastAPIでDjangoのORMを使う</title>
+      <link>http://localhost:43210/post/fastapi-use-django-orm/</link>
+      <pubDate>Tue, 28 Jan 2025 15:23:00 +0900</pubDate>
+      <guid>http://localhost:43210/post/fastapi-use-django-orm/</guid>
+      <description>Djangoの処理の一部をFastAPIで分離、FastAPI内でDjangoのORMを使ってDBの読み込みをする。 実装方法と手順 FastAPIでDjangoの設定を読み込み Djangoのモデルをimportする sync_to_asyncデコレータでラップされた関数内でモデルを使う モデルオブジェクトをそのままreturn してはいけない。 FastAPIでDjangoの設定を読み込み まず、FastAP</description>
+    </item>
+    <item>
+      <title>非同期リクエスト vs マルチスレッドリクエスト vs 直列リクエスト</title>
+      <link>http://localhost:43210/post/aiohttp-vs-threading-vs-serial-request/</link>
+      <pubDate>Sun, 26 Jan 2025 10:20:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/aiohttp-vs-threading-vs-serial-request/</guid>
+      <description>先の記事でI/Oバウンドの処理は、非同期処理が最適であるとわかった。 本記事では、それがはっきりとわかるコードを用意した。 非同期で大量のリクエストを送信し、レスポンスを受け取る。その処理時間を計測する。 比較のため、マルチスレッド、直列動作のコードも用意した。 使用ライブラリ pip install aiohttp requests fastapi uvicorn aiohappyeyeballs==2.4.4 aiohttp==3.11.11 aiosignal==1.3.2 annotated-types==0.7.0 anyio==4.8.0 async-timeout==5.0.1 attrs==25.1.0 certifi==2024.12.14 charset-normalizer==3.4.1 click==8.1.8 exceptiongroup==1.2.2 fastapi==0.115.7 frozenlist==1.5.0 h11==0.14.0 idna==3.10 multidict==6.1.0 propcache==0.2.1 pydantic==2.10.6 pydantic_core==2.27.2 requests==2.32.3 sniffio==1.3.1 starlette==0.45.3 typing_extensions==4.12.2 urllib3==2.3.0 uvicorn==0.34.0 yarl==1.18.3 非同期リクエストには、aiohttp を使う。通常の requests では非同期リク</description>
+    </item>
+    <item>
+      <title>非同期処理(async、await)とマルチスレッド(threading)とマルチプロセス(multiprocessing)の違い</title>
+      <link>http://localhost:43210/post/threading-vs-processing-vs-asyncio/</link>
+      <pubDate>Sat, 25 Jan 2025 14:07:48 +0900</pubDate>
+      <guid>http://localhost:43210/post/threading-vs-processing-vs-asyncio/</guid>
+      <description>FastAPIやWebSocketで非同期処理を扱うようになったため、非同期処理とマルチスレッドとマルチプロセスの違いをまとめる。 この違いは非常に複雑で難解。 まずはPythonのGILについて解説する。 GIL とは？ Global Interpreter Lock の略。pythonのCPython実装時に追加された、スレッドの排他制御メカニズムのこと。 このGILの仕組みにより、複数のスレッドがPythonのオブジェクトにアクセスできないようにし</description>
+    </item>
+    <item>
+      <title>Django-channelsのAsyncWebsocketConsumerのscopeの内容【JWT認証&#43;Sec-Websocket-Protocol】</title>
+      <link>http://localhost:43210/post/django-async-websocket-consumer-scope/</link>
+      <pubDate>Sat, 18 Jan 2025 17:32:48 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-async-websocket-consumer-scope/</guid>
+      <description>AsyncWebsocketConsumer の scope の内容は以下の通り。 ただし、JWT認証をしており、Sec-Websocket-Protocol を使用している。 { &amp;#39;type&amp;#39;: &amp;#39;websocket&amp;#39;, &amp;#39;path&amp;#39;: &amp;#39;/ws/chat/1/&amp;#39;, &amp;#39;raw_path&amp;#39;: b&amp;#39;/ws/chat/1/&amp;#39;, &amp;#39;root_path&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;headers&amp;#39;: [ (b&amp;#39;host&amp;#39;, b&amp;#39;localhost:8000&amp;#39;), (b&amp;#39;user-agent&amp;#39;, b&amp;#39;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0&amp;#39;), (b&amp;#39;accept&amp;#39;, b&amp;#39;*/*&amp;#39;), (b&amp;#39;accept-language&amp;#39;, b&amp;#39;ja,en-US;q=0.7,en;q=0.3&amp;#39;), (b&amp;#39;accept-encoding&amp;#39;, b&amp;#39;gzip, deflate, br, zstd&amp;#39;), (b&amp;#39;sec-websocket-version&amp;#39;, b&amp;#39;13&amp;#39;), (b&amp;#39;origin&amp;#39;, b&amp;#39;http://localhost:3000&amp;#39;), (b&amp;#39;sec-websocket-protocol&amp;#39;, b&amp;#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MTg4NDg5LCJpYXQiOjE3MzcxODgzNDUsImp0aSI6IjI0OWRlMTUzMjY0YTQ4ZDE5YWVkZDJiODlhNTgwY2M5IiwidXNlcl9pZCI6MX0.hzS0uwx4LhPlM6wFJiIUpEkjVjkGpV87psw5MD1leyk&amp;#39;), (b&amp;#39;sec-websocket-extensions&amp;#39;, b&amp;#39;permessage-deflate&amp;#39;), (b&amp;#39;sec-websocket-key&amp;#39;, b&amp;#39;Q257WDS+ETm8KNLmj6cQiQ==&amp;#39;), (b&amp;#39;dnt&amp;#39;, b&amp;#39;1&amp;#39;), (b&amp;#39;sec-gpc&amp;#39;, b&amp;#39;1&amp;#39;), (b&amp;#39;connection&amp;#39;, b&amp;#39;keep-alive, Upgrade&amp;#39;), (b&amp;#39;cookie&amp;#39;, b&amp;#39;csrftoken=8ShA2y6HDOr794MF0TdrSnbEv76KCY0Y; _ga_HDX0LW64ZT=GS1.1.1737184513.53.1.1737184805.0.0.0;&amp;#39;), (b&amp;#39;sec-fetch-dest&amp;#39;, b&amp;#39;empty&amp;#39;), (b&amp;#39;sec-fetch-mode&amp;#39;, b&amp;#39;websocket&amp;#39;), (b&amp;#39;sec-fetch-site&amp;#39;, b&amp;#39;same-site&amp;#39;), (b&amp;#39;pragma&amp;#39;, b&amp;#39;no-cache&amp;#39;), (b&amp;#39;cache-control&amp;#39;, b&amp;#39;no-cache&amp;#39;), (b&amp;#39;upgrade&amp;#39;, b&amp;#39;websocket&amp;#39;) ], &amp;#39;query_string&amp;#39;: b&amp;#39;&amp;#39;, &amp;#39;client&amp;#39;: [&amp;#39;127.0.0.1&amp;#39;, 35492], &amp;#39;server&amp;#39;: [&amp;#39;127.0.0.1&amp;#39;, 8000], &amp;#39;subprotocols&amp;#39;: [&amp;#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MTg4NDg5LCJpYXQiOjE3MzcxODgzNDUsImp0aSI6IjI0OWRlMTUzMjY0YTQ4ZDE5YWVkZDJiODlhNTgwY2M5IiwidXNlcl9pZCI6MX0.hzS0uwx4LhPlM6wFJiIUpEkjVjkGpV87psw5MD1leyk&amp;#39;], &amp;#39;asgi&amp;#39;: {&amp;#39;version&amp;#39;: &amp;#39;3.0&amp;#39;}, &amp;#39;user&amp;#39;: &amp;lt;User: asahina&amp;gt;, &amp;#39;path_remaining&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;url_route&amp;#39;: {&amp;#39;args&amp;#39;: (), &amp;#39;kwargs&amp;#39;: {&amp;#39;room_name&amp;#39;: &amp;#39;1&amp;#39;}} } ユーザーエージェントやCookieのデータも含まれる。 今回、ミドルウェアなどで操作しているため、状況によっ</description>
+    </item>
+    <item>
+      <title>【React】Contextとカスタムフックでログイン・ログアウト、認証状態を扱う</title>
+      <link>http://localhost:43210/post/react-usecontext-custom-hook/</link>
+      <pubDate>Sun, 12 Jan 2025 13:13:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-usecontext-custom-hook/</guid>
+      <description>Reactで全てのコンポーネントでStateや関数を扱いたい場合がある。 propsを使う場合はバケツリレーになってしまい、見通しが悪くなる。 そこで、Contextを使い、全コンポーネントでStateや関数を使えるようにする。 【React】グローバルなStateを使って、Propsバケツリレー問題を解決する 更に、カスタムフックを使えば呼び出しやすくなる。 src/AuthContext.jsx まずはcreateContextで、コンテキ</description>
+    </item>
+    <item>
+      <title>DRFでModelViewSetの動的ルーティング(URL内引数)を作る</title>
+      <link>http://localhost:43210/post/drf-modelviewset-dynamic-routing/</link>
+      <pubDate>Wed, 08 Jan 2025 11:39:59 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-modelviewset-dynamic-routing/</guid>
+      <description>例えば、ModelViewSetが以下のような場合 from rest_framework import viewsets from .models import Category,Topic,Reply from .serializers import CategorySerializer,TopicSerializer,ReplySerializer class CategoryView(viewsets.ModelViewSet): serializer_class = CategorySerializer queryset = Category.objects.all() class TopicView(viewsets.ModelViewSet): serializer_class = TopicSerializer queryset = Topic.objects.all() class ReplyView(viewsets.ModelViewSet): serializer_class = ReplySerializer queryset = Reply.objects.all() ルーティングは、このように DefaultRouter を使うと良い。 from django.contrib import admin from django.urls import path,include from rest_framework import routers from bbs import views router = routers.DefaultRouter() router.register(r&amp;#34;topics&amp;#34;, views.TopicView, &amp;#34;topic&amp;#34;) router.register(r&amp;#34;categories&amp;#34;, views.CategoryView, &amp;#34;category&amp;#34;) router.register(r&amp;#34;replies&amp;#34;, views.ReplyView, &amp;#34;reply&amp;#34;) urlpatterns = [ path(&amp;#39;admin/&amp;#39;, admin.site.urls), path(&amp;#39;api/&amp;#39;, include(router.urls)), ] だが、これではTopicに紐付いていないReplyまで取得できてしまう。 そこで、 HTTP GET /api/replies/ でReplyを取得するのではなく、 HTTP GET /api/topics/1/replies/ このように動的ルーティング(URL引数</description>
+    </item>
+    <item>
+      <title>setStateする時、直接値を書き換えてはいけない</title>
+      <link>http://localhost:43210/post/react-setstate-trap/</link>
+      <pubDate>Sun, 05 Jan 2025 20:47:54 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-setstate-trap/</guid>
+      <description>setStateをする時、こんな風に直接値を書き換えていないだろうか？ const handleToggle = () =&amp;gt; { setToggle(!toggle); } state変数がプリミティブ型の場合、このsetToggleにより、再レンダリングは発生する。 しかし、オブジェクト型の場合、Stateが値の変更を検知できず、再レンダリングは発生しない。 const handleProfile = (e) =&amp;gt; { profile[e.target.name] = e.target.value; setProfile(profile); // この方法では再レンダリングは発生しない。 } オブジェクト型の場合、このようにsetState関数内で処理をす</description>
+    </item>
+    <item>
+      <title>npm で Bootstrap を使う</title>
+      <link>http://localhost:43210/post/npm-install-bootstrap/</link>
+      <pubDate>Sat, 04 Jan 2025 15:39:43 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-install-bootstrap/</guid>
+      <description>npm install bootstrap App.jsに以下を追加する。 import &amp;#39;bootstrap/dist/css/bootstrap.min.css&amp;#39;; 後は、使いたいコンポーネントで &amp;lt;header className=&amp;#34;bg-primary text-white&amp;#34;&amp;gt;簡易掲示板&amp;lt;/header&amp;gt; などとすれば良い。 なぜ @fortawesome/fontawesome-free 、 なぜ bootstrap ？ 先に、fontawesomeをインストールしたときは、 npm install @fortawesome/fontawesome-free とした。@がついている。 これはスコープと言い、名前の衝突を避けるためにfontawesomeの開発会社、fortawesome社がつけている。(ミススペル</description>
+    </item>
+    <item>
+      <title>create-react-app コマンドはもう使えないので、ViteでReactプロジェクトをつくる</title>
+      <link>http://localhost:43210/post/vite-create-react-project/</link>
+      <pubDate>Mon, 30 Dec 2024 21:17:29 +0900</pubDate>
+      <guid>http://localhost:43210/post/vite-create-react-project/</guid>
+      <description>npx create-react-app frontend このコマンドでreactプロジェクトを作ってきたが、もうcreate-react-app はもう使われなくなったようだ。(2023年春時点から) そこで、Viteを使ってReactプロジェクトをつくる。 Viteとは？ Viteは、JavaScriptフレームワーク用のビルドツールである。Vite(フランス語で高速の意味)の名の通り、非常に高速。 ESモジュールで必要な部分だけオンデマンドでロードでき</description>
+    </item>
+    <item>
+      <title>DRFはいつCSRF検証をするのか？</title>
+      <link>http://localhost:43210/post/drf-csrf-validation/</link>
+      <pubDate>Sat, 28 Dec 2024 16:47:30 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-csrf-validation/</guid>
+      <description>開発中、おかしなことが起こった。 これまでCSRFトークン無しで、PUTやDELETEメソッドが送信できていた。 だが、突然、同様の状況で403エラー(CSRF token missing)が起きた。 CSRFトークン無しでリクエストできていたものが、急に403エラーになりCSRF検証を行うようになった。 何故か？ DRFのビューでは、CSRF検証が免除されている https://github.com/encode/django-rest-framework/blob/master/rest_framework/viewsets.py#L146 DRFのビューは、このように .as_view()の戻り</description>
+    </item>
+    <item>
+      <title>SQliteはマルチスレッド・マルチプロセスに対応していない</title>
+      <link>http://localhost:43210/post/threading-sqlite3/</link>
+      <pubDate>Wed, 25 Dec 2024 14:18:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/threading-sqlite3/</guid>
+      <description>SQliteはマルチスレッド・マルチプロセスに対応していない。 同時に大量のクエリをさばくことはできない。 実際にやってみる djangoで実際にやってみる。ベースは、40分django from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm import threading def writing(data): form = TopicForm(data) if form.is_valid(): form.save() class IndexView(View): def get(self, request, *args, **kwargs): print(Topic.objects.all().count()) context = {} context[&amp;#34;topics&amp;#34;] = Topic.objects.all() return render(request,&amp;#34;bbs/index.html&amp;#34;,context) def post(self, request, *args, **kwargs): threads = [] copied = request.POST.copy() for i in range(1000): thread = threading.Thread(target=writing, args=(copied,)) threads.append(thread) thread.start() # 全てのスレッドが終了するまで待機 for thread in threads: thread.join() return redirect(&amp;#34;bbs:index&amp;#34;) index = IndexView.as_view() 1回目は正常に1000個分のスレッドを処</description>
+    </item>
+    <item>
+      <title>DRFで400 Bad Request エラーが出る時、Serializerを確認する</title>
+      <link>http://localhost:43210/post/drf-400-error-serializer/</link>
+      <pubDate>Tue, 24 Dec 2024 09:21:14 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-400-error-serializer/</guid>
+      <description>このモデルと class Todo(models.Model): category = models.ForeignKey(Category,verbose_name=&amp;#34;カテゴリ&amp;#34;,on_delete=models.CASCADE) created_at = models.DateTimeField(verbose_name=&amp;#34;投稿日時&amp;#34;,default=timezone.now) content = models.CharField(verbose_name=&amp;#34;内</description>
+    </item>
+    <item>
+      <title>npm で Fontawesomeを使う</title>
+      <link>http://localhost:43210/post/npm-install-fontawesome/</link>
+      <pubDate>Mon, 23 Dec 2024 17:08:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-install-fontawesome/</guid>
+      <description>npm install @fortawesome/fontawesome-free これでfont-awesomeの最新版がインストールされる。後は、App.jsに下記を追加する。 import &amp;#39;@fortawesome/fontawesome-free/css/all.min.css&amp;#39;; importした後、JSXに、 &amp;lt;i className=&amp;#34;fa-regular fa-square-check&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; を追加する。 ちなみに、下記では旧版がインストールされてしまう。 npm install font-awesome</description>
+    </item>
+    <item>
+      <title>npm install --save パッケージ名 の--saveは必要か？</title>
+      <link>http://localhost:43210/post/npm-install-save-option/</link>
+      <pubDate>Mon, 23 Dec 2024 16:49:13 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-install-save-option/</guid>
+      <description>npm install --save パッケージ名 この&amp;ndash;saveで、package.jsonにパッケージ名を記録することができる。 ただし、&amp;ndash;saveオプションは、npmのバージョン5からデフォルトで有効になっている。 故に、npmバージョン5で、特に設定を触っていない場合は、あえてつける必要はない。 npm install パッケージ名 でよい。 よって、タイトルのnpm install --save パッケージ名 の--saveは必要か？ はnpmバージョン5以</description>
+    </item>
+    <item>
+      <title>【JavaScript】awaitとasyncの違い【非同期処理のコールバック地獄対処】</title>
+      <link>http://localhost:43210/post/javascript-await-async/</link>
+      <pubDate>Tue, 22 Oct 2024 11:13:45 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-await-async/</guid>
+      <description>【前提知識】同期処理と非同期処理とは 同期処理とは、 console.log(&amp;#34;1&amp;#34;); console.log(&amp;#34;2&amp;#34;); console.log(&amp;#34;3&amp;#34;); このように上から順に実行される処理のことを言う。 一方で、非同期処理とは console.log(&amp;#34;1&amp;#34;); setTimeout(() =&amp;gt; { console.log(&amp;#34;2&amp;#34;); }, 1000); // 1秒後に実行 console.log(&amp;#34;3&amp;#34;); このように、処理の完了を待たずに後続の処理を行うことを言う。 setTimeoutの他に、fetchAPIが非同期処理に当てはまる。 fetchAPIのコールバック地獄に対処する。 例えば、fetchAPIでリクエストを書く時、 fetch(url, { method, headers, body }) .then( (res) =&amp;gt; { if</description>
+    </item>
+    <item>
+      <title>Djangoのcreatesuperuserでインタラクティブシェルを省略する。</title>
+      <link>http://localhost:43210/post/django-createsuperuser-auto/</link>
+      <pubDate>Thu, 17 Oct 2024 13:12:14 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-createsuperuser-auto/</guid>
+      <description>python manage.py createsuperuserで管理ユーザーをつくることができるが、その後のインタラクティブシェルの入力がめんどくさい。 そこで、環境変数を使ってインタラクティブシェルを省略する。 更に、エイリアスを使ってコマンド入力も簡略化させる。 # createsuperuser の自動化 export DJANGO_SUPERUSER_USERNAME=&amp;#34;asahina&amp;#34; export DJANGO_SUPERUSER_EMAIL=&amp;#34;asahina@asahina.com&amp;#34; export DJANGO_SUPERUSER_PASSWORD=&amp;#34;seiya0723&amp;#34; alias django_createsuperuser=&amp;#34;python manage.py createsuperuser --noinput&amp;#34;</description>
+    </item>
+    <item>
+      <title>【JavaScript】localStorageを使ってブラウザにデータを記録する【Cookieが使えないときに】</title>
+      <link>http://localhost:43210/post/javascript-localstorage/</link>
+      <pubDate>Thu, 19 Sep 2024 15:03:16 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-localstorage/</guid>
+      <description>サーバー側にデータを送信しない場合、セキュリティ上CookieではなくlocalStorageを使う。 ソースコード &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;#34;test&amp;#34; type=&amp;#34;text&amp;#34;&amp;gt; &amp;lt;input id=&amp;#34;reset&amp;#34; type=&amp;#34;button&amp;#34; value=&amp;#34;リセット&amp;#34;&amp;gt; &amp;lt;script&amp;gt; const test = document.querySelector(&amp;#34;#test&amp;#34;); const reset = document.querySelector(&amp;#34;#reset&amp;#34;); // 読み込みされたとき、データがあればテキストボックスにセットする。 const data = localStorage.getItem(&amp;#34;test&amp;#34;); if (data){ test.value = data; } // キー入力があるたびにローカルストレージにセットする。 test.addEventListener(&amp;#34;change&amp;#34;, (event) =&amp;gt; { const value = event.currentTarget.value; localStorage.setItem(&amp;#34;test&amp;#34;,value); }); reset.addEventListener(&amp;#34;click&amp;#34;, () =&amp;gt; { test.value = &amp;#34;&amp;#34;; localStorage.setItem(&amp;#34;test&amp;#34;, &amp;#34;&amp;#34;);</description>
+    </item>
+    <item>
+      <title>【Django】逆参照で効率的にDBにアクセスする【.prefetch_related() 】</title>
+      <link>http://localhost:43210/post/django-prefetch-related/</link>
+      <pubDate>Thu, 19 Sep 2024 10:56:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-prefetch-related/</guid>
+      <description>例えばこのモデルのとき。 from django.db import models class Category(models.Model): name = models.CharField(verbose_name=&amp;#34;名前&amp;#34;,max_length=20) class Topic(models.Model): comment = models.CharField(verbose_name=&amp;#34;コメント&amp;#34;,max_length=2000) category = models.ForeignKey(Category, on_delete=models.CASCADE) 普通に逆参照を使うと、クエリが再実行されるためDBに負担がかかる categories = Category.objects.all() for category in categories # ここでDB読み込み print( category.topic_set.all() ) そこ</description>
+    </item>
+    <item>
+      <title>PythonからWindows共有サーバー(Samba)にアクセスする</title>
+      <link>http://localhost:43210/post/python-smb-access/</link>
+      <pubDate>Tue, 20 Aug 2024 21:26:59 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-smb-access/</guid>
+      <description>import platform from smb.SMBConnection import SMBConnection # connection open conn = SMBConnection( &amp;#39;&amp;#39;, &amp;#39;&amp;#39;, platform.uname().node, &amp;#39;192.168.11.100&amp;#39;, domain=&amp;#39;WORKGROUP&amp;#39;, use_ntlm_v2=True) conn.connect(&amp;#39;192.168.11.100&amp;#39;, 139) # IPアドレス以降のファイルパスを設定 items = conn.listPath(&amp;#39;share&amp;#39; , &amp;#34;sdb1&amp;#34;) print([item.filename for item in items]) print(conn.echo(&amp;#39;echo success&amp;#39;)) conn.close() 参照 https://qiita.com/t2kojima/items/250d68c56a8c9fe95f52</description>
+    </item>
+    <item>
+      <title>【Django Rest Framework】モデルメソッドはシリアライザメソッドで代用する</title>
+      <link>http://localhost:43210/post/drf-serializer-method/</link>
+      <pubDate>Mon, 12 Aug 2024 10:59:58 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-serializer-method/</guid>
+      <description>DRFとReactのSPAを作る時、DTLは使えない。 これまでのようにモデルオブジェクトからメソッドを呼び出すことはできない。 そこで、シリアライザにメソッドを用意して代用する。 モデル 前提として、このようにモデルメソッドを作った時。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;#34;コメント&amp;#34;,max_length=2000) def comment_lenth(self): return len(self.comment) これでは、React側は</description>
+    </item>
+    <item>
+      <title>【Django】modelformset_factoryで1回のリクエストでまとめて投稿する【フォームセット】</title>
+      <link>http://localhost:43210/post/django-modelformset-factory/</link>
+      <pubDate>Wed, 03 Jul 2024 11:38:52 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-modelformset-factory/</guid>
+      <description>1回のリクエストで、決まった個数のデータをまとめて投稿したい場合、modelformset_factory が有効。 ただし、状況によってはgetlistを使う方法のほうが有効の場合もあるので、よく考える必要がある。 modelformset_factory とは 例えば、1回のリクエストで5個のコメントをまとめて投稿する必要がある場合。 このようにフォームクラスを元に、フォームセットを作る。 from django import forms from .models import Topic class TopicForm(forms.ModelForm): class Meta: model = Topic fields = [ &amp;#34;comment&amp;#34; ] from django.forms import modelformset_factory TopicFormSet = modelformset_factory(Topic,</description>
+    </item>
+    <item>
+      <title>複数のPDFファイルを1つのPDFファイルにまとめる</title>
+      <link>http://localhost:43210/post/python-pdf-merge/</link>
+      <pubDate>Mon, 05 Feb 2024 10:12:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-pdf-merge/</guid>
+      <description>書類(PDF)を1つにまとめる必要が出てきたので。 複数のPDFを1つにまとめるPythonコードを作ることにした。 前提 pip install PyPDF2==3.0.1 ソースコード PyPDF2 をインストールしておく。 PyPDF2 では PdfFileMerger は削除されたため、 PdfMerger を使う。 import glob import datetime from PyPDF2 import PdfMerger now = datetime.datetime.now() now_str = now.strftime(&amp;#34;%Y-%m-%d_%H:%M:%S&amp;#34;) # TIPS: 既存のPDFファイル名を指定した場合、上書きではなく、追記されるので注意。 def merge_pdfs(output_filename=f&amp;#34;{now_str}.pdf&amp;#34;): # すべてのPDFファイルを取得。 # ファイル名順に並び替える。 pdfs = sorted( glob.glob(f&amp;#34;./*.pdf&amp;#34;) ) #print(pdfs) if not pdfs: print(&amp;</description>
+    </item>
+    <item>
+      <title>【HTML】inputタグで画像を複数枚指定する【multiple】</title>
+      <link>http://localhost:43210/post/input-type-file-multiple/</link>
+      <pubDate>Sun, 04 Feb 2024 22:30:45 +0900</pubDate>
+      <guid>http://localhost:43210/post/input-type-file-multiple/</guid>
+      <description>画像を複数枚指定できるようにする。 &amp;lt;form method=&amp;#34;POST&amp;#34; enctype=&amp;#34;multipart/form-data&amp;#34;&amp;gt; &amp;lt;!-- CSRF token --&amp;gt; &amp;lt;input name=&amp;#34;content&amp;#34; type=&amp;#34;file&amp;#34; multiple&amp;gt; &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;送信&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; このフォームで指定された画像は、下記のように同じname属性の値のフォームが複数存在する状態と同じ。 &amp;lt;form method=&amp;#34;POST&amp;#34; enctype=&amp;#34;multipart/form-data&amp;#34;&amp;gt; &amp;lt;!-- CSRF token --&amp;gt; &amp;lt;input name=&amp;#34;content&amp;#34; type=&amp;#34;file&amp;#34;&amp;gt; &amp;lt;input name=&amp;#34;content&amp;#34; type=&amp;#34;file&amp;#34;&amp;gt; &amp;lt;input name=&amp;#34;content&amp;#34; type=&amp;#34;file&amp;#34;&amp;gt; &amp;lt;input name=&amp;#34;content&amp;#34; type=&amp;#34;file&amp;#34;&amp;gt; &amp;lt;input name=&amp;#34;content&amp;#34; type=&amp;#34;file&amp;#34;&amp;gt; &amp;lt;!-- 略 --&amp;gt; &amp;lt;input type=&amp;#34;submit&amp;#34; value=&amp;#34;送信&amp;#34;&amp;gt; &amp;lt;/form&amp;gt; そのため、例えばDjangoでは .getlist() を使って取り出す。 request.FILES.getlist(&amp;#34;content&amp;#34;)</description>
+    </item>
+    <item>
+      <title>【Django】使用頻度の高いカテゴリをプルダウンメニューの上部に表示させる【.annotate(count=Count(&#34;topic&#34;)).order_by(&#34;-count&#34;)】</title>
+      <link>http://localhost:43210/post/django-orderby-foreignkey-count/</link>
+      <pubDate>Sun, 04 Feb 2024 16:57:59 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-orderby-foreignkey-count/</guid>
+      <description>コードは『Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】』の https://github.com/seiya0723/startup_bbs_foreignkey から引用。 モデルが class Category(models.Model): name = models.CharField(verbose_name=&amp;#34;カテゴリ名&amp;#34;,max_length=20) def __str__(self): return self.name class Topic(models.Model): category = models.ForeignKey(Category,verbose_name=&amp;#34;カテゴリ&amp;#34;,on_</description>
+    </item>
+    <item>
+      <title>【jscolor】カラーピッカーを実装できるJavaScriptライブラリ【シンプル】</title>
+      <link>http://localhost:43210/post/jscolor-javascript-color-picker/</link>
+      <pubDate>Sun, 04 Feb 2024 16:08:40 +0900</pubDate>
+      <guid>http://localhost:43210/post/jscolor-javascript-color-picker/</guid>
+      <description>例えば、投稿した内容に色をつけたいというとき。 通常は、type=&amp;quot;color&amp;quot;のinputタグを使う。 &amp;lt;input type=&amp;#34;color&amp;#34; name=&amp;#34;color&amp;#34;&amp;gt; だが、これはブラウザごとに見た目が大きく異なる。しかも見た目があまりよろしくない。 そこで、以下を考慮して、JavaScriptのライブラリを選定した。 無料 フォームの見た目が良い 扱いやすい jQueryに依存していない 実装が非常にシンプルでわかりやすい コピペですぐに使えるジェ</description>
+    </item>
+    <item>
+      <title>【Django】検索結果(QuerySet)を結合する【.union()】</title>
+      <link>http://localhost:43210/post/django-querydict-union/</link>
+      <pubDate>Mon, 29 Jan 2024 13:03:33 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-querydict-union/</guid>
+      <description>クエリビルダでまとめて検索ができない状況下で、検索処理を複数回に分けて実行し、得られたQuerySetを1つにまとめたいとき。 .union() もしくは|が使える。 from django.shortcuts import render,redirect from django.views import View from .models import Topic class IndexView(View): def get(self, request, *args, **kwargs): topics = Topic.objects.all() context = { &amp;#34;topics&amp;#34;:topics } # 重複は自動的に除外される topics = topics.union( Topic.objects.all() ) print(topics) first = Topic.objects.filter(id=1) second = Topic.objects.filter(id=2) third = Topic.objects.filter(id=3) # パイプを使用して連結しても良い。 topics = first | second | third return render(request,&amp;#34;bbs/index.html&amp;#34;,context) def post(self, request, *args, **kwargs): posted = Topic( comment = request.POST[&amp;#34;comment&amp;#34;] ) posted.save() return redirect(&amp;#34;bbs:index&amp;#34;) index = IndexView.as_view()</description>
+    </item>
+    <item>
+      <title>Vimで自動的にインデントする。gg=Gでファイル内の全てをオートインデントする</title>
+      <link>http://localhost:43210/post/vim-auto-indent/</link>
+      <pubDate>Sun, 21 Jan 2024 15:49:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-auto-indent/</guid>
+      <description>インデントが雑だったり全くされていない見づらいコードを読まないといけなくなることがある。 いつもは、A Delete Enter を実行したあと、 . で何度も改行をさせるようにしていた。 が、これもめんどくさいなと思うとき、 gg=G を実行すると良い。 gg でファイルの上部にカーソルを移動。=Gを打つことで、ファイルの末尾まで自動的にインデントしてくれるようだ。 逆に考えると、=G とすると今のカーソル位置から最後までを自動的にインデントする</description>
+    </item>
+    <item>
+      <title>UbuntuのBash(gnome-terminal)で新しいタブを開き、新しいタブでコマンドを実行する</title>
+      <link>http://localhost:43210/post/ubuntu-bash-new-tab-command/</link>
+      <pubDate>Thu, 18 Jan 2024 09:40:13 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-bash-new-tab-command/</guid>
+      <description>最近のlaravelでは、php artisan serveだけでなくnpm run devも実行しておく必要がある。 参考: 【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？ 故に、ターミナルのタブを開いて双方のコマンドを実行しておく必要がある。 しかし、これを手動でやっていくのはちょっとめんどくさい。 そこで、ワンライナーで新しいタブを開き、開いた新しいタブでコマンドを実行してもらう。 新しいタブ</description>
+    </item>
+    <item>
+      <title>【Django】管理サイトで1対多(ForeignKey)、多対多(ManyToManyField)のフォームを扱いやすくする【admin】</title>
+      <link>http://localhost:43210/post/django-admin-custom-foreign-m2m/</link>
+      <pubDate>Sun, 14 Jan 2024 10:54:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-admin-custom-foreign-m2m/</guid>
+      <description>1対多、多対多を管理サイトで扱うには、デフォルトのフォームではとても使いづらい。 そこで、更に管理サイトをカスタムして、フォームを扱いやすくさせる。 モデルは下記記事から引用し、一部編集した。 【Django】ManyToManyFieldで検索をする方法、追加・削除を行う方法【多対多はクエリビルダの検索は通用しない】 【Django】デフォルトの認証機能を網羅し、カスタムユーザーモデルとメール認証も実装</description>
+    </item>
+    <item>
+      <title>Javascriptでクリックした時、要素内文字列をクリップボードにコピーさせる</title>
+      <link>http://localhost:43210/post/javascript-clipcopy/</link>
+      <pubDate>Sat, 13 Jan 2024 19:29:37 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-clipcopy/</guid>
+      <description>よく見かける、JavaScriptでクリックした時、コピーするアレを再現する。 ソースコード &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; pre { background:black; padding:0.5rem; overflow:auto; position:relative; } pre code { color:#0fc; } .copy_button{ user-select: none; display:inline-block; position:absolute; top:0; right:0; color:white; background:black; cursor:pointer; margin:0.25rem 0.75rem; padding:0.25rem 0.5rem; border:solid 0.1rem white; border-radius:0.5rem; transition:0.2s; } .copy_button:hover{ background:#0fc; color:black; } .copy_button:active{ background:black; color:white; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; &amp;lt;script&amp;gt; const pre_elems = document.querySelectorAll(&amp;#34;pre&amp;#34;); // コピー用のボタンを配置する。 for (let pre_elem of pre_elems ){ pre_elem.innerHTML += &amp;#39;&amp;lt;span class=&amp;#34;copy_button&amp;#34;&amp;gt;Copy&amp;lt;/span&amp;gt;&amp;#39;; } const copy_buttons = document.querySelectorAll(&amp;#34;.copy_button&amp;#34;); for (let copy_button of copy_buttons){ copy_button.addEventListener(&amp;#34;click&amp;#34; , (event) =&amp;gt; { const code = event.currentTarget.closest(&amp;#34;pre&amp;#34;).querySelector(&amp;#34;code&amp;#34;); if (navigator.clipboard &amp;amp;&amp;amp; code){ navigator.clipboard.writeText( code.textContent ); } }); } &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 結論 ウェブアプリでコピーして別のウェブアプリのフォームにペーストしたい</description>
+    </item>
+    <item>
+      <title>【シェルスクリプト】git clone した後、クローンしたディレクトリへ移動する</title>
+      <link>http://localhost:43210/post/git-clone-cd-directory/</link>
+      <pubDate>Sat, 23 Dec 2023 15:23:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/git-clone-cd-directory/</guid>
+      <description>git cloneコマンドを実行してクローンした後、cdコマンドでディレクトリ移動するのがめんどくさい。 そこで、git clone とcd コマンドを1つにまとめたシェルスクリプトを用意した。 #! /bin/bash # $1 https://github.com/seiya0723/django-auth/tree/main/accounts echo $1 # ここでtree以降は切り捨てる。 repo=$(echo &amp;#34;$1&amp;#34; | sed s/tree.*//g) # 移動対象のディレクトリを取り出す。 destination=$(echo ./&amp;#34;$1&amp;#34; | sed &amp;#34;s/tree\/[[:alnum:]_-]*\///g&amp;#34; | sed &amp;#34;s/https:\/\/github.com\/[[:alnum:]_-]*\///g&amp;#34;) git clone $repo cd $destination 例えば、特定のディレクトリ(tree/main/accounts)を指定している場合、そのディレクトリへ移動</description>
+    </item>
+    <item>
+      <title>【Django】逆参照のrelated_nameを使用して1側から多側のデータを取り出す【models.ForeignKey()】</title>
+      <link>http://localhost:43210/post/django-foreignkey-related-name/</link>
+      <pubDate>Fri, 22 Dec 2023 21:05:40 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-foreignkey-related-name/</guid>
+      <description>related_nameを指定せずに逆参照をする 逆参照を使うことで、1側から多側のデータを取り出すことができる。 『Djangoで1対多のリレーションを構築する【カテゴリ指定、コメントの返信などに】【ForeignKey】』から引用した下記モデル。 class Category(models.Model): name = models.CharField(verbose_name=&amp;#34;カテゴリ名&amp;#34;,max_length=20) def __str__(self): return self.name class Topic(models.Model): category = model</description>
+    </item>
+    <item>
+      <title>【JavaScript】うるう年も考慮した年月日のselectタグを作る【検索時に】</title>
+      <link>http://localhost:43210/post/javascript-ymd-search/</link>
+      <pubDate>Wed, 20 Dec 2023 13:22:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-ymd-search/</guid>
+      <description>前に作った、jQueryの年月日検索の作りが甘かったので、JavaScriptで作り直した。 JavaScript window.addEventListener(&amp;#34;load&amp;#34; , () =&amp;gt; { // 日付入力欄の初期化。 const now = new Date(); const range = 10; const now_year = now.getFullYear(); const now_month = now.getMonth() + 1; const now_day = now.getDate(); const years = document.querySelectorAll(&amp;#34;[name=&amp;#39;year&amp;#39;]&amp;#34;); const months = document.querySelectorAll(&amp;#34;[name=&amp;#39;month&amp;#39;]&amp;#34;); const days = document.querySelectorAll(&amp;#34;[name=&amp;#39;day&amp;#39;]&amp;#34;); const ini = &amp;#39;&amp;lt;option value=&amp;#34;&amp;#34;&amp;gt;--&amp;lt;/option&amp;gt;&amp;#39;; // スプレッド構文を使用して配列に直し、イベントをセットする。 // 年月日 全ての要素にオプションを追加している。 for ( elem of years){ elem.innerHTML = ini; for (let i=now_year-range;i&amp;lt;now_year+range;i++){ if (i===now_year){ elem.innerHTML += `&amp;lt;option value=&amp;#34;${i}&amp;#34; selected&amp;gt;${i}年&amp;lt;/optio</description>
+    </item>
+    <item>
+      <title>【Django】ログイン時にメールを送信するには、signal.pyを作ってapps.pyに登録しておく【セキュリティ通知】</title>
+      <link>http://localhost:43210/post/django-login-mail-by-signal/</link>
+      <pubDate>Mon, 27 Nov 2023 14:04:33 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-login-mail-by-signal/</guid>
+      <description>セキュリティ対策の一環として、ログイン時にメールを送信させる。 すでにsettings.pyにメール送信設定を実装済みとする。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 appname/signals.py を作る。 関数にデコレータを当てて、ログインの信号を受けたら発動する。 from django.contrib.auth.signals import user_logged_in, user_logged_out from django.dispatch import receiver from django.conf import settings from django.core.mail import EmailMessage @receiver(user_logged_in) def user_logged_in_callback(sender, request, user, **kwargs): # ログインをしたときの処理 #送信元のIPアドレスを手に入れる ip_list = request.META.get(&amp;#39;HTTP_X_FORWARDED_FOR&amp;#39;) if ip_list: ip = ip_list.split(&amp;#39;,&amp;#39;)[0] else:</description>
+    </item>
+    <item>
+      <title>【Django】views.pyでユーザーモデルを扱う時は get_user_model を使う</title>
+      <link>http://localhost:43210/post/django-views-import-usermodel/</link>
+      <pubDate>Sun, 26 Nov 2023 20:30:24 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-views-import-usermodel/</guid>
+      <description>これまで、ユーザーモデルをimportする時 from django.contrib.auth.models import User もしくは、カスタムユーザーモデルの場合 from users.models import CustomUser などとしてきたが、これでは通常のユーザーモデルから、カスタムユーザーモデル導入時にimport文をすべて書き換える必要が出てくる。 アプリが複数であれば、それをすべて書き換えていくのはとても面倒。 そこで、get_user_model を使う。これにより、カスタムユーザーモデルの転換時のコード編集の手間を減</description>
+    </item>
+    <item>
+      <title>【Django】.getlist()でtype=&#34;checkbox&#34;のチェックの有無を調べる【複数人の権限の指定に有効】</title>
+      <link>http://localhost:43210/post/django-getlist-checkbox/</link>
+      <pubDate>Tue, 26 Sep 2023 17:04:13 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-getlist-checkbox/</guid>
+      <description>背景 とあるプロジェクトを作るとして、複数人のユーザーが紐づくとする。 ユーザーごとに読み込み、書き込み、実行の権限を割り当てて行く必要がある。 これを1回のリクエストで送信するとき、どう実現させるべきか。 問題 .getlist() を使うことで、同じname属性の値をすべて取得することができる。 しかし、type=&amp;quot;checkbox&amp;quot;の場合はその限りではない。 例えば、以下のようなフォームの場合。 &amp;lt;form method=&amp;#34;POST&amp;#34;&amp;gt; {% csrf_token %}</description>
+    </item>
+    <item>
+      <title>テキストエリアに入力時に、Tabキーを押してタブを入力する【マークダウンやコードの入力に有効】</title>
+      <link>http://localhost:43210/post/textarea-tab-insert/</link>
+      <pubDate>Fri, 22 Sep 2023 22:13:44 +0900</pubDate>
+      <guid>http://localhost:43210/post/textarea-tab-insert/</guid>
+      <description>直接コードを入力する場合に有効。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;textarea id=&amp;#34;textarea&amp;#34;&amp;gt;&amp;lt;/textarea&amp;gt; &amp;lt;script&amp;gt; const textarea = document.querySelector(&amp;#39;#textarea&amp;#39;); textarea.addEventListener(&amp;#39;keydown&amp;#39;, function (e) { if (e.key === &amp;#39;Tab&amp;#39;) { // デフォルトの動作（フォーカスの切り替え）を防止 e.preventDefault(); // カーソル位置の前と後を取得 const start = this.selectionStart; const end = this.selectionEnd; // カーソル位置にタブ文字を挿入 const tab = &amp;#39;\t&amp;#39;; this.value = this.value.substring(0, start) + tab + this.value.substring(end); // カーソル位置を調整(タブを入力した後にカーソルを移動) this.selectionStart = this.selectionEnd = start + 1; } }); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる 半角スペース4文字分にするには？ &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt;</description>
+    </item>
+    <item>
+      <title>DjangoでBootstrapを使う【pip install django-bootstrap-form】</title>
+      <link>http://localhost:43210/post/django-bootstrap/</link>
+      <pubDate>Mon, 18 Sep 2023 14:09:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-bootstrap/</guid>
+      <description>DjangoのBootstrap関係のライブラリは混在しているので、仕事で使うものを覚書に記録。 pip install django-bootstrap-form をインストールして、INSTALLED_APPSに &amp;#34;bootstrapform&amp;#34; を追加する。 テンプレートで、 {% load bootstrap %} {{ form|bootstrap }} として呼び出す。</description>
+    </item>
+    <item>
+      <title>Django-summernoteでアップロード上限を設定する</title>
+      <link>http://localhost:43210/post/django-summernote-upload-limit-config/</link>
+      <pubDate>Wed, 26 Jul 2023 12:40:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-summernote-upload-limit-config/</guid>
+      <description>デフォルトで、Django-summernoteにアップロードできるファイルサイズには上限が設定されている。 こちらで上限を開放できる UPLOAD_SIZE = 200 * 1000 * 1000 SUMMERNOTE_CONFIG = { &amp;#39;attachment_filesize_limit&amp;#39;: UPLOAD_SIZE, &amp;#39;summernote&amp;#39;: { &amp;#39;width&amp;#39;: &amp;#39;100%&amp;#39;, &amp;#39;height&amp;#39;: &amp;#39;480&amp;#39;, } } 参照: https://stackoverflow.com/questions/74588821/how-to-change-file-upload-size-limit-django-summernote</description>
+    </item>
+    <item>
+      <title>Django Summernoteを使ったブログで、本文の画像を記事のサムネイルにするには【BeautifulSoup使用】</title>
+      <link>http://localhost:43210/post/django-summernote-auto-thumbnail/</link>
+      <pubDate>Mon, 26 Jun 2023 11:15:23 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-summernote-auto-thumbnail/</guid>
+      <description>Django-summernoteを使ったブログサイトを作るとき。 ブログの記事の一覧表示にはサムネイルの表示が必要になる。 しかし、記事にサムネイル専用のフィールドを割り当ててしまうと、本文の画像とかぶってしまう(サムネイル用の画像を指定した後、記事にも同じ画像を貼り付けるという二度手間) そこで、記事の一番最初に指定された画像をサムネイルとして使えるよう、モデルメソッドを作った。 BeautifulS</description>
+    </item>
+    <item>
+      <title>【Django】管理サイトで任意のJavaScript、CSSを発動させる【管理サイトのカスタム】</title>
+      <link>http://localhost:43210/post/django-admin-origin-js-css/</link>
+      <pubDate>Wed, 29 Mar 2023 17:54:17 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-admin-origin-js-css/</guid>
+      <description>前提 前もって、プロジェクト直下のtemplatesが作られており、settings.pyのTEMPLATESでもそれが読まれている状況であるとする。 TEMPLATES = [ { &amp;#39;BACKEND&amp;#39;: &amp;#39;django.template.backends.django.DjangoTemplates&amp;#39;, &amp;#39;DIRS&amp;#39;: [ BASE_DIR / &amp;#34;templates&amp;#34; ], &amp;#39;APP_DIRS&amp;#39;: True, &amp;#39;OPTIONS&amp;#39;: { &amp;#39;context_processors&amp;#39;: [ &amp;#39;django.template.context_processors.debug&amp;#39;, &amp;#39;django.template.context_processors.request&amp;#39;, &amp;#39;django.contrib.auth.context_processors.auth&amp;#39;, &amp;#39;django.contrib.messages.context_processors.messages&amp;#39;, ], }, }, ] 作業 templatesの中にadminディレクトリを作る。 mkdir templates/admin/ templates/admin/base.htmlを作る。内容は下記。 {% extends &amp;#39;admin/base.html&amp;#39; %} {% block extrastyle %}{{ block.super }} &amp;lt;style&amp;gt; body{ background:orange; } &amp;lt;/style&amp;gt; &amp;lt;script&amp;gt;console.log(&amp;#34;test;&amp;#34;);&amp;lt;/script&amp;gt; {% endblock %} これで管理サイトの全ページでC</description>
+    </item>
+    <item>
+      <title>【Vimでスニペット】snipmateプラグイン</title>
+      <link>http://localhost:43210/post/vim-snipmate-plugin/</link>
+      <pubDate>Thu, 09 Mar 2023 13:33:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-snipmate-plugin/</guid>
+      <description>vim-snipmateはVimのスニペットプラグイン。スニペットとは、コードの断片のこと。このプラグインは、スニペットを即時呼び出して貼り付けできる。 同じようなコードを何度も何度も書くのは大変。だからスニペットプラグインを使用して爆速コーディングを実現させる。 環境はUbuntu22.04より インストール方法 snipmateはtlibとvim-addon-mw-utilsに依存しているので、まとめ</description>
+    </item>
+    <item>
+      <title>JavaScriptのイベントリスナのアロー関数でthisは使わない【event.currentTargetを使おう】</title>
+      <link>http://localhost:43210/post/javascript-arrow-func-this/</link>
+      <pubDate>Mon, 06 Feb 2023 14:16:31 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-arrow-func-this/</guid>
+      <description>モダンなJavaScriptに慣れるため、無名関数を書くときにもアロー関数を使い、そしてthisを使おうとすると、意図したとおりにはならない。 アロー関数式とfunction関数ではthisの仕様が異なるからだ。下記ソースコードを元に動作を確かめよう。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;https://code.jquery.com/jquery-3.6.0.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;button class=&amp;#34;button&amp;#34; value=&amp;#34;1&amp;#34;&amp;gt;ボタン1&amp;lt;/button&amp;gt; &amp;lt;button class=&amp;#34;button&amp;#34; value=&amp;#34;2&amp;#</description>
+    </item>
+    <item>
+      <title>【CSS】変数を使用する【テーマカラーの統一、スキンの作成などに】</title>
+      <link>http://localhost:43210/post/css3-use-variable/</link>
+      <pubDate>Tue, 31 Jan 2023 11:23:18 +0900</pubDate>
+      <guid>http://localhost:43210/post/css3-use-variable/</guid>
+      <description>SCSSなどではなく、素のCSSで変数が使えることに今になって気づいた。 ということで、実際に扱っていく。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Welcome to my portfolio site !!&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; :root{ --base-color: #111111; --theme-color: #00ffcc; --font-color: white; } body { background:var(--base-color); color: var(--font-color); margin:0; } h1 { background: var(--theme-color); } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;Welcome to my portfolio site !!&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt;Profile&amp;lt;/h2&amp;gt; &amp;lt;h2&amp;gt;Portfolio&amp;lt;/h2&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; :root{}で宣言した変数 --base-color等がプロパティの値として呼び出すことができる。 予めテーマカラーなどをまとめて冒頭に書いておけば、それを書き換えるだけですぐに対応できる。 この変数</description>
+    </item>
+    <item>
+      <title>【JavaScript】Enterキーが押されたときにイベントを実行する【.addEventListener(&#39;keydown&#39;)】</title>
+      <link>http://localhost:43210/post/javascript-document-event-keydown/</link>
+      <pubDate>Mon, 30 Jan 2023 16:22:21 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-document-event-keydown/</guid>
+      <description>Enterのキーコードは13なので、イベント引数のeからkeyCodeを取り出す。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;#34;input&amp;#34; type=&amp;#34;text&amp;#34;&amp;gt; &amp;lt;script&amp;gt; const input = document.getElementById(&amp;#34;input&amp;#34;); input.addEventListener(&amp;#34;keydown&amp;#34;, (e) =&amp;gt; { if( e.keyCode === 13 ){ console.log(&amp;#34;Enter&amp;#34;); } }); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 他のキーと組み合わせて発火させるには？ 例えば、ShiftキーとEnterキーの組み合わせの場合、こうなる。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;#34;input&amp;#34; type=&amp;#34;text&amp;#34;&amp;gt; &amp;lt;script&amp;gt; const input = document.getElementById(&amp;#34;input&amp;#34;); input.addEventListener(&amp;#34;keydown&amp;#34;, (e) =&amp;gt; { if( e.keyCode === 13 &amp;amp;&amp;amp; e.shiftKey ){ console.log(&amp;#34;Enter&amp;#34;); } }); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;</description>
+    </item>
+    <item>
+      <title>JavaScriptで動的に増減する要素に対してイベントを発動させる【Vanilla.js】</title>
+      <link>http://localhost:43210/post/javascript-document-event-dynamic/</link>
+      <pubDate>Mon, 30 Jan 2023 15:12:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-document-event-dynamic/</guid>
+      <description>動的に増減する要素に対して、以下のようなやり方ではイベントをセットすることはできない。(クリックして追加されたあと、ボタンをクリックしても追加はされない。) &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;button class=&amp;#39;test&amp;#39;&amp;gt;test&amp;lt;/button&amp;gt; &amp;lt;script&amp;gt; const test = document.getElementsByClassName(&amp;#34;test&amp;#34;)[0]; test.addEventListener(&amp;#34;click&amp;#34;, () =&amp;gt; { document.body.innerHTML += &amp;#34;&amp;lt;button class=&amp;#39;test&amp;#39;&amp;gt;test&amp;lt;/button&amp;gt;&amp;#34;; }); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; jQueryではこのようにするが &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;https://code.jquery.com/jquery-3.6.0.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;button class=&amp;#39;test&amp;#39;&amp;gt;test&amp;lt;/button&amp;gt; &amp;lt;script&amp;gt; $(document).on(&amp;#34;click&amp;#34;, &amp;#34;.test&amp;#34;, () =&amp;gt; { $(&amp;#34;body&amp;#34;).append(&amp;#34;&amp;lt;button class=&amp;#39;test&amp;#39;&amp;gt;test&amp;lt;/button&amp;gt;&amp;#34;); }); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; Vanilla.jsではこのように書く &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;button class=&amp;#39;test&amp;#39;&amp;gt;test&amp;lt;/button&amp;gt; &amp;lt;script&amp;gt; //動的</description>
+    </item>
+    <item>
+      <title>【Ubuntu22.04】スクリーンショットのショートカットキーを修正する</title>
+      <link>http://localhost:43210/post/ubuntu2204-screenshot-custom/</link>
+      <pubDate>Sun, 29 Jan 2023 14:27:42 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu2204-screenshot-custom/</guid>
+      <description>Ubuntu22.04は問題が多い。 例えば、20.04まではPrintScreenキーを押したらすぐにPCの全画面のスクリーンショットを撮影してくれたが、Screenshot Toolという機能により、すぐにスクリーンショットが撮れない。 そこで、Ubuntuの設定からキーボードのショートカットキーを修正し、この問題を解決する。 『設定』→『キーボード』→『ショートカットの表示とカスタマイズ』を選ぶ。 ス</description>
+    </item>
+    <item>
+      <title>【Ubuntu】最新版PHPがインストールできるようにリポジトリを追加する</title>
+      <link>http://localhost:43210/post/ubuntu-add-php-repository/</link>
+      <pubDate>Sat, 28 Jan 2023 14:08:00 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-add-php-repository/</guid>
+      <description>このリポジトリを前もってインストールしておかなければ、最新(2023年1月時点)のPHP8.1がインストールできない sudo apt-add-repository ppa:ondrej/php 参照元 https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-php-8-0-on-ubuntu-20-04-ubuntu-18-04.html 背景 GitHubからDLしたLaravelプロジェクトを手元で動かすため、 composer update を実行したものの、以下のエラーが出た。 Loading composer repositories with package information Info from https://repo.packagist.org: #StandWithUkraine Updating dependencies Your requirements could not be resolved to an installable set of packages. Problem 1 - Root composer.json requires simplesoftwareio/simple-qrcode ^4.2 -&amp;gt; satisfiable by simplesoftwareio/simple-qrcode[4.2.0]. - simplesoftwareio/simple-qrcode 4.2.0 requires ext-gd * -&amp;gt; it is missing from your system. Install or enable PHP&amp;#39;s gd extension. Problem 2 - laravel/cashier[v14.6.0, ..., 14.x-dev] require moneyphp/money ^4.0 -&amp;gt; satisfiable by moneyphp/money[v4.0.0-beta1, ..., v4.1.0]. - moneyphp/money[v4.0.0-beta1, ..., v4.1.0] require ext-bcmath *</description>
+    </item>
+    <item>
+      <title>【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？</title>
+      <link>http://localhost:43210/post/laravel-github-download/</link>
+      <pubDate>Fri, 27 Jan 2023 11:50:36 +0900</pubDate>
+      <guid>http://localhost:43210/post/laravel-github-download/</guid>
+      <description>GitHubにプッシュされているLaravelプロジェクトをDLして動かすには別途手順を踏む必要がある。 前提 Ubuntuを使用している場合、必要なPHPパッケージが既にインストールされているかをチェックする sudo apt install -y php8.1-cli php8.1-common php8.1-mysql php8.1-zip php8.1-gd php8.1-mbstring php8.1-curl php8.1-xml php8.1-bcmath php8.1-sqlite3 もし、これでパッケージが見つからないと表示される場合は、リポジトリの追加がされていない状況である。 下記コマンドを実行して、再度↑のコマンドを実行する。 sudo apt-add-repository ppa:ondrej/php GitHu</description>
+    </item>
+    <item>
+      <title>【React】リストをレンダリングする時は、key属性を付与する【Warning: Each child in a list should have a unique &#39;key&#39; prop.】</title>
+      <link>http://localhost:43210/post/react-list-rendering-unique-key-prop/</link>
+      <pubDate>Mon, 23 Jan 2023 10:09:43 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-list-rendering-unique-key-prop/</guid>
+      <description>例えば、以下のような配列があったとする。 const topics = [&amp;quot;aaa&amp;quot;,&amp;quot;bbb&amp;quot;,&amp;quot;ccc&amp;quot;]; この配列をレンダリングする時、このようにしてしまうと return ( &amp;lt;&amp;gt; { topics.map( (topic) =&amp;gt; { return ( &amp;lt;div className=&amp;quot;border&amp;quot;&amp;gt;{ topic }&amp;lt;/div&amp;gt; ); }) } &amp;lt;/&amp;gt; ); この警告が出る。 なぜ『Warning: Each child in a list should have a unique &amp;ldquo;key&amp;rdquo; prop.』と警告が出るのか？ Reactで配列をレンダリングする際にkey属性を指定しないと、無駄なレンダリングが発生してしまい、パフォーマンスが低下するから。 例えば、key未指定で3つのデータがレンダリ</description>
+    </item>
+    <item>
+      <title>【React】警告文の『Warning: ReactDOM.render is no longer supported in React 18 』の対処法【createRootを使用する】</title>
+      <link>http://localhost:43210/post/react-dom-render-is-no-longer-supported/</link>
+      <pubDate>Sat, 21 Jan 2023 11:22:01 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-dom-render-is-no-longer-supported/</guid>
+      <description>【React】Helloworldの仕組みの解説にて、 import ReactDOM from &amp;#34;react-dom&amp;#34;; const App = () =&amp;gt; { return &amp;lt;h1&amp;gt;HelloWorld&amp;lt;/h1&amp;gt;; }; ReactDOM.render(&amp;lt;App /&amp;gt; , document.getElementById(&amp;#34;root&amp;#34;)); などと書いたが、これでは以下のような警告が出てくる。 Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it&amp;#39;s running React 17. Learn more: https://reactjs.org/link/switch-to-createroot 『ReactDOM.render()は今後使われなくなるから、createRootを使用しましょう』という意味。 よって、以下のように書き換えると、この警告は対処できる。 import React from &amp;#34;react&amp;#34;; import ReactDOM from &amp;#34;react-dom/client&amp;#34;; const App = () =&amp;gt; {</description>
+    </item>
+    <item>
+      <title>【React】閉じタグがないHTML要素は/(スラッシュ)をタグの末尾に書く【inputタグ、imgタグ等】</title>
+      <link>http://localhost:43210/post/react-html-close-tag/</link>
+      <pubDate>Sat, 21 Jan 2023 10:39:53 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-html-close-tag/</guid>
+      <description>Reactでは、閉じタグがないHTMLを書く時は、以下のようにする。 export const App = () =&amp;gt; { return ( &amp;lt;&amp;gt; &amp;lt;input type=&amp;#34;button&amp;#34; value=&amp;#34;送信&amp;#34; /&amp;gt; &amp;lt;/&amp;gt; ); } このように /がないと、エラーになってしまう点に注意。 export const App = () =&amp;gt; { return ( &amp;lt;&amp;gt; &amp;lt;input type=&amp;#34;button&amp;#34; value=&amp;#34;送信&amp;#34;&amp;gt; &amp;lt;/&amp;gt; ); } これはAppを呼び出すときも同様である。&amp;lt;App&amp;gt;としてしまうとエラーになる。 // React import ReactDOM from &amp;#34;react-dom&amp;#34;; import { App } from &amp;#34;./App&amp;#34;; ReactDOM.render(&amp;lt;App /&amp;gt; , document.getElementById(&amp;#34;root&amp;#34;)); 結論 閉じタグのな</description>
+    </item>
+    <item>
+      <title>【Django】createメソッドを使用して、新規作成する【バリデーションしない点に注意】</title>
+      <link>http://localhost:43210/post/django-create-method/</link>
+      <pubDate>Thu, 19 Jan 2023 09:25:35 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-create-method/</guid>
+      <description>.create()を使うことで手軽に新規作成ができる。 Model.objects.create() 40分Djangoを元に組むとこうなる。 from django.shortcuts import render,redirect from django.views import View from .models import Topic class IndexView(View): def get(self, request, *args, **kwargs): # .create()を使うことで.save()を使わなくても新規作成ができる。返り値は新規作成したモデルオブジェクト topic = Topic.objects.create(comment=&amp;#34;これはテストです。&amp;#34;) print(topic) # バリデーションまではされない点に注意。 topic = Topic.objects.create(comment=&amp;#34;&amp;#34;)</description>
+    </item>
+    <item>
+      <title>【Python】def関数のアロー(-&gt;)はアノテーション</title>
+      <link>http://localhost:43210/post/python-arrow-def/</link>
+      <pubDate>Tue, 10 Jan 2023 09:00:32 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-arrow-def/</guid>
+      <description>例えば、以下の関数があったとする。 def test(name:str) -&amp;gt; str: return name print( test(&amp;quot;taro&amp;quot;) ) print( test(12) ) これは文字列を受け取って文字列を返す関数である。 ただし、上記のように文字列型ではない型を受け取っても正常に動作はする。 あくまでも注釈として利用することができる。関数の機能自体に影響はない。 参照元 https://docs.python.org/ja/3.6/library/typing.html https://magazine.techacademy.jp/magazine/46675 https://program-shoshinsya.hatenablog.com/entry/2020/09/09/230633</description>
+    </item>
+    <item>
+      <title>【MySQL】Ubuntuからrootユーザーでログインをするコマンド</title>
+      <link>http://localhost:43210/post/mysql-login-by-ubuntu/</link>
+      <pubDate>Mon, 02 Jan 2023 09:32:12 +0900</pubDate>
+      <guid>http://localhost:43210/post/mysql-login-by-ubuntu/</guid>
+      <description>sudo mysql -uroot -p その後、存在するデータベースを全て表示する。 show databases;</description>
+    </item>
+    <item>
+      <title>【Wordpress】日本語タイトルで404になる問題はパーマリンクを修正して日本語URLをやめる</title>
+      <link>http://localhost:43210/post/wordpress-japanese-title-404/</link>
+      <pubDate>Fri, 23 Dec 2022 11:22:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/wordpress-japanese-title-404/</guid>
+      <description>Wordpressをインストールして、日本語タイトルの記事を追加すると、このように、404 Not Foundになってしまう。 こういう時は、URLに日本語が含まれているからエラーになってしまう。パーマリンクを修正すると良いだろう。 デフォルトではカスタム構造になっているので、日本語が混ざると404になることがあるようだ。</description>
+    </item>
+    <item>
+      <title>Ubuntu 22.04 LTS でTakaoフォントをインストールして行間を詰める。</title>
+      <link>http://localhost:43210/post/ubuntu-2204-font-line-height/</link>
+      <pubDate>Sun, 18 Dec 2022 08:38:16 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-2204-font-line-height/</guid>
+      <description>Ubuntu22.04にて日本語版を使用していると、これまでのUbuntuと違って、ターミナルの行間が異常に広いことがわかる。 理由はTakaoフォントがデフォルトでインストールされていないから。 ここからインストールできる。 インストールが完了すると、このように22.04でも行間を狭くできる。 Firefox にて規定に戻す ただ、これだけだと、Firefoxの行間と文字サイズが小さくなってしまうので、 Firefox のフォント指定</description>
+    </item>
+    <item>
+      <title>【BeautifulSoup】imgタグをスクレイピングして画像をダウンロードする</title>
+      <link>http://localhost:43210/post/beautifulsoup-img-download/</link>
+      <pubDate>Sat, 19 Nov 2022 10:10:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/beautifulsoup-img-download/</guid>
+      <description>DoS攻撃になってしまうので、ダウンロードのたびに1秒待つようにしたほうが良いだろう。 import requests,bs4,time result = requests.get(&amp;#34;https://noauto-nolife.com/&amp;#34;) soup = bs4.BeautifulSoup(result.content, &amp;#34;html.parser&amp;#34;) elems = soup.select(&amp;#34;img&amp;#34;) count = 0 for elem in elems: url = elem.get(&amp;#34;src&amp;#34;) result = requests.get(url) #バイナリで書き込み with open(str(count)+&amp;#34;.png&amp;#34;, &amp;#34;wb&amp;#34;) as f: f.write(result.content) count += 1 #1秒待機する(DoS攻撃になってしまうため) time.sleep(1)</description>
+    </item>
+    <item>
+      <title>【BeautifulSoup】属性を取得する【class,src,valueなど】</title>
+      <link>http://localhost:43210/post/beautifulsoup-get-attribute/</link>
+      <pubDate>Sat, 19 Nov 2022 09:54:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/beautifulsoup-get-attribute/</guid>
+      <description>BeautifulSoupにて、属性を取得する。 import requests,bs4 result = requests.get(&amp;#34;https://noauto-nolife.com/&amp;#34;) soup = bs4.BeautifulSoup(result.content, &amp;#34;html.parser&amp;#34;) elems = soup.select(&amp;#34;img&amp;#34;) for elem in elems: #src属性を取得(文字列型) print(elem.get(&amp;#34;src&amp;#34;)) #alt属性を取得(文字列型) print(elem.get(&amp;#34;alt&amp;#34;)) #属性値が複数なら、リストで取得できる print(elem.get(&amp;#34;class&amp;#34;)) #存在しない属性はNoneが返ってくる print(elem.get(&amp;#34;hoge&amp;#34;))</description>
+    </item>
+    <item>
+      <title>【Python】virtualenvをactivateせずに、venvにインストールしたライブラリを読み込んで実行する【aliasやcrontabなどに】</title>
+      <link>http://localhost:43210/post/python-venv-not-activate-run/</link>
+      <pubDate>Thu, 03 Nov 2022 17:33:53 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-venv-not-activate-run/</guid>
+      <description>例えば、システムに直インストールするわけには行かないPythonライブラリを使うとする。 そういう時はvirtualenvを使って仮想開発環境を作り、そこにactivateしてインストールするとよいだろう。 だが、crontabやaliasなどで実行する場合はどうだろうか？ワンライナーで実行するにはactivateするわけには行かない場合もある。 そういう時は、このように実行するとよいだろう。 venv/bin/python test.py これで</description>
+    </item>
+    <item>
+      <title>【Linux】grepとsedとxargsで複数のファイルに点在する誤字を一括修正(置換)する</title>
+      <link>http://localhost:43210/post/grep-sed-xargs-all-file-replace/</link>
+      <pubDate>Wed, 02 Nov 2022 09:13:31 +0900</pubDate>
+      <guid>http://localhost:43210/post/grep-sed-xargs-all-file-replace/</guid>
+      <description>開発をしていて、複数の誤字が見つかった。 しかもその誤字は複数のファイルに点在している。 そんな時、ファイルを開いて1つずつ置換して修正しているようでは時間がかかりすぎる。 そこで、コマンド一発で複数のファイルに点在する誤字を一括修正する。 コマンド 置換対象のファイルのバックアップを取るならこっち grep -rl &amp;quot;誤字&amp;quot; ./* | xargs sed -i &amp;quot;.bak&amp;quot; &#39;s/誤字/修正文/g&#39; バックアップを取らないならこっち grep -rl &amp;qu</description>
+    </item>
+    <item>
+      <title>【HUGO】作成日時と最終更新日時を表示させる【SEO対策】</title>
+      <link>http://localhost:43210/post/hugo-add-publish-and-mod-date/</link>
+      <pubDate>Sat, 29 Oct 2022 14:48:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/hugo-add-publish-and-mod-date/</guid>
+      <description>SEO対策として、記事の更新日を記録することにした。 これまでは作成日時と最終更新日時が兼ねられていたが、これにより、いつ更新したかがひと目でわかるようになるだろう。 前提 このギミックが動作するHUGOのバージョン。 ローカルでのバージョン Hugo Static Site Generator v0.68.3/extended linux/amd64 BuildDate: 2020-03-25T06:15:45Z デプロイ先のNetlifyのHUGOのバージョン hugo v0.85.0-724D5DB5+extended linux/amd64 BuildDate=2021-07-05T10:46:28Z VendorInfo=gohugoio 記事ヘッダーにlastmodを追加する 記事ヘッダーにこのようにlastmodを追加する。 --- title:</description>
+    </item>
+    <item>
+      <title>【matplotlib】フォントファイルを用意して日本語の豆腐化を修正する</title>
+      <link>http://localhost:43210/post/matplotlib-font-easy-settings/</link>
+      <pubDate>Thu, 27 Oct 2022 19:13:17 +0900</pubDate>
+      <guid>http://localhost:43210/post/matplotlib-font-easy-settings/</guid>
+      <description>カレントディレクトリにNotoSansJP-Light.otfを配置する。 import matplotlib.font_manager as fm import numpy as np import matplotlib.pyplot as plt fprop = fm.FontProperties(fname=&#39;NotoSansJP-Light.otf&#39;) x = np.linspace(0, 1, 100) y = x ** 2 plt.plot(x, y) plt.title(&amp;quot;タイトル&amp;quot; ,fontproperties=fprop, fontsize=40) plt.show() これで豆腐化の修正ができる</description>
+    </item>
+    <item>
+      <title>jQueryのオブジェクトをfor~of文でループするとJavaScriptになる問題の対処</title>
+      <link>http://localhost:43210/post/jquery-objects-loop/</link>
+      <pubDate>Fri, 21 Oct 2022 09:56:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/jquery-objects-loop/</guid>
+      <description>for~of文を使ってjQueryのオブジェクトをループすると、JavaScriptのオブジェクトになる。 その対策をまとめておく。 jQueryループ時の問題 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;https://code.jquery.com/jquery-3.6.0.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;#34;test&amp;#34;&amp;gt;1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;test&amp;#34;&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;test&amp;#34;&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;test&amp;#34;&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; let elems = $(&amp;#34;.test&amp;#34;); //この時点ではjQueryのオブジェクトになっている。 console.log(elems); for (let elem of elems){ //for of文で取り出すと、JavaScriptのオブジェクトになっている。 console.log(elem); //jQueryのオブジェクトだと思ってjQ</description>
+    </item>
+    <item>
+      <title>JavaScriptで文字数をカウントする【サロゲートペアと改行コードに注意】</title>
+      <link>http://localhost:43210/post/javascript-string-counter/</link>
+      <pubDate>Sun, 16 Oct 2022 20:32:18 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-string-counter/</guid>
+      <description>JavaScriptで文字数をカウントするシーンはよくある。 例えば、テキストエリアに入力した時、入力された文字数を表示させたりする。 これで、最大文字数まであとどれだけ入力できるのかわかる。 ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.6.0.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;textarea id=&amp;quot;textarea&amp;quot;&amp;gt;&amp;lt;/textarea&amp;gt; &amp;lt;div&amp;gt;&amp;lt;span id=&amp;quot;counter&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;文字入力&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;#textarea&amp;quot;).on(&amp;quot;input&amp;quot;, function(){ //改行は1文字に含まない</description>
+    </item>
     <item>
       <title>rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】</title>
-      <link>https://noauto-nolife.com/post/rtcwake-and-crontab/</link>
+      <link>http://localhost:43210/post/rtcwake-and-crontab/</link>
       <pubDate>Sat, 17 Sep 2022 10:20:08 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/rtcwake-and-crontab/</guid>
+      <guid>http://localhost:43210/post/rtcwake-and-crontab/</guid>
       <description>私のサーバーは夜中は操作しないので、crontabでshutdownすることにしている。 そして、朝になったらラズパイなどの常時動いている端末にWakeOnLanを送信して起動させている。 だが、そのサーバーが無線LANになった時、WakeOnLanは通用しない。 ではいかにして、終了と起動を指定時間に行わせるか。そこで、rtcwakeを使う。 今すぐ終了して7時間後に起動して欲しい場合 sudo rtcwake -m off -s 25200 これを</description>
     </item>
-    
     <item>
-      <title>Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】</title>
-      <link>https://noauto-nolife.com/post/ubuntu-env-read-python/</link>
+      <title>Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ使用、crontabにも対応】</title>
+      <link>http://localhost:43210/post/ubuntu-env-read-python/</link>
       <pubDate>Sun, 04 Sep 2022 15:49:58 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu-env-read-python/</guid>
+      <guid>http://localhost:43210/post/ubuntu-env-read-python/</guid>
       <description>例えば、gitで管理しているプロジェクトをgitでデプロイする時。 たとえローカルサーバーのDBのパスワードとは言え、ハードコードした状態でコミットするわけには行かない。(gitignoreに入れてしまうとパスワードが含まれない) そこで、環境変数をセットし、Python側でそれを読む。 環境変数をセットする。 #変数名=値 ZZZ=test #変数を環境変数としてセットする。 export ZZZ #↑2つは下記でも可 export ZZZ=test セットした環境変数</description>
     </item>
-    
     <item>
       <title>PHPでmb_strlenもしくはstrlenがNotFoundのときの対策</title>
-      <link>https://noauto-nolife.com/post/php-not-found-mb-strlen/</link>
+      <link>http://localhost:43210/post/php-not-found-mb-strlen/</link>
       <pubDate>Fri, 02 Sep 2022 09:07:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/php-not-found-mb-strlen/</guid>
+      <guid>http://localhost:43210/post/php-not-found-mb-strlen/</guid>
       <description>mb_strlen()もしくはstrlen()がNotFoundになるときは、下記コマンドを実行してphp-mbstringをインストールする #PHPのバージョンは合わせる sudo apt install php8.1-mbstring ちなみに、strlen()はバイト数、mb_strlen()は文字列の長さ(マルチバイト文字を1文字とみなす)を返す。</description>
     </item>
-    
     <item>
       <title>HUGOのテンプレートでコメントアウトする</title>
-      <link>https://noauto-nolife.com/post/hugo-comment-out/</link>
+      <link>http://localhost:43210/post/hugo-comment-out/</link>
       <pubDate>Thu, 01 Sep 2022 16:20:29 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/hugo-comment-out/</guid>
+      <guid>http://localhost:43210/post/hugo-comment-out/</guid>
       <description>{{/* HUGOのテンプレートをコメントアウトできる。 */}}</description>
     </item>
-    
     <item>
       <title>composerでLaravel9.xプロジェクトが作れない問題に対処する【php8.1】</title>
-      <link>https://noauto-nolife.com/post/ubuntu-composer-error/</link>
+      <link>http://localhost:43210/post/ubuntu-composer-error/</link>
       <pubDate>Mon, 29 Aug 2022 17:39:34 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu-composer-error/</guid>
+      <guid>http://localhost:43210/post/ubuntu-composer-error/</guid>
       <description>ある日、composerコマンドを実行してLaravelプロジェクトを作ろうにも、エラーが出て作れない。 composer create-project --prefer-dist laravel/laravel testlaraveler1 を実行すると下記が得られる。 Creating a &amp;quot;laravel/laravel&amp;quot; project at &amp;quot;./testlaraveler1&amp;quot; Info from https://repo.packagist.org: #StandWithUkraine Installing laravel/laravel (v9.3.5) - Downloading laravel/laravel (v9.3.5) - Installing laravel/laravel (v9.3.5): Extracting archive Created project in /home/akagi/Documents/programming/php/laravel_test03/testlaraveler1 &amp;gt; @php -r &amp;quot;file_exists(&#39;.env&#39;) || copy(&#39;.env.example&#39;, &#39;.env&#39;);&amp;quot; Loading composer repositories with package information Updating dependencies Your requirements could not be resolved to an installable set of packages. Problem 1 - spatie/laravel-ignition[1.0.0, ..., 1.4.0] require ext-curl * -&amp;gt; it is missing from your system. Install or enable PHP&#39;s curl extension. - Root composer.json requires spatie/laravel-ignition ^1.0 -&amp;gt; satisfiable by spatie/laravel-ignition[1.0.0, ..., 1.4.0]. To enable extensions, verify that they are enabled in your .ini files: - /etc/php/8.1/cli/php.ini - /etc/php/8.1/cli/conf.d/10-opcache.ini - /etc/php/8.1/cli/conf.d/10-pdo.ini - /etc/php/8.1/cli/conf.d/15-xml.ini - /etc/php/8.1/cli/conf.d/20-calendar.ini - /etc/php/8.1/cli/conf.d/20-ctype.ini - /etc/php/8.1/cli/conf.d/20-dom.ini - /etc/php/8.1/cli/conf.d/20-exif.ini - /etc/php/8.1/cli/conf.d/20-ffi.ini - /etc/php/8.1/cli/conf.d/20-fileinfo.ini - /etc/php/8.1/cli/conf.d/20-ftp.ini - /etc/php/8.1/cli/conf.d/20-gettext.ini - /etc/php/8.1/cli/conf.d/20-iconv.ini - /etc/php/8.1/cli/conf.d/20-phar.ini -</description>
     </item>
-    
     <item>
       <title>【Django】django-admin、python、pip、コマンドが動作しない場合の対処法【環境構築問題】</title>
-      <link>https://noauto-nolife.com/post/django-admin-command-not-found/</link>
+      <link>http://localhost:43210/post/django-admin-command-not-found/</link>
       <pubDate>Thu, 25 Aug 2022 13:48:12 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-admin-command-not-found/</guid>
+      <guid>http://localhost:43210/post/django-admin-command-not-found/</guid>
       <description>いわゆる、PATHが通っていない状態 Pythonのインストーラーでインストールする時、『add Python 3.x to PATH』というチェック項目がある。 そこにチェックを入れることで、pythonコマンドが使えるようになる。 参照元:https://bluebirdofoz.hatenablog.com/entry/2019/01/19/141007 django-adminコマンドが使えない時、 django-admin startproject config . pythonか</description>
     </item>
-    
     <item>
       <title>【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</title>
-      <link>https://noauto-nolife.com/post/django-star-review/</link>
+      <link>http://localhost:43210/post/django-star-review/</link>
       <pubDate>Sat, 20 Aug 2022 17:55:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-star-review/</guid>
-      <description>最終的にこのようになる。 今回はテンプレートのwithとcenterは不使用とした。 そして、5つ星の内、4つ星でレビューした場合、空の星を1つ描画する仕様に仕立てた。 参照 【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】 HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星</description>
+      <guid>http://localhost:43210/post/django-star-review/</guid>
+      <description>最終的にこのようになる。 今回はテンプレートのwithとcenterは不使用とした。 そして、5つ星の内、4つ星でレビューした場合、空の星を1つ描画する仕様に仕立てた。 モデル from django.db import models from django.core.validators import MinValueValidator,MaxValueValidator MAX_STAR = 5 class Review(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=500) star = models.IntegerField(verbose_name=&amp;qu</description>
     </item>
-    
     <item>
       <title>【Python】pipで翻訳系ライブラリのgoogletransをインストールする【※バージョン指定しないとエラー】</title>
-      <link>https://noauto-nolife.com/post/python-google-trans-install/</link>
+      <link>http://localhost:43210/post/python-google-trans-install/</link>
       <pubDate>Wed, 03 Aug 2022 15:25:52 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/python-google-trans-install/</guid>
+      <guid>http://localhost:43210/post/python-google-trans-install/</guid>
       <description>グーグル翻訳を手軽に試すことができる、Pythonライブラリのgoogletrans。 だが、インストールするバージョンの指定を間違えると、正常に動作してくれない不具合が報告されている。 下記コマンドを実行してインストールするべし。 pip install googletrans==3.1.0a0 その上で、下記を実行する。 from googletrans import Translator translator = Translator() string_ja = &amp;quot;Pythonの勉強は楽しい&amp;quot; trans_en = translator.translate(string_ja, dest=&amp;quot;en&amp;quot;) print(trans_en.text) 正常に翻訳されている。</description>
     </item>
-    
     <item>
-      <title>【Django】operatorでモデルのフィールド、メソッドを指定してソーティングをする【ランキングの実装に有効】</title>
-      <link>https://noauto-nolife.com/post/django-attr-method-sort/</link>
+      <title>【Django】sorted関数とoperatorでモデルのフィールド、メソッドを指定してソーティング・並び替えをする【ランキングの実装に有効】</title>
+      <link>http://localhost:43210/post/django-attr-method-sort/</link>
       <pubDate>Sat, 30 Jul 2022 17:48:17 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-attr-method-sort/</guid>
+      <guid>http://localhost:43210/post/django-attr-method-sort/</guid>
       <description>例えば、モデルがこうだったとする。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) score = models.IntegerField(verbose_name=&amp;quot;スコア&amp;quot;) def twice(self): return self.score*2 ビューでこのようにすることで、モデルフィールドもしくはモデルメソッドでソーティングができる。 from django.shortcuts import render,redirect from django.views import View from .models import</description>
     </item>
-    
     <item>
       <title>【JavaScript】.replace()で検索した文字列すべてを置換したい場合は正規表現を使う</title>
-      <link>https://noauto-nolife.com/post/javascript-replace-trap/</link>
+      <link>http://localhost:43210/post/javascript-replace-trap/</link>
       <pubDate>Thu, 14 Jul 2022 17:30:20 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/javascript-replace-trap/</guid>
-      <description>例えば、以下の文字列の,をに書き換えたいとする。 let data = &amp;quot;aaa,bbb,ccc&amp;quot;; 文字列の置換処理は.replace()で実現できるから、こうすれば良いと思いがちだが実は違う。 console.log(data.replace(&amp;quot;,&amp;quot;,&amp;quot; &amp;quot;)); // aaa bbb,ccc デフォルトでは最初にヒットした文字列しか置換してくれない。検索した文字列を全て置換したい場合、このようにする。 console.log(data.replace( /,/g , &amp;quot; &amp;quot;)); // aaa bbb ccc ちなみにPythonでは.replace()を使うと全て置換してくれる。だから、Pythonでreplaceを使</description>
+      <guid>http://localhost:43210/post/javascript-replace-trap/</guid>
+      <description>例えば、以下の文字列の,を に書き換えたいとする。 let data = &amp;quot;aaa,bbb,ccc&amp;quot;; 文字列の置換処理は.replace()で実現できるから、こうすれば良いと思いがちだが実は違う。 console.log(data.replace(&amp;quot;,&amp;quot;,&amp;quot; &amp;quot;)); // aaa bbb,ccc デフォルトでは最初にヒットした文字列しか置換してくれない。検索した文字列を全て置換したい場合、このようにする。 console.log(data.replace( /,/g , &amp;quot; &amp;quot;)); // aaa bbb ccc ちなみにPythonでは.replace()を使うと全て置換してくれる。だから、Pythonでreplaceを使</description>
     </item>
-    
     <item>
       <title>Sendgridのアカウントが一時的に凍結された場合の対処法と対策</title>
-      <link>https://noauto-nolife.com/post/sendgrid-account-suspended/</link>
+      <link>http://localhost:43210/post/sendgrid-account-suspended/</link>
       <pubDate>Tue, 28 Jun 2022 07:03:38 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/sendgrid-account-suspended/</guid>
+      <guid>http://localhost:43210/post/sendgrid-account-suspended/</guid>
       <description>某日、Sendgridからメールが届く。内容は下記。 Dear Twilio SendGrid Customer, Your Twilio SendGrid account has been temporarily suspended as we have detected that your account&#39;s credentials (password and/or API key) are publicly listed on the code repository GitHub. This is a dangerous practice which may result in your account being used by unauthorized third parties to send malicious content and which may incur damage to your reputation as a quality sender and charges against your account for high usage that you did not perform. Before you ask for your account&#39;s reactivation, please ensure that you: 1) Change your account&#39;s password: https://sendgrid.com/docs/ui/account-and-settings/resetting-your-username-and-password. If your account was created using Heroku or IBM BlueMix, you must use our password reset form. 2) Delete and update exposed API keys in your account [APIのID] : https://sendgrid.com/docs/ui/account-and-settings/api-keys/#delete-an-api-key 3) Enable two-factor authentication for your account 4) Remove your account credentials and API keys from any public listings on code repositories or associated comments on sites such as GitHub or BitBucket. Please see the following link(s) for locations where your credentials</description>
     </item>
-    
-    <item>
-      <title>Django-allauthのメールを使用したログイン方式で、アカウント新規作成時、確認URLにアクセスしていないにもかかわらず、ログインできてしまうのはなぜか？</title>
-      <link>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</link>
-      <pubDate>Sun, 19 Jun 2022 16:12:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-allauth-why-not-verify-email/</guid>
-      <description>allauthはそういう仕様になっているから。 前提として、下記記事の『メールアドレスとパスワードを使用した認証方法の実装』のコードを採用している場合に限る。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 メールの確認の仕様を考慮するとわかる アカウント新規作成時に送信されるメールの中にあるURL このURLに対してGETリクエスト送信 Django側はこのURLに対して</description>
-    </item>
-    
     <item>
       <title>【Django】settings.pyのINSTALLED_APPSにはどのように書くのが適切か【順番とapps】</title>
-      <link>https://noauto-nolife.com/post/django-settings-installed-apps/</link>
+      <link>http://localhost:43210/post/django-settings-installed-apps/</link>
       <pubDate>Sat, 18 Jun 2022 22:55:34 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-settings-installed-apps/</guid>
+      <guid>http://localhost:43210/post/django-settings-installed-apps/</guid>
       <description>公式の書き方 Django公式によると、下記のように書くのが適切。 INSTALLED_APPS = [ &amp;quot;bbs.apps.BbsConfig&amp;quot;, &#39;django.contrib.admin&#39;, &#39;django.contrib.auth&#39;, &#39;django.contrib.contenttypes&#39;, &#39;django.contrib.sessions&#39;, &#39;django.contrib.messages&#39;, &#39;django.contrib.staticfiles&#39;, ] 参照元: https://docs.djangoproject.com/ja/4.0/ref/applications/#configuring-applications 一部媒体における書き方 一方で一部の媒体では以下のように書かれてある。 INSTALLED_APPS = [ &amp;quot;bbs&amp;quot;, &#39;django.contrib.admin&#39;, &#39;django.contrib.auth&#39;, &#39;django.contrib.contenttypes&#39;, &#39;django.contrib.sessions&#39;, &#39;django.contrib.messages&#39;, &#39;django.contrib.staticfiles&#39;, ] どちらが正しいのか？ bbs/apps.pyにて、下記のように仕立てる。 from django.apps import AppConfig class BbsConfig(AppConfig): default_auto_field = &#39;django.db.models.BigAutoField&#39; name = &#39;bbs&#39; verbose_name = &amp;quot;簡易掲示板&amp;quot; これは管理サイトで操作するモデルの一覧を表記する際、verbose_nameを追加</description>
     </item>
-    
     <item>
       <title>【Django】ユーザー作成時に何らかの処理を行う方法【saveメソッドオーバーライド】</title>
-      <link>https://noauto-nolife.com/post/django-createuser-save-method-override/</link>
+      <link>http://localhost:43210/post/django-createuser-save-method-override/</link>
       <pubDate>Sat, 18 Jun 2022 17:17:42 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-createuser-save-method-override/</guid>
+      <guid>http://localhost:43210/post/django-createuser-save-method-override/</guid>
       <description>カスタムユーザーモデルを使用している時、ユーザーアカウント新規作成時に何らかの処理を行って欲しい場合。 そういう時はSignupFormのsaveメソッドをオーバーライドする。 SignUpFormのコード from django.contrib.auth.forms import UserCreationForm from .models import CustomUser class SignupForm(UserCreationForm): class Meta(UserCreationForm.Meta): model = CustomUser fields = (&amp;quot;username&amp;quot;) def save(self, request, commit=True, *args, **kwargs): #ユーザーモデルのオブジェクト作成(ただし、保存をしない) user = super().save(commit=False) #生のパスワードをハッシュ化した上で、モデルオブジェクトの属性にセットする。 user.set_password(self.cleaned_data[&amp;quot;password1&amp;quot;]) #保存す</description>
     </item>
-    
     <item>
       <title>JavaScript(jQuery)でQRコードを表示させる</title>
-      <link>https://noauto-nolife.com/post/javascript-qrcode/</link>
+      <link>http://localhost:43210/post/javascript-qrcode/</link>
       <pubDate>Mon, 23 May 2022 11:23:01 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/javascript-qrcode/</guid>
+      <guid>http://localhost:43210/post/javascript-qrcode/</guid>
       <description>例えば、ユーザーの一部がPCでの操作をやめて、スマホで操作したいと思ったとする。 こういう時QRコードを表示させる、ブラウザのアドオンや機能を使えば良いが、ユーザーにそれを強いるのはやや酷である。 そこで、jQueryを使用して、QRコードを簡単に表示させると良いだろう。 コード &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; window.addEventListener(&amp;quot;load&amp;quot; , function (){ let qrtext = location.href; let utf8qrtext = unescape(encodeURIComponent(qrtext)); $(&amp;quot;#qrcode&amp;quot;).html(&amp;quot;&amp;quot;); $(&amp;quot;#qrcode&amp;quot;).qrcode({width:160,height:160,text:utf8qrtext}); }); &amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div id=&amp;quot;qrcode&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる。 結論 下記を参照。 https://github.com/jeromeetienne/jquery-qrcode</description>
     </item>
-    
     <item>
       <title>【Django】context_processorsを使い、全ページに対して同じコンテキストを提供する【サイドバーのカテゴリ欄、ニュース欄などに有効】</title>
-      <link>https://noauto-nolife.com/post/django-context-processors/</link>
+      <link>http://localhost:43210/post/django-context-processors/</link>
       <pubDate>Tue, 17 May 2022 09:24:35 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-context-processors/</guid>
+      <guid>http://localhost:43210/post/django-context-processors/</guid>
       <description>以前は、ビュークラスの継承を使ったり、MIDDLEWAREでリクエストオブジェクトを操作したりすることでテンプレートに対してデータを提供していたが、これではやや無駄が多い。 Djangoにはcontext_processorsという、任意の処理を行った後contextを追加できる便利な機能があるので、こちらを使う。 context_processorsを作る まず、アプリディレクトリ内部に、custom</description>
     </item>
-    
     <item>
       <title>【Django】ファイルアップロード時にファイル名をリネーム(改名)する</title>
-      <link>https://noauto-nolife.com/post/django-fileupload-rename/</link>
+      <link>http://localhost:43210/post/django-fileupload-rename/</link>
       <pubDate>Fri, 13 May 2022 17:18:16 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-fileupload-rename/</guid>
+      <guid>http://localhost:43210/post/django-fileupload-rename/</guid>
       <description>方法論として、2つある。ビューから書き換える方法と、モデルに独自のバリデーションを仕込む方法の2つである。 ビューからファイル名を書き換える request.FILES[&amp;quot;image&amp;quot;].nameから書き換えができる。 request.FILES[&amp;quot;image&amp;quot;].name = &amp;quot;test.png&amp;quot; form = TopicForm(request.POST,request.FILES) # 以下略 # request.POSTに対しては書き換えできないが、何故かFILESに対しては書き換えできる。 もしちょっと気持ち悪いなと思う場合は下記にすると</description>
     </item>
-    
     <item>
       <title>【Django】アップロードするファイルサイズに上限をセットする【validators】</title>
-      <link>https://noauto-nolife.com/post/django-fileupload-limit-size/</link>
+      <link>http://localhost:43210/post/django-fileupload-limit-size/</link>
       <pubDate>Fri, 13 May 2022 16:04:39 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-fileupload-limit-size/</guid>
+      <guid>http://localhost:43210/post/django-fileupload-limit-size/</guid>
       <description>本記事ではアップロードするファイルサイズに上限をセットする方法を解説する。 ただし、ビュー側にファイルサイズの上限をチェックする機能を実装させるのではなく、以前紹介した、『【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】』を元に実装させる。 ビューに判定機能を実装させる方法でも問題はないが、投稿するビューが二分</description>
     </item>
-    
     <item>
       <title>【Django】セッションの有効期限をセット、もしくはブラウザを閉じた時にセッションを無効化【settings.py】</title>
-      <link>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</link>
+      <link>http://localhost:43210/post/django-session-expire-second-and-browser-close/</link>
       <pubDate>Sun, 01 May 2022 20:09:59 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-session-expire-second-and-browser-close/</guid>
+      <guid>http://localhost:43210/post/django-session-expire-second-and-browser-close/</guid>
       <description>セキュリティを担保したいサイトであれば、ブラウザが閉じてもセッションが残るデフォルトのDjango設定を疎ましく思うだろう。 そういう時は、settings.pyからセッションの有効期限の設定もしくは、ブラウザの終了を検知して無効化する設定を施せばよい。 セッションに有効期限をセットする【単位:秒】 例えば60秒後にセッションを切って、再ログインを要求させる場合はこうする。 SESSION_COOKIE_AGE = 60 デフォルトでは2週間にな</description>
     </item>
-    
     <item>
       <title>【Django】models.pyにて、オリジナルのバリデーション処理を追加する【validators】【正規表現が通用しない場合等に有効】</title>
-      <link>https://noauto-nolife.com/post/django-models-origin-validators/</link>
+      <link>http://localhost:43210/post/django-models-origin-validators/</link>
       <pubDate>Fri, 15 Apr 2022 14:33:20 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-models-origin-validators/</guid>
+      <guid>http://localhost:43210/post/django-models-origin-validators/</guid>
       <description>例えば、簡易掲示板にて、特定の禁止ワードを含んだ投稿を拒否したい場合。 承認制にして、管理者が文面を確認した上で公開を許す方法もあるが、それでは人件費がかかる。 なるべく保存する前に禁止ワードを含んでいるかどうかをチェックする仕組みにしたい。 そういう時は、validatorsに独自の関数を割り当てれば良い。 コードは40分Djangoから流用して作る models.py 不快語を除外するバリデーションを実装させる。 from django.db import models</description>
     </item>
-    
     <item>
       <title>【Django】DateTimeFieldに自動的に現在時刻を入れるには、auto_now_addもしくはauto_nowフィールドオプションを指定【新規作成時・編集時の時刻】【※編集不可】</title>
-      <link>https://noauto-nolife.com/post/django-models-datetime-auto-now-add/</link>
+      <link>http://localhost:43210/post/django-models-datetime-auto-now-add/</link>
       <pubDate>Thu, 14 Apr 2022 17:07:34 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-models-datetime-auto-now-add/</guid>
+      <guid>http://localhost:43210/post/django-models-datetime-auto-now-add/</guid>
       <description>作成時と編集時の日時を自動的に入れたい場合は、auto_nowもしくはauto_now_addを指定する。 auto_nowはモデルのsaveメソッドが実行された時、auto_now_addはモデルに新規作成された時に、その時の日時が指定したフィールドに格納される。 つまり、モデルを下記のように組むと良いだろう。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コ</description>
     </item>
-    
     <item>
       <title>【Django】未認証ユーザーをログインページにリダイレクトする【LoginRequiredMixinもしくは@login_required】</title>
-      <link>https://noauto-nolife.com/post/django-login-required-mixin/</link>
+      <link>http://localhost:43210/post/django-login-required-mixin/</link>
       <pubDate>Thu, 07 Apr 2022 13:19:33 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-login-required-mixin/</guid>
+      <guid>http://localhost:43210/post/django-login-required-mixin/</guid>
       <description>ログインしていないユーザーが特定のページにアクセスしてきた時、処理を実行せず、ログインページにリダイレクトするには、LoginRequiredMixinを使う。 前提 予め前もって、認証を実装しておく。allauthを使っても、Djangoの備え付けの認証を使っても良い。 【メール認証】Django-allauthの実装方法とテンプレート編集【ID認証】 【Django】allauth未使用でユーザー認証</description>
     </item>
-    
     <item>
       <title>Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】</title>
-      <link>https://noauto-nolife.com/post/linux-commandline-clipboard/</link>
+      <link>http://localhost:43210/post/linux-commandline-clipboard/</link>
       <pubDate>Wed, 30 Mar 2022 09:13:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/linux-commandline-clipboard/</guid>
+      <guid>http://localhost:43210/post/linux-commandline-clipboard/</guid>
       <description>とてつもなく長いコードをクリップボードにコピーして、誰かと共有したい時、エディタのカーソルを上に持っていって下まで下げてコピーするのはとても面倒。 だから、コマンド一発でファイルの内容全てをコピーする。xselを使って。 sudo apt install xsel これでOK。後はコピペしたいファイルを用意して、下記コマンドを実行する。 cat ./index.html | xsel --clipboard --input これでindex.htmlの中身が全部コピーできた。bashrcにエイリアスで登録しておく</description>
     </item>
-    
     <item>
       <title>【Django】管理サイト(admin)のログを削除する【DBの使用量削減に】</title>
-      <link>https://noauto-nolife.com/post/django-admin-log-delete/</link>
+      <link>http://localhost:43210/post/django-admin-log-delete/</link>
       <pubDate>Fri, 25 Mar 2022 10:42:13 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-admin-log-delete/</guid>
+      <guid>http://localhost:43210/post/django-admin-log-delete/</guid>
       <description>Djangoの管理サイトは自動的に操作のログを取るようになっている。 そのログはDBに記録されているため、Herokuの無料プランなどの1万行しかないDBであれば、死活問題になる。 そこで、管理サイトのログをDBから消す。下記のようにすればよい。 from django.shortcuts import render from django.views import View from django.contrib.admin.models import LogEntry class IndexView(View) LogEntry.objects.all().delete() ## 以下略 ##</description>
     </item>
-    
     <item>
       <title>【Django】星の平均をアイコンで表示させる【3.5の時、三星と半星で表示】</title>
-      <link>https://noauto-nolife.com/post/django-star-average/</link>
+      <link>http://localhost:43210/post/django-star-average/</link>
       <pubDate>Mon, 14 Mar 2022 09:17:33 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-star-average/</guid>
+      <guid>http://localhost:43210/post/django-star-average/</guid>
       <description>通販サイトなどでよくある、星の平均をアイコンで表示する。 モデル 2つのメソッドを追加する。平均スコアを出力するメソッド。少数だけ取り出し、それを元に1星、半星、無星を判定するメソッド。 from django.db import models from django.core.validators import MinValueValidator,MaxValueValidator from django.db.models import Avg class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) def avg_star_score(self): reviews = Review.objects.filter(topic=self.id).aggregate(Avg(&amp;quot;star&amp;quot;)) if reviews[&amp;quot;star__avg&amp;quot;]: return reviews[&amp;quot;star__avg&amp;quot;] else: return 0 def avg_star_icon_few(self): reviews = Review.objects.filter(topic=self.id).aggregate(Avg(&amp;quot;star&amp;quot;)) avg = reviews[&amp;quot;star__avg&amp;quot;] #平均スコアなしの場</description>
     </item>
-    
     <item>
       <title>【Django】FilefieldやImageFieldでファイル名だけを表示させる方法【モデルにメソッドを追加】</title>
-      <link>https://noauto-nolife.com/post/django-filefield-only-filename/</link>
+      <link>http://localhost:43210/post/django-filefield-only-filename/</link>
       <pubDate>Thu, 10 Mar 2022 22:20:05 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-filefield-only-filename/</guid>
+      <guid>http://localhost:43210/post/django-filefield-only-filename/</guid>
       <description>FilefieldやImageFieldにはフィールドオプションとしてupload_toが指定されている。 そのため、そのままではファイル名だけを取り出すことはできない。 例えば、モデルが下記でファイル名がtest.pdfだった場合。 class Document(models.Model): file = models.FileField(verbose_name=&amp;quot;ファイル&amp;quot;,upload_to=&amp;quot;app/document/file/</description>
     </item>
-    
     <item>
       <title>【HTML】ダウンロードのダイアログを表示させたい場合、aタグにはdownload属性を付与する</title>
-      <link>https://noauto-nolife.com/post/html-atag-download-attribute/</link>
+      <link>http://localhost:43210/post/html-atag-download-attribute/</link>
       <pubDate>Thu, 10 Mar 2022 21:53:58 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/html-atag-download-attribute/</guid>
+      <guid>http://localhost:43210/post/html-atag-download-attribute/</guid>
       <description>小ネタ。 例えば、ファイルを共有するウェブアプリを作る時、ファイルをリンクタグでダウンロードする仕様に仕立てる。 しかし、それが画像やPDF等のブラウザで表示できるファイルの場合、ダウンロードのダイアログが表示されず、ファイルそのものが表示されてしまう。 &amp;lt;a href=&amp;quot;sample.pdf&amp;quot;&amp;gt;ダウンロードする&amp;lt;/a&amp;gt; そこで、aタグにdownload属性を付与する。 &amp;lt;a</description>
     </item>
-    
     <item>
       <title>【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる</title>
-      <link>https://noauto-nolife.com/post/jquery-number-form/</link>
+      <link>http://localhost:43210/post/jquery-number-form/</link>
       <pubDate>Wed, 02 Mar 2022 11:45:18 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/jquery-number-form/</guid>
+      <guid>http://localhost:43210/post/jquery-number-form/</guid>
       <description>数値入力フォーム。キーボードを使わず、ボタン入力で行いたい場合、JavaScriptを使う必要がある。 今回は更に短くかけるよう、jQueryで表現した。なお、再利用を想定して、装飾は全く行っていない。 ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;number&amp;quot; name=&amp;quot;amount&amp;quot; value=&amp;quot;0&amp;quot; readonly&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;減らす&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;増やす&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;[name=&#39;plus&#39;]&amp;quot;).on(&amp;quot;click&amp;quot;, function(){ amount_add(this,true);</description>
     </item>
-    
     <item>
       <title>【Restful化】DjangoRestframeworkの導入・移行作業【ビュークラス継承元の書き換え、Serializerの運用】</title>
-      <link>https://noauto-nolife.com/post/django-rest-framework-changing/</link>
+      <link>http://localhost:43210/post/django-rest-framework-changing/</link>
       <pubDate>Sun, 27 Feb 2022 15:05:00 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-rest-framework-changing/</guid>
+      <guid>http://localhost:43210/post/django-rest-framework-changing/</guid>
       <description>Restful化のためには、DjangoRestframeworkをインストールする必要がある。(素のDjangoでもAjaxでDELETE,PUT,PATCHメソッドの送信は可能だが、リクエストボディの読み込みに難があるため。) だが、素のDjangoで開発している状態であれば、コードの一部をDRF仕様に書き換えを行う必要がある。 本記事では、40分Djangoを元にDRF移行手続きを解説する。 予め</description>
     </item>
-    
     <item>
       <title>dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</title>
-      <link>https://noauto-nolife.com/post/docker-image-file-share/</link>
+      <link>http://localhost:43210/post/docker-image-file-share/</link>
       <pubDate>Sun, 13 Feb 2022 16:54:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/docker-image-file-share/</guid>
+      <guid>http://localhost:43210/post/docker-image-file-share/</guid>
       <description>dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに</description>
     </item>
-    
     <item>
       <title>Djangoのモデルにて指定された選択肢をセットし、それだけ入力を許可する【choicesフィールドオプションで都道府県の指定をする】</title>
-      <link>https://noauto-nolife.com/post/django-models-choices/</link>
+      <link>http://localhost:43210/post/django-models-choices/</link>
       <pubDate>Fri, 11 Feb 2022 08:18:35 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-models-choices/</guid>
+      <guid>http://localhost:43210/post/django-models-choices/</guid>
       <description>例えば、都道府県の指定、どうやってモデルに格納するか。都道府県は47個。これ以外の物を選ぶことはできない。 故に、CharFieldを使用して、都道府県の格納先のフィールドを作るのは、間違っているわけではないが、あまりスマートではない。 そこで、フィールドオプションのchoicesを使用して、特定の選択肢のみ入力を許可する。 【前提】settings.py settings.pyにて、都道府県の名前を定義</description>
     </item>
-    
     <item>
       <title>【Django】管理サイトで保存した時、何か処理(メール送信など)を実行して欲しい時【saveメソッドオーバーライドは通用しない】</title>
-      <link>https://noauto-nolife.com/post/django-admin-save-method/</link>
+      <link>http://localhost:43210/post/django-admin-save-method/</link>
       <pubDate>Fri, 28 Jan 2022 13:30:10 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-admin-save-method/</guid>
+      <guid>http://localhost:43210/post/django-admin-save-method/</guid>
       <description>Djangoの管理サイトでモデルの保存をした時、何か実行して欲しいものがあれば、saveメソッドのオーバーライドでは通用しない。 Adminクラスにsave_modelメソッドがあるので、それをオーバーライドして使う。 class MyAdminView(admin.ModelAdmin): def save_model(self, request, obj, form, change): super(MyAdminView, self).save_model(request, obj, form, change) 用途 管理サイトから作成・編集をして、保存した時に発動するので、以下の用途が考えられる。 通販サイトにて配送処理完了のブーリアン値を変更、それを判定して配送処理完</description>
     </item>
-    
+    <item>
+      <title>【Node.js】npmとは、npmコマンドについて</title>
+      <link>http://localhost:43210/post/npm-command/</link>
+      <pubDate>Fri, 28 Jan 2022 10:41:58 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-command/</guid>
+      <description>そもそもnpmとは npmはNode.jsのパッケージ管理ツールのこと。Node Package Manager の略。 例えば、Reactを使用するために、Reactを動かすために必要なソフトウェア一式をインストールする必要がある。このソフトウェア一式のことをパッケージという。 npmはこのパッケージのインストール、アンインストールなどの管理を行うことができる。 npmコマンドについて npm install パッケージ パッケージのインストールをする。こ</description>
+    </item>
     <item>
       <title>【Django】ビュー関数とビュークラスの違い、一覧と使い方</title>
-      <link>https://noauto-nolife.com/post/django-view-def-and-class/</link>
+      <link>http://localhost:43210/post/django-view-def-and-class/</link>
       <pubDate>Sat, 22 Jan 2022 17:39:55 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-view-def-and-class/</guid>
+      <guid>http://localhost:43210/post/django-view-def-and-class/</guid>
       <description>ビュー関数とビュークラスの違い。 前提 (bbs/urls.py) config/urls.pyからアプリ(bbs)のurls.pyを読み込み、その中身は下記とする。 from django.urls import path from . import views app_name = &amp;quot;bbs&amp;quot; urlpatterns = [ path(&#39;&#39;, views.index, name=&amp;quot;index&amp;quot;), ] 構文 関数ベースのビュー from django.shortcuts import render,redirect from .models import Topic from .forms import TopicForm def index(request): if request.method == &amp;quot;GET&amp;quot;: topics = Topic.objects.all() context = { &amp;quot;topics&amp;quot;:topics } return render(request,&amp;quot;bbs/index.html&amp;quot;,context) elif request.method == &amp;quot;POST&amp;quot;: form = TopicForm(request.POST) if form.is_valid(): form.save() return redirect(&amp;quot;bbs:index&amp;quot;) メソッドをif文で分岐させる形式になっている。 クラスベースのビュー(View) from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm class IndexView(View): def get(self, request, *args, **kwargs): topics</description>
     </item>
-    
+    <item>
+      <title>Javaのpackage(パッケージ)の実行方法</title>
+      <link>http://localhost:43210/post/java-package/</link>
+      <pubDate>Mon, 17 Jan 2022 14:28:00 +0900</pubDate>
+      <guid>http://localhost:43210/post/java-package/</guid>
+      <description>Javaのパッケージの実行方法でちょっと詰まったので、覚書としてまとめておく。 【例】ソースコードとディレクトリ構成 ディレクトリ構成は以下の通り、このとき、myprojectのディレクトリ名は任意とする。 myproject ├── vehicle │ └── Car.java └── main └── CarExec.java Car.javaの内容はこちら // vehicle/Car.java package vehicle; public class Car { private String model; public Car(String model) { this.model = model; } public void start() { System.out.println(model + &amp;#34; is starting.&amp;#34;); } public void drive() { System.out.println(model + &amp;#34; is driving.&amp;#34;); } } CarExec.javaの内容はこちら // main/CarExec.java package main; import vehicle.Car; public</description>
+    </item>
     <item>
       <title>【Django】任意のエラーメッセージを表示させる【forms.pyでerror_messagesを指定】</title>
-      <link>https://noauto-nolife.com/post/django-error-messages-origin/</link>
+      <link>http://localhost:43210/post/django-error-messages-origin/</link>
       <pubDate>Sun, 16 Jan 2022 17:57:29 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-error-messages-origin/</guid>
+      <guid>http://localhost:43210/post/django-error-messages-origin/</guid>
       <description>forms.pyに書いたフォームクラスを使ってバリデーションを行った時、エラーメッセージの表示ができる。 print(forms.errors) 例えば、これで入力しなければならない場所を未入力で投稿した場合、 このフィールドは入力必須です とエラーが出てくる。やや堅めの文章であり、『フィールド』という単語はエンジニアであればまだしも、一般人はそれが何を意味しているのかわからないだろう。 そこでこの時に表示されるエラーメッセージを別のものに書</description>
     </item>
-    
+    <item>
+      <title>【Django】OneToOneFieldでつながっているデータの取得方法【モデル名を小文字にした属性名で取得できる】</title>
+      <link>http://localhost:43210/post/django-one-to-one-field/</link>
+      <pubDate>Mon, 10 Jan 2022 14:03:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-one-to-one-field/</guid>
+      <description>OneToOneFieldを使う機会は限定されているので、備忘録として。 タイトルから既に(？)な状態かも知れないが、まずは、下記モデルを見てもらいたい。 # 店舗データテーブル class StoreData(models.Model): class Meta: constraints = [ models.UniqueConstraint(fields=[&amp;quot;store&amp;quot;,&amp;quot;date&amp;quot;], name=&amp;quot;unique_store_date&amp;quot;), ] store = models.ForeignKey(Store,verbose_name=&amp;quot;店舗&amp;quot;,on_delete=models.CASCADE) date = models.DateField(verbos</description>
+    </item>
     <item>
       <title>mogrifyコマンドを使って画像を一括クロップ(トリミング)する</title>
-      <link>https://noauto-nolife.com/post/startup-mogrify/</link>
+      <link>http://localhost:43210/post/startup-mogrify/</link>
       <pubDate>Fri, 07 Jan 2022 09:57:31 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-mogrify/</guid>
+      <guid>http://localhost:43210/post/startup-mogrify/</guid>
       <description>下記コマンドで一括画像処理できる mogrify [出力先] -crop [幅]x[高さ]+[切り取り始めるx座標]+[切り取り始めるy座標] [入力元] 参照元:https://qiita.com/yoya/items/62879e6e03d5a70eed09</description>
     </item>
-    
-    <item>
-      <title>【Django】ビュークラスの継承を使い、予めcontextを追加させる</title>
-      <link>https://noauto-nolife.com/post/django-add-context/</link>
-      <pubDate>Fri, 31 Dec 2021 08:29:13 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-add-context/</guid>
-      <description>クラスベースのビューであれば、継承をするだけで、継承関係にある全てのビューに同じ機能を追加できる。 どのページでも表示させるデータ(例えば、サイトのトップバーに表示するニュースなど)にも継承を使えば、予めの追加が実現できる。 以下は、40分Djangoにビュークラスの継承を行い、contextを追加するメソッドを呼び出せるようにしている。 from django.shortcuts import render,redirect from django.views import View from .models import Topic class ContextView(View): def context(self): context = {} context[&amp;quot;news&amp;quot;] = Topic.objects.order_by(&amp;quot;-id&amp;quot;)[:10] return context class BbsView(ContextView): def get(self, request, *args, **kwargs): context</description>
-    </item>
-    
     <item>
       <title>【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】</title>
-      <link>https://noauto-nolife.com/post/django-template-integer-for-loop/</link>
+      <link>http://localhost:43210/post/django-template-integer-for-loop/</link>
       <pubDate>Tue, 21 Dec 2021 16:28:13 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-template-integer-for-loop/</guid>
+      <guid>http://localhost:43210/post/django-template-integer-for-loop/</guid>
       <description>通常、DjangoTemplateLanguageのforループは数値型のループは許さない。ループが許されているのは、文字列型かリスト型、イテラブルなオブジェクトに限定される。 これを普通のPythonで表現するのであれば、こんな状態。 for content in contents: print(content) このcontentsに数値を入れることはできないのはPythonをやっていればわかる。しかし、とある方法を使えば数値のループは実現できる。 テンプレートタグw</description>
     </item>
-    
     <item>
       <title>Laravelで.env(環境変数)に指定した値をチェックする方法【コントローラ・ビュー】</title>
-      <link>https://noauto-nolife.com/post/laravel-env-check/</link>
+      <link>http://localhost:43210/post/laravel-env-check/</link>
       <pubDate>Tue, 21 Dec 2021 08:06:32 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-env-check/</guid>
+      <guid>http://localhost:43210/post/laravel-env-check/</guid>
       <description>例えば、コントローラなどで開発段階とデプロイ後で処理を切り分けたい事がある。そういう時は、.env(環境変数)に指定した値を参照してif文で分岐させれば良い。 コントローラで環境変数に指定した値を確認する。 if ( env(&amp;quot;APP_DEBUG&amp;quot;) ){ \Log::debug(&amp;quot;APP_DEBUGはTrueです&amp;quot;); } else{ \Log::debug(&amp;quot;APP_DEBUGはFalseです&amp;quot;); } これで解決す</description>
     </item>
-    
     <item>
       <title>Laravel 8.x系のroute/web.phpはこう書く【Target class [Controller Name] does not exist.】</title>
-      <link>https://noauto-nolife.com/post/laravel8-route-error/</link>
+      <link>http://localhost:43210/post/laravel8-route-error/</link>
       <pubDate>Mon, 20 Dec 2021 16:28:45 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel8-route-error/</guid>
+      <guid>http://localhost:43210/post/laravel8-route-error/</guid>
       <description>Laravel7.x系はサポートが切れているので早めにLaravel8.x系にしたいところ。 ルーティングの記法が変わっているので確認しましょう。 &amp;ndash;resourceの場合 こうする。 #7.x系以前の書き方。 #Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); #8.x系以降の書き方。 use App\Http\Controllers\TopicsController; Route::resource(&#39;/topics&#39;, TopicsController::class); 冒頭で予めコントローラをuseしておく。 コントローラのアクションと逆引き用の名前を指定する場合。 こうする。 #7.x系以前の書き方。 #Route::get(&#39;/topics&#39;, &#39;TopicsController@index&#39;)-&amp;gt;name(&#39;topics.index&#39;); #8.x系以降の</description>
     </item>
-    
     <item>
       <title>Laravel8.xでページネーターのSVGの矢印がおかしいので修正する。</title>
-      <link>https://noauto-nolife.com/post/laravel8-paginator-svg/</link>
+      <link>http://localhost:43210/post/laravel8-paginator-svg/</link>
       <pubDate>Mon, 20 Dec 2021 15:05:27 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel8-paginator-svg/</guid>
+      <guid>http://localhost:43210/post/laravel8-paginator-svg/</guid>
       <description>問題だらけのLaravel8.xでまた問題が出てきた。ページネーションを普通に使うと、このようにSVGが狂っており、巨大化する。 修正 app/Providers/AppServiceProvider.phpにて下記のようにする。 &amp;lt;?php namespace App\Providers; use Illuminate\Support\ServiceProvider; use Illuminate\Pagination\Paginator; class AppServiceProvider extends ServiceProvider { /** * Register any application services. * * @return void */ public function register() { // } /** * Bootstrap any application services. * * @return void */ public function boot() { Paginator::useBootstrap(); } } これでLaravel7.x以前のBootstrapを使った普通のページネーション</description>
     </item>
-    
     <item>
       <title>【DRF】Django Rest Frameworkでリスト型のバリデーションも行う【UUIDや文字列を格納したリスト型のバリデーションに】</title>
-      <link>https://noauto-nolife.com/post/django-rest-framework-listfield/</link>
+      <link>http://localhost:43210/post/django-rest-framework-listfield/</link>
       <pubDate>Tue, 14 Dec 2021 15:04:59 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-rest-framework-listfield/</guid>
+      <guid>http://localhost:43210/post/django-rest-framework-listfield/</guid>
       <description>例えば、Ajaxを使用して複数選択削除を行いたい場合、idもしくはuuidのリスト型をサーバーサイドに送信することになるだろう。 そういう時、DjangoRESTFramework(以下DRF)のシリアライザを使用すると良いだろう。 UUIDを含むリスト型をバリデーションする #複数選択削除で利用 class UUIDListSerializer(serializers.Serializer): id_list = serializers.ListField( child=serializers.UUIDField() ) これで実現できる。 DjangoのFormクラスで実現させる場合。 リスト型で送られてくるデータの</description>
     </item>
-    
     <item>
       <title>【Django】Modelクラス、Formクラス、もしくはSerializerクラスのsaveメソッドで保存した後、保存したモデルオブジェクトのIDを手に入れる方法【データ保存した後、関連するデータも追加したい場合】</title>
-      <link>https://noauto-nolife.com/post/django-forms-save-model-object-id/</link>
+      <link>http://localhost:43210/post/django-forms-save-model-object-id/</link>
       <pubDate>Sat, 11 Dec 2021 07:30:48 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-forms-save-model-object-id/</guid>
+      <guid>http://localhost:43210/post/django-forms-save-model-object-id/</guid>
       <description>例えば、グループとそれに所属するメンバーのデータを一気に新規作成するタイプのフォームを作った場合。 グループとメンバーは1対多の関係になっており、それぞれの新規作成を1回のリクエストで済ませる場合は、まずグループを新規作成、その後そのグループに紐付いたメンバーを新規作成する必要がある。 ここで問題になるのが、メンバーのフィールドの一部にグループのIDを記録しなければならないこと。こういう時、保存したグ</description>
     </item>
-    
     <item>
       <title>【Django】requestオブジェクトからクライアントのUAやIPアドレス、CSRFCookieなどをチェック、テンプレート上に表示する。</title>
-      <link>https://noauto-nolife.com/post/django-request-meta/</link>
+      <link>http://localhost:43210/post/django-request-meta/</link>
       <pubDate>Sat, 11 Dec 2021 07:26:40 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-request-meta/</guid>
+      <guid>http://localhost:43210/post/django-request-meta/</guid>
       <description>すぐ忘れるので備忘録として。 テンプレートにユーザーのIPアドレス等を表示させたい場合、下記DTLを任意のテンプレートに書き込む。 {{ request.META }} これでリクエストに関連するデータが全て表示される。必要なデータを選び、例えばREMOTE_ADDRであれば {{ request.META.REMOTE_ADDR }} とすれば良い。</description>
     </item>
-    
     <item>
       <title>サイトのアイコンを指定して、Favicon 404 NotFound問題を解決する【フリー素材使用】</title>
-      <link>https://noauto-nolife.com/post/favicon-404/</link>
+      <link>http://localhost:43210/post/favicon-404/</link>
       <pubDate>Thu, 09 Dec 2021 11:53:51 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/favicon-404/</guid>
+      <guid>http://localhost:43210/post/favicon-404/</guid>
       <description>F12キーを押してコンソールを開き、JavaScriptの挙動を確かめる時。目につくのが、favicon.ico NotFoundという赤字の警告。 この警告はサイトのアイコンを設定していないことによって発生する。つまり、このブログのようにアイコンを設定すれば、警告は出ないということだ。 アイコンを設定する。 HTMLのheadタグ内に下記を記入する。 &amp;lt;link href=&amp;quot;img/favicon.ico&amp;quot; rel=&amp;quot;icon&amp;quot;&amp;gt; まず、アイコンのファイル名は必ずfavicon.</description>
     </item>
-    
     <item>
       <title>【Python】requestsライブラリを使用して、DjangoにPOSTメソッドのHTTPリクエストを送信する(管理サイトへのログイン)【セッションを維持してCSRF問題の対策】</title>
-      <link>https://noauto-nolife.com/post/python-requests-post-method/</link>
+      <link>http://localhost:43210/post/python-requests-post-method/</link>
       <pubDate>Fri, 26 Nov 2021 17:03:01 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/python-requests-post-method/</guid>
+      <guid>http://localhost:43210/post/python-requests-post-method/</guid>
       <description>Pythonのrequestsライブラリはスクレイピング(GETメソッド)で使用されているが、それだけでなくテストとしてPOSTメソッドでデータを投稿する事ができる。 ただ、ここで問題になるのが、CSRFトークンの存在。CSRFトークンをセットしなければCSRF検証に失敗してしまい、データの投稿ができなくなる。 そこで、セッションを維持した状態でCSRFトークンをリクエストボディにセットし、データを送</description>
     </item>
-    
     <item>
       <title>【Laravel】マイグレーション時の『Cannot add a NOT NULL column with default value NULL』問題を対処する【エラー】</title>
-      <link>https://noauto-nolife.com/post/laravel-notnull-exception/</link>
+      <link>http://localhost:43210/post/laravel-notnull-exception/</link>
       <pubDate>Wed, 24 Nov 2021 16:49:32 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-notnull-exception/</guid>
+      <guid>http://localhost:43210/post/laravel-notnull-exception/</guid>
       <description>なぜ、このエラーが発生するのか。まず原因から解説する。 原因 要するにこういうこと。 追加しようとしているフィールド(カラム)がNull禁止でデフォルトが無い。しかし、フィールド(カラム)を追加する以上、どうしてもNullになってしまう。この矛盾をどうするかと言うのがこの問題。 この状況が発生する条件は下記。下記を全て満たすと発生する。 条件1:既存のテーブルにカラムを追加する 条件2:追加するカラムにカラム</description>
     </item>
-    
     <item>
       <title>Vimのコメントの自動補完を無効化させる【JavaScriptやCSS、シェルスクリプトでコメントアウトした後、Enter押すと自動で出てくるアレ】</title>
-      <link>https://noauto-nolife.com/post/vim-comment-settings/</link>
+      <link>http://localhost:43210/post/vim-comment-settings/</link>
       <pubDate>Mon, 15 Nov 2021 07:39:25 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/vim-comment-settings/</guid>
+      <guid>http://localhost:43210/post/vim-comment-settings/</guid>
       <description>例えばJavaScriptでコメントを書く時、 // と書く。だが、その後Enterキーを押すと // // こうなる。これがすごい鬱陶しい。 頼んでもいないのにコメント行が勝手に増えて行くのは、消す手間も同時に増えるということ。だから無効化させる。 環境 Ubuntu 18.04 VIM version 8.0.1453 下記プラグインを使っている状態 emmet.vim surround.vim コメントの自動補完を無効化する 通常、このようなコメントの自動補完を無効化させるには、下記コマンドを実行して無効化させる。</description>
     </item>
-    
     <item>
       <title>DjangoのMessageFrameworkで投稿とエラーをフロント側に表示する</title>
-      <link>https://noauto-nolife.com/post/django-message-framework/</link>
+      <link>http://localhost:43210/post/django-message-framework/</link>
       <pubDate>Sun, 14 Nov 2021 18:53:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-message-framework/</guid>
+      <guid>http://localhost:43210/post/django-message-framework/</guid>
       <description>MessageFrameworkを使ってHelloWorldを表示させる。 元になるコードは40分Djangoにforms.pyを追加した状態から流用している。 まず、views.pyにて、公式からコードを拝借して追加した。 from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm #↓追加 from django.contrib import messages class IndexView(View): def get(self, request, *args, **kwargs): #↓追加 messages.add_message(request, messages.INFO, &#39;Hello world.&#39;) topics = Topic.objects.all() context = { &amp;quot;topics&amp;quot;:topics } return render(request,&amp;quot;bbs/index.html&amp;quot;,context) def post(self, request, *args, **kwargs): form = TopicForm(request.POST) if form.is_valid(): form.save() return redirect(&amp;quot;bbs:index&amp;quot;) index = IndexView.as_view() HTML側でメッセージを表示させるにはこうする。 &amp;lt;!DOCTYPE</description>
     </item>
-    
     <item>
       <title>Djangoのインタラクティブシェルを使う【python3 manage.py shell】</title>
-      <link>https://noauto-nolife.com/post/django-shell/</link>
+      <link>http://localhost:43210/post/django-shell/</link>
       <pubDate>Sat, 06 Nov 2021 09:30:02 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-shell/</guid>
+      <guid>http://localhost:43210/post/django-shell/</guid>
       <description>Djangoに含まれているライブラリを普通のPythonのインタラクティブシェルで動かそうとしても、manage.pyの環境変数やsettings.pyが無ければ動かない。 だから、Django関係のライブラリを試しに動かしたい時は、 python3 manage.py shell とする。 用途 Djangoに含まれるライブラリの動作検証 例えば、django.utils.timezoneなどはPythonのインタラクティブシェルでは動作しない。</description>
     </item>
-    
     <item>
       <title>HUGOでSNS等のシェアリンク(シェアボタン)をブログ内に配置して、PVを増やす【Twitter、Facebook、はてなブログ、LINE】</title>
-      <link>https://noauto-nolife.com/post/share-link/</link>
+      <link>http://localhost:43210/post/share-link/</link>
       <pubDate>Tue, 02 Nov 2021 16:16:21 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/share-link/</guid>
+      <guid>http://localhost:43210/post/share-link/</guid>
       <description>HUGOでもシェアリンク(シェアボタン)を設置できる。HUGOのパラメータ変数を用意する必要があるので、慣れていないと難易度が高いが。 ソースコード 記事単一表示ページにて下記のHTMLを書く &amp;lt;div class=&amp;quot;article_share_area&amp;quot;&amp;gt; &amp;lt;h2&amp;gt;シェアボタン&amp;lt;/h2&amp;gt; &amp;lt;a class=&amp;quot;article_share_link link_twitter&amp;quot; target=&amp;quot;_blank&amp;quot; rel=&amp;quot;nofollow noopener noreferrer&amp;quot; href=&amp;quot;https://twitter.com/share?url={{ .URL | absURL }}&amp;amp;text={{ .Title }}&amp;quot;&amp;gt;Twitter&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;article_share_link link_line&amp;quot; target=&amp;quot;_blank&amp;quot; rel=&amp;quot;nofollow noopener noreferrer&amp;quot; href=&amp;quot;https://social-plugins.line.me/lineit/share?url={{ .URL | absURL }}&amp;quot;&amp;gt;LINEで送る&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;article_share_link link_facebook&amp;quot; target=&amp;quot;_blank&amp;quot; rel=&amp;quot;nofollow noopener noreferrer&amp;quot; href=&amp;quot;https://www.facebook.com/sharer/sharer.php?u={{ .URL | absURL }}&amp;quot;&amp;gt;Facebook&amp;lt;/a&amp;gt; &amp;lt;a class=&amp;quot;article_share_link link_hatena&amp;quot; target=&amp;quot;_blank&amp;quot; rel=&amp;quot;nofollow noopener noreferrer&amp;quot; href=&amp;quot;https://b.hatena.ne.jp/add?mode=confirm&amp;amp;url={{ .URL | absURL</description>
     </item>
-    
     <item>
       <title>【Django】要素数が同じモデルオブジェクトをDTLで一緒にループして表示させる【.annotate()やモデルクラスにメソッドを追加などが通用しない場合の対策】</title>
-      <link>https://noauto-nolife.com/post/django-model-objects-for-in-zip/</link>
+      <link>http://localhost:43210/post/django-model-objects-for-in-zip/</link>
       <pubDate>Wed, 13 Oct 2021 15:22:14 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-model-objects-for-in-zip/</guid>
+      <guid>http://localhost:43210/post/django-model-objects-for-in-zip/</guid>
       <description>例えば、マイリストフォルダに保存されている、マイリスト動画。マイリストフォルダの一覧を表示している時に、フォルダ内の動画のサムネイル1つを表示させたい時、どうやって再現させましょうかと言うのが今回の課題。 こういう時は、zipとlistを使用して対処する他に、生成されたモデルオブジェクトを加工することで対処する。 この方法を使えば、複雑なORMを考えたり、モデルクラスにメソッドを追加したりするなどを考</description>
     </item>
-    
     <item>
       <title>Djangoで任意のHTTPレスポンス(ForbiddenやNotFoundなど)を返却する【HttpResponse subclasses】</title>
-      <link>https://noauto-nolife.com/post/django-http-response/</link>
+      <link>http://localhost:43210/post/django-http-response/</link>
       <pubDate>Sat, 02 Oct 2021 18:56:03 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-http-response/</guid>
+      <guid>http://localhost:43210/post/django-http-response/</guid>
       <description>あまり需要が無いかも知れないが、状況によっては手動でHTTPResponseを指定して返却したい場合もあるだろう。 本記事ではよく使用すると思われるレスポンスをまとめる。 HttpResponseBadRequest from django.http import HttpResponseBadRequest from django.views import View class BbsView(View): def get(self, request, *args, **kwargs): return HttpResponseBadRequest(&amp;quot;bad&amp;quot;) index = BbsView.as_view() リクエストの一部が欠落している場合など、クライアント側のエラーに表示させる。 HttpResponseNotFound from django.http import HttpResponseNotFound from django.views import View class BbsView(View): def get(self, request, *args, **kwargs): return HttpResponseNotFound(&amp;quot;not found&amp;quot;) index = BbsView.as_view() 引数内に入れた内容をクライアントのブラウザにHTMLとして表示させる コ</description>
     </item>
-    
     <item>
       <title>【Django】Heroku&#43;Cloudinaryの環境にアップロードしたファイルを参照する方法【MIMEとサイズ】</title>
-      <link>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary-file-reference/</link>
+      <link>http://localhost:43210/post/django-deploy-heroku-cloudinary-file-reference/</link>
       <pubDate>Wed, 29 Sep 2021 15:45:48 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-deploy-heroku-cloudinary-file-reference/</guid>
+      <guid>http://localhost:43210/post/django-deploy-heroku-cloudinary-file-reference/</guid>
       <description>クライアントがアップロードしたファイルをビュー側で参照するときがある。例えば、許可されていないMIMEのアップロード、ファイルサイズの確認など。 通常であれば、下記のようにすれば良い。 request.FILES[&amp;quot;document&amp;quot;] しかし、こんな参照をすると、Cloudinaryにはアップロードできてもファイルが壊れてしまう。PDF等の普通のファイルであれば問題はないが、mp4等の動画ファイルで発生している模様。 コード POSTメソッドだけ掲載。</description>
     </item>
-    
     <item>
       <title>Nginxで特定IPアドレスのリクエストを拒否する</title>
-      <link>https://noauto-nolife.com/post/nginx-deny-ip-address/</link>
+      <link>http://localhost:43210/post/nginx-deny-ip-address/</link>
       <pubDate>Tue, 28 Sep 2021 11:20:12 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/nginx-deny-ip-address/</guid>
+      <guid>http://localhost:43210/post/nginx-deny-ip-address/</guid>
       <description>特定IPアドレスのリクエストを拒否したいのであれば、ロードバランサーやリバースプロキシなどのセキュリティ設定を書き換えれば済む話だが、環境によっては他のサービスなどに影響を及ぼす可能性もある。 そこで、Nginxの設定を書き換え、特定のサービスだけで特定のIPアドレスを使用したリクエストを拒否する方法をここに記す。 設定ファイルに追加する Nginxの設定ファイル( /etc/nginx/nginx.conf )に下記を追加する。 deny 192.168.XXX.XXX; /etc/n</description>
     </item>
-    
     <item>
       <title>UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】</title>
-      <link>https://noauto-nolife.com/post/uuid-generate/</link>
+      <link>http://localhost:43210/post/uuid-generate/</link>
       <pubDate>Sun, 19 Sep 2021 18:14:00 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/uuid-generate/</guid>
+      <guid>http://localhost:43210/post/uuid-generate/</guid>
       <description>Ubuntuであれば、下記コマンドを実行するだけで自動的にUUIDが生成される。 uuidgen 用途 秘匿する必要のあるページ(管理サイト等)にURLとして割り当てることで、総当たりでヒットされにくくなる。 UUIDが重複する確立は途方もなく低いので、他のセキュリティ対策ができない場合の代替案として有効であると思われる。 例えば、sedコマンドなどを使用して、Djangoのurls.pyから管理サイトを割り当てている</description>
     </item>
-    
     <item>
       <title>【Laravel】Sqliteのデータベースファイルをワンライナーで再生成する【findコマンド&#43;-exec評価式&#43;alias】【migrate:fresh】</title>
-      <link>https://noauto-nolife.com/post/laravel-database-regenerate/</link>
+      <link>http://localhost:43210/post/laravel-database-regenerate/</link>
       <pubDate>Sat, 18 Sep 2021 08:42:15 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-database-regenerate/</guid>
+      <guid>http://localhost:43210/post/laravel-database-regenerate/</guid>
       <description>前々から思っていた。マイグレーションミスってDBごと消してマイグレーションファイルを修正したい場合、DBのファイルを探して削除するのは面倒だと。 プロジェクトのディレクトリで下記コマンドを実行する。 find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \; bashのaliasに登録すれば上記コマンドをさらに短くできる。 alias laravel-dbrefresh=&#39;find ./database/ -name &amp;quot;database.sqlite&amp;quot; -exec rm &amp;quot;{}&amp;quot; \; -exec touch &amp;quot;{}&amp;quot; \;&#39; このコマンドの注意点は2つある。 1つ目はLaravelプロジェクト直下に移動して実行するこ</description>
     </item>
-    
     <item>
       <title>【Django】settings.pyのSECRET_KEYを再発行(リジェネレート)する【alias登録で即生成・即実装からの再起動】</title>
-      <link>https://noauto-nolife.com/post/django-secret-key-regenerate/</link>
+      <link>http://localhost:43210/post/django-secret-key-regenerate/</link>
       <pubDate>Fri, 17 Sep 2021 11:19:11 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-secret-key-regenerate/</guid>
+      <guid>http://localhost:43210/post/django-secret-key-regenerate/</guid>
       <description>うっかり、SECRET_KEYをバージョン管理対象に含ませてしまった。このままではクラウドサーバーにデプロイしたSECRET_KEYが予測され、CSRFトークン等が機能不全になってしまう。 そんな時に備えておきたい、SECRET_KEYの再発行の方法を解説する。 ソースコード Qiitaより拝借。 from django.core.management.utils import get_random_secret_key secret_key = get_random_secret_key() text = &#39;SECRET_KEY = \&#39;{0}\&#39;&#39;.format(secret_key) print(text) 実行すると、 SECRET_KEY = &#39;07y^y0#_7b74jy)d6z0lu5*r$#azfyt1*1f+g1-3w+l@&amp;amp;hs^2!&#39; 等の文言が出てくる。 aliasに登録して、どこでも再発行できるよ</description>
     </item>
-    
     <item>
       <title>【Laravel】コマンドからマイグレーションファイルを立ち上げる時、こうすればうまく行く【ワイルドカードとTabキー】</title>
-      <link>https://noauto-nolife.com/post/laravel-migrations-files-detect/</link>
+      <link>http://localhost:43210/post/laravel-migrations-files-detect/</link>
       <pubDate>Thu, 16 Sep 2021 14:55:01 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-migrations-files-detect/</guid>
+      <guid>http://localhost:43210/post/laravel-migrations-files-detect/</guid>
       <description>コマンドからマイグレーションファイルを立ち上げる時、わざわざ日付を手入力しながらやっていると、時間がかかりすぎる。 そこで、ワイルドカードとTabキーの補正を使うことで特定する。例えば、2014_10_12_000000_create_users_table.phpであれば vi ./database/migrations/*create_users* と打って、この状態でTabキーを押す。これで vi ./database/migrations/2014_10_12_000000_create_users_table.php こんなふうになる。もっとも、統合開発環境を使えば、マウスダブルクリックでこん</description>
     </item>
-    
     <item>
       <title>AWSでなるべくお金がかからないようにウェブアプリを運用する方法</title>
-      <link>https://noauto-nolife.com/post/aws-do-not-spend-money/</link>
+      <link>http://localhost:43210/post/aws-do-not-spend-money/</link>
       <pubDate>Sun, 05 Sep 2021 11:45:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/aws-do-not-spend-money/</guid>
+      <guid>http://localhost:43210/post/aws-do-not-spend-money/</guid>
       <description>気づいたらAWSの請求額が数百ドルを超えてた。ということはよくある。 そこで、なるべくお金がかからないように運用する方法を即効性がある運用編、開発編、セキュリティ編、その他編に分けて解説する。 運用編 基本的に運用編に書いてある内容を実践すれば、ほぼ課金されることはない。マウスクリックだけで簡単に実践できるので、ぜひともやっておきたい。 インスタンスを多重起動しない まず、前提としてEC2やRDS等のインス</description>
     </item>
-    
+    <item>
+      <title>【Django】kwargsを使ってビューを使いまわす【urls.py&#43;views.py】</title>
+      <link>http://localhost:43210/post/django-args-kwargs-view-recycle/</link>
+      <pubDate>Thu, 02 Sep 2021 19:20:58 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-args-kwargs-view-recycle/</guid>
+      <description>kwargsを使うことで似たような処理のビューを使いまわしできる。これによりビューのコード行数を大幅に削減可能。 状況 例えば、私のブログのように、記事一覧や記事本文を表示する左側のメインエリア、カテゴリやタグなどを表示するサイドエリア、2つのエリアがあったとする。 つまり、カテゴリやタグなどの情報は常に表示し、URLによってメインエリアの情報を切り替えたい場合、urls.pyはどうなるだろうか？ すぐに</description>
+    </item>
     <item>
       <title>【Django】実行されるクエリ(SQL)を確認する【.query】</title>
-      <link>https://noauto-nolife.com/post/django-models-query/</link>
+      <link>http://localhost:43210/post/django-models-query/</link>
       <pubDate>Thu, 02 Sep 2021 13:20:50 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-models-query/</guid>
+      <guid>http://localhost:43210/post/django-models-query/</guid>
       <description>備忘録として。複雑なORMになった時、クエリを確認する時は、末尾に.query属性を使う。print文で出力できる。 print(Topic.objects.all().query) #出力結果 SELECT &amp;quot;topic&amp;quot;.&amp;quot;id&amp;quot;, &amp;quot;topic&amp;quot;.&amp;quot;comment&amp;quot; FROM &amp;quot;topic&amp;quot; 表示はされるものの、SQLが最適化されているわけではない点に注意。あくまでも挙動がおかしいときの確認用として。 【補足】生のSQLを実行する 出力した生のSQLを少しいじって実行させることもできる。SQLの末尾を示す;は不要。 Topic.objects.raw(&amp;quot;SELECT * FROM topic&amp;quot;) SQLインジェクションには十分注</description>
     </item>
-    
-    <item>
-      <title>Djangoで中間テーブルありの多対多フィールドを使用したモデルに良いね・悪いねする【related_nameとカスタムユーザーモデル】</title>
-      <link>https://noauto-nolife.com/post/django-m2m-through-good-bad/</link>
-      <pubDate>Tue, 24 Aug 2021 13:03:33 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-m2m-through-good-bad/</guid>
-      <description>状況 以前作った、【Django】Reverse accessor for &amp;lsquo;Topic.good&amp;rsquo; clashes with reverse accessor for &amp;lsquo;Topic.user&amp;rsquo;.というエラーの対処【Topicに対する良いね、多対多中間フィールドあり】では、モデルはできあがっているものの、肝心のトピックに良いね悪いねするビューの処理、テンプレートの描画までは解説していない。 そこで、今回はトピックに良いね悪いねをする方法を解説する。 bbs/models.pyとuse</description>
-    </item>
-    
     <item>
       <title>CSS3とHTML5のタブシステムをtransitionでアニメーション表示に仕立てる</title>
-      <link>https://noauto-nolife.com/post/css3-tab-system-transition/</link>
+      <link>http://localhost:43210/post/css3-tab-system-transition/</link>
       <pubDate>Sat, 14 Aug 2021 12:05:55 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-tab-system-transition/</guid>
+      <guid>http://localhost:43210/post/css3-tab-system-transition/</guid>
       <description>CSS3とHTML5だけでタブを作り、複数のページを表示させる【JS不要】で作ったタブシステムは瞬間的に切り替わるので、少し野暮ったい。 他にアニメーションを多用したサイトであれば、タブシステムも同様にアニメーションを実装するべきかと思われる。そこで本記事ではその解説を行う。 タブシステムの基本形(改修) 従来型は、スマホ表示になると、折り返して表示していたので、横スクロールに仕立てる。 まずHTML。 &amp;lt;!DOCTYPE</description>
     </item>
-    
     <item>
       <title>Djangoのモデルに独自メソッドを追加、テンプレートに表示【フィールド間の計算、他モデルの値の表示などに有効】</title>
-      <link>https://noauto-nolife.com/post/django-models-add-method-template-attribute/</link>
+      <link>http://localhost:43210/post/django-models-add-method-template-attribute/</link>
       <pubDate>Sat, 07 Aug 2021 16:28:40 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-models-add-method-template-attribute/</guid>
+      <guid>http://localhost:43210/post/django-models-add-method-template-attribute/</guid>
       <description>モデルにメソッドを追加することで、テンプレート側から属性値として参照することができる。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=2000) time = models.IntegerField(verbose_name=&amp;quot;活動時間(分)&amp;quot;,default=0) level = models.IntegerField</description>
     </item>
-    
     <item>
       <title>DjangoでDBへデータ格納時(save)、削除時(delete)に処理を追加する【models.py、forms.py、serializer.pyのメソッドオーバーライド】</title>
-      <link>https://noauto-nolife.com/post/django-models-save-delete-override/</link>
+      <link>http://localhost:43210/post/django-models-save-delete-override/</link>
       <pubDate>Sat, 07 Aug 2021 16:20:24 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-models-save-delete-override/</guid>
+      <guid>http://localhost:43210/post/django-models-save-delete-override/</guid>
       <description>例えば、クライアントがお問い合わせフォームに入力して送信した時、DBに内容を保存すると同時に管理者に内容をメールで送信したい。そんなことは無いだろうか？ しかも、その保存のビューの処理が各所に分散していて、一つ一つ書いていくのが面倒な時。こういう時はモデルクラスのsaveメソッドを書き換える(オーバーライドする)ことで対処できる。 オーバーライドの方法 公式からコードを拝借。 models.pyにて、下記</description>
     </item>
-    
     <item>
       <title>Djangoでマイグレーションした時、『Auto-created primary key used when not defining a primary key type』と警告される場合の対策</title>
-      <link>https://noauto-nolife.com/post/django-models-autofield-warnings/</link>
+      <link>http://localhost:43210/post/django-models-autofield-warnings/</link>
       <pubDate>Sat, 31 Jul 2021 20:15:18 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-models-autofield-warnings/</guid>
+      <guid>http://localhost:43210/post/django-models-autofield-warnings/</guid>
       <description>マイグレーションした時、下記のようなエラーが出る。 これは主キーを定義せず、自動的に作っているからである。 対策は下記をsettings.pyに追加するだけ。 DEFAULT_AUTO_FIELD=&#39;django.db.models.AutoField&#39; 結論 主キーをUUIDにしている場合、発生しない警告文である。 Django-allauth等のDjango用のライブラリを使っている場合も、ライブラリの中にモデルが埋まっており、対策をしない限り、このような警告文が出る。 参照元 https://stackoverflow.com/questions/66971594/auto-create-primary-key-used-when-not-defining-a-primary-key-type-warning-in-dja</description>
     </item>
-    
     <item>
       <title>Djangoで主キーのリスト型を作り、合致するレコードを検索する【values_list &#43; filter】</title>
-      <link>https://noauto-nolife.com/post/django-id-list-filter/</link>
+      <link>http://localhost:43210/post/django-id-list-filter/</link>
       <pubDate>Sat, 31 Jul 2021 16:36:00 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-id-list-filter/</guid>
+      <guid>http://localhost:43210/post/django-id-list-filter/</guid>
       <description>例えば、複数のレコードのIDを検索して削除したい場合、下記のように記述する。 result = Topic.objects.filter(id__in=[1,2,3]) print(result) #idが1,2,3のデータが表示される。 これがリスト型のIDを使用したIN句である。 ちなみに、検索結果からIDのリストを作るには、下記のようにする。 result = list(Topic.objects.all().values_list(&amp;quot;id&amp;quot;,flat=True)) print(result) #[1, 2, 3, 4, 5, 6, 7, 8] idだけカラムを指定し、flat=Trueとすることで数値型のリストを作ることができる。 参照元 https://docs.djangoproject.com/en/3.2/ref/models/querysets/#in https://docs.djangoproject.com/en/3.2/ref/models/querysets/#values-list</description>
     </item>
-    
     <item>
       <title>Pythonの角括弧と丸括弧の違い、丸括弧を使う場合の注意点【()と[]、タプル型とリスト型】</title>
-      <link>https://noauto-nolife.com/post/python-brackets/</link>
+      <link>http://localhost:43210/post/python-brackets/</link>
       <pubDate>Tue, 22 Jun 2021 15:12:04 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/python-brackets/</guid>
+      <guid>http://localhost:43210/post/python-brackets/</guid>
       <description>Djangoの公式コードを流用したりしていると、よく見かける()を使ったコード。 これはタプルである。タプルはリスト型の[]と同じであるが、書き換えが不可能であるという点でリスト型とは異なる。 タプルを定義する時、下記のような書き方をしてしまうと、文字列型として判定されてしまう。 (&amp;quot;username&amp;quot;) タプルとして扱ってもらいたいのであれば、下記のように記述する。カンマを忘れずに。 (&amp;quot;username&amp;quot;,) タプルはリストと同様に扱えるので、後から</description>
     </item>
-    
     <item>
       <title>【Django】カスタムユーザーモデルでユーザーブロック機能を実装させる【ManyToManyFieldでユーザーモデル自身を指定】</title>
-      <link>https://noauto-nolife.com/post/django-m2m-usermodel/</link>
+      <link>http://localhost:43210/post/django-m2m-usermodel/</link>
       <pubDate>Mon, 21 Jun 2021 21:36:59 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-m2m-usermodel/</guid>
+      <guid>http://localhost:43210/post/django-m2m-usermodel/</guid>
       <description>本格的にSNS等のサービスを運用する時、必要になるのがユーザーフォロー(友達)やユーザーブロックの機能。理論上、いずれもユーザーとユーザーを多対多でつなぐことで実現できる。 今回はユーザーブロックの機能をカスタムユーザーモデルを使って再現する。 コードは【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】から流用している。 ユーザーモデル u</description>
     </item>
-    
     <item>
       <title>【django】ManyToManyFieldでフィールドオプションthroughを指定、中間テーブルを詳細に定義する【登録日時など】</title>
-      <link>https://noauto-nolife.com/post/django-m2m-through/</link>
+      <link>http://localhost:43210/post/django-m2m-through/</link>
       <pubDate>Mon, 21 Jun 2021 16:57:08 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-m2m-through/</guid>
+      <guid>http://localhost:43210/post/django-m2m-through/</guid>
       <description>多対多のフィールドは、複数から1つを選ぶ1対多よりも使う機会が多いだろう。 飲食店が提供するメニューの食品アレルギー指定、複数のユーザーに対する通知、ユーザーに対するフォローやブロックの機能など。 DjangoではManyToManyFieldを定義した時、中間テーブルは自動的に作られる。そのため、そのままでは中間テーブルにレコードが挿入された時間などが記録できない。 自分で中間テーブルの中身を作りたい</description>
     </item>
-    
     <item>
       <title>Djangoの管理サイト(admin)をカスタムする【全件表示、全フィールド表示、並び替え、画像表示、検索など】</title>
-      <link>https://noauto-nolife.com/post/django-admin-custom/</link>
+      <link>http://localhost:43210/post/django-admin-custom/</link>
       <pubDate>Thu, 10 Jun 2021 12:30:46 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-admin-custom/</guid>
+      <guid>http://localhost:43210/post/django-admin-custom/</guid>
       <description>admin.pyはとても便利ではあるが、ただのadmin.site.register([モデルクラス])ではとても使いづらい。 特にそのままでは管理サイト内で画像を取り扱ったり、複数のデータを参照したり、検索や絞り込みしたりすることはできない。 そこで、管理サイトをカスタマイズして使いやすくさせる。 コード 元コードは、Djangoで画像及びファイルをアップロードする方法から流用した。以下のようにmode</description>
     </item>
-    
     <item>
       <title>【django.core.paginator】一度に2ページ以上ジャンプできるように改良する【inclusion_tag()】</title>
-      <link>https://noauto-nolife.com/post/django-paginator-custom/</link>
+      <link>http://localhost:43210/post/django-paginator-custom/</link>
       <pubDate>Fri, 07 May 2021 09:50:13 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-paginator-custom/</guid>
+      <guid>http://localhost:43210/post/django-paginator-custom/</guid>
       <description>以前のページネーション実装記事では、検索とページのパラメーターの両立を行った。 しかし、このページネーションは1ページずつしか移動できない。つまり、1ページ目の状態から2ページ目に行くことはできても、3ページ目にジャンプすることはできないのだ。 そこでページネーションを改良させ、一度に2ページ以上ジャンプできるように改良する。 やりたいことと方法論の解説 やりたいこと 要するに、本記事でやりたいのはこういう</description>
     </item>
-    
     <item>
       <title>Djangoでviews.pyからmodels.pyのフィールドオプションを参照する【verbose_name,upload_to】</title>
-      <link>https://noauto-nolife.com/post/django-reference-models-option/</link>
+      <link>http://localhost:43210/post/django-reference-models-option/</link>
       <pubDate>Tue, 04 May 2021 20:30:19 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-reference-models-option/</guid>
+      <guid>http://localhost:43210/post/django-reference-models-option/</guid>
       <description>需要ないかもだけど、備忘録として。 Video.thumbnail.field.upload_to つまり、 [モデルクラス].[フィールド名].field.[フィールドオプション] これで参照できる。 用途 FileFieldでアップロードした動画のサムネイル(ImageField)をviews.pyが自動生成する時、アップロード先のパスを指定する必要があるが、models.pyのフィールドオプションとして書いたupload_toと整合性を合わせるために、本記事で扱</description>
     </item>
-    
     <item>
       <title>Djangoでmakemigrationsコマンドを実行しても、No changes detectedと言われる場合の対処法</title>
-      <link>https://noauto-nolife.com/post/django-makemigrations-not-applied/</link>
+      <link>http://localhost:43210/post/django-makemigrations-not-applied/</link>
       <pubDate>Wed, 28 Apr 2021 15:00:56 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-makemigrations-not-applied/</guid>
+      <guid>http://localhost:43210/post/django-makemigrations-not-applied/</guid>
       <description>Djangoでマイグレーションファイルを作る python3 manage.py makemigrations このコマンドを実行しても返ってくるのが、 No changes detected とされ、マイグレーションファイルが作られないことがある。当然この状態でmigrateコマンドを打ってもDBには反映されない。 そこで、本記事ではこの対処法について列挙する。 対処法1:settings.pyのINSTALLED_APPSに対象のアプリを追加 python3 manage.py makemigrations python3 manage.py migrate この2つのコマンドを打って、models</description>
     </item>
-    
     <item>
       <title>Laravelで--resourceで作ったコントローラのルーティングを解体する</title>
-      <link>https://noauto-nolife.com/post/laravel-to-resource/</link>
+      <link>http://localhost:43210/post/laravel-to-resource/</link>
       <pubDate>Tue, 20 Apr 2021 16:26:25 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-to-resource/</guid>
+      <guid>http://localhost:43210/post/laravel-to-resource/</guid>
       <description>例えば、コントローラーを以下のように作るとする。 php artisan make:controller TopicsController --resource これで、Restfulに必要なcreateやstore等のアクションが自動的に作られるのだが、後からアクションを追加削除しようとした時、ルーディングに追加削除をする必要がある。 その時、このように書かれてあると(注意:下記はLaravel7.x系のルーティング記法)、ルーティングの書き換えは難しい。 Route::resource(&#39;/topics&#39;, &#39;TopicsController&#39;); そこで、本記事は--resourceで作</description>
     </item>
-    
     <item>
       <title>Laravelのプロジェクト名を書き換える【設定に依存していないのであれば、普通にディレクトリ名を書き換えるだけでOK】</title>
-      <link>https://noauto-nolife.com/post/laravel-project-rename/</link>
+      <link>http://localhost:43210/post/laravel-project-rename/</link>
       <pubDate>Mon, 19 Apr 2021 08:37:27 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-project-rename/</guid>
+      <guid>http://localhost:43210/post/laravel-project-rename/</guid>
       <description>既存のLaravelのプロジェクトを、プロジェクト名だけ書き換えて編集する。 環境 Ubuntu 18.04 Laravel Framework 7.30.4 結論 下記コマンドでプロジェクトを作ったとする。 composer create-project --prefer-dist laravel/laravel [プロジェクト名] 上記コマンドで生成された[プロジェクト名]のディレクトリ名を書き換えれば良いだけの話である。 理屈 まず、プロジェクトを作った後、プロジェクトのディレクトリに移動して、下記コマンドを実行してもらいたい。 grep -rl &amp;quot;[プロジェクト名]&amp;qu</description>
     </item>
-    
     <item>
       <title>JavascriptからCookieを扱う【動画の設定音量の記録と読み込み】</title>
-      <link>https://noauto-nolife.com/post/javascript-cookie/</link>
+      <link>http://localhost:43210/post/javascript-cookie/</link>
       <pubDate>Tue, 13 Apr 2021 18:59:38 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/javascript-cookie/</guid>
+      <guid>http://localhost:43210/post/javascript-cookie/</guid>
       <description>JavaScriptからCookieを扱う。これで、サイトのデータをユーザーのブラウザに保存できる。 Cookieにvideoタグで設定した音量情報を格納、読み込みするコード 実例を交えながら解説する。下記はvideoタグで指定した音量をCookieに記録する。 window.addEventListener(&amp;quot;load&amp;quot; , function (){ const video = document.querySelector(&amp;quot;video&amp;quot;); video.addEventListener(&amp;quot;volumechange&amp;quot;,(event) =&amp;gt; { document.cookie = &amp;quot;volume=&amp;quot; + decodeURIComponent(event.target.volume) + &amp;quot;;Path=/single;SameSite=strict&amp;quot;; }); set_video_volume(); }); function set_video_volume(){ let cookies = document.cookie; console.log(cookies); let cookiesArray = cookies.split(&#39;;&#39;); let volume = 0; for(let c of cookiesArray) { console.log(c); let cArray = c.split(&#39;=&#39;); if( cArray[0] === &amp;quot;volume&amp;quot;){ volume = Number(cArray[1]); console.log(volume); break; } } const video = document.querySelector(&amp;quot;video&amp;quot;); video.volume = volume; } Cookie</description>
     </item>
-    
     <item>
       <title>jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】</title>
-      <link>https://noauto-nolife.com/post/jquery-to-javascript/</link>
+      <link>http://localhost:43210/post/jquery-to-javascript/</link>
       <pubDate>Tue, 13 Apr 2021 18:32:51 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/jquery-to-javascript/</guid>
+      <guid>http://localhost:43210/post/jquery-to-javascript/</guid>
       <description>jQueryに依存したコードをそのままにするのは再利用性に欠け、開発効率にも関わる。そこで、今回はjQueryのコードを適宜javascriptに書き換える。 セレクタ まずは基本のセレクタ以下のように書き換える。 var test = $(&amp;quot;.test&amp;quot;); //↓以下に書き換え var test = document.querySelectorAll(&amp;quot;.test&amp;quot;); //←全ての.textクラスの要素を抜き取る var test = document.querySelector(&amp;quot;.test&amp;quot;); //←.testクラスの1番最初の要素を抜き取る jQueryが提供するメソッドや属性などは使用できなく</description>
     </item>
-    
     <item>
       <title>CSS3とHTML5だけでタブを作り、複数のページを表示させる【JS不要】</title>
-      <link>https://noauto-nolife.com/post/css3-tab-system/</link>
+      <link>http://localhost:43210/post/css3-tab-system/</link>
       <pubDate>Wed, 17 Mar 2021 08:54:24 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-tab-system/</guid>
+      <guid>http://localhost:43210/post/css3-tab-system/</guid>
       <description>例えば、こんなふうにタブでページを切り替えて表示させるフロント。 かつてはJSじゃないと成立しなかったが、今となっては、JS不要でCSS3とHTML5だけで再現できる。 コード まず、HTML。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;タブシステム&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;quot;tab_radio_1&amp;quot; class=&amp;quot;tab_radio&amp;quot; type=&amp;quot;radio&amp;quot; name=&amp;quot;tab_system&amp;quot;&amp;gt;&amp;lt;label class=&amp;quot;tab_label&amp;quot; for=&amp;quot;tab_radio_1&amp;quot;&amp;gt;タブ1&amp;lt;/label&amp;gt; &amp;lt;input id=&amp;quot;tab_radio_2&amp;quot; class=&amp;quot;tab_radio&amp;quot; type=&amp;quot;radio&amp;quot;</description>
     </item>
-    
     <item>
       <title>【Django】バッチ処理のOpenCVが撮影した画像をDBに保存する</title>
-      <link>https://noauto-nolife.com/post/django-batch-opencv/</link>
+      <link>http://localhost:43210/post/django-batch-opencv/</link>
       <pubDate>Tue, 16 Mar 2021 16:15:03 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-batch-opencv/</guid>
+      <guid>http://localhost:43210/post/django-batch-opencv/</guid>
       <description>Djangoのバッチ処理を実行し、DBにデータを格納させる。ただし、OpenCVで撮影した画像をDBに保存させる。本記事ではその手順を記す。 実行環境・やりたいこと 実行環境 Django 2.2以上 Ubuntu 18.04 やりたいこと 流れはだいたいこんな感じ OS起動時、バッチ処理がCrontabから実行される バッチ処理はOpenCVを使用し、撮影した画像を保存 保存した画像とコメントをDBに記録 1秒経ったら、2に戻る つまり、コマ撮りし</description>
     </item>
-    
     <item>
       <title>Djangoでカスタムユーザーモデルを外部キーとして指定する方法【1対多】</title>
-      <link>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</link>
+      <link>http://localhost:43210/post/django-custom-user-model-foreignkey/</link>
       <pubDate>Sat, 20 Feb 2021 11:13:37 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-custom-user-model-foreignkey/</guid>
+      <guid>http://localhost:43210/post/django-custom-user-model-foreignkey/</guid>
       <description>例えば、簡易掲示板で投稿者のユーザーIDを外部キーとして指定したい場合がある。 作ったカスタムユーザーモデルを外部キーとして通常のアプリから指定する方法を解説する。 本記事では、下記記事で解説したカスタムユーザーモデルを実装したことを前提として話を進める。 【Django】allauthとカスタムユーザーモデルを実装した簡易掲示板を作る【AbstrastBaseUser】 カスタムユーザーモデルを外部キー</description>
     </item>
-    
     <item>
       <title>Laravelで主キーにUUIDを実装させる方法【laravel-eloquent-uuid】</title>
-      <link>https://noauto-nolife.com/post/laravel-uuid/</link>
+      <link>http://localhost:43210/post/laravel-uuid/</link>
       <pubDate>Sat, 13 Feb 2021 13:45:59 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-uuid/</guid>
+      <guid>http://localhost:43210/post/laravel-uuid/</guid>
       <description>主キーにUUIDを使用することで、デフォルトの連番で数値型のIDと違って予測されることがない。これはセキュリティ上、重要なことなのでなるべく開発初期段階で実装したい。 実装方法 UUID実装用のライブラリをcomposerからインストール。 composer require goldspecdigital/laravel-eloquent-uuid:^7.0 ユーザーモデルを書き換える。database/migrations/2014_10_12_000000_create_users_table.phpにて、下記</description>
     </item>
-    
     <item>
-      <title>DjangoでSendgridを実装させる方法【APIキーと2段階認証を利用する】</title>
-      <link>https://noauto-nolife.com/post/django-sendgrid/</link>
+      <title>Django・PythonでSendgridを実装しメールを送信する方法【APIキーと2段階認証を利用する】</title>
+      <link>http://localhost:43210/post/django-sendgrid/</link>
       <pubDate>Fri, 12 Feb 2021 17:48:49 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-sendgrid/</guid>
+      <guid>http://localhost:43210/post/django-sendgrid/</guid>
       <description>Sendgridのパスワードを使用したメール送信が廃止され、APIを使用した2段階認証が強制されるため、ここに対策を記す。本記事はDjango(Python)を対象とした対策について解説する。 django-sendgrid-v5のインストール APIを使用するために、pipにてdjango-sendgrid-v5をインストールさせる。 pip install django-sendgrid-v5 settings.pyにて設定を施す settings.pyの</description>
     </item>
-    
     <item>
       <title>【Laravel】静的ファイルのディレクトリ作るときの注意点【publicのディレクトリ名で即404エラー】</title>
-      <link>https://noauto-nolife.com/post/laravel-public-dirname-caution/</link>
+      <link>http://localhost:43210/post/laravel-public-dirname-caution/</link>
       <pubDate>Mon, 08 Feb 2021 14:59:16 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-public-dirname-caution/</guid>
+      <guid>http://localhost:43210/post/laravel-public-dirname-caution/</guid>
       <description>Laravelで静的ファイルを作る時、アプリごとにCSSとJSを仕分けしたい場合がある。しかし、作るディレクトリ名を間違えれば、たちまち404エラーが出てしまう。 本記事ではLaravelの404エラーの原因のひとつであるパスの衝突について解説する。 Laravelで404エラーが起こる原因 例えば、ルーティングがこんな状態で Route::get(&#39;/&#39;, function () { return view(&#39;welcome&#39;); }); Route::resource(&amp;quot;/memo&amp;quot;,&amp;quot;MemoController&amp;quot;); memoというアプリを作ったとしよう。当然、memoアプリ内で</description>
     </item>
-    
     <item>
       <title>Laravelで検索とページネーションを両立させる【ANDとOR検索も】</title>
-      <link>https://noauto-nolife.com/post/laravel-search-paginate/</link>
+      <link>http://localhost:43210/post/laravel-search-paginate/</link>
       <pubDate>Tue, 02 Feb 2021 13:48:05 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-search-paginate/</guid>
+      <guid>http://localhost:43210/post/laravel-search-paginate/</guid>
       <description>タイトルの通り。laravelにてAND検索とOR検索を実装させつつ、ページネーションも両立させる。コードはlaravelでCRUD簡易掲示板を作る【Restful】から流用している。 まずはAND検索とOR検索を実装させる 流れ的には、スペース区切りのキーワードを送信させ、それをコントロール側で区切り、クエリをビルドする。クエリをビルドする時、AND検索指定であれば、where()の追加、OR検索指</description>
     </item>
-    
     <item>
       <title>【Django】manage.pyコマンドを追加させる【バッチ処理、常駐プログラムなどに】</title>
-      <link>https://noauto-nolife.com/post/django-command-add/</link>
+      <link>http://localhost:43210/post/django-command-add/</link>
       <pubDate>Mon, 01 Feb 2021 18:25:13 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-command-add/</guid>
+      <guid>http://localhost:43210/post/django-command-add/</guid>
       <description>Djangoのmanage.pyにはコマンドを追加することができる。これを利用すれば、アプリディレクトリで定義したモデルをそのまま流用してDBにアクセスしたり、コマンド一発で複雑な処理を終わらせたり、バッチ処理として運用させることも簡単にできる。 manage.pyにコマンドを追加させる まず、任意のアプリディレクトリにmanagement/commands/ディレクトリを作る。 mkdir -p [アプリディレクト</description>
     </item>
-    
     <item>
       <title>Laravelで画像とファイルをアップロードする</title>
-      <link>https://noauto-nolife.com/post/laravel-fileupload/</link>
+      <link>http://localhost:43210/post/laravel-fileupload/</link>
       <pubDate>Mon, 01 Feb 2021 14:28:58 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-fileupload/</guid>
+      <guid>http://localhost:43210/post/laravel-fileupload/</guid>
       <description>タイトルの通り。単にアップロードするだけでなく、MIME属性に基づいたファイルのバリデーションを行い、セキュリティにも配慮する。 なお、本記事はLaravelで検索とページネーションを両立させる【ANDとOR検索も】からコードを流用している。 流れ テーブルに画像パス格納用カラムを追加してマイグレーション モデルに画像パス格納用カラムの名前を追加する バリデーション用のフォームリクエストを定義する コントロー</description>
     </item>
-    
     <item>
       <title>laravelで開発中、ログを表示させる【エラー箇所の確認・デバッグ作業に】</title>
-      <link>https://noauto-nolife.com/post/laravel-log/</link>
+      <link>http://localhost:43210/post/laravel-log/</link>
       <pubDate>Mon, 01 Feb 2021 10:23:55 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-log/</guid>
+      <guid>http://localhost:43210/post/laravel-log/</guid>
       <description>laravelではDjango(Python)のように処理の途中でprint()を実行してターミナルにログを表示させることはできない。代替として使用されるのがLogファサードを使用する方法である。 Logファサードを使用してログを表示させる 下記コードを任意の場所に書き込む。 \Log::debug(&amp;quot;ログ&amp;quot;); 内容は全てstorage/logs/laravel.log内に保存される</description>
     </item>
-    
     <item>
       <title>DjangoやPythonにおける*argsと**kwargsとは何か</title>
-      <link>https://noauto-nolife.com/post/django-args-kwargs/</link>
+      <link>http://localhost:43210/post/django-args-kwargs/</link>
       <pubDate>Tue, 26 Jan 2021 17:07:45 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-args-kwargs/</guid>
+      <guid>http://localhost:43210/post/django-args-kwargs/</guid>
       <description>結論から言うと、*argsはキーワード未指定の引数のリスト、**kwargsはキーワードが指定された引数の辞書を手に入れるためのものである。 *argsはキーワード未指定の引数のリスト まずは、下記コードを参考にしたい。 #! /usr/bin/env python3 # -*- coding: utf-8 -*- import sys def main(name,*args): print(name) print(args) if __name__ == &amp;quot;__main__&amp;quot;: try: main(&amp;quot;Tom&amp;quot;,&amp;quot;Mike&amp;quot;,&amp;quot;Bob&amp;quot;) except KeyboardInterrupt: print(&amp;quot;\nprogram was ended.\n&amp;quot;) sys.exit() main()関数に3つの文字列の引数を与えている。&amp;quot;Tom&amp;quot;,&amp;quot;Mike&amp;quot;,&amp;quot;Bo</description>
     </item>
-    
     <item>
       <title>【Django】外部キーに対応したデータの個数をカウントして表示【リプライ・コメント数の表示に有効】【annotate&#43;Count】</title>
-      <link>https://noauto-nolife.com/post/django-foreign-count/</link>
+      <link>http://localhost:43210/post/django-foreign-count/</link>
       <pubDate>Tue, 26 Jan 2021 17:02:16 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-foreign-count/</guid>
+      <guid>http://localhost:43210/post/django-foreign-count/</guid>
       <description>例えば、Djangoで掲示板サイトを作り、投稿した内容に対してリプライできる機能を付けたとする。そのリプライ数を一覧表示時に合わせて表示させる時、どうする？ 本記事では、上記のように一対多のリレーションが構築されている環境下で、多に該当するデータ数を計算して表示させる方法を解説する。 多のデータ数を計算してそれぞれ表示させる 下記のような、Topicに対してReplyができるモデルになっていたとする。 from</description>
     </item>
-    
     <item>
       <title>【django-cleanup】画像等のファイルを自動的に削除する</title>
-      <link>https://noauto-nolife.com/post/django-cleanup/</link>
+      <link>http://localhost:43210/post/django-cleanup/</link>
       <pubDate>Tue, 26 Jan 2021 16:18:42 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-cleanup/</guid>
+      <guid>http://localhost:43210/post/django-cleanup/</guid>
       <description>例えば、Djangoの画像掲示板で削除をする時、ビューでレコードを削除すると同時に、レコードに紐付いた画像も同時に削除すると思う。その時、パスを抜き取り、os.remove()などを使用して画像を削除しているようでは、ビューの処理がどんどん増えていく。 Djangoでは、レコードに紐付いたファイルの削除処理記述の手間を減らしてくれるdjango-cleanupなるものがある。本記事ではその使用方法を</description>
     </item>
-    
     <item>
       <title>Djangoで埋め込みカスタムテンプレートタグを実装する方法</title>
-      <link>https://noauto-nolife.com/post/django-custom-template-tags/</link>
+      <link>http://localhost:43210/post/django-custom-template-tags/</link>
       <pubDate>Tue, 26 Jan 2021 15:55:04 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-custom-template-tags/</guid>
+      <guid>http://localhost:43210/post/django-custom-template-tags/</guid>
       <description>Djangoでデータの値に応じて文字列を返したい場合は、カスタムテンプレートタグを使用すれば良い。下記記事は、ページ移動と検索を両立させるため、文字列を返す、カスタムテンプレートタグを実装している。 Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】 しかし、データの値に応じてHTMLタグを返却するには、上記の方法では成立しない。safeフィル</description>
     </item>
-    
     <item>
       <title>Django Templates Language(DTL)でincludeを実行する時に引数も与える</title>
-      <link>https://noauto-nolife.com/post/django-templates-include/</link>
+      <link>http://localhost:43210/post/django-templates-include/</link>
       <pubDate>Thu, 24 Dec 2020 16:51:03 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-templates-include/</guid>
+      <guid>http://localhost:43210/post/django-templates-include/</guid>
       <description>Djangoでテンプレートファイルを分離させ、includeするときがある。複数の箇所で同じフォームを表示したりする時がそうだ。 ただ、フォームのIDをそれぞれの箇所で別々とする場合、引数を指定する必要がある。 結論 結論から言うと、こうなる。 {% include &amp;quot;[パス]&amp;quot; with [引数名]=[値] %} includeするhtmlのパスを指定した後、withを指定することで引数の指定が可能になる。指定した引</description>
     </item>
-    
     <item>
       <title>Djangoでデフォルト数値型のid(主キー)からUUID型にする【データ移行】</title>
-      <link>https://noauto-nolife.com/post/django-id-to-uuid/</link>
+      <link>http://localhost:43210/post/django-id-to-uuid/</link>
       <pubDate>Thu, 24 Dec 2020 16:42:59 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-id-to-uuid/</guid>
+      <guid>http://localhost:43210/post/django-id-to-uuid/</guid>
       <description>PostgreSQL等のDBサーバーで、1対多等のリレーションを組んだウェブアプリを作る時、Djangoのデフォルトの数値型のidではエラーが出てしまう。つまり、UUIDの使用は不可避。 しかし、既にデータがいくらか存在しているため、DB内のデータを全削除してUUIDにマイグレーションし直すのは不可能。困った。 こういう、数値型の主キーが割り当てられた既存データを保持したまま、UUID型の主キーに書き</description>
     </item>
-    
     <item>
       <title>【Django】一対多、多対多のリレーションでforms.pyを使ったバリデーションとフォームを表示</title>
-      <link>https://noauto-nolife.com/post/django-m2m-form/</link>
+      <link>http://localhost:43210/post/django-m2m-form/</link>
       <pubDate>Tue, 01 Dec 2020 16:03:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-m2m-form/</guid>
+      <guid>http://localhost:43210/post/django-m2m-form/</guid>
       <description>本記事ではDjangoで一対多、多対多のリレーションを実装した上で、forms.pyを使用し、フォームをバリデーションする。 また、単にforms.pyからフォームのテンプレートを作るだけでなく、複数指定が要求されるフォームの作り方についても解説する。 コードはDjangoで多対多のリレーションをテンプレートで表示する方法【ManyToManyField】から流用。 【1】forms.pyを使用したフォ</description>
     </item>
-    
     <item>
       <title>Djangoで多対多のリレーションの構造と作り方、テンプレートで表示する方法【ManyToManyField】</title>
-      <link>https://noauto-nolife.com/post/django-many-to-many/</link>
+      <link>http://localhost:43210/post/django-many-to-many/</link>
       <pubDate>Fri, 27 Nov 2020 17:20:39 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-many-to-many/</guid>
+      <guid>http://localhost:43210/post/django-many-to-many/</guid>
       <description>多対多のリレーションの作り方 多対多のモデルは以下のように作る。 from django.db import models class Allergy(models.Model): name = models.CharField(verbose_name=&amp;quot;アレルギー名&amp;quot;,max_length=10) def __str__(self): return self.name class Menu(models.Model): name = models.CharField(verbose_name=&amp;quot;品名&amp;quot;,max_length=20) breakfast = models.BooleanField(verbose_n</description>
     </item>
-    
     <item>
       <title>DjangoでYou are Trying to add a non-nullable fieldと表示されたときの対策【makemigrations】</title>
-      <link>https://noauto-nolife.com/post/django-non-nullable/</link>
+      <link>http://localhost:43210/post/django-non-nullable/</link>
       <pubDate>Wed, 18 Nov 2020 08:23:05 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-non-nullable/</guid>
+      <guid>http://localhost:43210/post/django-non-nullable/</guid>
       <description>Djangoのモデルにフィールドを追加して、さあマイグレーションしようとすると、こんな表示がされることがある。 これはなんなのか、対策も兼ねて解説する。 この警告文の解説 要するに、既にレコードが存在する状態で、NULL禁止かつデフォルト値指定なしのフィールドを追加するとこうなる。 デフォルト指定していないので、既存のレコードにはNULL禁止であるにも関わらず、NULLが入ってしまう。そこで既存のレコード</description>
     </item>
-    
     <item>
       <title>DjangoでHelloWorld【HttpResponse及びレンダリング】</title>
-      <link>https://noauto-nolife.com/post/startup-django-helloworld/</link>
+      <link>http://localhost:43210/post/startup-django-helloworld/</link>
       <pubDate>Mon, 16 Nov 2020 08:50:24 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-django-helloworld/</guid>
+      <guid>http://localhost:43210/post/startup-django-helloworld/</guid>
       <description>Djangoのハローワールドは、やり方が何通りもある。 普通のPythonであれば、 print(&amp;quot;HelloWorld&amp;quot;) ほぼこの一通りであるが、Djangoの場合は主にHttpResponseの他に、テンプレートをレンダリングして返す方法がある。 一般的な開発においてはテンプレートのレンダリングが主流である。しかし、Django初心者、フレームワーク未経験者には難度が高い。故に、本記事では難度の低いHttpResponseから解説する</description>
     </item>
-    
     <item>
       <title>Djangoでページネーションを実装する方法【django.core.paginator】【パラメータ両立】</title>
-      <link>https://noauto-nolife.com/post/django-paginator/</link>
+      <link>http://localhost:43210/post/django-paginator/</link>
       <pubDate>Wed, 11 Nov 2020 17:57:49 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-paginator/</guid>
+      <guid>http://localhost:43210/post/django-paginator/</guid>
       <description>殆どのプロジェクトで実装必須になるページネーション。 Djangoではdjango.core.paginatorが用意されているので比較的簡単に実装できる。 しかし、単にページネーションを実装しただけでは他のURLパラメーターが保持されない。例えば、検索とページネーションを両立させることはできない。 本記事では他のURLパラメーターを保持した状態で、ページネーションを実装する術を解説する。 流れ views</description>
     </item>
-    
     <item>
       <title>Djangoでスペース区切りでOR検索、AND検索をする方法【django.db.models.Q】</title>
-      <link>https://noauto-nolife.com/post/django-or-and-search/</link>
+      <link>http://localhost:43210/post/django-or-and-search/</link>
       <pubDate>Wed, 11 Nov 2020 17:56:10 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-or-and-search/</guid>
-      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 クエリビルダでスペース区切りのキーワード検索をする</description>
+      <guid>http://localhost:43210/post/django-or-and-search/</guid>
+      <description>普通、検索エンジンで検索する時、こう検索するであろう。 Django UUIDFields 使い方 Djangoのモデルオブジェクトで検索しようとすると、こうなる。 Model.objects.filter(title__contains=&amp;quot;Django UUIDFields 使い方&amp;quot;) これでは検索結果が出てこない。検索時にスペースも文字列の1つとして考えるからだ(『Django UUIDFields 使い方』を含むタイトルを表示) そこで、スペース区切りのキーワード検索をするときは、Qクラスを使用する。 40分Djangoをベースに検索できるように改良す</description>
     </item>
-    
     <item>
       <title>Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】</title>
-      <link>https://noauto-nolife.com/post/django-fileupload/</link>
+      <link>http://localhost:43210/post/django-fileupload/</link>
       <pubDate>Thu, 05 Nov 2020 15:30:14 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-fileupload/</guid>
-      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 40分Djangoを理解している方向け。 流れ 必要なライブラリのインストール settings.pyの編集 urls.pyの編集 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール pip install Pillow pip install python-magic P</description>
+      <guid>http://localhost:43210/post/django-fileupload/</guid>
+      <description>Djangoで画像やファイルをアップロードする方法をまとめる。 40分Djangoを理解している方向け。 流れ 必要なライブラリのインストール アプリの作成 settings.pyの編集 urls.pyの編集 models.pyでフィールドの定義 forms.pyでフォームを作る views.pyで受け取り処理 templatesにフォームを設置 マイグレーション 開発用サーバーの立ち上げ 必要なライブラリのインストール pip</description>
     </item>
-    
     <item>
       <title>DjangoでDBに格納したデータをダンプ(バックアップ)させる【dumpdata】</title>
-      <link>https://noauto-nolife.com/post/django-dumpdata/</link>
+      <link>http://localhost:43210/post/django-dumpdata/</link>
       <pubDate>Thu, 05 Nov 2020 14:38:34 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-dumpdata/</guid>
+      <guid>http://localhost:43210/post/django-dumpdata/</guid>
       <description>以前、Djangoで開発中に初期データを入力する方法をしたが、Djangoではその逆も可能。 つまり、DBに既に格納されているデータをダンプ(バックアップ)する事ができる。それがこれ python3 manage.py dumpdata [アプリ名] &amp;gt; [アプリ名]/fixture/data.json 実際にやってみるとこうなる。 json形式でダンプされ、そのままでは改行が施されていないので、}},の次に改行を設置する。vimなら下記正規表現を実行 s/}},/}},\r/g 整</description>
     </item>
-    
     <item>
       <title>CSS3だけで実装できるアコーディオン【checkbox&#43;transition】</title>
-      <link>https://noauto-nolife.com/post/css3-accordion/</link>
+      <link>http://localhost:43210/post/css3-accordion/</link>
       <pubDate>Thu, 29 Oct 2020 17:12:50 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-accordion/</guid>
+      <guid>http://localhost:43210/post/css3-accordion/</guid>
       <description>また、checkboxとtransitionのコンボネタ。それでyoutubeとかでよくあるアコーディオンを簡単に作ることができる。 アコーディオンの作り方 まず、HTML5。 &amp;lt;input id=&amp;quot;acd_1&amp;quot; class=&amp;quot;chkbox&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt; &amp;lt;label class=&amp;quot;acd_n_button&amp;quot; for=&amp;quot;acd_1&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;acd_n_button_title&amp;quot;&amp;gt;HTML+CSS&amp;lt;/div&amp;gt; &amp;lt;/label&amp;gt; &amp;lt;div class=&amp;quot;acd_n_body&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;p&amp;g</description>
     </item>
-    
     <item>
       <title>jQueryでオートコンプリート(入力補正)を実装させる【表記ゆれ対策にも有効】</title>
-      <link>https://noauto-nolife.com/post/jquery-autocomplete/</link>
+      <link>http://localhost:43210/post/jquery-autocomplete/</link>
       <pubDate>Thu, 29 Oct 2020 16:52:35 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/jquery-autocomplete/</guid>
+      <guid>http://localhost:43210/post/jquery-autocomplete/</guid>
       <description>ウェブアプリを作って、ユーザーに何かを文字列を入力させる時、大抵表記ゆれが起こる。 例えば、JAと農業協同組合と農協、ラズパイとラズベリーパイとRaspberry Piとraspberry piなど。 このような表記ゆれを一度でも許すと、検索で引っかからなくなる。しかし、SELECTタグを使うと、項目が増えた時、選択に時間がかかりすぎる。 そこで、文字入力(入力補正)と選択が同時にできるオートコンプリートを</description>
     </item>
-    
     <item>
       <title>【CSS3】文字に縁取りを加えて視認性UPさせる方法【text-shadow】</title>
-      <link>https://noauto-nolife.com/post/css3-textborder/</link>
+      <link>http://localhost:43210/post/css3-textborder/</link>
       <pubDate>Thu, 29 Oct 2020 16:42:03 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-textborder/</guid>
+      <guid>http://localhost:43210/post/css3-textborder/</guid>
       <description>背景色と文字色が近い場合、文字の縁取りをすることで、視認性を上げることができる。 あまり使うことは無いが、一応備忘録として。 縁取りの作り方 使用するのはtext-shadowだけ。下記のコードを任意の要素に指定すれば良いだけ。 text-shadow: skyblue 1px 1px 0, skyblue -1px -1px 0, skyblue -1px 1px 0, skyblue 1px -1px 0, skyblue 0px 1px 0, skyblue 0-1px 0, skyblue -1px 0 0, skyblue 1px 0 0; こんなふうに縁取りができる。 2pxの縁取りがしたい場合はこっち。 text-shadow: skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue 0px 2px, skyblue 2px 2px , skyblue -2px 2px, skyblue 2px -2px, skyblue -2px</description>
     </item>
-    
     <item>
       <title>【CSS3】スクロール時に奥行きを感じる背景(background)の作り方</title>
-      <link>https://noauto-nolife.com/post/css3-deep-bg/</link>
+      <link>http://localhost:43210/post/css3-deep-bg/</link>
       <pubDate>Thu, 29 Oct 2020 16:39:03 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-deep-bg/</guid>
+      <guid>http://localhost:43210/post/css3-deep-bg/</guid>
       <description>最近流行のスクロールしたら背景がスクロールせず、ページ全体に奥行きを感じることができるモダンデザインの背景を作る。 それほど難しくない。CSS習いたての初心者でも簡単に実装できるので、是非とも試してみたいところ。 奥行きのある背景の作り方 まず、HTML。bodyタグ内のみ記述する。 &amp;lt;main&amp;gt; &amp;lt;div class=&amp;quot;fixed_bg bg_1&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;見出し&amp;lt;/h1&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;scroll_bg&amp;quot;&amp;gt; &amp;lt;p&amp;gt;コンテンツ&amp;lt;/p&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;fixed_bg bg_2&amp;quot;&amp;gt; &amp;l</description>
     </item>
-    
     <item>
       <title>CSS3を使用した簡単アニメーションの実装【transitionとtransform】</title>
-      <link>https://noauto-nolife.com/post/css3-animation/</link>
+      <link>http://localhost:43210/post/css3-animation/</link>
       <pubDate>Thu, 29 Oct 2020 15:37:51 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-animation/</guid>
+      <guid>http://localhost:43210/post/css3-animation/</guid>
       <description>CSS3のアニメーション関係の描画はanimationプロパティを使用しなくてもtransitionプロパティを使用すれば簡単に実装できる。 さらに、transformと組み合わせることで、傾きや回転まで自由自在。本記事ではレベルごとにアニメーションの作り方を解説していく。 対象読者はある程度のHTMLとCSSの基礎を身に着けている方、CSSにおける疑似要素(::beforeと::after)、擬似ク</description>
     </item>
-    
     <item>
       <title>CSS3でiOS風のトグルスイッチを作る方法【transition&#43;checkbox】</title>
-      <link>https://noauto-nolife.com/post/css3-toggle-switch/</link>
+      <link>http://localhost:43210/post/css3-toggle-switch/</link>
       <pubDate>Thu, 29 Oct 2020 15:37:36 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-toggle-switch/</guid>
+      <guid>http://localhost:43210/post/css3-toggle-switch/</guid>
       <description>CSS3で実装されたtransitionと兄弟要素のセレクタを組み合わせることでiOS風のトグルスイッチは簡単に作れる。 何も装飾を施していないinputタグのチェックボックスは小さくて見づらいが、この装飾を施すことで、視覚的にも押すことができるスイッチであると認識できるし、押せる範囲が広がる。 iOS風のトグルスイッチの作り方 まずはHTML5から。 &amp;lt;div class=&amp;quot;ui_demo_area&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;ios_chk_01&amp;quot; class=&amp;quot;ui20-input_chk&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt;&amp;lt;label class=&amp;quot;ui20-ios_conf&amp;quot; for=&amp;quot;ios_chk_01&amp;quot;&amp;gt;&amp;lt;/label&amp;gt; &amp;lt;/div&amp;gt; 続いて、CSS3。 /* ios button */ .ui20-input_chk { display:none; }</description>
     </item>
-    
     <item>
       <title>Djangoで開発中、データベースへ初期データを入力する【バックアップしたデータをloaddataコマンドでリストア】</title>
-      <link>https://noauto-nolife.com/post/django-loaddata/</link>
+      <link>http://localhost:43210/post/django-loaddata/</link>
       <pubDate>Sat, 24 Oct 2020 18:12:29 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-loaddata/</guid>
+      <guid>http://localhost:43210/post/django-loaddata/</guid>
       <description>Djangoで開発中にテストしたい時、デプロイ後に初期データを突っ込んで即公開したい時、どうしてもデータの入力作業が出てくる。 Seleniumで入力作業を自動化する方法もあるが、わざわざそんなことをしなくても初期データを突っ込む方法がある。それが python3 manage.py loaddata bbs/fixture/data.json このようにアプリディレクトリ内にfixtureディレクトリを作り、jsonのデータを指定して、リストアする models.pyに基づいたjsonファ</description>
     </item>
-    
     <item>
       <title>Djangoで『このページを表示するにはフォームデータを..』と言われたときの対処法</title>
-      <link>https://noauto-nolife.com/post/django-redirect/</link>
+      <link>http://localhost:43210/post/django-redirect/</link>
       <pubDate>Sat, 24 Oct 2020 17:22:29 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-redirect/</guid>
+      <guid>http://localhost:43210/post/django-redirect/</guid>
       <description>『このページを表示するにはフォームデータを再度送信する必要があります。フォームデータを再送信すると以前実行した検索、投稿や注文などの処理が繰り返されます。』 POST文を実行した直後に更新ボタンを押すと、こんなふうに表示される時。こういうときはリダイレクトすればOK。 views.pyを修正する redirectをimport。POST文のreturnにredirect関数を返せばいいだけ。 from django.shortcuts import redirect #P</description>
     </item>
-    
     <item>
       <title>Djangoで数値のカンマ区切りを実装させる</title>
-      <link>https://noauto-nolife.com/post/django-comma/</link>
+      <link>http://localhost:43210/post/django-comma/</link>
       <pubDate>Sat, 24 Oct 2020 16:48:33 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-comma/</guid>
+      <guid>http://localhost:43210/post/django-comma/</guid>
       <description>在庫とかお金とか扱うウェブアプリだとカンマ区切りは必須。 JSに任せてもいいけど、結局正規表現になる上にユーザーに負担を強いるのはどうかと。 ということでDjango側でカンマ区切りを簡単に実装させる。 settings.pyの追記 INSTALLED_APPSに以下を追加。 &#39;django.contrib.humanize&#39;, 下記をINSTALLED_APPSの上に追加。これで3桁区切りになる。 NUMBER_GROUPING = 3 3桁区切りで表示させたいテンプレートの追記 htmlの冒</description>
     </item>
-    
   </channel>
 </rss>

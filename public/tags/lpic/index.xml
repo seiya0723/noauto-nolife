@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lpic on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/lpic/</link>
+    <description>Recent content in Lpic on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 17 Mar 2023 10:27:06 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/lpic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【LPIC】fileコマンドでMIMEタイプを調べておく</title>
+      <link>http://localhost:43210/post/lpic-file-command/</link>
+      <pubDate>Fri, 17 Mar 2023 10:27:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-file-command/</guid>
+      <description>fileコマンドはファイルの形式を調べるためのコマンド。 -iオプションを使用することで、MIMEタイプを調べることができる。 file -i test.sh 関連記事 Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】</description>
+    </item>
+    <item>
+      <title>【LPIC】リダイレクションとは？ 【&gt;と&lt;の違い、&gt;&gt;など】</title>
+      <link>http://localhost:43210/post/lpic-redirection/</link>
+      <pubDate>Sat, 11 Mar 2023 14:53:35 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-redirection/</guid>
+      <description>リダイレクションとは？ リダイレクトとも言う、ファイルの内容を標準入力としたり、標準出力の結果をファイルへ書き込むための機能。 リダイレクションを使った標準入力 例えば、trコマンドを使うと、標準入力状態になる。 tr &amp;#34;hello&amp;#34; &amp;#34;Hello&amp;#34; このようにtrコマンドを使うと、入力した内容を置換して出力してくれる。 では、ファイルに書かれてある内容を置換して出力するには、どうしたらよいか？ ここでリダイレクションが使える。前もって、以</description>
+    </item>
+    <item>
+      <title>【LPIC】trコマンドの使い方【標準入力したものを変換して出力する】</title>
+      <link>http://localhost:43210/post/lpic-tr-command/</link>
+      <pubDate>Sat, 11 Mar 2023 14:36:35 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-tr-command/</guid>
+      <description>trコマンドは標準入力したものを変換して出力することができる。 例えば、以下のようにhelloをHelloに変換する tr &amp;#34;hello&amp;#34; &amp;#34;Hello&amp;#34; # tr hello Hello でも可 テキストファイルに書かれてある内容を置換して出力することができる。 tr hello Hello &amp;lt; test.txt 置換した内容を別のテキストファイルにリダイレクトして書き込みできる。 tr hello Hello &amp;lt; test.txt &amp;gt; test2.txt ちなみに、このように同じテキストにリダイレクトして書き込みしようとすると、このように全て消える。 tr hello Hello &amp;lt; test.txt &amp;gt;</description>
+    </item>
+    <item>
+      <title>【LPIC】Level1で出てくるコマンドと用語の一覧</title>
+      <link>http://localhost:43210/post/lpic-level1-command/</link>
+      <pubDate>Tue, 07 Mar 2023 13:03:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-level1-command/</guid>
+      <description>順不同。LPICレベル1で出たコマンドと用語の簡単な説明を一覧にしておく。 コマンド コマンド 簡単な説明 set シェル変数やシェルオプションを設定・表示するコマンド env 環境変数を表示するコマンド history コマンド履歴を表示するコマンド mkdir ディレクトリを作るコマンド ls カレントディレクトリのファイル、ディレクトリを表示するコマンド(list segmentsの略) man マニュアルを表示するコマンド whoami ユーザー名を表示するコマンド pwd</description>
+    </item>
+    <item>
+      <title>【LPIC】setコマンドを使用してシェルオプションを設定する</title>
+      <link>http://localhost:43210/post/lpic-set-command-shell-option/</link>
+      <pubDate>Tue, 07 Mar 2023 12:21:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-set-command-shell-option/</guid>
+      <description>set コマンドを使用することで、現在のシェルにシェルオプションやパラメータを設定することができる。 現在のシェルオプションを表示する。 現在のシェルに設定されているオプション(シェルオプション)を表示させるには、 set -o と実行する。環境によっても異なるが、このように表示される。 シェルオプションについて 前項の中で、例えば、histexpandは !番号によるコマンドの実行が有効になっている。(前項のリストでonに</description>
+    </item>
+    <item>
+      <title>【LPIC】シェル変数と環境変数の違い【setコマンドとenvコマンド】</title>
+      <link>http://localhost:43210/post/lpic-set-and-env/</link>
+      <pubDate>Tue, 07 Mar 2023 11:28:39 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-set-and-env/</guid>
+      <description>シェル変数と環境変数の違い シェル変数は設定されたシェルだけが使用する変数。 一方で環境変数は設定されたシェルとシェルで起動したプログラム(プロセス)が使用する変数。 環境変数とシェル変数の違いの事例 例えば、シェルからlsコマンドを実行して、lsのプロセスを起動する。 この時、lsのプロセスには環境変数は引き継がれるが、シェル変数は引き継がれない。 実際にシェル変数と環境変数を作ってみる まずはシェル変数を作</description>
+    </item>
+  </channel>
+</rss>

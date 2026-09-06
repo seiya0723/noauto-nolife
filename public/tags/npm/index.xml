@@ -1,24 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Npm on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/npm/</link>
+    <link>http://localhost:43210/tags/npm/</link>
     <description>Recent content in Npm on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 11 Mar 2021 16:10:55 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/npm/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 04 Jan 2025 15:39:43 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/npm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>npm で Bootstrap を使う</title>
+      <link>http://localhost:43210/post/npm-install-bootstrap/</link>
+      <pubDate>Sat, 04 Jan 2025 15:39:43 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-install-bootstrap/</guid>
+      <description>npm install bootstrap App.jsに以下を追加する。 import &amp;#39;bootstrap/dist/css/bootstrap.min.css&amp;#39;; 後は、使いたいコンポーネントで &amp;lt;header className=&amp;#34;bg-primary text-white&amp;#34;&amp;gt;簡易掲示板&amp;lt;/header&amp;gt; などとすれば良い。 なぜ @fortawesome/fontawesome-free 、 なぜ bootstrap ？ 先に、fontawesomeをインストールしたときは、 npm install @fortawesome/fontawesome-free とした。@がついている。 これはスコープと言い、名前の衝突を避けるためにfontawesomeの開発会社、fortawesome社がつけている。(ミススペル</description>
+    </item>
+    <item>
+      <title>npm で Fontawesomeを使う</title>
+      <link>http://localhost:43210/post/npm-install-fontawesome/</link>
+      <pubDate>Mon, 23 Dec 2024 17:08:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-install-fontawesome/</guid>
+      <description>npm install @fortawesome/fontawesome-free これでfont-awesomeの最新版がインストールされる。後は、App.jsに下記を追加する。 import &amp;#39;@fortawesome/fontawesome-free/css/all.min.css&amp;#39;; importした後、JSXに、 &amp;lt;i className=&amp;#34;fa-regular fa-square-check&amp;#34;&amp;gt;&amp;lt;/i&amp;gt; を追加する。 ちなみに、下記では旧版がインストールされてしまう。 npm install font-awesome</description>
+    </item>
+    <item>
+      <title>npm install --save パッケージ名 の--saveは必要か？</title>
+      <link>http://localhost:43210/post/npm-install-save-option/</link>
+      <pubDate>Mon, 23 Dec 2024 16:49:13 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-install-save-option/</guid>
+      <description>npm install --save パッケージ名 この&amp;ndash;saveで、package.jsonにパッケージ名を記録することができる。 ただし、&amp;ndash;saveオプションは、npmのバージョン5からデフォルトで有効になっている。 故に、npmバージョン5で、特に設定を触っていない場合は、あえてつける必要はない。 npm install パッケージ名 でよい。 よって、タイトルのnpm install --save パッケージ名 の--saveは必要か？ はnpmバージョン5以</description>
+    </item>
+    <item>
+      <title>GitHubからクローンしたReactを動作させる方法</title>
+      <link>http://localhost:43210/post/react-github/</link>
+      <pubDate>Sun, 21 Jan 2024 14:45:29 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-github/</guid>
+      <description>Reactのgitignoreには、node_modulesが含まれている。 そのため、クローンしたReactのプロジェクトを動かすには、 npm installを前もって実行しておく必要がある。 git clone https://github.com/seiya0723/startup-react cd startup-react npm install npm start</description>
+    </item>
+    <item>
+      <title>【Node.js】npmとは、npmコマンドについて</title>
+      <link>http://localhost:43210/post/npm-command/</link>
+      <pubDate>Fri, 28 Jan 2022 10:41:58 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-command/</guid>
+      <description>そもそもnpmとは npmはNode.jsのパッケージ管理ツールのこと。Node Package Manager の略。 例えば、Reactを使用するために、Reactを動かすために必要なソフトウェア一式をインストールする必要がある。このソフトウェア一式のことをパッケージという。 npmはこのパッケージのインストール、アンインストールなどの管理を行うことができる。 npmコマンドについて npm install パッケージ パッケージのインストールをする。こ</description>
+    </item>
     <item>
       <title>Ubuntu18.04にnode.jsとnpm、vue-cliをインストールする</title>
-      <link>https://noauto-nolife.com/post/startup-npm-install/</link>
+      <link>http://localhost:43210/post/startup-npm-install/</link>
       <pubDate>Thu, 11 Mar 2021 16:10:55 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-npm-install/</guid>
+      <guid>http://localhost:43210/post/startup-npm-install/</guid>
       <description>環境 Ubuntu 18.04 Bash インストール nodejsとnpmをインストールする。 sudo apt install -y nodejs npm npmからnパッケージをインストール sudo npm install n -g nパッケージを使ってnodeをインストール sudo n stable 旧バージョンのnodejs及びnpmをアンインストールする。 sudo apt purge -y nodejs npm exec $SHELL -l 下記コマンドを実行して、バージョンが表示されれば完了 node -v permission denied問題への対処 下記コマンドを実行する。 npm config get prefix 出力された文字列が/usr/localで</description>
     </item>
-    
   </channel>
 </rss>

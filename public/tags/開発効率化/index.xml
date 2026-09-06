@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>開発効率化 on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E5%8A%B9%E7%8E%87%E5%8C%96/</link>
+    <description>Recent content in 開発効率化 on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 24 Mar 2025 14:18:28 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E5%8A%B9%E7%8E%87%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>sedコマンドで指定した範囲の行だけ標準出力をする。xselと組み合わせて部分的にクリップボードにコピー</title>
+      <link>http://localhost:43210/post/sed-line-output/</link>
+      <pubDate>Mon, 24 Mar 2025 14:18:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/sed-line-output/</guid>
+      <description>sed -n &amp;#34;開始行,終了行p&amp;#34; ファイル名 とすることで、指定したファイルの開始行から終了行までのテキストをそのまま標準出力できる。 そのため、xselと組み合わせ、指定したファイルの指定した範囲の行を、ワンライナーでクリップボードにコピーできる。 sed -n &amp;#34;100,120p&amp;#34; ./bbs/views.py | clipcopy</description>
+    </item>
+    <item>
+      <title>Vimで自動的にインデントする。gg=Gでファイル内の全てをオートインデントする</title>
+      <link>http://localhost:43210/post/vim-auto-indent/</link>
+      <pubDate>Sun, 21 Jan 2024 15:49:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-auto-indent/</guid>
+      <description>インデントが雑だったり全くされていない見づらいコードを読まないといけなくなることがある。 いつもは、A Delete Enter を実行したあと、 . で何度も改行をさせるようにしていた。 が、これもめんどくさいなと思うとき、 gg=G を実行すると良い。 gg でファイルの上部にカーソルを移動。=Gを打つことで、ファイルの末尾まで自動的にインデントしてくれるようだ。 逆に考えると、=G とすると今のカーソル位置から最後までを自動的にインデントする</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=43210&amp;path=livereload" data-no-instant defer></script>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="canonical" href="http://localhost:43210/post/ai-exam-rank-a/">
+
+
+        <link href="http://localhost:43210/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="http://localhost:43210/css/bootstrap-grid.css"> 
+
+        <script src="http://localhost:43210/data/search.js"></script>
+        <script src="http://localhost:43210/js/script.js"></script>
+
+        <title>AI実装検定A級のメモ - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="AI実装検定A級のメモ - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:43210/post/ai-exam-rank-a/">
+<meta property="og:image" content="http://localhost:43210/images/noimage.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="http://localhost:43210/post/ai-exam-rank-a/">
+<meta name="twitter:title" content="AI実装検定A級のメモ - 自動化無しに生活無し">
+<meta name="twitter:image" content="http://localhost:43210/images/noimage.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/localhost:43210\/"
+    },
+    "headline": "AI実装検定A級のメモ - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/localhost:43210\/images\/noimage.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2025-01-26T16:28:05JST",
+    "dateModified": "2025-01-26T16:28:05JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/localhost:43210\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="http://localhost:43210/css/style.css" rel="stylesheet">
+        
+
+        
+        
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDX0LW64ZT"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-HDX0LW64ZT');
+        </script>
+        
+
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="http://localhost:43210/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEB開発関係を中心に備忘録をまとめています</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="http://localhost:43210/">HOME</a></li>
+                
+                <li><a href="http://localhost:43210/post/">post</a></li>
+                
+                <li class="active">AI実装検定A級のメモ</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">AI実装検定A級のメモ</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+
+        
+
+        <li>作成日時：<time datetime="2025-01-26T16:28:05JST">2025年1月26日 16時28分</time></li>
+        <li>最終更新日時：<time datetime="2025-01-26T16:28:05JST">2025年1月26日 16時28分</time></li>
+
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/categories/others/">others</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/%E3%83%A1%E3%83%A2/">メモ</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A/">追記予定</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/ai%E5%AE%9F%E8%A3%85%E6%A4%9C%E5%AE%9A/">AI実装検定</a>
+            
+        </li>
+        
+        
+    </ul>
+
+
+    
+    
+    
+
+
+
+
+    <div class="img-center"><img src="http://localhost:43210/images/noimage.jpg" alt="thumbnail"></div>
+
+	<div class="article_body"><h2 id="ai概論">AI概論</h2>
+<h3 id="aiのコンペilsvrcとaiの歴史">AIのコンペ(ILSVRC)とAIの歴史</h3>
+<p>ILSVRC という画像認識の精度を競い合うコンペがあり、2012年の大会でディープラーニングが有用であると認識されるようになった。</p>
+<p>2011年付近まではサポートベクターマシン(SVM)という手法が上位であったが、2012年にはAlexNetという手法が登場。これが従来のニューラルネットワークを元にして作られた、深層ニューラルネットワーク、ディープラーニングである。</p>
+<p>ディープラーニングの強みは、特徴量の自動抽出にある。</p>
+<p>通常の機械学習は特徴量を自分で設定しなければならない。</p>
+<p>例えば、ガンのレントゲン写真であれば、ガンと認識できる箇所を自分で取得して、数値化し指定をする必要がある。</p>
+<p>しかし、ディープラーニングはその必要がない。</p>
+<p>ガンのレントゲン写真と、そうでないレントゲン写真の2種類を用意して、学習させるだけである。</p>
+<p>特徴量の抽出は自動的に行われるため、データさえ得られれば高い精度が得られる。</p>
+<ul>
+<li>サポートベクターマシン: 機械学習の一種。回帰・分類問題に使われる。特徴量は手動で指定しないといけない。</li>
+<li>AlexNet: ディープラーニング(深層学習)の一種。特徴量を自動的に抽出できる。</li>
+</ul>
+<p>つまり、機械学習は手動で照準を合わせる対空砲、深層学習は自動的に照準が合う対空ミサイルのようなもの。</p>
+<p>このAlexNetの登場以降、深層学習を元にしたモデルが次々と登場。</p>
+<ul>
+<li>2013年1位: ZFNet</li>
+<li>2014年1位: GoogLeNet</li>
+<li>2014年2位: VGGNet</li>
+<li>2015年1位: ResNet</li>
+<li>2016年1位: ensembled networks</li>
+<li>2017年1位: SENet</li>
+</ul>
+<p>エラー率は年々軽減され、2017年のSENetは0.023 、人間のエラー率の0.051 よりも遥かに優秀な結果が得られている。</p>
+<p>少なくとも画像分類の分野においては、AIのほうが優秀な結果を出すことができるようだ。もっとも、AIに学習させるデータの質にも依存はするため、一概に優秀であるとは言えない。</p>
+<p>ちなみに、先のAIモデルの特徴をまとめると以下のようになる。</p>
+<table>
+<thead>
+<tr>
+<th>モデル名</th>
+<th>登場年</th>
+<th>主な特徴</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AlexNet</td>
+<td>2012</td>
+<td>ReLUを初めて大規模に導入し、GPUで高速学習。従来の手法に比べて圧倒的に高精度。</td>
+</tr>
+<tr>
+<td>ZFNet</td>
+<td>2013</td>
+<td>AlexNetを改良し、畳み込み層のフィルタサイズやストライドを最適化して性能向上。</td>
+</tr>
+<tr>
+<td>GoogLeNet</td>
+<td>2014</td>
+<td>Inceptionモジュールを導入し、パラメータ数を抑えながら高精度を実現。深さ22層。</td>
+</tr>
+<tr>
+<td>VGGNet</td>
+<td>2014</td>
+<td>同一サイズの3x3畳み込み層を繰り返し使うシンプル構造。非常に深いが構造は単純で実装しやすい。</td>
+</tr>
+<tr>
+<td>ResNet</td>
+<td>2015</td>
+<td>残差接続（skip connection）を導入し、非常に深いネットワーク（100層以上）でも学習が安定。</td>
+</tr>
+<tr>
+<td>Ensembling</td>
+<td>2016</td>
+<td>複数のモデルを組み合わせて性能をさらに向上。個々のモデルはResNet系が多い。</td>
+</tr>
+<tr>
+<td>SENet</td>
+<td>2017</td>
+<td>チャンネルごとの重要度（Squeeze-and-Excitation）を学習し、より高い認識精度を実現。</td>
+</tr>
+</tbody>
+</table>
+<p>また、優勝はしていないものの、以下のAIモデルは比較的有名なので、覚えておくとよいだろう。</p>
+<ul>
+<li>2017年: DenseNet 特徴の再利用</li>
+<li>2017年: MobileNet モバイル向け</li>
+<li>2019年: EfficientNet 複合スケーリングによる精度と効率性の両立</li>
+</ul>
+<h3 id="ニューラルネットワークの学習の全体像">ニューラルネットワークの学習の全体像</h3>
+<p>以下の手順でニューラルネットワークは学習されている。</p>
+<ol>
+<li>データの前処理
+<ul>
+<li>標本化・量子化(※主にアナログ信号→デジタル画像などの場合)</li>
+<li>正規化、ベクトル化などをして入力データ(特徴量)を数値化する</li>
+</ul>
+</li>
+<li>ニューラルネットワークへの入力
+<ul>
+<li>各層(入力層→隠れ層→出力層)で重みとバイアスを使った線形変換を行う</li>
+<li>その後、活性化関数を通して非線形性を加え、モデルの <strong>表現力(学習できるパターンの多様性)</strong> を高める
+<ul>
+<li>例: ReLU, Sigmoid, Tanh など</li>
+<li>出力層では、分類ならSoftmaxなどを使い確率に変換</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>損失関数で誤差の定量化
+<ul>
+<li>モデルの出力(予測)と正解ラベルの誤差を計算
+<ul>
+<li>例：クロスエントロピー(分類)、MSE(回帰)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>勾配降下法によるパラメータ更新
+<ul>
+<li>損失関数を最小にするよう、誤差逆伝播法を通じて重みやバイアスを少しずつ更新</li>
+</ul>
+</li>
+</ol>
+<p>この2〜4の間でニューラルネットワークは学習をしている。更にまとめると以下のようになる。</p>
+<ol>
+<li>データを入力して出力を得る(順伝播)</li>
+<li>出力と正解を比べて損失値を出す(損失関数)</li>
+<li>誤差を逆流させて、どこをどう直すか計算する(誤差逆伝播)</li>
+<li>勾配降下法でパラメータを少し更新する(学習)</li>
+</ol>
+<p>この学習を繰り返すことで、より洗練された学習モデルが作られる。</p>
+<h4 id="教師なし学習と教師あり学習">教師なし学習と教師あり学習</h4>
+<ul>
+<li>教師あり学習: 入力データと正解ラベルのセットを使って学習する(※犬・猫の画像をそれぞれ、犬、猫とつけたラベルのことを正解ラベルという)</li>
+<li>教師なし学習: 正解ラベルがないデータの集まりで学習をする(似た画像同士でグループ分け(クラスタリング)をする必要がある)</li>
+</ul>
+<h5 id="代表的な教師あり学習">代表的な教師あり学習</h5>
+<ul>
+<li>決定木 (ラベルをもとに分類)</li>
+<li>サポートベクターマシン(マージン最大化による分類)</li>
+<li>線形回帰(回帰モデル)</li>
+</ul>
+<h5 id="代表的な教師なし学習">代表的な教師なし学習</h5>
+<ul>
+<li>k-means(クラスタリング、似たデータを自動でグループ化)
+<ul>
+<li>例1: 購買行動が似たものをグループ化(クラスタリング)して、DMを送るなど</li>
+<li>例2: SNSの履歴から、興味のあるものをグループ化(クラスタリング)して、リコメンドの表示をするなど</li>
+</ul>
+</li>
+</ul>
+<p>参考: <a href="/post/python-k-means-clustering/">【教師なし学習】k-means(k平均法)により似たデータをクラスタリング(グループ化)する</a></p>
+<!--前処理関係-->
+<h4 id="回帰問題と分類問題">回帰問題と分類問題</h4>
+<ul>
+<li>回帰問題: 数値を予測する問題(不動産の情報から価格を予測する、気温を予測するなど)</li>
+<li>分類問題: カテゴリを予測する問題(犬猫の分類、メールがスパムかそうでないかなど)</li>
+</ul>
+<h3 id="1-データの前処理関係">1. データの前処理関係</h3>
+<h4 id="特徴量とは">特徴量とは</h4>
+<p>特徴量とは、物体が物体であると認識できるもののことを言う。</p>
+<p>例えば、犬の画像をAIが犬と認識するには、「耳が尖っている」「四足歩行である」「体毛に覆われている」などを特徴量と言い、それを認識している必要がある。</p>
+<h4 id="標本化と量子化">標本化と量子化</h4>
+<ul>
+<li>標本化: 一定間隔でサンプルリングし、ピクセル単位に分解すること</li>
+<li>量子化: 各ピクセルの色の強さを、有限の数値に変換する処理</li>
+</ul>
+<p>まず、標本化で、一定間隔で区切って分解をする。</p>
+<p>続いて、量子化で、色の強さを0~255に丸める。</p>
+<p>この標本化と量子化が画像認識において必須の前処理という作業。</p>
+<p>標本化 → 量子化 → 入力データ作成 という工程を経て、モデルにデータを与え判定をすることができる。</p>
+<!--前処理関係-->
+<!--学習〜損失値の把握、損失値の調整-->
+<h3 id="2-ニューラルネットワークへの入力">2. ニューラルネットワークへの入力</h3>
+<p>前処理によって作られたデータを入力する。</p>
+<p>データは層を経由して、重みとバイアスを使った線形変換(数式による表現)される。この数式こそがAIの学習モデルである。</p>
+<p>このAIの学習モデル(数式)の表現力を更に高めるために、活性化関数を使う。</p>
+<h4 id="活性化関数の種類">活性化関数の種類</h4>
+<h5 id="ランプ関数relurectified-liner-unit">ランプ関数(ReLU(Rectified Liner Unit))</h5>
+<p>0以上の値はそのままに、0以下の値をすべて0として扱う関数。</p>
+<div class="img-center"><img src="/images/Screenshot from 2025-05-02 09-44-12.png" alt=""></div>
+<p>ニューロンへの入力が常に負の数になる場合、勾配が0になってしまい学習が進まなくなることがある。これをdying ReLU問題という。</p>
+<ul>
+<li>参照元1: <a href="https://appswingby.com/relu%E9%96%A2%E6%95%B0-%E4%BB%8A%E6%9B%B4%E8%81%9E%E3%81%91%E3%81%AA%E3%81%84it%E7%94%A8%E8%AA%9E%E9%9B%86/">https://appswingby.com/relu%E9%96%A2%E6%95%B0-%E4%BB%8A%E6%9B%B4%E8%81%9E%E3%81%91%E3%81%AA%E3%81%84it%E7%94%A8%E8%AA%9E%E9%9B%86/</a></li>
+<li>参照元2: <a href="https://mathlandscape.com/relu/">https://mathlandscape.com/relu/</a></li>
+</ul>
+<h5 id="シグモイド関数sigmoid">シグモイド関数(Sigmoid)</h5>
+<p>0より下は全部0.5未満になる。</p>
+<div class="img-center"><img src="/images/Screenshot from 2025-05-02 09-50-03.png" alt=""></div>
+<ul>
+<li>参照元1: <a href="https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%B0%E3%83%A2%E3%82%A4%E3%83%89%E9%96%A2%E6%95%B0">https://ja.wikipedia.org/wiki/%E3%82%B7%E3%82%B0%E3%83%A2%E3%82%A4%E3%83%89%E9%96%A2%E6%95%B0</a></li>
+<li>参照元2: <a href="https://atmarkit.itmedia.co.jp/ait/articles/2003/04/news021.html">https://atmarkit.itmedia.co.jp/ait/articles/2003/04/news021.html</a></li>
+</ul>
+<h5 id="tanh">Tanh</h5>
+<p>シグモイド関数の一種</p>
+<h5 id="ソフトマックス関数softmax">ソフトマックス関数(Softmax)</h5>
+<p><a href="https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9%E9%96%A2%E6%95%B0">https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%83%9E%E3%83%83%E3%82%AF%E3%82%B9%E9%96%A2%E6%95%B0</a></p>
+<h4 id="バイアス項とは">バイアス項とは？</h4>
+<p>バイアス項とは、出力をずらすための定数項</p>
+<p>例えば、y= Wx+b という重みつき入力Wxに対して、bというバイアスを与えて出力値をずらす。</p>
+<p>y = Wx だけであれば、Wの値で傾きが変わるだけ。bがあれば表現できる範囲が広がる。</p>
+<h3 id="3-損失関数で誤差の定量化">3. 損失関数で誤差の定量化</h3>
+<p>予測と正解の誤差がどれぐらいであるかを定量化(数値で表現)するため、損失関数を使う。</p>
+<h4 id="損失関数の種類">損失関数の種類</h4>
+<p>損失関数はAIの予測と正解との誤差(損失)を表現した値のことである。</p>
+<p>この損失関数を使うことで、AIの予測がどれぐらい間違っているかが把握できる。</p>
+<h5 id="平均二乗誤差mse">平均二乗誤差(MSE)</h5>
+<ul>
+<li>回帰問題向け</li>
+<li>小さな誤差に対して有効</li>
+<li>ケアレスミスに対して強いが、大まかな理解には弱いイメージ</li>
+</ul>
+<div class="img-center"><img src="/images/Screenshot from 2025-05-02 12-03-25.png" alt=""></div>
+<h5 id="平均絶対誤差mae">平均絶対誤差(MAE)</h5>
+<ul>
+<li>回帰問題向け</li>
+<li>大きな誤差に対して有効</li>
+<li>大まかな理解に対して強いが、ケアレスミスには弱いイメージ</li>
+</ul>
+<div class="img-center"><img src="/images/Screenshot from 2025-05-02 12-04-32.png" alt=""></div>
+<h5 id="ハブ損失huber-loss">ハブ損失(Huber Loss)</h5>
+<ul>
+<li>回帰問題向け</li>
+<li>MSE,MAEをもとにして作られている</li>
+<li>小さな誤差にはMSEを使い、大きな誤差にはMAEを使うことで、安定した学習ができる。</li>
+</ul>
+<div class="img-center"><img src="/images/Screenshot from 2025-05-02 12-06-30.png" alt=""></div>
+<h5 id="クロスエントロピー誤差">クロスエントロピー誤差</h5>
+<ul>
+<li>分類問題向け</li>
+<li>二値分類、多クラス分類にも使える</li>
+<li>確率分布をもとにした誤差、予測確率と実際のラベルとの差を測る</li>
+</ul>
+<h5 id="ハンジング誤差">ハンジング誤差</h5>
+<ul>
+<li>分類問題向け</li>
+<li>サポートベクターマシン(SVM)で使う</li>
+<li>分類境界からの距離を評価、線形分類に強い</li>
+</ul>
+<h5 id="kullback-leibler-divergence-klダイバージェンス">Kullback-Leibler Divergence (KLダイバージェンス)</h5>
+<ul>
+<li>分類問題向け</li>
+<li>確率分布比較で使う</li>
+<li>2つの確率分布間の差を測定、生成モデルやベイズ推定に使用</li>
+</ul>
+<h5 id="スムースクロスエントロピー誤差-smooth-cross-entropy">スムースクロスエントロピー誤差 (Smooth Cross-Entropy)</h5>
+<ul>
+<li>分類問題向け</li>
+<li>二値分類、多クラス分類にも使える</li>
+<li>クラス不均衡にも対応できる。</li>
+</ul>
+<p>多クラス分類で、一部クラスのデータが少ないとき、クロスエントロピーで対処しきれない。</p>
+<p>そこでクロスエントロピーをもとに改良し、クラス不均衡にも対応した。</p>
+<h5 id="ソフトマックスクロスエントロピー誤差-softmax-cross-entropy-loss">ソフトマックスクロスエントロピー誤差 (Softmax Cross-Entropy Loss)</h5>
+<ul>
+<li>分類問題向け</li>
+<li>多クラス分類に有効</li>
+<li>ソフトマックスによる確率分布を基にして誤差を計算できる</li>
+</ul>
+<p>ソフトマックスとは、各クラスの出力値を確率に変換。その確率が合わせて1になるようにしたもの。</p>
+<h3 id="4-勾配降下法によるパラメータ更新">4. 勾配降下法によるパラメータ更新</h3>
+<p>損失関数によって損失(誤差)を求めた後、</p>
+<ol>
+<li>誤差逆伝播法で勾配を求める(どの重みを調整したら損失が減るか調べる)</li>
+<li>勾配降下法で、勾配を使って重みの更新をする(最適化)</li>
+</ol>
+<p>このようにして、パラメータの更新を行う。</p>
+<h4 id="誤差逆伝播法バックプロパゲーション">誤差逆伝播法(バックプロパゲーション)</h4>
+<p>ニューラルネットワークにおいて、出力と正解の誤差(損失)を、連鎖律(Chain Rule)を用い、ネットワークを逆方向に伝播させて計算をする手法</p>
+<p>これにより、「どの重みをどれだけ変更すれば損失が減るか」がわかる。</p>
+<p>得られた結果を元に勾配降下法を実行する。</p>
+<h4 id="勾配降下法">勾配降下法</h4>
+<p>誤差逆伝播法で得られた勾配を元に、損失が小さくなるように各パラメータを更新する。</p>
+<p>これが勾配降下法であり、この作業によりAIモデルは最適化される。</p>
+<h3 id="指標">指標</h3>
+<p>学習モデルを使ってテストを行った結果、指標というものが得られる。</p>
+<p>学習モデルがどれだけの精度であったかを見極める材料である。</p>
+<ul>
+<li>Accuracy(正解率) : 全ての予測中、正しく予測できた割合</li>
+<li>Precision(適合率) : 正解と予測したうち、実際に正解だった割合 ( 計算式: TP / (TP+FP) )</li>
+<li>Recall(再現率) : 実際に正解のうち、正解と予測できた割合 ( 計算式: TP / (TP+FN) )</li>
+<li>F1スコア: 適合率と再現率の調和平均</li>
+</ul>
+<p>以上計算式は</p>
+<ul>
+<li>TP: True Positive</li>
+<li>TN: True Nagative</li>
+<li>FP: False Positive</li>
+<li>FN: False Nagative</li>
+</ul>
+<p>Positiveは 正と予測した場合。Nagativeは負と予測した場合。</p>
+<p>Trueは予測が正しかった場合。Falseは予測が間違っていた場合。</p>
+<h4 id="適合率と正解率の違い">適合率と正解率の違い</h4>
+<p>適合率は、正解と予測したうち、実際に正解だった割合のことをいう。</p>
+<p>例えば、ガンのレントゲン写真からガンとガンではないの2値分類をするとき。</p>
+<ul>
+<li>ガンであると予測した総数120枚(うち、実際にガンだったレントゲンは100枚)</li>
+<li>ガンではないと予測した総数50枚(うち、実際にガンではなかったレントゲンは40枚)</li>
+</ul>
+<p>この場合、</p>
+<ul>
+<li>適合率は 100枚 / 120枚</li>
+<li>正解率は 140枚 / 170枚</li>
+</ul>
+<p>である。</p>
+<h4 id="適合率と再現率の違い">適合率と再現率の違い</h4>
+<p>一方、再現率は、</p>
+<pre tabindex="0"><code>TP / (TP+FN)
+</code></pre><p>この計算式によって求められる。</p>
+<p>つまり、実際にガンだったのデータのうち、正しくガンであると予測できた割合のことをいう。</p>
+<p>よって</p>
+<pre tabindex="0"><code>100 / (100+10)
+</code></pre><p>ガンではないと予測した総数は50枚。そのうち実際にガンではなかったのは40枚。</p>
+<p>と言うことは10枚分は、本来はガンであるにも関わらず、ガンではないと判断された物。つまりFalse Nagative。</p>
+<p>よって、再現率は以上の計算式になる。</p>
+<h4 id="f1スコアについて">F1スコアについて</h4>
+<p>F1スコアは適合率と再現率の調和平均である。適合率、再現率ばかり重視していると、</p>
+<ul>
+<li>適合率だけ高い : 検出漏れが多い</li>
+<li>再現率だけ高い : 誤検出が多い</li>
+</ul>
+<p>ガンの話に例えると、</p>
+<ul>
+<li>適合率だけ高い : 本来はガンなのに見逃される</li>
+<li>再現率だけ高い : ガンではないのにガンとされ、ガン治療が施される</li>
+</ul>
+<p>という状況になってしまう。ガンを見逃されるのも、ガンではないのにガンとされてしまうのも問題。</p>
+<p>そこで、F1スコアを活用する。</p>
+<pre tabindex="0"><code>F1スコア = (2 * 適合率 * 再現率) / (適合率 + 再現率)
+</code></pre><p>となる。このF1スコアが高ければ、より的確にガンであると判断できると言える。</p>
+<h4 id="q-結局の所正解率さえ高ければ良いのでは">Q: 結局の所、正解率さえ高ければ良いのでは？</h4>
+<p>A: 正解率さえ高ければ良いという問題ではない。</p>
+<p>仮に、正解率が高かったとしても、</p>
+<ul>
+<li>適合率だけ高くて、ガンを見逃すAIモデル</li>
+<li>再現率だけ高くて、ガンを誤検知するAIモデル</li>
+</ul>
+<p>が生み出されてしまっては仕方ない。</p>
+<p>更に、学習やテストに使われているデータが</p>
+<ul>
+<li>ガンのデータ5枚</li>
+<li>ガンではないデータ95枚</li>
+</ul>
+<p>で、全部ガンではないと判定して95%の正解率だったとしても、それは使い物にならないだろう。</p>
+<p>現場ではガンのデータも出てくる。それらも見逃してしまうようでは、役に立たない。</p>
+<p>だから、<strong>正解率さえ高ければ良いというのは間違いである。</strong></p>
+<p>正解率はわかりやすい指標ではあるが、それで役に立つかは別問題である。</p>
+<p>F1スコアは適合率と再現率の双方を考慮した値のため、どちらかと言えば、単に正解率だけ見るより、F1スコアを見ておいたほうが良いだろう。</p>
+<p>参照元: <a href="https://zero2one.jp/ai-word/accuracy-precision-recall-f-measure/">https://zero2one.jp/ai-word/accuracy-precision-recall-f-measure/</a></p>
+<h2 id="数学">数学</h2>
+<h3 id="公式一覧">公式一覧</h3>
+<h4 id="微分の基本公式">微分の基本公式</h4>
+<div class="img-center"><img src="/images/Screenshot from 2025-04-26 16-56-38.png" alt=""></div>
+<h4 id="合成関数の微分">合成関数の微分</h4>
+<div class="img-center"><img src="/images/Screenshot from 2025-04-26 16-56-43.png" alt=""></div>
+<h4 id="極限の基本公式">極限の基本公式</h4>
+<div class="img-center"><img src="/images/Screenshot from 2025-04-26 16-56-47.png" alt=""></div>
+<h4 id="指数対数の公式">指数・対数の公式</h4>
+<div class="img-center"><img src="/images/Screenshot from 2025-04-26 16-57-04.png" alt=""></div>
+<h4 id="勾配降下法-1">勾配降下法</h4>
+<div class="img-center"><img src="/images/Screenshot from 2025-04-26 16-59-04.png" alt=""></div>
+<p>勾配降下法とは損失を小さくなる方向に少しずつパラメータを調整していく方法。</p>
+<p>損失関数とはAIの予測と正解とのズレ(誤差)を数値で表現したもの。この損失関数を最小にすることがAI開発の目標である</p>
+<ul>
+<li>損失: 誤判定</li>
+<li>損失関数: 損失(誤判定)を数値化したもの</li>
+<li>勾配降下法: 損失(誤判定)を最小にするために使うもの</li>
+</ul>
+<h4 id="ベクトルノルムの基本">ベクトル・ノルムの基本</h4>
+<div class="img-center"><img src="/images/Screenshot from 2025-04-26 16-59-07.png" alt=""></div>
+<h5 id="ベクトル">ベクトル</h5>
+<p>向きと大きさを持つ物。例えば(3, 4)というベクトルは、原点から横に3，縦に4進むという意味がある。この2つの要素があるベクトルを2次元ベクトルという。</p>
+<p>1x4で4つの要素を持つベクトルを、4次元ベクトルという。</p>
+<p>このベクトルは行列の一種である。(横、縦に長い行列。)</p>
+<h5 id="ノルム">ノルム</h5>
+<p>ノルムはベクトルの長さを表現したもの。</p>
+<p>L2ノルム(ユークリッド距離)はピタゴラスの定理(a^2 + b^2 = c^2)で求めることができる。</p>
+<p>例えば (3, 4)であれば、</p>
+<p>このように求めることができる。</p>
+<div class="img-center"><img src="/images/Screenshot from 2025-04-26 17-08-14.png" alt=""></div>
+<p>L1ノルム(タクシー距離)は、縦横にしか移動できない場合の移動距離の合計</p>
+<p>(3,4)であれば、縦方向に4、横方向に3なので、足して7となる。</p>
+<p>単にノルムとだけ書かれていた場合、一般的にはL2ノルムを意味している。</p>
+<h3 id="二次関数の最小値">二次関数の最小値</h3>
+<div class="img-center"><img src="/images/Screenshot from 2025-04-27 11-05-43.png" alt=""></div>
+<p>例えば、この最小値を求めるとき、平方完成を使うことで求めることができる。</p>
+<div class="img-center"><img src="/images/Screenshot from 2025-04-27 11-06-47.png" alt=""></div>
+<p>よって、答えは-1である。</p>
+<h3 id="行列">行列</h3>
+<p>行列の形は (2 x 3)などと表現される。この場合。行が2行、列が3列となる。</p>
+<p>行列の内積では、例えば<code>A*B</code>のとき、<code>Aの列数</code>と<code>Bの行数</code>が一致しなければ計算できない。</p>
+<p>そのため、Bは(3 x X) などと3行である必要がある。</p>
+<p>Aの列数とBの行数が 一致していることと、内積によって作られる行列の形は</p>
+<pre tabindex="0"><code>A(m,n) B(n,p)
+
+AB = (m,p)
+</code></pre><p>このサイズが得られる。つまり、2x3 行列と 3x7 行列の場合、2x7行列が得られる。(左側の行数, 右側の列数)</p>
+<h4 id="内積">内積</h4>
+<p>例えば、AxBのとき、</p>
+<p>Aが</p>
+<pre tabindex="0"><code>[1, 1]
+[3, 5]
+</code></pre><p>Bが</p>
+<pre tabindex="0"><code>[4, 7]  
+[2, 4]
+</code></pre><p>AxBは以下のようになる。</p>
+<pre tabindex="0"><code>[
+ (1×4 + 1×2), (1×7 + 1×4)   → 6, 11
+ (3×4 + 5×2), (3×7 + 5×4)   → 22, 41
+]
+</code></pre><p>Aの行に、Bの列を掛ける。</p>
+<h4 id="外積クロス積">外積(クロス積)</h4>
+<p>外積は ベクトル同士の掛け算であり、新しいベクトルをつくることができる。</p>
+<pre tabindex="0"><code>u = [[1],  
+     [2],  
+     [3]]
+
+v = [4, 5]
+
+outer product u ⊗ v =
+[
+  [1×4, 1×5],
+  [2×4, 2×5],
+  [3×4, 3×5]
+] =
+
+[
+  [4, 5],
+  [8, 10],
+  [12, 15]
+]
+</code></pre><p>つまり、新しく3x2行列をつくることができる。</p>
+<h4 id="内積と外積の違い">内積と外積の違い</h4>
+<p>内積は、通常の行列の掛け算。</p>
+<p>AxBの場合 Aの列数とBの行数が一致しなければ計算はできない。</p>
+<p>内積の主な用途は、</p>
+<ul>
+<li>線形変換</li>
+<li>ニューラルネットの伝播</li>
+</ul>
+<p>などがある。</p>
+<p>一方、外積は次元が揃っていなくても計算はできる。</p>
+<p>外積の主な用途は、</p>
+<ul>
+<li>ニューラルネットの勾配計算</li>
+<li>特徴抽出</li>
+</ul>
+<p>などがある。</p>
+<h4 id="アダマール積">アダマール積</h4>
+<p>アダマール積は内積や外積と違い、行列の各要素を掛け算していく。</p>
+<p>そのため、行数も列数も一致していなければ計算はできない。</p>
+<p>アダマール積の主な用途は、</p>
+<ul>
+<li>マスク処理</li>
+<li>ゲート・注意機構</li>
+<li>画像同士の演算</li>
+<li>フィルタ処理</li>
+</ul>
+<p>などがある。</p>
+<h4 id="単位行列と逆行列">単位行列と逆行列</h4>
+<p>単位行列は</p>
+<pre tabindex="0"><code>I = [
+  1  0
+  0  1
+]
+</code></pre><p>このような対角線上の成分がすべて1という行列。EやIなどと表現されることがある。(EinheitのE,Identity ElementのI)</p>
+<p>AxI もしくはIxA でもAが得られる。</p>
+<p>逆行列に関して、</p>
+<pre tabindex="0"><code>A = [
+  a  b
+  c  d
+]
+</code></pre><ul>
+<li>正方行列(3x3 や5x5などの行数と列数が同じ)</li>
+<li>行列式(ad-bc)が0でない(特異行列(singular matrix)ではない)</li>
+</ul>
+<p>に限り、逆行列 det(A) は</p>
+<pre tabindex="0"><code>A⁻¹ = (1 / (ad - bc)) × [
+  d  -b
+ -c   a
+]
+</code></pre><p>このように表現をする。det は デターミナント(determinant)のdetである。</p>
+<p>aとdを逆転、bとcをマイナスにする。</p>
+<p>3x3以上の逆行列は以下を参照。複雑なので、アプリやライブラリを活用することのほうが多い。</p>
+<p><a href="https://keisan.casio.jp/exec/system/1278758277">https://keisan.casio.jp/exec/system/1278758277</a></p>
+<p>numpyを使う方法も有効。</p>
+<pre tabindex="0"><code>import numpy as np
+
+A = np.array([
+  [1, 2, 3],
+  [0, 1, 4],
+  [5, 6, 0]
+])
+
+A_inv = np.linalg.inv(A)
+print(A_inv)
+</code></pre><h4 id="固有値と固有ベクトル">固有値と固有ベクトル</h4>
+<h2 id="python">Python</h2>
+<p>試験範囲には</p>
+<ul>
+<li>numpy</li>
+<li>pandas</li>
+<li>matplotlib</li>
+<li>seaborn</li>
+<li>scikit-learn</li>
+</ul>
+<p>この5つのライブラリが含まれる。</p>
+<p>参照: <a href="https://kentei.ai/">https://kentei.ai/</a></p>
+<h3 id="対策に有効と思われる書籍">対策に有効と思われる書籍</h3>
+<ul>
+<li><a href="https://www.amazon.co.jp/dp/479806727X/?tag=m68371ti-22">Python 実践データ分析 100本ノック 第2版</a></li>
+<li><a href="https://www.amazon.co.jp/dp/4798064408/?tag=m68371ti-22">Python 実践AIモデル構築 100本ノック</a></li>
+</ul>
+<h3 id="numpy">numpy</h3>
+<pre tabindex="0"><code>pip install numpy 
+</code></pre><p>numpy は数値計算を効率的に行うことができる。</p>
+<p>Cを元に作られているので、numpyの計算時にはPythonのGILの影響を受けず高速処理が可能である。</p>
+<ul>
+<li>(公式) <a href="https://numpy.org/ja/">https://numpy.org/ja/</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/NumPy">https://ja.wikipedia.org/wiki/NumPy</a></li>
+<li><a href="https://pypi.org/project/numpy/">https://pypi.org/project/numpy/</a></li>
+</ul>
+<h4 id="サンプルコード">サンプルコード</h4>
+<pre tabindex="0"><code>import numpy as np 
+
+print(&#34;#===== 配列(行列)の生成 =====#&#34;)
+
+# 配列をつくる。
+x = np.array([1,2,3,4,5])
+print(x)
+
+# ↑ と↓は等価。arange は range関数と同じような仕組み。
+x = np.arange(1,6)
+print(x)
+
+# 0〜9までの値で配列をつくる
+x = np.arange(10)
+print(x)
+
+# 0から100までの偶数の配列をつくる。
+x = np.arange(0,101,2)
+print(x)
+
+
+# 要素数に合わせて、形状を変更する。10個の要素なので、2x5行列に変換。
+x = np.arange(10)
+x = x.reshape((2,5))
+print(x)
+
+# 更に形状を変える。
+x = x.reshape((5,2))
+print(x)
+
+# 行列から1次元配列にも戻せる。
+x = x.reshape((10))
+print(x)
+
+# 要素数が一致していない場合は例外。
+&#34;&#34;&#34;
+x = x.reshape((3,3))
+print(x)
+&#34;&#34;&#34;
+
+# 要素が5つある配列をつくる。値は0~9までのランダム
+x = np.random.randint(10, size=(5))
+print(x)
+
+# 3x5の行列をつくる。値は0~9までのランダム
+x = np.random.randint(10, size=(3,5))
+print(x)
+
+# ゼロ埋めして、行列をつくる。 dtype で型指定。
+x1 = np.zeros(5, dtype=np.float16)
+x2 = np.zeros((5,6), dtype=np.float32)
+x3 = np.zeros((2,3,4), dtype=np.uint8)
+
+&#34;&#34;&#34;
+# TIPS : dtype の型指定は Pythonの標準型(float, int など)でも可、自動変換される。 np.bool_ などブーリアン型もある。
+# 参照: https://kentei.ai/blog/archives/726
+&#34;&#34;&#34;
+
+print( x1 )
+print( x2 )
+print( x3 )
+
+print(&#34;#===== 行列(配列)の抽出・連結・比較 =====#&#34;)
+
+A = np.random.randint(10, size=(4,5) )
+B = np.random.randint(10, size=(4,2) )
+C = np.random.randint(10, size=(2,5) )
+
+print( A )
+print( B )
+print( C )
+
+# array[start_row:end_row, start_col:end_col] 行列の抽出ができる
+# 左上から2x3 の行列を抽出する。
+print( A[:2,:3] )
+
+
+# 行列の連結
+# axis が 0 縦方向(行方向)に結合 (列数が一致していないと例外)
+# axis が 1 横方向(列方向)に結合 (行数が一致していないと例外)
+print( np.concatenate([A, C], axis=0) )
+print( np.concatenate([A, B], axis=1) )
+
+
+# 行列内の要素の比較 最小値、最大値を取り出す。
+print( A.max() )
+print( A.min() )
+
+
+print(&#34;#===== 配列計算 =====#&#34;)
+
+# [0,1,2,3,4] の配列をつくる
+x = np.arange(5)
+
+print(x)
+
+# 各配列の要素に3を足す。
+print(x+3)
+
+# 2を引く
+print(x-2)
+
+# 5を掛ける
+print(x*5)
+
+# 2で割る
+print(x/2)
+
+# 2で割った整数部(小数切り捨て)
+print(x//2)
+
+# 2で割ったあまり
+print(x%2)
+
+# 4乗する
+print(x**4)
+
+
+print(&#34;#===== 行列計算 =====#&#34;)
+
+# 2次元配列で行列計算
+A = np.array([
+        [1,2,],
+        [3,4,],
+    ])
+
+B = np.array([
+        [1,2,3,],
+        [3,4,5,],
+    ])
+
+C = np.array([
+        [3,6, ],
+        [2,7, ],
+    ])
+
+
+# 行列の形状を調べる(タプル型)
+print( A.shape )
+print( B.shape )
+
+# 次元数の表示
+print( A.ndim ) 
+print( B.ndim ) 
+
+# 要素数の表示
+print( A.size ) 
+print( B.size ) 
+
+
+
+# ABの内積 ( ※Aの列数、Bの行数が一致していない場合ここで例外が出る。)
+print( A.dot(B) )
+
+# Python3.5以降では 内積は@を使って表現もできる
+print( A@(B) )
+
+# この表現でも可
+print( A @ B )
+
+
+# A B の外積(クロス積)
+print( np.outer(A, B) )
+
+# AとC のアダマール積
+# アダマール積は 普通に掛け算すれば良い。行列の形が一致していなければ例外。
+print( A*C )
+
+
+# Aの逆行列
+print( np.linalg.inv(A) )
+
+# 行列式(ad - bc)が0の場合 の逆行列は例外
+&#34;&#34;&#34;
+x = np.array([
+        [ 1, 3 ],
+        [ 3, 9 ],
+    ])
+print( np.linalg.inv(x) )
+&#34;&#34;&#34;
+
+# 行列式(ad - bc)の計算
+print( np.linalg.det(A) )
+
+# 5次元の単位行列
+print( np.eye(5) )
+</code></pre><h3 id="pandas">pandas</h3>
+<pre tabindex="0"><code>pip install pandas
+</code></pre><p>pandas はデータフレームという構造を使って、表形式のデータを効率良く扱うことができる。</p>
+<p>CSV,Excel,テキストファイルやSQLデータベースまで扱うことができる。</p>
+<ul>
+<li>(公式) <a href="https://pandas.pydata.org/">https://pandas.pydata.org/</a></li>
+<li>(ドキュメント) <a href="https://pandas.pydata.org/docs/reference/index.html">https://pandas.pydata.org/docs/reference/index.html</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/Pandas">https://ja.wikipedia.org/wiki/Pandas</a></li>
+<li><a href="https://pypi.org/project/pandas/">https://pypi.org/project/pandas/</a></li>
+<li><a href="/post/startup-pandas-openpyxl-matplotlib/">【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</a></li>
+</ul>
+<h4 id="サンプルコード-1">サンプルコード</h4>
+<p>このサンプルコードではタイタニック事件の乗客データが格納されているCSVを扱う。</p>
+<ul>
+<li>データ元: <a href="https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv">https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv</a></li>
+<li>データ元のGitHub: <a href="https://github.com/mwaskom/seaborn-data">https://github.com/mwaskom/seaborn-data</a></li>
+</ul>
+<p>データのラベルは以下の通り。</p>
+<ul>
+<li>survived: 生存したかどうか（0 = 死亡、1 = 生存）</li>
+<li>pclass: チケットのクラス（1 = 上級、2 = 中級、3 = 下級）</li>
+<li>sex: 性別（&ldquo;male&rdquo; = 男性、&ldquo;female&rdquo; = 女性）</li>
+<li>age: 年齢（欠損値あり）</li>
+<li>sibsp: 同乗していた兄弟・配偶者の数</li>
+<li>parch: 同乗していた親・子供の数</li>
+<li>fare: チケットの料金</li>
+<li>embarked: 乗船地（C = Cherbourg、Q = Queenstown、S = Southampton）</li>
+<li>class: pclass と同じ内容（文字列で &ldquo;First&rdquo;、&ldquo;Second&rdquo;、&ldquo;Third&rdquo;）</li>
+<li>who: 年齢と性別をもとにした分類（&ldquo;man&rdquo;、&ldquo;woman&rdquo;、&ldquo;child&rdquo;）</li>
+<li>adult_male: 成人男性かどうか（True / False）</li>
+<li>deck: デッキ（客室のある階層、A〜G。欠損値多め）</li>
+<li>embark_town: 乗船した港の名前（例: &ldquo;Cherbourg&rdquo;）</li>
+<li>alive: 生存したかどうか（&ldquo;yes&rdquo; / &ldquo;no&rdquo;）</li>
+<li>alone: 一人旅だったか（True = 一人、False = 家族などと同乗）</li>
+</ul>
+<pre tabindex="0"><code>import pandas as pd 
+
+# CSVをデータフレームとして読み込みをする。
+df = pd.read_csv(&#34;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv&#34; )
+
+# ヘッダー(ラベル)を削除して読み込みする
+df = pd.read_csv(&#34;https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv&#34;, header=0 )
+
+print(df)
+
+# 列ラベルの一覧を取り出す。(index型オブジェクト、そのままforループできる)
+print(df.columns)
+
+# list 関数を使うことで配列として使える
+print(list(df.columns))
+
+
+# 行ラベルの一覧を取り出す
+print(df.index)
+
+print(list(df.index))
+
+
+
+# 各データのデータ型を調べる。
+print(df.dtypes)
+
+&#34;&#34;&#34;
+[891 rows x 15 columns]
+survived         int64
+pclass           int64
+sex             object
+age            float64
+sibsp            int64
+parch            int64
+fare           float64
+embarked        object
+class           object
+who             object
+adult_male        bool
+deck            object
+embark_town     object
+alive           object
+alone             bool
+dtype: object
+&#34;&#34;&#34;
+
+
+print(&#34;======= 列ごとに値の確認とカウント、値の変換 ===========&#34;)
+
+# alive の yesとnoを TrueとFalseに変換する。ただし、値の種類は本当にyesとnoだけなのか調べる。
+
+# 特定列の値の種類を表示(重複は除去)
+print(df[&#34;alive&#34;].unique())
+
+# 特定列の値ごとに出現数をカウントする。NaNも含める。
+print(df[&#34;alive&#34;].value_counts(dropna=False))
+
+# noとyes は TrueとFalseに変換する(元のaliveを上書きする。)
+df[&#34;alive&#34;] = df[&#34;alive&#34;].map({&#34;yes&#34;: True, &#34;no&#34;: False})
+
+print(df)
+
+
+print(&#34;======= NaNを含んだデータを除去する ===========&#34;)
+
+# 年齢がNaNになっているデータを削除、inplace=True で元データに上書きする。
+df.dropna(subset=[&#34;age&#34;], inplace=True)
+# 客室のある階層がNaNのデータも削除
+#df.dropna(subset=[&#34;deck&#34;], inplace=True)
+
+# 全列で 1つでもNaNが含まれる行を削除する。
+#df.dropna(inplace=True)
+
+print(df)
+
+# 列ごと削除する。
+df.drop(&#34;deck&#34;, axis=1 , inplace=True)
+
+# 行ごと削除する(インデックス番号を指定する) (※欠番になってしまう。)
+df.drop(3, axis=0, inplace=True)
+
+# 欠番になっているデータのインデックスを連番にし直す。
+df.reset_index(inplace=True)
+
+
+print(&#34;======= ファイルの保存をする =========&#34;)
+
+df.to_csv(&#34;test.csv&#34;)
+</code></pre><h3 id="seaborn">seaborn</h3>
+<pre tabindex="0"><code>pip install seaborn
+</code></pre><p>seabornはmatplotlib のラッパー系ライブラリ</p>
+<p>pandasのデータフレームを直接扱え、短いコードでグラフを描画することができる。</p>
+<ul>
+<li>(公式) <a href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a></li>
+<li><a href="https://pypi.org/project/seaborn/">https://pypi.org/project/seaborn/</a></li>
+</ul>
+<pre tabindex="0"><code>import seaborn as sns 
+import matplotlib.pyplot as plt 
+import matplotlib.font_manager as fm
+
+print(&#34;男性と女性での生存率を調べる&#34;)
+
+# x軸に性別、y軸に生存値(1なら生存、0なら死亡)とする。これで、棒グラフの平均を生成できる。
+sns.barplot(data=df, x=&#39;sex&#39;, y=&#39;survived&#39;)
+plt.title(&#34;Survival rates by Gender&#34;)
+plt.show()
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-05-04 17-11-12.png" alt=""></div>
+<p>この通り、男性は20%に対して、女性は75%以上。</p>
+<p>続いて、年齢別の生存率を確認する。</p>
+<pre tabindex="0"><code># 年齢ごとに区分けする。 0~12歳は子供、60歳までは大人、100歳までは高齢者
+df[&#39;age_group&#39;] = pd.cut(df[&#39;age&#39;], bins=[0, 12, 60, 100], labels=[&#39;child&#39;, &#39;adult&#39;, &#39;elderly&#39;])
+
+sns.barplot(data=df, x=&#39;age_group&#39;, y=&#39;survived&#39;)
+plt.title(&#34;Survival rates by Age&#34;)
+plt.show()
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-05-04 17-11-19.png" alt=""></div>
+<p>全体的に見れば、子供の生存率のほうが高いように見える。</p>
+<p>では、年齢グループを更に男女で分け、かつ生存率ではなく生存者数で確認してみる。</p>
+<pre tabindex="0"><code># 積み上げ棒グラフ x軸は年齢グループ、更に性別ごとに分け、kind=&#39;count&#39;として数をカウント。
+sns.catplot(data=df, x=&#39;age_group&#39;, hue=&#39;sex&#39;, col=&#39;alive&#39;, kind=&#39;count&#39;)
+plt.show()
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-05-04 17-17-46.png" alt=""></div>
+<pre tabindex="0"><code>pivot = df.pivot_table(index=&#39;sex&#39;, columns=&#39;age_group&#39;, values=&#39;survived&#39;)
+sns.heatmap(pivot, annot=True, cmap=&#34;YlGnBu&#34;)
+plt.title(&#34;Survival Rate by Sex and Age Group&#34;)
+plt.show()
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-05-04 17-37-38.png" alt=""></div>
+<p>以上のグラフから、以下のことが言える。</p>
+<ul>
+<li>子供の生存率が高いように見えるのは、大人の男性の死亡率が高いため、相対的に高く見えるだけ</li>
+<li>高齢者はほとんど乗船していないし、ここでも男性の死亡率は高め、女性は生存率100%</li>
+<li>子供は男女関係なく生存・死亡している</li>
+<li>一番生存率が高いのは子供ではなく、大人の女性</li>
+</ul>
+<h3 id="matplotlib">matplotlib</h3>
+<pre tabindex="0"><code>pip install matplotlib
+</code></pre><p>matplotlib はグラフ描画ができるライブラリ。numpy配列のデータに対応している。</p>
+<p>日本語をグラフに表示させる場合は、別途フォントファイルを用意する必要がある。</p>
+<ul>
+<li>(公式) <a href="https://matplotlib.org/">https://matplotlib.org/</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/Matplotlib">https://ja.wikipedia.org/wiki/Matplotlib</a></li>
+<li><a href="https://pypi.org/project/matplotlib/">https://pypi.org/project/matplotlib/</a></li>
+<li><a href="/post/matplotlib-font-easy-settings/">【matplotlib】フォントファイルを用意して日本語の豆腐化を修正する</a></li>
+</ul>
+<h3 id="scikit-learn">scikit-learn</h3>
+<pre tabindex="0"><code>pip install scikit-learn
+</code></pre><p>scikit-learnは機械学習を行うことができるライブラリ。</p>
+<p>強化学習・深層学習などには対応していないものの、基本的な回帰・分類問題には対応可能。</p>
+<ul>
+<li>(公式) <a href="https://scikit-learn.org/stable/">https://scikit-learn.org/stable/</a></li>
+<li><a href="https://ja.wikipedia.org/wiki/Scikit-learn">https://ja.wikipedia.org/wiki/Scikit-learn</a></li>
+<li><a href="https://pypi.org/project/scikit-learn/">https://pypi.org/project/scikit-learn/</a></li>
+</ul>
+<h4 id="回帰問題に有効なモデル一覧">回帰問題に有効なモデル一覧</h4>
+<h4 id="分類問題に有効なモデル一覧">分類問題に有効なモデル一覧</h4>
+<div class="img-center"><img src="" alt=""></div>
+<div class="img-center"><img src="" alt=""></div>
+<div class="img-center"><img src="" alt=""></div>
+<div class="img-center"><img src="" alt=""></div>
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="http://localhost:43210/post/fastapi-nextjs-crud/">FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る<time class="relate_time">2026年8月29日 08時48分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/local-llm-install/">UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)<time class="relate_time">2026年5月24日 14時44分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/ai-jisso-kentei-s-grade/">AI実装検定S級合格体験記<time class="relate_time">2026年5月23日 15時01分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/ai-jisso-kentei-a-grade/">AI実装検定A級合格体験記<time class="relate_time">2026年4月29日 06時57分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/cnn-nlp-question/">CNNとNLPの問題<time class="relate_time">2026年4月26日 17時09分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/fastapi-use-django-orm/">次の投稿<br><span class="summary_pg">FastAPIでDjangoのORMを使う</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/aiohttp-vs-threading-vs-serial-request/">前の投稿<br><span class="summary_pg">非同期リクエスト vs マルチスレッドリクエスト vs 直列リクエスト</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="http://localhost:43210/information/introduction/"><img class="author_img" src="http://localhost:43210/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: NaN</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF">フルスタック</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ </a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E9%96%8B%E7%99%BA">ロボット開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E6%98%A0%E5%83%8F%E5%87%A6%E7%90%86">映像処理</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/react">react</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E9%96%8B%E7%99%BA">ai開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">pythonライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/drf">drf</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">javascriptライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fastapi">fastapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pytorch">pytorch</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sql">sql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/keras">keras</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/lpic">lpic</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E5%AE%9F%E8%A3%85%E6%A4%9C%E5%AE%9A">ai実装検定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css">css</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/c">c＃</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/llm">llm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/next.js">next.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/oracle">oracle</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rag">rag</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/spa">spa</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A1%E3%83%A2">メモ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABllm">ローカルllm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/.net">.net</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cnn">cnn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/db">db</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nlp">nlp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qdrant">qdrant</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/raspberry-pi">raspberry pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/redis">redis</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/serializers.py">serializers.py</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/typescript">typescript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%A2%E3%83%87%E3%83%AB">カスタムユーザーモデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89">コマンド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3">マークダウン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%82%99%E5%BF%98%E9%8C%B2">備忘録</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E5%8B%95%E5%8C%96">自動化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%B3%87%E6%A0%BC%E8%A9%A6%E9%A8%93">資格試験</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E5%8A%B9%E7%8E%87%E5%8C%96">開発効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bootstrap">bootstrap</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fetchapi">fetchapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/firefox">firefox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fullcalendar">fullcalendar</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gnome">gnome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gui">gui</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/java">java</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jwt">jwt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/latex">latex</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linq">linq</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/microsoftaccess">microsoftaccess</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/modprobe">modprobe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/mysql">mysql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nodejs">nodejs</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ocr">ocr</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ogp">ogp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ollama">ollama</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pillow">pillow</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qt">qt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/reactnative">reactnative</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/render.com">render.com</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rtmp">rtmp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/scikit-learn">scikit-learn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seaborn">seaborn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seo%E5%AF%BE%E7%AD%96">seo対策</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlalchemy">sqlalchemy</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sse">sse</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/systemd">systemd</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tempermonkey">tempermonkey</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">webデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アニメーション</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89">クラウド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B5%E3%83%BC%E3%83%9C%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC">サーボモーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E8%8A%B8">シェル芸</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%83%9E%E3%83%9B%E3%82%A2%E3%83%97%E3%83%AA">スマホアプリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%99%E3%82%AF%E3%83%88%E3%83%ABdb">ベクトルdb</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%86%E9%A1%9E%E5%95%8F%E9%A1%8C">分類問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%9E%E5%B8%B0%E5%95%8F%E9%A1%8C">回帰問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%B2%E7%A2%81">囲碁</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%A4%9A%E5%AF%BE%E5%A4%9A">多対多</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92">教師あり学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%AA%E3%81%97%E5%AD%A6%E7%BF%92">教師なし学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E5%8A%A0%E5%B7%A5">画像加工</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98">画像認識</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86">非同期処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="http://localhost:43210/post/fastapi-nextjs-crud/">FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-fastapi/">FastAPIのプロジェクト構成、ルーティング、モデル、DB使用方法について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-qdrant/">QdrantのCRUD、コレクションとポイント、ハイブリッド検索について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/javascript-self-chunks/">RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/qdrant-rag-system/">RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/python-local-llm-rag/">OllamaでRAGを実現する。</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/local-llm-install/">UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-jisso-kentei-s-grade/">AI実装検定S級合格体験記</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-question/">AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-mock/">AI実装検定S級の模擬試験</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Books</div>
+
+        <div class="row">
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/481561072X/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/I/51Y0-P+m94L.jpg" alt="">
+                    </div>
+                    <div>モダンJavaScriptの基本から始める　React実践の教科書　（最新ReactHooks対応）</div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/B09K235CTP/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/P/B09K235CTP.jpg" alt="">
+                    </div>
+                    <div>現場で使える Django の教科書《基礎編》［3.2 LTS 対応版］</div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

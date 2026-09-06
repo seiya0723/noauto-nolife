@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI開発 on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/ai%E9%96%8B%E7%99%BA/</link>
+    <description>Recent content in AI開発 on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 22 Aug 2026 08:08:57 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/ai%E9%96%8B%E7%99%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QdrantのCRUD、コレクションとポイント、ハイブリッド検索について</title>
+      <link>http://localhost:43210/post/startup-qdrant/</link>
+      <pubDate>Sat, 22 Aug 2026 08:08:57 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-qdrant/</guid>
+      <description>Qdrantとは？ Qdrantはファイルの意味をまとめた数値の集まり(ベクトルデータ)を保存・検索できるベクトルDBの一種。 Qdrantにより、意味で検索できる。 例えば、「哺乳類で、海に棲んでいる。天敵がいない、水族館にもいる生き物。」と検索をすれば、「シャチ」が出てくる。つまり、直接「シャチ」と言わず、「シャチ」に含まれる意味を元に検索をすることができる。 実務では、 ファイル名は思い出せないが、内</description>
+    </item>
+    <item>
+      <title>RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた</title>
+      <link>http://localhost:43210/post/javascript-self-chunks/</link>
+      <pubDate>Sun, 28 Jun 2026 14:50:32 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-self-chunks/</guid>
+      <description>RAG開発時、チャンクを自動的に行っているようではセマンティックな埋め込みベクトル検索などは厳しい。 そこで、チャンクサイズを手動で設定できる余地を作る。 今回はそのたたき台となるJSとHTMLを用意した。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Chunk Editor Sample&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; body{ font-family:sans-serif; margin:30px; } #editor{ border:1px solid #999; padding:15px; min-height:180px; white-space:pre-wrap; user-select:text; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h2&amp;gt;チャンクエディタ試作&amp;lt;/h2&amp;gt; &amp;lt;div id=&amp;#34;editor&amp;#34;&amp;gt; 今日は良い天気です。 明日は雨です。 明後日は晴れです。 &amp;lt;/div&amp;gt; &amp;lt;br&amp;gt; &amp;lt;button id=&amp;#34;c</description>
+    </item>
+    <item>
+      <title>RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</title>
+      <link>http://localhost:43210/post/qdrant-rag-system/</link>
+      <pubDate>Mon, 01 Jun 2026 18:27:07 +0900</pubDate>
+      <guid>http://localhost:43210/post/qdrant-rag-system/</guid>
+      <description>前提 GPU: RTX A2000 12GB LLM: Ollama(Gemma-7B 4bit量子化仕様) RAG: Qdrant 上記環境下で、指定のディレクトリ内のテキストファイルをすべて読み込み、RAGを実現させる。 qdrantの立ち上げとOllama と Gemma 7B のインストール Gemma 7Bのインストール。 ollama pull gemma:7b すでにOllamaでは4bit量子化仕様を配布しているので、あえて指定をする必要はない。上記コマンドで4bit量子化仕様が手に入る。 続いてqdrantはdockerで起動させる #! /bin/bash docker run -d</description>
+    </item>
+    <item>
+      <title>OllamaでRAGを実現する。</title>
+      <link>http://localhost:43210/post/python-local-llm-rag/</link>
+      <pubDate>Sun, 31 May 2026 14:41:24 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-local-llm-rag/</guid>
+      <description>すでにollamaとgemma:2bをインストール済みとする。 参照: UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama) RAGの実装とソースコード pip install faiss-cpu sentence-transformers numpy import faiss import numpy as np from sentence_transformers import SentenceTransformer import subprocess # ========================= # 1. ドキュメント準備 # ========================= documents = [ &amp;#34;RAGとは、検索と生成を組み合わせたAI手法です。&amp;#34;, &amp;#34;FAISSはベクトル検索ライブラリです。&amp;#34;, &amp;#34;Oll</description>
+    </item>
+    <item>
+      <title>UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</title>
+      <link>http://localhost:43210/post/local-llm-install/</link>
+      <pubDate>Sun, 24 May 2026 14:44:41 +0900</pubDate>
+      <guid>http://localhost:43210/post/local-llm-install/</guid>
+      <description>Ollama Ollama はGoogle DeepMind によって開発されたローカルで利用できるLLM。 入力した情報を外部に公開したり curl -fsSL https://ollama.com/install.sh | sh 仮想環境下で以下を実行する。 pip install ollama ollamaコマンドでgemma:2b をインストールしておく。 ollama run gemma:2b 以下コードを実行する。 import ollama # 1. システムプロンプト（末尾のカンマを削除し、内容を強化） system_prompt = { &amp;#39;role&amp;#39;: &amp;#39;system&amp;#39;, &amp;#39;content&amp;#39;: ( &amp;#34;【絶対ルール】必ず日本語だけで回答してください。英語は一切使用禁止です。&amp;#34; )</description>
+    </item>
+    <item>
+      <title>AI実装検定S級合格体験記</title>
+      <link>http://localhost:43210/post/ai-jisso-kentei-s-grade/</link>
+      <pubDate>Sat, 23 May 2026 15:01:30 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-jisso-kentei-s-grade/</guid>
+      <description>AI実装検定S級に合格したので、そこに至るまでの過程をここにまとめる。 合格に必要な知識 試験要項にある通りのCNNとNLPの知識 KerasやPytorchでの転移学習というよりは、内部構造の話がメイン numpyの知識も問われる 理論は必要だが、それよりもコードを書く能力が問われる パラメータの値(学習率、チャンネル数、フィルタサイズなど)も覚えておいたほうが良い ライブラリの使い方よりも、ライブラリの基底</description>
+    </item>
+    <item>
+      <title>AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</title>
+      <link>http://localhost:43210/post/ai-exam-rank-s-question/</link>
+      <pubDate>Sat, 16 May 2026 08:52:42 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-s-question/</guid>
+      <description>主に、pytorchとkerasの実装上の問題についてまとめる。 Q: pytorch の シーケンス系レイヤ(RNNやTransformer)で使用される batch_first 引数とはなにか？ A. 入力テンソルの次元の並び順を指定している。 batch_first 引数が使われる場所 以下、シーケンス系のレイヤで使用されている。 RNN系 torch.nn.RNN torch.nn.LSTM torch.nn.GRU Transformer系 torch.nn.Transformer torch.nn.TransformerEncoderLayer torch.nn.MultiheadAttention batch_first 指定による作用 この引数の指定により、入力テンソルの次元の並び順を指定できる。 batch_fir</description>
+    </item>
+    <item>
+      <title>AI実装検定S級の模擬試験</title>
+      <link>http://localhost:43210/post/ai-exam-rank-s-mock/</link>
+      <pubDate>Mon, 11 May 2026 17:28:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-s-mock/</guid>
+      <description>■ CNN（30問） VGGに関する記述として正しいものはどれか A. 畳み込みカーネルは主に7×7を使用 B. 畳み込みカーネルは主に3×3を積み重ねる C. Residual接続を持つ D. Depthwise Separable Convを使用 KerasでVGG風のブロックを作る際に適切なのはどれか A. Conv2D → BatchNorm → ReLU → MaxPool B. Dense → Conv2D → Dropout C. Conv1D → Flatten → LSTM D. GlobalAveragePooling → Conv2D VGGの欠点として適切なのはどれか A. 表現力が低い B. パラメータ数が多い C. 勾配消失が発生しない D. 軽量モデルである G</description>
+    </item>
+    <item>
+      <title>【箇条書き】NLPモデルの特徴まとめ</title>
+      <link>http://localhost:43210/post/nlp-model-feature/</link>
+      <pubDate>Sat, 09 May 2026 08:28:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/nlp-model-feature/</guid>
+      <description>前提と基礎知識 NLPモデルに入力データが与えられるまでの過程 文章を与える ↓ Tokenizerでトークン化（単語・サブワード・文字などに分割） 例: &amp;#34;I love NLP&amp;#34; → [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] ↓ 語彙表（Vocabulary）を使って、トークン → トークンID に変換 例: [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] → [101, 2293, 17953, 1925] ↓ ※ 必要に応じてパディング・マスキング・特殊トークン付与 例: [CLS], [SEP], [PAD] などをここで追加（BERTなど） ↓ Embedding層にトークンIDを与える └ ID</description>
+    </item>
+    <item>
+      <title>【箇条書き】CNNモデルの特徴まとめ</title>
+      <link>http://localhost:43210/post/cnn-model-feature/</link>
+      <pubDate>Mon, 04 May 2026 10:35:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/cnn-model-feature/</guid>
+      <description>簡単にCNNモデルの特徴を確認できるよう、3行〜6行ほどでまとめる。 VGG VGG16は3x3畳み込みを13層、全結合層を3層重ねたシンプル構造 畳み込み後の全結合層の計算コストが非常に高い(パラメーター1億3千万) pytorchではオリジナルのVGGにはないバッチ正規化(Batch Normalization)が使用されている。(※勾配消失・爆発対策) GoogLeNet 1x1 3x3 5x5 の異なる畳込みを並列で行う(後にチャンネル方向</description>
+    </item>
+    <item>
+      <title>KerasでNLPモデルを再現する</title>
+      <link>http://localhost:43210/post/keras-nlp-models/</link>
+      <pubDate>Sun, 03 May 2026 15:40:11 +0900</pubDate>
+      <guid>http://localhost:43210/post/keras-nlp-models/</guid>
+      <description>前提知識 本記事では Functional APIを使用する。 FunctionalAPIでは layersの層を積み重ね、Modelクラスの引数として引き渡しインスタンスを作る。 layers.Input : 入力値のデータ型を定義する。 layers.Embedding : 単語をベクトルに変換。 layers.Dense : 全結合層。すべての入力と出力を線で結んで計算をする。 layers.Flatten : 平坦化。多次元のデータを1列の長い棒に変換をする。全結合層(Dense)につなぐ際などに使う。 layers.Dot : テンソルの内積を計算する。 layers.Reshape : 形</description>
+    </item>
+    <item>
+      <title>KerasのCNNモデルのコードを解釈する</title>
+      <link>http://localhost:43210/post/keras-cnn-models/</link>
+      <pubDate>Fri, 01 May 2026 12:07:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/keras-cnn-models/</guid>
+      <description>Keras公式GitHubからコードを拝借。一部コメントや不必要な箇所を絞って、各CNNモデルの特徴がわかるように再構成してまとめる。 以下関連記事。 【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る pytorch の nn.moduleを継承して自作AIモデルを作り、CNNモデルの歴史を辿る VGG VGG は3x3畳み込みをひたすら積み重ねるシンプルモデル。 とりわけ今回はVGG16(畳み込み層+</description>
+    </item>
+    <item>
+      <title>AI実装検定A級合格体験記</title>
+      <link>http://localhost:43210/post/ai-jisso-kentei-a-grade/</link>
+      <pubDate>Wed, 29 Apr 2026 06:57:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-jisso-kentei-a-grade/</guid>
+      <description>もうすでに2ヶ月以上前のことではあるが、AI実装検定A級の合格をしたのでここにその過程をまとめる。 合格に必要な知識 従来型の機械学習(ML)と深層学習(DL)の違い AIの理論(順伝播、逆伝播、誤差逆伝播法、勾配降下法などの理解) 平均二乗誤差(MSE)、平均絶対誤差(MAE)の計算方法(試験では数学問題として出た) Sigmoid関数、ReLU関数などの活性化関数の用途と理由 過学習と勾配消失が起こる原因</description>
+    </item>
+    <item>
+      <title>CNNとNLPの問題</title>
+      <link>http://localhost:43210/post/cnn-nlp-question/</link>
+      <pubDate>Sun, 26 Apr 2026 17:09:19 +0900</pubDate>
+      <guid>http://localhost:43210/post/cnn-nlp-question/</guid>
+      <description>試験範囲 CNN : VGG,GoogLeNet,ResNet(WideResNet),MobileNet,DenseNet,EfficientNet NLP : Word2Vec(skip-gram),seq2seq,HRED,Transformer 問題 間違えている箇所は → で解答を表示。 1. VGG Q1: VGG16において、すべての畳み込み層で 3×3 カーネルが採用されている理由として適切なものは？ 空間方向・チャンネル方向双方に畳み込みを行い、層を増やすため。5x5では特徴量がぼやけてしまい、1x1では空間方向の特徴抽出が難しいため。 Q2: PyTorchの models.vgg16 において、特徴抽出部分の最後にある nn.AdaptiveAvgPool2d((7, 7)) の役割は？ 7x7で平均プーリングを行い、全結合</description>
+    </item>
+    <item>
+      <title>pytorchコードでNLPモデルの歴史を辿る【word2vec から Transformerまで 】</title>
+      <link>http://localhost:43210/post/pytorch-nlp-origin/</link>
+      <pubDate>Sat, 25 Apr 2026 10:11:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-nlp-origin/</guid>
+      <description>俯瞰 自然言語処理の入力仕様 Transformer よりも前のモデルには、単語間の関連を理解するための入力仕様が用意されている。 Tokenizerで数値化し、その数値を使いEmbeddingで特徴量のリストを作っている。 Transformerには、Embedding層が用意されている。 Tokenizer Tokenizerは入力値を単語に分けてIDを振る 入力値: &amp;#34;I love AI&amp;#34; ↓ 単語に分ける: [&amp;#34;I&amp;#34;,&amp;#34;love&amp;#34;,&amp;#34;AI&amp;#34;] ↓ IDを振る: [ 5, 101, 61 ] このTokenizerにより、</description>
+    </item>
+    <item>
+      <title>【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る</title>
+      <link>http://localhost:43210/post/pytorch-torchvision-models/</link>
+      <pubDate>Sun, 12 Apr 2026 16:32:53 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-torchvision-models/</guid>
+      <description>VGG ソースコード: https://github.com/pytorch/vision/blob/main/torchvision/models/vgg.py VGGは3x3フィルタを重ねている単純なモデル。 とりわけVGG16 はプーリング層を除いた、畳み込み層(13)+全結合層(3) の計16層で構成されている。 VGGの全結合層は4096ユニットもあり、これが大量のメモリを消費している。 また、パラメーター数は1億3000万を超えており、caltech-101程度のデータ量(1クラス50件)では過学習を起こす。 期待をしている画像サイズは22</description>
+    </item>
+    <item>
+      <title>【pytorch】caltech-101 を使ってCNNモデルの歴史を辿る【VGG16からEfficientNetまで】</title>
+      <link>http://localhost:43210/post/pytorch-caltech101/</link>
+      <pubDate>Sun, 12 Apr 2026 11:56:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-caltech101/</guid>
+      <description>備考 caltech-101 の中にはモノクロ画像(チャンネル数1)が混ざっているため、前処理でチャンネル数を3に変換する。 学習済みのモデルを使用して、学習をさせる GPUはA2000 12GBを使用する 今回はあくまでもモデルごとの違いをコードを通じて体感することが目的。パラメータが最適であるかは不問。 requirements.txt cuda-bindings==13.2.0 cuda-pathfinder==1.5.2 cuda-toolkit==13.0.2 filelock==3.25.2 fsspec==2026.3.0 Jinja2==3.1.6 MarkupSafe==3.0.3 mpmath==1.3.0 networkx==3.4.2 numpy==2.2.6 nvidia-cublas==13.1.0.3 nvidia-cuda-cupti==13.0.85 nvidia-cuda-nvrtc==13.0.88 nvidia-cuda-runtime==13.0.96 nvidia-cudnn-cu13==9.19.0.56 nvidia-cufft==12.0.0.61 nvidia-cufile==1.15.1.6 nvidia-curand==10.4.0.35 nvidia-cusolver==12.0.4.66 nvidia-cusparse==12.6.3.3 nvidia-cusparselt-cu13==0.8.0 nvidia-nccl-cu13==2.28.9 nvidia-nvjitlink==13.0.88 nvidia-nvshmem-cu13==3.4.5 nvidia-nvtx==13.0.85 pillow==12.2.0 scipy==1.15.3 sympy==1.14.0 torch==2.11.0 torchvision==0.26.0 triton==3.6.0 typing_extensions==4.15.0 VGG16 VGG16 は3x3 畳み込みをとにかく深くして、単純にすることを目</description>
+    </item>
+    <item>
+      <title>pytorch の nn.moduleを継承して自作AIモデルを作り、CNNモデルの歴史を辿る</title>
+      <link>http://localhost:43210/post/pytorch-cnn-model-origin/</link>
+      <pubDate>Sun, 05 Apr 2026 15:23:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-cnn-model-origin/</guid>
+      <description>CNNの歴史。 この歴史に沿って、FassionMNISTに対し、nn.moduleで各AIモデルに沿ったモデルを作る。 VGG 3x3 の畳み込みをただ深く積み重ねる class VGG_Fashion(nn.Module): def __init__(self): super(VGG_Fashion, self).__init__() self.features = nn.Sequential( # Block 1 nn.Conv2d(1, 32, 3, padding=1), nn.ReLU(), nn.Conv2d(32, 32, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2), # 14x14 # Block 2 nn.Conv2d(32, 64, 3, padding=1), nn.ReLU(), nn.Conv2d(64, 64, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2) # 7x7 ) self.classifier = nn.Sequential( nn.Linear(64 * 7 * 7, 512), nn.ReLU(), nn.Dropout(0.5), nn.Linear(512, 10) ) GoogLeNet 1x1 フィルタを使用して次元数を削減している。(※ 5x5 畳み込みはサイズの都合上、省略) class InceptionModule(nn.Module): def __init__(self, in_ch, out_1x1, out_3x3): super().__init__() self.branch1 = nn.Conv2d(in_ch, out_1x1, kernel_size=1) self.branch2 = nn.Sequential( nn.Conv2d(in_ch, out_3x3//2, kernel_size=1), nn.Conv2d(out_3x3//2, out_3x3, kernel_size=3, padding=1) ) def forward(self, x):</description>
+    </item>
+    <item>
+      <title>【Pythonでグラフ描画】matplotlibとseabornのAPIのまとめ</title>
+      <link>http://localhost:43210/post/python-matplotlib-seaborn-api/</link>
+      <pubDate>Sat, 31 May 2025 14:30:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-matplotlib-seaborn-api/</guid>
+      <description>matplotlib matplotlibは配列データを元に、グラフを描画することができる。 代表的な 棒グラフ、折れ線グラフ、散布図の3つを以下コードで描画している。 import numpy as np import matplotlib.pyplot as plt # データ準備 categories = [&amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;E&amp;#39;] values = [5, 7, 3, 8, 4] # 棒グラフ用 x = np.arange(0, 10, 1) # 折れ線グラフ・散布図用 y_line = np.sin(x) # 折れ線グラフ用 y_scatter = y_line + np.random.normal(0, 0.2, size=x.shape) # 散布図用（ノイズを加える） # --- 1. 棒グラフ --- plt.figure(figsize=(6, 4)) plt.bar(categories, values, color=&amp;#39;skyblue&amp;#39;) plt.title(&amp;#34;Bar Graph&amp;#34;) plt.xlabel(&amp;#34;Category&amp;#34;) plt.ylabel(&amp;#34;Value&amp;#34;) plt.grid(axis=&amp;#39;y&amp;#39;) plt.tight_layout() plt.show() # --- 2. 折れ線グラフ --- plt.figure(figsize=(6, 4)) plt.plot(x, y_line, marker=&amp;#39;o&amp;#39;, linestyle=&amp;#39;-&amp;#39;, color=&amp;#39;green&amp;#39;) plt.title(&amp;#34;Line Graph&amp;#34;) plt.xlabel(&amp;#34;X&amp;#34;) plt.ylabel(&amp;#34;Y&amp;#34;) plt.grid(True) plt.tight_layout() plt.show() #</description>
+    </item>
+    <item>
+      <title>【教師なし学習】k-means(k平均法)により似たデータをクラスタリング(グループ化)する</title>
+      <link>http://localhost:43210/post/python-k-means-clustering/</link>
+      <pubDate>Sat, 24 May 2025 11:34:57 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-k-means-clustering/</guid>
+      <description>前提知識 教師なし学習とは？ 教師なし学習とは、ラベル(正解)のない学習のことである。 例えば、犬猫の画像を用意して、それぞれ個々の画像に犬と猫のラベル(正解)を与えた上で学習させる方法を教師あり学習という。 一方で、教師なし学習の場合、犬と猫の画像をまとめて与えるだけで、犬や猫のラベル(正解)は学習に含ませない。 この教師なし学習のメリットは、事前にラベルを用意する必要がないということ。 例えば、ラベリング</description>
+    </item>
+    <item>
+      <title>UbuntuでNvidiaのドライバーをインストールする</title>
+      <link>http://localhost:43210/post/ubuntu-nvidia-drivers-install/</link>
+      <pubDate>Thu, 06 Mar 2025 14:18:53 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-nvidia-drivers-install/</guid>
+      <description>ubuntuにNvidiaグラフィックボードを搭載した時、ドライバーのインストールで詰まったので、まとめておく 【基本】推奨のドライバーをインストールする。 ubuntu-drivers devices NvidiaグラフィックボードをPCに挿し込んだ状態で、上記コマンドを実行する。 以下のように出力がされると思うので、recommendの表示があるドライバーをインストールする。 この場合 driver : nvidia-driver-570 - third-party non-free recommended ここから、nvidia-driver-570</description>
+    </item>
+    <item>
+      <title>Pythonで画像認識AI(深層学習)の速習をするためのメモ【pytorchで画像認識学習・推論のサンプルあり】</title>
+      <link>http://localhost:43210/post/python-ai-memo/</link>
+      <pubDate>Mon, 24 Feb 2025 18:27:37 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-ai-memo/</guid>
+      <description>急遽AI開発(特に画像認識)が必要になったため、それに必要な用語や概念的なものをまとめる。 ほとんどがChatGPTの受け売りである。自分用にまとめたのでかなり雑であることをお許しいただきたい。 そもそも機械学習と深層学習の違いは？ なんとなくだったため、この際はっきりさせる。 機械学習 簡単な表データを学習して推論したい場合、機械学習が有効。 データ量は数千〜数万件単位でOK。特徴量の設定は手動で行う必要が</description>
+    </item>
+    <item>
+      <title>【Pandas】DataFrameをループして取り出す【列ごと、行ごとに取り出すにはdf.items()とdf.itertuples()でOK】</title>
+      <link>http://localhost:43210/post/pandas-for-loop/</link>
+      <pubDate>Thu, 27 Oct 2022 09:29:04 +0900</pubDate>
+      <guid>http://localhost:43210/post/pandas-for-loop/</guid>
+      <description>よくあるpandasの行ごと、列ごとにデータを取り出す方法。 環境 Python 3.8.10 numpy==1.23.4 pandas==1.5.1 python-dateutil==2.8.2 pytz==2022.5 six==1.16.0 列ごとにループして取り出す .iteritems()は後のバージョンで廃止される可能性があるので、列ごとのループには.items()を使う import pandas as pd data = {} data[&amp;quot;month&amp;quot;] = [ str(i)+&amp;quot;月&amp;quot; for i in range(1,13) ] data[&amp;quot;page_view&amp;quot;] = [ i*1000 for i in range(12) ] data[&amp;quot;earnings&amp;quot;] = [ i*100 for i in range(12) ] index = [ str(i) for i in range(12) ] df = pd.DataFrame( data, index=index ) ## 列ごとにループする for column_name, item in df.items(): print(column_name) print(item) print(item[&amp;quot;0&amp;quot;]) print(item[&amp;quot;1&amp;quot;]) print(item[&amp;quot;2&amp;quot;]) index</description>
+    </item>
+    <item>
+      <title>【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</title>
+      <link>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</link>
+      <pubDate>Thu, 14 Oct 2021 12:47:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</guid>
+      <description>pandasでファイルの読み込み、演算、グラフ描画、ファイル書き込みの基本操作関係を記す。 前提 data.xlsx及びdata.csvの内容を下記とする。これをPythonのファイルと同じディレクトリに格納する。 ライブラリインストールのコマンドは下記。 pip install openpyxl pandas matplotlib pandasの使い方 CSVやエクセルのファイルをそのまま読み込んで分析できる。 ファイルの読み込み .read_csv()メソッドでCSVを読み</description>
+    </item>
+    <item>
+      <title>【形態素解析】DjangoとJUMAN&#43;&#43;を使ってトレンドワード(名詞のみ)を表示する【定期実行で1時間以内に投稿された内容を学習などに】</title>
+      <link>http://localhost:43210/post/django-jumanpp-trend/</link>
+      <pubDate>Mon, 13 Sep 2021 19:42:36 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-jumanpp-trend/</guid>
+      <description>Djangoの独自コマンドの作成とAIを組み合わせることで、ウェブアプリ上でAIの恩恵を受けることができる。 とりわけ自然言語処理関係であれば、日本語の知識さえあれば簡単に試すことができるだろう。 本記事では形態素解析ツールとして名高い京都大学のJUMANをDjango上で動かし、その結果をウェブページとして表示させる。 作り方 モデルを作る トピックモデルとトレンドモデルの2つを作る。 from django.db import models from django.utils import timezone class Topic(models.Model):</description>
+    </item>
+    <item>
+      <title>【Django】バッチ処理のOpenCVが撮影した画像をDBに保存する</title>
+      <link>http://localhost:43210/post/django-batch-opencv/</link>
+      <pubDate>Tue, 16 Mar 2021 16:15:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-batch-opencv/</guid>
+      <description>Djangoのバッチ処理を実行し、DBにデータを格納させる。ただし、OpenCVで撮影した画像をDBに保存させる。本記事ではその手順を記す。 実行環境・やりたいこと 実行環境 Django 2.2以上 Ubuntu 18.04 やりたいこと 流れはだいたいこんな感じ OS起動時、バッチ処理がCrontabから実行される バッチ処理はOpenCVを使用し、撮影した画像を保存 保存した画像とコメントをDBに記録 1秒経ったら、2に戻る つまり、コマ撮りし</description>
+    </item>
+  </channel>
+</rss>

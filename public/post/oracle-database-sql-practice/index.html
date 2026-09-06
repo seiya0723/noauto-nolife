@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=43210&amp;path=livereload" data-no-instant defer></script>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="canonical" href="http://localhost:43210/post/oracle-database-sql-practice/">
+
+
+        <link href="http://localhost:43210/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="http://localhost:43210/css/bootstrap-grid.css"> 
+
+        <script src="http://localhost:43210/data/search.js"></script>
+        <script src="http://localhost:43210/js/script.js"></script>
+
+        <title>Oracleデータベース演習 - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="Oracleデータベース演習 - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:43210/post/oracle-database-sql-practice/">
+<meta property="og:image" content="http://localhost:43210/images/oracle.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="http://localhost:43210/post/oracle-database-sql-practice/">
+<meta name="twitter:title" content="Oracleデータベース演習 - 自動化無しに生活無し">
+<meta name="twitter:image" content="http://localhost:43210/images/oracle.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/localhost:43210\/"
+    },
+    "headline": "Oracleデータベース演習 - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/localhost:43210\/images\/oracle.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2025-08-31T10:59:41JST",
+    "dateModified": "2025-08-31T10:59:41JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/localhost:43210\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="http://localhost:43210/css/style.css" rel="stylesheet">
+        
+
+        
+        
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDX0LW64ZT"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-HDX0LW64ZT');
+        </script>
+        
+
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="http://localhost:43210/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEB開発関係を中心に備忘録をまとめています</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="http://localhost:43210/">HOME</a></li>
+                
+                <li><a href="http://localhost:43210/post/">post</a></li>
+                
+                <li class="active">Oracleデータベース演習</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">Oracleデータベース演習</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+
+        
+
+        <li>作成日時：<time datetime="2025-08-31T10:59:41JST">2025年8月31日 10時59分</time></li>
+        <li>最終更新日時：<time datetime="2025-08-31T10:59:41JST">2025年8月31日 10時59分</time></li>
+
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/sql/">SQL</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/oracle/">Oracle</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9/">データベース</a>
+            
+        </li>
+        
+        
+    </ul>
+
+
+    
+    
+    
+
+
+
+
+    <div class="img-center"><img src="http://localhost:43210/images/oracle.jpg" alt="thumbnail"></div>
+
+	<div class="article_body"><h2 id="結合と集約をセットで扱う">結合と集約をセットで扱う</h2>
+<pre tabindex="0"><code>SELECT 
+	E.JOB_ID,
+	SUM(E.SALARY) AS SUM_SALARY ,
+	AVG(E.SALARY) AS AVG_SALARY,
+	J.JOB_TITLE
+FROM EMPLOYEES E
+INNER JOIN JOBS J
+	ON J.JOB_ID = E.JOB_ID
+GROUP BY E.JOB_ID , J.JOB_TITLE;
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-08-31 11-05-18.png" alt=""></div>
+<h3 id="補足1-oracleではテーブルにはasを使ってはいけない">補足1: OracleではテーブルにはASを使ってはいけない。</h3>
+<p>PostgreSQLやMySQL、SQLiteでは列のエイリアスに使うASを、テーブルにも使える。</p>
+<p>よって、以下SQLは有効。</p>
+<pre tabindex="0"><code>SELECT 
+	E.JOB_ID,
+	SUM(E.SALARY) AS SUM_SALARY ,
+	AVG(E.SALARY) AS AVG_SALARY,
+	J.JOB_TITLE
+FROM EMPLOYEES AS E
+INNER JOIN JOBS AS J
+	ON J.JOB_ID = E.JOB_ID
+GROUP BY E.JOB_ID , J.JOB_TITLE;
+</code></pre><p>しかし、Oracleにおいては、テーブルのエイリアスにASを使ってはいけない。</p>
+<p>よって、<strong>テーブルのエイリアスにはASをつけず、列のエイリアスにはASをつける</strong></p>
+<p>これを徹底することで、Oracleと他DBでの互換性が保てる。</p>
+<h3 id="補足3-先に集約を済ませてから結合をするサブクエリ">補足3: 先に集約を済ませてから結合をする(サブクエリ)</h3>
+<p>サブクエリを使用することで、先に集約を済ませてから結合することもできる。</p>
+<p>Oracleにはオプティマイザが用意されているため、本項の書き方をしなくても処理速度に違いはない。(オプティマイザがシンプルなMySQLや、最小限しか無いSQLiteであれば有効)</p>
+<pre tabindex="0"><code>SELECT 
+	T.JOB_ID,
+	T.TOTAL_SALARY ,
+	T.AVG_SALARY,
+	J.JOB_TITLE
+FROM (
+    SELECT 
+        JOB_ID,
+        SUM(SALARY) AS TOTAL_SALARY ,
+        AVG(SALARY) AS AVG_SALARY,
+    FROM EMPLOYEES
+    GROUP BY JOB_ID
+) T
+INNER JOIN JOBS J
+    ON J.JOB_ID = T.JOB_ID;
+</code></pre><p>従業員数が非常に多い場合、この書き方のほうが高速ではある。</p>
+<h2 id="集約で重複している電話番号を調べる">集約で重複している電話番号を調べる</h2>
+<p>電話番号が間違えて重複して登録されているか調べている。</p>
+<pre tabindex="0"><code>SELECT PHONE_NUMBER, COUNT(*) AS CNT
+FROM EMPLOYEES
+GROUP BY PHONE_NUMBER
+HAVING COUNT(*) &gt; 1;
+</code></pre><p>PHONE_NUMBER で集約をして、集約後条件のHAVINGを使えば2件以上の電話番号を取り出すことができる。</p>
+<h3 id="補足1-実際に重複しているデータを取り出す">補足1: 実際に重複しているデータを取り出す</h3>
+<p>サブクエリとINを使うことで実際に重複しているデータを取り出せる。</p>
+<pre tabindex="0"><code>SELECT *
+FROM EMPLOYEES
+WHERE PHONE_NUMBER IN 
+( SELECT PHONE_NUMBER
+FROM EMPLOYEES 
+GROUP BY PHONE_NUMBER
+HAVING COUNT(*) &gt; 1 );
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-08-31 13-44-04.png" alt=""></div>
+<h3 id="補足2-実際に重複しているデータを取り出すexistsで効率的に">補足2: 実際に重複しているデータを取り出す(EXISTSで効率的に)</h3>
+<p>前項の補足1では、INとサブクエリ、集約を使って重複しているデータを取り出した。</p>
+<p>しかし、重複件数が多いと遅い場合もある。そこでEXISTSを使う。存在するか否かで判断できるため、パフォーマンスが良い。</p>
+<pre tabindex="0"><code>SELECT E1.*
+FROM EMPLOYEES E1
+WHERE EXISTS
+( SELECT 1
+FROM EMPLOYEES E2
+WHERE E1.PHONE_NUMBER = E2.PHONE_NUMBER 
+AND E1.EMPLOYEE_ID &lt;&gt; E2.EMPLOYEE_ID );
+</code></pre><p>E1のテーブル内から、サブクエリでヒットした行をそのまま表示している。</p>
+<h2 id="自己結合で組み合わせを調べる">自己結合で組み合わせを調べる</h2>
+<p>自己結合の用途</p>
+<ul>
+<li>重複したデータの確認</li>
+<li>予約が重なっているかの確認</li>
+<li>商品や組み合わせの確認</li>
+</ul>
+<pre tabindex="0"><code>SELECT E1.*
+FROM EMPLOYEES E1
+INNER JOIN EMPLOYEES E2 
+	ON E1.PHONE_NUMBER = E2.PHONE_NUMBER
+	AND E1.EMPLOYEE_ID &lt;&gt; E2.EMPLOYEE_ID;
+</code></pre><p>このSQLでも電話番号が重複していないか調べることができる。</p>
+<p>先程の集約やサブクエリ、INやEXISTSを使う方法よりも遥かにシンプルだ。</p>
+<div class="img-center"><img src="/images/Screenshot from 2025-08-31 12-02-52.png" alt=""></div>
+<h3 id="補足1-クロス結合は注意">補足1: クロス結合は注意</h3>
+<p>例えば、以下のような、無条件ですべての組み合わせを列挙するSQLの場合。</p>
+<pre tabindex="0"><code>SELECT E1.FIRST_NAME, E2.FIRST_NAME
+FROM EMPLOYEES E1
+CROSS JOIN EMPLOYEES E2 ;
+</code></pre><p>N^2 通りのデータが出力される。条件が特に不要であればこのCROSS JOINでも良い。</p>
+<p>だが、数万件単位のテーブルに対して実行するとDBのリソースを消耗してしまうため注意。</p>
+<p>特に、INNER JOIN では条件を書き忘れるとエラーで終わってくれるが、CROSS JOINはそのまま実行されてしまう。可能であれば使わないほうが良いだろう。</p>
+<h3 id="補足2-重複チェックで自己結合と集約サブクエリではどちらが良いのか">補足2: 重複チェックで、自己結合と集約+サブクエリではどちらが良いのか？</h3>
+<ul>
+<li>テーブルサイズが大きい場合: 集約+サブクエリ</li>
+<li>テーブルサイズが小さい場合: 自己結合</li>
+</ul>
+<p>自己結合は、自分自身のデータとの比較を繰り返すことになる。よってテーブルサイズが大きければ大きいほど、その処理時間は増えていく。(※処理数はN^2回)</p>
+<p>一方で集約を使って重複行を取り出し、比較をする方法の場合。チェックをするテーブルサイズが大きかったとしても処理速度に影響は自己結合ほどではない。</p>
+<p>自己結合は直感的でわかりやすい反面、処理速度の問題がある。</p>
+<p>集約+サブクエリはテーブルサイズによる処理速度の影響は少ないものの、可読性に難あり。</p>
+<p>状況に応じて使い分ける必要がある。</p>
+<h2 id="自己参照外部キーを使った結合">自己参照外部キーを使った結合</h2>
+<p>EMPLOYEE テーブルの MANAGER_ID はEMPLOYEE_IDと紐付いている。</p>
+<p>この自己参照外部キーを使った自己結合で部下と上司を並べて表示できる。</p>
+<pre tabindex="0"><code>SELECT E1.EMPLOYEE_ID , E1.FIRST_NAME , E1.LAST_NAME  , E2.FIRST_NAME AS MANAGER_FIRST , E2.LAST_NAME AS MANAGER_LAST 
+FROM EMPLOYEES E1
+LEFT JOIN EMPLOYEES E2 ON E1.MANAGER_ID = E2.EMPLOYEE_ID
+ORDER BY E1.EMPLOYEE_ID ;
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-08-31 14-38-08.png" alt=""></div>
+<h2 id="employee-テーブルを基本としてleft-joinで多重結合">EMPLOYEE テーブルを基本としてLEFT JOINで多重結合</h2>
+<div class="img-center"><img src="/images/Screenshot from 2025-08-31 13-20-52.png" alt=""></div>
+<pre tabindex="0"><code>SELECT E.FIRST_NAME , E.LAST_NAME, J.JOB_TITLE, D.DEPARTMENT_NAME, R.REGION_NAME, C.COUNTRY_NAME, L.STATE_PROVINCE
+FROM EMPLOYEES E
+LEFT JOIN DEPARTMENTS D ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
+LEFT JOIN JOBS J ON E.JOB_ID = J.JOB_ID
+LEFT JOIN LOCATIONS L ON D.LOCATION_ID  = L.LOCATION_ID
+LEFT JOIN COUNTRIES C ON L.COUNTRY_ID = C.COUNTRY_ID
+LEFT JOIN REGIONS R ON C.REGION_ID  = R.REGION_ID;
+</code></pre><pre tabindex="0"><code>
+FIRST_NAME |LAST_NAME  |JOB_TITLE                      |DEPARTMENT_NAME |REGION_NAME|COUNTRY_NAME                                        |STATE_PROVINCE|
+-----------+-----------+-------------------------------+----------------+-----------+----------------------------------------------------+--------------+
+Alexander  |James      |Programmer                     |IT              |Americas   |United States of America                            |Texas         |
+Bruce      |Miller     |Programmer                     |IT              |Americas   |United States of America                            |Texas         |
+David      |Williams   |Programmer                     |IT              |Americas   |United States of America                            |Texas         |
+Valli      |Jackson    |Programmer                     |IT              |Americas   |United States of America                            |Texas         |
+Diana      |Nguyen     |Programmer                     |IT              |Americas   |United States of America                            |Texas         |
+Matthew    |Weiss      |Stock Manager                  |Shipping        |Americas   |United States of America                            |California    |
+Adam       |Fripp      |Stock Manager                  |Shipping        |Americas   |United States of America                            |California    |
+Payam      |Kaufling   |Stock Manager                  |Shipping        |Americas   |United States of America                            |California    |
+Shanta     |Vollman    |Stock Manager                  |Shipping        |Americas   |United States of America                            |California    |
+Kevin      |Mourgos    |Stock Manager                  |Shipping        |Americas   |United States of America                            |California    |
+Julia      |Nayer      |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Irene      |Mikkilineni|Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+James      |Landry     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Steven     |Markle     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Laura      |Bissot     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Mozhe      |Atkinson   |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+James      |Marlow     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+TJ         |Olson      |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Jason      |Mallin     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Michael    |Rogers     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Ki         |Gee        |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Hazel      |Philtanker |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Renske     |Ladwig     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Stephen    |Stiles     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+John       |Seo        |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Joshua     |Patel      |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Trenna     |Rajs       |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Curtis     |Davies     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Randall    |Matos      |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Peter      |Vargas     |Stock Clerk                    |Shipping        |Americas   |United States of America                            |California    |
+Winston    |Taylor     |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Jean       |Fleaur     |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Martha     |Sullivan   |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Girard     |Geoni      |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Nandita    |Sarchand   |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Alexis     |Bull       |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Julia      |Dellinger  |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Anthony    |Cabrio     |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Kelly      |Chung      |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Jennifer   |Dilly      |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Timothy    |Venzl      |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Randall    |Perkins    |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Sarah      |Bell       |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Britney    |Everett    |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Samuel     |McLeod     |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Vance      |Jones      |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Alana      |Walsh      |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Kevin      |Feeney     |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Donald     |OConnell   |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Douglas    |Grant      |Shipping Clerk                 |Shipping        |Americas   |United States of America                            |California    |
+Jennifer   |Whalen     |Administration Assistant       |Administration  |Americas   |United States of America                            |Washington    |
+Den        |Li         |Purchasing Manager             |Purchasing      |Americas   |United States of America                            |Washington    |
+Alexander  |Khoo       |Purchasing Clerk               |Purchasing      |Americas   |United States of America                            |Washington    |
+Shelli     |Baida      |Purchasing Clerk               |Purchasing      |Americas   |United States of America                            |Washington    |
+Sigal      |Tobias     |Purchasing Clerk               |Purchasing      |Americas   |United States of America                            |Washington    |
+Guy        |Himuro     |Purchasing Clerk               |Purchasing      |Americas   |United States of America                            |Washington    |
+Karen      |Colmenares |Purchasing Clerk               |Purchasing      |Americas   |United States of America                            |Washington    |
+Steven     |King       |President                      |Executive       |Americas   |United States of America                            |Washington    |
+Neena      |Yang       |Administration Vice President  |Executive       |Americas   |United States of America                            |Washington    |
+Lex        |Garcia     |Administration Vice President  |Executive       |Americas   |United States of America                            |Washington    |
+Nancy      |Gruenberg  |Finance Manager                |Finance         |Americas   |United States of America                            |Washington    |
+Daniel     |Faviet     |Accountant                     |Finance         |Americas   |United States of America                            |Washington    |
+John       |Chen       |Accountant                     |Finance         |Americas   |United States of America                            |Washington    |
+Ismael     |Sciarra    |Accountant                     |Finance         |Americas   |United States of America                            |Washington    |
+Jose Manuel|Urman      |Accountant                     |Finance         |Americas   |United States of America                            |Washington    |
+Luis       |Popp       |Accountant                     |Finance         |Americas   |United States of America                            |Washington    |
+Shelley    |Higgins    |Accounting Manager             |Accounting      |Americas   |United States of America                            |Washington    |
+William    |Gietz      |Public Accountant              |Accounting      |Americas   |United States of America                            |Washington    |
+Michael    |Martinez   |Marketing Manager              |Marketing       |Americas   |Canada                                              |Ontario       |
+Pat        |Davis      |Marketing Representative       |Marketing       |Americas   |Canada                                              |Ontario       |
+Susan      |Jacobs     |Human Resources Representative |Human Resources |Europe     |United Kingdom of Great Britain and Northern Ireland|              |
+John       |Singh      |Sales Manager                  |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Karen      |Partners   |Sales Manager                  |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Alberto    |Errazuriz  |Sales Manager                  |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Gerald     |Cambrault  |Sales Manager                  |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Eleni      |Zlotkey    |Sales Manager                  |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Sean       |Tucker     |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+David      |Bernstein  |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Peter      |Hall       |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Christopher|Olsen      |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Nanette    |Cambrault  |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Oliver     |Tuvault    |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Janette    |King       |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Patrick    |Sully      |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Allan      |McEwen     |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Lindsey    |Smith      |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Louise     |Doran      |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Sarath     |Sewall     |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Clara      |Vishney    |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Danielle   |Greene     |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Mattea     |Marvins    |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+David      |Lee        |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Sundar     |Ande       |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Amit       |Banda      |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Lisa       |Ozer       |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Harrison   |Bloom      |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Tayler     |Fox        |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+William    |Smith      |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Elizabeth  |Bates      |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Sundita    |Kumar      |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Ellen      |Abel       |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Alyssa     |Hutton     |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Jonathon   |Taylor     |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Jack       |Livingston |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Charles    |Johnson    |Sales Representative           |Sales           |Europe     |United Kingdom of Great Britain and Northern Ireland|Oxford        |
+Hermann    |Brown      |Public Relations Representative|Public Relations|Europe     |Germany                                             |Bavaria       |
+Kimberely  |Grant      |Sales Representative           |                |           |                                                    |              |
+</code></pre><p>このようにEMPLOYEEの外部キーがNULLの場合も表示させたい場合は、LEFT JOIN を使う</p>
+<h2 id="null-を扱うときには--null-ではなくis-null">NULL を扱うときには = NULL ではなく、IS NULL</h2>
+<p>NULLは値でも変数でもない。そのため、以下のように比較演算子を使ったSQLは正常に機能しない。(unknownになるため何も出てこない。)</p>
+<pre tabindex="0"><code>SELECT * FROM EMPLOYEES
+WHERE MANAGER_ID = NULL;
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-08-31 15-08-08.png" alt=""></div>
+<p>もしNULLであるか否かを判定したいのであればIS、IS NOTを使う。</p>
+<pre tabindex="0"><code>SELECT * FROM EMPLOYEES
+WHERE MANAGER_ID IS NULL;
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-08-31 15-08-34.png" alt=""></div>
+<p>ちなみに不一致である比較演算子の &lt;&gt; も正常に動作しない。</p>
+<pre tabindex="0"><code>SELECT * FROM EMPLOYEES
+WHERE MANAGER_ID &lt;&gt; NULL;
+</code></pre><p>一般的なプログラミング言語では、NULLは値であるためこれらの比較演算子が有効ではあるが、SQLでは値ですらない。</p>
+<p>NULLにIS,IS NOT以外使用できないため注意。</p>
+<p>また、以下のSQLは一見全行が取得できるように思えるが、NULLである行は除外されている。</p>
+<pre tabindex="0"><code>SELECT * FROM EMPLOYEES
+WHERE MANAGER_ID = 100 OR MANAGER_ID &lt;&gt; 100 ;
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-08-31 15-18-34.png" alt=""></div>
+<h2 id="null対策not-inは安易に使わない">【NULL対策】NOT INは安易に使わない</h2>
+<p>INを使うことで、集合に当てはまる場合はTRUEになる。</p>
+<pre tabindex="0"><code>WHERE x IN (1, 2, NULL)
+</code></pre><p>このように集合の中にNULLが含まれていたとしても、その部分は評価されないので問題はない。</p>
+<p>しかし、NOT INは使うべきではない。</p>
+<pre tabindex="0"><code>WHERE x NOT IN (1, 2, NULL)
+</code></pre><p>このWHERE 条件式は 「x ≠ 1 AND x ≠ 2 AND x ≠ NULL」と解釈される。</p>
+<p>NULL はunknownを返すため、  x ≠ NULL 式全体が unknownになり、結果が全て帰らなくなってしまう。</p>
+<h3 id="補足1in句は仮にxがnullだった場合はxの行だけ含まれない">【補足1】IN句は仮にxがNULLだった場合は、xの行だけ含まれない。</h3>
+<pre tabindex="0"><code>WHERE x IN (1, 2)
+</code></pre><p>この場合でxがNULL だった場合、集合にNULLが含まれていてもいなくても、その行は返されない。</p>
+<pre tabindex="0"><code>WHERE x IN (1, 2, NULL)
+</code></pre><p>この場合でもxがNULLだったらその行は返らない。</p>
+<h3 id="補足2-not-inを使うならサブクエリ側にnull対策をもしくはnot-existsを使おう">【補足2】 NOT INを使うならサブクエリ側にNULL対策を、もしくはNOT EXISTSを使おう。</h3>
+<p>もし、 NOT IN を使う場合は集合側(サブクエリ側)でNULLを排除した上で比較をする。</p>
+<pre tabindex="0"><code>WHERE x NOT IN (1, 2)
+</code></pre><p>あるいは、NOT EXISTSを使う。NOT EXISTS は集合の中にNULLが含まれていたとしても正常に動作する。</p>
+<pre tabindex="0"><code>WHERE NOT EXISTS (
+    SELECT 1 FROM t WHERE t.col = x
+)
+</code></pre><p>NOT EXISTS は NOT IN とは異なる使用感。自分自身の集合の中から一致しないものを取り出すというイメージで。</p>
+<h2 id="case-文で-sql内で条件分岐をする">CASE 文で SQL内で条件分岐をする</h2>
+<p>CASE文で条件分岐ができる。その使い方は完全一致型と比較型で構文が異なる。</p>
+<p>完全一致型はこちら。CASEのあとに列名を書く。WHENのあとに値を書く。</p>
+<pre tabindex="0"><code>--完全一致型のCASE文
+SELECT CITY ,
+CASE COUNTRY_ID
+	WHEN &#39;JP&#39; THEN &#39;国内&#39;
+	ELSE &#39;海外&#39;
+END AS COUNTRY_TYPE
+FROM LOCATIONS L
+</code></pre><div class="img-center"><img src="/images/Screenshot from 2025-09-15 11-25-49.png" alt=""></div>
+<p>比較型はこちら。CASEのあとに列名を書かず、WHENのあとに条件式を書く。</p>
+<pre tabindex="0"><code>-- 条件型のCASE文
+SELECT FIRST_NAME,
+CASE
+	WHEN SALARY &gt;= 10000 THEN &#39;高給&#39;
+ 	ELSE &#39;低給&#39;
+END AS SALARY_LEVEL
+FROM EMPLOYEES E;
+</code></pre><p>この比較型の条件式の場合、複数条件を設定することができる。</p>
+<div class="img-center"><img src="/images/Screenshot from 2025-09-15 11-25-55.png" alt=""></div>
+<h3 id="補足1集約をした上でcase文を使う">【補足1】集約をした上でCASE文を使う。</h3>
+<pre tabindex="0"><code>-- 部署ごとに集約し、給与の平均を出す。
+SELECT 
+	MIN(D.DEPARTMENT_NAME) AS 部署名,
+	AVG(E.SALARY) AS 平均給与,
+	CASE 
+		WHEN AVG(E.SALARY) &gt;= 8000 THEN &#39;A&#39; 
+		WHEN AVG(E.SALARY) &gt;= 5000 THEN &#39;B&#39;
+		ELSE &#39;C&#39;
+	END AS 給与ランク	
+FROM EMPLOYEES E
+INNER JOIN DEPARTMENTS D
+ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
+GROUP BY E.DEPARTMENT_ID;
+</code></pre><p>一見、AVG関数が何度も使われているため冗長で、低速のように見える。</p>
+<p>だが、1度計算したものは何度も使い回されるためパフォーマンス上の問題は特にない。</p>
+<div class="img-center"><img src="/images/Screenshot from 2025-09-15 11-24-29.png" alt=""></div>
+<!--
+<div class="img-center"><img src="" alt=""></div>
+<div class="img-center"><img src="" alt=""></div>
+<div class="img-center"><img src="" alt=""></div>
+<div class="img-center"><img src="" alt=""></div>
+
+-->
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="http://localhost:43210/post/sql-exists/">EXISTSの使い方<time class="relate_time">2025年10月4日 07時07分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/pandas-read-sql/">【Pandas】read_sql で生のSQL(SELECT文)を実行、DBから直接DataFrameを作る<time class="relate_time">2025年6月8日 16時49分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/database-sql-having-group-count/">【SQL】GROUP BY, HAVING, COUNTの3つでグループ化して集計、条件で絞り込みカウントする<time class="relate_time">2025年6月2日 18時47分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/oracle-database-function/">【SQL】Oracleデータベースのファンクション(関数)の一覧<time class="relate_time">2025年6月1日 18時38分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/oracle-database-sql-basic/">OracleDBのSQLまとめ<time class="relate_time">2025年4月29日 08時41分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/sql-exists/">次の投稿<br><span class="summary_pg">EXISTSの使い方</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/python-pyside6-qt/">前の投稿<br><span class="summary_pg">PySide6のQtを使ってGUIアプリを作る</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="http://localhost:43210/information/introduction/"><img class="author_img" src="http://localhost:43210/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: NaN</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF">フルスタック</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ </a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E9%96%8B%E7%99%BA">ロボット開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E6%98%A0%E5%83%8F%E5%87%A6%E7%90%86">映像処理</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/react">react</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E9%96%8B%E7%99%BA">ai開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">pythonライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/drf">drf</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">javascriptライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fastapi">fastapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pytorch">pytorch</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sql">sql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/keras">keras</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/lpic">lpic</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E5%AE%9F%E8%A3%85%E6%A4%9C%E5%AE%9A">ai実装検定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css">css</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/c">c＃</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/llm">llm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/next.js">next.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/oracle">oracle</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rag">rag</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/spa">spa</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A1%E3%83%A2">メモ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABllm">ローカルllm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/.net">.net</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cnn">cnn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/db">db</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nlp">nlp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qdrant">qdrant</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/raspberry-pi">raspberry pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/redis">redis</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/serializers.py">serializers.py</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/typescript">typescript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%A2%E3%83%87%E3%83%AB">カスタムユーザーモデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89">コマンド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3">マークダウン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%82%99%E5%BF%98%E9%8C%B2">備忘録</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E5%8B%95%E5%8C%96">自動化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%B3%87%E6%A0%BC%E8%A9%A6%E9%A8%93">資格試験</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E5%8A%B9%E7%8E%87%E5%8C%96">開発効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bootstrap">bootstrap</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fetchapi">fetchapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/firefox">firefox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fullcalendar">fullcalendar</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gnome">gnome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gui">gui</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/java">java</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jwt">jwt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/latex">latex</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linq">linq</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/microsoftaccess">microsoftaccess</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/modprobe">modprobe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/mysql">mysql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nodejs">nodejs</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ocr">ocr</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ogp">ogp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ollama">ollama</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pillow">pillow</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qt">qt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/reactnative">reactnative</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/render.com">render.com</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rtmp">rtmp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/scikit-learn">scikit-learn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seaborn">seaborn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seo%E5%AF%BE%E7%AD%96">seo対策</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlalchemy">sqlalchemy</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sse">sse</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/systemd">systemd</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tempermonkey">tempermonkey</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">webデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アニメーション</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89">クラウド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B5%E3%83%BC%E3%83%9C%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC">サーボモーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E8%8A%B8">シェル芸</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%83%9E%E3%83%9B%E3%82%A2%E3%83%97%E3%83%AA">スマホアプリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%99%E3%82%AF%E3%83%88%E3%83%ABdb">ベクトルdb</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%86%E9%A1%9E%E5%95%8F%E9%A1%8C">分類問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%9E%E5%B8%B0%E5%95%8F%E9%A1%8C">回帰問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%B2%E7%A2%81">囲碁</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%A4%9A%E5%AF%BE%E5%A4%9A">多対多</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92">教師あり学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%AA%E3%81%97%E5%AD%A6%E7%BF%92">教師なし学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E5%8A%A0%E5%B7%A5">画像加工</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98">画像認識</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86">非同期処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="http://localhost:43210/post/fastapi-nextjs-crud/">FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-fastapi/">FastAPIのプロジェクト構成、ルーティング、モデル、DB使用方法について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-qdrant/">QdrantのCRUD、コレクションとポイント、ハイブリッド検索について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/javascript-self-chunks/">RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/qdrant-rag-system/">RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/python-local-llm-rag/">OllamaでRAGを実現する。</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/local-llm-install/">UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-jisso-kentei-s-grade/">AI実装検定S級合格体験記</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-question/">AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-mock/">AI実装検定S級の模擬試験</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Books</div>
+
+        <div class="row">
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/481561072X/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/I/51Y0-P+m94L.jpg" alt="">
+                    </div>
+                    <div>モダンJavaScriptの基本から始める　React実践の教科書　（最新ReactHooks対応）</div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/B09K235CTP/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/P/B09K235CTP.jpg" alt="">
+                    </div>
+                    <div>現場で使える Django の教科書《基礎編》［3.2 LTS 対応版］</div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

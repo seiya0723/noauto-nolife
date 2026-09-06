@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Drf on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/drf/</link>
+    <description>Recent content in Drf on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 07 Mar 2025 10:31:08 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/drf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Sec-Websocket-Protocol】DRF&#43;ReactのSPAでWebsocketのチャットサイトでJWT認証をする</title>
+      <link>http://localhost:43210/post/drf-react-spa-websocket-chat-jwt/</link>
+      <pubDate>Fri, 07 Mar 2025 10:31:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-websocket-chat-jwt/</guid>
+      <description>DRF+ReactのSPAでWebsocketのチャットサイトをつくる と DRF+ReactのCRUD簡易掲示板SPAでJWT認証を実装する の続き。 今回は、先にSPAでJWT認証を済ませたうえで、WebSocketを行うようにした。Sec-WebSocket-Protocol を使っている。 トークンの検証が煩雑になるため、WebSocketのメッセージ部にJWTトークンは含ませない設計にした。 WebS</description>
+    </item>
+    <item>
+      <title>Django-channelsのAsyncWebsocketConsumerのscopeの内容【JWT認証&#43;Sec-Websocket-Protocol】</title>
+      <link>http://localhost:43210/post/django-async-websocket-consumer-scope/</link>
+      <pubDate>Sat, 18 Jan 2025 17:32:48 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-async-websocket-consumer-scope/</guid>
+      <description>AsyncWebsocketConsumer の scope の内容は以下の通り。 ただし、JWT認証をしており、Sec-Websocket-Protocol を使用している。 { &amp;#39;type&amp;#39;: &amp;#39;websocket&amp;#39;, &amp;#39;path&amp;#39;: &amp;#39;/ws/chat/1/&amp;#39;, &amp;#39;raw_path&amp;#39;: b&amp;#39;/ws/chat/1/&amp;#39;, &amp;#39;root_path&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;headers&amp;#39;: [ (b&amp;#39;host&amp;#39;, b&amp;#39;localhost:8000&amp;#39;), (b&amp;#39;user-agent&amp;#39;, b&amp;#39;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0&amp;#39;), (b&amp;#39;accept&amp;#39;, b&amp;#39;*/*&amp;#39;), (b&amp;#39;accept-language&amp;#39;, b&amp;#39;ja,en-US;q=0.7,en;q=0.3&amp;#39;), (b&amp;#39;accept-encoding&amp;#39;, b&amp;#39;gzip, deflate, br, zstd&amp;#39;), (b&amp;#39;sec-websocket-version&amp;#39;, b&amp;#39;13&amp;#39;), (b&amp;#39;origin&amp;#39;, b&amp;#39;http://localhost:3000&amp;#39;), (b&amp;#39;sec-websocket-protocol&amp;#39;, b&amp;#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MTg4NDg5LCJpYXQiOjE3MzcxODgzNDUsImp0aSI6IjI0OWRlMTUzMjY0YTQ4ZDE5YWVkZDJiODlhNTgwY2M5IiwidXNlcl9pZCI6MX0.hzS0uwx4LhPlM6wFJiIUpEkjVjkGpV87psw5MD1leyk&amp;#39;), (b&amp;#39;sec-websocket-extensions&amp;#39;, b&amp;#39;permessage-deflate&amp;#39;), (b&amp;#39;sec-websocket-key&amp;#39;, b&amp;#39;Q257WDS+ETm8KNLmj6cQiQ==&amp;#39;), (b&amp;#39;dnt&amp;#39;, b&amp;#39;1&amp;#39;), (b&amp;#39;sec-gpc&amp;#39;, b&amp;#39;1&amp;#39;), (b&amp;#39;connection&amp;#39;, b&amp;#39;keep-alive, Upgrade&amp;#39;), (b&amp;#39;cookie&amp;#39;, b&amp;#39;csrftoken=8ShA2y6HDOr794MF0TdrSnbEv76KCY0Y; _ga_HDX0LW64ZT=GS1.1.1737184513.53.1.1737184805.0.0.0;&amp;#39;), (b&amp;#39;sec-fetch-dest&amp;#39;, b&amp;#39;empty&amp;#39;), (b&amp;#39;sec-fetch-mode&amp;#39;, b&amp;#39;websocket&amp;#39;), (b&amp;#39;sec-fetch-site&amp;#39;, b&amp;#39;same-site&amp;#39;), (b&amp;#39;pragma&amp;#39;, b&amp;#39;no-cache&amp;#39;), (b&amp;#39;cache-control&amp;#39;, b&amp;#39;no-cache&amp;#39;), (b&amp;#39;upgrade&amp;#39;, b&amp;#39;websocket&amp;#39;) ], &amp;#39;query_string&amp;#39;: b&amp;#39;&amp;#39;, &amp;#39;client&amp;#39;: [&amp;#39;127.0.0.1&amp;#39;, 35492], &amp;#39;server&amp;#39;: [&amp;#39;127.0.0.1&amp;#39;, 8000], &amp;#39;subprotocols&amp;#39;: [&amp;#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MTg4NDg5LCJpYXQiOjE3MzcxODgzNDUsImp0aSI6IjI0OWRlMTUzMjY0YTQ4ZDE5YWVkZDJiODlhNTgwY2M5IiwidXNlcl9pZCI6MX0.hzS0uwx4LhPlM6wFJiIUpEkjVjkGpV87psw5MD1leyk&amp;#39;], &amp;#39;asgi&amp;#39;: {&amp;#39;version&amp;#39;: &amp;#39;3.0&amp;#39;}, &amp;#39;user&amp;#39;: &amp;lt;User: asahina&amp;gt;, &amp;#39;path_remaining&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;url_route&amp;#39;: {&amp;#39;args&amp;#39;: (), &amp;#39;kwargs&amp;#39;: {&amp;#39;room_name&amp;#39;: &amp;#39;1&amp;#39;}} } ユーザーエージェントやCookieのデータも含まれる。 今回、ミドルウェアなどで操作しているため、状況によっ</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのCRUD簡易掲示板SPAでJWT認証を実装する</title>
+      <link>http://localhost:43210/post/drf-react-spa-crud-bbs-jwt/</link>
+      <pubDate>Tue, 14 Jan 2025 08:56:12 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-crud-bbs-jwt/</guid>
+      <description>DRF+ReactのSPAでCRUD簡易掲示板をつくる このDRF+ReactのCRUD簡易掲示板SPAに、JWT認証を実装する。 なぜなら、JWT認証を実装しない場合、通常のDjangoのセッションベースの認証を実装する場合では、CSRF検証が必要になるから。 開発要件 JWT認証を実装する( CSRF検証の廃止 ) ログイン、ログアウト、トークンの更新、アカウント新規作成の機能 ユーザー名とパスワードを使用し</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのSPAでWebsocketのチャットサイトをつくる</title>
+      <link>http://localhost:43210/post/drf-react-spa-websocket-chat/</link>
+      <pubDate>Thu, 09 Jan 2025 15:40:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-websocket-chat/</guid>
+      <description>タイトル通り、Django REST FrameworkとReactのSPAで、WebSocketを使ったチャットサイトを作った。 以前のWebSocket搭載チャットサイト(下記)はReactを使っていないため、SPAではない。今回はReactを搭載したSPAとしている。 DjangoでWebSocketを使って、チャットサイトを作る ただし、今回はJWT認証の実装は見送った。理由は後述。 開発要件 WebSock</description>
+    </item>
+    <item>
+      <title>DRFでModelViewSetの動的ルーティング(URL内引数)を作る</title>
+      <link>http://localhost:43210/post/drf-modelviewset-dynamic-routing/</link>
+      <pubDate>Wed, 08 Jan 2025 11:39:59 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-modelviewset-dynamic-routing/</guid>
+      <description>例えば、ModelViewSetが以下のような場合 from rest_framework import viewsets from .models import Category,Topic,Reply from .serializers import CategorySerializer,TopicSerializer,ReplySerializer class CategoryView(viewsets.ModelViewSet): serializer_class = CategorySerializer queryset = Category.objects.all() class TopicView(viewsets.ModelViewSet): serializer_class = TopicSerializer queryset = Topic.objects.all() class ReplyView(viewsets.ModelViewSet): serializer_class = ReplySerializer queryset = Reply.objects.all() ルーティングは、このように DefaultRouter を使うと良い。 from django.contrib import admin from django.urls import path,include from rest_framework import routers from bbs import views router = routers.DefaultRouter() router.register(r&amp;#34;topics&amp;#34;, views.TopicView, &amp;#34;topic&amp;#34;) router.register(r&amp;#34;categories&amp;#34;, views.CategoryView, &amp;#34;category&amp;#34;) router.register(r&amp;#34;replies&amp;#34;, views.ReplyView, &amp;#34;reply&amp;#34;) urlpatterns = [ path(&amp;#39;admin/&amp;#39;, admin.site.urls), path(&amp;#39;api/&amp;#39;, include(router.urls)), ] だが、これではTopicに紐付いていないReplyまで取得できてしまう。 そこで、 HTTP GET /api/replies/ でReplyを取得するのではなく、 HTTP GET /api/topics/1/replies/ このように動的ルーティング(URL引数</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのSPAでCRUD簡易掲示板をつくる</title>
+      <link>http://localhost:43210/post/drf-react-spa-crud-bbs/</link>
+      <pubDate>Mon, 06 Jan 2025 10:52:43 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-crud-bbs/</guid>
+      <description>開発要件 DRF+ReactでSPA react-router-domでページURLの構築 簡易掲示板のCRUD機能 カテゴリ指定・追加機能 リプライ投稿機能 CSRF検証の挙動を確認するため、あえてJWT認証はオミット CRAではなくViteを使用 以前のものは、1対多には対応しておらず、CRAを利用していた。またページもない。 更に、axiosがコールバック地獄になっているので、そちらも修正した。 使用ライブラリ</description>
+    </item>
+    <item>
+      <title>DRFはいつCSRF検証をするのか？</title>
+      <link>http://localhost:43210/post/drf-csrf-validation/</link>
+      <pubDate>Sat, 28 Dec 2024 16:47:30 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-csrf-validation/</guid>
+      <description>開発中、おかしなことが起こった。 これまでCSRFトークン無しで、PUTやDELETEメソッドが送信できていた。 だが、突然、同様の状況で403エラー(CSRF token missing)が起きた。 CSRFトークン無しでリクエストできていたものが、急に403エラーになりCSRF検証を行うようになった。 何故か？ DRFのビューでは、CSRF検証が免除されている https://github.com/encode/django-rest-framework/blob/master/rest_framework/viewsets.py#L146 DRFのビューは、このように .as_view()の戻り</description>
+    </item>
+    <item>
+      <title>DRFで400 Bad Request エラーが出る時、Serializerを確認する</title>
+      <link>http://localhost:43210/post/drf-400-error-serializer/</link>
+      <pubDate>Tue, 24 Dec 2024 09:21:14 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-400-error-serializer/</guid>
+      <description>このモデルと class Todo(models.Model): category = models.ForeignKey(Category,verbose_name=&amp;#34;カテゴリ&amp;#34;,on_delete=models.CASCADE) created_at = models.DateTimeField(verbose_name=&amp;#34;投稿日時&amp;#34;,default=timezone.now) content = models.CharField(verbose_name=&amp;#34;内</description>
+    </item>
+    <item>
+      <title>DateTimeFieldで、フォーマットを指定したserializers.pyを作る</title>
+      <link>http://localhost:43210/post/drf-datetime-serializers/</link>
+      <pubDate>Mon, 23 Dec 2024 13:03:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-datetime-serializers/</guid>
+      <description>DateTimeFieldを含むモデルで、シリアライザをこう作ると from rest_framework import serializers from .models import Category,Todo class CategorySerializer(serializers.ModelSerializer): class Meta: model = Category fields = (&amp;#34;id&amp;#34;, &amp;#34;created_at&amp;#34;, &amp;#34;name&amp;#34;, &amp;#34;color&amp;#34;) class TodoSerializer(serializers.ModelSerializer): category = CategorySerializer() class Meta: model = Todo fields = (&amp;#34;id&amp;#34;, &amp;#34;category&amp;#34;, &amp;#34;created_at&amp;#34;, &amp;#34;content&amp;#34;, &amp;#34;deadline&amp;#34;, &amp;#34;is_done&amp;#34;) このようにタイムゾーン表記になってしまう。 作成日: 2024-12-25T12:00:00+09:00 締切: 2024-12-25T12:00:00+09:00 年月日表記に修正をするには、serializers.pyでフォーマットを指定する。 from rest_framework import serializers from .models import Category,Todo class CategorySerializer(serializers.ModelSerializer): created_at = serializers.DateTimeField(format=&amp;#34;%Y年%m月%</description>
+    </item>
+    <item>
+      <title>1対多のモデル構造で、ネストしたserializers.pyを作る</title>
+      <link>http://localhost:43210/post/drf-foreignkey-serializers/</link>
+      <pubDate>Mon, 23 Dec 2024 11:09:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-foreignkey-serializers/</guid>
+      <description>通常、 class Category(models.Model): name = models.CharField(max_length=100) class Todo(models.Model): title = models.CharField(max_length=200) category = models.ForeignKey(Category, on_delete=models.CASCADE) このモデル構造の場合、シリアライザはこうなる。 from rest_framework import serializers from .models import Todo, Category class CategorySerializer(serializers.ModelSerializer): class Meta: model = Category fields = [&amp;#39;id&amp;#39;, &amp;#39;name&amp;#39;] class TodoSerializer(serializers.ModelSerializer): class Meta: model = Todo fields = [&amp;#39;id&amp;#39;, &amp;#39;title&amp;#39;, &amp;#39;category&amp;#39;] ただこれだと、フロントサイドで得られる、JSONは、 [ { &amp;#34;id&amp;#34;: 1, &amp;#34;title&amp;#34;: &amp;#34;Todo 1&amp;#34;, &amp;#34;category&amp;#34;: 1 }, { &amp;#34;id&amp;#34;: 2, &amp;#34;title&amp;#34;: &amp;#34;Todo 2&amp;#34;, &amp;#34;category&amp;#34;: 2 } ] このように、categoryのidのみであり、カテゴリ名を表示することはできない。 ネストしたSerializerを指定する。 そこで、このように、TodoSerial</description>
+    </item>
+    <item>
+      <title>Reactでaxiosを使ってリクエストをすると、2回送られる問題【React.StrictMode問題】</title>
+      <link>http://localhost:43210/post/react-2times-request/</link>
+      <pubDate>Wed, 14 Aug 2024 10:35:12 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-2times-request/</guid>
+      <description>index.js の root.render( &amp;lt;React.StrictMode&amp;gt; &amp;lt;App /&amp;gt; &amp;lt;/React.StrictMode&amp;gt; ); を root.render( &amp;lt;App /&amp;gt; ); に直す。 補足 これは StrictMode が開発段階で動作チェックをするためにやっていること。 本番環境に移行した場合、2度実行されることはない。 そのため、放置していても問題はない。 参考元 https://stackoverflow.com/questions/73002902/api-getting-called-twice-in-react</description>
+    </item>
+    <item>
+      <title>【Django Rest Framework】モデルメソッドはシリアライザメソッドで代用する</title>
+      <link>http://localhost:43210/post/drf-serializer-method/</link>
+      <pubDate>Mon, 12 Aug 2024 10:59:58 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-serializer-method/</guid>
+      <description>DRFとReactのSPAを作る時、DTLは使えない。 これまでのようにモデルオブジェクトからメソッドを呼び出すことはできない。 そこで、シリアライザにメソッドを用意して代用する。 モデル 前提として、このようにモデルメソッドを作った時。 from django.db import models class Topic(models.Model): comment = models.CharField(verbose_name=&amp;#34;コメント&amp;#34;,max_length=2000) def comment_lenth(self): return len(self.comment) これでは、React側は</description>
+    </item>
+  </channel>
+</rss>

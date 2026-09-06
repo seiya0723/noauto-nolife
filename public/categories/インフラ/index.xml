@@ -1,303 +1,467 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>インフラ on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/</link>
+    <link>http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/</link>
     <description>Recent content in インフラ on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 17 Sep 2022 10:20:08 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 22 Aug 2026 08:08:57 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>QdrantのCRUD、コレクションとポイント、ハイブリッド検索について</title>
+      <link>http://localhost:43210/post/startup-qdrant/</link>
+      <pubDate>Sat, 22 Aug 2026 08:08:57 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-qdrant/</guid>
+      <description>Qdrantとは？ Qdrantはファイルの意味をまとめた数値の集まり(ベクトルデータ)を保存・検索できるベクトルDBの一種。 Qdrantにより、意味で検索できる。 例えば、「哺乳類で、海に棲んでいる。天敵がいない、水族館にもいる生き物。」と検索をすれば、「シャチ」が出てくる。つまり、直接「シャチ」と言わず、「シャチ」に含まれる意味を元に検索をすることができる。 実務では、 ファイル名は思い出せないが、内</description>
+    </item>
+    <item>
+      <title>サーバー版UbuntuにGNOMEをインストールする</title>
+      <link>http://localhost:43210/post/ubuntu-gnome-install/</link>
+      <pubDate>Sun, 23 Nov 2025 06:49:36 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-gnome-install/</guid>
+      <description>sudo apt install ubuntu desktop sudo shutdown -r now これだけで良い。 インストールしたGNOMEを削除するには、依存パッケージも合わせて削除をする必要がある。 sudo apt purge gnome-shell* gnome-session* gdm3* sudo apt autoremove --purge systemctlからGUIを無効化する方法もある。 削除が手間な場合、後でまたデスクトップを使う場合はこちらのほうが簡単。 sudo systemctl set-default multi-user.target sudo reboot</description>
+    </item>
+    <item>
+      <title>【SQL】GROUP BY, HAVING, COUNTの3つでグループ化して集計、条件で絞り込みカウントする</title>
+      <link>http://localhost:43210/post/database-sql-having-group-count/</link>
+      <pubDate>Mon, 02 Jun 2025 18:47:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/database-sql-having-group-count/</guid>
+      <description>GROUP BY + HAVING + COUNT よくある手法の一つに、 売上データから営業担当者ごとに売上件数を集計し、売上件数が2件以上の人だけ表示したい。 というものがある。 id salesperson region amount 1 Alice East 100 2 Bob West 200 3 Alice East 150 4 Bob West 250 5 Carol East 300 データがこの場合、SQLで表現すると、 SELECT salesperson, COUNT(*) AS num_sales FROM sales GROUP BY salesperson HAVING COUNT(*) &amp;gt;= 2; 結果はこうなる。 salesperson num_sales Alice 2 Bob 2 GROUP BY カラムが同じ値ごとに集計 GROUP BY はカラムを指定し、同じ値ごとに集計をすることができる。 今回は salesperson を指定することで、同じ営業</description>
+    </item>
+    <item>
+      <title>【SQL】Oracleデータベースのファンクション(関数)の一覧</title>
+      <link>http://localhost:43210/post/oracle-database-function/</link>
+      <pubDate>Sun, 01 Jun 2025 18:38:32 +0900</pubDate>
+      <guid>http://localhost:43210/post/oracle-database-function/</guid>
+      <description>NVL(A,B) AがNULLならBを返す 以下は、bonus カラムの値がNULLの場合、そのまま表示させず、0を返すようにしている。 SELECT NVL(bonus, 0) AS bonus_value FROM employees; 文字列を返すこともできる。ただし元のカラムの値と同じデータ型に限る。 SELECT NVL(middle_name, &amp;#39;（なし）&amp;#39;) AS middle FROM users; つまり以下はエラー(暗黙的に型変換される可能性もあるが、エラーになることがあるため、推奨されない) SELECT NVL(bonus, &amp;#39;賞与なし&amp;#39;) AS bonus_value FROM employees; この場合、型変換を明</description>
+    </item>
+    <item>
+      <title>UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える</title>
+      <link>http://localhost:43210/post/docker-oracle-silver-env/</link>
+      <pubDate>Sun, 27 Apr 2025 14:20:24 +0900</pubDate>
+      <guid>http://localhost:43210/post/docker-oracle-silver-env/</guid>
+      <description>至急、Oracle DB SQL Silverの試験を受ける必要が出てきた。 そこで、すでにあるUbuntuのdockerで、OracleDBの環境を整えていく。 前提 dockerのバージョンは以下の通り、 Docker version 26.1.3, build 26.1.3-0ubuntu1~22.04.1 Oracle公式が提供しているdockerのイメージは下記。 https://hub.docker.com/r/gvenzl/oracle-xe Oracle社のエンジニア、G. Venzl 氏から提供されている。 dockerのイメージをPullする 現時点での最新版は、21.3.0 なので、以下の</description>
+    </item>
+    <item>
+      <title>duコマンドでディレクトリのサイズ・容量を調べる【ファイルサーバーのストレージディスク整理に】</title>
+      <link>http://localhost:43210/post/linux-du-command/</link>
+      <pubDate>Sat, 29 Mar 2025 13:57:07 +0900</pubDate>
+      <guid>http://localhost:43210/post/linux-du-command/</guid>
+      <description>ファイルサーバーなどを運用していると、ディスク容量が足りなくなることがよくある。 df -h --total でもストレージの残量を調べることはできるが、パーティション単位であり、どのファイルがどれぐらいの容量なのかがわからない。 こういうときはduコマンドを使って調べる。 du -sh ./* これでカレントディレクトリ内のすべてのファイルの容量を調べることができる。(hオプションで見やすく、sオプションで1階層のみ調べる)</description>
+    </item>
+    <item>
+      <title>sedコマンドで指定した範囲の行だけ標準出力をする。xselと組み合わせて部分的にクリップボードにコピー</title>
+      <link>http://localhost:43210/post/sed-line-output/</link>
+      <pubDate>Mon, 24 Mar 2025 14:18:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/sed-line-output/</guid>
+      <description>sed -n &amp;#34;開始行,終了行p&amp;#34; ファイル名 とすることで、指定したファイルの開始行から終了行までのテキストをそのまま標準出力できる。 そのため、xselと組み合わせ、指定したファイルの指定した範囲の行を、ワンライナーでクリップボードにコピーできる。 sed -n &amp;#34;100,120p&amp;#34; ./bbs/views.py | clipcopy</description>
+    </item>
+    <item>
+      <title>【USBブート】NVMe SSD とUSB3.2 Gen.2 の変換器でどこでもUbuntu</title>
+      <link>http://localhost:43210/post/anywhere-ubuntu/</link>
+      <pubDate>Sun, 23 Mar 2025 08:20:26 +0900</pubDate>
+      <guid>http://localhost:43210/post/anywhere-ubuntu/</guid>
+      <description>家のメインPCの開発環境を、外のPCでも実現させたいことがある。 これまでは、外用のPCに開発環境をインストールさせる必要があったが、とっても手間がかかる。 その上、家のメインPCの環境が変わるたび、手動で外用のPCの設定を変えていかないといけない。 そこで、メインPCでOSが入っているNVMeSSDを取り出し、USB3.2 Gen.2 に変換する変換器を用意して、以降USBブートさせる。 今回はこちらを使った。 ロジ</description>
+    </item>
+    <item>
+      <title>UbuntuでC#の開発環境を整え、C#の基本構文をまとめる</title>
+      <link>http://localhost:43210/post/csharp-environment/</link>
+      <pubDate>Wed, 19 Mar 2025 09:22:48 +0900</pubDate>
+      <guid>http://localhost:43210/post/csharp-environment/</guid>
+      <description>C#と.NET SDK のインストール MSの公式リポジトリを追加しておく sudo apt update sudo apt install -y wget apt-transport-https wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb sudo dpkg -i packages-microsoft-prod.deb rm packages-microsoft-prod.deb .NET SDKをインストールする sudo apt update sudo apt install -y dotnet-sdk-8.0 プロジェクトの作成 .NET ではCLIアプリの開発、WEBアプリの開発、ネイティブアプリの開発がすべてdotnet new コマンドで実現できるようになっている。 CLIアプリの開発 dotnet new console -o MyApp cd MyApp dotnet run HelloWorldが表示される。 WEBアプリの開発 dotnet new webapp -o MyApp cd MyApp dotnet run 開発</description>
+    </item>
+    <item>
+      <title>UbuntuへRedisをインストールし、Django上でキャッシュサーバーとして扱う</title>
+      <link>http://localhost:43210/post/ubuntu-redis-install-use-django/</link>
+      <pubDate>Thu, 13 Mar 2025 09:54:37 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-redis-install-use-django/</guid>
+      <description>UbuntuへRedisをインストール sudo apt install redis でインストール完了。 redis-cli でRedisのCLIを起動する。 SETコマンド、GETコマンドでキーの追加・取得ができる。 127.0.0.1:6379&amp;gt; SET mykey &amp;#34;Hello, Redis!&amp;#34; OK 127.0.0.1:6379&amp;gt; GET mykey &amp;#34;Hello, Redis!&amp;#34; 127.0.0.1:6379&amp;gt; 削除をしたいときは、DELコマンド 127.0.0.1:6379&amp;gt; GET mykey &amp;#34;Hello, Redis!&amp;#34; 127.0.0.1:6379&amp;gt; DEL mykey (integer) 1 127.0.0.1:6379&amp;gt; GET mykey (nil) 127.0.0.1:6379&amp;gt; 動作確認をするには、systemctl コマンド sudo systemctl status redis 動いていればこんな表示になる。 ● redis-server.service - Advanced key-value store Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled) Active: active (running) since Thu 2025-03-13 09:50:21 JST; 12min ago Docs: http://redis.io/documentation, man:redis-server(1) Main PID: 52676 (redis-server) Status: &amp;#34;Ready to accept connections&amp;#34;</description>
+    </item>
+    <item>
+      <title>UbuntuでNvidiaのドライバーをインストールする</title>
+      <link>http://localhost:43210/post/ubuntu-nvidia-drivers-install/</link>
+      <pubDate>Thu, 06 Mar 2025 14:18:53 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-nvidia-drivers-install/</guid>
+      <description>ubuntuにNvidiaグラフィックボードを搭載した時、ドライバーのインストールで詰まったので、まとめておく 【基本】推奨のドライバーをインストールする。 ubuntu-drivers devices NvidiaグラフィックボードをPCに挿し込んだ状態で、上記コマンドを実行する。 以下のように出力がされると思うので、recommendの表示があるドライバーをインストールする。 この場合 driver : nvidia-driver-570 - third-party non-free recommended ここから、nvidia-driver-570</description>
+    </item>
+    <item>
+      <title>【Heroku】デプロイ直後にコマンドを実行する【Procfile編集】</title>
+      <link>http://localhost:43210/post/heroku-procfile-release/</link>
+      <pubDate>Fri, 04 Oct 2024 18:47:25 +0900</pubDate>
+      <guid>http://localhost:43210/post/heroku-procfile-release/</guid>
+      <description>例えば、Djangoのデプロイ時に、マイグレーションをしてほしいのであれば、 release: python manage.py migrate web: gunicorn config.wsgi:application --log-file - とする。 並列で処理を実行して欲しい場合 worker を使う。 release: python manage.py migrate worker: python manage.py custom_command web: gunicorn config.wsgi:application --log-file - 参照 https://devcenter.heroku.com/articles/procfile</description>
+    </item>
+    <item>
+      <title>Nginxにrtmp-moduleを加えてmake install。ffmpegでRTMP配信する映像をVLCで再生【ライブストリーミング再生】</title>
+      <link>http://localhost:43210/post/nginx-rtmp-module/</link>
+      <pubDate>Fri, 19 Apr 2024 10:07:48 +0900</pubDate>
+      <guid>http://localhost:43210/post/nginx-rtmp-module/</guid>
+      <description>RTMPモジュールありのNginx(最新版)をmakeでインストールする。 https://nginx.org/en/download.html 最新版のnginxをインストールする wget https://nginx.org/download/nginx-1.25.5.tar.gz tar -zxvf nginx-1.25.5.tar.gz cd nginx-1.25.5 DLして、解凍したnginxディレクトリの中で、rtmp-moduleをGitHubからクローン git clone https://github.com/arut/nginx-rtmp-module.git rtmp-moduleのパスを --add-module引数に含めてビルドする。 ./configure --add-module=./nginx-rtmp-module make sudo make install これでインストールは完了したが、プロセスはまだ起動していない状態。127.0.0.</description>
+    </item>
+    <item>
+      <title>UbuntuのBash(gnome-terminal)で新しいタブを開き、新しいタブでコマンドを実行する</title>
+      <link>http://localhost:43210/post/ubuntu-bash-new-tab-command/</link>
+      <pubDate>Thu, 18 Jan 2024 09:40:13 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-bash-new-tab-command/</guid>
+      <description>最近のlaravelでは、php artisan serveだけでなくnpm run devも実行しておく必要がある。 参考: 【Laravel】GitHubからダウンロードしたプロジェクトを動作させるには？ 故に、ターミナルのタブを開いて双方のコマンドを実行しておく必要がある。 しかし、これを手動でやっていくのはちょっとめんどくさい。 そこで、ワンライナーで新しいタブを開き、開いた新しいタブでコマンドを実行してもらう。 新しいタブ</description>
+    </item>
+    <item>
+      <title>【Ubuntu】systemdでPythonファイルを動作させる【常駐スクリプトに】</title>
+      <link>http://localhost:43210/post/systemd-run-python/</link>
+      <pubDate>Thu, 05 Oct 2023 15:30:41 +0900</pubDate>
+      <guid>http://localhost:43210/post/systemd-run-python/</guid>
+      <description>このPythonコードを動作させる。ファイルパスは~/Documents/systemd/test.py import datetime, time while True: with open(&amp;#34;test.txt&amp;#34;, mode=&amp;#34;w&amp;#34;) as f: f.write( str(datetime.datetime.now()) ) time.sleep(1) 必要最小限度の serviceファイルが以下。ファイルパスは/etc/systemd/system/testpython.serviceとする。 [Unit] Description=write text file After=network.target [Service] ExecStart=/usr/bin/python3 test.py WorkingDirectory=/home/testuser/Documents/systemd [Install] WantedBy=multi-user.target 下記で動作できる。 sudo systemctl start testpython.service 動作中は/home/testuser/Documents/systemd/te</description>
+    </item>
+    <item>
+      <title>【Django】EC2インスタンスへgitを使ってデプロイする</title>
+      <link>http://localhost:43210/post/django-aws-ec2-git-deploy/</link>
+      <pubDate>Tue, 29 Aug 2023 11:22:17 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-aws-ec2-git-deploy/</guid>
+      <description>scpによるファイルアップロードの場合、ローカルで削除した差分ファイルがインスタンス上に取り残されてしまう。 可能であれば、gitを使ったデプロイができるようになっておきたい。 手順 インスタンスにリモートリポジトリを作る ローカルにリポジトリを作る リモートリポジトリとローカルリポジトリをつなげる SSHの設定に.pemファイルを登録する プッシュする インスタンスにリモートリポジトリを作る インスタンスのデフォ</description>
+    </item>
+    <item>
+      <title>poetryなしでDjangoをRender.comへデプロイする【Herokuの代替クラウド、アカウント作成から解説】</title>
+      <link>http://localhost:43210/post/django-deploy-render/</link>
+      <pubDate>Sun, 14 May 2023 15:50:04 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-deploy-render/</guid>
+      <description>2022年11月28日、Herokuのサービスが完全無料で利用できなくなった。 そこで、代替のクラウドクラウドサービスとして最有力候補のRender.comを使用する。 90日間しかDBは持たないとは言え、就活用のポートフォリオとしてウェブアプリを公開するには十分かと思われる。 本記事では、DjangoをRender.comへデプロイする方法を解説する。 Render.comの基本情報 箇条書きで並べる。最</description>
+    </item>
+    <item>
+      <title>【LPIC】fileコマンドでMIMEタイプを調べておく</title>
+      <link>http://localhost:43210/post/lpic-file-command/</link>
+      <pubDate>Fri, 17 Mar 2023 10:27:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-file-command/</guid>
+      <description>fileコマンドはファイルの形式を調べるためのコマンド。 -iオプションを使用することで、MIMEタイプを調べることができる。 file -i test.sh 関連記事 Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】</description>
+    </item>
+    <item>
+      <title>【LPIC】リダイレクションとは？ 【&gt;と&lt;の違い、&gt;&gt;など】</title>
+      <link>http://localhost:43210/post/lpic-redirection/</link>
+      <pubDate>Sat, 11 Mar 2023 14:53:35 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-redirection/</guid>
+      <description>リダイレクションとは？ リダイレクトとも言う、ファイルの内容を標準入力としたり、標準出力の結果をファイルへ書き込むための機能。 リダイレクションを使った標準入力 例えば、trコマンドを使うと、標準入力状態になる。 tr &amp;#34;hello&amp;#34; &amp;#34;Hello&amp;#34; このようにtrコマンドを使うと、入力した内容を置換して出力してくれる。 では、ファイルに書かれてある内容を置換して出力するには、どうしたらよいか？ ここでリダイレクションが使える。前もって、以</description>
+    </item>
+    <item>
+      <title>【LPIC】trコマンドの使い方【標準入力したものを変換して出力する】</title>
+      <link>http://localhost:43210/post/lpic-tr-command/</link>
+      <pubDate>Sat, 11 Mar 2023 14:36:35 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-tr-command/</guid>
+      <description>trコマンドは標準入力したものを変換して出力することができる。 例えば、以下のようにhelloをHelloに変換する tr &amp;#34;hello&amp;#34; &amp;#34;Hello&amp;#34; # tr hello Hello でも可 テキストファイルに書かれてある内容を置換して出力することができる。 tr hello Hello &amp;lt; test.txt 置換した内容を別のテキストファイルにリダイレクトして書き込みできる。 tr hello Hello &amp;lt; test.txt &amp;gt; test2.txt ちなみに、このように同じテキストにリダイレクトして書き込みしようとすると、このように全て消える。 tr hello Hello &amp;lt; test.txt &amp;gt;</description>
+    </item>
+    <item>
+      <title>【LPIC】Level1で出てくるコマンドと用語の一覧</title>
+      <link>http://localhost:43210/post/lpic-level1-command/</link>
+      <pubDate>Tue, 07 Mar 2023 13:03:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-level1-command/</guid>
+      <description>順不同。LPICレベル1で出たコマンドと用語の簡単な説明を一覧にしておく。 コマンド コマンド 簡単な説明 set シェル変数やシェルオプションを設定・表示するコマンド env 環境変数を表示するコマンド history コマンド履歴を表示するコマンド mkdir ディレクトリを作るコマンド ls カレントディレクトリのファイル、ディレクトリを表示するコマンド(list segmentsの略) man マニュアルを表示するコマンド whoami ユーザー名を表示するコマンド pwd</description>
+    </item>
+    <item>
+      <title>【LPIC】setコマンドを使用してシェルオプションを設定する</title>
+      <link>http://localhost:43210/post/lpic-set-command-shell-option/</link>
+      <pubDate>Tue, 07 Mar 2023 12:21:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-set-command-shell-option/</guid>
+      <description>set コマンドを使用することで、現在のシェルにシェルオプションやパラメータを設定することができる。 現在のシェルオプションを表示する。 現在のシェルに設定されているオプション(シェルオプション)を表示させるには、 set -o と実行する。環境によっても異なるが、このように表示される。 シェルオプションについて 前項の中で、例えば、histexpandは !番号によるコマンドの実行が有効になっている。(前項のリストでonに</description>
+    </item>
+    <item>
+      <title>【LPIC】シェル変数と環境変数の違い【setコマンドとenvコマンド】</title>
+      <link>http://localhost:43210/post/lpic-set-and-env/</link>
+      <pubDate>Tue, 07 Mar 2023 11:28:39 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-set-and-env/</guid>
+      <description>シェル変数と環境変数の違い シェル変数は設定されたシェルだけが使用する変数。 一方で環境変数は設定されたシェルとシェルで起動したプログラム(プロセス)が使用する変数。 環境変数とシェル変数の違いの事例 例えば、シェルからlsコマンドを実行して、lsのプロセスを起動する。 この時、lsのプロセスには環境変数は引き継がれるが、シェル変数は引き継がれない。 実際にシェル変数と環境変数を作ってみる まずはシェル変数を作</description>
+    </item>
+    <item>
+      <title>【Ubuntu】最新版PHPがインストールできるようにリポジトリを追加する</title>
+      <link>http://localhost:43210/post/ubuntu-add-php-repository/</link>
+      <pubDate>Sat, 28 Jan 2023 14:08:00 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-add-php-repository/</guid>
+      <description>このリポジトリを前もってインストールしておかなければ、最新(2023年1月時点)のPHP8.1がインストールできない sudo apt-add-repository ppa:ondrej/php 参照元 https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/how-to-install-php-8-0-on-ubuntu-20-04-ubuntu-18-04.html 背景 GitHubからDLしたLaravelプロジェクトを手元で動かすため、 composer update を実行したものの、以下のエラーが出た。 Loading composer repositories with package information Info from https://repo.packagist.org: #StandWithUkraine Updating dependencies Your requirements could not be resolved to an installable set of packages. Problem 1 - Root composer.json requires simplesoftwareio/simple-qrcode ^4.2 -&amp;gt; satisfiable by simplesoftwareio/simple-qrcode[4.2.0]. - simplesoftwareio/simple-qrcode 4.2.0 requires ext-gd * -&amp;gt; it is missing from your system. Install or enable PHP&amp;#39;s gd extension. Problem 2 - laravel/cashier[v14.6.0, ..., 14.x-dev] require moneyphp/money ^4.0 -&amp;gt; satisfiable by moneyphp/money[v4.0.0-beta1, ..., v4.1.0]. - moneyphp/money[v4.0.0-beta1, ..., v4.1.0] require ext-bcmath *</description>
+    </item>
+    <item>
+      <title>【MySQL】Ubuntuからrootユーザーでログインをするコマンド</title>
+      <link>http://localhost:43210/post/mysql-login-by-ubuntu/</link>
+      <pubDate>Mon, 02 Jan 2023 09:32:12 +0900</pubDate>
+      <guid>http://localhost:43210/post/mysql-login-by-ubuntu/</guid>
+      <description>sudo mysql -uroot -p その後、存在するデータベースを全て表示する。 show databases;</description>
+    </item>
+    <item>
+      <title>【所要時間3分未満】dockerでWordpressの環境を構築する【docker-compose.ymlを書いて実行するだけ】</title>
+      <link>http://localhost:43210/post/docker-wordpress-create/</link>
+      <pubDate>Thu, 29 Dec 2022 22:53:36 +0900</pubDate>
+      <guid>http://localhost:43210/post/docker-wordpress-create/</guid>
+      <description>以前、UbuntuにWordpressをインストールする手順を解説した。 UbuntuにWordpressをインストールする【MariaDB+Apache】 しかし、このやり方はもう古いというか遅すぎるらしい。 なぜなら今はdockerが開発の主流だから。 わざわざMariaDBをインストールして、Apacheをインストールして..とやっているようでは環境構築だけで1日が終わる。 dockerであれば3分以</description>
+    </item>
+    <item>
+      <title>【Docker】公式チュートリアルを起動して使い方を学ぶ【docker run --name tutorial -d -p 80:80 docker/getting-started】</title>
+      <link>http://localhost:43210/post/docker-tutorial-learn/</link>
+      <pubDate>Tue, 27 Dec 2022 16:18:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/docker-tutorial-learn/</guid>
+      <description>dockerをインストールしたものの、使う機会に恵まれない、そもそも運用難易度高すぎで未だにVirtualBoxを使っている。 そういう状況なので、docker公式のチュートリアルを動かすことにした。 公式のチュートリアルを起動する 以下コマンドでOK docker run --name tutorial -d -p 80:80 docker/getting-started コマンドの意味は以下の通り docker [作成+実行] [コンテナ名はtutorialとする] [バックエンドで起動] [ポートは80番(PC側で80番へア</description>
+    </item>
+    <item>
+      <title>Ubuntu 22.04 LTS でTakaoフォントをインストールして行間を詰める。</title>
+      <link>http://localhost:43210/post/ubuntu-2204-font-line-height/</link>
+      <pubDate>Sun, 18 Dec 2022 08:38:16 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-2204-font-line-height/</guid>
+      <description>Ubuntu22.04にて日本語版を使用していると、これまでのUbuntuと違って、ターミナルの行間が異常に広いことがわかる。 理由はTakaoフォントがデフォルトでインストールされていないから。 ここからインストールできる。 インストールが完了すると、このように22.04でも行間を狭くできる。 Firefox にて規定に戻す ただ、これだけだと、Firefoxの行間と文字サイズが小さくなってしまうので、 Firefox のフォント指定</description>
+    </item>
+    <item>
+      <title>【Ubuntu】ディスクの読み込みスピードをチェックする【sudo hdparm -tT デバイス名】</title>
+      <link>http://localhost:43210/post/ubuntu-disk-read-speed-check/</link>
+      <pubDate>Thu, 03 Nov 2022 15:56:52 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-disk-read-speed-check/</guid>
+      <description>これで、ディスクの読み込み速度が調べられる。 sudo hdparm -tT デバイス名 まず、デバイス一覧を下記コマンドで調べる。 sudo fdisk -l デバイスのパスを指定する sudo hdparm -tT /dev/sdb 動かすとこうなる。 やはり、SSD(/dev/sda)とHDD(/dev/sdbと/dev/sdc)では二倍近い読み込み速度の差があるようだ。 結論 sambaをインストールして、ファイルサーバーを作る時に使うとよいだろう。 ディスク速度とネットワークの速度、どちらが</description>
+    </item>
+    <item>
+      <title>Ubuntuのバージョンチェックは lsb_release -a もしくは、cat /etc/os-release でOK</title>
+      <link>http://localhost:43210/post/ubuntu-version-check/</link>
+      <pubDate>Thu, 03 Nov 2022 15:50:20 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-version-check/</guid>
+      <description>lsb_release -a 実行するとこうなる。 もしくは cat /etc/os-release を実行する。こうなる。 SSHでログインした後、サーバーのOSとバージョンを忘れた時に使う。</description>
+    </item>
+    <item>
+      <title>【Linux】grepとsedとxargsで複数のファイルに点在する誤字を一括修正(置換)する</title>
+      <link>http://localhost:43210/post/grep-sed-xargs-all-file-replace/</link>
+      <pubDate>Wed, 02 Nov 2022 09:13:31 +0900</pubDate>
+      <guid>http://localhost:43210/post/grep-sed-xargs-all-file-replace/</guid>
+      <description>開発をしていて、複数の誤字が見つかった。 しかもその誤字は複数のファイルに点在している。 そんな時、ファイルを開いて1つずつ置換して修正しているようでは時間がかかりすぎる。 そこで、コマンド一発で複数のファイルに点在する誤字を一括修正する。 コマンド 置換対象のファイルのバックアップを取るならこっち grep -rl &amp;quot;誤字&amp;quot; ./* | xargs sed -i &amp;quot;.bak&amp;quot; &#39;s/誤字/修正文/g&#39; バックアップを取らないならこっち grep -rl &amp;qu</description>
+    </item>
+    <item>
+      <title>Ubuntuにbeepコマンドをインストール【crontabで時報を作る】</title>
+      <link>http://localhost:43210/post/ubuntu-beep-command/</link>
+      <pubDate>Tue, 11 Oct 2022 16:46:19 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-beep-command/</guid>
+      <description>インストール sudo apt install beep 動かす -fは周波数つまり音の高さ、-lはミリ秒指定で音の長さを指定できる。 beep -f 5000 -l 2000 動かないとき 下記コマンドを実行、 sudo vi /etc/modprobe.d/blacklist.conf これを # ugly and loud noise, getting on everyone&#39;s nerves; this should be done by a # nice pulseaudio bing (Ubuntu: #77010) blacklist pcspkr こうする。 # ugly and loud noise, getting on everyone&#39;s nerves; this should be done by a # nice pulseaudio bing (Ubuntu: #77010) #blacklist pcspkr そして、読み込み直す。 sudo modprobe pcspkr crontabで1時間おきにbeepを鳴らす。 時報として使う事ができる。動かすのは8時から18時まで 00 8-18 * * * user beep -f 880 -l 300</description>
+    </item>
+    <item>
+      <title>Ubuntuのアップグレード時の設定を置き換えてはいけない</title>
+      <link>http://localhost:43210/post/ubuntu-upgrade-config-replace/</link>
+      <pubDate>Sun, 09 Oct 2022 13:46:18 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-upgrade-config-replace/</guid>
+      <description>Ubuntuアップグレード時、こんなダイアログが表示されることが有る。 この設定の置き換えをしてしまうと、新しい設定ファイルに置き換えられ、これまで書いてきた設定ファイルは全て消えてしまう。 これまでの設定ファイルを残しておきたいのであれば、『そのまま』を選ぶ。 このダイアログの選択肢を誤るとcrontabやvimの設定も消えてしまうので、十分注意する。</description>
+    </item>
     <item>
       <title>rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】</title>
-      <link>https://noauto-nolife.com/post/rtcwake-and-crontab/</link>
+      <link>http://localhost:43210/post/rtcwake-and-crontab/</link>
       <pubDate>Sat, 17 Sep 2022 10:20:08 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/rtcwake-and-crontab/</guid>
+      <guid>http://localhost:43210/post/rtcwake-and-crontab/</guid>
       <description>私のサーバーは夜中は操作しないので、crontabでshutdownすることにしている。 そして、朝になったらラズパイなどの常時動いている端末にWakeOnLanを送信して起動させている。 だが、そのサーバーが無線LANになった時、WakeOnLanは通用しない。 ではいかにして、終了と起動を指定時間に行わせるか。そこで、rtcwakeを使う。 今すぐ終了して7時間後に起動して欲しい場合 sudo rtcwake -m off -s 25200 これを</description>
     </item>
-    
     <item>
       <title>vimの操作方法</title>
-      <link>https://noauto-nolife.com/post/startup-vim/</link>
+      <link>http://localhost:43210/post/startup-vim/</link>
       <pubDate>Sun, 11 Sep 2022 18:24:04 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-vim/</guid>
+      <guid>http://localhost:43210/post/startup-vim/</guid>
       <description>前提 vimは通常のテキストエディタと違って、主に3つのモードを使い分けて編集を行う コマンドモード 挿入モード ビジュアルモード コマンドモード vimを起動した時、デフォルトでこのモードになっている。 保存や終了、検索やマクロなどのコマンドを実行する事ができる。 挿入モード テキスト入力をするモード。i、o、aキーのいずれかでこのモードに入る。 挿入モードを終了してコマンドモードに移行するにはEscキーを押す。 ビ</description>
     </item>
-    
     <item>
       <title>FFmpegを使ってUbuntuサーバーにUSBで接続されたウェブカメラで映像を録画する</title>
-      <link>https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/</link>
+      <link>http://localhost:43210/post/ffmpeg-ubuntu-server-webcamera/</link>
       <pubDate>Sat, 10 Sep 2022 20:48:19 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ffmpeg-ubuntu-server-webcamera/</guid>
-      <description>Ubuntu 22.04 Serverでやった ハードはラズパイ3B+ インストール FFmpegとv4l2-utilsをインストール sudo apt install ffmpeg v4l-utils デバイスを特定する v4l2-ctl --list-devices こんなふうに表示される(一部省略) BUFFALO BSWHD06M USB Camera : (usb-3f980000.usb-1.4): /dev/video0 /dev/video1 /dev/media3 対応しているフォーマットと解像度を特定する ffmpeg -f v4l2 -list_formats all -i /dev/video0 こんなふうに表示される(一部省略) [video4linux2,v4l2 @ 0xaaaad7c25420] Raw : yuyv422 : YUYV 4:2:2 : 1280x720 800x600 640x480 640x360 352x288 320x240 176x144 160x120 [video4linux2,v4l2 @ 0xaaaad7c25420] Compressed: mjpeg : Motion-JPEG : 1280x960 1280x720 800x600 640x480 640x360 352x288 320x240 176x144 160x120 映像を録画する ffmpeg -f v4l2 -framerate 30 -video_size 352x288 -i /dev/video0 output.mkv 後はこの映像をs</description>
+      <guid>http://localhost:43210/post/ffmpeg-ubuntu-server-webcamera/</guid>
+      <description>Ubuntu 22.04 Server ハードはラズパイ3B+ インストール FFmpegとv4l2-utilsをインストール sudo apt install ffmpeg v4l-utils デバイスを特定する v4l2-ctl --list-devices こんなふうに表示される(一部省略) BUFFALO BSWHD06M USB Camera : (usb-3f980000.usb-1.4): /dev/video0 /dev/video1 /dev/media3 対応しているフォーマットと解像度を特定する ffmpeg -f v4l2 -list_formats all -i /dev/video0 こんなふうに表示される(一部省略) [video4linux2,v4l2 @ 0xaaaad7c25420] Raw : yuyv422 : YUYV 4:2:2 : 1280x720 800x600 640x480 640x360 352x288 320x240 176x144 160x120 [video4linux2,v4l2 @ 0xaaaad7c25420] Compressed: mjpeg : Motion-JPEG : 1280x960 1280x720 800x600 640x480 640x360 352x288 320x240 176x144 160x120 映像を録画する ffmpeg -f v4l2 -framerate 30 -video_size 352x288 -i /dev/video0 output.mkv 後はこの映像をscpなどでDLして</description>
     </item>
-    
     <item>
       <title>【Ubuntu】netplanに無線LAN(wifi)で固定IPアドレスを割り当てる</title>
-      <link>https://noauto-nolife.com/post/netplan-wireless-settings/</link>
+      <link>http://localhost:43210/post/netplan-wireless-settings/</link>
       <pubDate>Sat, 10 Sep 2022 17:48:36 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/netplan-wireless-settings/</guid>
-      <description>有線であれば以下のように書く。 network: ethernets: eth0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 version: 2 無線LANの場合、ip addrで表示される無線LANのデバイス名を控えた上で下記のように記す network: wifis: wlan0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 access-points: &amp;quot;SSIDname&amp;quot;: password: &amp;quot;password&amp;quot; version: 2</description>
+      <guid>http://localhost:43210/post/netplan-wireless-settings/</guid>
+      <description>有線であれば以下のように書く。 network: ethernets: eth0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 version: 2 無線LANの場合、ip addrで表示される無線LANのデバイス名を控えた上で下記のように記す network: wifis: wlan0: dhcp4: false addresses: - 192.168.11.246/24 routes: - to: default via: 192.168.11.1 nameservers: addresses: - 192.168.11.1 access-points: &amp;#34;SSIDname&amp;#34;: password: &amp;#34;password&amp;#34; version: 2</description>
     </item>
-    
     <item>
       <title>nanoエディタの操作方法</title>
-      <link>https://noauto-nolife.com/post/startup-nano-editor/</link>
+      <link>http://localhost:43210/post/startup-nano-editor/</link>
       <pubDate>Thu, 08 Sep 2022 11:47:22 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-nano-editor/</guid>
+      <guid>http://localhost:43210/post/startup-nano-editor/</guid>
       <description>急にnanoエディタが立ち上がり、ふだんvimを使っている身としては、調べながら終了させるのは手間になる。 Ctrl+Xで終了できる 保存するかどうか聞かれるので、nを押して保存せずに終了する。 保存する時は、yを押してEnterキーを推せば保存して終了できる。 nanoエディタはWindowsのメモ帳とほぼ同様に扱うことができ、管理者権限が必要なファイルの編集もできる。 vimが使いづらいなと思う場合にお</description>
     </item>
-    
     <item>
-      <title>Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】</title>
-      <link>https://noauto-nolife.com/post/ubuntu-env-read-python/</link>
+      <title>Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ使用、crontabにも対応】</title>
+      <link>http://localhost:43210/post/ubuntu-env-read-python/</link>
       <pubDate>Sun, 04 Sep 2022 15:49:58 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu-env-read-python/</guid>
+      <guid>http://localhost:43210/post/ubuntu-env-read-python/</guid>
       <description>例えば、gitで管理しているプロジェクトをgitでデプロイする時。 たとえローカルサーバーのDBのパスワードとは言え、ハードコードした状態でコミットするわけには行かない。(gitignoreに入れてしまうとパスワードが含まれない) そこで、環境変数をセットし、Python側でそれを読む。 環境変数をセットする。 #変数名=値 ZZZ=test #変数を環境変数としてセットする。 export ZZZ #↑2つは下記でも可 export ZZZ=test セットした環境変数</description>
     </item>
-    
     <item>
-      <title>WindowsでPythonとPycharmをインストールする</title>
-      <link>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</link>
+      <title>WindowsでPythonをインストールする</title>
+      <link>http://localhost:43210/post/windows-python-and-pycharm-install/</link>
       <pubDate>Thu, 01 Sep 2022 08:49:01 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/windows-python-and-pycharm-install/</guid>
+      <guid>http://localhost:43210/post/windows-python-and-pycharm-install/</guid>
       <description>Pythonのインストール Pythonのインストーラーを配布しているサイト( https://www.python.org/downloads/ )へ行く。 Download Python 3.10.6 の部分をクリックする。インストーラーがDLされる。 ( ※下記画像の赤枠部分。3.10.6は2022年9月現在のバージョンであり、今後バージョンが更新される。最新版のPythonインストーラーをDLする。 ) ダウンロードフォルダにて、先ほどDLしたインストーラーのファイルがあるので、ダブルクリックしてPytho</description>
     </item>
-    
     <item>
       <title>UbuntuにSambaをインストールしてファイルサーバー化させる</title>
-      <link>https://noauto-nolife.com/post/ubuntu-samba/</link>
+      <link>http://localhost:43210/post/ubuntu-samba/</link>
       <pubDate>Sat, 27 Aug 2022 10:04:40 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu-samba/</guid>
-      <description>本記事はプライベート用として運用するため、セキュリティは全く考慮していない。 本記事に倣って作ったファイルサーバーは、LAN内の端末であれば、いずれも自由に読み書きできてしまうので注意。 インストールする sudo apt install samba 共有ディレクトリを作る 今回はホームディレクトリに作った mkdir ~/share chmod 777 ~/share 設定する sudo vi /etc/samba/smb.conf を開いて、末尾に下記を記入。UserNameには任意のユーザー名を指定 [share] path = /home/UserName/share browseable = yes writable = yes guest ok = yes guest only = yes create mode = 0777</description>
+      <guid>http://localhost:43210/post/ubuntu-samba/</guid>
+      <description>本記事はプライベート用として運用するため、セキュリティは全く考慮していない。 本記事に倣って作ったファイルサーバーは、LAN内の端末であれば、いずれも自由に読み書きできてしまうので注意。 ※ この記事の方法は非推奨です。マウントする箇所が /mnt/ になっておらず、権限もフルアクセスです。 インストールする sudo apt install samba 共有ディレクトリを作る 今回はホームディレクトリに作った mkdir ~/share chmod 777 ~/share 設定する sudo vi /etc/samba/smb.conf を開いて、末尾に下記を記</description>
     </item>
-    
     <item>
       <title>Heroku有料化の対策を考える【2022年11月28日よりHerokuPostgres(9ドル)、HerokuDynos(7ドル)の有料化】</title>
-      <link>https://noauto-nolife.com/post/heroku-counter-plan/</link>
+      <link>http://localhost:43210/post/heroku-counter-plan/</link>
       <pubDate>Fri, 26 Aug 2022 17:37:46 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/heroku-counter-plan/</guid>
+      <guid>http://localhost:43210/post/heroku-counter-plan/</guid>
       <description>2022年8月26日、メールボックスを見るとHerokuからメールが届いていた。内容は下記。 まとめると、こうなる 2022年11月28日からHerokuの一部サービスで無料プランが無くなる 対象はHerokuDynos、HerokuPostgres、Redisの3つ 有料化以降、WEB(7$)+DB(9$)のウェブアプリをデプロイする時、一ヶ月につき16$支払う必要がある さあ困った。 これまでHeroku</description>
     </item>
-    
     <item>
-      <title>別のUbuntuにデータを輸送する</title>
-      <link>https://noauto-nolife.com/post/ubuntu-data-transport/</link>
-      <pubDate>Mon, 15 Aug 2022 18:20:02 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu-data-transport/</guid>
-      <description>別のPCのUbuntuにデータを全て輸送する必要があったりする。 そういう時、手順をまとめておかないと手直しに返って時間がかかる。 よって、必要なデータ移行作業をここに列挙しておく。 準備編 前もって、下記をやっておく(任意) サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 【保存版】Ubuntu18.04をインストールした後に真</description>
+      <title>【Bash】mkdirコマンドで作ったディレクトリに即移動(cd)するコマンドを作る【mkcdをaliasに登録】</title>
+      <link>http://localhost:43210/post/bash-mkdir-add-cd-command/</link>
+      <pubDate>Thu, 11 Aug 2022 09:34:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/bash-mkdir-add-cd-command/</guid>
+      <description>mkdirコマンドで作ったディレクトリに即移動したい場合。 まず、このシェルスクリプトを作る。 #! /bin/bash mkdir -p $1 cd $1 そして、aliasを追加する。sourceコマンドを使って実行させる。 alias mkcd=&amp;#34;source ~/develop_tools/mkcd.sh&amp;#34; すると、mkcd コマンドを実行すると、作ったディレクトリに即移動できる。 -p オプションもついているので、2階層以上のディレクトリも一気に作れる。 参照元:https://qiita.com/akokubu/items/d5</description>
     </item>
-    
     <item>
       <title>Sendgridのアカウントが一時的に凍結された場合の対処法と対策</title>
-      <link>https://noauto-nolife.com/post/sendgrid-account-suspended/</link>
+      <link>http://localhost:43210/post/sendgrid-account-suspended/</link>
       <pubDate>Tue, 28 Jun 2022 07:03:38 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/sendgrid-account-suspended/</guid>
+      <guid>http://localhost:43210/post/sendgrid-account-suspended/</guid>
       <description>某日、Sendgridからメールが届く。内容は下記。 Dear Twilio SendGrid Customer, Your Twilio SendGrid account has been temporarily suspended as we have detected that your account&#39;s credentials (password and/or API key) are publicly listed on the code repository GitHub. This is a dangerous practice which may result in your account being used by unauthorized third parties to send malicious content and which may incur damage to your reputation as a quality sender and charges against your account for high usage that you did not perform. Before you ask for your account&#39;s reactivation, please ensure that you: 1) Change your account&#39;s password: https://sendgrid.com/docs/ui/account-and-settings/resetting-your-username-and-password. If your account was created using Heroku or IBM BlueMix, you must use our password reset form. 2) Delete and update exposed API keys in your account [APIのID] : https://sendgrid.com/docs/ui/account-and-settings/api-keys/#delete-an-api-key 3) Enable two-factor authentication for your account 4) Remove your account credentials and API keys from any public listings on code repositories or associated comments on sites such as GitHub or BitBucket. Please see the following link(s) for locations where your credentials</description>
     </item>
-    
     <item>
       <title>Ubuntu20.04にNginxとPHP7.4をインストールしてHelloWorldをする</title>
-      <link>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</link>
+      <link>http://localhost:43210/post/startup-php-nginx-ubuntu/</link>
       <pubDate>Mon, 25 Apr 2022 10:56:04 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-php-nginx-ubuntu/</guid>
+      <guid>http://localhost:43210/post/startup-php-nginx-ubuntu/</guid>
       <description>5年以上前にやったきり、完全に忘れているNginxでPHPを動かす方法。 本記事ではその手順をまとめる。 必要なパッケージのインストール sudo apt install nginx php php-fpm Nginxはサーバー、phpはPHP処理系、php-fpmはNginxから動作させるために必要なもの Nginxの設定 /etc/nginx/sites-available/defaultを書き換える。 sudo vi /etc/nginx/sites-available/default TODOと書かれた場所だけ編集する。 ## # You should look at the following</description>
     </item>
-    
     <item>
       <title>Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】</title>
-      <link>https://noauto-nolife.com/post/linux-commandline-clipboard/</link>
+      <link>http://localhost:43210/post/linux-commandline-clipboard/</link>
       <pubDate>Wed, 30 Mar 2022 09:13:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/linux-commandline-clipboard/</guid>
+      <guid>http://localhost:43210/post/linux-commandline-clipboard/</guid>
       <description>とてつもなく長いコードをクリップボードにコピーして、誰かと共有したい時、エディタのカーソルを上に持っていって下まで下げてコピーするのはとても面倒。 だから、コマンド一発でファイルの内容全てをコピーする。xselを使って。 sudo apt install xsel これでOK。後はコピペしたいファイルを用意して、下記コマンドを実行する。 cat ./index.html | xsel --clipboard --input これでindex.htmlの中身が全部コピーできた。bashrcにエイリアスで登録しておく</description>
     </item>
-    
     <item>
       <title>Herokuの無料プランで独自ドメインを設定し、HTTPS通信を行う方法【ムームードメイン&#43;Cloudflare】</title>
-      <link>https://noauto-nolife.com/post/heroku-origin-domain/</link>
+      <link>http://localhost:43210/post/heroku-origin-domain/</link>
       <pubDate>Tue, 22 Feb 2022 08:13:11 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/heroku-origin-domain/</guid>
+      <guid>http://localhost:43210/post/heroku-origin-domain/</guid>
       <description>無料プランでは独自ドメインのセットは出来てもHTTPS通信を行うことは出来ない。 そのため、Cloudflareをリバースプロキシとして機能させ、クライアントからCloudflare間まで暗号化させる。 一見安全性に欠けるような形だが、AWSにデプロイした際も、クライアントからリバースプロキシ間までしか暗号化はされないので、それほど問題ではない。 気になるなら、有料プランを使用してHTTPS通信を行うと</description>
     </item>
-    
     <item>
       <title>dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</title>
-      <link>https://noauto-nolife.com/post/docker-image-file-share/</link>
+      <link>http://localhost:43210/post/docker-image-file-share/</link>
       <pubDate>Sun, 13 Feb 2022 16:54:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/docker-image-file-share/</guid>
+      <guid>http://localhost:43210/post/docker-image-file-share/</guid>
       <description>dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに</description>
     </item>
-    
     <item>
       <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
-      <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
+      <link>http://localhost:43210/post/startup-ubuntu-docker/</link>
       <pubDate>Thu, 03 Feb 2022 11:22:31 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
+      <guid>http://localhost:43210/post/startup-ubuntu-docker/</guid>
       <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
     </item>
-    
     <item>
       <title>CloudinaryでPDF等の画像や動画以外のファイルをアップロードし、共有する方法【blocked for delivery】</title>
-      <link>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</link>
+      <link>http://localhost:43210/post/cloudinary-blocked-for-delivery/</link>
       <pubDate>Thu, 30 Sep 2021 09:11:38 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/cloudinary-blocked-for-delivery/</guid>
+      <guid>http://localhost:43210/post/cloudinary-blocked-for-delivery/</guid>
       <description>どうやらPDF等の画像や動画以外の一部のファイルは配信拒否されてしまうらしい。セキュリティ対策の一貫として行われているそうな。 しかし、PDFを共有する前提のウェブアプリであればただの足かせでしか無いし、ユーザー認証や管理者が管理をきちんとしていればセキュリティ的な事案はある程度は低減できる。 本記事ではCloudinaryを使用してPDFを配信する方法を記す。 対策 対策は至ってシンプル。Cloudin</description>
     </item>
-    
     <item>
       <title>Nginxで特定IPアドレスのリクエストを拒否する</title>
-      <link>https://noauto-nolife.com/post/nginx-deny-ip-address/</link>
+      <link>http://localhost:43210/post/nginx-deny-ip-address/</link>
       <pubDate>Tue, 28 Sep 2021 11:20:12 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/nginx-deny-ip-address/</guid>
+      <guid>http://localhost:43210/post/nginx-deny-ip-address/</guid>
       <description>特定IPアドレスのリクエストを拒否したいのであれば、ロードバランサーやリバースプロキシなどのセキュリティ設定を書き換えれば済む話だが、環境によっては他のサービスなどに影響を及ぼす可能性もある。 そこで、Nginxの設定を書き換え、特定のサービスだけで特定のIPアドレスを使用したリクエストを拒否する方法をここに記す。 設定ファイルに追加する Nginxの設定ファイル( /etc/nginx/nginx.conf )に下記を追加する。 deny 192.168.XXX.XXX; /etc/n</description>
     </item>
-    
     <item>
       <title>Raspberry Pi Zeroに搭載したNginxの限界を試す【curlコマンド】</title>
-      <link>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</link>
+      <link>http://localhost:43210/post/raspberypi-zero-limit-access/</link>
       <pubDate>Tue, 28 Sep 2021 10:20:02 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</guid>
+      <guid>http://localhost:43210/post/raspberypi-zero-limit-access/</guid>
       <description>Raspberry Pi Zeroの性能は無料プランのEC2やHerokuとほぼ同じ。Raspberry Pi Zeroの限界を知れば、ある程度EC2やHerokuの限界が予測できる。今回はウェブサーバーとして仕立てたRaspberry Pi Zeroにcurlコマンドでリクエストを大量送信し、サーバーダウンするまでのデータをここに記す。 なお、この行為は自分が管理していないサーバーで行うと、普通にDos攻撃になってしまうので、宛先</description>
     </item>
-    
     <item>
       <title>Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】</title>
-      <link>https://noauto-nolife.com/post/nginx-log-check-by-awk/</link>
+      <link>http://localhost:43210/post/nginx-log-check-by-awk/</link>
       <pubDate>Thu, 23 Sep 2021 13:51:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/nginx-log-check-by-awk/</guid>
+      <guid>http://localhost:43210/post/nginx-log-check-by-awk/</guid>
       <description>Nginxのログはスペース区切りで送信元IPアドレス、アクセス対象のURLなどが書かれてある。これはスペース区切りで文字を扱うことができるawkコマンドと相性が良い。 本記事では、awkコマンドを使用して、特定の条件下のログを報告したり、ログの情報を見やすくさせる方法を記す。 awkコマンドを使用して、表示する情報を絞る 基本。 cat access.log | awk &#39;{print $1}&#39; これで送信元IPアドレス(スペース区切りで1番目のデータ)が表示</description>
     </item>
-    
     <item>
       <title>Nginxのログをチェックする、ログの出力設定を変更する</title>
-      <link>https://noauto-nolife.com/post/nginx-log-check/</link>
+      <link>http://localhost:43210/post/nginx-log-check/</link>
       <pubDate>Tue, 21 Sep 2021 07:19:18 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/nginx-log-check/</guid>
+      <guid>http://localhost:43210/post/nginx-log-check/</guid>
       <description>事案が発生した時、まっさきに確認するべきがサーバーのログ。とりわけウェブサーバーのNginxのログ確認方法、設定方法をここに記す。 Nginxのログの見方 Nginxの設定ファイル(/etc/nginx/nginx.conf)にログのパスが書かれてある ## # Logging Settings ## access_log /var/log/nginx/access.log; error_log /var/log/nginx/error.log; ログは/var/log/nginx/access.logに保管されてある事がわかる。中身はこんな感じ。 左から順にこうなっている。 送信元</description>
     </item>
-    
     <item>
       <title>UUIDを生成するコマンドuuidgen【予測されたくないページのURL割り当て等】</title>
-      <link>https://noauto-nolife.com/post/uuid-generate/</link>
+      <link>http://localhost:43210/post/uuid-generate/</link>
       <pubDate>Sun, 19 Sep 2021 18:14:00 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/uuid-generate/</guid>
+      <guid>http://localhost:43210/post/uuid-generate/</guid>
       <description>Ubuntuであれば、下記コマンドを実行するだけで自動的にUUIDが生成される。 uuidgen 用途 秘匿する必要のあるページ(管理サイト等)にURLとして割り当てることで、総当たりでヒットされにくくなる。 UUIDが重複する確立は途方もなく低いので、他のセキュリティ対策ができない場合の代替案として有効であると思われる。 例えば、sedコマンドなどを使用して、Djangoのurls.pyから管理サイトを割り当てている</description>
     </item>
-    
     <item>
       <title>リモートサーバーのデータを自動的にバックアップする方法論【scp&#43;crontab】</title>
-      <link>https://noauto-nolife.com/post/shellscript-auto-backup/</link>
+      <link>http://localhost:43210/post/shellscript-auto-backup/</link>
       <pubDate>Sun, 19 Sep 2021 18:12:35 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/shellscript-auto-backup/</guid>
+      <guid>http://localhost:43210/post/shellscript-auto-backup/</guid>
       <description>手順 crontabを使って、一定時間おきにリモートサーバーがバックアップを取る crontabを使って、一定時間おきに任意の端末がscpでリモートサーバーのバックアップファイルをDL crontabを使って、一定時間おきにリモートサーバーがバックアップしたデータを削除 方法 例えば、Djangoであればこうなる。 リモートサーバーの/etc/crontabに以下の設定を施す。 00 * * * * ubuntu cd ~/Document/django/ &amp;amp;&amp;amp; python3 manage.py dumpdata [任意の</description>
     </item>
-    
     <item>
       <title>シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】</title>
-      <link>https://noauto-nolife.com/post/shellscript-server-checker/</link>
+      <link>http://localhost:43210/post/shellscript-server-checker/</link>
       <pubDate>Sun, 19 Sep 2021 08:51:18 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/shellscript-server-checker/</guid>
+      <guid>http://localhost:43210/post/shellscript-server-checker/</guid>
       <description>サーバーが応答不能になった時、すぐに対処できるよう、通知機能が欲しい。そういうときのシェルスクリプト。 pingで応答不能をチェックする #! /bin/bash while true ; do ping -c 1 192.168.11.99 rc=$? if [[ $rc -eq 0 ]] ; then echo &amp;quot;正常です&amp;quot; else echo &amp;quot;失敗しました&amp;quot; fi sleep 1 done 後は『正常です』『失敗しました』のいずれかに任意の処理を書き込む。 curlで応答不能をチェックする curlはHTTPのステータスコードも手に入るの</description>
     </item>
-    
     <item>
       <title>サーバーを本格的に運用するようになったらやること・守ること</title>
-      <link>https://noauto-nolife.com/post/startup-server-manage/</link>
+      <link>http://localhost:43210/post/startup-server-manage/</link>
       <pubDate>Tue, 14 Sep 2021 06:54:42 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-server-manage/</guid>
+      <guid>http://localhost:43210/post/startup-server-manage/</guid>
       <description>圧倒的に人手不足な組織でありがちなのが、『開発とデプロイができるならサーバー管理もできるだろう』と言わんばかりに経験も無いのにサーバー管理まで任されること。 そんな時に一通りチェックしておくと良いものを列挙する。 事前対策編【予防・抑止】 OSにインストールされているパッケージのアップデート(更新) OSにインストールされているパッケージは問題がなければ定期的にアップデートしておく。 sudo apt update &amp;amp;&amp;amp; sudo apt -y upgrade &amp;amp;&amp;amp; sudo apt</description>
     </item>
-    
     <item>
       <title>【AWS】EC2にムームドメインで取得した独自ドメインを割り当て、HTTPS通信を行う【Route 53 &#43; Certificate Manager &#43; ロードバランサ(ELB)】</title>
-      <link>https://noauto-nolife.com/post/ec2-origin-domain-https/</link>
+      <link>http://localhost:43210/post/ec2-origin-domain-https/</link>
       <pubDate>Sun, 05 Sep 2021 15:32:11 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ec2-origin-domain-https/</guid>
-      <description>タイトルの通り。 手順 EC2のインスタンスを作る セキュリティグループを書き換える ElasticIPを割り当てる Route53に独自ドメインを割り当てる SSHで独自ドメインでログインしてみる Certificate Managerとロードバランサを使ってHTTPS通信を実現させる EC2のインスタンスを作る まず、EC2のインスタンスを作る。インスタンスの作り方はDjangoをAWSのEC2(Ubuntu)にデプロイするに倣う。</description>
+      <guid>http://localhost:43210/post/ec2-origin-domain-https/</guid>
+      <description>タイトルの通り。 【注意】この記事の通り、Route53のホストゾーンを割り当てる時、0.55ドルの課金が発生する。ホストゾーン1個につき1ヶ月で0.55ドル発生する。(2022年10月時点) 手順 EC2のインスタンスを作る セキュリティグループを書き換える ElasticIPを割り当てる Route53に独自ドメインを割り当てる【注意:要課金】 SSHで独自ドメインでログインしてみる Certificate Managerとロード</description>
     </item>
-    
     <item>
       <title>AWSでなるべくお金がかからないようにウェブアプリを運用する方法</title>
-      <link>https://noauto-nolife.com/post/aws-do-not-spend-money/</link>
+      <link>http://localhost:43210/post/aws-do-not-spend-money/</link>
       <pubDate>Sun, 05 Sep 2021 11:45:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/aws-do-not-spend-money/</guid>
+      <guid>http://localhost:43210/post/aws-do-not-spend-money/</guid>
       <description>気づいたらAWSの請求額が数百ドルを超えてた。ということはよくある。 そこで、なるべくお金がかからないように運用する方法を即効性がある運用編、開発編、セキュリティ編、その他編に分けて解説する。 運用編 基本的に運用編に書いてある内容を実践すれば、ほぼ課金されることはない。マウスクリックだけで簡単に実践できるので、ぜひともやっておきたい。 インスタンスを多重起動しない まず、前提としてEC2やRDS等のインス</description>
     </item>
-    
     <item>
       <title>サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】</title>
-      <link>https://noauto-nolife.com/post/startup-ubuntu2004-server/</link>
+      <link>http://localhost:43210/post/startup-ubuntu2004-server/</link>
       <pubDate>Sat, 21 Aug 2021 17:39:30 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-ubuntu2004-server/</guid>
+      <guid>http://localhost:43210/post/startup-ubuntu2004-server/</guid>
       <description>デスクトップ版のUbuntuとサーバー版のUbuntuは完全に別物である。 デスクトップ版はGUIでラクラク固定IPアドレス設定できたり、作業しながらブラウザで検索できる一方で、サーバー版のUbuntuはただ無機質なターミナルが全画面を覆っているだけである。 本記事ではインストールからIPアドレスの固定化、bashの設定やタイムゾーン設定、別端末からSSHでログインするまでを解説する。 対象読者は、既に</description>
     </item>
-    
     <item>
       <title>VirtualBoxにUbuntuをインストールする</title>
-      <link>https://noauto-nolife.com/post/virtualbox-ubuntu-install/</link>
+      <link>http://localhost:43210/post/virtualbox-ubuntu-install/</link>
       <pubDate>Sat, 19 Jun 2021 16:49:00 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/virtualbox-ubuntu-install/</guid>
+      <guid>http://localhost:43210/post/virtualbox-ubuntu-install/</guid>
       <description>作ったウェブアプリをデプロイする時、実機のLinuxサーバーでも良いが、VirtualBox上のLinux系OSのいずれかにデプロイして試験運用するのも良いだろう。 そこでその前段階としてVirtualBoxにUbuntuをインストールさせる。 用意する物 Ubuntuのisoファイル VirtualBoxのインストーラー(パッケージファイル) メモリ4GB以上の空きがあり、なおかつ20GB以上のストレージ</description>
     </item>
-    
     <item>
       <title>PostgreSQLインストールから、ユーザーとDBを作る</title>
-      <link>https://noauto-nolife.com/post/startup-postgresql/</link>
+      <link>http://localhost:43210/post/startup-postgresql/</link>
       <pubDate>Fri, 16 Apr 2021 15:14:58 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-postgresql/</guid>
+      <guid>http://localhost:43210/post/startup-postgresql/</guid>
       <description>PostgreSQLのインストールからユーザー作成、そのユーザーが扱うDBの作成を行う。 インストール Ubuntuであれば、aptコマンドでインストール可能 sudo apt install postgresql 下記コマンドを打って、active(running)と表示されればOK。active (exited)でも可 sudo systemctl status postgresql.service ユーザー作成から、権限割り当て、DB作成まで sudo -u postgres -i これでpostgresユーザーのターミナルになる。dockerを使用して</description>
     </item>
-    
     <item>
       <title>SQLiteの操作方法【テーブル一覧表示、SQLなど】</title>
-      <link>https://noauto-nolife.com/post/startup-sqlite3/</link>
+      <link>http://localhost:43210/post/startup-sqlite3/</link>
       <pubDate>Mon, 26 Oct 2020 13:51:50 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-sqlite3/</guid>
+      <guid>http://localhost:43210/post/startup-sqlite3/</guid>
       <description>インストールと基本操作 Ubuntuであればaptコマンドで簡単にインストールできる。 sudo apt install sqlite3 ファイルの閲覧はsqlite3コマンドで実行できる。対象のsqlite3ファイルを指定するだけ。 sqlite3 db.sqlite3 テーブル一覧表示 テーブル一覧表示。 .table 基本的なSQL文 SELECT文。指定したテーブルを参照する。 SELECT カラム名 FROM テーブル名 INSERT文。指定したレコードを追加する。文字列型はダブルクオーテーションでくくる。数値</description>
     </item>
-    
     <item>
       <title>UbuntuにSSHでリモートログインする方法【パスワード認証&#43;公開鍵認証&#43;scpコマンド】</title>
-      <link>https://noauto-nolife.com/post/ubuntu-ssh/</link>
+      <link>http://localhost:43210/post/ubuntu-ssh/</link>
       <pubDate>Thu, 20 Sep 2018 18:22:19 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu-ssh/</guid>
+      <guid>http://localhost:43210/post/ubuntu-ssh/</guid>
       <description>SSH（Secure Shell）とはネットワークに接続されている端末にリモートログインをするための技術のことを言います。 SSHにより直接端末を操作しなくても遠隔地から端末にログインを行い、コマンド入力で簡単に操作できるようになります。それだけでなく、SSHを使用した際にはネットワークを流れる通信がすべて暗号化されるようになるのです。SSHでは暗号化された通信経路を使用するので、通信経路が暗号化され</description>
     </item>
-    
   </channel>
 </rss>

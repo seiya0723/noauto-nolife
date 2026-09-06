@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pythonライブラリ on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/python%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA/</link>
+    <description>Recent content in Pythonライブラリ on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 05 Feb 2024 10:12:10 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/python%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>複数のPDFファイルを1つのPDFファイルにまとめる</title>
+      <link>http://localhost:43210/post/python-pdf-merge/</link>
+      <pubDate>Mon, 05 Feb 2024 10:12:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-pdf-merge/</guid>
+      <description>書類(PDF)を1つにまとめる必要が出てきたので。 複数のPDFを1つにまとめるPythonコードを作ることにした。 前提 pip install PyPDF2==3.0.1 ソースコード PyPDF2 をインストールしておく。 PyPDF2 では PdfFileMerger は削除されたため、 PdfMerger を使う。 import glob import datetime from PyPDF2 import PdfMerger now = datetime.datetime.now() now_str = now.strftime(&amp;#34;%Y-%m-%d_%H:%M:%S&amp;#34;) # TIPS: 既存のPDFファイル名を指定した場合、上書きではなく、追記されるので注意。 def merge_pdfs(output_filename=f&amp;#34;{now_str}.pdf&amp;#34;): # すべてのPDFファイルを取得。 # ファイル名順に並び替える。 pdfs = sorted( glob.glob(f&amp;#34;./*.pdf&amp;#34;) ) #print(pdfs) if not pdfs: print(&amp;</description>
+    </item>
+    <item>
+      <title>【Python】openpyxlで棒グラフ・折れ線グラフを表示させる【公式から引用】</title>
+      <link>http://localhost:43210/post/openpyxl-graph/</link>
+      <pubDate>Thu, 03 Nov 2022 13:33:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/openpyxl-graph/</guid>
+      <description>コードは公式から引用し、一部編集している https://openpyxl.readthedocs.io/en/stable/charts/bar.html https://openpyxl.readthedocs.io/en/latest/charts/line.html ソースコード from openpyxl import Workbook from openpyxl.chart import BarChart, Reference #書き込みモードでワークブックを作る wb = Workbook(write_only=True) #シートを作る ws = wb.create_sheet() #データ rows = [ [&amp;#39;番号&amp;#39;, &amp;#39;算数&amp;#39;, &amp;#39;国語&amp;#39;], [1, 50, 70], [2, 60, 30], [3, 40, 60], [4, 50, 70], [5, 20, 40], [6, 60, 40], [7, 50, 30], ] #書き込み for row in rows: ws.append(row) #棒グラフを作る chart1 = BarChart() chart1.type = &amp;#34;col&amp;#34; chart1.style = 10 #タイトル、横軸・縦軸の指定 chart1.title = &amp;#34;グラフタイトル&amp;#34; chart1.y_axis.title =</description>
+    </item>
+    <item>
+      <title>【Django】sympyで計算した結果をLatex記法でHTML上に出力、mathjaxを使って数式を表示</title>
+      <link>http://localhost:43210/post/django-sympy-latex-mathjax/</link>
+      <pubDate>Sun, 30 Oct 2022 15:01:30 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-sympy-latex-mathjax/</guid>
+      <description>Pythonには高度な計算を行う事ができるライブラリが充実している。 それを、端末を問わずに利用できるようにするには、Pythonをウェブアプリとして動作させる必要がある。つまり、Djangoを使うことになる。 だが、指数や対数、平方根などを、通常の文字列だけでHTML上に表現するには限界がある。 そこで、Latexの文字列を数式として表現できるmathjaxを使うことにした。 Djangoはいつもの40</description>
+    </item>
+    <item>
+      <title>【Ubuntu】tesseractをインストールして、Pythonから画像の文字起こし(OCR)を試す【pytesseract】</title>
+      <link>http://localhost:43210/post/python-tesseract-ocr-by-ubuntu/</link>
+      <pubDate>Mon, 17 Oct 2022 08:59:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-tesseract-ocr-by-ubuntu/</guid>
+      <description>環境 Ubuntu 20.04 Python 3.8.10 Tesseract Open Source OCR Engine v4.1.1 with Leptonica 今回使用したPythonライブラリ packaging==21.3 Pillow==9.2.0 pyparsing==3.0.9 pytesseract==0.3.10 UbuntuへTesseractのインストール sudo apt install tesseract-ocr libtesseract-dev libleptonica-dev tesseract-ocr-jpn tesseract-ocr-jpn-vert tesseract-ocr-script-jpan tesseract-ocr-script-jpan-vert 日本語のOCRもできるように訓練済みのデータもインストールしている。 tesseract-ocr-jpn tesseract-ocr-jpn-vert tesseract-ocr-script-jpan tesseract-ocr-script-jpan-vert Tesseractの動作確認 以下画像をdjango.pngと名付けて解析してみる。 tesseract django.png output -l jpn ファイルはoutput.txtに出力される。出力結果はこうなった。 以下、流れ。 1. プロジェクトを作</description>
+    </item>
+    <item>
+      <title>DjangoでPythonライブラリのマークダウンを試してみる【pip install Markdown】</title>
+      <link>http://localhost:43210/post/django-markdown/</link>
+      <pubDate>Sun, 16 Oct 2022 22:51:20 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-markdown/</guid>
+      <description>どうやらPythonライブラリにマークダウンを実現させるライブラリがあるそうだ。これがDjangoで扱えるらしい。 かなり前から、どうにかしてDjangoでマークダウンを実現できないかと考えていたが、ようやく見つかって良かった。 さっそく試してみる。 インストール pip install Markdown バージョンはこうなった。 importlib-metadata==5.0.0 Markdown==3.4.1 zipp==3.9.0 動かすとこうなる このマークダウンを読み込み、HTMLに変換してもらう。 ## Pythonの構文 ``` for i in range(6): print(i) print(&amp;quot;hello&amp;quot;) print(&amp;quot;hello&amp;quot;)</description>
+    </item>
+    <item>
+      <title>Jupyter Labを始める</title>
+      <link>http://localhost:43210/post/startup-jupyter-lab/</link>
+      <pubDate>Mon, 22 Aug 2022 12:14:16 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-jupyter-lab/</guid>
+      <description>インストール pip install jupyterlab サーバー起動 jupyter lab ファイルの起動 jupyterlabが動いている環境下から適当にディレクトリを作り、ipynbファイルを貼り付ける 下記パスにアクセスする #-------------作ったディレクトリ↓----↓ipynbファイル http://localhost:8888/lab/tree/test/test.ipynb</description>
+    </item>
+    <item>
+      <title>【Python3】BeautifulSoup4の使い方、検証のコード作成方法、役立つリンク集のまとめ【保存版】</title>
+      <link>http://localhost:43210/post/startup-python3-beautifulsoup4/</link>
+      <pubDate>Thu, 11 Aug 2022 09:27:27 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-python3-beautifulsoup4/</guid>
+      <description>スクレイピングの用途は様々。 画像などのメディアファイルのDL、サイトの監視、ウェブアプリへの活用などなど。 よって、なるべくすぐにスクレイピング用のコードを作れる状態にしておきたいのだが、そういう時に限ってBeautifulSoupの仕様を忘れたり、コードを漁ったりしないと作れない。 そこで、本記事ではBeautifulSoup4の使い方を含め、検証方法等やドキュメントなどをまとめる。 【request</description>
+    </item>
+    <item>
+      <title>【Python】pipで翻訳系ライブラリのgoogletransをインストールする【※バージョン指定しないとエラー】</title>
+      <link>http://localhost:43210/post/python-google-trans-install/</link>
+      <pubDate>Wed, 03 Aug 2022 15:25:52 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-google-trans-install/</guid>
+      <description>グーグル翻訳を手軽に試すことができる、Pythonライブラリのgoogletrans。 だが、インストールするバージョンの指定を間違えると、正常に動作してくれない不具合が報告されている。 下記コマンドを実行してインストールするべし。 pip install googletrans==3.1.0a0 その上で、下記を実行する。 from googletrans import Translator translator = Translator() string_ja = &amp;quot;Pythonの勉強は楽しい&amp;quot; trans_en = translator.translate(string_ja, dest=&amp;quot;en&amp;quot;) print(trans_en.text) 正常に翻訳されている。</description>
+    </item>
+    <item>
+      <title>【openpyxl】PythonからExcelファイルを読み書きする</title>
+      <link>http://localhost:43210/post/startup-openpyxl/</link>
+      <pubDate>Thu, 16 Dec 2021 16:31:27 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-openpyxl/</guid>
+      <description>openpyxlを使うことで、PythonからExcelファイルの読み書き編集ができる。 インストール まずはopenpyxlのインストール pip install openpyxl Excelファイルの新規作成・読み込み 新規作成 import openpyxl as px #新規作成(オブジェクト生成)から一旦保存。 wb = px.Workbook() wb.save(&#39;test.xlsx&#39;) 読み込み import openpyxl as px #既存のファイルを読み込み wb = px.load_workbook(&#39;test.xlsx&#39;) 先ほど作成したtest.xlsxを読み込む シートの操作 アクティブシートを選択する import openpyxl as px wb = px.load_workbook(&#39;test.xlsx&#39;) #アクティ</description>
+    </item>
+    <item>
+      <title>【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</title>
+      <link>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</link>
+      <pubDate>Thu, 14 Oct 2021 12:47:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</guid>
+      <description>pandasでファイルの読み込み、演算、グラフ描画、ファイル書き込みの基本操作関係を記す。 前提 data.xlsx及びdata.csvの内容を下記とする。これをPythonのファイルと同じディレクトリに格納する。 ライブラリインストールのコマンドは下記。 pip install openpyxl pandas matplotlib pandasの使い方 CSVやエクセルのファイルをそのまま読み込んで分析できる。 ファイルの読み込み .read_csv()メソッドでCSVを読み</description>
+    </item>
+    <item>
+      <title>【Django】バッチ処理でPS、AI(PDF)ファイルのサムネイルを自動生成させる【BaseCommand】</title>
+      <link>http://localhost:43210/post/django-batch-thumbnail-create/</link>
+      <pubDate>Sun, 23 May 2021 12:02:33 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-batch-thumbnail-create/</guid>
+      <description>PS、AIファイルのサムネイルを作る処理をmanage.pyコマンドに追加することで、ビューの負担を軽減する。 これにより、負荷のかかる処理をビューから分離できる。投稿処理が集中しても、高負荷の処理が原因でサーバーダウンすることは無いのだ。 全体像 こんなふうに、通常のリクエストで行われる処理系とは分離して、サムネイルの自動生成が行われる。 ループにより逐次処理を行うため、リクエストとは違って並列ではない</description>
+    </item>
+    <item>
+      <title>SeleniumでFirefoxブラウザのプロファイルを読み込む【Recaptcha突破、Cookie&#43;アドオン読み込み】</title>
+      <link>http://localhost:43210/post/selenium-read-profile/</link>
+      <pubDate>Mon, 29 Mar 2021 08:37:13 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-read-profile/</guid>
+      <description>めったに使うことのないSeleniumではあるが、いざ使おうとするとかなり手間取る。 特にログイン。Django等の管理サイトでログインする際にはパスとIDを控えておけば良いが、GoogleのRecaptchaとかボット対策をしていると当然突破できない。そこで予めブラウザでログインをしておいて、そのプロファイルを読み込めば良い。 プロファイルを読み込みするコード 下記コードをコピペすれば良いだけである。</description>
+    </item>
+    <item>
+      <title>【Django】バッチ処理のOpenCVが撮影した画像をDBに保存する</title>
+      <link>http://localhost:43210/post/django-batch-opencv/</link>
+      <pubDate>Tue, 16 Mar 2021 16:15:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-batch-opencv/</guid>
+      <description>Djangoのバッチ処理を実行し、DBにデータを格納させる。ただし、OpenCVで撮影した画像をDBに保存させる。本記事ではその手順を記す。 実行環境・やりたいこと 実行環境 Django 2.2以上 Ubuntu 18.04 やりたいこと 流れはだいたいこんな感じ OS起動時、バッチ処理がCrontabから実行される バッチ処理はOpenCVを使用し、撮影した画像を保存 保存した画像とコメントをDBに記録 1秒経ったら、2に戻る つまり、コマ撮りし</description>
+    </item>
+    <item>
+      <title>Django・PythonでSendgridを実装しメールを送信する方法【APIキーと2段階認証を利用する】</title>
+      <link>http://localhost:43210/post/django-sendgrid/</link>
+      <pubDate>Fri, 12 Feb 2021 17:48:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-sendgrid/</guid>
+      <description>Sendgridのパスワードを使用したメール送信が廃止され、APIを使用した2段階認証が強制されるため、ここに対策を記す。本記事はDjango(Python)を対象とした対策について解説する。 django-sendgrid-v5のインストール APIを使用するために、pipにてdjango-sendgrid-v5をインストールさせる。 pip install django-sendgrid-v5 settings.pyにて設定を施す settings.pyの</description>
+    </item>
+  </channel>
+</rss>

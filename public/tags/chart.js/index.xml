@@ -1,33 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chart.js on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/chart.js/</link>
+    <link>http://localhost:43210/tags/chart.js/</link>
     <description>Recent content in Chart.js on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 23 Dec 2021 09:46:30 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/chart.js/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 30 Nov 2022 13:21:48 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/chart.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【chart.js】グラフを4分割して、任意のグラフを作り直して再表示させる【myChart.destroy()】</title>
+      <link>http://localhost:43210/post/chartjs-4part-graph-and-destroy/</link>
+      <pubDate>Wed, 30 Nov 2022 13:21:48 +0900</pubDate>
+      <guid>http://localhost:43210/post/chartjs-4part-graph-and-destroy/</guid>
+      <description>ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;https://code.jquery.com/jquery-3.6.0.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;script.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; body{ margin:0; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;section style=&amp;#34;width:90%;margin:auto;&amp;#34;&amp;gt; &amp;lt;div style=&amp;#34;display:flex;&amp;#34;&amp;gt; &amp;lt;div style=&amp;#34;position:relative;width:50%;&amp;#34;&amp;gt; &amp;lt;canvas id=&amp;#34;graph1&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div style=&amp;#34;position:relative;width:50%;&amp;#34;&amp;gt; &amp;lt;canvas id=&amp;#34;graph2&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div style=&amp;#34;display:flex;&amp;#34;&amp;gt; &amp;lt;div style=&amp;#34;position:relative;width:50%;&amp;#34;&amp;gt; &amp;lt;canvas id=&amp;#34;graph3&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div style=&amp;#34;position:relative;width:50%;&amp;#34;&amp;gt; &amp;lt;canvas id=&amp;#34;graph4&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/section&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;#34;load&amp;#34; , function (){ let id_list = [ &amp;#34;graph1&amp;#34;,&amp;#34;graph2&amp;#34;,&amp;#34;graph3&amp;#34;,&amp;#34;graph4&amp;#34; ]; for (let id of id_list){ const ctx = document.getElementById(id).getContext(&amp;#39;2d&amp;#39;); const myChart = new Chart(ctx, { type: &amp;#39;bar&amp;#39;, data: { labels: [&amp;#39;Red&amp;#39;, &amp;#39;Blue&amp;#39;, &amp;#39;Yellow&amp;#39;, &amp;#39;Green&amp;#39;, &amp;#39;Purple&amp;#39;, &amp;#39;Orange&amp;#39;], datasets: [{ label: &amp;#39;# of Votes&amp;#39;, data: [12, 19, 3, 5, 2, 3], }] }, options: { scales: { y: { beginAtZero: true } } } }); if (id === &amp;#34;graph3&amp;#34;){ //予め作ったグラフをデストロイする。 myChart.destroy(); //その上で既に作られたグラフに後からデータを入れてみる。(mychartはconstなので、代</description>
+    </item>
+    <item>
+      <title>【chart.js】円グラフで大きい順、小さい順に並び替える【JavaScriptの.sort()】</title>
+      <link>http://localhost:43210/post/chartjs-pie-graph-sorting/</link>
+      <pubDate>Sun, 27 Nov 2022 09:45:20 +0900</pubDate>
+      <guid>http://localhost:43210/post/chartjs-pie-graph-sorting/</guid>
+      <description>【前提】JavaScriptで並び替えをするには.sort()を使う これで並び替えができる。 let numbers = [12,67,47,223,84,5,1,7,8,365]; console.log(numbers); numbers.sort( function (a,b){ return a-b; }); console.log(numbers); モダンな書き方に修正する だが、待ってもらいたい。これでは、並び替え処理を実行する前のnumbersも並び替えの影響で、内容が変わってしまっている。 これを防ぐために、スプレッド構文を使って配列をコピーする。 さらに、アロー関数を使えば、更に短く書くことができる。 この2点を考慮すると、この</description>
+    </item>
+    <item>
+      <title>【Chart.js】棒グラフと折れ線グラフの複合型で、左右の横軸にタイトルと目盛を表示</title>
+      <link>http://localhost:43210/post/chartjs-mix-graph-axes/</link>
+      <pubDate>Sun, 16 Oct 2022 19:22:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/chartjs-mix-graph-axes/</guid>
+      <description>注意 Chart.jsには後方互換性が無い。 本記事で解説しているChart.jsのバージョンは3.7.1であり、それ以前のバージョン、もしくはそれ以降のバージョンでは正常に動作しない場合があるのであしからず。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;!--chart.jsのCDN--&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1 class=&amp;quot;bg-primary text-white&amp;quot;&amp;gt;Chart.jsのサンプルコード&amp;lt;/h1</description>
+    </item>
     <item>
       <title>chart.jsでグラフ表示幅と高さを指定する。</title>
-      <link>https://noauto-nolife.com/post/chartjs-responsive-chart/</link>
+      <link>http://localhost:43210/post/chartjs-responsive-chart/</link>
       <pubDate>Thu, 23 Dec 2021 09:46:30 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/chartjs-responsive-chart/</guid>
+      <guid>http://localhost:43210/post/chartjs-responsive-chart/</guid>
       <description>まず、公式によると下記の方法ではchart.jsの横幅と高さ指定は通用しない。 &amp;lt;canvas id=&amp;quot;graph&amp;quot; height=&amp;quot;40vh&amp;quot; width=&amp;quot;80vw&amp;quot;&amp;gt; 他にもクラス名を指定して、そのクラス名に幅などの装飾を施す方法も通用しない。 対策 対策1:親要素でstyle属性にposition:relativeとwidth及びheightを合わせて指定する。 クラス名にCSSで装飾を施すのではなく、親要素のstyle属性に指定しなければうまく行かないので注意。 &amp;lt;div style=&amp;quot;position:relative;width:250px;height:250px;&amp;quot;&amp;gt; &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; 対策2:</description>
     </item>
-    
     <item>
       <title>【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】</title>
-      <link>https://noauto-nolife.com/post/startup-chartjs/</link>
+      <link>http://localhost:43210/post/startup-chartjs/</link>
       <pubDate>Thu, 09 Dec 2021 14:20:07 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-chartjs/</guid>
-      <description>インストールとチュートリアル 下記CDNをインストールする。 &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 続いて、グラフを表示させたい場所に下記、canvasタグを配置。 &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。 棒グラフ 公式から拝借。 実行させるJavaScriptが下記。 const ctx = document.getElementById(&#39;graph&#39;).getContext(&#39;2d&#39;); const myChart = new Chart(ctx, { type: &#39;bar&#39;, data: { labels: [&#39;Red&#39;, &#39;Blue&#39;, &#39;Yellow&#39;, &#39;Green&#39;, &#39;Purple&#39;, &#39;Orange&#39;], datasets: [{ label: &#39;# of Votes&#39;, data: [12, 19, 3, 5, 2, 3], backgroundColor: [ &#39;rgba(255, 99, 132, 0.2)&#39;, &#39;rgba(54, 162, 235, 0.2)&#39;, &#39;rgba(255, 206, 86, 0.2)&#39;, &#39;rgba(75, 192, 192, 0.2)&#39;, &#39;rgba(153, 102, 255, 0.2)&#39;, &#39;rgba(255, 159, 64, 0.2)&#39;</description>
+      <guid>http://localhost:43210/post/startup-chartjs/</guid>
+      <description>インストールとチュートリアル 最新版のCDNなら以下サイトから入手できる https://www.jsdelivr.com/package/npm/chart.js?path=dist とりあえず試したい場合は下記CDNをインストールする。(※一部仕様が現行バージョンと異なるため注意) &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 続いて、グラフを表示させたい場所に下記、canvasタグを配置。 &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。 棒グラフ 公式から拝借。 実行させるJavaScriptが下記。 const ctx =</description>
     </item>
-    
   </channel>
 </rss>

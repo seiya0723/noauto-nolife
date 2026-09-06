@@ -1,42 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/vim/</link>
+    <link>http://localhost:43210/tags/vim/</link>
     <description>Recent content in Vim on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 11 Sep 2022 18:24:04 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/vim/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 21 Jan 2024 15:49:47 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vimで自動的にインデントする。gg=Gでファイル内の全てをオートインデントする</title>
+      <link>http://localhost:43210/post/vim-auto-indent/</link>
+      <pubDate>Sun, 21 Jan 2024 15:49:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-auto-indent/</guid>
+      <description>インデントが雑だったり全くされていない見づらいコードを読まないといけなくなることがある。 いつもは、A Delete Enter を実行したあと、 . で何度も改行をさせるようにしていた。 が、これもめんどくさいなと思うとき、 gg=G を実行すると良い。 gg でファイルの上部にカーソルを移動。=Gを打つことで、ファイルの末尾まで自動的にインデントしてくれるようだ。 逆に考えると、=G とすると今のカーソル位置から最後までを自動的にインデントする</description>
+    </item>
+    <item>
+      <title>【Vimでスニペット】snipmateプラグイン</title>
+      <link>http://localhost:43210/post/vim-snipmate-plugin/</link>
+      <pubDate>Thu, 09 Mar 2023 13:33:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-snipmate-plugin/</guid>
+      <description>vim-snipmateはVimのスニペットプラグイン。スニペットとは、コードの断片のこと。このプラグインは、スニペットを即時呼び出して貼り付けできる。 同じようなコードを何度も何度も書くのは大変。だからスニペットプラグインを使用して爆速コーディングを実現させる。 環境はUbuntu22.04より インストール方法 snipmateはtlibとvim-addon-mw-utilsに依存しているので、まとめ</description>
+    </item>
     <item>
       <title>vimの操作方法</title>
-      <link>https://noauto-nolife.com/post/startup-vim/</link>
+      <link>http://localhost:43210/post/startup-vim/</link>
       <pubDate>Sun, 11 Sep 2022 18:24:04 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-vim/</guid>
+      <guid>http://localhost:43210/post/startup-vim/</guid>
       <description>前提 vimは通常のテキストエディタと違って、主に3つのモードを使い分けて編集を行う コマンドモード 挿入モード ビジュアルモード コマンドモード vimを起動した時、デフォルトでこのモードになっている。 保存や終了、検索やマクロなどのコマンドを実行する事ができる。 挿入モード テキスト入力をするモード。i、o、aキーのいずれかでこのモードに入る。 挿入モードを終了してコマンドモードに移行するにはEscキーを押す。 ビ</description>
     </item>
-    
     <item>
       <title>VimでLaravelのビューを書いているとき、オートインデントが発動しない問題を対処する【.vimrc】</title>
-      <link>https://noauto-nolife.com/post/vim-laravel-autoindent/</link>
+      <link>http://localhost:43210/post/vim-laravel-autoindent/</link>
       <pubDate>Sun, 28 Nov 2021 08:06:40 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/vim-laravel-autoindent/</guid>
+      <guid>http://localhost:43210/post/vim-laravel-autoindent/</guid>
       <description>VimでLaravelのビューを書いている時、オートインデントが発動してくれない。 毎度毎度Tabキーを押してインデントをするのは時間の無駄なので、ここは.vimrcに設定を施したい。 そんな時に見つかったのが下記StackOverflow。 https://stackoverflow.com/questions/32637518/vim-auto-indentation-not-working .vimrcに下記2行を追加するだけで良いらしい。 autocmd BufNewFile,BufRead *.blade.php set syntax=html autocmd BufNewFile,BufRead *.blade.php set filetype=html 確かにこれだけでオートインデントが発動してくれた。これでvimを使用したLaravelの開</description>
     </item>
-    
     <item>
       <title>Vimのコメントの自動補完を無効化させる【JavaScriptやCSS、シェルスクリプトでコメントアウトした後、Enter押すと自動で出てくるアレ】</title>
-      <link>https://noauto-nolife.com/post/vim-comment-settings/</link>
+      <link>http://localhost:43210/post/vim-comment-settings/</link>
       <pubDate>Mon, 15 Nov 2021 07:39:25 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/vim-comment-settings/</guid>
+      <guid>http://localhost:43210/post/vim-comment-settings/</guid>
       <description>例えばJavaScriptでコメントを書く時、 // と書く。だが、その後Enterキーを押すと // // こうなる。これがすごい鬱陶しい。 頼んでもいないのにコメント行が勝手に増えて行くのは、消す手間も同時に増えるということ。だから無効化させる。 環境 Ubuntu 18.04 VIM version 8.0.1453 下記プラグインを使っている状態 emmet.vim surround.vim コメントの自動補完を無効化する 通常、このようなコメントの自動補完を無効化させるには、下記コマンドを実行して無効化させる。</description>
     </item>
-    
+    <item>
+      <title>【保存版】追加しておくべきvimrcの設定【検索ハイライト、タブはスペース4つ、拡張子ごとの初期データ】</title>
+      <link>http://localhost:43210/post/vimrc-setting/</link>
+      <pubDate>Thu, 10 Oct 2019 18:21:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/vimrc-setting/</guid>
+      <description>とりあえず、結論から。Ubuntuの場合、usr/share/vim/vimrcの末尾に下記を追加する。 &amp;quot;行番号表示 set number &amp;quot;タイトルの表示 set title &amp;quot;検索時にハイライト表示 set hlsearch &amp;quot;マークダウンを書くときに斜体を禁止する autocmd! FileType markdown hi! def link markdownItalic Nomal &amp;quot;全角記号の重なりの修正 set ambiwidth=double autocmd BufNewFile *.py 0r $HOME/.vim/template/python3.txt autocmd BufNewFile *.html 0r $HOME/.vim/template/html.txt autocmd BufNewFile *.css 0r $HOME/.vim/template/css.txt autocmd BufNewFile *.js 0r $HOME/.vim/template/javascript.txt autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt autocmd BufNewFile *.java 0r $HOME/.vim/template/java.txt set tabstop=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent set smartindent 特にautoc</description>
+    </item>
+    <item>
+      <title>vimプラグインのemmetとsurroundのインストール方法と使い方【NeoBundleは不要】</title>
+      <link>http://localhost:43210/post/vim-plugin/</link>
+      <pubDate>Fri, 11 Jan 2019 19:19:12 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-plugin/</guid>
+      <description>vimを使用して本格的にHTMLのコーディングをしたいと思ったので、有名なemmet.vimとsurround.vimをインストールすることにしました。忘れてはいけないので備忘録として使い方や活用例なども含めて書き残します。 巷では、プラグイン管理ツールであるNeoBundleをインストールする必要があると言われていますが、無くても問題なくできました。むしろNeoBundleはすでに開発が止まってい</description>
+    </item>
   </channel>
 </rss>

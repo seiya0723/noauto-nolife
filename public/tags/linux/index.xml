@@ -1,78 +1,138 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/linux/</link>
+    <link>http://localhost:43210/tags/linux/</link>
     <description>Recent content in Linux on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 17 Sep 2022 10:20:08 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 23 Dec 2023 15:23:05 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【シェルスクリプト】git clone した後、クローンしたディレクトリへ移動する</title>
+      <link>http://localhost:43210/post/git-clone-cd-directory/</link>
+      <pubDate>Sat, 23 Dec 2023 15:23:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/git-clone-cd-directory/</guid>
+      <description>git cloneコマンドを実行してクローンした後、cdコマンドでディレクトリ移動するのがめんどくさい。 そこで、git clone とcd コマンドを1つにまとめたシェルスクリプトを用意した。 #! /bin/bash # $1 https://github.com/seiya0723/django-auth/tree/main/accounts echo $1 # ここでtree以降は切り捨てる。 repo=$(echo &amp;#34;$1&amp;#34; | sed s/tree.*//g) # 移動対象のディレクトリを取り出す。 destination=$(echo ./&amp;#34;$1&amp;#34; | sed &amp;#34;s/tree\/[[:alnum:]_-]*\///g&amp;#34; | sed &amp;#34;s/https:\/\/github.com\/[[:alnum:]_-]*\///g&amp;#34;) git clone $repo cd $destination 例えば、特定のディレクトリ(tree/main/accounts)を指定している場合、そのディレクトリへ移動</description>
+    </item>
+    <item>
+      <title>【Django】models.pyからforms.py及びadmin.pyを自動的に作る【コマンド1発で生成】</title>
+      <link>http://localhost:43210/post/django-auto-create-models-forms-admin/</link>
+      <pubDate>Sat, 11 Nov 2023 16:46:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-auto-create-models-forms-admin/</guid>
+      <description>Djangoプロジェクトを何度も何度も作っていてふと思う。 models.pyからforms.py、admin.pyを作る時がすごいめんどくさいと。 どれも似たようなコードになるので、これは自動生成してしまったほうが容易いなと。 故に、本記事ではmodels.pyからforms.py及びadmin.pyを自動生成するPythonコードをまとめる。 ※ファイルを読み込んで追記する仕様上、実行は自己責任でお願</description>
+    </item>
+    <item>
+      <title>【LPIC】fileコマンドでMIMEタイプを調べておく</title>
+      <link>http://localhost:43210/post/lpic-file-command/</link>
+      <pubDate>Fri, 17 Mar 2023 10:27:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-file-command/</guid>
+      <description>fileコマンドはファイルの形式を調べるためのコマンド。 -iオプションを使用することで、MIMEタイプを調べることができる。 file -i test.sh 関連記事 Djangoで画像及びファイルをアップロードする方法【ImageFieldとFileField】【python-magicでMIMEの判定あり】</description>
+    </item>
+    <item>
+      <title>【LPIC】リダイレクションとは？ 【&gt;と&lt;の違い、&gt;&gt;など】</title>
+      <link>http://localhost:43210/post/lpic-redirection/</link>
+      <pubDate>Sat, 11 Mar 2023 14:53:35 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-redirection/</guid>
+      <description>リダイレクションとは？ リダイレクトとも言う、ファイルの内容を標準入力としたり、標準出力の結果をファイルへ書き込むための機能。 リダイレクションを使った標準入力 例えば、trコマンドを使うと、標準入力状態になる。 tr &amp;#34;hello&amp;#34; &amp;#34;Hello&amp;#34; このようにtrコマンドを使うと、入力した内容を置換して出力してくれる。 では、ファイルに書かれてある内容を置換して出力するには、どうしたらよいか？ ここでリダイレクションが使える。前もって、以</description>
+    </item>
+    <item>
+      <title>【LPIC】trコマンドの使い方【標準入力したものを変換して出力する】</title>
+      <link>http://localhost:43210/post/lpic-tr-command/</link>
+      <pubDate>Sat, 11 Mar 2023 14:36:35 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-tr-command/</guid>
+      <description>trコマンドは標準入力したものを変換して出力することができる。 例えば、以下のようにhelloをHelloに変換する tr &amp;#34;hello&amp;#34; &amp;#34;Hello&amp;#34; # tr hello Hello でも可 テキストファイルに書かれてある内容を置換して出力することができる。 tr hello Hello &amp;lt; test.txt 置換した内容を別のテキストファイルにリダイレクトして書き込みできる。 tr hello Hello &amp;lt; test.txt &amp;gt; test2.txt ちなみに、このように同じテキストにリダイレクトして書き込みしようとすると、このように全て消える。 tr hello Hello &amp;lt; test.txt &amp;gt;</description>
+    </item>
+    <item>
+      <title>【LPIC】Level1で出てくるコマンドと用語の一覧</title>
+      <link>http://localhost:43210/post/lpic-level1-command/</link>
+      <pubDate>Tue, 07 Mar 2023 13:03:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-level1-command/</guid>
+      <description>順不同。LPICレベル1で出たコマンドと用語の簡単な説明を一覧にしておく。 コマンド コマンド 簡単な説明 set シェル変数やシェルオプションを設定・表示するコマンド env 環境変数を表示するコマンド history コマンド履歴を表示するコマンド mkdir ディレクトリを作るコマンド ls カレントディレクトリのファイル、ディレクトリを表示するコマンド(list segmentsの略) man マニュアルを表示するコマンド whoami ユーザー名を表示するコマンド pwd</description>
+    </item>
+    <item>
+      <title>【LPIC】setコマンドを使用してシェルオプションを設定する</title>
+      <link>http://localhost:43210/post/lpic-set-command-shell-option/</link>
+      <pubDate>Tue, 07 Mar 2023 12:21:15 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-set-command-shell-option/</guid>
+      <description>set コマンドを使用することで、現在のシェルにシェルオプションやパラメータを設定することができる。 現在のシェルオプションを表示する。 現在のシェルに設定されているオプション(シェルオプション)を表示させるには、 set -o と実行する。環境によっても異なるが、このように表示される。 シェルオプションについて 前項の中で、例えば、histexpandは !番号によるコマンドの実行が有効になっている。(前項のリストでonに</description>
+    </item>
+    <item>
+      <title>【LPIC】シェル変数と環境変数の違い【setコマンドとenvコマンド】</title>
+      <link>http://localhost:43210/post/lpic-set-and-env/</link>
+      <pubDate>Tue, 07 Mar 2023 11:28:39 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-set-and-env/</guid>
+      <description>シェル変数と環境変数の違い シェル変数は設定されたシェルだけが使用する変数。 一方で環境変数は設定されたシェルとシェルで起動したプログラム(プロセス)が使用する変数。 環境変数とシェル変数の違いの事例 例えば、シェルからlsコマンドを実行して、lsのプロセスを起動する。 この時、lsのプロセスには環境変数は引き継がれるが、シェル変数は引き継がれない。 実際にシェル変数と環境変数を作ってみる まずはシェル変数を作</description>
+    </item>
+    <item>
+      <title>コマンド一発で動画をmp3に変換する</title>
+      <link>http://localhost:43210/post/movie-convert-mp3/</link>
+      <pubDate>Wed, 23 Nov 2022 14:29:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/movie-convert-mp3/</guid>
+      <description>.mkv動画 → .mp3 find . -type f -name &amp;#34;*.mkv&amp;#34; -print0 | perl -pe &amp;#39;s/\.mkv\0/\0/g&amp;#39; | xargs -0 -I% ffmpeg -i %.mkv -acodec libmp3lame -ab 256k %.mp3 .mp4動画 → .mp3 find . -type f -name &amp;#34;*.mp4&amp;#34; -print0 | perl -pe &amp;#39;s/\.mp4\0/\0/g&amp;#39; | xargs -0 -I% ffmpeg -i %.mp4 -acodec libmp3lame -ab 256k %.mp3 .webm動画 → .mp3 find . -type f -name &amp;#34;*.webm&amp;#34; -print0 | perl -pe &amp;#39;s/\.webm\0/\0/g&amp;#39; | xargs -0 -I% ffmpeg -i %.webm -acodec libmp3lame -ab 256k %.mp3 結論 よく使うので、備忘録として。</description>
+    </item>
+    <item>
+      <title>【Linux】grepとsedとxargsで複数のファイルに点在する誤字を一括修正(置換)する</title>
+      <link>http://localhost:43210/post/grep-sed-xargs-all-file-replace/</link>
+      <pubDate>Wed, 02 Nov 2022 09:13:31 +0900</pubDate>
+      <guid>http://localhost:43210/post/grep-sed-xargs-all-file-replace/</guid>
+      <description>開発をしていて、複数の誤字が見つかった。 しかもその誤字は複数のファイルに点在している。 そんな時、ファイルを開いて1つずつ置換して修正しているようでは時間がかかりすぎる。 そこで、コマンド一発で複数のファイルに点在する誤字を一括修正する。 コマンド 置換対象のファイルのバックアップを取るならこっち grep -rl &amp;quot;誤字&amp;quot; ./* | xargs sed -i &amp;quot;.bak&amp;quot; &#39;s/誤字/修正文/g&#39; バックアップを取らないならこっち grep -rl &amp;qu</description>
+    </item>
     <item>
       <title>rtcwakeコマンドを動かす【指定時間後に復帰、WOLが使えない時に】</title>
-      <link>https://noauto-nolife.com/post/rtcwake-and-crontab/</link>
+      <link>http://localhost:43210/post/rtcwake-and-crontab/</link>
       <pubDate>Sat, 17 Sep 2022 10:20:08 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/rtcwake-and-crontab/</guid>
+      <guid>http://localhost:43210/post/rtcwake-and-crontab/</guid>
       <description>私のサーバーは夜中は操作しないので、crontabでshutdownすることにしている。 そして、朝になったらラズパイなどの常時動いている端末にWakeOnLanを送信して起動させている。 だが、そのサーバーが無線LANになった時、WakeOnLanは通用しない。 ではいかにして、終了と起動を指定時間に行わせるか。そこで、rtcwakeを使う。 今すぐ終了して7時間後に起動して欲しい場合 sudo rtcwake -m off -s 25200 これを</description>
     </item>
-    
+    <item>
+      <title>【Bash】mkdirコマンドで作ったディレクトリに即移動(cd)するコマンドを作る【mkcdをaliasに登録】</title>
+      <link>http://localhost:43210/post/bash-mkdir-add-cd-command/</link>
+      <pubDate>Thu, 11 Aug 2022 09:34:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/bash-mkdir-add-cd-command/</guid>
+      <description>mkdirコマンドで作ったディレクトリに即移動したい場合。 まず、このシェルスクリプトを作る。 #! /bin/bash mkdir -p $1 cd $1 そして、aliasを追加する。sourceコマンドを使って実行させる。 alias mkcd=&amp;#34;source ~/develop_tools/mkcd.sh&amp;#34; すると、mkcd コマンドを実行すると、作ったディレクトリに即移動できる。 -p オプションもついているので、2階層以上のディレクトリも一気に作れる。 参照元:https://qiita.com/akokubu/items/d5</description>
+    </item>
     <item>
       <title>Linuxでコマンドラインからクリップボードにコピーする【UbuntuもOK】</title>
-      <link>https://noauto-nolife.com/post/linux-commandline-clipboard/</link>
+      <link>http://localhost:43210/post/linux-commandline-clipboard/</link>
       <pubDate>Wed, 30 Mar 2022 09:13:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/linux-commandline-clipboard/</guid>
+      <guid>http://localhost:43210/post/linux-commandline-clipboard/</guid>
       <description>とてつもなく長いコードをクリップボードにコピーして、誰かと共有したい時、エディタのカーソルを上に持っていって下まで下げてコピーするのはとても面倒。 だから、コマンド一発でファイルの内容全てをコピーする。xselを使って。 sudo apt install xsel これでOK。後はコピペしたいファイルを用意して、下記コマンドを実行する。 cat ./index.html | xsel --clipboard --input これでindex.htmlの中身が全部コピーできた。bashrcにエイリアスで登録しておく</description>
     </item>
-    
     <item>
       <title>mogrifyコマンドを使って画像を一括クロップ(トリミング)する</title>
-      <link>https://noauto-nolife.com/post/startup-mogrify/</link>
+      <link>http://localhost:43210/post/startup-mogrify/</link>
       <pubDate>Fri, 07 Jan 2022 09:57:31 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-mogrify/</guid>
+      <guid>http://localhost:43210/post/startup-mogrify/</guid>
       <description>下記コマンドで一括画像処理できる mogrify [出力先] -crop [幅]x[高さ]+[切り取り始めるx座標]+[切り取り始めるy座標] [入力元] 参照元:https://qiita.com/yoya/items/62879e6e03d5a70eed09</description>
     </item>
-    
     <item>
       <title>Nginxのログをチェックする、ログの出力設定を変更する</title>
-      <link>https://noauto-nolife.com/post/nginx-log-check/</link>
+      <link>http://localhost:43210/post/nginx-log-check/</link>
       <pubDate>Tue, 21 Sep 2021 07:19:18 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/nginx-log-check/</guid>
+      <guid>http://localhost:43210/post/nginx-log-check/</guid>
       <description>事案が発生した時、まっさきに確認するべきがサーバーのログ。とりわけウェブサーバーのNginxのログ確認方法、設定方法をここに記す。 Nginxのログの見方 Nginxの設定ファイル(/etc/nginx/nginx.conf)にログのパスが書かれてある ## # Logging Settings ## access_log /var/log/nginx/access.log; error_log /var/log/nginx/error.log; ログは/var/log/nginx/access.logに保管されてある事がわかる。中身はこんな感じ。 左から順にこうなっている。 送信元</description>
     </item>
-    
     <item>
       <title>サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】</title>
-      <link>https://noauto-nolife.com/post/startup-ubuntu2004-server/</link>
+      <link>http://localhost:43210/post/startup-ubuntu2004-server/</link>
       <pubDate>Sat, 21 Aug 2021 17:39:30 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-ubuntu2004-server/</guid>
+      <guid>http://localhost:43210/post/startup-ubuntu2004-server/</guid>
       <description>デスクトップ版のUbuntuとサーバー版のUbuntuは完全に別物である。 デスクトップ版はGUIでラクラク固定IPアドレス設定できたり、作業しながらブラウザで検索できる一方で、サーバー版のUbuntuはただ無機質なターミナルが全画面を覆っているだけである。 本記事ではインストールからIPアドレスの固定化、bashの設定やタイムゾーン設定、別端末からSSHでログインするまでを解説する。 対象読者は、既に</description>
     </item>
-    
     <item>
       <title>【保存版】Ubuntu18.04をインストールした後に真っ先にやる16の設定</title>
-      <link>https://noauto-nolife.com/post/ubuntu1804-settings/</link>
+      <link>http://localhost:43210/post/ubuntu1804-settings/</link>
       <pubDate>Sat, 12 Jan 2019 14:57:56 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu1804-settings/</guid>
+      <guid>http://localhost:43210/post/ubuntu1804-settings/</guid>
       <description>ほとんど自分用の備忘録です。あまり役に立たないかもしれませんが、トップバーとdockの合成はやっておくと一気に便利になるでしょう。 その1:bashの履歴の上限を開放して、日時を表示させる その2:日本語のディレクトリ名を英語に変更させる その3:各種パッケージをインストールする その4:vimのプラグインをインストールする その5:vimのデフォルトの設定を変更させる その6:UbuntuのトップバーとDo</description>
     </item>
-    
     <item>
       <title>UbuntuにSSHでリモートログインする方法【パスワード認証&#43;公開鍵認証&#43;scpコマンド】</title>
-      <link>https://noauto-nolife.com/post/ubuntu-ssh/</link>
+      <link>http://localhost:43210/post/ubuntu-ssh/</link>
       <pubDate>Thu, 20 Sep 2018 18:22:19 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu-ssh/</guid>
+      <guid>http://localhost:43210/post/ubuntu-ssh/</guid>
       <description>SSH（Secure Shell）とはネットワークに接続されている端末にリモートログインをするための技術のことを言います。 SSHにより直接端末を操作しなくても遠隔地から端末にログインを行い、コマンド入力で簡単に操作できるようになります。それだけでなく、SSHを使用した際にはネットワークを流れる通信がすべて暗号化されるようになるのです。SSHでは暗号化された通信経路を使用するので、通信経路が暗号化され</description>
     </item>
-    
   </channel>
 </rss>

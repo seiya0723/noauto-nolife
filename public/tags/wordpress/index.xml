@@ -1,24 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wordpress on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/wordpress/</link>
+    <link>http://localhost:43210/tags/wordpress/</link>
     <description>Recent content in Wordpress on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 04 Jun 2022 16:46:42 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 05 Jun 2023 10:03:34 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Ubuntu】Localをインストールする【WordPressのローカル環境構築】</title>
+      <link>http://localhost:43210/post/ubuntu-local-wordpress-install/</link>
+      <pubDate>Mon, 05 Jun 2023 10:03:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-local-wordpress-install/</guid>
+      <description>LinuxへのWordpressの開発環境の構築はdockerでもできるが、ややdockerの知識が必要。 そこで、簡単にWordpressの開発環境の構築ができるlocalを使用する。 インストール https://localwp.com/releases/ 上記ページから各OSごとのインストーラーが用意されている。 今回はUbuntuなので、.debファイルをDLする。 DL後、下記コマンドを実行 sudo apt install ~/Downloads/local-6.7.2-linux.deb インストール後 規約に同意する。 バツボタン、Nothank</description>
+    </item>
+    <item>
+      <title>【所要時間3分未満】dockerでWordpressの環境を構築する【docker-compose.ymlを書いて実行するだけ】</title>
+      <link>http://localhost:43210/post/docker-wordpress-create/</link>
+      <pubDate>Thu, 29 Dec 2022 22:53:36 +0900</pubDate>
+      <guid>http://localhost:43210/post/docker-wordpress-create/</guid>
+      <description>以前、UbuntuにWordpressをインストールする手順を解説した。 UbuntuにWordpressをインストールする【MariaDB+Apache】 しかし、このやり方はもう古いというか遅すぎるらしい。 なぜなら今はdockerが開発の主流だから。 わざわざMariaDBをインストールして、Apacheをインストールして..とやっているようでは環境構築だけで1日が終わる。 dockerであれば3分以</description>
+    </item>
+    <item>
+      <title>【Wordpress】日本語タイトルで404になる問題はパーマリンクを修正して日本語URLをやめる</title>
+      <link>http://localhost:43210/post/wordpress-japanese-title-404/</link>
+      <pubDate>Fri, 23 Dec 2022 11:22:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/wordpress-japanese-title-404/</guid>
+      <description>Wordpressをインストールして、日本語タイトルの記事を追加すると、このように、404 Not Foundになってしまう。 こういう時は、URLに日本語が含まれているからエラーになってしまう。パーマリンクを修正すると良いだろう。 デフォルトではカスタム構造になっているので、日本語が混ざると404になることがあるようだ。</description>
+    </item>
     <item>
       <title>UbuntuにWordpressをインストールする【MariaDB&#43;Apache】</title>
-      <link>https://noauto-nolife.com/post/startup-wordpress-ubuntu/</link>
+      <link>http://localhost:43210/post/startup-wordpress-ubuntu/</link>
       <pubDate>Sat, 04 Jun 2022 16:46:42 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-wordpress-ubuntu/</guid>
+      <guid>http://localhost:43210/post/startup-wordpress-ubuntu/</guid>
       <description>手元のPCにWordpressをインストールして試したいが、OSに直にインストールするのは避けたい。 そういう時、VirtualBoxにインストールしたUbuntuへ、Wordpressをインストールすると良いだろう。 流れ Apacheのインストール MariaDBのインストールとDB・ユーザーの作成 PHPのインストール Wordpressのインストール Apacheのインストール インストール sudo apt install apache2 自動起</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,51 +1,180 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>追記予定 on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A/</link>
+    <link>http://localhost:43210/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A/</link>
     <description>Recent content in 追記予定 on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 20 Aug 2022 17:55:28 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 29 Aug 2026 08:48:08 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る</title>
+      <link>http://localhost:43210/post/fastapi-nextjs-crud/</link>
+      <pubDate>Sat, 29 Aug 2026 08:48:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/fastapi-nextjs-crud/</guid>
+      <description>FastAPIとNext.jsの経験がない中で、チュートリアル的な意味で作った。 【フェーズ1】FastAPIでStreamResponseをするローカルLLM(Ollama) 構成は以下の通り . ├── main.py ├── routers │ └── chat.py ├── crud.py ├── models.py ├── schemas.py ├── database.py ├── chat.db └── requirements.txt 全体像はこうなる。 以下、ファイルごとの役割 ファイル・フォルダ 役割 main.py サーバー起動用 routers エンドポイントフォルダ chat.py チャットGPT風アプリのエン</description>
+    </item>
+    <item>
+      <title>UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</title>
+      <link>http://localhost:43210/post/local-llm-install/</link>
+      <pubDate>Sun, 24 May 2026 14:44:41 +0900</pubDate>
+      <guid>http://localhost:43210/post/local-llm-install/</guid>
+      <description>Ollama Ollama はGoogle DeepMind によって開発されたローカルで利用できるLLM。 入力した情報を外部に公開したり curl -fsSL https://ollama.com/install.sh | sh 仮想環境下で以下を実行する。 pip install ollama ollamaコマンドでgemma:2b をインストールしておく。 ollama run gemma:2b 以下コードを実行する。 import ollama # 1. システムプロンプト（末尾のカンマを削除し、内容を強化） system_prompt = { &amp;#39;role&amp;#39;: &amp;#39;system&amp;#39;, &amp;#39;content&amp;#39;: ( &amp;#34;【絶対ルール】必ず日本語だけで回答してください。英語は一切使用禁止です。&amp;#34; )</description>
+    </item>
+    <item>
+      <title>CNNとNLPの問題</title>
+      <link>http://localhost:43210/post/cnn-nlp-question/</link>
+      <pubDate>Sun, 26 Apr 2026 17:09:19 +0900</pubDate>
+      <guid>http://localhost:43210/post/cnn-nlp-question/</guid>
+      <description>試験範囲 CNN : VGG,GoogLeNet,ResNet(WideResNet),MobileNet,DenseNet,EfficientNet NLP : Word2Vec(skip-gram),seq2seq,HRED,Transformer 問題 間違えている箇所は → で解答を表示。 1. VGG Q1: VGG16において、すべての畳み込み層で 3×3 カーネルが採用されている理由として適切なものは？ 空間方向・チャンネル方向双方に畳み込みを行い、層を増やすため。5x5では特徴量がぼやけてしまい、1x1では空間方向の特徴抽出が難しいため。 Q2: PyTorchの models.vgg16 において、特徴抽出部分の最後にある nn.AdaptiveAvgPool2d((7, 7)) の役割は？ 7x7で平均プーリングを行い、全結合</description>
+    </item>
+    <item>
+      <title>動画の扱い方の学習ロードマップ</title>
+      <link>http://localhost:43210/post/learning-roadmap-for-handling-video-data/</link>
+      <pubDate>Sat, 29 Nov 2025 11:23:42 +0900</pubDate>
+      <guid>http://localhost:43210/post/learning-roadmap-for-handling-video-data/</guid>
+      <description>動画の扱い方の学習手順と方針をまとめる。 よりリアルタイムで、より高画質で、より便利で扱いやすいアプリ開発をバックアップする。 動画の基本単位 動画はコーデックとコンテナによって作られている。 動画を構成しているのは、映像と音声。これらをひとまとめにするため、圧縮と保存を行う。 その圧縮と保存が、コーデックとコンテナである。 コーデック (映像と音声の圧縮) コーデックには映像用のコーデックと、音声用のコーデック</description>
+    </item>
+    <item>
+      <title>【SQL】Oracleデータベースのファンクション(関数)の一覧</title>
+      <link>http://localhost:43210/post/oracle-database-function/</link>
+      <pubDate>Sun, 01 Jun 2025 18:38:32 +0900</pubDate>
+      <guid>http://localhost:43210/post/oracle-database-function/</guid>
+      <description>NVL(A,B) AがNULLならBを返す 以下は、bonus カラムの値がNULLの場合、そのまま表示させず、0を返すようにしている。 SELECT NVL(bonus, 0) AS bonus_value FROM employees; 文字列を返すこともできる。ただし元のカラムの値と同じデータ型に限る。 SELECT NVL(middle_name, &amp;#39;（なし）&amp;#39;) AS middle FROM users; つまり以下はエラー(暗黙的に型変換される可能性もあるが、エラーになることがあるため、推奨されない) SELECT NVL(bonus, &amp;#39;賞与なし&amp;#39;) AS bonus_value FROM employees; この場合、型変換を明</description>
+    </item>
+    <item>
+      <title>OracleDBのSQLまとめ</title>
+      <link>http://localhost:43210/post/oracle-database-sql-basic/</link>
+      <pubDate>Tue, 29 Apr 2025 08:41:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/oracle-database-sql-basic/</guid>
+      <description>dockerにインストールしたOracle−XEを使用している。 UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える HR スキーマを搭載した。 雇用日時をもとに絞り込みをする 【非推奨】文字列を与えると、暗黙的にDATE型に変換する 例えば、2015年1月1日以降に雇用した従業員を出力するには、 SELECT * FROM employees WHERE hire_date &amp;gt;= &amp;#39;2015-01-01&amp;#39; ; そして、新人を上に表示させるため、降順に並び替える。 SELECT * FROM employees WHERE hire_date &amp;gt;= &amp;#39;2015-01-01&amp;#39;</description>
+    </item>
+    <item>
+      <title>Seleniumの基本操作のまとめ</title>
+      <link>http://localhost:43210/post/selenium-basic-control/</link>
+      <pubDate>Sat, 19 Apr 2025 08:17:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-basic-control/</guid>
+      <description>Seleniumは同じような処理が続くため、基本操作をまとめた。 ただ、forループとtry 文が続く冗長構成のため、後に修正する予定。 ソースコード from selenium import webdriver from selenium.webdriver.support.ui import WebDriverWait, Select from selenium.webdriver.support import expected_conditions from selenium.webdriver.common.by import By from selenium.common.exceptions import TimeoutException driver = webdriver.Firefox() wait = WebDriverWait(driver, 10) retry = 10 # 要素が見えているか def xpath_visible(xpath: str): return wait.until(excepted_conditions.visibility_of_element_located((By.XPATH, xpath))) def xpath_click(xpath: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.click() except: continue else: return raise TimeoutException(f&amp;#34;クリックできませんでした: {xpath}&amp;#34;) def xpath_send_keys(xpath: str, keys: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.send_keys(keys) except: continue else: return raise TimeoutE</description>
+    </item>
+    <item>
+      <title>Next.jsとTypeScriptで簡易掲示板をつくる</title>
+      <link>http://localhost:43210/post/startup-nextjs-typescript/</link>
+      <pubDate>Fri, 04 Apr 2025 09:03:11 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-nextjs-typescript/</guid>
+      <description>Next.js を使えば、フロントからサーバーサイドまで一貫してJavaScript(TypeScript)でウェブアプリをつくる。 npx create-next-app startup-bbs このようにプロジェクトを作った。 cd startup-bbs npm run dev これでサーバーが起動すればプロジェクト作成はOK。 プロジェクトのディレクトリ構成 startup-bbs の中は以下のようになっている。 $ ls -al 合計 264 drwxrwxr-x 7 akagi akagi 4096 4月 4 10:40 . drwxrwxr-x 3 akagi akagi 4096 4月 4 10:39 .. drwxrwxr-x 8 akagi akagi 4096 4月 4 10:39 .git -rw-rw-r-- 1 akagi akagi 480 4月 4 10:39 .gitignore drwxrwxr-x 7 akagi akagi 4096 4月 4 10:40 .next -rw-rw-r-- 1 akagi akagi 1450</description>
+    </item>
+    <item>
+      <title>Pythonで画像認識AI(深層学習)の速習をするためのメモ【pytorchで画像認識学習・推論のサンプルあり】</title>
+      <link>http://localhost:43210/post/python-ai-memo/</link>
+      <pubDate>Mon, 24 Feb 2025 18:27:37 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-ai-memo/</guid>
+      <description>急遽AI開発(特に画像認識)が必要になったため、それに必要な用語や概念的なものをまとめる。 ほとんどがChatGPTの受け売りである。自分用にまとめたのでかなり雑であることをお許しいただきたい。 そもそも機械学習と深層学習の違いは？ なんとなくだったため、この際はっきりさせる。 機械学習 簡単な表データを学習して推論したい場合、機械学習が有効。 データ量は数千〜数万件単位でOK。特徴量の設定は手動で行う必要が</description>
+    </item>
+    <item>
+      <title>AI実装検定A級のメモ</title>
+      <link>http://localhost:43210/post/ai-exam-rank-a/</link>
+      <pubDate>Sun, 26 Jan 2025 16:28:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-a/</guid>
+      <description>AI概論 AIのコンペ(ILSVRC)とAIの歴史 ILSVRC という画像認識の精度を競い合うコンペがあり、2012年の大会でディープラーニングが有用であると認識されるようになった。 2011年付近まではサポートベクターマシン(SVM)という手法が上位であったが、2012年にはAlexNetという手法が登場。これが従来のニューラルネットワークを元にして作られた、深層ニューラルネットワーク、ディープラーニングである</description>
+    </item>
+    <item>
+      <title>Reactベースの静的サイトジェネレーターGatsbyを使う</title>
+      <link>http://localhost:43210/post/startup-gatsby/</link>
+      <pubDate>Wed, 13 Nov 2024 13:26:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-gatsby/</guid>
+      <description>React学習のため、とりわけ扱いやすいGatsbyを使うことにした。 学習完了次第。このサイトは、HUGOからGatsbyに移行する予定。 本記事では、Gatsbyを調べてわかったことをまとめる。学習の都度まとめているため、誤りが含まれる可能性がある点をご了承いただきたい。 実装方法 Ubuntu 22.04 LTS 環境下で動作させている。 sudo npm install -g gatsby-cli まず、グローバル環境下でGatsbyをインストールする。 これでGatsbyコマン</description>
+    </item>
+    <item>
+      <title>よく出るReactのエラー一覧</title>
+      <link>http://localhost:43210/post/react-errors/</link>
+      <pubDate>Mon, 01 Apr 2024 11:12:58 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-errors/</guid>
+      <description>textarea要素には、valueプロパティを使って値を与える 普通のHTMLでは、textareaに最初から値を入れておきたい場合、子要素に直接文字を書くと良い。 しかし、Reactで同じことをやるとエラーになる。 &amp;lt;textarea className=&amp;#34;form-control&amp;#34; name=&amp;#34;comment&amp;#34; onChange={this.handleChange}&amp;gt;{this.state.activeItem.comment}&amp;lt;/textarea&amp;gt; そこで、valueプロパティを使う。 &amp;lt;textarea className=&amp;#34;form-control&amp;#34; name=&amp;#34;comment&amp;#34; onChange={this.handleChange} value={this.state.activeItem.comment}&amp;gt;&amp;lt;/textarea&amp;gt; これで、 Use the `defaultValue` or `value` props instead of setting children on &amp;lt;textarea&amp;gt;. というエラーは解決される。 リスト内の要素を識別できるよう、keyプロパティを与える Each child in a list should have a unique</description>
+    </item>
+    <item>
+      <title>【Ubuntu】systemdでPythonファイルを動作させる【常駐スクリプトに】</title>
+      <link>http://localhost:43210/post/systemd-run-python/</link>
+      <pubDate>Thu, 05 Oct 2023 15:30:41 +0900</pubDate>
+      <guid>http://localhost:43210/post/systemd-run-python/</guid>
+      <description>このPythonコードを動作させる。ファイルパスは~/Documents/systemd/test.py import datetime, time while True: with open(&amp;#34;test.txt&amp;#34;, mode=&amp;#34;w&amp;#34;) as f: f.write( str(datetime.datetime.now()) ) time.sleep(1) 必要最小限度の serviceファイルが以下。ファイルパスは/etc/systemd/system/testpython.serviceとする。 [Unit] Description=write text file After=network.target [Service] ExecStart=/usr/bin/python3 test.py WorkingDirectory=/home/testuser/Documents/systemd [Install] WantedBy=multi-user.target 下記で動作できる。 sudo systemctl start testpython.service 動作中は/home/testuser/Documents/systemd/te</description>
+    </item>
+    <item>
+      <title>【Django】getlistを使って複数枚の画像をまとめて送信する【サムネイルが表示される専用フォームあり】</title>
+      <link>http://localhost:43210/post/django-multi-send-img-and-form/</link>
+      <pubDate>Fri, 22 Sep 2023 22:37:07 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-multi-send-img-and-form/</guid>
+      <description>以前解説した、 inputタグのtype=&amp;lsquo;file&amp;rsquo;で画像のサムネイルを表示させる を使って、複数の画像をgetlistを使ってアップロードできるように仕立てる。 通販サイトでは、1つの商品に複数枚の画像がセットされることが多いので、そちらに対応させる。 解説 モデル from django.db import models from django.utils import timezone class Topic(models.Model): dt = models.DateTimeField(verbose_name=&amp;#34;投稿日時&amp;#3</description>
+    </item>
+    <item>
+      <title>【JavaScriptカレンダー】fullcalendarを使ってみる【ライブラリ】</title>
+      <link>http://localhost:43210/post/javascript-fullcalendar/</link>
+      <pubDate>Sat, 22 Apr 2023 22:07:54 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-fullcalendar/</guid>
+      <description>JavaScriptを使ってカレンダーを表示する。 基本のカレンダー表示 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; //ページが読まれたときに下記を実行 document.addEventListener(&amp;#39;DOMContentLoaded&amp;#39;, function() { //カレンダーの要素を取得 const calendarEl = document.getElementById(&amp;#39;calendar&amp;#39;); // オブジェクトを作成 FullCalendar.Calendar() を実行。引数として要素と表示するカレンダーの設定 const calendar = new FullCalendar.Calendar(calendarEl, { initialView: &amp;#39;dayGridMonth&amp;#39;, events: [ { title : &amp;#39;イベント1&amp;#39;, start : &amp;#39;2023-05-01&amp;#39; }, { title : &amp;#39;イベント2&amp;#39;, start : &amp;#39;2023-05-05&amp;#39;, end : &amp;#39;2023-05-07&amp;#39; }, { title : &amp;#39;イベント3&amp;#39</description>
+    </item>
+    <item>
+      <title>【LPIC】Level1で出てくるコマンドと用語の一覧</title>
+      <link>http://localhost:43210/post/lpic-level1-command/</link>
+      <pubDate>Tue, 07 Mar 2023 13:03:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/lpic-level1-command/</guid>
+      <description>順不同。LPICレベル1で出たコマンドと用語の簡単な説明を一覧にしておく。 コマンド コマンド 簡単な説明 set シェル変数やシェルオプションを設定・表示するコマンド env 環境変数を表示するコマンド history コマンド履歴を表示するコマンド mkdir ディレクトリを作るコマンド ls カレントディレクトリのファイル、ディレクトリを表示するコマンド(list segmentsの略) man マニュアルを表示するコマンド whoami ユーザー名を表示するコマンド pwd</description>
+    </item>
+    <item>
+      <title>【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】</title>
+      <link>http://localhost:43210/post/django-git-deploy-ubuntu-venv/</link>
+      <pubDate>Tue, 14 Feb 2023 13:50:19 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-git-deploy-ubuntu-venv/</guid>
+      <description>要求される知識が非常に多いため、下記対象読者に該当する方のみ、閲覧を推奨します。 対象読者 Linuxのコマンドがわかる CUIエディタ(nanoもしくはvim)が扱える すでにDjangoプロジェクトをUbuntuへデプロイをしたことがある gitを使ったことがある(ステージング→コミット→プッシュができればOK) SSHでUbuntuへリモートログインをしたことがある(パスワード認証ができればOK) vir</description>
+    </item>
+    <item>
+      <title>react-router-domの使い方【Reactでルーティング】</title>
+      <link>http://localhost:43210/post/react-route-dom-how-to-use/</link>
+      <pubDate>Thu, 02 Feb 2023 17:29:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-route-dom-how-to-use/</guid>
+      <description>ページが複数あるサイトをReactで作る場合、react-router-domでルーティングを行うと良いだろう。 npm install react-router-dom 使い方 コンポーネントを作る src/components/に以下ファイルを配置。 Home.jsx Portfolio.jsx Profile.jsx Home.jsx import { Link } from &amp;#34;react-router-dom&amp;#34;; export const Home = () =&amp;gt; { return ( &amp;lt;&amp;gt; &amp;lt;div&amp;gt;ここはホームです&amp;lt;/div&amp;gt; &amp;lt;Link to={`/portfolio`}&amp;gt;ポートフォリオ&amp;lt;/Link&amp;gt; &amp;lt;Link to={`/pr</description>
+    </item>
+    <item>
+      <title>【React】Helloworldの仕組みの解説</title>
+      <link>http://localhost:43210/post/react-helloworld/</link>
+      <pubDate>Sun, 04 Dec 2022 10:19:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-helloworld/</guid>
+      <description>勉強途中で書いているものなので、やや間違いがあるかも Reactの内部構造 srcに書かれたJavaScriptを発動させ、指定した内容を、publicにあるindex.htmlへレンダリングする。 プロジェクトを作ってHelloWorldまで プロジェクトを作る。 create-react-app myproject cd myproject 以下コマンドで、プロジェクトを起動させる。 npm start index.jsを作る srcディレクトリ内のファイルを全て削除して、新しくindex.j</description>
+    </item>
+    <item>
+      <title>【JavaScript】marked.jsでマークダウン記法をHTML上でプレビューしてみる</title>
+      <link>http://localhost:43210/post/javascript-markdown/</link>
+      <pubDate>Thu, 03 Nov 2022 16:48:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-markdown/</guid>
+      <description>以前、Pythonでマークダウンを実現させてDjangoに実装したが、最近のサイトは皆、マークダウンを書いたら即時で隣のプレビュー欄に表示させる仕様になっている事が多い。 それはJavaScriptでマークダウンを作っているからで、Pythonでマークダウンを実現させているようでは難しい。 そこで、JavaScriptマークダウンのライブラリとして名高い marked.js を使うことにした。 とりあえず作ってみたソースコ</description>
+    </item>
     <item>
       <title>【Django】FontAwesomeで星のアイコンを使ったレビューの投稿と表示</title>
-      <link>https://noauto-nolife.com/post/django-star-review/</link>
+      <link>http://localhost:43210/post/django-star-review/</link>
       <pubDate>Sat, 20 Aug 2022 17:55:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-star-review/</guid>
-      <description>最終的にこのようになる。 今回はテンプレートのwithとcenterは不使用とした。 そして、5つ星の内、4つ星でレビューした場合、空の星を1つ描画する仕様に仕立てた。 参照 【Django】テンプレートで数値を使用したforループを実行する方法【レビューの星のアイコン表示などに有効】 HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星</description>
+      <guid>http://localhost:43210/post/django-star-review/</guid>
+      <description>最終的にこのようになる。 今回はテンプレートのwithとcenterは不使用とした。 そして、5つ星の内、4つ星でレビューした場合、空の星を1つ描画する仕様に仕立てた。 モデル from django.db import models from django.core.validators import MinValueValidator,MaxValueValidator MAX_STAR = 5 class Review(models.Model): comment = models.CharField(verbose_name=&amp;quot;コメント&amp;quot;,max_length=500) star = models.IntegerField(verbose_name=&amp;qu</description>
     </item>
-    
-    <item>
-      <title>別のUbuntuにデータを輸送する</title>
-      <link>https://noauto-nolife.com/post/ubuntu-data-transport/</link>
-      <pubDate>Mon, 15 Aug 2022 18:20:02 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu-data-transport/</guid>
-      <description>別のPCのUbuntuにデータを全て輸送する必要があったりする。 そういう時、手順をまとめておかないと手直しに返って時間がかかる。 よって、必要なデータ移行作業をここに列挙しておく。 準備編 前もって、下記をやっておく(任意) サーバー版Ubuntu 20.04のインストールから設定、SSHログインまで【固定IPアドレス、タイムゾーン、bashrcなど】 【保存版】Ubuntu18.04をインストールした後に真</description>
-    </item>
-    
     <item>
       <title>【Django】モデルに計算可能な時間を記録する【勉強時間・筋トレ時間の記録系ウェブアプリの作成に】【DurationField】</title>
-      <link>https://noauto-nolife.com/post/django-models-time-calc/</link>
+      <link>http://localhost:43210/post/django-models-time-calc/</link>
       <pubDate>Sat, 13 Aug 2022 14:44:47 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-models-time-calc/</guid>
+      <guid>http://localhost:43210/post/django-models-time-calc/</guid>
       <description>例えば、勉強時間や筋トレ時間を記録するウェブアプリを作るとする。 この時に、ネックになるのが、時間を記録するモデルフィールド。 IntegerFieldで記録するべきか、DatetimeFieldでtimedeltaを使うか。 いずれにせよ、合計や平均などを出さないといけないので、このフィールド選択を間違えると後々大変なことになる。 フォームの形式も考慮する必要がある。 そこで、本記事では、時間を記録する方</description>
     </item>
-    
     <item>
-      <title>【Django】カレンダーを更に改良する</title>
-      <link>https://noauto-nolife.com/post/django-calendar-custom/</link>
-      <pubDate>Mon, 08 Aug 2022 16:16:36 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-calendar-custom/</guid>
-      <description>カレンダー機能に年月指定をするリンクとフォームを用意した。 ソースコード https://github.com/seiya0723/django_calendar_custom</description>
+      <title>django-channelsを使ってWebSocketを実現させる【チャットサイト開発に】</title>
+      <link>http://localhost:43210/post/startup-django-channels-web-socket/</link>
+      <pubDate>Mon, 02 May 2022 21:34:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-django-channels-web-socket/</guid>
+      <description>django-channelsのチュートリアルに倣って、WebSocketのチャットサイトを作った。 とても実装難易度が高い。実装手順の備忘録として本記事をまとめる。 解説 ライブラリのインストール pip install django channels daphne djangoとdjango-channels、それからdaphne(ダフネ)をインストールする。 daphneは ASGI（Asynchronous Server Gateway Interface）に準拠したサーバー。 config/settings.py &amp;#34;&amp;#34;&amp;#34; Django settings for</description>
     </item>
-    
+    <item>
+      <title>【保存版】追加しておくべきvimrcの設定【検索ハイライト、タブはスペース4つ、拡張子ごとの初期データ】</title>
+      <link>http://localhost:43210/post/vimrc-setting/</link>
+      <pubDate>Thu, 10 Oct 2019 18:21:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/vimrc-setting/</guid>
+      <description>とりあえず、結論から。Ubuntuの場合、usr/share/vim/vimrcの末尾に下記を追加する。 &amp;quot;行番号表示 set number &amp;quot;タイトルの表示 set title &amp;quot;検索時にハイライト表示 set hlsearch &amp;quot;マークダウンを書くときに斜体を禁止する autocmd! FileType markdown hi! def link markdownItalic Nomal &amp;quot;全角記号の重なりの修正 set ambiwidth=double autocmd BufNewFile *.py 0r $HOME/.vim/template/python3.txt autocmd BufNewFile *.html 0r $HOME/.vim/template/html.txt autocmd BufNewFile *.css 0r $HOME/.vim/template/css.txt autocmd BufNewFile *.js 0r $HOME/.vim/template/javascript.txt autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt autocmd BufNewFile *.java 0r $HOME/.vim/template/java.txt set tabstop=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent set smartindent 特にautoc</description>
+    </item>
   </channel>
 </rss>

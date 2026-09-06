@@ -1,267 +1,320 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ウェブデザイン on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/</link>
+    <link>http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/</link>
     <description>Recent content in ウェブデザイン on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 11 Sep 2022 21:21:48 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 04 Feb 2024 16:08:40 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【jscolor】カラーピッカーを実装できるJavaScriptライブラリ【シンプル】</title>
+      <link>http://localhost:43210/post/jscolor-javascript-color-picker/</link>
+      <pubDate>Sun, 04 Feb 2024 16:08:40 +0900</pubDate>
+      <guid>http://localhost:43210/post/jscolor-javascript-color-picker/</guid>
+      <description>例えば、投稿した内容に色をつけたいというとき。 通常は、type=&amp;quot;color&amp;quot;のinputタグを使う。 &amp;lt;input type=&amp;#34;color&amp;#34; name=&amp;#34;color&amp;#34;&amp;gt; だが、これはブラウザごとに見た目が大きく異なる。しかも見た目があまりよろしくない。 そこで、以下を考慮して、JavaScriptのライブラリを選定した。 無料 フォームの見た目が良い 扱いやすい jQueryに依存していない 実装が非常にシンプルでわかりやすい コピペですぐに使えるジェ</description>
+    </item>
+    <item>
+      <title>Javascriptでクリックした時、要素内文字列をクリップボードにコピーさせる</title>
+      <link>http://localhost:43210/post/javascript-clipcopy/</link>
+      <pubDate>Sat, 13 Jan 2024 19:29:37 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-clipcopy/</guid>
+      <description>よく見かける、JavaScriptでクリックした時、コピーするアレを再現する。 ソースコード &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; pre { background:black; padding:0.5rem; overflow:auto; position:relative; } pre code { color:#0fc; } .copy_button{ user-select: none; display:inline-block; position:absolute; top:0; right:0; color:white; background:black; cursor:pointer; margin:0.25rem 0.75rem; padding:0.25rem 0.5rem; border:solid 0.1rem white; border-radius:0.5rem; transition:0.2s; } .copy_button:hover{ background:#0fc; color:black; } .copy_button:active{ background:black; color:white; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);console.log(&amp;#34;HelloWorld&amp;#34;);&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt; &amp;lt;script&amp;gt; const pre_elems = document.querySelectorAll(&amp;#34;pre&amp;#34;); // コピー用のボタンを配置する。 for (let pre_elem of pre_elems ){ pre_elem.innerHTML += &amp;#39;&amp;lt;span class=&amp;#34;copy_button&amp;#34;&amp;gt;Copy&amp;lt;/span&amp;gt;&amp;#39;; } const copy_buttons = document.querySelectorAll(&amp;#34;.copy_button&amp;#34;); for (let copy_button of copy_buttons){ copy_button.addEventListener(&amp;#34;click&amp;#34; , (event) =&amp;gt; { const code = event.currentTarget.closest(&amp;#34;pre&amp;#34;).querySelector(&amp;#34;code&amp;#34;); if (navigator.clipboard &amp;amp;&amp;amp; code){ navigator.clipboard.writeText( code.textContent ); } }); } &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 結論 ウェブアプリでコピーして別のウェブアプリのフォームにペーストしたい</description>
+    </item>
+    <item>
+      <title>【Django】getlistを使って複数枚の画像をまとめて送信する【サムネイルが表示される専用フォームあり】</title>
+      <link>http://localhost:43210/post/django-multi-send-img-and-form/</link>
+      <pubDate>Fri, 22 Sep 2023 22:37:07 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-multi-send-img-and-form/</guid>
+      <description>以前解説した、 inputタグのtype=&amp;lsquo;file&amp;rsquo;で画像のサムネイルを表示させる を使って、複数の画像をgetlistを使ってアップロードできるように仕立てる。 通販サイトでは、1つの商品に複数枚の画像がセットされることが多いので、そちらに対応させる。 解説 モデル from django.db import models from django.utils import timezone class Topic(models.Model): dt = models.DateTimeField(verbose_name=&amp;#34;投稿日時&amp;#3</description>
+    </item>
+    <item>
+      <title>テキストエリアに入力時に、Tabキーを押してタブを入力する【マークダウンやコードの入力に有効】</title>
+      <link>http://localhost:43210/post/textarea-tab-insert/</link>
+      <pubDate>Fri, 22 Sep 2023 22:13:44 +0900</pubDate>
+      <guid>http://localhost:43210/post/textarea-tab-insert/</guid>
+      <description>直接コードを入力する場合に有効。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;textarea id=&amp;#34;textarea&amp;#34;&amp;gt;&amp;lt;/textarea&amp;gt; &amp;lt;script&amp;gt; const textarea = document.querySelector(&amp;#39;#textarea&amp;#39;); textarea.addEventListener(&amp;#39;keydown&amp;#39;, function (e) { if (e.key === &amp;#39;Tab&amp;#39;) { // デフォルトの動作（フォーカスの切り替え）を防止 e.preventDefault(); // カーソル位置の前と後を取得 const start = this.selectionStart; const end = this.selectionEnd; // カーソル位置にタブ文字を挿入 const tab = &amp;#39;\t&amp;#39;; this.value = this.value.substring(0, start) + tab + this.value.substring(end); // カーソル位置を調整(タブを入力した後にカーソルを移動) this.selectionStart = this.selectionEnd = start + 1; } }); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる 半角スペース4文字分にするには？ &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt;</description>
+    </item>
+    <item>
+      <title>DjangoMessageFrameworkにJavaScriptとCSSを当てる【ボタンを押して消せるようにする】</title>
+      <link>http://localhost:43210/post/django-message-framework-javascript-css/</link>
+      <pubDate>Wed, 26 Apr 2023 18:21:16 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-message-framework-javascript-css/</guid>
+      <description>DjangoMessageFrameworkは投稿完了した旨やエラーの理由をクライアント側に表示することができるが、表示させっぱなしになるので少々鬱陶しく感じることもある。 そこで5秒経ったら自動的に消すように仕立てたり、バツボタンを押して消せるように仕立てた。 さらに、fontawesomeを使用している。 ソースコード テンプレート &amp;lt;div class=&amp;#34;notify_message_area&amp;#34;&amp;gt; {% for message in messages %} &amp;lt;div class=&amp;#34;notify_message notify_message_{{ message.tags }}&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;notify_message_content&amp;#34;&amp;gt;{{ message }}&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;notify_message_delete&amp;#34;&amp;gt;&amp;lt;i class=&amp;#34;fas fa-times&amp;#34;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; {% endfor %} &amp;lt;/div&amp;gt; JavaScript(jQuery) //Django</description>
+    </item>
+    <item>
+      <title>【JavaScriptカレンダー】fullcalendarを使ってみる【ライブラリ】</title>
+      <link>http://localhost:43210/post/javascript-fullcalendar/</link>
+      <pubDate>Sat, 22 Apr 2023 22:07:54 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-fullcalendar/</guid>
+      <description>JavaScriptを使ってカレンダーを表示する。 基本のカレンダー表示 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; //ページが読まれたときに下記を実行 document.addEventListener(&amp;#39;DOMContentLoaded&amp;#39;, function() { //カレンダーの要素を取得 const calendarEl = document.getElementById(&amp;#39;calendar&amp;#39;); // オブジェクトを作成 FullCalendar.Calendar() を実行。引数として要素と表示するカレンダーの設定 const calendar = new FullCalendar.Calendar(calendarEl, { initialView: &amp;#39;dayGridMonth&amp;#39;, events: [ { title : &amp;#39;イベント1&amp;#39;, start : &amp;#39;2023-05-01&amp;#39; }, { title : &amp;#39;イベント2&amp;#39;, start : &amp;#39;2023-05-05&amp;#39;, end : &amp;#39;2023-05-07&amp;#39; }, { title : &amp;#39;イベント3&amp;#39</description>
+    </item>
+    <item>
+      <title>【django】summernoteを使用してwysiwygエディタを表示させる【マークダウンよりも簡単】</title>
+      <link>http://localhost:43210/post/django-summernote/</link>
+      <pubDate>Sat, 22 Apr 2023 15:44:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-summernote/</guid>
+      <description>wysiwygエディタとは？ このようなエディタのことである。 入力した内容と、ページに表示される内容が全く同一。 MSwordのようなエディタをウェブ上で扱うことができる。(.docxファイルがウェブ上で扱えるわけではないので注意。) 今回も40分DjangoをベースとしてDjango-summernoteを実装していく。 Djangoでwysiwygエディタを使うならdjango−summernote 以</description>
+    </item>
+    <item>
+      <title>inputタグのtype=&#39;file&#39;で画像のサムネイルを表示させる</title>
+      <link>http://localhost:43210/post/input-tag-type-file-thumbnail/</link>
+      <pubDate>Tue, 18 Apr 2023 16:28:27 +0900</pubDate>
+      <guid>http://localhost:43210/post/input-tag-type-file-thumbnail/</guid>
+      <description>fontawesomeを使用しているので、アイコンの表示は別途CDNをインストールしておいてほしい。 ソースコード HTML &amp;lt;label class=&amp;#34;image_input_area&amp;#34;&amp;gt; &amp;lt;input class=&amp;#34;image_input&amp;#34; type=&amp;#34;file&amp;#34; name=&amp;#34;icon&amp;#34; accept=&amp;#34;image/*&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;image_input_icon&amp;#34;&amp;gt;&amp;lt;i class=&amp;#34;fas fa-image&amp;#34;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;img class=&amp;#34;image_input_preview&amp;#34; src=&amp;#34;&amp;#34; alt=&amp;#34;&amp;#34;&amp;gt; &amp;lt;/label&amp;gt; CSS .image_input_area { display:inline-block; border:dashed 0.2rem var(--gray); width:5rem; height:5rem; position:relative; cursor:pointer; } .image_input{ display:none; } .image_input_preview{ width:100%; height:100%;position:absolute; } .image_input_icon{ width:100%; height:100%;position:absolute; } .image_input_icon i{ font-size:2rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); } JavaScript(jQuery) $(&amp;#34;.image_input&amp;#34;).change(function() { const label = $(this).parent(&amp;#34;label&amp;#34;); const file = $(this).prop(&amp;#34;files&amp;#34;)[0]; // 画像以外は処理を停止 if (! file.type.match(&amp;#34;image.*&amp;#34;)) { $(this).val(&amp;#34;&amp;#34;); return; } // 画像表示 const reader = new FileReader(); reader.onload = function() { label.children(&amp;#34;.image_input_preview&amp;#34;).prop(&amp;#34;src&amp;#34;, reader.result ); } reader.readAsDataURL(file); }); 【別解】JavaScript(バニラ) window.addEventListener(&amp;#34;load&amp;#34; , function (){ document.addEventListener(&amp;#34;change&amp;#34;, (event) =&amp;gt; { // type=&amp;#34;file&amp;</description>
+    </item>
+    <item>
+      <title>jQueryのslick.jsでカルーセルを表示する【.slick-dotsのCSS付きでボタンを押しやすく】</title>
+      <link>http://localhost:43210/post/jquery-slick/</link>
+      <pubDate>Sun, 12 Feb 2023 11:44:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/jquery-slick/</guid>
+      <description>jQueryとslick.jsを使うことでカルーセルを簡単に表現することができる。 CDNを読み込み 前もって、以下のCSSと &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css&amp;quot;/&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css&amp;quot;/&amp;gt; JSを読み込んでおく。(jQueryもセットで。) &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.6.0.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 使い方 このような形のHTMLに対して &amp;lt;div class=&amp;quot;slick_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;slick_content&amp;quot;&amp;gt;コンテンツ1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;slick_content&amp;</description>
+    </item>
+    <item>
+      <title>【jQuery】.animate()の使い方【アニメーション】</title>
+      <link>http://localhost:43210/post/jquery-animation/</link>
+      <pubDate>Sun, 05 Feb 2023 17:17:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/jquery-animation/</guid>
+      <description>.animate() の構文 $(要素).animate({ 発動するCSS }, 遅延 ); 遅延はミリ秒単位で書く &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;https://code.jquery.com/jquery-3.6.0.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; .button-more{ display:inline-block; background:orange; padding:1rem; cursor:pointer; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;span class=&amp;#34;button-more&amp;#34;&amp;gt;continue ...&amp;lt;/span&amp;gt; &amp;lt;script&amp;gt; $(&amp;#39;.button-more&amp;#39;).on(&amp;#39;mouseover&amp;#39;, function() { console.log(&amp;#34;over&amp;#34;); // このthisはこのイベントが発生した要素自身を意味している。 $(this).animate({ opacity: 0.5, marginLeft: 20, }, 100); }); $(&amp;#39;.button-more&amp;#39;).on(&amp;#39;mouseout&amp;#39;, function() { console.log(&amp;#34;out&amp;#34;); $(this).animate({ opacity: 1.0, marginLeft: 0, }, 100); }); &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 結論 jQueryを使用することで、簡単にアニメーションを再現することができる。 イベントと組み合わせることで、モーダルダイアログの表示や、入力欄の</description>
+    </item>
+    <item>
+      <title>position:relativeとabsoluteとtransform:translateを使ったセンタリング【どんな画面幅でも中央に配置する】</title>
+      <link>http://localhost:43210/post/transform-centering/</link>
+      <pubDate>Sat, 07 Jan 2023 10:05:00 +0900</pubDate>
+      <guid>http://localhost:43210/post/transform-centering/</guid>
+      <description>例えば、サイトのタイトルなど、どんな状況でも必ず中央に配置したい場合があるだろう。 そういう時は、positionとtransform:translateを使用することで解決できる。 ソースコード まずは下記のソースコードを動かしてもらいたい。 `&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; body{ /* ブラウザのデフォルトでmarginが付いているので消しておく。*/ margin:0; } .content_area { position:relative; /* content_areaの高さをブラウザの縦幅全開ま</description>
+    </item>
+    <item>
+      <title>【chart.js】グラフを4分割して、任意のグラフを作り直して再表示させる【myChart.destroy()】</title>
+      <link>http://localhost:43210/post/chartjs-4part-graph-and-destroy/</link>
+      <pubDate>Wed, 30 Nov 2022 13:21:48 +0900</pubDate>
+      <guid>http://localhost:43210/post/chartjs-4part-graph-and-destroy/</guid>
+      <description>ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;#34;https://code.jquery.com/jquery-3.6.0.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;#34;script.js&amp;#34;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;style&amp;gt; body{ margin:0; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;section style=&amp;#34;width:90%;margin:auto;&amp;#34;&amp;gt; &amp;lt;div style=&amp;#34;display:flex;&amp;#34;&amp;gt; &amp;lt;div style=&amp;#34;position:relative;width:50%;&amp;#34;&amp;gt; &amp;lt;canvas id=&amp;#34;graph1&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div style=&amp;#34;position:relative;width:50%;&amp;#34;&amp;gt; &amp;lt;canvas id=&amp;#34;graph2&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div style=&amp;#34;display:flex;&amp;#34;&amp;gt; &amp;lt;div style=&amp;#34;position:relative;width:50%;&amp;#34;&amp;gt; &amp;lt;canvas id=&amp;#34;graph3&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div style=&amp;#34;position:relative;width:50%;&amp;#34;&amp;gt; &amp;lt;canvas id=&amp;#34;graph4&amp;#34;&amp;gt;&amp;lt;/canvas&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/section&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;#34;load&amp;#34; , function (){ let id_list = [ &amp;#34;graph1&amp;#34;,&amp;#34;graph2&amp;#34;,&amp;#34;graph3&amp;#34;,&amp;#34;graph4&amp;#34; ]; for (let id of id_list){ const ctx = document.getElementById(id).getContext(&amp;#39;2d&amp;#39;); const myChart = new Chart(ctx, { type: &amp;#39;bar&amp;#39;, data: { labels: [&amp;#39;Red&amp;#39;, &amp;#39;Blue&amp;#39;, &amp;#39;Yellow&amp;#39;, &amp;#39;Green&amp;#39;, &amp;#39;Purple&amp;#39;, &amp;#39;Orange&amp;#39;], datasets: [{ label: &amp;#39;# of Votes&amp;#39;, data: [12, 19, 3, 5, 2, 3], }] }, options: { scales: { y: { beginAtZero: true } } } }); if (id === &amp;#34;graph3&amp;#34;){ //予め作ったグラフをデストロイする。 myChart.destroy(); //その上で既に作られたグラフに後からデータを入れてみる。(mychartはconstなので、代</description>
+    </item>
+    <item>
+      <title>【Django】DurationFieldのフォームの最適解を考えてみる【JSを使うか、Django側で制御するか】</title>
+      <link>http://localhost:43210/post/django-duration-fields-form/</link>
+      <pubDate>Sat, 26 Nov 2022 15:51:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-duration-fields-form/</guid>
+      <description>勉強した時間やトレーニングした時間を入力することができる、DjangoのDurationField。 これは、日付や日時の入力とは異なるため、flatpickrは通用しない。 そのため別途フォームの作成を考慮する必要がある。 普通のinputタグtype=&amp;ldquo;text&amp;quot;のフォーム これでは:を入力しないといけないので、入力がめんどくさい。 selectタグを使ったフォームに書き換える。 そ</description>
+    </item>
+    <item>
+      <title>【CSS3】checkboxとlabelを使ってサイドバーを作る【コンパクト】</title>
+      <link>http://localhost:43210/post/css3-new-sidebar/</link>
+      <pubDate>Wed, 02 Nov 2022 13:18:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/css3-new-sidebar/</guid>
+      <description>以前作成したHTMLとCSSのサイドバーは、見た目は非常にわかりやすいが、場所を取る上に見た目がイマイチ。 そこで、HTMLとCSSだけでサイドバーを作るギミックは踏襲し、デザインだけ変更することにした。 ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;input id=&amp;quot;sidebar_chk&amp;quot; class=&amp;quot;sidebar_chk&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;sidebar_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;sidebar_content&amp;quot;&amp;gt; &amp;lt;div&amp;gt;サイドバー&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt;サイドバー&amp;lt;/div&amp;gt; &amp;lt;div&amp;gt</description>
+    </item>
+    <item>
+      <title>DjangoでPythonライブラリのマークダウンを試してみる【pip install Markdown】</title>
+      <link>http://localhost:43210/post/django-markdown/</link>
+      <pubDate>Sun, 16 Oct 2022 22:51:20 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-markdown/</guid>
+      <description>どうやらPythonライブラリにマークダウンを実現させるライブラリがあるそうだ。これがDjangoで扱えるらしい。 かなり前から、どうにかしてDjangoでマークダウンを実現できないかと考えていたが、ようやく見つかって良かった。 さっそく試してみる。 インストール pip install Markdown バージョンはこうなった。 importlib-metadata==5.0.0 Markdown==3.4.1 zipp==3.9.0 動かすとこうなる このマークダウンを読み込み、HTMLに変換してもらう。 ## Pythonの構文 ``` for i in range(6): print(i) print(&amp;quot;hello&amp;quot;) print(&amp;quot;hello&amp;quot;)</description>
+    </item>
+    <item>
+      <title>JavaScriptで文字数をカウントする【サロゲートペアと改行コードに注意】</title>
+      <link>http://localhost:43210/post/javascript-string-counter/</link>
+      <pubDate>Sun, 16 Oct 2022 20:32:18 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-string-counter/</guid>
+      <description>JavaScriptで文字数をカウントするシーンはよくある。 例えば、テキストエリアに入力した時、入力された文字数を表示させたりする。 これで、最大文字数まであとどれだけ入力できるのかわかる。 ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.6.0.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;textarea id=&amp;quot;textarea&amp;quot;&amp;gt;&amp;lt;/textarea&amp;gt; &amp;lt;div&amp;gt;&amp;lt;span id=&amp;quot;counter&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;文字入力&amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;#textarea&amp;quot;).on(&amp;quot;input&amp;quot;, function(){ //改行は1文字に含まない</description>
+    </item>
+    <item>
+      <title>EasyTimer.jsを使ってストップウォッチとタイマーを作る</title>
+      <link>http://localhost:43210/post/javascript-easytimer/</link>
+      <pubDate>Sun, 16 Oct 2022 20:06:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-easytimer/</guid>
+      <description>以前、下記記事でストップウォッチとタイマーを作ったが、 JavaScript(jQuery)でストップウォッチとタイマーを作る【勉強や運動の記録などに】 使いにくい。 だから、タイマーとストップウォッチのライブラリを実装する。 かなり軽量で、イベントのセットもできるEasyTimer.jsを使う。 ストップウォッチの実装 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;ストップウォッチ&amp;lt;/title&amp;g</description>
+    </item>
     <item>
       <title>JavaScriptで並び替えをするならSortable.js【jQuery不要のライブラリ】</title>
-      <link>https://noauto-nolife.com/post/javascript-sortablejs/</link>
+      <link>http://localhost:43210/post/javascript-sortablejs/</link>
       <pubDate>Sun, 11 Sep 2022 21:21:48 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/javascript-sortablejs/</guid>
-      <description>CDN &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.6.0.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;sort_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;6&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; let sort_areas = $(&amp;quot;.sort_area&amp;quot;); for (let area of sort_areas ){ new Sortable(area, { animation: 150, ghostClass: &#39;dragging&#39;, onEnd: function(){ console.log(&amp;quot;ソート完了&amp;quot;) }, }); } &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる 結論 ソート終了時、onEndで何か処理を実行する事ができる。ただこの処理で要素を特定しても、並び替える前の要素を取得してしまうので、そのままAjaxをという考えは通用しない模様。 ドラッ</description>
+      <guid>http://localhost:43210/post/javascript-sortablejs/</guid>
+      <description>CDN &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;sort_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;1&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;2&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;3&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;4&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;5&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;sort_item&amp;quot; style=&amp;quot;background:orange;padding:0.5rem;margin:0.5rem;&amp;quot;&amp;gt;6&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; const sort_areas = document.querySelectorAll(&amp;quot;.sort_area&amp;quot;); for (let area of sort_areas ){ new Sortable(area, { animation: 150, ghostClass: &#39;dragging&#39;, onEnd: function(){ console.log(&amp;quot;ソート完了&amp;quot;) }, }); } &amp;lt;/script&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 動かすとこうなる 結論 ソート終了時、onEndで何か処理を実行する事ができる。例えば、Ajaxとか。 ドラッグ中にクラスを割り当てる事ができるので、色を変えるとか色々できると思う。 詳細は公式にて。 https://sortablejs.github.io/Sortable/</description>
     </item>
-    
     <item>
       <title>【CSS3】チャットのウェブデザインを作る</title>
-      <link>https://noauto-nolife.com/post/css3-chat-web-design/</link>
+      <link>http://localhost:43210/post/css3-chat-web-design/</link>
       <pubDate>Tue, 06 Sep 2022 16:41:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-chat-web-design/</guid>
-      <description>HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;main class=&amp;quot;container&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;mine_speech_bubble_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;speech_bubble&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;others_speech_bubble_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;speech_bubble&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/main&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; Django用のHTML {% for topic in topics %} &amp;lt;div class=&amp;quot;{% if topic.user.id == request.user.id %}mine{% else %}others{% endif %}_speech_bubble_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;speech_bubble&amp;quot;&amp;gt;{{ topic.comment|linebreaksbr }}&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; {% endfor %} CSS .mine_speech_bubble_area{ text-align:right; } .others_speech_bubble_area{ text-align:left; } .mine_speech_bubble_area .speech_bubble { /* 自分が送った時は右下の角をつける */ background:lime; border-bottom-right-radius:0; } .others_speech_bubble_area .speech_bubble { /* 自分が送った時は右下の角をつける */ background:silver; border-top-left-radius:0; } .speech_bubble{ text-align:left; word-break:break-all; display:inline-block; max-width:80%; padding:0.5rem; margin:0.5rem 0; border-radius:1rem; } 動かすとこうなる。</description>
+      <guid>http://localhost:43210/post/css3-chat-web-design/</guid>
+      <description>HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;#34; integrity=&amp;#34;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;#34; crossorigin=&amp;#34;anonymous&amp;#34;&amp;gt; &amp;lt;link rel=&amp;#34;stylesheet&amp;#34; href=&amp;#34;style.css&amp;#34;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;main class=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;mine_speech_bubble_area&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;speech_bubble&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;others_speech_bubble_area&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;speech_bubble&amp;#34;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/main&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; Django用のHTML {% for topic in topics %} &amp;lt;div class=&amp;#34;{% if topic.user.id == request.user.id %}mine{% else %}others{% endif %}_speech_bubble_area&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;speech_bubble&amp;#34;&amp;gt;{{ topic.comment|linebreaksbr }}&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; {% endfor %} CSS .mine_speech_bubble_area{ text-align:right; } .others_speech_bubble_area{ text-align:left; } .mine_speech_bubble_area .speech_bubble { /* 自分が送った時は右下の角をつける */ background:lime; border-bottom-right-radius:0; } .others_speech_bubble_area .speech_bubble { /* 相手が送った時は左上の角をつける */ background:silver; border-top-left-radius:0; } .speech_bubble{ text-align:left; word-break:break-all; display:inline-block; max-width:80%; padding:0.5rem; margin:0.5rem 0; border-radius:1rem; } 動かすとこうなる。</description>
     </item>
-    
     <item>
       <title>JavaScript(jQuery)でストップウォッチとタイマーを作る【勉強や運動の記録などに】</title>
-      <link>https://noauto-nolife.com/post/javascript-stopwatch-and-timer/</link>
+      <link>http://localhost:43210/post/javascript-stopwatch-and-timer/</link>
       <pubDate>Sun, 31 Jul 2022 16:26:04 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/javascript-stopwatch-and-timer/</guid>
+      <guid>http://localhost:43210/post/javascript-stopwatch-and-timer/</guid>
       <description>記録系のウェブアプリに欠かせないストップウォッチとタイマー これをJavaScript(jQuery)で再現する。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.6.0.min.js&amp;quot; integrity=&amp;quot;sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;p-2 my-2&amp;quot;&amp;gt; &amp;lt;h2&amp;gt;タイマー&amp;lt;/h2&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_hour&amp;quot; type=&amp;quot;number&amp;quot; min=&amp;quot;0&amp;quot; max=&amp;quot;99&amp;quot; value=&amp;quot;0&amp;quot;&amp;gt;時間&amp;lt;/label&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_minute&amp;quot; type=&amp;quot;number&amp;quot; min=&amp;quot;0&amp;quot; max=&amp;quot;59&amp;quot; value=&amp;quot;0&amp;quot;&amp;gt;分&amp;lt;/label&amp;gt; &amp;lt;label&amp;gt;&amp;lt;input id=&amp;quot;timer_second&amp;quot;</description>
     </item>
-    
-    <item>
-      <title>DjangoでカレンダーのUIを作る</title>
-      <link>https://noauto-nolife.com/post/django-calendar-ui/</link>
-      <pubDate>Sat, 09 Jul 2022 15:42:16 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-calendar-ui/</guid>
-      <description>『Djangoビギナーが40分で掲示板アプリを作る方法』を元に、カレンダーのUIを作る。 1ヶ月分のデータをまとめて表示させたい系のウェブアプリの作成に活用できる。 calendar.py このcalendar.pyをアプリディレクトリ内に作る。 import datetime def create_calendar(year,month): #今月の初日を指定 dt = datetime.date(year,month,1) #calendarはweekのリスト、weekは日付のリスト calendar = [] week = [] #月始めが日曜日以外の場合、空欄を追加する。 if dt.weekday() != 6: week = [ {&amp;quot;day&amp;quot;:&amp;quot;&amp;quot;} for i in range(dt.weekday()+1) ] &amp;quot;&amp;quot;&amp;quot; #内</description>
-    </item>
-    
     <item>
       <title>【jQuery】数値入力フォームを押しっぱなしで入力する仕様に仕立てる</title>
-      <link>https://noauto-nolife.com/post/jquery-number-form-auto/</link>
+      <link>http://localhost:43210/post/jquery-number-form-auto/</link>
       <pubDate>Tue, 03 May 2022 11:25:12 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/jquery-number-form-auto/</guid>
+      <guid>http://localhost:43210/post/jquery-number-form-auto/</guid>
       <description>以前、『【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる』で解説したフォームを、ボタン押しっぱなしでも入力できるように仕立てる。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;spinner_area&amp;quot;&amp;gt; &amp;lt;input class=&amp;quot;spinner&amp;quot; type=&amp;quot;number&amp;quot; value=&amp;quot;0&amp;quot; max=&amp;quot;10&amp;quot; min=&amp;quot;0&amp;quot;&amp;gt; &amp;lt;button class=&amp;quot;spinner_button&amp;quot; type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;-1&amp;quot;&amp;gt;ー&amp;lt;/button&amp;gt; &amp;lt;button class=&amp;quot;spinner_button&amp;quot; type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;1&amp;quot; &amp;gt;＋&amp;lt;/button&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; CSS .spinner_button{ user-select: none; cursor:pointer; padding:0.5rem; width: auto; vertical-align: middle; } .spinner_area input{ padding: 0.5rem; border: 0.1rem solid gray; border-radius: 0.25rem; font-size:</description>
     </item>
-    
     <item>
       <title>【jQuery】数値入力フォームをボタンで入力する仕様に仕立てる</title>
-      <link>https://noauto-nolife.com/post/jquery-number-form/</link>
+      <link>http://localhost:43210/post/jquery-number-form/</link>
       <pubDate>Wed, 02 Mar 2022 11:45:18 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/jquery-number-form/</guid>
+      <guid>http://localhost:43210/post/jquery-number-form/</guid>
       <description>数値入力フォーム。キーボードを使わず、ボタン入力で行いたい場合、JavaScriptを使う必要がある。 今回は更に短くかけるよう、jQueryで表現した。なお、再利用を想定して、装飾は全く行っていない。 ソースコード HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;form action=&amp;quot;&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;number&amp;quot; name=&amp;quot;amount&amp;quot; value=&amp;quot;0&amp;quot; readonly&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;minus&amp;quot; value=&amp;quot;減らす&amp;quot;&amp;gt; &amp;lt;input type=&amp;quot;button&amp;quot; name=&amp;quot;plus&amp;quot; value=&amp;quot;増やす&amp;quot;&amp;gt; &amp;lt;/form&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; JavaScript window.addEventListener(&amp;quot;load&amp;quot; , function (){ $(&amp;quot;[name=&#39;plus&#39;]&amp;quot;).on(&amp;quot;click&amp;quot;, function(){ amount_add(this,true);</description>
     </item>
-    
     <item>
       <title>HTML5とCSS3だけでAmazon風の星レビューのフォームを再現する【ホバーした時、ラジオボタンのチェックされた時に星を表示】【flex-direction:row-reverseで逆順対応可】</title>
-      <link>https://noauto-nolife.com/post/css3-star-review-radio/</link>
+      <link>http://localhost:43210/post/css3-star-review-radio/</link>
       <pubDate>Fri, 11 Feb 2022 14:51:05 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-star-review-radio/</guid>
+      <guid>http://localhost:43210/post/css3-star-review-radio/</guid>
       <description>以前、サーバーサイドで1から5のいずれかの数値を受付、DBに保存する方法を実践したが、フロント系ではそれをもう少しおしゃれに実装させたい。 そういう時は、なるべくJavaScriptを使用せず、HTMLとCSSだけで表現するのがベターなやり方だと個人的には思う。 だからこそ、今回も同様にHTMLとCSSだけでレビューの星を入力するフォームを再現した。 マウスをホバーした時、星が塗りつぶされ、外れると星が</description>
     </item>
-    
     <item>
       <title>Django-allauthにてフォームを中央寄せにさせる【ログインページのテンプレートのカスタマイズ】</title>
-      <link>https://noauto-nolife.com/post/django-allauth-center-loginpage/</link>
+      <link>http://localhost:43210/post/django-allauth-center-loginpage/</link>
       <pubDate>Fri, 24 Dec 2021 10:01:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-allauth-center-loginpage/</guid>
+      <guid>http://localhost:43210/post/django-allauth-center-loginpage/</guid>
       <description>以前の方法であれば、単純なCSSの割り当てだけだったので、ログインフォームを中央寄せに仕立てることはできなかった。 今回は、HTMLも大幅に変更を行い、ログイン画面のフォームを中央寄せに仕立てる。 account/base.html 全てのログインフォームのテンプレートから継承されるbase.htmlを下記のように編集する。 {% load static %} &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;title&amp;gt;{% block head_title %}{% endblock %}&amp;lt;/title&amp;gt; &amp;lt;!--中央寄せ、フォーム系のタグは全てBootstrapから拝借--&amp;gt;</description>
     </item>
-    
     <item>
       <title>【JavaScript】Chart.jsでグラフを描画する【棒グラフ、円グラフ、折れ線グラフ】</title>
-      <link>https://noauto-nolife.com/post/startup-chartjs/</link>
+      <link>http://localhost:43210/post/startup-chartjs/</link>
       <pubDate>Thu, 09 Dec 2021 14:20:07 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-chartjs/</guid>
-      <description>インストールとチュートリアル 下記CDNをインストールする。 &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 続いて、グラフを表示させたい場所に下記、canvasタグを配置。 &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。 棒グラフ 公式から拝借。 実行させるJavaScriptが下記。 const ctx = document.getElementById(&#39;graph&#39;).getContext(&#39;2d&#39;); const myChart = new Chart(ctx, { type: &#39;bar&#39;, data: { labels: [&#39;Red&#39;, &#39;Blue&#39;, &#39;Yellow&#39;, &#39;Green&#39;, &#39;Purple&#39;, &#39;Orange&#39;], datasets: [{ label: &#39;# of Votes&#39;, data: [12, 19, 3, 5, 2, 3], backgroundColor: [ &#39;rgba(255, 99, 132, 0.2)&#39;, &#39;rgba(54, 162, 235, 0.2)&#39;, &#39;rgba(255, 206, 86, 0.2)&#39;, &#39;rgba(75, 192, 192, 0.2)&#39;, &#39;rgba(153, 102, 255, 0.2)&#39;, &#39;rgba(255, 159, 64, 0.2)&#39;</description>
+      <guid>http://localhost:43210/post/startup-chartjs/</guid>
+      <description>インストールとチュートリアル 最新版のCDNなら以下サイトから入手できる https://www.jsdelivr.com/package/npm/chart.js?path=dist とりあえず試したい場合は下記CDNをインストールする。(※一部仕様が現行バージョンと異なるため注意) &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 続いて、グラフを表示させたい場所に下記、canvasタグを配置。 &amp;lt;canvas id=&amp;quot;graph&amp;quot;&amp;gt;&amp;lt;/canvas&amp;gt; これで準備完了。後は、次項以降のJavaScriptを発動させ、任意のグラフを描画させる。 棒グラフ 公式から拝借。 実行させるJavaScriptが下記。 const ctx =</description>
     </item>
-    
     <item>
       <title>【Django】簡易掲示板に折りたたみ式サイドバーを実装させる【extends】</title>
-      <link>https://noauto-nolife.com/post/django-templates-extends/</link>
+      <link>http://localhost:43210/post/django-templates-extends/</link>
       <pubDate>Sat, 04 Dec 2021 10:29:01 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-templates-extends/</guid>
+      <guid>http://localhost:43210/post/django-templates-extends/</guid>
       <description>テンプレートの継承を使うことで、複数のページに共通するHTMLをひとまとめにすることができる。 コードは40分Djangoで作った簡易掲示板を元に、折りたたみ式のサイドバーを使ってテンプレートを継承し、実現させる。 折りたたみサイドバーのHTMLとCSS 折りたたみ式のサイドバーは左側に設置させるようにした。templates/common/l_sidebar.htmlを作る。内容は下記 {% load static %} &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt;</description>
     </item>
-    
     <item>
       <title>【Django】Ajaxを使ってOSMとLeaflet.jsでマーカーを配置させる</title>
-      <link>https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/</link>
+      <link>http://localhost:43210/post/django-osm-leaflet-mapping-ajax/</link>
       <pubDate>Tue, 23 Nov 2021 08:12:55 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-osm-leaflet-mapping-ajax/</guid>
+      <guid>http://localhost:43210/post/django-osm-leaflet-mapping-ajax/</guid>
       <description>Ajaxを使うことで、ページ全体を再レンダリングしなくてもデータの投稿ができるようになる。これをOSMとLeaflet.jsを使ったマッピングに使うことで、データの投稿がとてもスムーズになる。 Ajaxに関してはDjangoでAjax(jQuery)を実装、送信と同時に投稿内容を確認する【Django Rest Framework不使用版】を、OSMとLeaflet.jsはDjangoでOpenStreetM</description>
     </item>
-    
     <item>
       <title>DjangoでOpenStreetMap(OSM)とleaflet.jsを使ってマッピングアプリを作る</title>
-      <link>https://noauto-nolife.com/post/django-osm-leaflet-mapping/</link>
+      <link>http://localhost:43210/post/django-osm-leaflet-mapping/</link>
       <pubDate>Mon, 15 Nov 2021 17:57:22 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-osm-leaflet-mapping/</guid>
+      <guid>http://localhost:43210/post/django-osm-leaflet-mapping/</guid>
       <description>※この方法はDjangoでなくても実現できる。 Djangoでマッピングを実現する方法としてGeoDjangoがある。だが、GeoDjangoは実装が容易ではなく、以前紹介した方法では実現できない事がわかった。 そこで、GeoDjangoよりも容易にマッピングを実現するため、オープンストリートマップ(以下、OSM)とleaflet.jsを使って対処する。 ソースコードは40分Djangoをベースとしてい</description>
     </item>
-    
     <item>
       <title>CSS3とHTML5だけでモーダルダイアログを作る【JS不要】</title>
-      <link>https://noauto-nolife.com/post/css3-modal-dialog/</link>
+      <link>http://localhost:43210/post/css3-modal-dialog/</link>
       <pubDate>Thu, 14 Oct 2021 07:15:41 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-modal-dialog/</guid>
+      <guid>http://localhost:43210/post/css3-modal-dialog/</guid>
       <description>モーダルダイアログもとどのつまり、単なる表示非表示なので、HTMLとCSSだけで再現できる。 checkboxとlabelタグを使えば良いだけの話である。 ソースコード まずHTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;label class=&amp;quot;modal_label&amp;quot; for=&amp;quot;modal_chk&amp;quot;&amp;gt;新規作成&amp;lt;/label&amp;gt; &amp;lt;input id=&amp;quot;modal_chk&amp;quot; class=&amp;quot;modal_chk&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;modal_body&amp;quot;&amp;gt; &amp;lt;label class=&amp;quot;modal_bg&amp;quot; for=&amp;quot;modal_chk&amp;quot;&amp;gt;&amp;lt;/label&amp;gt; &amp;lt;div class=&amp;quot;modal_content&amp;quot;&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 2つのlabelタグのfor属性はいずれもcheckboxのI</description>
     </item>
-    
     <item>
       <title>【jQuery】ボタン式の横スライダーを自作する【通販サイト・コンテンツ共有サイトなどに】</title>
-      <link>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</link>
+      <link>http://localhost:43210/post/javascript-carousel-origin-slider/</link>
       <pubDate>Sun, 26 Sep 2021 03:09:45 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/javascript-carousel-origin-slider/</guid>
+      <guid>http://localhost:43210/post/javascript-carousel-origin-slider/</guid>
       <description>通販サイトなどでよくある。横スクロール型のスライダーを作る。slick.jsなどを使えば簡単に実現できるが、かえって複雑なので、自作した。 ソースコード HTML。jQueryを読み込み、別途JavaScriptとCSSを読み込む。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;!--jquery読み込み--&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;script.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;preview_control_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_area&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;data_preview_frame&amp;quot;&amp;gt;&amp;lt;div class=&amp;quot;data_preview_content&amp;qu</description>
     </item>
-    
     <item>
       <title>【jQuery】HTML、CSS、JS合わせて100行以内でカルーセルを自作する【自動スライド】</title>
-      <link>https://noauto-nolife.com/post/javascript-carousel-origin/</link>
+      <link>http://localhost:43210/post/javascript-carousel-origin/</link>
       <pubDate>Tue, 31 Aug 2021 14:22:18 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/javascript-carousel-origin/</guid>
+      <guid>http://localhost:43210/post/javascript-carousel-origin/</guid>
       <description>カルーセルと言えば、slick.js等のライブラリがあるが、たかだか自動的にスライドするだけのシンプルなカルーセルをサイトの一部分に実装させるためだけにライブラリをインストールさせるのはやや大げさだ。 そこで、今回はカルーセルをjQueryを使用した上で自作する。書く必要のあるコードはHTMLが約30行、CSSが約20行、JSが約40行の合計100行足らずで実現できる。 ソースコードと解説 HTML。C</description>
     </item>
-    
     <item>
       <title>video.jsを実装させ、コントローラをカスタムする【Brightcove Player】</title>
-      <link>https://noauto-nolife.com/post/js-video-controller/</link>
+      <link>http://localhost:43210/post/js-video-controller/</link>
       <pubDate>Wed, 09 Jun 2021 11:48:19 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/js-video-controller/</guid>
+      <guid>http://localhost:43210/post/js-video-controller/</guid>
       <description>通常、videoタグを使用する場合、controls属性を付与することで、動画の操作(再生、音量調整等)が可能なコントローラを表示できる。 しかし、再生速度の操作やコントローラの装飾関係を一から作っていくには時間がかかりすぎる。 そこで、videoタグの拡張が可能なvideo.jsというライブラリを実装させる。すでにAmazon等の大手サイトでも採用実績のある完成度の高いvideoタグ専用のjsライブ</description>
     </item>
-    
     <item>
       <title>FontAwesomeや画像を選択できるプルダウンメニュー【JS不使用】</title>
-      <link>https://noauto-nolife.com/post/fontawesome-image-select/</link>
+      <link>http://localhost:43210/post/fontawesome-image-select/</link>
       <pubDate>Sun, 25 Apr 2021 17:41:49 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/fontawesome-image-select/</guid>
+      <guid>http://localhost:43210/post/fontawesome-image-select/</guid>
       <description>普通のselectタグの場合、画像やアイコンを表示させようとしてもうまく行かない。他にも、複数選択しないといけないとき、selectタグにmultiple属性を指定するだけでは操作が難しい。 そこで、画像とFontAwesomeが表示できて、なおかつ複数選択可能なプルダウンメニューを作ってみた。 ソースコード html5、いつものinputタグに、checkboxとradioを使っている。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt;</description>
     </item>
-    
     <item>
       <title>【Slack風】モーダルダイアログ無し、ページ遷移無しで編集フォームを作る【JS不使用】</title>
-      <link>https://noauto-nolife.com/post/nomodal-edit-form/</link>
+      <link>http://localhost:43210/post/nomodal-edit-form/</link>
       <pubDate>Sun, 25 Apr 2021 13:42:24 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/nomodal-edit-form/</guid>
+      <guid>http://localhost:43210/post/nomodal-edit-form/</guid>
       <description>投稿されたコンテンツを編集する時、編集フォームを表示するページに遷移したり、編集フォームをJSなどを使用してモーダルダイアログとして表示させることがある。こんなふうに。 しかし、これでは他のコンテンツを見ながらの編集ができない。それだけでなく、ページ遷移やダイアログ表示を行うとJSやサーバーサイドに負担がかかる。そこで、投稿したコンテンツを表示する場所を、編集フォームに切り替えるように仕立てる。こん</description>
     </item>
-    
     <item>
       <title>Djangoのforms.pyが提供するフォームテンプレートは使わない</title>
-      <link>https://noauto-nolife.com/post/django-forms-temp-not-use/</link>
+      <link>http://localhost:43210/post/django-forms-temp-not-use/</link>
       <pubDate>Tue, 13 Apr 2021 21:32:41 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-forms-temp-not-use/</guid>
+      <guid>http://localhost:43210/post/django-forms-temp-not-use/</guid>
       <description>Djangoのforms.pyはユーザーから受け取った値のバリデーションだけでなく、フォームのテンプレートも提供してくれる。(widgetを使うなどしてクラス名やHTMLタグの指定ができる) しかし、私はこのforms.pyの提供するフォームのテンプレートは使わない。本記事ではその理由を列挙する 理由1:フロントサイドとサーバーサイドの分業問題 そもそも、テンプレートの開発はフロントサイド開発者のするこ</description>
     </item>
-    
     <item>
       <title>Vue.jsでモーダルダイアログを作る</title>
-      <link>https://noauto-nolife.com/post/vuejs-modal/</link>
+      <link>http://localhost:43210/post/vuejs-modal/</link>
       <pubDate>Mon, 18 Jan 2021 14:36:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/vuejs-modal/</guid>
+      <guid>http://localhost:43210/post/vuejs-modal/</guid>
       <description>jQueryであれば、モーダルダイアログを実装する時、対象の要素(DOM)を指定して、.show()と.hide()を行えば良いのでそれほど難しくはないが、vue.jsの場合はそうは行かない。 本記事ではvue.jsを使用したモーダルダイアログの実装方法をまとめる。 ソースコード 今回はモーダルダイアログの範囲外をクリックしたら閉じるように仕立てた。 まず、HTML。開発版のvue.jsのCDNを指定して</description>
     </item>
-    
     <item>
       <title>【日付入力】flatpickrの実装方法(ロケール日本語化、日時入力対応化)</title>
-      <link>https://noauto-nolife.com/post/flatpickr-install/</link>
+      <link>http://localhost:43210/post/flatpickr-install/</link>
       <pubDate>Thu, 24 Dec 2020 16:37:31 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/flatpickr-install/</guid>
+      <guid>http://localhost:43210/post/flatpickr-install/</guid>
       <description>ウェブアプリを開発していると、避けて通ることができない日付もしくは日時入力。HTMLのSELECTタグを使用しても良いが、うるう年に対応させないといけないし、何よりユーザビリティに問題がある。 そんな時、flatpickrを実装すれば、日時入力が非常に簡単になる。しかもjQueryに依存していないので、流行のvue.jsなどを使いたい場合にも有効。 flatpickrの実装方法 まずHTML。flatp</description>
     </item>
-    
     <item>
       <title>Django-allauthのログインページの装飾を装飾する【テンプレートの追加】</title>
-      <link>https://noauto-nolife.com/post/django-allauth-loginpage/</link>
+      <link>http://localhost:43210/post/django-allauth-loginpage/</link>
       <pubDate>Wed, 11 Nov 2020 17:59:11 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-allauth-loginpage/</guid>
+      <guid>http://localhost:43210/post/django-allauth-loginpage/</guid>
       <description>django-allauthにより、比較的簡単に認証関係の機能を実装できる。だが、装飾まではサポートされていない。 このような殺風景なログイン画面が表示されてしまうのだ。これをそのままにして顧客に納品させるわけにはいかない。 本記事ではこのdjango-allauthのログインページを装飾させる方法を解説する。 Django-allauthのインストールとsettings.py、urls.pyの設定 まず</description>
     </item>
-    
     <item>
       <title>CSS3だけで実装できるアコーディオン【checkbox&#43;transition】</title>
-      <link>https://noauto-nolife.com/post/css3-accordion/</link>
+      <link>http://localhost:43210/post/css3-accordion/</link>
       <pubDate>Thu, 29 Oct 2020 17:12:50 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-accordion/</guid>
+      <guid>http://localhost:43210/post/css3-accordion/</guid>
       <description>また、checkboxとtransitionのコンボネタ。それでyoutubeとかでよくあるアコーディオンを簡単に作ることができる。 アコーディオンの作り方 まず、HTML5。 &amp;lt;input id=&amp;quot;acd_1&amp;quot; class=&amp;quot;chkbox&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt; &amp;lt;label class=&amp;quot;acd_n_button&amp;quot; for=&amp;quot;acd_1&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;acd_n_button_title&amp;quot;&amp;gt;HTML+CSS&amp;lt;/div&amp;gt; &amp;lt;/label&amp;gt; &amp;lt;div class=&amp;quot;acd_n_body&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;ここに項目を記述する&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;p&amp;g</description>
     </item>
-    
     <item>
       <title>fontawesomeの実装と利用例のまとめ</title>
-      <link>https://noauto-nolife.com/post/startup-fontawesome/</link>
+      <link>http://localhost:43210/post/startup-fontawesome/</link>
       <pubDate>Thu, 29 Oct 2020 16:48:13 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-fontawesome/</guid>
-      <description>fontawesomeを使用することで、簡単なアイコンをページ内に使用することができる。無料の場合は制限があるが、CDNをheadタグ内に書き込めばいいので実装は簡単。 実装方法 headタグ内に下記を追加する。 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://use.fontawesome.com/releases/v5.1.0/css/all.css&amp;quot; integrity=&amp;quot;sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; これだけでOK。 fontawesome CDN などで検索してくると、下記サイトが出てくるので、バージョンをチェックして最新版をコピペする。 https://fontawesome.com/v5.15/how-to-use/customizing-wordpress/snippets/setup-cdn-webfont#load-all-styles 使い方 fontawesomeのアイコン一覧が掲載されているページ( https://fontawesome.com/icons?d=gallery</description>
+      <guid>http://localhost:43210/post/startup-fontawesome/</guid>
+      <description>fontawesomeを使用することで、簡単なアイコンをページ内に使用することができる。無料の場合は制限があるが、CDNをheadタグ内に書き込めばいいので実装は簡単。 実装方法 headタグ内に下記を追加する。 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://use.fontawesome.com/releases/v5.1.0/css/all.css&amp;quot; integrity=&amp;quot;sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; これだけでOK。 fontawesome CDN などで検索してくると、下記サイトが出てくるので、バージョンをチェックして最新版をコピペする。 https://fontawesome.com/v5.15/how-to-use/customizing-wordpress/snippets/setup-cdn-webfont#load-all-styles 追記 2022年9月現在、fontawesome 6.20が最新である、</description>
     </item>
-    
     <item>
       <title>【CSS3】文字に縁取りを加えて視認性UPさせる方法【text-shadow】</title>
-      <link>https://noauto-nolife.com/post/css3-textborder/</link>
+      <link>http://localhost:43210/post/css3-textborder/</link>
       <pubDate>Thu, 29 Oct 2020 16:42:03 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-textborder/</guid>
+      <guid>http://localhost:43210/post/css3-textborder/</guid>
       <description>背景色と文字色が近い場合、文字の縁取りをすることで、視認性を上げることができる。 あまり使うことは無いが、一応備忘録として。 縁取りの作り方 使用するのはtext-shadowだけ。下記のコードを任意の要素に指定すれば良いだけ。 text-shadow: skyblue 1px 1px 0, skyblue -1px -1px 0, skyblue -1px 1px 0, skyblue 1px -1px 0, skyblue 0px 1px 0, skyblue 0-1px 0, skyblue -1px 0 0, skyblue 1px 0 0; こんなふうに縁取りができる。 2pxの縁取りがしたい場合はこっち。 text-shadow: skyblue 2px 0px, skyblue -2px 0px, skyblue 0px -2px, skyblue 0px 2px, skyblue 2px 2px , skyblue -2px 2px, skyblue 2px -2px, skyblue -2px</description>
     </item>
-    
     <item>
       <title>CSS3で折りたたみ式のサイドバーを実装させる【checkbox&#43;transition&#43;position】</title>
-      <link>https://noauto-nolife.com/post/css3-sidebar/</link>
+      <link>http://localhost:43210/post/css3-sidebar/</link>
       <pubDate>Thu, 29 Oct 2020 16:15:45 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-sidebar/</guid>
+      <guid>http://localhost:43210/post/css3-sidebar/</guid>
       <description>モダンなサイトでよく見かける折りたたみ式のサイドバー。これはCSS3の知識さえあればすぐに実装できる。 HTML5+CSS3を使用した折りたたみ式サイドバー まず、HTML。headerがページタイトルとサイドバーを兼ねている。 &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;ja&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width,initial-scale=1&amp;quot;&amp;gt; &amp;lt;title&amp;gt;折りたたみ式右サイドバー&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css&amp;quot; integrity=&amp;quot;sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh&amp;quot; crossorigin=&amp;quot;anonymous&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;https://code.jquery.com/jquery-3.4.1.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;onload.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;style.css&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;header&amp;gt; &amp;lt;div class=&amp;quot;header&amp;quot;&amp;gt; &amp;lt;h1&amp;gt;折りたたみ式右サイドバー</description>
     </item>
-    
     <item>
       <title>CSS3を使用した簡単アニメーションの実装【transitionとtransform】</title>
-      <link>https://noauto-nolife.com/post/css3-animation/</link>
+      <link>http://localhost:43210/post/css3-animation/</link>
       <pubDate>Thu, 29 Oct 2020 15:37:51 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-animation/</guid>
+      <guid>http://localhost:43210/post/css3-animation/</guid>
       <description>CSS3のアニメーション関係の描画はanimationプロパティを使用しなくてもtransitionプロパティを使用すれば簡単に実装できる。 さらに、transformと組み合わせることで、傾きや回転まで自由自在。本記事ではレベルごとにアニメーションの作り方を解説していく。 対象読者はある程度のHTMLとCSSの基礎を身に着けている方、CSSにおける疑似要素(::beforeと::after)、擬似ク</description>
     </item>
-    
     <item>
       <title>CSS3でiOS風のトグルスイッチを作る方法【transition&#43;checkbox】</title>
-      <link>https://noauto-nolife.com/post/css3-toggle-switch/</link>
+      <link>http://localhost:43210/post/css3-toggle-switch/</link>
       <pubDate>Thu, 29 Oct 2020 15:37:36 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/css3-toggle-switch/</guid>
+      <guid>http://localhost:43210/post/css3-toggle-switch/</guid>
       <description>CSS3で実装されたtransitionと兄弟要素のセレクタを組み合わせることでiOS風のトグルスイッチは簡単に作れる。 何も装飾を施していないinputタグのチェックボックスは小さくて見づらいが、この装飾を施すことで、視覚的にも押すことができるスイッチであると認識できるし、押せる範囲が広がる。 iOS風のトグルスイッチの作り方 まずはHTML5から。 &amp;lt;div class=&amp;quot;ui_demo_area&amp;quot;&amp;gt; &amp;lt;input id=&amp;quot;ios_chk_01&amp;quot; class=&amp;quot;ui20-input_chk&amp;quot; type=&amp;quot;checkbox&amp;quot;&amp;gt;&amp;lt;label class=&amp;quot;ui20-ios_conf&amp;quot; for=&amp;quot;ios_chk_01&amp;quot;&amp;gt;&amp;lt;/label&amp;gt; &amp;lt;/div&amp;gt; 続いて、CSS3。 /* ios button */ .ui20-input_chk { display:none; }</description>
     </item>
-    
   </channel>
 </rss>

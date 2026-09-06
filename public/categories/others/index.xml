@@ -1,132 +1,369 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Others on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/categories/others/</link>
+    <link>http://localhost:43210/categories/others/</link>
     <description>Recent content in Others on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 10 Aug 2022 17:50:56 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/categories/others/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 01 Jun 2026 18:27:07 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/categories/others/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</title>
+      <link>http://localhost:43210/post/qdrant-rag-system/</link>
+      <pubDate>Mon, 01 Jun 2026 18:27:07 +0900</pubDate>
+      <guid>http://localhost:43210/post/qdrant-rag-system/</guid>
+      <description>前提 GPU: RTX A2000 12GB LLM: Ollama(Gemma-7B 4bit量子化仕様) RAG: Qdrant 上記環境下で、指定のディレクトリ内のテキストファイルをすべて読み込み、RAGを実現させる。 qdrantの立ち上げとOllama と Gemma 7B のインストール Gemma 7Bのインストール。 ollama pull gemma:7b すでにOllamaでは4bit量子化仕様を配布しているので、あえて指定をする必要はない。上記コマンドで4bit量子化仕様が手に入る。 続いてqdrantはdockerで起動させる #! /bin/bash docker run -d</description>
+    </item>
+    <item>
+      <title>OllamaでRAGを実現する。</title>
+      <link>http://localhost:43210/post/python-local-llm-rag/</link>
+      <pubDate>Sun, 31 May 2026 14:41:24 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-local-llm-rag/</guid>
+      <description>すでにollamaとgemma:2bをインストール済みとする。 参照: UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama) RAGの実装とソースコード pip install faiss-cpu sentence-transformers numpy import faiss import numpy as np from sentence_transformers import SentenceTransformer import subprocess # ========================= # 1. ドキュメント準備 # ========================= documents = [ &amp;#34;RAGとは、検索と生成を組み合わせたAI手法です。&amp;#34;, &amp;#34;FAISSはベクトル検索ライブラリです。&amp;#34;, &amp;#34;Oll</description>
+    </item>
+    <item>
+      <title>UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</title>
+      <link>http://localhost:43210/post/local-llm-install/</link>
+      <pubDate>Sun, 24 May 2026 14:44:41 +0900</pubDate>
+      <guid>http://localhost:43210/post/local-llm-install/</guid>
+      <description>Ollama Ollama はGoogle DeepMind によって開発されたローカルで利用できるLLM。 入力した情報を外部に公開したり curl -fsSL https://ollama.com/install.sh | sh 仮想環境下で以下を実行する。 pip install ollama ollamaコマンドでgemma:2b をインストールしておく。 ollama run gemma:2b 以下コードを実行する。 import ollama # 1. システムプロンプト（末尾のカンマを削除し、内容を強化） system_prompt = { &amp;#39;role&amp;#39;: &amp;#39;system&amp;#39;, &amp;#39;content&amp;#39;: ( &amp;#34;【絶対ルール】必ず日本語だけで回答してください。英語は一切使用禁止です。&amp;#34; )</description>
+    </item>
+    <item>
+      <title>AI実装検定S級合格体験記</title>
+      <link>http://localhost:43210/post/ai-jisso-kentei-s-grade/</link>
+      <pubDate>Sat, 23 May 2026 15:01:30 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-jisso-kentei-s-grade/</guid>
+      <description>AI実装検定S級に合格したので、そこに至るまでの過程をここにまとめる。 合格に必要な知識 試験要項にある通りのCNNとNLPの知識 KerasやPytorchでの転移学習というよりは、内部構造の話がメイン numpyの知識も問われる 理論は必要だが、それよりもコードを書く能力が問われる パラメータの値(学習率、チャンネル数、フィルタサイズなど)も覚えておいたほうが良い ライブラリの使い方よりも、ライブラリの基底</description>
+    </item>
+    <item>
+      <title>AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</title>
+      <link>http://localhost:43210/post/ai-exam-rank-s-question/</link>
+      <pubDate>Sat, 16 May 2026 08:52:42 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-s-question/</guid>
+      <description>主に、pytorchとkerasの実装上の問題についてまとめる。 Q: pytorch の シーケンス系レイヤ(RNNやTransformer)で使用される batch_first 引数とはなにか？ A. 入力テンソルの次元の並び順を指定している。 batch_first 引数が使われる場所 以下、シーケンス系のレイヤで使用されている。 RNN系 torch.nn.RNN torch.nn.LSTM torch.nn.GRU Transformer系 torch.nn.Transformer torch.nn.TransformerEncoderLayer torch.nn.MultiheadAttention batch_first 指定による作用 この引数の指定により、入力テンソルの次元の並び順を指定できる。 batch_fir</description>
+    </item>
+    <item>
+      <title>AI実装検定S級の模擬試験</title>
+      <link>http://localhost:43210/post/ai-exam-rank-s-mock/</link>
+      <pubDate>Mon, 11 May 2026 17:28:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-s-mock/</guid>
+      <description>■ CNN（30問） VGGに関する記述として正しいものはどれか A. 畳み込みカーネルは主に7×7を使用 B. 畳み込みカーネルは主に3×3を積み重ねる C. Residual接続を持つ D. Depthwise Separable Convを使用 KerasでVGG風のブロックを作る際に適切なのはどれか A. Conv2D → BatchNorm → ReLU → MaxPool B. Dense → Conv2D → Dropout C. Conv1D → Flatten → LSTM D. GlobalAveragePooling → Conv2D VGGの欠点として適切なのはどれか A. 表現力が低い B. パラメータ数が多い C. 勾配消失が発生しない D. 軽量モデルである G</description>
+    </item>
+    <item>
+      <title>【箇条書き】NLPモデルの特徴まとめ</title>
+      <link>http://localhost:43210/post/nlp-model-feature/</link>
+      <pubDate>Sat, 09 May 2026 08:28:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/nlp-model-feature/</guid>
+      <description>前提と基礎知識 NLPモデルに入力データが与えられるまでの過程 文章を与える ↓ Tokenizerでトークン化（単語・サブワード・文字などに分割） 例: &amp;#34;I love NLP&amp;#34; → [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] ↓ 語彙表（Vocabulary）を使って、トークン → トークンID に変換 例: [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] → [101, 2293, 17953, 1925] ↓ ※ 必要に応じてパディング・マスキング・特殊トークン付与 例: [CLS], [SEP], [PAD] などをここで追加（BERTなど） ↓ Embedding層にトークンIDを与える └ ID</description>
+    </item>
+    <item>
+      <title>【箇条書き】CNNモデルの特徴まとめ</title>
+      <link>http://localhost:43210/post/cnn-model-feature/</link>
+      <pubDate>Mon, 04 May 2026 10:35:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/cnn-model-feature/</guid>
+      <description>簡単にCNNモデルの特徴を確認できるよう、3行〜6行ほどでまとめる。 VGG VGG16は3x3畳み込みを13層、全結合層を3層重ねたシンプル構造 畳み込み後の全結合層の計算コストが非常に高い(パラメーター1億3千万) pytorchではオリジナルのVGGにはないバッチ正規化(Batch Normalization)が使用されている。(※勾配消失・爆発対策) GoogLeNet 1x1 3x3 5x5 の異なる畳込みを並列で行う(後にチャンネル方向</description>
+    </item>
+    <item>
+      <title>KerasでNLPモデルを再現する</title>
+      <link>http://localhost:43210/post/keras-nlp-models/</link>
+      <pubDate>Sun, 03 May 2026 15:40:11 +0900</pubDate>
+      <guid>http://localhost:43210/post/keras-nlp-models/</guid>
+      <description>前提知識 本記事では Functional APIを使用する。 FunctionalAPIでは layersの層を積み重ね、Modelクラスの引数として引き渡しインスタンスを作る。 layers.Input : 入力値のデータ型を定義する。 layers.Embedding : 単語をベクトルに変換。 layers.Dense : 全結合層。すべての入力と出力を線で結んで計算をする。 layers.Flatten : 平坦化。多次元のデータを1列の長い棒に変換をする。全結合層(Dense)につなぐ際などに使う。 layers.Dot : テンソルの内積を計算する。 layers.Reshape : 形</description>
+    </item>
+    <item>
+      <title>KerasのCNNモデルのコードを解釈する</title>
+      <link>http://localhost:43210/post/keras-cnn-models/</link>
+      <pubDate>Fri, 01 May 2026 12:07:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/keras-cnn-models/</guid>
+      <description>Keras公式GitHubからコードを拝借。一部コメントや不必要な箇所を絞って、各CNNモデルの特徴がわかるように再構成してまとめる。 以下関連記事。 【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る pytorch の nn.moduleを継承して自作AIモデルを作り、CNNモデルの歴史を辿る VGG VGG は3x3畳み込みをひたすら積み重ねるシンプルモデル。 とりわけ今回はVGG16(畳み込み層+</description>
+    </item>
+    <item>
+      <title>AI実装検定A級合格体験記</title>
+      <link>http://localhost:43210/post/ai-jisso-kentei-a-grade/</link>
+      <pubDate>Wed, 29 Apr 2026 06:57:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-jisso-kentei-a-grade/</guid>
+      <description>もうすでに2ヶ月以上前のことではあるが、AI実装検定A級の合格をしたのでここにその過程をまとめる。 合格に必要な知識 従来型の機械学習(ML)と深層学習(DL)の違い AIの理論(順伝播、逆伝播、誤差逆伝播法、勾配降下法などの理解) 平均二乗誤差(MSE)、平均絶対誤差(MAE)の計算方法(試験では数学問題として出た) Sigmoid関数、ReLU関数などの活性化関数の用途と理由 過学習と勾配消失が起こる原因</description>
+    </item>
+    <item>
+      <title>CNNとNLPの問題</title>
+      <link>http://localhost:43210/post/cnn-nlp-question/</link>
+      <pubDate>Sun, 26 Apr 2026 17:09:19 +0900</pubDate>
+      <guid>http://localhost:43210/post/cnn-nlp-question/</guid>
+      <description>試験範囲 CNN : VGG,GoogLeNet,ResNet(WideResNet),MobileNet,DenseNet,EfficientNet NLP : Word2Vec(skip-gram),seq2seq,HRED,Transformer 問題 間違えている箇所は → で解答を表示。 1. VGG Q1: VGG16において、すべての畳み込み層で 3×3 カーネルが採用されている理由として適切なものは？ 空間方向・チャンネル方向双方に畳み込みを行い、層を増やすため。5x5では特徴量がぼやけてしまい、1x1では空間方向の特徴抽出が難しいため。 Q2: PyTorchの models.vgg16 において、特徴抽出部分の最後にある nn.AdaptiveAvgPool2d((7, 7)) の役割は？ 7x7で平均プーリングを行い、全結合</description>
+    </item>
+    <item>
+      <title>pytorchコードでNLPモデルの歴史を辿る【word2vec から Transformerまで 】</title>
+      <link>http://localhost:43210/post/pytorch-nlp-origin/</link>
+      <pubDate>Sat, 25 Apr 2026 10:11:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-nlp-origin/</guid>
+      <description>俯瞰 自然言語処理の入力仕様 Transformer よりも前のモデルには、単語間の関連を理解するための入力仕様が用意されている。 Tokenizerで数値化し、その数値を使いEmbeddingで特徴量のリストを作っている。 Transformerには、Embedding層が用意されている。 Tokenizer Tokenizerは入力値を単語に分けてIDを振る 入力値: &amp;#34;I love AI&amp;#34; ↓ 単語に分ける: [&amp;#34;I&amp;#34;,&amp;#34;love&amp;#34;,&amp;#34;AI&amp;#34;] ↓ IDを振る: [ 5, 101, 61 ] このTokenizerにより、</description>
+    </item>
+    <item>
+      <title>【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る</title>
+      <link>http://localhost:43210/post/pytorch-torchvision-models/</link>
+      <pubDate>Sun, 12 Apr 2026 16:32:53 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-torchvision-models/</guid>
+      <description>VGG ソースコード: https://github.com/pytorch/vision/blob/main/torchvision/models/vgg.py VGGは3x3フィルタを重ねている単純なモデル。 とりわけVGG16 はプーリング層を除いた、畳み込み層(13)+全結合層(3) の計16層で構成されている。 VGGの全結合層は4096ユニットもあり、これが大量のメモリを消費している。 また、パラメーター数は1億3000万を超えており、caltech-101程度のデータ量(1クラス50件)では過学習を起こす。 期待をしている画像サイズは22</description>
+    </item>
+    <item>
+      <title>【pytorch】caltech-101 を使ってCNNモデルの歴史を辿る【VGG16からEfficientNetまで】</title>
+      <link>http://localhost:43210/post/pytorch-caltech101/</link>
+      <pubDate>Sun, 12 Apr 2026 11:56:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-caltech101/</guid>
+      <description>備考 caltech-101 の中にはモノクロ画像(チャンネル数1)が混ざっているため、前処理でチャンネル数を3に変換する。 学習済みのモデルを使用して、学習をさせる GPUはA2000 12GBを使用する 今回はあくまでもモデルごとの違いをコードを通じて体感することが目的。パラメータが最適であるかは不問。 requirements.txt cuda-bindings==13.2.0 cuda-pathfinder==1.5.2 cuda-toolkit==13.0.2 filelock==3.25.2 fsspec==2026.3.0 Jinja2==3.1.6 MarkupSafe==3.0.3 mpmath==1.3.0 networkx==3.4.2 numpy==2.2.6 nvidia-cublas==13.1.0.3 nvidia-cuda-cupti==13.0.85 nvidia-cuda-nvrtc==13.0.88 nvidia-cuda-runtime==13.0.96 nvidia-cudnn-cu13==9.19.0.56 nvidia-cufft==12.0.0.61 nvidia-cufile==1.15.1.6 nvidia-curand==10.4.0.35 nvidia-cusolver==12.0.4.66 nvidia-cusparse==12.6.3.3 nvidia-cusparselt-cu13==0.8.0 nvidia-nccl-cu13==2.28.9 nvidia-nvjitlink==13.0.88 nvidia-nvshmem-cu13==3.4.5 nvidia-nvtx==13.0.85 pillow==12.2.0 scipy==1.15.3 sympy==1.14.0 torch==2.11.0 torchvision==0.26.0 triton==3.6.0 typing_extensions==4.15.0 VGG16 VGG16 は3x3 畳み込みをとにかく深くして、単純にすることを目</description>
+    </item>
+    <item>
+      <title>pytorch の nn.moduleを継承して自作AIモデルを作り、CNNモデルの歴史を辿る</title>
+      <link>http://localhost:43210/post/pytorch-cnn-model-origin/</link>
+      <pubDate>Sun, 05 Apr 2026 15:23:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-cnn-model-origin/</guid>
+      <description>CNNの歴史。 この歴史に沿って、FassionMNISTに対し、nn.moduleで各AIモデルに沿ったモデルを作る。 VGG 3x3 の畳み込みをただ深く積み重ねる class VGG_Fashion(nn.Module): def __init__(self): super(VGG_Fashion, self).__init__() self.features = nn.Sequential( # Block 1 nn.Conv2d(1, 32, 3, padding=1), nn.ReLU(), nn.Conv2d(32, 32, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2), # 14x14 # Block 2 nn.Conv2d(32, 64, 3, padding=1), nn.ReLU(), nn.Conv2d(64, 64, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2) # 7x7 ) self.classifier = nn.Sequential( nn.Linear(64 * 7 * 7, 512), nn.ReLU(), nn.Dropout(0.5), nn.Linear(512, 10) ) GoogLeNet 1x1 フィルタを使用して次元数を削減している。(※ 5x5 畳み込みはサイズの都合上、省略) class InceptionModule(nn.Module): def __init__(self, in_ch, out_1x1, out_3x3): super().__init__() self.branch1 = nn.Conv2d(in_ch, out_1x1, kernel_size=1) self.branch2 = nn.Sequential( nn.Conv2d(in_ch, out_3x3//2, kernel_size=1), nn.Conv2d(out_3x3//2, out_3x3, kernel_size=3, padding=1) ) def forward(self, x):</description>
+    </item>
+    <item>
+      <title>MicroSoft Accessの制約メモ</title>
+      <link>http://localhost:43210/post/ms-access-memo/</link>
+      <pubDate>Sat, 04 Oct 2025 08:53:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/ms-access-memo/</guid>
+      <description>MS Accessは一般的なDBと違い制約が多い。 設計時に制約を意識して作らないと、大幅な修正を迫られるため、後のためにもまとめておく。 Accessの制約一覧 CASE文が使えない、IIFで対処する 結合条件を()で囲まないとエラーが出る ( LEFT JOIN xx ON ( A AND B AND C ) などとしないとSQLエラーが出る。) バルクインサートはサポートしていない 2つ以上のテーブルを結合したテーブルを表示したあと、画面側で編集をすること</description>
+    </item>
+    <item>
+      <title>Ubuntuの夜間モードが通用しない場合の対処法</title>
+      <link>http://localhost:43210/post/ubuntu-night-light-mode/</link>
+      <pubDate>Fri, 02 May 2025 07:02:16 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-night-light-mode/</guid>
+      <description>GUIから夜間モードの操作をする。 gnome-control-center display これで夜間モードの設定画面が開く。 コマンドから夜間モードを有効にする。 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true これでONになり、 gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled false これでOFFになる。ショートカットキーにも割り当てておけば便利かもしれない。 どうしても夜間モードが効かない場合は？ ログアウトして再度ログインする。これでデスクトップが起動し直され、夜間モードが正常に機能する。</description>
+    </item>
+    <item>
+      <title>OracleDBのSQLまとめ</title>
+      <link>http://localhost:43210/post/oracle-database-sql-basic/</link>
+      <pubDate>Tue, 29 Apr 2025 08:41:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/oracle-database-sql-basic/</guid>
+      <description>dockerにインストールしたOracle−XEを使用している。 UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える HR スキーマを搭載した。 雇用日時をもとに絞り込みをする 【非推奨】文字列を与えると、暗黙的にDATE型に変換する 例えば、2015年1月1日以降に雇用した従業員を出力するには、 SELECT * FROM employees WHERE hire_date &amp;gt;= &amp;#39;2015-01-01&amp;#39; ; そして、新人を上に表示させるため、降順に並び替える。 SELECT * FROM employees WHERE hire_date &amp;gt;= &amp;#39;2015-01-01&amp;#39;</description>
+    </item>
+    <item>
+      <title>Seleniumの基本操作のまとめ</title>
+      <link>http://localhost:43210/post/selenium-basic-control/</link>
+      <pubDate>Sat, 19 Apr 2025 08:17:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-basic-control/</guid>
+      <description>Seleniumは同じような処理が続くため、基本操作をまとめた。 ただ、forループとtry 文が続く冗長構成のため、後に修正する予定。 ソースコード from selenium import webdriver from selenium.webdriver.support.ui import WebDriverWait, Select from selenium.webdriver.support import expected_conditions from selenium.webdriver.common.by import By from selenium.common.exceptions import TimeoutException driver = webdriver.Firefox() wait = WebDriverWait(driver, 10) retry = 10 # 要素が見えているか def xpath_visible(xpath: str): return wait.until(excepted_conditions.visibility_of_element_located((By.XPATH, xpath))) def xpath_click(xpath: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.click() except: continue else: return raise TimeoutException(f&amp;#34;クリックできませんでした: {xpath}&amp;#34;) def xpath_send_keys(xpath: str, keys: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.send_keys(keys) except: continue else: return raise TimeoutE</description>
+    </item>
+    <item>
+      <title>ffmpeg で すべてのmp4ファイルをまとめて加工するシェルスクリプト</title>
+      <link>http://localhost:43210/post/clip-ffmpeg/</link>
+      <pubDate>Sat, 12 Apr 2025 21:28:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/clip-ffmpeg/</guid>
+      <description>冒頭に広告や前置きなどがある動画を、まとめて加工したい場合。 高速で切り取りしたい場合 #! /bin/bash for file in *.mp4; do ffmpeg -i &amp;#34;$file&amp;#34; -ss 100 -c copy &amp;#34;${file}_output.mp4&amp;#34; done たまに、冒頭数秒が空白になってしまうようだ。 品質も維持したい場合 #! /bin/bash for file in *.mp4; do ffmpeg -i &amp;#34;$file&amp;#34; -ss 100 -c:v libx264 -c:a aac -strict experimental &amp;#34;${file}_output.mp4&amp;#34; done こちらはエンコードまでするため、冒頭の空白が除去できる。 解説 -i input.mp4 : 編集対象のファイルを指定する -ss 100 : 動画の開始時間を100秒とする -c copy : エンコードなしでコピーする(品質よりも高速化</description>
+    </item>
+    <item>
+      <title>Ubuntuにnode.jsを手動でインストールする【tar.xz ファイルの解凍と】</title>
+      <link>http://localhost:43210/post/ubuntu-node-js-install/</link>
+      <pubDate>Fri, 04 Apr 2025 21:05:31 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-node-js-install/</guid>
+      <description>https://nodejs.org/ja Nodeの公式サイトにアクセスする。 最新版のファイルをDLして、 https://nodejs.org/dist/v22.14.0/node-v22.14.0-linux-x64.tar.xz ファイルを解凍する。 tar -xJf node-v22.14.0-linux-x64.tar.xz オプションの x は解凍。 J は xz圧縮形式の解凍 f はファイル指定。 cd node-v22.14.0-linux-x64 回答したファイルをすべて /usr/local/ に配置する。 sudo cp -r * /usr/local/</description>
+    </item>
+    <item>
+      <title>UbuntuからWindows開発環境への移行作業</title>
+      <link>http://localhost:43210/post/ubuntu-to-windows-develop-env-migrate/</link>
+      <pubDate>Sun, 30 Mar 2025 14:25:24 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-to-windows-develop-env-migrate/</guid>
+      <description>慣れ親しんだUbuntuからWindowsへメインマシンを移行し、開発環境を構築する必要が出てきたので、ここにその手順をまとめておく。 VirtualBoxのインストール とりあえず、VirtualBoxさえあれば元のUbuntu環境をある程度の再現はできるので事前にインストールしておく。 https://www.oracle.com/jp/virtualization/technologies/vm/downloads/virtualbox-downloads.html Windows の場合、Visual C++を事前にインストールしておく必要がある https://1nux.com/archives/318 このページのX64 をDLしてインストールした</description>
+    </item>
+    <item>
+      <title>AI実装検定A級のメモ</title>
+      <link>http://localhost:43210/post/ai-exam-rank-a/</link>
+      <pubDate>Sun, 26 Jan 2025 16:28:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-a/</guid>
+      <description>AI概論 AIのコンペ(ILSVRC)とAIの歴史 ILSVRC という画像認識の精度を競い合うコンペがあり、2012年の大会でディープラーニングが有用であると認識されるようになった。 2011年付近まではサポートベクターマシン(SVM)という手法が上位であったが、2012年にはAlexNetという手法が登場。これが従来のニューラルネットワークを元にして作られた、深層ニューラルネットワーク、ディープラーニングである</description>
+    </item>
+    <item>
+      <title>Vimで自動的にインデントする。gg=Gでファイル内の全てをオートインデントする</title>
+      <link>http://localhost:43210/post/vim-auto-indent/</link>
+      <pubDate>Sun, 21 Jan 2024 15:49:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-auto-indent/</guid>
+      <description>インデントが雑だったり全くされていない見づらいコードを読まないといけなくなることがある。 いつもは、A Delete Enter を実行したあと、 . で何度も改行をさせるようにしていた。 が、これもめんどくさいなと思うとき、 gg=G を実行すると良い。 gg でファイルの上部にカーソルを移動。=Gを打つことで、ファイルの末尾まで自動的にインデントしてくれるようだ。 逆に考えると、=G とすると今のカーソル位置から最後までを自動的にインデントする</description>
+    </item>
+    <item>
+      <title>【シェルスクリプト】git clone した後、クローンしたディレクトリへ移動する</title>
+      <link>http://localhost:43210/post/git-clone-cd-directory/</link>
+      <pubDate>Sat, 23 Dec 2023 15:23:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/git-clone-cd-directory/</guid>
+      <description>git cloneコマンドを実行してクローンした後、cdコマンドでディレクトリ移動するのがめんどくさい。 そこで、git clone とcd コマンドを1つにまとめたシェルスクリプトを用意した。 #! /bin/bash # $1 https://github.com/seiya0723/django-auth/tree/main/accounts echo $1 # ここでtree以降は切り捨てる。 repo=$(echo &amp;#34;$1&amp;#34; | sed s/tree.*//g) # 移動対象のディレクトリを取り出す。 destination=$(echo ./&amp;#34;$1&amp;#34; | sed &amp;#34;s/tree\/[[:alnum:]_-]*\///g&amp;#34; | sed &amp;#34;s/https:\/\/github.com\/[[:alnum:]_-]*\///g&amp;#34;) git clone $repo cd $destination 例えば、特定のディレクトリ(tree/main/accounts)を指定している場合、そのディレクトリへ移動</description>
+    </item>
+    <item>
+      <title>【Ubuntu】Localをインストールする【WordPressのローカル環境構築】</title>
+      <link>http://localhost:43210/post/ubuntu-local-wordpress-install/</link>
+      <pubDate>Mon, 05 Jun 2023 10:03:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-local-wordpress-install/</guid>
+      <description>LinuxへのWordpressの開発環境の構築はdockerでもできるが、ややdockerの知識が必要。 そこで、簡単にWordpressの開発環境の構築ができるlocalを使用する。 インストール https://localwp.com/releases/ 上記ページから各OSごとのインストーラーが用意されている。 今回はUbuntuなので、.debファイルをDLする。 DL後、下記コマンドを実行 sudo apt install ~/Downloads/local-6.7.2-linux.deb インストール後 規約に同意する。 バツボタン、Nothank</description>
+    </item>
+    <item>
+      <title>【Vimでスニペット】snipmateプラグイン</title>
+      <link>http://localhost:43210/post/vim-snipmate-plugin/</link>
+      <pubDate>Thu, 09 Mar 2023 13:33:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-snipmate-plugin/</guid>
+      <description>vim-snipmateはVimのスニペットプラグイン。スニペットとは、コードの断片のこと。このプラグインは、スニペットを即時呼び出して貼り付けできる。 同じようなコードを何度も何度も書くのは大変。だからスニペットプラグインを使用して爆速コーディングを実現させる。 環境はUbuntu22.04より インストール方法 snipmateはtlibとvim-addon-mw-utilsに依存しているので、まとめ</description>
+    </item>
+    <item>
+      <title>【Ubuntu22.04】スクリーンショットのショートカットキーを修正する</title>
+      <link>http://localhost:43210/post/ubuntu2204-screenshot-custom/</link>
+      <pubDate>Sun, 29 Jan 2023 14:27:42 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu2204-screenshot-custom/</guid>
+      <description>Ubuntu22.04は問題が多い。 例えば、20.04まではPrintScreenキーを押したらすぐにPCの全画面のスクリーンショットを撮影してくれたが、Screenshot Toolという機能により、すぐにスクリーンショットが撮れない。 そこで、Ubuntuの設定からキーボードのショートカットキーを修正し、この問題を解決する。 『設定』→『キーボード』→『ショートカットの表示とカスタマイズ』を選ぶ。 ス</description>
+    </item>
+    <item>
+      <title>【ReactNative &#43; Expo】スマホアプリでHelloWorldをやってみる【iOS、Android両対応】</title>
+      <link>http://localhost:43210/post/react-native-phone-app-helloworld/</link>
+      <pubDate>Mon, 26 Dec 2022 08:15:18 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-native-phone-app-helloworld/</guid>
+      <description>ReactNativeを使うことで、スマホアプリが簡単に作れる。 今回はExpoというReactNativeの開発をサポートするフレームワークを使う。 これにより、iOSとAndroid両方に対応したスマホアプリを更に簡単に作ることができる。 流れ Expoをインストールする Expoを使ってプロジェクトを作る スマホにExpo Goをインストールする(デバッグ用) ビルドサーバーを立ち上げ、Expoアプリから読</description>
+    </item>
+    <item>
+      <title>【Wordpress】日本語タイトルで404になる問題はパーマリンクを修正して日本語URLをやめる</title>
+      <link>http://localhost:43210/post/wordpress-japanese-title-404/</link>
+      <pubDate>Fri, 23 Dec 2022 11:22:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/wordpress-japanese-title-404/</guid>
+      <description>Wordpressをインストールして、日本語タイトルの記事を追加すると、このように、404 Not Foundになってしまう。 こういう時は、URLに日本語が含まれているからエラーになってしまう。パーマリンクを修正すると良いだろう。 デフォルトではカスタム構造になっているので、日本語が混ざると404になることがあるようだ。</description>
+    </item>
+    <item>
+      <title>【Selenium X Python】フォーム入力やクリックをする時は明示的な待機をする【Webdriverwait】</title>
+      <link>http://localhost:43210/post/selenium-webdriverwait-click/</link>
+      <pubDate>Wed, 30 Nov 2022 15:08:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-webdriverwait-click/</guid>
+      <description>Seleniumでブラウザ操作の自動化をする時、クリックやフォーム入力などは頻繁に行われる。 だが、それがもしtimeモジュールを使用した暗黙的待機の場合、動作に再現性はなく、たびたび不具合に見舞われるだろう。 本記事では、再現性を高めるため、明示的な待機を行うWebdriverwaitを使用したクリックとフォーム入力を行う。 前提 使用しているPythonとライブラリのバージョン、ブラウザなどをまとめる</description>
+    </item>
+    <item>
+      <title>コマンド一発で動画をmp3に変換する</title>
+      <link>http://localhost:43210/post/movie-convert-mp3/</link>
+      <pubDate>Wed, 23 Nov 2022 14:29:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/movie-convert-mp3/</guid>
+      <description>.mkv動画 → .mp3 find . -type f -name &amp;#34;*.mkv&amp;#34; -print0 | perl -pe &amp;#39;s/\.mkv\0/\0/g&amp;#39; | xargs -0 -I% ffmpeg -i %.mkv -acodec libmp3lame -ab 256k %.mp3 .mp4動画 → .mp3 find . -type f -name &amp;#34;*.mp4&amp;#34; -print0 | perl -pe &amp;#39;s/\.mp4\0/\0/g&amp;#39; | xargs -0 -I% ffmpeg -i %.mp4 -acodec libmp3lame -ab 256k %.mp3 .webm動画 → .mp3 find . -type f -name &amp;#34;*.webm&amp;#34; -print0 | perl -pe &amp;#39;s/\.webm\0/\0/g&amp;#39; | xargs -0 -I% ffmpeg -i %.webm -acodec libmp3lame -ab 256k %.mp3 結論 よく使うので、備忘録として。</description>
+    </item>
+    <item>
+      <title>【Python】openpyxlで棒グラフ・折れ線グラフを表示させる【公式から引用】</title>
+      <link>http://localhost:43210/post/openpyxl-graph/</link>
+      <pubDate>Thu, 03 Nov 2022 13:33:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/openpyxl-graph/</guid>
+      <description>コードは公式から引用し、一部編集している https://openpyxl.readthedocs.io/en/stable/charts/bar.html https://openpyxl.readthedocs.io/en/latest/charts/line.html ソースコード from openpyxl import Workbook from openpyxl.chart import BarChart, Reference #書き込みモードでワークブックを作る wb = Workbook(write_only=True) #シートを作る ws = wb.create_sheet() #データ rows = [ [&amp;#39;番号&amp;#39;, &amp;#39;算数&amp;#39;, &amp;#39;国語&amp;#39;], [1, 50, 70], [2, 60, 30], [3, 40, 60], [4, 50, 70], [5, 20, 40], [6, 60, 40], [7, 50, 30], ] #書き込み for row in rows: ws.append(row) #棒グラフを作る chart1 = BarChart() chart1.type = &amp;#34;col&amp;#34; chart1.style = 10 #タイトル、横軸・縦軸の指定 chart1.title = &amp;#34;グラフタイトル&amp;#34; chart1.y_axis.title =</description>
+    </item>
+    <item>
+      <title>【HUGO】作成日時と最終更新日時を表示させる【SEO対策】</title>
+      <link>http://localhost:43210/post/hugo-add-publish-and-mod-date/</link>
+      <pubDate>Sat, 29 Oct 2022 14:48:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/hugo-add-publish-and-mod-date/</guid>
+      <description>SEO対策として、記事の更新日を記録することにした。 これまでは作成日時と最終更新日時が兼ねられていたが、これにより、いつ更新したかがひと目でわかるようになるだろう。 前提 このギミックが動作するHUGOのバージョン。 ローカルでのバージョン Hugo Static Site Generator v0.68.3/extended linux/amd64 BuildDate: 2020-03-25T06:15:45Z デプロイ先のNetlifyのHUGOのバージョン hugo v0.85.0-724D5DB5+extended linux/amd64 BuildDate=2021-07-05T10:46:28Z VendorInfo=gohugoio 記事ヘッダーにlastmodを追加する 記事ヘッダーにこのようにlastmodを追加する。 --- title:</description>
+    </item>
+    <item>
+      <title>【matplotlib】フォントファイルを用意して日本語の豆腐化を修正する</title>
+      <link>http://localhost:43210/post/matplotlib-font-easy-settings/</link>
+      <pubDate>Thu, 27 Oct 2022 19:13:17 +0900</pubDate>
+      <guid>http://localhost:43210/post/matplotlib-font-easy-settings/</guid>
+      <description>カレントディレクトリにNotoSansJP-Light.otfを配置する。 import matplotlib.font_manager as fm import numpy as np import matplotlib.pyplot as plt fprop = fm.FontProperties(fname=&#39;NotoSansJP-Light.otf&#39;) x = np.linspace(0, 1, 100) y = x ** 2 plt.plot(x, y) plt.title(&amp;quot;タイトル&amp;quot; ,fontproperties=fprop, fontsize=40) plt.show() これで豆腐化の修正ができる</description>
+    </item>
+    <item>
+      <title>【Pandas】DataFrameをループして取り出す【列ごと、行ごとに取り出すにはdf.items()とdf.itertuples()でOK】</title>
+      <link>http://localhost:43210/post/pandas-for-loop/</link>
+      <pubDate>Thu, 27 Oct 2022 09:29:04 +0900</pubDate>
+      <guid>http://localhost:43210/post/pandas-for-loop/</guid>
+      <description>よくあるpandasの行ごと、列ごとにデータを取り出す方法。 環境 Python 3.8.10 numpy==1.23.4 pandas==1.5.1 python-dateutil==2.8.2 pytz==2022.5 six==1.16.0 列ごとにループして取り出す .iteritems()は後のバージョンで廃止される可能性があるので、列ごとのループには.items()を使う import pandas as pd data = {} data[&amp;quot;month&amp;quot;] = [ str(i)+&amp;quot;月&amp;quot; for i in range(1,13) ] data[&amp;quot;page_view&amp;quot;] = [ i*1000 for i in range(12) ] data[&amp;quot;earnings&amp;quot;] = [ i*100 for i in range(12) ] index = [ str(i) for i in range(12) ] df = pd.DataFrame( data, index=index ) ## 列ごとにループする for column_name, item in df.items(): print(column_name) print(item) print(item[&amp;quot;0&amp;quot;]) print(item[&amp;quot;1&amp;quot;]) print(item[&amp;quot;2&amp;quot;]) index</description>
+    </item>
     <item>
       <title>Pycharmを使う前にやっておきたい設定と覚えておくと良い操作方法</title>
-      <link>https://noauto-nolife.com/post/pycharm-config/</link>
+      <link>http://localhost:43210/post/pycharm-config/</link>
       <pubDate>Wed, 10 Aug 2022 17:50:56 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/pycharm-config/</guid>
+      <guid>http://localhost:43210/post/pycharm-config/</guid>
       <description>Pycharmはデフォルトではやや使いづらい。そのため、本記事ではなるべく使いやすくする設定と覚えておくとよい操作方法を記す。 設定 日本語化 https://mergedoc.osdn.jp/ にアクセス。Pleiadesプラグイン・ダウンロードからOSにあった日本語用のzipをDL。 zipを展開した後、WindowsやMacの場合はマウスクリックでインストーラーを起動させれば良い。 ※日本語の表記ゆれなどを考慮し、以降の設定はインストールしてすぐの英</description>
     </item>
-    
-    <item>
-      <title>要件定義書の書き方</title>
-      <link>https://noauto-nolife.com/post/startup-create-rdd/</link>
-      <pubDate>Sat, 04 Jun 2022 17:13:16 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-create-rdd/</guid>
-      <description>開発者になるために必要な要件定義書の書き方と必要なものを解説する。 そもそも要件定義とは？ システムを作るために決めるべきこと。 とりわけ、システムにおける5W1Hに基づいて、取り決めを行う必要がある。 この取り決めが曖昧であれば、受注者と顧客間での認識に食い違いが生まれる。 要件定義書に必要なもの 要件定義書に正解はない。 必ずしも下記の全ての項目を作る必要はない。必要に応じて省略し、簡潔に済ませることもわか</description>
-    </item>
-    
     <item>
       <title>UbuntuにWordpressをインストールする【MariaDB&#43;Apache】</title>
-      <link>https://noauto-nolife.com/post/startup-wordpress-ubuntu/</link>
+      <link>http://localhost:43210/post/startup-wordpress-ubuntu/</link>
       <pubDate>Sat, 04 Jun 2022 16:46:42 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-wordpress-ubuntu/</guid>
+      <guid>http://localhost:43210/post/startup-wordpress-ubuntu/</guid>
       <description>手元のPCにWordpressをインストールして試したいが、OSに直にインストールするのは避けたい。 そういう時、VirtualBoxにインストールしたUbuntuへ、Wordpressをインストールすると良いだろう。 流れ Apacheのインストール MariaDBのインストールとDB・ユーザーの作成 PHPのインストール Wordpressのインストール Apacheのインストール インストール sudo apt install apache2 自動起</description>
     </item>
-    
     <item>
       <title>【git/GitHub】コマンドと使い方の一覧</title>
-      <link>https://noauto-nolife.com/post/startup-git/</link>
+      <link>http://localhost:43210/post/startup-git/</link>
       <pubDate>Sun, 08 May 2022 10:58:15 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-git/</guid>
+      <guid>http://localhost:43210/post/startup-git/</guid>
       <description>後に追記予定あり。 必要と思われるものから順に、解説サイトから抜粋して並べている。 基本操作編 これができれば、作ったコードをGitHubに公開できる。 リポジトリを作る git init インデックスする(コミットするファイルを記録) 全てのファイルをインデックスする場合はこうする git add . コミットする git commit -m &amp;quot;ここにコミットのメッセージを記録する&amp;quot; 【補足1】ユーザー情報を入力していないため、コミットできな</description>
     </item>
-    
+    <item>
+      <title>【Node.js】npmとは、npmコマンドについて</title>
+      <link>http://localhost:43210/post/npm-command/</link>
+      <pubDate>Fri, 28 Jan 2022 10:41:58 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-command/</guid>
+      <description>そもそもnpmとは npmはNode.jsのパッケージ管理ツールのこと。Node Package Manager の略。 例えば、Reactを使用するために、Reactを動かすために必要なソフトウェア一式をインストールする必要がある。このソフトウェア一式のことをパッケージという。 npmはこのパッケージのインストール、アンインストールなどの管理を行うことができる。 npmコマンドについて npm install パッケージ パッケージのインストールをする。こ</description>
+    </item>
     <item>
       <title>mogrifyコマンドを使って画像を一括クロップ(トリミング)する</title>
-      <link>https://noauto-nolife.com/post/startup-mogrify/</link>
+      <link>http://localhost:43210/post/startup-mogrify/</link>
       <pubDate>Fri, 07 Jan 2022 09:57:31 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-mogrify/</guid>
+      <guid>http://localhost:43210/post/startup-mogrify/</guid>
       <description>下記コマンドで一括画像処理できる mogrify [出力先] -crop [幅]x[高さ]+[切り取り始めるx座標]+[切り取り始めるy座標] [入力元] 参照元:https://qiita.com/yoya/items/62879e6e03d5a70eed09</description>
     </item>
-    
-    <item>
-      <title>【PR】ElementTube 一般公開</title>
-      <link>https://noauto-nolife.com/post/element-tube/</link>
-      <pubDate>Thu, 30 Dec 2021 20:47:09 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/element-tube/</guid>
-      <description>動画共有サイトの雛形ウェブアプリ、『ElementTube』 一般公開します。 2021年12月時点でまだまだ未完成ではあるものの、動画共有サイトとしての体裁は十分保たれており、コードを少し編集するだけで運営は可能です。 概要 『ElementTube』は2021年1月、誰でも気軽に動画共有サイトを運営するコンセプトの元、開発を始めた。 現在の動画共有サイトは、概ね投稿されるコンテンツの一般大衆化が進んでお</description>
-    </item>
-    
     <item>
       <title>【GitHub】gitコマンドでリモートリポジトリへプッシュするためのトークンをジェネレートする</title>
-      <link>https://noauto-nolife.com/post/github-token-generate/</link>
+      <link>http://localhost:43210/post/github-token-generate/</link>
       <pubDate>Thu, 16 Dec 2021 15:07:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/github-token-generate/</guid>
+      <guid>http://localhost:43210/post/github-token-generate/</guid>
       <description>gitコマンドでGitHubにプッシュする時、アカウントのパスワードではプッシュすることはできない。前もってアカウント内に作っておいたトークンを入力する必要がある。 本記事ではその作り方を解説する。 トークン生成手順 下記リンク、もしくはSettingsからDeveloper settingsをクリック、Personal access tokensをクリックする。 https://github.com/settings/tokens Generate new tokenをクリック。パスワードの入力を要求される</description>
     </item>
-    
     <item>
       <title>VBAでHelloWorld、セルの色変え、計算などの基本操作をやってみる【LibreOffice】</title>
-      <link>https://noauto-nolife.com/post/startup-vba/</link>
+      <link>http://localhost:43210/post/startup-vba/</link>
       <pubDate>Thu, 16 Dec 2021 09:52:21 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-vba/</guid>
+      <guid>http://localhost:43210/post/startup-vba/</guid>
       <description>VBAで基本操作(セルの装飾、計算処理、ダイアログ表示など)を行う。今回はLibreOfficeで行っているが、MicroSoftOfficeなどでも再現はできる。 ハローワールド Sub hello_vba_world MsgBox(&amp;quot;Hello VBA World&amp;quot;) End Sub このマクロを任意のボタンなどに割り当てることで、『Hello VBA World』と書かれたダイアログが表示される。 セルの取得と計算処理 計算処理をするには、特定のセルの値を手に入れ変数に格納する必要がある。 変数の定義</description>
     </item>
-    
     <item>
       <title>VisualStudioCode(VScode)を使う前にやっておきたい設定と覚えておくと良い操作方法</title>
-      <link>https://noauto-nolife.com/post/vscode-config/</link>
+      <link>http://localhost:43210/post/vscode-config/</link>
       <pubDate>Tue, 23 Nov 2021 12:17:33 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/vscode-config/</guid>
+      <guid>http://localhost:43210/post/vscode-config/</guid>
       <description>比較的メジャーなVisualStudioCode(以下VScode)も、やはり初期状態のままでは使いづらい。 本記事では本格的にコードを書く前にやっておきたい設定を列挙する。 文字サイズを変更する まず文字サイズの変更。一番手っ取り早く文字を大きく表示させる方法として、VScode全体を拡大縮小することが有効。 VScodeのメニューバーから『表示』→『外観』→『拡大』もしくは『縮小』を選ぶ。もしくは、シ</description>
     </item>
-    
     <item>
       <title>Vimのコメントの自動補完を無効化させる【JavaScriptやCSS、シェルスクリプトでコメントアウトした後、Enter押すと自動で出てくるアレ】</title>
-      <link>https://noauto-nolife.com/post/vim-comment-settings/</link>
+      <link>http://localhost:43210/post/vim-comment-settings/</link>
       <pubDate>Mon, 15 Nov 2021 07:39:25 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/vim-comment-settings/</guid>
+      <guid>http://localhost:43210/post/vim-comment-settings/</guid>
       <description>例えばJavaScriptでコメントを書く時、 // と書く。だが、その後Enterキーを押すと // // こうなる。これがすごい鬱陶しい。 頼んでもいないのにコメント行が勝手に増えて行くのは、消す手間も同時に増えるということ。だから無効化させる。 環境 Ubuntu 18.04 VIM version 8.0.1453 下記プラグインを使っている状態 emmet.vim surround.vim コメントの自動補完を無効化する 通常、このようなコメントの自動補完を無効化させるには、下記コマンドを実行して無効化させる。</description>
     </item>
-    
     <item>
       <title>【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</title>
-      <link>https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/</link>
+      <link>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</link>
       <pubDate>Thu, 14 Oct 2021 12:47:15 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/</guid>
+      <guid>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</guid>
       <description>pandasでファイルの読み込み、演算、グラフ描画、ファイル書き込みの基本操作関係を記す。 前提 data.xlsx及びdata.csvの内容を下記とする。これをPythonのファイルと同じディレクトリに格納する。 ライブラリインストールのコマンドは下記。 pip install openpyxl pandas matplotlib pandasの使い方 CSVやエクセルのファイルをそのまま読み込んで分析できる。 ファイルの読み込み .read_csv()メソッドでCSVを読み</description>
     </item>
-    
+    <item>
+      <title>【保存版】追加しておくべきvimrcの設定【検索ハイライト、タブはスペース4つ、拡張子ごとの初期データ】</title>
+      <link>http://localhost:43210/post/vimrc-setting/</link>
+      <pubDate>Thu, 10 Oct 2019 18:21:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/vimrc-setting/</guid>
+      <description>とりあえず、結論から。Ubuntuの場合、usr/share/vim/vimrcの末尾に下記を追加する。 &amp;quot;行番号表示 set number &amp;quot;タイトルの表示 set title &amp;quot;検索時にハイライト表示 set hlsearch &amp;quot;マークダウンを書くときに斜体を禁止する autocmd! FileType markdown hi! def link markdownItalic Nomal &amp;quot;全角記号の重なりの修正 set ambiwidth=double autocmd BufNewFile *.py 0r $HOME/.vim/template/python3.txt autocmd BufNewFile *.html 0r $HOME/.vim/template/html.txt autocmd BufNewFile *.css 0r $HOME/.vim/template/css.txt autocmd BufNewFile *.js 0r $HOME/.vim/template/javascript.txt autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt autocmd BufNewFile *.java 0r $HOME/.vim/template/java.txt set tabstop=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent set smartindent 特にautoc</description>
+    </item>
     <item>
       <title>【保存版】Ubuntu18.04をインストールした後に真っ先にやる16の設定</title>
-      <link>https://noauto-nolife.com/post/ubuntu1804-settings/</link>
+      <link>http://localhost:43210/post/ubuntu1804-settings/</link>
       <pubDate>Sat, 12 Jan 2019 14:57:56 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu1804-settings/</guid>
+      <guid>http://localhost:43210/post/ubuntu1804-settings/</guid>
       <description>ほとんど自分用の備忘録です。あまり役に立たないかもしれませんが、トップバーとdockの合成はやっておくと一気に便利になるでしょう。 その1:bashの履歴の上限を開放して、日時を表示させる その2:日本語のディレクトリ名を英語に変更させる その3:各種パッケージをインストールする その4:vimのプラグインをインストールする その5:vimのデフォルトの設定を変更させる その6:UbuntuのトップバーとDo</description>
     </item>
-    
+    <item>
+      <title>vimプラグインのemmetとsurroundのインストール方法と使い方【NeoBundleは不要】</title>
+      <link>http://localhost:43210/post/vim-plugin/</link>
+      <pubDate>Fri, 11 Jan 2019 19:19:12 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-plugin/</guid>
+      <description>vimを使用して本格的にHTMLのコーディングをしたいと思ったので、有名なemmet.vimとsurround.vimをインストールすることにしました。忘れてはいけないので備忘録として使い方や活用例なども含めて書き残します。 巷では、プラグイン管理ツールであるNeoBundleをインストールする必要があると言われていますが、無くても問題なくできました。むしろNeoBundleはすでに開発が止まってい</description>
+    </item>
     <item>
       <title>このサイトについて</title>
-      <link>https://noauto-nolife.com/information/introduction/</link>
+      <link>http://localhost:43210/information/introduction/</link>
       <pubDate>Sat, 02 Dec 2017 10:55:33 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/information/introduction/</guid>
-      <description>ここはWEB、AI、Linux関係のことに特化して作られた技術ブログサイトです。 作者について 項目 内容 名前 S.Asahina 経験 2011年〜 資格 ITパスポート(2012年6月),基本情報技術者(2013年春),応用情報技術者(2014年春) 言語 HTML,CSS,JS(jQuery,Vue.js),Python(Django,Flask),PHP(laravel),その他(C,COBOL,JAVAなど) その他技術 Apache,Nginx,MySQL,PostgreSQL,Ubuntu,Raspberry P</description>
+      <guid>http://localhost:43210/information/introduction/</guid>
+      <description>ここはWEB、AI、Linux関係のことに特化して作られた技術ブログサイトです。 作者について 項目 内容 名前 S.Asahina 経験 2011年〜 資格 ITパスポート(2012年6月),基本情報技術者(2013年春),応用情報技術者(2014年春),AI実装検定A級(2026年2月),AI実装検定S級(2026年5月) 言語 HTML,CSS,JavaScript(jQuery,Vue.js,React),Python(Dja</description>
     </item>
-    
   </channel>
 </rss>

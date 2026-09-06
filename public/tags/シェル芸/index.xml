@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>シェル芸 on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E8%8A%B8/</link>
+    <description>Recent content in シェル芸 on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 23 Nov 2022 14:29:55 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E8%8A%B8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>コマンド一発で動画をmp3に変換する</title>
+      <link>http://localhost:43210/post/movie-convert-mp3/</link>
+      <pubDate>Wed, 23 Nov 2022 14:29:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/movie-convert-mp3/</guid>
+      <description>.mkv動画 → .mp3 find . -type f -name &amp;#34;*.mkv&amp;#34; -print0 | perl -pe &amp;#39;s/\.mkv\0/\0/g&amp;#39; | xargs -0 -I% ffmpeg -i %.mkv -acodec libmp3lame -ab 256k %.mp3 .mp4動画 → .mp3 find . -type f -name &amp;#34;*.mp4&amp;#34; -print0 | perl -pe &amp;#39;s/\.mp4\0/\0/g&amp;#39; | xargs -0 -I% ffmpeg -i %.mp4 -acodec libmp3lame -ab 256k %.mp3 .webm動画 → .mp3 find . -type f -name &amp;#34;*.webm&amp;#34; -print0 | perl -pe &amp;#39;s/\.webm\0/\0/g&amp;#39; | xargs -0 -I% ffmpeg -i %.webm -acodec libmp3lame -ab 256k %.mp3 結論 よく使うので、備忘録として。</description>
+    </item>
+  </channel>
+</rss>

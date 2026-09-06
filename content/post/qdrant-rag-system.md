@@ -1,5 +1,5 @@
 ---
-title: "RTX A2000 12GBでOllama(Gemma7B:4bit量子化仕様)+QdrantでテキストファイルのRAGを実現"
+title: "RTX A2000 12GBでOllama(Gemma:7B)+QdrantでテキストファイルのRAGを実現"
 date: 2026-06-01T18:27:07+09:00
 lastmod: 2026-06-01T18:27:07+09:00
 draft: false

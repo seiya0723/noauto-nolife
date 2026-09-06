@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Seaborn on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/seaborn/</link>
+    <description>Recent content in Seaborn on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 31 May 2025 14:30:03 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/seaborn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Pythonでグラフ描画】matplotlibとseabornのAPIのまとめ</title>
+      <link>http://localhost:43210/post/python-matplotlib-seaborn-api/</link>
+      <pubDate>Sat, 31 May 2025 14:30:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-matplotlib-seaborn-api/</guid>
+      <description>matplotlib matplotlibは配列データを元に、グラフを描画することができる。 代表的な 棒グラフ、折れ線グラフ、散布図の3つを以下コードで描画している。 import numpy as np import matplotlib.pyplot as plt # データ準備 categories = [&amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;E&amp;#39;] values = [5, 7, 3, 8, 4] # 棒グラフ用 x = np.arange(0, 10, 1) # 折れ線グラフ・散布図用 y_line = np.sin(x) # 折れ線グラフ用 y_scatter = y_line + np.random.normal(0, 0.2, size=x.shape) # 散布図用（ノイズを加える） # --- 1. 棒グラフ --- plt.figure(figsize=(6, 4)) plt.bar(categories, values, color=&amp;#39;skyblue&amp;#39;) plt.title(&amp;#34;Bar Graph&amp;#34;) plt.xlabel(&amp;#34;Category&amp;#34;) plt.ylabel(&amp;#34;Value&amp;#34;) plt.grid(axis=&amp;#39;y&amp;#39;) plt.tight_layout() plt.show() # --- 2. 折れ線グラフ --- plt.figure(figsize=(6, 4)) plt.plot(x, y_line, marker=&amp;#39;o&amp;#39;, linestyle=&amp;#39;-&amp;#39;, color=&amp;#39;green&amp;#39;) plt.title(&amp;#34;Line Graph&amp;#34;) plt.xlabel(&amp;#34;X&amp;#34;) plt.ylabel(&amp;#34;Y&amp;#34;) plt.grid(True) plt.tight_layout() plt.show() #</description>
+    </item>
+  </channel>
+</rss>

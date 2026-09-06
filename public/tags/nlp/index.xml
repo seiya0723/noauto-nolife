@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NLP on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/nlp/</link>
+    <description>Recent content in NLP on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 09 May 2026 08:28:22 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【箇条書き】NLPモデルの特徴まとめ</title>
+      <link>http://localhost:43210/post/nlp-model-feature/</link>
+      <pubDate>Sat, 09 May 2026 08:28:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/nlp-model-feature/</guid>
+      <description>前提と基礎知識 NLPモデルに入力データが与えられるまでの過程 文章を与える ↓ Tokenizerでトークン化（単語・サブワード・文字などに分割） 例: &amp;#34;I love NLP&amp;#34; → [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] ↓ 語彙表（Vocabulary）を使って、トークン → トークンID に変換 例: [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] → [101, 2293, 17953, 1925] ↓ ※ 必要に応じてパディング・マスキング・特殊トークン付与 例: [CLS], [SEP], [PAD] などをここで追加（BERTなど） ↓ Embedding層にトークンIDを与える └ ID</description>
+    </item>
+    <item>
+      <title>CNNとNLPの問題</title>
+      <link>http://localhost:43210/post/cnn-nlp-question/</link>
+      <pubDate>Sun, 26 Apr 2026 17:09:19 +0900</pubDate>
+      <guid>http://localhost:43210/post/cnn-nlp-question/</guid>
+      <description>試験範囲 CNN : VGG,GoogLeNet,ResNet(WideResNet),MobileNet,DenseNet,EfficientNet NLP : Word2Vec(skip-gram),seq2seq,HRED,Transformer 問題 間違えている箇所は → で解答を表示。 1. VGG Q1: VGG16において、すべての畳み込み層で 3×3 カーネルが採用されている理由として適切なものは？ 空間方向・チャンネル方向双方に畳み込みを行い、層を増やすため。5x5では特徴量がぼやけてしまい、1x1では空間方向の特徴抽出が難しいため。 Q2: PyTorchの models.vgg16 において、特徴抽出部分の最後にある nn.AdaptiveAvgPool2d((7, 7)) の役割は？ 7x7で平均プーリングを行い、全結合</description>
+    </item>
+  </channel>
+</rss>

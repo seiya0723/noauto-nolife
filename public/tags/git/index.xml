@@ -1,60 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/git/</link>
+    <link>http://localhost:43210/tags/git/</link>
     <description>Recent content in Git on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 04 Sep 2022 15:49:58 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 23 Dec 2023 15:23:05 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ】</title>
-      <link>https://noauto-nolife.com/post/ubuntu-env-read-python/</link>
+      <title>【シェルスクリプト】git clone した後、クローンしたディレクトリへ移動する</title>
+      <link>http://localhost:43210/post/git-clone-cd-directory/</link>
+      <pubDate>Sat, 23 Dec 2023 15:23:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/git-clone-cd-directory/</guid>
+      <description>git cloneコマンドを実行してクローンした後、cdコマンドでディレクトリ移動するのがめんどくさい。 そこで、git clone とcd コマンドを1つにまとめたシェルスクリプトを用意した。 #! /bin/bash # $1 https://github.com/seiya0723/django-auth/tree/main/accounts echo $1 # ここでtree以降は切り捨てる。 repo=$(echo &amp;#34;$1&amp;#34; | sed s/tree.*//g) # 移動対象のディレクトリを取り出す。 destination=$(echo ./&amp;#34;$1&amp;#34; | sed &amp;#34;s/tree\/[[:alnum:]_-]*\///g&amp;#34; | sed &amp;#34;s/https:\/\/github.com\/[[:alnum:]_-]*\///g&amp;#34;) git clone $repo cd $destination 例えば、特定のディレクトリ(tree/main/accounts)を指定している場合、そのディレクトリへ移動</description>
+    </item>
+    <item>
+      <title>【Django】EC2インスタンスへgitを使ってデプロイする</title>
+      <link>http://localhost:43210/post/django-aws-ec2-git-deploy/</link>
+      <pubDate>Tue, 29 Aug 2023 11:22:17 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-aws-ec2-git-deploy/</guid>
+      <description>scpによるファイルアップロードの場合、ローカルで削除した差分ファイルがインスタンス上に取り残されてしまう。 可能であれば、gitを使ったデプロイができるようになっておきたい。 手順 インスタンスにリモートリポジトリを作る ローカルにリポジトリを作る リモートリポジトリとローカルリポジトリをつなげる SSHの設定に.pemファイルを登録する プッシュする インスタンスにリモートリポジトリを作る インスタンスのデフォ</description>
+    </item>
+    <item>
+      <title>【Django】GitとSSHを使ってUbuntuへデプロイする(virtualenvでPythonライブラリの管理)【hookでmigrateコマンドも】</title>
+      <link>http://localhost:43210/post/django-git-deploy-ubuntu-venv/</link>
+      <pubDate>Tue, 14 Feb 2023 13:50:19 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-git-deploy-ubuntu-venv/</guid>
+      <description>要求される知識が非常に多いため、下記対象読者に該当する方のみ、閲覧を推奨します。 対象読者 Linuxのコマンドがわかる CUIエディタ(nanoもしくはvim)が扱える すでにDjangoプロジェクトをUbuntuへデプロイをしたことがある gitを使ったことがある(ステージング→コミット→プッシュができればOK) SSHでUbuntuへリモートログインをしたことがある(パスワード認証ができればOK) vir</description>
+    </item>
+    <item>
+      <title>Ubuntuに環境変数をセットし、Pythonでosモジュールを使って読む方法【os.environ使用、crontabにも対応】</title>
+      <link>http://localhost:43210/post/ubuntu-env-read-python/</link>
       <pubDate>Sun, 04 Sep 2022 15:49:58 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu-env-read-python/</guid>
+      <guid>http://localhost:43210/post/ubuntu-env-read-python/</guid>
       <description>例えば、gitで管理しているプロジェクトをgitでデプロイする時。 たとえローカルサーバーのDBのパスワードとは言え、ハードコードした状態でコミットするわけには行かない。(gitignoreに入れてしまうとパスワードが含まれない) そこで、環境変数をセットし、Python側でそれを読む。 環境変数をセットする。 #変数名=値 ZZZ=test #変数を環境変数としてセットする。 export ZZZ #↑2つは下記でも可 export ZZZ=test セットした環境変数</description>
     </item>
-    
     <item>
       <title>【git/GitHub】コマンドと使い方の一覧</title>
-      <link>https://noauto-nolife.com/post/startup-git/</link>
+      <link>http://localhost:43210/post/startup-git/</link>
       <pubDate>Sun, 08 May 2022 10:58:15 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-git/</guid>
+      <guid>http://localhost:43210/post/startup-git/</guid>
       <description>後に追記予定あり。 必要と思われるものから順に、解説サイトから抜粋して並べている。 基本操作編 これができれば、作ったコードをGitHubに公開できる。 リポジトリを作る git init インデックスする(コミットするファイルを記録) 全てのファイルをインデックスする場合はこうする git add . コミットする git commit -m &amp;quot;ここにコミットのメッセージを記録する&amp;quot; 【補足1】ユーザー情報を入力していないため、コミットできな</description>
     </item>
-    
     <item>
       <title>【GitHub】gitコマンドでリモートリポジトリへプッシュするためのトークンをジェネレートする</title>
-      <link>https://noauto-nolife.com/post/github-token-generate/</link>
+      <link>http://localhost:43210/post/github-token-generate/</link>
       <pubDate>Thu, 16 Dec 2021 15:07:28 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/github-token-generate/</guid>
+      <guid>http://localhost:43210/post/github-token-generate/</guid>
       <description>gitコマンドでGitHubにプッシュする時、アカウントのパスワードではプッシュすることはできない。前もってアカウント内に作っておいたトークンを入力する必要がある。 本記事ではその作り方を解説する。 トークン生成手順 下記リンク、もしくはSettingsからDeveloper settingsをクリック、Personal access tokensをクリックする。 https://github.com/settings/tokens Generate new tokenをクリック。パスワードの入力を要求される</description>
     </item>
-    
     <item>
       <title>【Laravel】GitHubにプッシュする時.gitignoreに追加する必要のあるファイル、ディレクトリ</title>
-      <link>https://noauto-nolife.com/post/laravel-gitignore-add/</link>
+      <link>http://localhost:43210/post/laravel-gitignore-add/</link>
       <pubDate>Sat, 18 Sep 2021 11:11:14 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/laravel-gitignore-add/</guid>
+      <guid>http://localhost:43210/post/laravel-gitignore-add/</guid>
       <description>GitHubにプッシュする時、.gitignoreに追加する必要のあるファイル、ディレクトリをここにまとめる。 そんなものはどうでも良いから、もともとあったものと、追加したものを含めた完全版を見せてくれと思う人は、ページ末尾の結論へ。 対象に追加するべき、ファイル *.log *.sqlite .htaccess .logには開発用サーバーで動かしたログが残る。.sqliteは言わずもがなデータが残っている。 対象に追加するべき、ディレクトリ /storage /config /</description>
     </item>
-    
     <item>
       <title>DjangoをDEBUG=FalseでHerokuにデプロイする方法</title>
-      <link>https://noauto-nolife.com/post/django-deploy-heroku/</link>
+      <link>http://localhost:43210/post/django-deploy-heroku/</link>
       <pubDate>Mon, 26 Oct 2020 11:16:34 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-deploy-heroku/</guid>
-      <description>プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。 requirements.txt もし、仮想環境を使用していない場合、virtualenvを使って必要なライブラリをpipコマンドにてインストールする。 -- HerokuCLIをインストール Herokuではherokuコマンドを実行して、事前にログインをした上でデプロイを行う。下記からインストールする。 https://devcenter.heroku.com/ja/articles/heroku-cli herokuコマンドを実行して、デプロ</description>
+      <guid>http://localhost:43210/post/django-deploy-heroku/</guid>
+      <description>プロジェクトのディレクトリ構造は、『現場で使えるDjangoの教科書 基礎編』に準拠している。 HerokuCLIをインストール Herokuではherokuコマンドを実行して、事前にログインをした上でデプロイを行う。下記からインストールする。 https://devcenter.heroku.com/ja/articles/heroku-cli herokuコマンドを実行して、デプロイ先のサーバーでマイグレーション等の操作を行うためにある。 【補足1】Herokuコマンドが使えない。 Windowsの場合、</description>
     </item>
-    
   </channel>
 </rss>

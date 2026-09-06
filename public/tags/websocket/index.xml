@@ -1,24 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Websocket on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/websocket/</link>
-    <description>Recent content in Websocket on 自動化無しに生活無し</description>
+    <title>WebSocket on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/websocket/</link>
+    <description>Recent content in WebSocket on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 02 May 2022 21:34:55 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/websocket/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 16 Mar 2025 09:09:44 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/websocket/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>【Django】channelsを使ってWebSocketを実現させる【チャットサイト開発に】</title>
-      <link>https://noauto-nolife.com/post/startup-django-channels-web-socket/</link>
-      <pubDate>Mon, 02 May 2022 21:34:55 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-django-channels-web-socket/</guid>
-      <description>django-channelsのチュートリアルに倣って、WebSocketを使ったチャットサイトを作った。 とても実装難易度が高く、一筋縄では行かない。そのため実装手順の備忘録として本記事をまとめておく。 わかっていること WebSocketとはプロトコルのこと、HTTPでは実現できない双方向通信を実現させるためのもの 前もってHTTPでWebSocketの通信経路を作る必要がある WebSocketの経路</description>
+      <title>FastAPIでWebSocketを実現する</title>
+      <link>http://localhost:43210/post/fastapi-websocket/</link>
+      <pubDate>Sun, 16 Mar 2025 09:09:44 +0900</pubDate>
+      <guid>http://localhost:43210/post/fastapi-websocket/</guid>
+      <description>djangoでもWebSocketは実現できるが、依然djangoの一部は同期動作(DB操作とMIDDLEWARE)。 よって、どうしてもボトルネックが発生する。 そこでWebSocketは、djangoではなく、非同期処理を前提として作られたFastAPIに委ねることで、より高速なWebSocketを実現させる。 本記事では、FastAPIを使ってのWebSocketを実現させる。 ただし、セキュリティ</description>
     </item>
-    
+    <item>
+      <title>【Sec-Websocket-Protocol】DRF&#43;ReactのSPAでWebsocketのチャットサイトでJWT認証をする</title>
+      <link>http://localhost:43210/post/drf-react-spa-websocket-chat-jwt/</link>
+      <pubDate>Fri, 07 Mar 2025 10:31:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-websocket-chat-jwt/</guid>
+      <description>DRF+ReactのSPAでWebsocketのチャットサイトをつくる と DRF+ReactのCRUD簡易掲示板SPAでJWT認証を実装する の続き。 今回は、先にSPAでJWT認証を済ませたうえで、WebSocketを行うようにした。Sec-WebSocket-Protocol を使っている。 トークンの検証が煩雑になるため、WebSocketのメッセージ部にJWTトークンは含ませない設計にした。 WebS</description>
+    </item>
+    <item>
+      <title>Django-channelsのAsyncWebsocketConsumerのscopeの内容【JWT認証&#43;Sec-Websocket-Protocol】</title>
+      <link>http://localhost:43210/post/django-async-websocket-consumer-scope/</link>
+      <pubDate>Sat, 18 Jan 2025 17:32:48 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-async-websocket-consumer-scope/</guid>
+      <description>AsyncWebsocketConsumer の scope の内容は以下の通り。 ただし、JWT認証をしており、Sec-Websocket-Protocol を使用している。 { &amp;#39;type&amp;#39;: &amp;#39;websocket&amp;#39;, &amp;#39;path&amp;#39;: &amp;#39;/ws/chat/1/&amp;#39;, &amp;#39;raw_path&amp;#39;: b&amp;#39;/ws/chat/1/&amp;#39;, &amp;#39;root_path&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;headers&amp;#39;: [ (b&amp;#39;host&amp;#39;, b&amp;#39;localhost:8000&amp;#39;), (b&amp;#39;user-agent&amp;#39;, b&amp;#39;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0&amp;#39;), (b&amp;#39;accept&amp;#39;, b&amp;#39;*/*&amp;#39;), (b&amp;#39;accept-language&amp;#39;, b&amp;#39;ja,en-US;q=0.7,en;q=0.3&amp;#39;), (b&amp;#39;accept-encoding&amp;#39;, b&amp;#39;gzip, deflate, br, zstd&amp;#39;), (b&amp;#39;sec-websocket-version&amp;#39;, b&amp;#39;13&amp;#39;), (b&amp;#39;origin&amp;#39;, b&amp;#39;http://localhost:3000&amp;#39;), (b&amp;#39;sec-websocket-protocol&amp;#39;, b&amp;#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MTg4NDg5LCJpYXQiOjE3MzcxODgzNDUsImp0aSI6IjI0OWRlMTUzMjY0YTQ4ZDE5YWVkZDJiODlhNTgwY2M5IiwidXNlcl9pZCI6MX0.hzS0uwx4LhPlM6wFJiIUpEkjVjkGpV87psw5MD1leyk&amp;#39;), (b&amp;#39;sec-websocket-extensions&amp;#39;, b&amp;#39;permessage-deflate&amp;#39;), (b&amp;#39;sec-websocket-key&amp;#39;, b&amp;#39;Q257WDS+ETm8KNLmj6cQiQ==&amp;#39;), (b&amp;#39;dnt&amp;#39;, b&amp;#39;1&amp;#39;), (b&amp;#39;sec-gpc&amp;#39;, b&amp;#39;1&amp;#39;), (b&amp;#39;connection&amp;#39;, b&amp;#39;keep-alive, Upgrade&amp;#39;), (b&amp;#39;cookie&amp;#39;, b&amp;#39;csrftoken=8ShA2y6HDOr794MF0TdrSnbEv76KCY0Y; _ga_HDX0LW64ZT=GS1.1.1737184513.53.1.1737184805.0.0.0;&amp;#39;), (b&amp;#39;sec-fetch-dest&amp;#39;, b&amp;#39;empty&amp;#39;), (b&amp;#39;sec-fetch-mode&amp;#39;, b&amp;#39;websocket&amp;#39;), (b&amp;#39;sec-fetch-site&amp;#39;, b&amp;#39;same-site&amp;#39;), (b&amp;#39;pragma&amp;#39;, b&amp;#39;no-cache&amp;#39;), (b&amp;#39;cache-control&amp;#39;, b&amp;#39;no-cache&amp;#39;), (b&amp;#39;upgrade&amp;#39;, b&amp;#39;websocket&amp;#39;) ], &amp;#39;query_string&amp;#39;: b&amp;#39;&amp;#39;, &amp;#39;client&amp;#39;: [&amp;#39;127.0.0.1&amp;#39;, 35492], &amp;#39;server&amp;#39;: [&amp;#39;127.0.0.1&amp;#39;, 8000], &amp;#39;subprotocols&amp;#39;: [&amp;#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM3MTg4NDg5LCJpYXQiOjE3MzcxODgzNDUsImp0aSI6IjI0OWRlMTUzMjY0YTQ4ZDE5YWVkZDJiODlhNTgwY2M5IiwidXNlcl9pZCI6MX0.hzS0uwx4LhPlM6wFJiIUpEkjVjkGpV87psw5MD1leyk&amp;#39;], &amp;#39;asgi&amp;#39;: {&amp;#39;version&amp;#39;: &amp;#39;3.0&amp;#39;}, &amp;#39;user&amp;#39;: &amp;lt;User: asahina&amp;gt;, &amp;#39;path_remaining&amp;#39;: &amp;#39;&amp;#39;, &amp;#39;url_route&amp;#39;: {&amp;#39;args&amp;#39;: (), &amp;#39;kwargs&amp;#39;: {&amp;#39;room_name&amp;#39;: &amp;#39;1&amp;#39;}} } ユーザーエージェントやCookieのデータも含まれる。 今回、ミドルウェアなどで操作しているため、状況によっ</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのSPAでWebsocketのチャットサイトをつくる</title>
+      <link>http://localhost:43210/post/drf-react-spa-websocket-chat/</link>
+      <pubDate>Thu, 09 Jan 2025 15:40:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-websocket-chat/</guid>
+      <description>タイトル通り、Django REST FrameworkとReactのSPAで、WebSocketを使ったチャットサイトを作った。 以前のWebSocket搭載チャットサイト(下記)はReactを使っていないため、SPAではない。今回はReactを搭載したSPAとしている。 DjangoでWebSocketを使って、チャットサイトを作る ただし、今回はJWT認証の実装は見送った。理由は後述。 開発要件 WebSock</description>
+    </item>
+    <item>
+      <title>DjangoでWebSocketを使って、チャットサイトを作る</title>
+      <link>http://localhost:43210/post/django-websocket-chatsite/</link>
+      <pubDate>Tue, 17 Dec 2024 16:33:35 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-websocket-chatsite/</guid>
+      <description>django-channelsを使ってWebSocketを実現させる【チャットサイト開発に】 ここで、チャットサイトを作ったが、ページリロードで全て消えてしまう。 チャンネルレイヤーにメッセージを与えるだけでなく、DBにも記録するように仕立てた。 consumers.py import json from channels.generic.websocket import AsyncWebsocketConsumer from asgiref.sync import sync_to_async from .forms import ChatLogForm from django.utils import timezone class ChatConsumer(AsyncWebsocketConsumer): async def connect(self): self.room_name = self.scope[&amp;#39;url_route&amp;#39;][&amp;#39;kwargs&amp;#39;][&amp;#39;room_name&amp;#39;] self.room_group_name = &amp;#39;chat_%s&amp;#39; % self.room_name await self.channel_layer.group_add( self.room_group_name, self.channel_name ) await self.accept() async def disconnect(self, close_code): await self.channel_layer.group_discard( self.room_group_name, self.channel_name ) async def receive(self, text_data): text_data_json = json.loads(text_data) message = text_data_json[&amp;#39;message&amp;#39;] chat_log = await self.save_chat_log(message) if chat_log == None: return False local_created_at = timezone.localtime(chat_log.created_at) created_at_str = local_</description>
+    </item>
+    <item>
+      <title>django-channelsを使ってWebSocketを実現させる【チャットサイト開発に】</title>
+      <link>http://localhost:43210/post/startup-django-channels-web-socket/</link>
+      <pubDate>Mon, 02 May 2022 21:34:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-django-channels-web-socket/</guid>
+      <description>django-channelsのチュートリアルに倣って、WebSocketのチャットサイトを作った。 とても実装難易度が高い。実装手順の備忘録として本記事をまとめる。 解説 ライブラリのインストール pip install django channels daphne djangoとdjango-channels、それからdaphne(ダフネ)をインストールする。 daphneは ASGI（Asynchronous Server Gateway Interface）に準拠したサーバー。 config/settings.py &amp;#34;&amp;#34;&amp;#34; Django settings for</description>
+    </item>
   </channel>
 </rss>

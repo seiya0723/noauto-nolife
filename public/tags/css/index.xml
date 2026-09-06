@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Css on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/css/</link>
+    <description>Recent content in Css on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 26 Apr 2023 18:21:16 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/css/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DjangoMessageFrameworkにJavaScriptとCSSを当てる【ボタンを押して消せるようにする】</title>
+      <link>http://localhost:43210/post/django-message-framework-javascript-css/</link>
+      <pubDate>Wed, 26 Apr 2023 18:21:16 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-message-framework-javascript-css/</guid>
+      <description>DjangoMessageFrameworkは投稿完了した旨やエラーの理由をクライアント側に表示することができるが、表示させっぱなしになるので少々鬱陶しく感じることもある。 そこで5秒経ったら自動的に消すように仕立てたり、バツボタンを押して消せるように仕立てた。 さらに、fontawesomeを使用している。 ソースコード テンプレート &amp;lt;div class=&amp;#34;notify_message_area&amp;#34;&amp;gt; {% for message in messages %} &amp;lt;div class=&amp;#34;notify_message notify_message_{{ message.tags }}&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;notify_message_content&amp;#34;&amp;gt;{{ message }}&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;notify_message_delete&amp;#34;&amp;gt;&amp;lt;i class=&amp;#34;fas fa-times&amp;#34;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; {% endfor %} &amp;lt;/div&amp;gt; JavaScript(jQuery) //Django</description>
+    </item>
+    <item>
+      <title>inputタグのtype=&#39;file&#39;で画像のサムネイルを表示させる</title>
+      <link>http://localhost:43210/post/input-tag-type-file-thumbnail/</link>
+      <pubDate>Tue, 18 Apr 2023 16:28:27 +0900</pubDate>
+      <guid>http://localhost:43210/post/input-tag-type-file-thumbnail/</guid>
+      <description>fontawesomeを使用しているので、アイコンの表示は別途CDNをインストールしておいてほしい。 ソースコード HTML &amp;lt;label class=&amp;#34;image_input_area&amp;#34;&amp;gt; &amp;lt;input class=&amp;#34;image_input&amp;#34; type=&amp;#34;file&amp;#34; name=&amp;#34;icon&amp;#34; accept=&amp;#34;image/*&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;image_input_icon&amp;#34;&amp;gt;&amp;lt;i class=&amp;#34;fas fa-image&amp;#34;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;img class=&amp;#34;image_input_preview&amp;#34; src=&amp;#34;&amp;#34; alt=&amp;#34;&amp;#34;&amp;gt; &amp;lt;/label&amp;gt; CSS .image_input_area { display:inline-block; border:dashed 0.2rem var(--gray); width:5rem; height:5rem; position:relative; cursor:pointer; } .image_input{ display:none; } .image_input_preview{ width:100%; height:100%;position:absolute; } .image_input_icon{ width:100%; height:100%;position:absolute; } .image_input_icon i{ font-size:2rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); } JavaScript(jQuery) $(&amp;#34;.image_input&amp;#34;).change(function() { const label = $(this).parent(&amp;#34;label&amp;#34;); const file = $(this).prop(&amp;#34;files&amp;#34;)[0]; // 画像以外は処理を停止 if (! file.type.match(&amp;#34;image.*&amp;#34;)) { $(this).val(&amp;#34;&amp;#34;); return; } // 画像表示 const reader = new FileReader(); reader.onload = function() { label.children(&amp;#34;.image_input_preview&amp;#34;).prop(&amp;#34;src&amp;#34;, reader.result ); } reader.readAsDataURL(file); }); 【別解】JavaScript(バニラ) window.addEventListener(&amp;#34;load&amp;#34; , function (){ document.addEventListener(&amp;#34;change&amp;#34;, (event) =&amp;gt; { // type=&amp;#34;file&amp;</description>
+    </item>
+    <item>
+      <title>position:relativeとabsoluteとtransform:translateを使ったセンタリング【どんな画面幅でも中央に配置する】</title>
+      <link>http://localhost:43210/post/transform-centering/</link>
+      <pubDate>Sat, 07 Jan 2023 10:05:00 +0900</pubDate>
+      <guid>http://localhost:43210/post/transform-centering/</guid>
+      <description>例えば、サイトのタイトルなど、どんな状況でも必ず中央に配置したい場合があるだろう。 そういう時は、positionとtransform:translateを使用することで解決できる。 ソースコード まずは下記のソースコードを動かしてもらいたい。 `&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;meta name=&amp;#34;viewport&amp;#34; content=&amp;#34;width=device-width,initial-scale=1&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Hello World test!!&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; body{ /* ブラウザのデフォルトでmarginが付いているので消しておく。*/ margin:0; } .content_area { position:relative; /* content_areaの高さをブラウザの縦幅全開ま</description>
+    </item>
+  </channel>
+</rss>

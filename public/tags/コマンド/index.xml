@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>コマンド on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/</link>
+    <description>Recent content in コマンド on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 03 Nov 2022 15:56:52 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Ubuntu】ディスクの読み込みスピードをチェックする【sudo hdparm -tT デバイス名】</title>
+      <link>http://localhost:43210/post/ubuntu-disk-read-speed-check/</link>
+      <pubDate>Thu, 03 Nov 2022 15:56:52 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-disk-read-speed-check/</guid>
+      <description>これで、ディスクの読み込み速度が調べられる。 sudo hdparm -tT デバイス名 まず、デバイス一覧を下記コマンドで調べる。 sudo fdisk -l デバイスのパスを指定する sudo hdparm -tT /dev/sdb 動かすとこうなる。 やはり、SSD(/dev/sda)とHDD(/dev/sdbと/dev/sdc)では二倍近い読み込み速度の差があるようだ。 結論 sambaをインストールして、ファイルサーバーを作る時に使うとよいだろう。 ディスク速度とネットワークの速度、どちらが</description>
+    </item>
+    <item>
+      <title>Ubuntuのバージョンチェックは lsb_release -a もしくは、cat /etc/os-release でOK</title>
+      <link>http://localhost:43210/post/ubuntu-version-check/</link>
+      <pubDate>Thu, 03 Nov 2022 15:50:20 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-version-check/</guid>
+      <description>lsb_release -a 実行するとこうなる。 もしくは cat /etc/os-release を実行する。こうなる。 SSHでログインした後、サーバーのOSとバージョンを忘れた時に使う。</description>
+    </item>
+  </channel>
+</rss>

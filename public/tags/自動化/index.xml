@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>自動化 on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/%E8%87%AA%E5%8B%95%E5%8C%96/</link>
+    <description>Recent content in 自動化 on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 19 Apr 2025 08:17:38 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E8%87%AA%E5%8B%95%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Seleniumの基本操作のまとめ</title>
+      <link>http://localhost:43210/post/selenium-basic-control/</link>
+      <pubDate>Sat, 19 Apr 2025 08:17:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-basic-control/</guid>
+      <description>Seleniumは同じような処理が続くため、基本操作をまとめた。 ただ、forループとtry 文が続く冗長構成のため、後に修正する予定。 ソースコード from selenium import webdriver from selenium.webdriver.support.ui import WebDriverWait, Select from selenium.webdriver.support import expected_conditions from selenium.webdriver.common.by import By from selenium.common.exceptions import TimeoutException driver = webdriver.Firefox() wait = WebDriverWait(driver, 10) retry = 10 # 要素が見えているか def xpath_visible(xpath: str): return wait.until(excepted_conditions.visibility_of_element_located((By.XPATH, xpath))) def xpath_click(xpath: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.click() except: continue else: return raise TimeoutException(f&amp;#34;クリックできませんでした: {xpath}&amp;#34;) def xpath_send_keys(xpath: str, keys: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.send_keys(keys) except: continue else: return raise TimeoutE</description>
+    </item>
+    <item>
+      <title>【Selenium X Python】フォーム入力やクリックをする時は明示的な待機をする【Webdriverwait】</title>
+      <link>http://localhost:43210/post/selenium-webdriverwait-click/</link>
+      <pubDate>Wed, 30 Nov 2022 15:08:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-webdriverwait-click/</guid>
+      <description>Seleniumでブラウザ操作の自動化をする時、クリックやフォーム入力などは頻繁に行われる。 だが、それがもしtimeモジュールを使用した暗黙的待機の場合、動作に再現性はなく、たびたび不具合に見舞われるだろう。 本記事では、再現性を高めるため、明示的な待機を行うWebdriverwaitを使用したクリックとフォーム入力を行う。 前提 使用しているPythonとライブラリのバージョン、ブラウザなどをまとめる</description>
+    </item>
+  </channel>
+</rss>

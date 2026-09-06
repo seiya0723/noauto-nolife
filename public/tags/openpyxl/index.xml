@@ -1,24 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Openpyxl on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/openpyxl/</link>
+    <link>http://localhost:43210/tags/openpyxl/</link>
     <description>Recent content in Openpyxl on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Fri, 08 Jul 2022 08:15:03 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/openpyxl/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 03 Nov 2022 13:33:46 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/openpyxl/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする</title>
-      <link>https://noauto-nolife.com/post/django-openpyxl/</link>
+      <title>【Python】openpyxlで棒グラフ・折れ線グラフを表示させる【公式から引用】</title>
+      <link>http://localhost:43210/post/openpyxl-graph/</link>
+      <pubDate>Thu, 03 Nov 2022 13:33:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/openpyxl-graph/</guid>
+      <description>コードは公式から引用し、一部編集している https://openpyxl.readthedocs.io/en/stable/charts/bar.html https://openpyxl.readthedocs.io/en/latest/charts/line.html ソースコード from openpyxl import Workbook from openpyxl.chart import BarChart, Reference #書き込みモードでワークブックを作る wb = Workbook(write_only=True) #シートを作る ws = wb.create_sheet() #データ rows = [ [&amp;#39;番号&amp;#39;, &amp;#39;算数&amp;#39;, &amp;#39;国語&amp;#39;], [1, 50, 70], [2, 60, 30], [3, 40, 60], [4, 50, 70], [5, 20, 40], [6, 60, 40], [7, 50, 30], ] #書き込み for row in rows: ws.append(row) #棒グラフを作る chart1 = BarChart() chart1.type = &amp;#34;col&amp;#34; chart1.style = 10 #タイトル、横軸・縦軸の指定 chart1.title = &amp;#34;グラフタイトル&amp;#34; chart1.y_axis.title =</description>
+    </item>
+    <item>
+      <title>【Django】openpyxlでエクセルファイルを新規作成、バイナリでダウンロードする【FileResponse】</title>
+      <link>http://localhost:43210/post/django-openpyxl/</link>
       <pubDate>Fri, 08 Jul 2022 08:15:03 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-openpyxl/</guid>
+      <guid>http://localhost:43210/post/django-openpyxl/</guid>
       <description>Djangoでエクセルファイルを新規作成し、ダウンロード(以下DL)する。 ファイルのDLと言うと、ファイルのアップロードと同じようにやればいいだろうと思うかもしれない。 実際、ファイルをストレージに保存し、そのURLへリダイレクトしてDLする方法でも、問題なく動作する。しかし、これではストレージが圧迫される。 そこで今回は、サーバーのメモリ内に保存されているファイルをバイナリに変換し、レスポンスとして</description>
     </item>
-    
   </channel>
 </rss>

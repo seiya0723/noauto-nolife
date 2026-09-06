@@ -24,9 +24,9 @@ ul,ol {
   padding: 0;
 }
 h1 { font-size: 1.8rem; line-height: 2rem; margin: 1.5rem 0; font-weight:600;}
-h2 { font-size: 1.4rem; line-height: 2rem; margin: 1.5rem 0; font-weight:600;}
-h3 { font-size: 1.2rem; line-height: 1.5rem; margin: 1.5rem 0; }
-h4, h5, h6 { font-size: 1rem; line-height: 1.5rem; margin: 1.5rem 0; }
+h2 { font-size: 1.45rem; line-height: 2rem; margin: 1.5rem 0; font-weight:600;}
+h3 { font-size: 1.25rem; line-height: 1.5rem; margin: 1.5rem 0; }
+h4, h5, h6 { font-size: 1.1rem; line-height: 1.5rem; margin: 1.5rem 0; }
 h2 a{color:white;display:block;}
 main {
   display:block;
@@ -36,10 +36,39 @@ pre {
     background:black;
     padding:0.5rem;
     overflow:auto;
+
+    position:relative;
 }
 pre code {
     color:#0fc;
 }
+.copy_button{
+    user-select: none;
+    display:inline-block;
+    position:absolute;
+    top:0;
+    right:0;
+    color:white;
+
+    cursor:pointer;
+    margin:0.25rem 0.75rem;
+    padding:0.25rem 0.5rem;
+
+    border:solid 0.1rem white;
+    border-radius:0.5rem;
+    
+    transition:0.2s;
+
+}
+.copy_button:hover{
+    background:#0fc;
+    color:black;
+}
+.copy_button:active{
+    background:black;
+    color:white;
+}
+
 p code {
     display:inline-block;
     background:black;
@@ -47,9 +76,11 @@ p code {
     padding:0.1rem 0.25rem;
 }
 li code {
+    display:inline-block;
     background:black;
     color:#0fc;
-    padding:0.25rem;
+    padding:0.1rem 0.25rem;
+    margin:0.1rem 0;
 }
 
 /* input text ui*/
@@ -245,7 +276,8 @@ li code {
     flex-wrap:wrap;
 }
 .thumb {
-    width:20%;
+
+    width:13rem;
     height: 7.5rem;
     background-position: center;
     background-size: 100% 100%;
@@ -254,7 +286,7 @@ li code {
     align-items:center;
 }
 .summary {
-    width:80%;
+    width: calc(100% - 13rem);
     padding:0 1rem;
     display:flex;
     align-items:center;
@@ -262,8 +294,11 @@ li code {
 }
 @media (max-width:768px){
     .thumb{
+        /*
         width:100%;
         height:10rem;
+        */
+        margin:auto;
     }
     .summary{
         width:100%;
@@ -376,6 +411,11 @@ li code {
 .single h2 {background:orange;color:white;padding:0.25rem;text-shadow:2px 2px 2px gray;}
 .single h3 {color:white;border-left:solid 0.5rem orange;border-bottom:solid 0.2rem orange;padding:0.5rem}
 .single h4 {color:white;border-left:double 0.75rem orange;padding:0.25rem 0.5rem;}
+.single h5 {color:white;padding:0.25rem 0;}
+.single h5:before {content:"◆ "; color:orange;}
+
+
+
 .summary_pg {
     font-size:1rem;
 }

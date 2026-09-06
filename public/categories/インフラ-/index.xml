@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>インフラ  on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9-/</link>
+    <description>Recent content in インフラ  on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 25 Dec 2024 14:18:47 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9-/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQliteはマルチスレッド・マルチプロセスに対応していない</title>
+      <link>http://localhost:43210/post/threading-sqlite3/</link>
+      <pubDate>Wed, 25 Dec 2024 14:18:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/threading-sqlite3/</guid>
+      <description>SQliteはマルチスレッド・マルチプロセスに対応していない。 同時に大量のクエリをさばくことはできない。 実際にやってみる djangoで実際にやってみる。ベースは、40分django from django.shortcuts import render,redirect from django.views import View from .models import Topic from .forms import TopicForm import threading def writing(data): form = TopicForm(data) if form.is_valid(): form.save() class IndexView(View): def get(self, request, *args, **kwargs): print(Topic.objects.all().count()) context = {} context[&amp;#34;topics&amp;#34;] = Topic.objects.all() return render(request,&amp;#34;bbs/index.html&amp;#34;,context) def post(self, request, *args, **kwargs): threads = [] copied = request.POST.copy() for i in range(1000): thread = threading.Thread(target=writing, args=(copied,)) threads.append(thread) thread.start() # 全てのスレッドが終了するまで待機 for thread in threads: thread.join() return redirect(&amp;#34;bbs:index&amp;#34;) index = IndexView.as_view() 1回目は正常に1000個分のスレッドを処</description>
+    </item>
+  </channel>
+</rss>

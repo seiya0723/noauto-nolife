@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=43210&amp;path=livereload" data-no-instant defer></script>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="canonical" href="http://localhost:43210/post/drf-react-spa-websocket-chat/">
+
+
+        <link href="http://localhost:43210/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="http://localhost:43210/css/bootstrap-grid.css"> 
+
+        <script src="http://localhost:43210/data/search.js"></script>
+        <script src="http://localhost:43210/js/script.js"></script>
+
+        <title>DRF&#43;ReactのSPAでWebsocketのチャットサイトをつくる - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="DRF&#43;ReactのSPAでWebsocketのチャットサイトをつくる - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:43210/post/drf-react-spa-websocket-chat/">
+<meta property="og:image" content="http://localhost:43210/images/drf-react.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="http://localhost:43210/post/drf-react-spa-websocket-chat/">
+<meta name="twitter:title" content="DRF&#43;ReactのSPAでWebsocketのチャットサイトをつくる - 自動化無しに生活無し">
+<meta name="twitter:image" content="http://localhost:43210/images/drf-react.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/localhost:43210\/"
+    },
+    "headline": "DRF\u002bReactのSPAでWebsocketのチャットサイトをつくる - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/localhost:43210\/images\/drf-react.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2025-01-09T15:40:22JST",
+    "dateModified": "2025-01-09T15:40:22JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/localhost:43210\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="http://localhost:43210/css/style.css" rel="stylesheet">
+        
+
+        
+        
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDX0LW64ZT"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-HDX0LW64ZT');
+        </script>
+        
+
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="http://localhost:43210/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEB開発関係を中心に備忘録をまとめています</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="http://localhost:43210/">HOME</a></li>
+                
+                <li><a href="http://localhost:43210/post/">post</a></li>
+                
+                <li class="active">DRF&#43;ReactのSPAでWebsocketのチャットサイトをつくる</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">DRF&#43;ReactのSPAでWebsocketのチャットサイトをつくる</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+
+        
+
+        <li>作成日時：<time datetime="2025-01-09T15:40:22JST">2025年1月9日 15時40分</time></li>
+        <li>最終更新日時：<time datetime="2025-01-09T15:40:22JST">2025年1月9日 15時40分</time></li>
+
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF/">フルスタック</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/drf/">drf</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/react/">React</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/spa/">spa</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/websocket/">WebSocket</a>
+            
+        </li>
+        
+        
+    </ul>
+
+
+    
+    
+    
+
+
+
+
+    <div class="img-center"><img src="http://localhost:43210/images/drf-react.jpg" alt="thumbnail"></div>
+
+	<div class="article_body"><p>タイトル通り、Django REST FrameworkとReactのSPAで、WebSocketを使ったチャットサイトを作った。</p>
+<p>以前のWebSocket搭載チャットサイト(下記)はReactを使っていないため、SPAではない。今回はReactを搭載したSPAとしている。</p>
+<p><a href="/post/django-websocket-chatsite/">DjangoでWebSocketを使って、チャットサイトを作る</a></p>
+<p>ただし、今回はJWT認証の実装は見送った。理由は後述。</p>
+<h2 id="開発要件">開発要件</h2>
+<ul>
+<li>WebSocketを使ってチャットサイトを作る</li>
+<li>サーバーサイドにDjango REST Framework</li>
+<li>フロントサイドにReact</li>
+<li>react-router-dom でページング</li>
+<li>ルームの検索機能</li>
+<li>ルームのページネーション</li>
+<li>JWT認証は見送る</li>
+</ul>
+<h3 id="websocketとjwt認証">WebSocketとJWT認証</h3>
+<p>JWT認証は、リクエストヘッダにアクセストークンを付与することで、認証状態をチェックできる。</p>
+<p>一方、WebSocket自体には認証方法を制限する仕様はどこにもない。Cookieを使用した認証も使えるようだ。</p>
+<p>参照1: <a href="https://qiita.com/comware_terashi/items/d9e357b0330bb312a37d">https://qiita.com/comware_terashi/items/d9e357b0330bb312a37d</a></p>
+<p>しかし、Cookieを使用した認証方法を採用すると、CSRF検証が動く。CSRF対策を厳重にしておく必要がある。</p>
+<p>参照2: <a href="/post/drf-csrf-validation/">DRFはいつCSRF検証をするのか？</a></p>
+<p>ということで、セキュリティ上の理由から、セッションベースの認証方法は却下。JWT認証とWebSocketを両立させる。</p>
+<p>だが、JWT認証とWebSocketを両立させるには、 Sec-WebSocket-Protocol が必要。</p>
+<p>参照3: <a href="https://nykergoto.hatenablog.jp/entry/2021/05/12/Websocket_%E3%81%AE%E8%AA%8D%E8%A8%BC_%28Authentication%29_%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%83%A1%E3%83%A2">https://nykergoto.hatenablog.jp/entry/2021/05/12/Websocket_%E3%81%AE%E8%AA%8D%E8%A8%BC_%28Authentication%29_%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%83%A1%E3%83%A2</a></p>
+<p>このSec-Websocket-Protocol利用の際には、HTTPSとWSSの利用が必須。</p>
+<p>そこで、別途DjangoのMIDDLEWAREを作る必要がある上、トークンの有効期限なども考慮すると対応は尋常でなく複雑なので、今回は実装は見送った。どうにか最適解を確立させてからのほうが良いだろう。</p>
+<p>ちなみに、クエリストリングにJWT認証のトークンをセットする方法もあるが、HTTPSやWSSでもログに残るので、こちらも却下した。</p>
+<h2 id="サーバーサイド">サーバーサイド</h2>
+<p>今回DRFとWebSocketを使うため</p>
+<ul>
+<li>設定
+<ul>
+<li>config/settings.py</li>
+<li>config/urls.py</li>
+<li>config/asgi.py</li>
+</ul>
+</li>
+<li>アプリ
+<ul>
+<li>chat/models.py</li>
+<li>chat/views.py</li>
+<li>chat/forms.py</li>
+<li>chat/serializers.py</li>
+<li>chat/consumers.py</li>
+<li>chat/routing.py</li>
+</ul>
+</li>
+</ul>
+<p>以上のファイルを用意して、編集した。</p>
+<p>ソースコードには、すぐにReactを切り離すことができるよう、DRFではないビューとテンプレートも残しておいた。</p>
+<p>requirements.txt は以下の通り。</p>
+<pre tabindex="0"><code>asgiref==3.8.1
+attrs==24.2.0
+autobahn==24.4.2
+Automat==24.8.1
+certifi==2024.8.30
+cffi==1.17.1
+channels==4.2.0
+charset-normalizer==3.4.0
+constantly==23.10.4
+cryptography==44.0.0
+daphne==4.1.2
+Django==5.1.4
+django-cors-headers==4.6.0
+djangorestframework==3.15.2
+hyperlink==21.0.0
+idna==3.10
+incremental==24.7.2
+oauthlib==3.2.2
+pyasn1==0.6.1
+pyasn1_modules==0.4.1
+pycparser==2.22
+pyOpenSSL==24.3.0
+requests==2.32.3
+requests-oauthlib==2.0.0
+service-identity==24.2.0
+six==1.17.0
+sqlparse==0.5.2
+tomli==2.2.1
+Twisted==24.11.0
+txaio==23.1.1
+typing_extensions==4.12.2
+urllib3==2.2.3
+zope.interface==7.2
+</code></pre><p>コマンドで個別にインストールする場合は以下の通り。</p>
+<pre tabindex="0"><code>pip install django django-cors-headers djangorestframework daphne channels
+</code></pre><p>また、今回はまだデプロイを想定していないため、Redisも使っていない。</p>
+<h3 id="configsettingspy">config/settings.py</h3>
+<pre tabindex="0"><code>&#34;&#34;&#34;
+Django settings for config project.
+
+Generated by &#39;django-admin startproject&#39; using Django 5.1.4.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.1/topics/settings/
+
+For the full list of settings and their values, see
+https://docs.djangoproject.com/en/5.1/ref/settings/
+&#34;&#34;&#34;
+
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / &#39;subdir&#39;.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = &#39;django-insecure-6)asy#w-p8gyk0d&amp;a+8s17%o0gkq9aky6(9p)4t7-d#x+&amp;wl=e&#39;
+
+# SECURITY WARNING: don&#39;t run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
+# Application definition
+
+INSTALLED_APPS = [
+    &#34;daphne&#34;,
+    &#34;chat.apps.ChatConfig&#34;,
+
+    &#39;corsheaders&#39;,
+    &#39;rest_framework&#39;,
+
+    &#39;django.contrib.admin&#39;,
+    &#39;django.contrib.auth&#39;,
+    &#39;django.contrib.contenttypes&#39;,
+    &#39;django.contrib.sessions&#39;,
+    &#39;django.contrib.messages&#39;,
+    &#39;django.contrib.staticfiles&#39;,
+]
+
+#Django-channels使用時に必ず必要。asgi.pyを読む(ここにWebSocketのルーティング設定が書かれてある。)
+ASGI_APPLICATION = &#39;config.asgi.application&#39;
+
+#開発中はRedisサーバーを建てる必要はない
+CHANNEL_LAYERS = {
+    &#34;default&#34;: {
+        &#34;BACKEND&#34;: &#34;channels.layers.InMemoryChannelLayer&#34;
+    }
+}
+
+#Radisサーバーを使用する場合はこちら
+&#34;&#34;&#34;
+CHANNEL_LAYERS = {
+    &#39;default&#39;: {
+        &#39;BACKEND&#39;: &#39;channels_redis.core.RedisChannelLayer&#39;,
+        &#39;CONFIG&#39;: {
+            &#34;hosts&#34;: [(&#39;127.0.0.1&#39;, 6379)],
+        },
+    },
+}
+&#34;&#34;&#34;
+
+MIDDLEWARE = [
+    &#39;django.middleware.security.SecurityMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+
+    &#39;corsheaders.middleware.CorsMiddleware&#39;,
+]
+
+# この設定は不要？
+CORS_ORIGIN_WHITELIST = [
+     &#39;http://localhost:3000&#39;,
+     &#39;http://localhost:8000&#39;,
+     &#39;ws://localhost:3000&#39;,
+     &#39;ws://localhost:8000&#39;,
+]
+# この設定だけでOK？
+CSRF_TRUSTED_ORIGINS = [
+     &#39;http://localhost:3000&#39;
+]
+
+
+
+ROOT_URLCONF = &#39;config.urls&#39;
+
+TEMPLATES = [
+    {
+        &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,
+        &#39;DIRS&#39;: [ BASE_DIR / &#34;templates&#34; ],
+        &#39;APP_DIRS&#39;: True,
+        &#39;OPTIONS&#39;: {
+            &#39;context_processors&#39;: [
+                &#39;django.template.context_processors.debug&#39;,
+                &#39;django.template.context_processors.request&#39;,
+                &#39;django.contrib.auth.context_processors.auth&#39;,
+                &#39;django.contrib.messages.context_processors.messages&#39;,
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = &#39;config.wsgi.application&#39;
+
+
+# Database
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+DATABASES = {
+    &#39;default&#39;: {
+        &#39;ENGINE&#39;: &#39;django.db.backends.sqlite3&#39;,
+        &#39;NAME&#39;: BASE_DIR / &#39;db.sqlite3&#39;,
+    }
+}
+
+
+# Password validation
+# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        &#39;NAME&#39;: &#39;django.contrib.auth.password_validation.UserAttributeSimilarityValidator&#39;,
+    },
+    {
+        &#39;NAME&#39;: &#39;django.contrib.auth.password_validation.MinimumLengthValidator&#39;,
+    },
+    {
+        &#39;NAME&#39;: &#39;django.contrib.auth.password_validation.CommonPasswordValidator&#39;,
+    },
+    {
+        &#39;NAME&#39;: &#39;django.contrib.auth.password_validation.NumericPasswordValidator&#39;,
+    },
+]
+
+
+# Internationalization
+# https://docs.djangoproject.com/en/5.1/topics/i18n/
+
+LANGUAGE_CODE = &#39;ja&#39;
+
+TIME_ZONE = &#39;Asia/Tokyo&#39;
+
+USE_I18N = True
+
+USE_TZ = True
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.1/howto/static-files/
+
+STATIC_URL = &#39;static/&#39;
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = &#39;django.db.models.BigAutoField&#39;
+</code></pre><p>今回は、DRF+ReactでWebSocketを実装するのが目的なので、Redisの使用は見送った。デプロイ時に使用する。</p>
+<h4 id="corsのホワイトリストの設定は不要">CORSのホワイトリストの設定は不要？</h4>
+<pre tabindex="0"><code># この設定は不要？
+CORS_ORIGIN_WHITELIST = [
+     &#39;http://localhost:3000&#39;,
+     &#39;http://localhost:8000&#39;,
+     &#39;ws://localhost:3000&#39;,
+     &#39;ws://localhost:8000&#39;,
+]
+# この設定だけでOK？
+CSRF_TRUSTED_ORIGINS = [
+     &#39;http://localhost:3000&#39;
+]
+</code></pre><p>ここで、CORSのホワイトリスト設定をしているが、全てコメントアウトしても正常にWebSocketに接続できた。</p>
+<h3 id="configurlspy">config/urls.py</h3>
+<pre tabindex="0"><code>from django.contrib import admin
+from django.urls import path, include
+
+from rest_framework import routers 
+from chat import views 
+
+router = routers.DefaultRouter()
+router.register(r&#34;rooms&#34;, views.RoomView, &#34;rooms&#34;)
+#router.register(r&#34;rooms/&lt;int:room_id&gt;/chatlogs&#34;, views.ChatLogView, &#34;chatlogs&#34;)
+
+urlpatterns = [
+    path(&#39;admin/&#39;, admin.site.urls),
+    path(&#39;api/&#39;, include(router.urls)),
+    path(&#34;api/rooms/&lt;int:room_id&gt;/chatlogs/&#34;, views.ChatLogView.as_view({&#34;get&#34;: &#34;list&#34;}), name=&#34;chatlogs&#34;),
+]
+
+
+
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
+
+def csrf_token(request):
+    return JsonResponse({&#34;csrfToken&#34;: get_token(request)})
+
+urlpatterns.append( path(&#34;api/csrf-token/&#34;, csrf_token, name=&#34;csrf_token&#34;) )
+</code></pre><p>JWT認証をしていないため、CSRFトークンを返している。</p>
+<h3 id="configasgipy">config/asgi.py</h3>
+<pre tabindex="0"><code>&#34;&#34;&#34;
+ASGI config for config project.
+
+It exposes the ASGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/5.1/howto/deployment/asgi/
+&#34;&#34;&#34;
+
+&#34;&#34;&#34;
+import os
+
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault(&#39;DJANGO_SETTINGS_MODULE&#39;, &#39;config.settings&#39;)
+
+application = get_asgi_application()
+
+&#34;&#34;&#34;
+
+import os
+
+from channels.auth import AuthMiddlewareStack
+from channels.routing import ProtocolTypeRouter, URLRouter
+from django.core.asgi import get_asgi_application
+
+# chatアプリのrouting.pyを読み込み、asgi.py につなげる。
+import chat.routing
+
+os.environ.setdefault(&#39;DJANGO_SETTINGS_MODULE&#39;, &#39;config.settings&#39;)
+
+application = ProtocolTypeRouter({
+    &#34;http&#34;: get_asgi_application(),
+    #ここでWebSocketサーバーのルーティングを登録( ws/chat/(?P&lt;room_name&gt;\w+)/ でconsumersを呼び出す )
+    #&#34;websocket&#34;: AuthMiddlewareStack(URLRouter(chat.routing.websocket_urlpatterns)),
+
+    &#34;websocket&#34;: URLRouter(chat.routing.websocket_urlpatterns),
+})
+</code></pre><p>chat/routing.py をセットしている。</p>
+<h3 id="chatmodelspy">chat/models.py</h3>
+<pre tabindex="0"><code>from django.db import models
+from django.utils import timezone
+
+class Room(models.Model):
+    created_at  = models.DateTimeField(verbose_name=&#34;投稿日時&#34;,default=timezone.now)
+    name        = models.CharField(verbose_name=&#34;部屋名&#34;, max_length=200, unique=True)
+
+    # TODO: 実践では、この部分はUserモデルとの多対多とする、数をカウントして表示する。JWT認証実装後に対応
+    headcount   = models.PositiveIntegerField(verbose_name=&#34;参加人数&#34;, default=0)
+
+class ChatLog(models.Model):
+    created_at  = models.DateTimeField(verbose_name=&#34;投稿日時&#34;,default=timezone.now)
+    message     = models.CharField(verbose_name=&#34;メッセージ&#34;, max_length=200)
+    room        = models.ForeignKey(Room , verbose_name=&#34;部屋&#34;, on_delete=models.CASCADE)
+</code></pre><p>今回JWT認証をしていないため、人数はPositiveIntegerField で対応している。</p>
+<p>認証を実装した後は、UserモデルとのManyToManyFieldを使えば良いだろう。</p>
+<h3 id="chatviewspy">chat/views.py</h3>
+<pre tabindex="0"><code>&#34;&#34;&#34;
+from django.shortcuts import render,redirect
+from django.views import View
+
+from .models import Room,ChatLog
+from .forms import RoomForm,ChatLogForm
+
+class IndexView(View):
+    def get(self, request, *args, **kwargs):
+
+        context = {}
+        context[&#34;rooms&#34;]    = Room.objects.all()
+
+        return render(request,&#34;chat/index.html&#34;, context)
+
+    def post(self, request, *args, **kwargs):
+        form    = RoomForm(request.POST)
+
+        if not form.is_valid():
+            return redirect(&#34;chat:index&#34;)
+
+        room    = form.save()
+
+        return redirect(&#34;chat:room&#34;, room.id)
+
+index   = IndexView.as_view()
+
+class RoomView(View):
+
+    def get(self,request, room_name, *args,**kwargs):
+        context = {}
+        context[&#34;room_name&#34;]    = room_name
+
+        context[&#34;room&#34;]         = Room.objects.filter(id=room_name).first()
+        context[&#34;chat_logs&#34;]    = ChatLog.objects.filter(room=room_name).order_by(&#34;created_at&#34;)
+
+        return render(request,&#34;chat/room.html&#34;,context)
+
+room    = RoomView.as_view()
+&#34;&#34;&#34;
+
+
+# == This code was created by https://noauto-nolife.com/post/django-auto-create-views/ == #
+
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
+
+from rest_framework.response import Response
+
+from .models import Room,ChatLog
+from .serializers import RoomSerializer,ChatLogSerializer
+
+class RoomView(viewsets.ModelViewSet):
+    #permission_classes  = [IsAuthenticated]
+    serializer_class    = RoomSerializer
+    queryset            = Room.objects.all()
+
+
+# そもそも、ChatLogの読み書きはconsumers.py のやること。ここはコメントアウト
+# ↑そんなわけない、最初のロード時にこれまでのチャットデータをロードして返す必要がある。
+class ChatLogView(viewsets.ModelViewSet):
+    #permission_classes  = [IsAuthenticated]
+    serializer_class    = ChatLogSerializer
+    queryset            = ChatLog.objects.all()
+
+    def list(self, request, room_id=None):
+        # room_id を利用して関連するChatLogを取得
+        chatlogs    = ChatLog.objects.filter(room_id=room_id)
+        serializer  = ChatLogSerializer(chatlogs, many=True)
+        return Response(serializer.data)
+</code></pre><p>RoomViewは、ルームの操作をするAPI</p>
+<p>ChatLogView はWebSocketで対応するため不要のように思えるが、最初のロード時に何も表示されなくなるので、読み込みのlistメソッドだけ有効にした。</p>
+<h3 id="chatformspy">chat/forms.py</h3>
+<pre tabindex="0"><code># == This code was created by https://noauto-nolife.com/post/django-auto-create-models-forms-admin/ == #
+
+from django import forms
+from .models import Room,ChatLog
+
+class RoomForm(forms.ModelForm):
+    class Meta:
+        model	= Room
+        fields	= [ &#34;name&#34;,&#34;headcount&#34; ]
+
+class ChatLogForm(forms.ModelForm):
+    class Meta:
+        model	= ChatLog
+        fields	= [ &#34;message&#34;, &#34;room&#34; ]
+</code></pre><p>このフォームクラスはシリアライザで代用できるので、あえて作らなくても良い。</p>
+<h3 id="chatserializerspy">chat/serializers.py</h3>
+<p>シリアライザはモデルをJSONに変換することができる。</p>
+<p>WebSocketとも親和性が高いが、今回 consumers.py では使っていない。</p>
+<pre tabindex="0"><code># == This code was created by https://noauto-nolife.com/post/django-auto-create-models-forms-serializers/== #
+
+from rest_framework import serializers
+from .models import Room,ChatLog
+
+class RoomSerializer(serializers.ModelSerializer):
+    created_at  = serializers.DateTimeField(format=&#34;%Y年%m月%d日 %H時%M分%S秒&#34;,required=False)
+    headcount   = serializers.IntegerField(max_value=None, min_value=0, required=False)
+
+    class Meta:
+        model	= Room
+        fields	= [&#34;id&#34;, &#34;created_at&#34;, &#34;name&#34;, &#34;headcount&#34;]
+
+class ChatLogSerializer(serializers.ModelSerializer):
+
+    created_at  = serializers.DateTimeField(format=&#34;%Y年%m月%d日 %H時%M分%S秒&#34;,required=False)
+
+    class Meta:
+        model	= ChatLog
+        fields	= [&#34;id&#34;, &#34;created_at&#34;, &#34;message&#34;, &#34;room&#34;]
+</code></pre><p>シリアライザのIntegerField は最小値と最大値を指定できるようになっている。</p>
+<h3 id="chatconsumerspy">chat/consumers.py</h3>
+<p>WebSocketのビュー部分</p>
+<pre tabindex="0"><code># chat/consumers.py
+import json
+from channels.generic.websocket import AsyncWebsocketConsumer
+from asgiref.sync import sync_to_async
+
+from .models import Room
+from .forms import ChatLogForm
+from django.utils import timezone 
+
+class ChatConsumer(AsyncWebsocketConsumer):
+
+    async def connect(self):
+        self.room_name          = self.scope[&#39;url_route&#39;][&#39;kwargs&#39;][&#39;room_name&#39;]
+        self.room_group_name    = &#39;chat_%s&#39; % self.room_name
+    
+        await self.enter_the_room()
+
+        await self.channel_layer.group_add(
+            self.room_group_name,
+            self.channel_name
+        )
+
+        await self.accept()
+
+    # 入室時、人数を追加する。
+    @sync_to_async
+    def enter_the_room(self):
+        room    = Room.objects.filter(id=self.room_name).first()
+        room.headcount += 1
+        room.save()
+
+
+    async def disconnect(self, close_code):
+        await self.leave_the_room()
+
+        await self.channel_layer.group_discard(
+            self.room_group_name,
+            self.channel_name
+        )
+
+
+    # 退室時、人数を減らす。
+    @sync_to_async
+    def leave_the_room(self):
+        room    = Room.objects.filter(id=self.room_name).first()
+        room.headcount -= 1
+        room.save()
+
+    async def receive(self, text_data):
+
+        text_data_json  = json.loads(text_data)
+        message         = text_data_json[&#39;message&#39;]
+
+        chat_log = await self.save_chat_log(message)
+
+        if chat_log == None:
+            return False
+
+        local_created_at    = timezone.localtime(chat_log.created_at)
+        created_at_str      = local_created_at.strftime(&#39;%Y年%m月%d日 %H時%M分%S秒&#39;)  # 文字列に変換
+
+        await self.channel_layer.group_send(
+            self.room_group_name,
+            {
+                &#39;type&#39;: &#39;chat_message&#39;,
+                &#39;id&#39;: chat_log.id ,
+                &#39;message&#39;: chat_log.message ,
+                &#39;created_at&#39;: created_at_str ,
+            }
+        )
+
+    # TODO: djangoの通常のORM動作は非同期ではないため、sync_to_async でラップする。
+    @sync_to_async
+    def save_chat_log(self, message):
+        dic = {}
+        dic[&#34;room&#34;]     = self.room_name
+        dic[&#34;message&#34;]  = message
+        form    = ChatLogForm(dic)
+
+        if not form.is_valid():
+            print(form.errors)
+            return None
+        
+        return form.save()
+
+
+    async def chat_message(self, event):
+        data    = {}
+        data[&#34;id&#34;]          = event[&#34;id&#34;]
+        data[&#34;message&#34;]     = event[&#34;message&#34;]
+        data[&#34;created_at&#34;]  = event[&#34;created_at&#34;]
+
+        await self.send( text_data=json.dumps(data) )
+</code></pre><h4 id="consumerspyでserializerを使うには">consumers.pyでSerializerを使うには？</h4>
+<p>ここで、チャンネルレイヤーにメッセージを追加している。</p>
+<pre tabindex="0"><code>await self.channel_layer.group_send(
+    self.room_group_name,
+    {
+        &#39;type&#39;: &#39;chat_message&#39;,
+        &#39;id&#39;: chat_log.id ,
+        &#39;message&#39;: chat_log.message ,
+        &#39;created_at&#39;: created_at_str ,
+    }
+)
+
+
+async def chat_message(self, event):
+    data    = {}
+    data[&#34;id&#34;]          = event[&#34;id&#34;]
+    data[&#34;message&#34;]     = event[&#34;message&#34;]
+    data[&#34;created_at&#34;]  = event[&#34;created_at&#34;]
+
+    await self.send( text_data=json.dumps(data) )
+</code></pre><p>このjsonの部分をシリアライザにすると良いだろう。</p>
+<h3 id="chatroutingpy">chat/routing.py</h3>
+<p>WebSocketのルーティング部分</p>
+<pre tabindex="0"><code>from django.urls import path
+from . import consumers
+
+websocket_urlpatterns = [
+    path(&#39;ws/chat/&lt;room_name&gt;/&#39;, consumers.ChatConsumer.as_asgi()),
+]
+</code></pre><p>特筆するべき点は特にない。コンシューマーは、 <code>.as_asgi()</code> でルーティングできる。</p>
+<h2 id="フロントサイド">フロントサイド</h2>
+<p>CRAはもう開発が止まっているため、Viteを使った。package.json は以下の通り</p>
+<pre tabindex="0"><code>{
+  &#34;name&#34;: &#34;frontend&#34;,
+  &#34;private&#34;: true,
+  &#34;version&#34;: &#34;0.0.0&#34;,
+  &#34;type&#34;: &#34;module&#34;,
+  &#34;scripts&#34;: {
+    &#34;dev&#34;: &#34;vite&#34;,
+    &#34;build&#34;: &#34;vite build&#34;,
+    &#34;lint&#34;: &#34;eslint .&#34;,
+    &#34;preview&#34;: &#34;vite preview&#34;
+  },
+  &#34;dependencies&#34;: {
+    &#34;@fortawesome/fontawesome-free&#34;: &#34;^6.7.2&#34;,
+    &#34;axios&#34;: &#34;^1.7.9&#34;,
+    &#34;bootstrap&#34;: &#34;^5.3.3&#34;,
+    &#34;react&#34;: &#34;^18.3.1&#34;,
+    &#34;react-dom&#34;: &#34;^18.3.1&#34;,
+    &#34;react-router-dom&#34;: &#34;^7.1.1&#34;
+  },
+  &#34;devDependencies&#34;: {
+    &#34;@eslint/js&#34;: &#34;^9.17.0&#34;,
+    &#34;@types/react&#34;: &#34;^18.3.18&#34;,
+    &#34;@types/react-dom&#34;: &#34;^18.3.5&#34;,
+    &#34;@vitejs/plugin-react&#34;: &#34;^4.3.4&#34;,
+    &#34;eslint&#34;: &#34;^9.17.0&#34;,
+    &#34;eslint-plugin-react&#34;: &#34;^7.37.2&#34;,
+    &#34;eslint-plugin-react-hooks&#34;: &#34;^5.0.0&#34;,
+    &#34;eslint-plugin-react-refresh&#34;: &#34;^0.4.16&#34;,
+    &#34;globals&#34;: &#34;^15.14.0&#34;,
+    &#34;vite&#34;: &#34;^6.0.5&#34;
+  }
+}
+</code></pre><p>CRAと違い、Viteでは、package.jsonを直接編集しない。コマンドでライブラリをインストールする場合は</p>
+<pre tabindex="0"><code>npm install @fortawesome/fontawesome-free axios bootstrap react-router-dom
+</code></pre><p>続いて、vite.config.json</p>
+<pre tabindex="0"><code>import { defineConfig } from &#39;vite&#39;
+import react from &#39;@vitejs/plugin-react&#39;
+
+// https://vite.dev/config/
+export default defineConfig({
+    plugins: [react()],
+
+    server: {
+        /*
+        hmr: {
+            port: 3001, // HMR の WebSocket を別ポートに変更
+        },
+        */
+        //hmr : false,
+
+        port: 3000, // 使用するポート番号を指定
+        proxy: {
+            &#39;/api&#39;: {
+                target: &#39;http://localhost:8000/&#39;,
+                changeOrigin: true,
+            },
+            &#39;/ws&#39;: {
+                target: &#39;http://localhost:8000/&#39;,
+            },
+        },
+
+    },
+})
+</code></pre><p>WebSocketの接続がうまく行かないため、HMRの設定を無効化するなどしていたが、問題は別にあったようだ。</p>
+<p>使用するコンポーネントは以下の通り。</p>
+<ul>
+<li>App.jsx</li>
+<li>components/Base.jsx</li>
+<li>components/Index.jsx</li>
+<li>components/Room.jsx</li>
+</ul>
+<p>簡易掲示板よりもページ数は少ないため、使用するコンポーネントも少ない。</p>
+<h3 id="appjsx">App.jsx</h3>
+<pre tabindex="0"><code>import &#39;./App.css&#39;
+
+import &#39;@fortawesome/fontawesome-free/css/all.min.css&#39;;
+import &#39;bootstrap/dist/css/bootstrap.min.css&#39;;
+
+import Base from &#34;./components/Base&#34;;
+
+
+const App = () =&gt; {
+  return (
+    &lt;&gt;
+      &lt;Base /&gt;
+    &lt;/&gt;
+  )
+}
+
+export default App
+</code></pre><h3 id="componentsbasejsx">components/Base.jsx</h3>
+<pre tabindex="0"><code>import { BrowserRouter, Routes, Route } from &#39;react-router-dom&#39;;
+import { Link } from &#34;react-router-dom&#34;;
+
+import Index from &#34;./Index&#34;;
+import Room from &#34;./Room&#34;;
+
+const Base = () =&gt; {
+
+    return (
+        &lt;&gt;
+            &lt;BrowserRouter&gt;
+                &lt;header className=&#34;bg-primary&#34;&gt;
+                    &lt;h1&gt;
+                        &lt;Link className=&#34;text-white text-decoration-none&#34; to={&#34;/&#34;}&gt;DRF+ReactのSPAでWebSocketチャットサイト&lt;/Link&gt;
+                    &lt;/h1&gt;
+                &lt;/header&gt;
+
+                &lt;main className=&#34;container&#34;&gt;
+                    &lt;Routes&gt;
+                        &lt;Route path={`/`}          element={&lt;Index /&gt;} /&gt;
+                        &lt;Route path={`/rooms/:id`} element={&lt;Room /&gt;} /&gt;
+                    &lt;/Routes&gt;
+                &lt;/main&gt;
+            &lt;/BrowserRouter&gt;
+
+        &lt;/&gt;
+    )
+};
+
+export default Base;
+</code></pre><p>react-router-domを使ってルーティングしている。</p>
+<h3 id="componentsindexjsx">components/Index.jsx</h3>
+<pre tabindex="0"><code>import React , { useEffect,useState } from &#39;react&#39;;
+import { Link } from &#34;react-router-dom&#34;;
+
+import axios from &#34;axios&#34;;
+
+const Index = () =&gt; {
+
+    const [rooms, setRooms] = useState({});
+    const [newRoom, setNewRoom] = useState({});
+
+    useEffect(() =&gt; {
+        loadRooms();
+    }, []);
+
+    // 今回JWT認証はオミットしたため、CSRFトークンを取得する。
+    const getCsrfToken = async () =&gt; {
+        try {
+            const response = await axios.get(&#34;/api/csrf-token/&#34;);
+            return response.data.csrfToken;
+        } catch (error) {
+            console.error(&#39;Error fetching CSRF token:&#39;, error);
+            return null;
+        }
+    }
+
+    const loadRooms = async () =&gt; {
+        try {
+            const response = await axios.get(&#34;/api/rooms/&#34;);
+
+            const processed = {}
+            for (let room of response.data){
+                processed[room.id] = room
+            }
+            setRooms(processed);
+
+        } catch (error) {
+            console.error(error);
+            if (error.response) {
+                console.error(&#39;Response Error:&#39;, error.response.data);
+                console.error(&#39;Response Status:&#39;, error.response.status);
+                console.error(&#39;Response Headers:&#39;, error.response.headers);
+            } else {
+                console.error(&#39;Request Error:&#39;, error.message);
+            }
+        }
+    }
+    
+    const handleNewRoom = (event) =&gt; {
+        setNewRoom( (prevNewRoom) =&gt; {
+            const updatedNewRoom = { ...prevNewRoom };
+            updatedNewRoom[event.target.name] = event.target.value;
+            return updatedNewRoom;
+        });
+    }
+
+
+    const submitNewRoom = async () =&gt; {
+        try {
+            const csrfToken = await getCsrfToken();
+
+            // TODO:後でJWT認証をするので、CSRFトークンは無しにしておく。
+            await axios.post(&#34;/api/rooms/&#34;, newRoom,
+                { headers: { &#39;X-CSRFToken&#39;: csrfToken } },
+            );
+
+
+            loadRooms();
+        } catch (error) {
+            console.error(error);
+            if (error.response) {
+                console.error(&#39;Response Error:&#39;, error.response.data);
+                console.error(&#39;Response Status:&#39;, error.response.status);
+                console.error(&#39;Response Headers:&#39;, error.response.headers);
+            } else {
+                console.error(&#39;Request Error:&#39;, error.message);
+            }
+        }
+    }
+
+    const deleteRoom = async (id) =&gt; {
+        try {
+            const csrfToken = await getCsrfToken();
+
+            // TODO:後でJWT認証をするので、CSRFトークンは無しにしておく。
+            await axios.delete(`/api/rooms/${id}/`,
+                { headers: { &#39;X-CSRFToken&#39;: csrfToken } },
+            );
+            loadRooms();
+        } catch (error) {
+            console.error(error);
+            if (error.response) {
+                console.error(&#39;Response Error:&#39;, error.response.data);
+                console.error(&#39;Response Status:&#39;, error.response.status);
+                console.error(&#39;Response Headers:&#39;, error.response.headers);
+            } else {
+                console.error(&#39;Request Error:&#39;, error.message);
+            }
+        }
+    }
+
+    return (
+        &lt;&gt;
+            &lt;h2&gt;ルーム作成&lt;/h2&gt;
+
+            &lt;form action=&#34;&#34;&gt;
+                &lt;input className=&#34;form-control w-auto d-inline-block&#34; type=&#34;text&#34; placeholder=&#34;ルーム名を入力してください&#34; name=&#34;name&#34; onChange={handleNewRoom} /&gt;
+                &lt;input className=&#34;btn btn-outline-primary&#34; type=&#34;button&#34; value=&#34;作成&#34; onClick={submitNewRoom} /&gt;
+            &lt;/form&gt;
+
+
+
+            &lt;h2&gt;ルーム一覧&lt;/h2&gt;
+
+            &lt;table className=&#34;table table-striped text-center&#34;&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;ルーム名&lt;/th&gt;
+                        &lt;th&gt;参加人数&lt;/th&gt;
+                        &lt;th&gt;入室&lt;/th&gt;
+                        &lt;th&gt;閉鎖&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+            {
+                Object.entries(rooms).map( ([id, room]) =&gt; (
+                    &lt;tr key={id}&gt;
+                        &lt;td&gt;{ room.name }&lt;/td&gt;
+
+                    {/* 参加人数の表示はリアルタイムではない */}
+                        &lt;td&gt;{ room.headcount } 人&lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;Link className=&#34;btn btn-outline-success&#34; to={`rooms/${id}`}&gt;入室&lt;/Link&gt;
+                        &lt;/td&gt;
+                        &lt;td&gt;
+                            &lt;span className=&#34;btn btn-outline-danger&#34; onClick={ () =&gt; { deleteRoom(id) }} &gt;閉鎖&lt;/span&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                ))
+            }
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+
+
+        &lt;/&gt;
+    );
+}
+
+export default Index;
+</code></pre><p>ルームの作成と削除を受け付けている。</p>
+<p>JWT認証をしていないため、CSRFトークンをセットしてリクエストしている。</p>
+<h3 id="componentsroomjsx">components/Room.jsx</h3>
+<pre tabindex="0"><code>import React , { useEffect,useState,useRef } from &#34;react&#34;;
+import axios from &#34;axios&#34;;
+
+import { useParams } from &#34;react-router-dom&#34;;
+import { Link } from &#34;react-router-dom&#34;;
+
+const Room = () =&gt; {
+    const { id } = useParams();
+
+    const [chatLogs, setChatLogs] = useState({});
+    const [newChatLog, setNewChatLog] = useState(&#34;&#34;);
+
+    const ws = useRef(null);
+
+    // WebSocketの接続
+    useEffect(() =&gt; {
+        loadChatLogs();
+
+        // WebSocketサーバーのURL
+        // const socket = new WebSocket(`ws://${window.location.host}/ws/chat/${id}/`);
+        // TODO: エンドポイントのオリジンをハードコードしているので、どうにかする。
+        const socket = new WebSocket(`ws://localhost:8000/ws/chat/${id}/`);
+
+        socket.onopen = () =&gt; {
+            console.log(&#34;WebSocket接続完了&#34;);
+        };
+
+        socket.onmessage = (event) =&gt; {
+            // WebSocketサーバーから受け取ったメッセージをStateにセットする。
+            setChatLogs((prevChatLogs) =&gt; {
+                const updatedChatLogs = { ...prevChatLogs };
+
+                // event.data は JSON文字列なので、パースする。
+                const data  = JSON.parse(event.data);
+
+                updatedChatLogs[data.id] = data;
+
+                return updatedChatLogs;
+            });
+            console.log(event.data);
+        };
+
+        socket.onerror = (error) =&gt; {
+            console.error(&#34;WebSocket エラー:&#34;, error);
+        };
+
+        socket.onclose = () =&gt; {
+            console.log(&#34;WebSocket 切断&#34;);
+        };
+
+        ws.current = socket;
+
+        // コンポーネントがアンマウントされた時にWebSocketを閉じる
+        return () =&gt; {
+            if (socket) {
+                socket.close();
+            }
+        };
+
+    }, []);
+
+    const loadChatLogs = async () =&gt; {
+        try {
+            const response = await axios.get(`/api/rooms/${id}/chatlogs/`);
+            
+            // { 1: { オブジェクト,  }, 2: {...}, 3: {...} } この形式に変換する
+            const processed = {}; 
+            for (let chatlog of response.data){
+                processed[chatlog.id] = chatlog;
+            }
+            setChatLogs(processed);
+
+        } catch (error) {
+            console.error(error);
+            if (error.response) {
+                console.error(&#39;Response Error:&#39;, error.response.data);
+                console.error(&#39;Response Status:&#39;, error.response.status);
+                console.error(&#39;Response Headers:&#39;, error.response.headers);
+            } else {
+                console.error(&#39;Request Error:&#39;, error.message);
+            }
+        }
+    }
+
+    const handleNewChatLog = (e) =&gt; {
+        setNewChatLog(e.target.value);
+    };
+
+    const submitNewChatLog = () =&gt; {
+        if (ws.current &amp;&amp; newChatLog.trim() !== &#34;&#34;) {
+
+            ws.current.send(JSON.stringify({ &#39;message&#39;: newChatLog }));
+            setNewChatLog(&#34;&#34;);
+        }
+    };
+
+
+    return (
+        &lt;&gt;
+            &lt;h2&gt;ルーム&lt;/h2&gt;
+            &lt;input className=&#34;form-control w-auto d-inline-block&#34; type=&#34;text&#34; value={newChatLog} onChange={handleNewChatLog} placeholder=&#34;メッセージを入力&#34; /&gt;
+            &lt;input className=&#34;btn btn-outline-primary&#34; type=&#34;button&#34; onClick={submitNewChatLog} value=&#34;送信&#34; /&gt;
+
+            &lt;div&gt;
+                {Object.entries(chatLogs).map( ([id , chatlog]) =&gt; (
+                    &lt;div key={id}&gt;{chatlog.created_at}:{chatlog.message}&lt;/div&gt;
+                ))}
+            &lt;/div&gt;
+        &lt;/&gt;
+    );  
+};
+
+export default Room;
+</code></pre><h3 id="reactでwebsocketを動作させるには">ReactでWebSocketを動作させるには？</h3>
+<p>まず、useEffectでWebSocketの接続をする。</p>
+<p>ここでWebSocketの接続をしている。エンドポイントのオリジンをハードコードしているのは、どうにかしたいところだ。</p>
+<pre tabindex="0"><code>const socket = new WebSocket(`ws://localhost:8000/ws/chat/${id}/`);
+</code></pre><p>このWebSocketのオブジェクトは、useRefに格納しておくと良いだろう。useRefは値が変化しても再レンダリングはしない。</p>
+<p>webSocketのオブジェクトが変わるわけではないが、useStateに格納する理由はないため、今回はuseRefとした。</p>
+<h2 id="動かすとこうなる">動かすとこうなる</h2>
+<p>これがルーム一覧画面。</p>
+<div class="img-center"><img src="/images/2025-01-11_15-05_01.png" alt=""></div>
+<p>ルームの作成と削除ができる。</p>
+<div class="img-center"><img src="/images/2025-01-11_15-05_02.png" alt=""></div>
+<p>ルーム内の画面。メッセージのやり取りができる。</p>
+<h2 id="結論">結論</h2>
+<p>後はJWT認証を実装させれば完璧。</p>
+<p>JWT認証とWebSocketを両立させるには、Sec-WebSocket-Protocol というものを使えば良いらしい。もしくはWebSocket確立後に、メッセージに含ませる方法。</p>
+<p><a href="https://nykergoto.hatenablog.jp/entry/2021/05/12/Websocket_%E3%81%AE%E8%AA%8D%E8%A8%BC_%28Authentication%29_%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%83%A1%E3%83%A2">https://nykergoto.hatenablog.jp/entry/2021/05/12/Websocket_%E3%81%AE%E8%AA%8D%E8%A8%BC_%28Authentication%29_%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E3%83%A1%E3%83%A2</a></p>
+<p>JWT認証を実装後、カスタムユーザーモデルを使ってプロフィールを用意し、アイコンなどもつければ、LINEなどのメッセンジャーアプリとやっていることに変わりないだろう。</p>
+<p>DRFはAPIを返しているだけなので、Reactだけでなくネイティブアプリとも連携はできる。</p>
+<p>サーバーサイドにDRFを用意し、ブラウザのユーザーにはReactを。スマホのネイティブアプリにはReactNativeなどを使えば、どんな端末でも利用できるだろう。</p>
+<p>スマホアプリ開発の勉強もしたいと思う。</p>
+<p>また、ここまで来ると日本語の情報どころか英語の情報も限られ、ChatGPTでさえまともに答えられない内容が多い。</p>
+<p>この設計で本当にセキュリティ的に大丈夫なのか疑問だ。</p>
+<p>そこで、オフェンシブセキュリティの勉強もやっていきたいところだ。</p>
+<h2 id="ソースコード">ソースコード</h2>
+<p><a href="https://github.com/seiya0723/drf-react-spa-websocket-chatsite">https://github.com/seiya0723/drf-react-spa-websocket-chatsite</a></p>
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="http://localhost:43210/post/startup-nextjs-typescript/">Next.jsとTypeScriptで簡易掲示板をつくる<time class="relate_time">2025年4月4日 09時03分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/fastapi-websocket/">FastAPIでWebSocketを実現する<time class="relate_time">2025年3月16日 09時09分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/react-useref-usememo/">【React】値が変わっても再レンダリングをしないuseRefとuseMemoの違い【デバウンス向けなのは？】<time class="relate_time">2025年3月7日 10時59分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/drf-react-spa-websocket-chat-jwt/">【Sec-Websocket-Protocol】DRF&#43;ReactのSPAでWebsocketのチャットサイトでJWT認証をする<time class="relate_time">2025年3月7日 10時31分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/javascript-debounce/">デバウンスしてキー入力の度にイベントを発火し続けないようにする【再レンダリング地獄対策】<time class="relate_time">2025年3月4日 10時57分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/react-usecontext-custom-hook/">次の投稿<br><span class="summary_pg">【React】Contextとカスタムフックでログイン・ログアウト、認証状態を扱う</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/drf-modelviewset-dynamic-routing/">前の投稿<br><span class="summary_pg">DRFでModelViewSetの動的ルーティング(URL内引数)を作る</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="http://localhost:43210/information/introduction/"><img class="author_img" src="http://localhost:43210/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: NaN</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF">フルスタック</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ </a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E9%96%8B%E7%99%BA">ロボット開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E6%98%A0%E5%83%8F%E5%87%A6%E7%90%86">映像処理</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/react">react</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E9%96%8B%E7%99%BA">ai開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">pythonライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/drf">drf</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">javascriptライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fastapi">fastapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pytorch">pytorch</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sql">sql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/keras">keras</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/lpic">lpic</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E5%AE%9F%E8%A3%85%E6%A4%9C%E5%AE%9A">ai実装検定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css">css</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/c">c＃</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/llm">llm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/next.js">next.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/oracle">oracle</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rag">rag</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/spa">spa</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A1%E3%83%A2">メモ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABllm">ローカルllm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/.net">.net</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cnn">cnn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/db">db</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nlp">nlp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qdrant">qdrant</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/raspberry-pi">raspberry pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/redis">redis</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/serializers.py">serializers.py</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/typescript">typescript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%A2%E3%83%87%E3%83%AB">カスタムユーザーモデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89">コマンド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3">マークダウン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%82%99%E5%BF%98%E9%8C%B2">備忘録</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E5%8B%95%E5%8C%96">自動化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%B3%87%E6%A0%BC%E8%A9%A6%E9%A8%93">資格試験</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E5%8A%B9%E7%8E%87%E5%8C%96">開発効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bootstrap">bootstrap</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fetchapi">fetchapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/firefox">firefox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fullcalendar">fullcalendar</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gnome">gnome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gui">gui</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/java">java</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jwt">jwt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/latex">latex</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linq">linq</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/microsoftaccess">microsoftaccess</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/modprobe">modprobe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/mysql">mysql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nodejs">nodejs</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ocr">ocr</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ogp">ogp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ollama">ollama</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pillow">pillow</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qt">qt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/reactnative">reactnative</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/render.com">render.com</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rtmp">rtmp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/scikit-learn">scikit-learn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seaborn">seaborn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seo%E5%AF%BE%E7%AD%96">seo対策</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlalchemy">sqlalchemy</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sse">sse</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/systemd">systemd</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tempermonkey">tempermonkey</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">webデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アニメーション</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89">クラウド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B5%E3%83%BC%E3%83%9C%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC">サーボモーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E8%8A%B8">シェル芸</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%83%9E%E3%83%9B%E3%82%A2%E3%83%97%E3%83%AA">スマホアプリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%99%E3%82%AF%E3%83%88%E3%83%ABdb">ベクトルdb</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%86%E9%A1%9E%E5%95%8F%E9%A1%8C">分類問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%9E%E5%B8%B0%E5%95%8F%E9%A1%8C">回帰問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%B2%E7%A2%81">囲碁</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%A4%9A%E5%AF%BE%E5%A4%9A">多対多</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92">教師あり学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%AA%E3%81%97%E5%AD%A6%E7%BF%92">教師なし学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E5%8A%A0%E5%B7%A5">画像加工</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98">画像認識</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86">非同期処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="http://localhost:43210/post/fastapi-nextjs-crud/">FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-fastapi/">FastAPIのプロジェクト構成、ルーティング、モデル、DB使用方法について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-qdrant/">QdrantのCRUD、コレクションとポイント、ハイブリッド検索について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/javascript-self-chunks/">RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/qdrant-rag-system/">RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/python-local-llm-rag/">OllamaでRAGを実現する。</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/local-llm-install/">UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-jisso-kentei-s-grade/">AI実装検定S級合格体験記</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-question/">AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-mock/">AI実装検定S級の模擬試験</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Books</div>
+
+        <div class="row">
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/481561072X/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/I/51Y0-P+m94L.jpg" alt="">
+                    </div>
+                    <div>モダンJavaScriptの基本から始める　React実践の教科書　（最新ReactHooks対応）</div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/B09K235CTP/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/P/B09K235CTP.jpg" alt="">
+                    </div>
+                    <div>現場で使える Django の教科書《基礎編》［3.2 LTS 対応版］</div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

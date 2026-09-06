@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ローカルLLM on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABllm/</link>
+    <description>Recent content in ローカルLLM on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 29 Aug 2026 08:48:08 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABllm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る</title>
+      <link>http://localhost:43210/post/fastapi-nextjs-crud/</link>
+      <pubDate>Sat, 29 Aug 2026 08:48:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/fastapi-nextjs-crud/</guid>
+      <description>FastAPIとNext.jsの経験がない中で、チュートリアル的な意味で作った。 【フェーズ1】FastAPIでStreamResponseをするローカルLLM(Ollama) 構成は以下の通り . ├── main.py ├── routers │ └── chat.py ├── crud.py ├── models.py ├── schemas.py ├── database.py ├── chat.db └── requirements.txt 全体像はこうなる。 以下、ファイルごとの役割 ファイル・フォルダ 役割 main.py サーバー起動用 routers エンドポイントフォルダ chat.py チャットGPT風アプリのエン</description>
+    </item>
+    <item>
+      <title>RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</title>
+      <link>http://localhost:43210/post/qdrant-rag-system/</link>
+      <pubDate>Mon, 01 Jun 2026 18:27:07 +0900</pubDate>
+      <guid>http://localhost:43210/post/qdrant-rag-system/</guid>
+      <description>前提 GPU: RTX A2000 12GB LLM: Ollama(Gemma-7B 4bit量子化仕様) RAG: Qdrant 上記環境下で、指定のディレクトリ内のテキストファイルをすべて読み込み、RAGを実現させる。 qdrantの立ち上げとOllama と Gemma 7B のインストール Gemma 7Bのインストール。 ollama pull gemma:7b すでにOllamaでは4bit量子化仕様を配布しているので、あえて指定をする必要はない。上記コマンドで4bit量子化仕様が手に入る。 続いてqdrantはdockerで起動させる #! /bin/bash docker run -d</description>
+    </item>
+    <item>
+      <title>OllamaでRAGを実現する。</title>
+      <link>http://localhost:43210/post/python-local-llm-rag/</link>
+      <pubDate>Sun, 31 May 2026 14:41:24 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-local-llm-rag/</guid>
+      <description>すでにollamaとgemma:2bをインストール済みとする。 参照: UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama) RAGの実装とソースコード pip install faiss-cpu sentence-transformers numpy import faiss import numpy as np from sentence_transformers import SentenceTransformer import subprocess # ========================= # 1. ドキュメント準備 # ========================= documents = [ &amp;#34;RAGとは、検索と生成を組み合わせたAI手法です。&amp;#34;, &amp;#34;FAISSはベクトル検索ライブラリです。&amp;#34;, &amp;#34;Oll</description>
+    </item>
+  </channel>
+</rss>

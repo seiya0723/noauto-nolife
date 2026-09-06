@@ -1,24 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cookie on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/cookie/</link>
+    <link>http://localhost:43210/tags/cookie/</link>
     <description>Recent content in Cookie on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <lastBuildDate>Fri, 12 Aug 2022 16:32:07 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/cookie/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <atom:link href="http://localhost:43210/tags/cookie/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【Django】Cookieをサーバーサイドで操作する</title>
-      <link>https://noauto-nolife.com/post/django-control-cookie/</link>
+      <link>http://localhost:43210/post/django-control-cookie/</link>
       <pubDate>Fri, 12 Aug 2022 16:32:07 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-control-cookie/</guid>
+      <guid>http://localhost:43210/post/django-control-cookie/</guid>
       <description>カジュアルなウェブアプリではDBにデータを保存させるよりもCookieに直接保存する場合が多いだろう。 簡易掲示板における名前など、一度入力したデータを再度入力させる場合も、クライアントにとっては使い勝手が悪いので、Cookieをセットして表示させたほうが良い。 サンプルとなるコードはいつもの40分Django。 views.pyにてCookieをセット、参照する testというキー名、値はHelloでC</description>
     </item>
-    
+    <item>
+      <title>JavascriptからCookieを扱う【動画の設定音量の記録と読み込み】</title>
+      <link>http://localhost:43210/post/javascript-cookie/</link>
+      <pubDate>Tue, 13 Apr 2021 18:59:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-cookie/</guid>
+      <description>JavaScriptからCookieを扱う。これで、サイトのデータをユーザーのブラウザに保存できる。 Cookieにvideoタグで設定した音量情報を格納、読み込みするコード 実例を交えながら解説する。下記はvideoタグで指定した音量をCookieに記録する。 window.addEventListener(&amp;quot;load&amp;quot; , function (){ const video = document.querySelector(&amp;quot;video&amp;quot;); video.addEventListener(&amp;quot;volumechange&amp;quot;,(event) =&amp;gt; { document.cookie = &amp;quot;volume=&amp;quot; + decodeURIComponent(event.target.volume) + &amp;quot;;Path=/single;SameSite=strict&amp;quot;; }); set_video_volume(); }); function set_video_volume(){ let cookies = document.cookie; console.log(cookies); let cookiesArray = cookies.split(&#39;;&#39;); let volume = 0; for(let c of cookiesArray) { console.log(c); let cArray = c.split(&#39;=&#39;); if( cArray[0] === &amp;quot;volume&amp;quot;){ volume = Number(cArray[1]); console.log(volume); break; } } const video = document.querySelector(&amp;quot;video&amp;quot;); video.volume = volume; } Cookie</description>
+    </item>
   </channel>
 </rss>

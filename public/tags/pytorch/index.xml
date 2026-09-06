@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pytorch on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/pytorch/</link>
+    <description>Recent content in Pytorch on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 16 May 2026 08:52:42 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</title>
+      <link>http://localhost:43210/post/ai-exam-rank-s-question/</link>
+      <pubDate>Sat, 16 May 2026 08:52:42 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-s-question/</guid>
+      <description>主に、pytorchとkerasの実装上の問題についてまとめる。 Q: pytorch の シーケンス系レイヤ(RNNやTransformer)で使用される batch_first 引数とはなにか？ A. 入力テンソルの次元の並び順を指定している。 batch_first 引数が使われる場所 以下、シーケンス系のレイヤで使用されている。 RNN系 torch.nn.RNN torch.nn.LSTM torch.nn.GRU Transformer系 torch.nn.Transformer torch.nn.TransformerEncoderLayer torch.nn.MultiheadAttention batch_first 指定による作用 この引数の指定により、入力テンソルの次元の並び順を指定できる。 batch_fir</description>
+    </item>
+    <item>
+      <title>AI実装検定S級の模擬試験</title>
+      <link>http://localhost:43210/post/ai-exam-rank-s-mock/</link>
+      <pubDate>Mon, 11 May 2026 17:28:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-s-mock/</guid>
+      <description>■ CNN（30問） VGGに関する記述として正しいものはどれか A. 畳み込みカーネルは主に7×7を使用 B. 畳み込みカーネルは主に3×3を積み重ねる C. Residual接続を持つ D. Depthwise Separable Convを使用 KerasでVGG風のブロックを作る際に適切なのはどれか A. Conv2D → BatchNorm → ReLU → MaxPool B. Dense → Conv2D → Dropout C. Conv1D → Flatten → LSTM D. GlobalAveragePooling → Conv2D VGGの欠点として適切なのはどれか A. 表現力が低い B. パラメータ数が多い C. 勾配消失が発生しない D. 軽量モデルである G</description>
+    </item>
+    <item>
+      <title>【箇条書き】NLPモデルの特徴まとめ</title>
+      <link>http://localhost:43210/post/nlp-model-feature/</link>
+      <pubDate>Sat, 09 May 2026 08:28:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/nlp-model-feature/</guid>
+      <description>前提と基礎知識 NLPモデルに入力データが与えられるまでの過程 文章を与える ↓ Tokenizerでトークン化（単語・サブワード・文字などに分割） 例: &amp;#34;I love NLP&amp;#34; → [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] ↓ 語彙表（Vocabulary）を使って、トークン → トークンID に変換 例: [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] → [101, 2293, 17953, 1925] ↓ ※ 必要に応じてパディング・マスキング・特殊トークン付与 例: [CLS], [SEP], [PAD] などをここで追加（BERTなど） ↓ Embedding層にトークンIDを与える └ ID</description>
+    </item>
+    <item>
+      <title>【箇条書き】CNNモデルの特徴まとめ</title>
+      <link>http://localhost:43210/post/cnn-model-feature/</link>
+      <pubDate>Mon, 04 May 2026 10:35:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/cnn-model-feature/</guid>
+      <description>簡単にCNNモデルの特徴を確認できるよう、3行〜6行ほどでまとめる。 VGG VGG16は3x3畳み込みを13層、全結合層を3層重ねたシンプル構造 畳み込み後の全結合層の計算コストが非常に高い(パラメーター1億3千万) pytorchではオリジナルのVGGにはないバッチ正規化(Batch Normalization)が使用されている。(※勾配消失・爆発対策) GoogLeNet 1x1 3x3 5x5 の異なる畳込みを並列で行う(後にチャンネル方向</description>
+    </item>
+    <item>
+      <title>【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る</title>
+      <link>http://localhost:43210/post/pytorch-torchvision-models/</link>
+      <pubDate>Sun, 12 Apr 2026 16:32:53 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-torchvision-models/</guid>
+      <description>VGG ソースコード: https://github.com/pytorch/vision/blob/main/torchvision/models/vgg.py VGGは3x3フィルタを重ねている単純なモデル。 とりわけVGG16 はプーリング層を除いた、畳み込み層(13)+全結合層(3) の計16層で構成されている。 VGGの全結合層は4096ユニットもあり、これが大量のメモリを消費している。 また、パラメーター数は1億3000万を超えており、caltech-101程度のデータ量(1クラス50件)では過学習を起こす。 期待をしている画像サイズは22</description>
+    </item>
+    <item>
+      <title>【pytorch】caltech-101 を使ってCNNモデルの歴史を辿る【VGG16からEfficientNetまで】</title>
+      <link>http://localhost:43210/post/pytorch-caltech101/</link>
+      <pubDate>Sun, 12 Apr 2026 11:56:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-caltech101/</guid>
+      <description>備考 caltech-101 の中にはモノクロ画像(チャンネル数1)が混ざっているため、前処理でチャンネル数を3に変換する。 学習済みのモデルを使用して、学習をさせる GPUはA2000 12GBを使用する 今回はあくまでもモデルごとの違いをコードを通じて体感することが目的。パラメータが最適であるかは不問。 requirements.txt cuda-bindings==13.2.0 cuda-pathfinder==1.5.2 cuda-toolkit==13.0.2 filelock==3.25.2 fsspec==2026.3.0 Jinja2==3.1.6 MarkupSafe==3.0.3 mpmath==1.3.0 networkx==3.4.2 numpy==2.2.6 nvidia-cublas==13.1.0.3 nvidia-cuda-cupti==13.0.85 nvidia-cuda-nvrtc==13.0.88 nvidia-cuda-runtime==13.0.96 nvidia-cudnn-cu13==9.19.0.56 nvidia-cufft==12.0.0.61 nvidia-cufile==1.15.1.6 nvidia-curand==10.4.0.35 nvidia-cusolver==12.0.4.66 nvidia-cusparse==12.6.3.3 nvidia-cusparselt-cu13==0.8.0 nvidia-nccl-cu13==2.28.9 nvidia-nvjitlink==13.0.88 nvidia-nvshmem-cu13==3.4.5 nvidia-nvtx==13.0.85 pillow==12.2.0 scipy==1.15.3 sympy==1.14.0 torch==2.11.0 torchvision==0.26.0 triton==3.6.0 typing_extensions==4.15.0 VGG16 VGG16 は3x3 畳み込みをとにかく深くして、単純にすることを目</description>
+    </item>
+    <item>
+      <title>pytorch の nn.moduleを継承して自作AIモデルを作り、CNNモデルの歴史を辿る</title>
+      <link>http://localhost:43210/post/pytorch-cnn-model-origin/</link>
+      <pubDate>Sun, 05 Apr 2026 15:23:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/pytorch-cnn-model-origin/</guid>
+      <description>CNNの歴史。 この歴史に沿って、FassionMNISTに対し、nn.moduleで各AIモデルに沿ったモデルを作る。 VGG 3x3 の畳み込みをただ深く積み重ねる class VGG_Fashion(nn.Module): def __init__(self): super(VGG_Fashion, self).__init__() self.features = nn.Sequential( # Block 1 nn.Conv2d(1, 32, 3, padding=1), nn.ReLU(), nn.Conv2d(32, 32, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2), # 14x14 # Block 2 nn.Conv2d(32, 64, 3, padding=1), nn.ReLU(), nn.Conv2d(64, 64, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2) # 7x7 ) self.classifier = nn.Sequential( nn.Linear(64 * 7 * 7, 512), nn.ReLU(), nn.Dropout(0.5), nn.Linear(512, 10) ) GoogLeNet 1x1 フィルタを使用して次元数を削減している。(※ 5x5 畳み込みはサイズの都合上、省略) class InceptionModule(nn.Module): def __init__(self, in_ch, out_1x1, out_3x3): super().__init__() self.branch1 = nn.Conv2d(in_ch, out_1x1, kernel_size=1) self.branch2 = nn.Sequential( nn.Conv2d(in_ch, out_3x3//2, kernel_size=1), nn.Conv2d(out_3x3//2, out_3x3, kernel_size=3, padding=1) ) def forward(self, x):</description>
+    </item>
+  </channel>
+</rss>

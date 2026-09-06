@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/react/</link>
+    <description>Recent content in React on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 04 Apr 2025 09:03:11 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Next.jsとTypeScriptで簡易掲示板をつくる</title>
+      <link>http://localhost:43210/post/startup-nextjs-typescript/</link>
+      <pubDate>Fri, 04 Apr 2025 09:03:11 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-nextjs-typescript/</guid>
+      <description>Next.js を使えば、フロントからサーバーサイドまで一貫してJavaScript(TypeScript)でウェブアプリをつくる。 npx create-next-app startup-bbs このようにプロジェクトを作った。 cd startup-bbs npm run dev これでサーバーが起動すればプロジェクト作成はOK。 プロジェクトのディレクトリ構成 startup-bbs の中は以下のようになっている。 $ ls -al 合計 264 drwxrwxr-x 7 akagi akagi 4096 4月 4 10:40 . drwxrwxr-x 3 akagi akagi 4096 4月 4 10:39 .. drwxrwxr-x 8 akagi akagi 4096 4月 4 10:39 .git -rw-rw-r-- 1 akagi akagi 480 4月 4 10:39 .gitignore drwxrwxr-x 7 akagi akagi 4096 4月 4 10:40 .next -rw-rw-r-- 1 akagi akagi 1450</description>
+    </item>
+    <item>
+      <title>【React】値が変わっても再レンダリングをしないuseRefとuseMemoの違い【デバウンス向けなのは？】</title>
+      <link>http://localhost:43210/post/react-useref-usememo/</link>
+      <pubDate>Fri, 07 Mar 2025 10:59:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-useref-usememo/</guid>
+      <description>入力欄に入力をするたび発火をする時、Stateに保存し続けると頻繁に再レンダリングが発動してパフォーマンスが落ちる。そこでデバウンスを採用する。 デバウンスしてキー入力の度にイベントを発火し続けないようにする【再レンダリング地獄対策】 このデバウンスをReactで実装し、setTimeoutのオブジェクトを記録するには、useRefが正解。 同じように値が変わっても再レンダリングをしないhookとしてu</description>
+    </item>
+    <item>
+      <title>【Sec-Websocket-Protocol】DRF&#43;ReactのSPAでWebsocketのチャットサイトでJWT認証をする</title>
+      <link>http://localhost:43210/post/drf-react-spa-websocket-chat-jwt/</link>
+      <pubDate>Fri, 07 Mar 2025 10:31:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-websocket-chat-jwt/</guid>
+      <description>DRF+ReactのSPAでWebsocketのチャットサイトをつくる と DRF+ReactのCRUD簡易掲示板SPAでJWT認証を実装する の続き。 今回は、先にSPAでJWT認証を済ませたうえで、WebSocketを行うようにした。Sec-WebSocket-Protocol を使っている。 トークンの検証が煩雑になるため、WebSocketのメッセージ部にJWTトークンは含ませない設計にした。 WebS</description>
+    </item>
+    <item>
+      <title>デバウンスしてキー入力の度にイベントを発火し続けないようにする【再レンダリング地獄対策】</title>
+      <link>http://localhost:43210/post/javascript-debounce/</link>
+      <pubDate>Tue, 04 Mar 2025 10:57:59 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-debounce/</guid>
+      <description>ReactはStateの変化で再レンダリングをする仕様である。 Stateの高頻度な変更は、再レンダリングを頻繁に発生させ、表示が遅くなると言った問題が起こる。 この問題を防ぐためにも、キー入力の度にStateを書き換えるのではなく、最後のキー入力が終わって1秒経ってからStateを書き換えるという仕様に仕立てる。 このしくみをデバウンスという。 このデバウンスのしくみはsetTimeoutの操作で簡単に</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのCRUD簡易掲示板SPAでJWT認証を実装する</title>
+      <link>http://localhost:43210/post/drf-react-spa-crud-bbs-jwt/</link>
+      <pubDate>Tue, 14 Jan 2025 08:56:12 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-crud-bbs-jwt/</guid>
+      <description>DRF+ReactのSPAでCRUD簡易掲示板をつくる このDRF+ReactのCRUD簡易掲示板SPAに、JWT認証を実装する。 なぜなら、JWT認証を実装しない場合、通常のDjangoのセッションベースの認証を実装する場合では、CSRF検証が必要になるから。 開発要件 JWT認証を実装する( CSRF検証の廃止 ) ログイン、ログアウト、トークンの更新、アカウント新規作成の機能 ユーザー名とパスワードを使用し</description>
+    </item>
+    <item>
+      <title>【React】Contextとカスタムフックでログイン・ログアウト、認証状態を扱う</title>
+      <link>http://localhost:43210/post/react-usecontext-custom-hook/</link>
+      <pubDate>Sun, 12 Jan 2025 13:13:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-usecontext-custom-hook/</guid>
+      <description>Reactで全てのコンポーネントでStateや関数を扱いたい場合がある。 propsを使う場合はバケツリレーになってしまい、見通しが悪くなる。 そこで、Contextを使い、全コンポーネントでStateや関数を使えるようにする。 【React】グローバルなStateを使って、Propsバケツリレー問題を解決する 更に、カスタムフックを使えば呼び出しやすくなる。 src/AuthContext.jsx まずはcreateContextで、コンテキ</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのSPAでWebsocketのチャットサイトをつくる</title>
+      <link>http://localhost:43210/post/drf-react-spa-websocket-chat/</link>
+      <pubDate>Thu, 09 Jan 2025 15:40:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-websocket-chat/</guid>
+      <description>タイトル通り、Django REST FrameworkとReactのSPAで、WebSocketを使ったチャットサイトを作った。 以前のWebSocket搭載チャットサイト(下記)はReactを使っていないため、SPAではない。今回はReactを搭載したSPAとしている。 DjangoでWebSocketを使って、チャットサイトを作る ただし、今回はJWT認証の実装は見送った。理由は後述。 開発要件 WebSock</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのSPAでCRUD簡易掲示板をつくる</title>
+      <link>http://localhost:43210/post/drf-react-spa-crud-bbs/</link>
+      <pubDate>Mon, 06 Jan 2025 10:52:43 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-crud-bbs/</guid>
+      <description>開発要件 DRF+ReactでSPA react-router-domでページURLの構築 簡易掲示板のCRUD機能 カテゴリ指定・追加機能 リプライ投稿機能 CSRF検証の挙動を確認するため、あえてJWT認証はオミット CRAではなくViteを使用 以前のものは、1対多には対応しておらず、CRAを利用していた。またページもない。 更に、axiosがコールバック地獄になっているので、そちらも修正した。 使用ライブラリ</description>
+    </item>
+    <item>
+      <title>setStateする時、直接値を書き換えてはいけない</title>
+      <link>http://localhost:43210/post/react-setstate-trap/</link>
+      <pubDate>Sun, 05 Jan 2025 20:47:54 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-setstate-trap/</guid>
+      <description>setStateをする時、こんな風に直接値を書き換えていないだろうか？ const handleToggle = () =&amp;gt; { setToggle(!toggle); } state変数がプリミティブ型の場合、このsetToggleにより、再レンダリングは発生する。 しかし、オブジェクト型の場合、Stateが値の変更を検知できず、再レンダリングは発生しない。 const handleProfile = (e) =&amp;gt; { profile[e.target.name] = e.target.value; setProfile(profile); // この方法では再レンダリングは発生しない。 } オブジェクト型の場合、このようにsetState関数内で処理をす</description>
+    </item>
+    <item>
+      <title>create-react-app コマンドはもう使えないので、ViteでReactプロジェクトをつくる</title>
+      <link>http://localhost:43210/post/vite-create-react-project/</link>
+      <pubDate>Mon, 30 Dec 2024 21:17:29 +0900</pubDate>
+      <guid>http://localhost:43210/post/vite-create-react-project/</guid>
+      <description>npx create-react-app frontend このコマンドでreactプロジェクトを作ってきたが、もうcreate-react-app はもう使われなくなったようだ。(2023年春時点から) そこで、Viteを使ってReactプロジェクトをつくる。 Viteとは？ Viteは、JavaScriptフレームワーク用のビルドツールである。Vite(フランス語で高速の意味)の名の通り、非常に高速。 ESモジュールで必要な部分だけオンデマンドでロードでき</description>
+    </item>
+    <item>
+      <title>npm install --save パッケージ名 の--saveは必要か？</title>
+      <link>http://localhost:43210/post/npm-install-save-option/</link>
+      <pubDate>Mon, 23 Dec 2024 16:49:13 +0900</pubDate>
+      <guid>http://localhost:43210/post/npm-install-save-option/</guid>
+      <description>npm install --save パッケージ名 この&amp;ndash;saveで、package.jsonにパッケージ名を記録することができる。 ただし、&amp;ndash;saveオプションは、npmのバージョン5からデフォルトで有効になっている。 故に、npmバージョン5で、特に設定を触っていない場合は、あえてつける必要はない。 npm install パッケージ名 でよい。 よって、タイトルのnpm install --save パッケージ名 の--saveは必要か？ はnpmバージョン5以</description>
+    </item>
+    <item>
+      <title>DateTimeFieldで、フォーマットを指定したserializers.pyを作る</title>
+      <link>http://localhost:43210/post/drf-datetime-serializers/</link>
+      <pubDate>Mon, 23 Dec 2024 13:03:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-datetime-serializers/</guid>
+      <description>DateTimeFieldを含むモデルで、シリアライザをこう作ると from rest_framework import serializers from .models import Category,Todo class CategorySerializer(serializers.ModelSerializer): class Meta: model = Category fields = (&amp;#34;id&amp;#34;, &amp;#34;created_at&amp;#34;, &amp;#34;name&amp;#34;, &amp;#34;color&amp;#34;) class TodoSerializer(serializers.ModelSerializer): category = CategorySerializer() class Meta: model = Todo fields = (&amp;#34;id&amp;#34;, &amp;#34;category&amp;#34;, &amp;#34;created_at&amp;#34;, &amp;#34;content&amp;#34;, &amp;#34;deadline&amp;#34;, &amp;#34;is_done&amp;#34;) このようにタイムゾーン表記になってしまう。 作成日: 2024-12-25T12:00:00+09:00 締切: 2024-12-25T12:00:00+09:00 年月日表記に修正をするには、serializers.pyでフォーマットを指定する。 from rest_framework import serializers from .models import Category,Todo class CategorySerializer(serializers.ModelSerializer): created_at = serializers.DateTimeField(format=&amp;#34;%Y年%m月%</description>
+    </item>
+    <item>
+      <title>1対多のモデル構造で、ネストしたserializers.pyを作る</title>
+      <link>http://localhost:43210/post/drf-foreignkey-serializers/</link>
+      <pubDate>Mon, 23 Dec 2024 11:09:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-foreignkey-serializers/</guid>
+      <description>通常、 class Category(models.Model): name = models.CharField(max_length=100) class Todo(models.Model): title = models.CharField(max_length=200) category = models.ForeignKey(Category, on_delete=models.CASCADE) このモデル構造の場合、シリアライザはこうなる。 from rest_framework import serializers from .models import Todo, Category class CategorySerializer(serializers.ModelSerializer): class Meta: model = Category fields = [&amp;#39;id&amp;#39;, &amp;#39;name&amp;#39;] class TodoSerializer(serializers.ModelSerializer): class Meta: model = Todo fields = [&amp;#39;id&amp;#39;, &amp;#39;title&amp;#39;, &amp;#39;category&amp;#39;] ただこれだと、フロントサイドで得られる、JSONは、 [ { &amp;#34;id&amp;#34;: 1, &amp;#34;title&amp;#34;: &amp;#34;Todo 1&amp;#34;, &amp;#34;category&amp;#34;: 1 }, { &amp;#34;id&amp;#34;: 2, &amp;#34;title&amp;#34;: &amp;#34;Todo 2&amp;#34;, &amp;#34;category&amp;#34;: 2 } ] このように、categoryのidのみであり、カテゴリ名を表示することはできない。 ネストしたSerializerを指定する。 そこで、このように、TodoSerial</description>
+    </item>
+    <item>
+      <title>ReactでFullcalendar.jsを使う</title>
+      <link>http://localhost:43210/post/react-fullcalendar/</link>
+      <pubDate>Wed, 11 Dec 2024 11:14:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-fullcalendar/</guid>
+      <description>インストール npm install @fullcalendar/react @fullcalendar/daygrid ソースコード import FullCalendar from &amp;#39;@fullcalendar/react&amp;#39;; import dayGridPlugin from &amp;#39;@fullcalendar/daygrid&amp;#39;; import { useState, useEffect } from &amp;#39;react&amp;#39;; const App = () =&amp;gt; { const [events, setEvents] = useState([]); useEffect( () =&amp;gt; { setEvents([ { title: &amp;#39;event 1&amp;#39;, date: &amp;#39;2024-12-01&amp;#39; }, { title: &amp;#39;event 2&amp;#39;, date: &amp;#39;2024-12-02&amp;#39; } ]); }, []); // FullCalendarに events 引数を与える。Stateで管理する。 return ( &amp;lt;main&amp;gt; &amp;lt;div className=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;FullCalendar plugins={[ dayGridPlugin ]} initialView=&amp;#34;dayGridMonth&amp;#34; locale=&amp;#34;local&amp;#34; events={events} /&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/main&amp;gt; ) } export default App; 考察 今回は、useEffectでイベントを取得したが、実践ではfullcalendar.jsのeventSourceを使うほうが良いだろう。 なぜなら、useEffec</description>
+    </item>
+    <item>
+      <title>Reactベースの静的サイトジェネレーターGatsbyを使う</title>
+      <link>http://localhost:43210/post/startup-gatsby/</link>
+      <pubDate>Wed, 13 Nov 2024 13:26:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-gatsby/</guid>
+      <description>React学習のため、とりわけ扱いやすいGatsbyを使うことにした。 学習完了次第。このサイトは、HUGOからGatsbyに移行する予定。 本記事では、Gatsbyを調べてわかったことをまとめる。学習の都度まとめているため、誤りが含まれる可能性がある点をご了承いただきたい。 実装方法 Ubuntu 22.04 LTS 環境下で動作させている。 sudo npm install -g gatsby-cli まず、グローバル環境下でGatsbyをインストールする。 これでGatsbyコマン</description>
+    </item>
+    <item>
+      <title>Reactでaxiosを使ってリクエストをすると、2回送られる問題【React.StrictMode問題】</title>
+      <link>http://localhost:43210/post/react-2times-request/</link>
+      <pubDate>Wed, 14 Aug 2024 10:35:12 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-2times-request/</guid>
+      <description>index.js の root.render( &amp;lt;React.StrictMode&amp;gt; &amp;lt;App /&amp;gt; &amp;lt;/React.StrictMode&amp;gt; ); を root.render( &amp;lt;App /&amp;gt; ); に直す。 補足 これは StrictMode が開発段階で動作チェックをするためにやっていること。 本番環境に移行した場合、2度実行されることはない。 そのため、放置していても問題はない。 参考元 https://stackoverflow.com/questions/73002902/api-getting-called-twice-in-react</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのSPAで簡易掲示板を作る</title>
+      <link>http://localhost:43210/post/startup-django-react-func-component/</link>
+      <pubDate>Mon, 12 Aug 2024 10:33:30 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-django-react-func-component/</guid>
+      <description>最近(2018年以降)の開発では関数ベースのコンポーネントが主流のため、一部を書き換えた。 React App.js import React, { useState, useEffect } from &amp;#34;react&amp;#34;; import Modal from &amp;#34;./components/Modal&amp;#34;; import axios from &amp;#34;axios&amp;#34;; const App = () =&amp;gt; { const [topicList, setTopicList] = useState([]); const [modal, setModal] = useState(false); const [activeTopic, setActiveTopic] = useState({ comment: &amp;#34;&amp;#34; }); // コンポーネントがレンダリングされるときに実行する useEffect(() =&amp;gt; { refreshList(); }, []); // ページロード const refreshList = () =&amp;gt; { axios .get(&amp;#34;/api/topics/&amp;#34;) .then((res) =&amp;gt; setTopicList(res.data)) .catch((err) =&amp;gt; console.log(err)); }; const handleSubmit = (topic) =&amp;gt; { if (topic.id) { axios .put(`/api/topics/${topic.id}/`, topic) .then(() =&amp;gt; refreshList()) .catch((err) =&amp;gt; console.log(err)); } else { axios .post(&amp;#34;/api/topics/&amp;#34;, topic) .then(() =&amp;gt; refreshList()) .catch((err) =&amp;gt; console.log(err)); } closeModal(); }; const handleDelete = (topic) =&amp;gt; { axios .delete(`/api/topics/${topic.id}/`) .then(() =&amp;gt; refreshList()); }; const openModal = (topic) =&amp;gt; { if (topic.id) { setActiveTopic(topic); } else { setActiveTopic({ comment:</description>
+    </item>
+    <item>
+      <title>Django Rest FrameworkのViewの書き方【APIViewと汎用APIView、ModelViewSetの違い】</title>
+      <link>http://localhost:43210/post/django-rest-framework-view/</link>
+      <pubDate>Wed, 01 May 2024 13:10:52 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-rest-framework-view/</guid>
+      <description>Django Rest Framework (以下、DRF)のビューの書き方をまとめる。 下記記事で紹介した素のDjangoのビューと同様、DRFでも継承するビューによって大きく書き方が全く違う。 【関連記事】 : 【Django】ビュー関数とビュークラスの違い、一覧と使い方 本記事では、状況に応じて、適切なビューがコーディングできるようビューの書き方をまとめる。 前提 モデル from django.db import models class Topic(models.Model): comment = models.CharField(verbose_nam</description>
+    </item>
+    <item>
+      <title>よく出るReactのエラー一覧</title>
+      <link>http://localhost:43210/post/react-errors/</link>
+      <pubDate>Mon, 01 Apr 2024 11:12:58 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-errors/</guid>
+      <description>textarea要素には、valueプロパティを使って値を与える 普通のHTMLでは、textareaに最初から値を入れておきたい場合、子要素に直接文字を書くと良い。 しかし、Reactで同じことをやるとエラーになる。 &amp;lt;textarea className=&amp;#34;form-control&amp;#34; name=&amp;#34;comment&amp;#34; onChange={this.handleChange}&amp;gt;{this.state.activeItem.comment}&amp;lt;/textarea&amp;gt; そこで、valueプロパティを使う。 &amp;lt;textarea className=&amp;#34;form-control&amp;#34; name=&amp;#34;comment&amp;#34; onChange={this.handleChange} value={this.state.activeItem.comment}&amp;gt;&amp;lt;/textarea&amp;gt; これで、 Use the `defaultValue` or `value` props instead of setting children on &amp;lt;textarea&amp;gt;. というエラーは解決される。 リスト内の要素を識別できるよう、keyプロパティを与える Each child in a list should have a unique</description>
+    </item>
+    <item>
+      <title>GitHubからクローンしたReactを動作させる方法</title>
+      <link>http://localhost:43210/post/react-github/</link>
+      <pubDate>Sun, 21 Jan 2024 14:45:29 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-github/</guid>
+      <description>Reactのgitignoreには、node_modulesが含まれている。 そのため、クローンしたReactのプロジェクトを動かすには、 npm installを前もって実行しておく必要がある。 git clone https://github.com/seiya0723/startup-react cd startup-react npm install npm start</description>
+    </item>
+    <item>
+      <title>react-router-domの使い方【Reactでルーティング】</title>
+      <link>http://localhost:43210/post/react-route-dom-how-to-use/</link>
+      <pubDate>Thu, 02 Feb 2023 17:29:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-route-dom-how-to-use/</guid>
+      <description>ページが複数あるサイトをReactで作る場合、react-router-domでルーティングを行うと良いだろう。 npm install react-router-dom 使い方 コンポーネントを作る src/components/に以下ファイルを配置。 Home.jsx Portfolio.jsx Profile.jsx Home.jsx import { Link } from &amp;#34;react-router-dom&amp;#34;; export const Home = () =&amp;gt; { return ( &amp;lt;&amp;gt; &amp;lt;div&amp;gt;ここはホームです&amp;lt;/div&amp;gt; &amp;lt;Link to={`/portfolio`}&amp;gt;ポートフォリオ&amp;lt;/Link&amp;gt; &amp;lt;Link to={`/pr</description>
+    </item>
+    <item>
+      <title>【React】GithubPagesへデプロイする【ビルドしてプッシュする】</title>
+      <link>http://localhost:43210/post/react-github-pages-deploy/</link>
+      <pubDate>Thu, 02 Feb 2023 17:27:41 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-github-pages-deploy/</guid>
+      <description>ReactはJavaScriptのライブラリであり、サーバーレスなのでGitHubPagesへのデプロイが可能。 端的に言うと、ビルドしてGitHubにプッシュするだけ。 【前提知識】package.jsonを編集して独自のnpmコマンドを作る package.jsonを編集して独自のnpmコマンドを作る。 例えば、 以下のようにscriptsに&amp;quot;hoge&amp;quot; : &amp;quot;echo &#39;hoge&#39; &amp;quot;と追加してお</description>
+    </item>
+    <item>
+      <title>Reactビギナーが15分で掲示板アプリを作る方法</title>
+      <link>http://localhost:43210/post/startup-react/</link>
+      <pubDate>Mon, 23 Jan 2023 10:32:23 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-react/</guid>
+      <description>『モダンJavaScriptの基本から始める React実践の教科書 （最新ReactHooks対応）』みたいな教科書をなぞってみたけど、よくわからない、実践的な物を作りたいという方向け。 対象読者はReactをインストール済み、モダンなJavaScript構文を理解できる方向けとする。 流れ 以下、流れ プロジェクトを作る(1分) srcディレクトリ内のファイルを全て削除、index.jsとApp.jsxの2</description>
+    </item>
+    <item>
+      <title>【React】リストをレンダリングする時は、key属性を付与する【Warning: Each child in a list should have a unique &#39;key&#39; prop.】</title>
+      <link>http://localhost:43210/post/react-list-rendering-unique-key-prop/</link>
+      <pubDate>Mon, 23 Jan 2023 10:09:43 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-list-rendering-unique-key-prop/</guid>
+      <description>例えば、以下のような配列があったとする。 const topics = [&amp;quot;aaa&amp;quot;,&amp;quot;bbb&amp;quot;,&amp;quot;ccc&amp;quot;]; この配列をレンダリングする時、このようにしてしまうと return ( &amp;lt;&amp;gt; { topics.map( (topic) =&amp;gt; { return ( &amp;lt;div className=&amp;quot;border&amp;quot;&amp;gt;{ topic }&amp;lt;/div&amp;gt; ); }) } &amp;lt;/&amp;gt; ); この警告が出る。 なぜ『Warning: Each child in a list should have a unique &amp;ldquo;key&amp;rdquo; prop.』と警告が出るのか？ Reactで配列をレンダリングする際にkey属性を指定しないと、無駄なレンダリングが発生してしまい、パフォーマンスが低下するから。 例えば、key未指定で3つのデータがレンダリ</description>
+    </item>
+    <item>
+      <title>【React】警告文の『Warning: ReactDOM.render is no longer supported in React 18 』の対処法【createRootを使用する】</title>
+      <link>http://localhost:43210/post/react-dom-render-is-no-longer-supported/</link>
+      <pubDate>Sat, 21 Jan 2023 11:22:01 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-dom-render-is-no-longer-supported/</guid>
+      <description>【React】Helloworldの仕組みの解説にて、 import ReactDOM from &amp;#34;react-dom&amp;#34;; const App = () =&amp;gt; { return &amp;lt;h1&amp;gt;HelloWorld&amp;lt;/h1&amp;gt;; }; ReactDOM.render(&amp;lt;App /&amp;gt; , document.getElementById(&amp;#34;root&amp;#34;)); などと書いたが、これでは以下のような警告が出てくる。 Warning: ReactDOM.render is no longer supported in React 18. Use createRoot instead. Until you switch to the new API, your app will behave as if it&amp;#39;s running React 17. Learn more: https://reactjs.org/link/switch-to-createroot 『ReactDOM.render()は今後使われなくなるから、createRootを使用しましょう』という意味。 よって、以下のように書き換えると、この警告は対処できる。 import React from &amp;#34;react&amp;#34;; import ReactDOM from &amp;#34;react-dom/client&amp;#34;; const App = () =&amp;gt; {</description>
+    </item>
+    <item>
+      <title>【React】閉じタグがないHTML要素は/(スラッシュ)をタグの末尾に書く【inputタグ、imgタグ等】</title>
+      <link>http://localhost:43210/post/react-html-close-tag/</link>
+      <pubDate>Sat, 21 Jan 2023 10:39:53 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-html-close-tag/</guid>
+      <description>Reactでは、閉じタグがないHTMLを書く時は、以下のようにする。 export const App = () =&amp;gt; { return ( &amp;lt;&amp;gt; &amp;lt;input type=&amp;#34;button&amp;#34; value=&amp;#34;送信&amp;#34; /&amp;gt; &amp;lt;/&amp;gt; ); } このように /がないと、エラーになってしまう点に注意。 export const App = () =&amp;gt; { return ( &amp;lt;&amp;gt; &amp;lt;input type=&amp;#34;button&amp;#34; value=&amp;#34;送信&amp;#34;&amp;gt; &amp;lt;/&amp;gt; ); } これはAppを呼び出すときも同様である。&amp;lt;App&amp;gt;としてしまうとエラーになる。 // React import ReactDOM from &amp;#34;react-dom&amp;#34;; import { App } from &amp;#34;./App&amp;#34;; ReactDOM.render(&amp;lt;App /&amp;gt; , document.getElementById(&amp;#34;root&amp;#34;)); 結論 閉じタグのな</description>
+    </item>
+    <item>
+      <title>【React】Typescript仕様のReactアプリを作る</title>
+      <link>http://localhost:43210/post/react-typescript/</link>
+      <pubDate>Thu, 22 Dec 2022 14:27:29 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-typescript/</guid>
+      <description>TypeScriptとは TypeScriptを使うことで、変数を宣言する際に型を定義する事ができる。 例えば、予め文字列型で定義した変数に対しては、文字列型以外を入れると、エラーが起こる。 let message: string = &amp;#34;こんにちは&amp;#34;; console.log(message); message = &amp;#34;おはよう&amp;#34;; console.log(message); //ここでエラーが起こる。 message = 0; console.log(message); 配列内の変数を取り決めたい場合、&amp;lt;&amp;gt;の中に型名を入れるジェネリクス(Generics)を使</description>
+    </item>
+    <item>
+      <title>【React】グローバルなStateを使って、Propsバケツリレー問題を解決する</title>
+      <link>http://localhost:43210/post/react-global-state/</link>
+      <pubDate>Tue, 20 Dec 2022 15:10:44 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-global-state/</guid>
+      <description>Reactでは、Stateを使ってウェブアプリの状態を管理することができる。コンポーネントに対して引数を与えるにはPropsを使えば良い。 しかし、だからといって親コンポーネントで定義したStateを、Propsで子コンポーネントに引き渡すのは良くない。 このようなコンポーネントの階層が深い場合、無駄なPropsの受け渡しが発生してしまうからだ。 この問題を防ぐために、グローバルなStateを作る。グロ</description>
+    </item>
+    <item>
+      <title>【React】Props、State(useState)、useEffectなどの概念の解説</title>
+      <link>http://localhost:43210/post/react-concept-summary/</link>
+      <pubDate>Sat, 17 Dec 2022 15:06:37 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-concept-summary/</guid>
+      <description>ここではReactの基本的な概念であるProps、Stateについて扱う。 Props Propsを使うことで、コンポーネントの関数を呼び出す時、引数を与えることができる。 例えば、App.jsxとcomponents/HeaderContent.jsxがある。 App.jsxを以下のようにする。 import { HeaderContent } from &amp;#34;./components/HeaderContent&amp;#34;; export const App = () =&amp;gt; { const message = &amp;#34;Hello!!&amp;#34;; return ( &amp;lt;&amp;gt; &amp;lt;HeaderContent /&amp;gt; &amp;lt;/&amp;gt; ); } HeaderContent.jsxを以下とする。 export const HeaderContent = () =&amp;gt; { const header_color =</description>
+    </item>
+    <item>
+      <title>【React】component(コンポーネント)の仕組み</title>
+      <link>http://localhost:43210/post/react-component/</link>
+      <pubDate>Wed, 14 Dec 2022 16:37:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-component/</guid>
+      <description>Reactではindex.jsを読み込むことで動作するが、全てをindex.jsに書いてしまうとindex.jsのコード行数が尋常ではなくなる。 故に、コンポーネントを使用してコードの一部を別ファイル化させる。 コンポーネントの構造 まずsrc内に以下がある。 App.jsxとindex.jsである。 App.jsxはコンポーネントのファイルである。見分けが付きやすいように拡張子を.jsxとしている。ind</description>
+    </item>
+    <item>
+      <title>【React】Helloworldの仕組みの解説</title>
+      <link>http://localhost:43210/post/react-helloworld/</link>
+      <pubDate>Sun, 04 Dec 2022 10:19:51 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-helloworld/</guid>
+      <description>勉強途中で書いているものなので、やや間違いがあるかも Reactの内部構造 srcに書かれたJavaScriptを発動させ、指定した内容を、publicにあるindex.htmlへレンダリングする。 プロジェクトを作ってHelloWorldまで プロジェクトを作る。 create-react-app myproject cd myproject 以下コマンドで、プロジェクトを起動させる。 npm start index.jsを作る srcディレクトリ内のファイルを全て削除して、新しくindex.j</description>
+    </item>
+    <item>
+      <title>Ubuntuにreactをインストールして動作確認する</title>
+      <link>http://localhost:43210/post/ubuntu-react-install/</link>
+      <pubDate>Sat, 05 Nov 2022 15:43:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-react-install/</guid>
+      <description>Ubuntu20.04にインストールしている npmのインストール sudo apt install npm reactのインストール sudo npm -g install create-react-app バージョンの確認 create-react-app --version プロジェクトを作り、開発用サーバーを起動する create-react-app myproject プロジェクトを作る。 cd myproject npm start 開発用サーバーを起動すると自動的にブラウザが立ち上がる。127.0.0.1:3000が表示される。 src/App.jsを下記のように修正するとHelloWorldが表示される。 import React from &amp;#39;react&amp;#39;; const App = () =&amp;gt; { return</description>
+    </item>
+    <item>
+      <title>Reactに必要なJavaScript構文【ES2015(ES6)のテンプレート文字列、アロー関数、スプレッド構文、letとconstなど、脱jQueryにも有効】</title>
+      <link>http://localhost:43210/post/react-essential-javascript/</link>
+      <pubDate>Sat, 05 Nov 2022 15:16:20 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-essential-javascript/</guid>
+      <description>Reactに必要なJavaScript構文をまとめる Reactを使わない場合でも、JavaScriptをシンプル書くヒントがあるので、コードを小さくしたい場合にも有効。 脱jQueryを推進したい人は下記も参考に。 jQueryのコードをJavascriptに書き換える【セレクタ、属性値の参照、イベントなど】 letとconst letとconstはいずれも再宣言が不可能。 let test = &amp;#34;aaa&amp;#34;; //これはエラー //let test = &amp;#34;bbb&amp;#34;;</description>
+    </item>
+  </channel>
+</rss>

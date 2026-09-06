@@ -1,9 +1,9 @@
 const SEARCH_LIST = [
+{ "link": "/post/fastapi-nextjs-crud/", "title" : "FastAPI+Next.js+Ollama(Gemma3:12B)でChatGPT風アプリを作る" }, 
+{ "link": "/post/qdrant-rag-system/", "title" : "RTX A2000 12GBでOllama(Gemma:7B)+QdrantでテキストファイルのRAGを実現" }, 
 { "link": "/post/startup-qdrant/", "title" : "QdrantのCRUD、コレクションとポイント、ハイブリッド検索について" }, 
-{ "link": "/post/fastapi-nextjs-crud/", "title" : "FastAPI+Next.js+Ollama(Gemma4:7B)でChatGPT風アプリを作る" }, 
 { "link": "/post/startup-fastapi/", "title" : "FastAPIのプロジェクト構成、ルーティング、モデル、DB使用方法について" }, 
 { "link": "/post/javascript-self-chunks/", "title" : "RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた" }, 
-{ "link": "/post/qdrant-rag-system/", "title" : "RTX A2000 12GBでOllama(Gemma7B:4bit量子化仕様)+QdrantでテキストファイルのRAGを実現" }, 
 { "link": "/post/python-local-llm-rag/", "title" : "OllamaでRAGを実現する。" }, 
 { "link": "/post/local-llm-install/", "title" : "UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)" }, 
 { "link": "/post/ai-jisso-kentei-s-grade/", "title" : "AI実装検定S級合格体験記" }, 

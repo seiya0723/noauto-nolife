@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SPA on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/spa/</link>
+    <description>Recent content in SPA on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Fri, 07 Mar 2025 10:31:08 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/spa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Sec-Websocket-Protocol】DRF&#43;ReactのSPAでWebsocketのチャットサイトでJWT認証をする</title>
+      <link>http://localhost:43210/post/drf-react-spa-websocket-chat-jwt/</link>
+      <pubDate>Fri, 07 Mar 2025 10:31:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-websocket-chat-jwt/</guid>
+      <description>DRF+ReactのSPAでWebsocketのチャットサイトをつくる と DRF+ReactのCRUD簡易掲示板SPAでJWT認証を実装する の続き。 今回は、先にSPAでJWT認証を済ませたうえで、WebSocketを行うようにした。Sec-WebSocket-Protocol を使っている。 トークンの検証が煩雑になるため、WebSocketのメッセージ部にJWTトークンは含ませない設計にした。 WebS</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのSPAでWebsocketのチャットサイトをつくる</title>
+      <link>http://localhost:43210/post/drf-react-spa-websocket-chat/</link>
+      <pubDate>Thu, 09 Jan 2025 15:40:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-react-spa-websocket-chat/</guid>
+      <description>タイトル通り、Django REST FrameworkとReactのSPAで、WebSocketを使ったチャットサイトを作った。 以前のWebSocket搭載チャットサイト(下記)はReactを使っていないため、SPAではない。今回はReactを搭載したSPAとしている。 DjangoでWebSocketを使って、チャットサイトを作る ただし、今回はJWT認証の実装は見送った。理由は後述。 開発要件 WebSock</description>
+    </item>
+    <item>
+      <title>DRF&#43;ReactのSPAで簡易掲示板を作る</title>
+      <link>http://localhost:43210/post/startup-django-react-func-component/</link>
+      <pubDate>Mon, 12 Aug 2024 10:33:30 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-django-react-func-component/</guid>
+      <description>最近(2018年以降)の開発では関数ベースのコンポーネントが主流のため、一部を書き換えた。 React App.js import React, { useState, useEffect } from &amp;#34;react&amp;#34;; import Modal from &amp;#34;./components/Modal&amp;#34;; import axios from &amp;#34;axios&amp;#34;; const App = () =&amp;gt; { const [topicList, setTopicList] = useState([]); const [modal, setModal] = useState(false); const [activeTopic, setActiveTopic] = useState({ comment: &amp;#34;&amp;#34; }); // コンポーネントがレンダリングされるときに実行する useEffect(() =&amp;gt; { refreshList(); }, []); // ページロード const refreshList = () =&amp;gt; { axios .get(&amp;#34;/api/topics/&amp;#34;) .then((res) =&amp;gt; setTopicList(res.data)) .catch((err) =&amp;gt; console.log(err)); }; const handleSubmit = (topic) =&amp;gt; { if (topic.id) { axios .put(`/api/topics/${topic.id}/`, topic) .then(() =&amp;gt; refreshList()) .catch((err) =&amp;gt; console.log(err)); } else { axios .post(&amp;#34;/api/topics/&amp;#34;, topic) .then(() =&amp;gt; refreshList()) .catch((err) =&amp;gt; console.log(err)); } closeModal(); }; const handleDelete = (topic) =&amp;gt; { axios .delete(`/api/topics/${topic.id}/`) .then(() =&amp;gt; refreshList()); }; const openModal = (topic) =&amp;gt; { if (topic.id) { setActiveTopic(topic); } else { setActiveTopic({ comment:</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Keras on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/keras/</link>
+    <description>Recent content in Keras on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 16 May 2026 08:52:42 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/keras/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</title>
+      <link>http://localhost:43210/post/ai-exam-rank-s-question/</link>
+      <pubDate>Sat, 16 May 2026 08:52:42 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-s-question/</guid>
+      <description>主に、pytorchとkerasの実装上の問題についてまとめる。 Q: pytorch の シーケンス系レイヤ(RNNやTransformer)で使用される batch_first 引数とはなにか？ A. 入力テンソルの次元の並び順を指定している。 batch_first 引数が使われる場所 以下、シーケンス系のレイヤで使用されている。 RNN系 torch.nn.RNN torch.nn.LSTM torch.nn.GRU Transformer系 torch.nn.Transformer torch.nn.TransformerEncoderLayer torch.nn.MultiheadAttention batch_first 指定による作用 この引数の指定により、入力テンソルの次元の並び順を指定できる。 batch_fir</description>
+    </item>
+    <item>
+      <title>AI実装検定S級の模擬試験</title>
+      <link>http://localhost:43210/post/ai-exam-rank-s-mock/</link>
+      <pubDate>Mon, 11 May 2026 17:28:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/ai-exam-rank-s-mock/</guid>
+      <description>■ CNN（30問） VGGに関する記述として正しいものはどれか A. 畳み込みカーネルは主に7×7を使用 B. 畳み込みカーネルは主に3×3を積み重ねる C. Residual接続を持つ D. Depthwise Separable Convを使用 KerasでVGG風のブロックを作る際に適切なのはどれか A. Conv2D → BatchNorm → ReLU → MaxPool B. Dense → Conv2D → Dropout C. Conv1D → Flatten → LSTM D. GlobalAveragePooling → Conv2D VGGの欠点として適切なのはどれか A. 表現力が低い B. パラメータ数が多い C. 勾配消失が発生しない D. 軽量モデルである G</description>
+    </item>
+    <item>
+      <title>【箇条書き】NLPモデルの特徴まとめ</title>
+      <link>http://localhost:43210/post/nlp-model-feature/</link>
+      <pubDate>Sat, 09 May 2026 08:28:22 +0900</pubDate>
+      <guid>http://localhost:43210/post/nlp-model-feature/</guid>
+      <description>前提と基礎知識 NLPモデルに入力データが与えられるまでの過程 文章を与える ↓ Tokenizerでトークン化（単語・サブワード・文字などに分割） 例: &amp;#34;I love NLP&amp;#34; → [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] ↓ 語彙表（Vocabulary）を使って、トークン → トークンID に変換 例: [&amp;#34;I&amp;#34;, &amp;#34;love&amp;#34;, &amp;#34;NL&amp;#34;, &amp;#34;##P&amp;#34;] → [101, 2293, 17953, 1925] ↓ ※ 必要に応じてパディング・マスキング・特殊トークン付与 例: [CLS], [SEP], [PAD] などをここで追加（BERTなど） ↓ Embedding層にトークンIDを与える └ ID</description>
+    </item>
+    <item>
+      <title>【箇条書き】CNNモデルの特徴まとめ</title>
+      <link>http://localhost:43210/post/cnn-model-feature/</link>
+      <pubDate>Mon, 04 May 2026 10:35:49 +0900</pubDate>
+      <guid>http://localhost:43210/post/cnn-model-feature/</guid>
+      <description>簡単にCNNモデルの特徴を確認できるよう、3行〜6行ほどでまとめる。 VGG VGG16は3x3畳み込みを13層、全結合層を3層重ねたシンプル構造 畳み込み後の全結合層の計算コストが非常に高い(パラメーター1億3千万) pytorchではオリジナルのVGGにはないバッチ正規化(Batch Normalization)が使用されている。(※勾配消失・爆発対策) GoogLeNet 1x1 3x3 5x5 の異なる畳込みを並列で行う(後にチャンネル方向</description>
+    </item>
+    <item>
+      <title>KerasでNLPモデルを再現する</title>
+      <link>http://localhost:43210/post/keras-nlp-models/</link>
+      <pubDate>Sun, 03 May 2026 15:40:11 +0900</pubDate>
+      <guid>http://localhost:43210/post/keras-nlp-models/</guid>
+      <description>前提知識 本記事では Functional APIを使用する。 FunctionalAPIでは layersの層を積み重ね、Modelクラスの引数として引き渡しインスタンスを作る。 layers.Input : 入力値のデータ型を定義する。 layers.Embedding : 単語をベクトルに変換。 layers.Dense : 全結合層。すべての入力と出力を線で結んで計算をする。 layers.Flatten : 平坦化。多次元のデータを1列の長い棒に変換をする。全結合層(Dense)につなぐ際などに使う。 layers.Dot : テンソルの内積を計算する。 layers.Reshape : 形</description>
+    </item>
+    <item>
+      <title>KerasのCNNモデルのコードを解釈する</title>
+      <link>http://localhost:43210/post/keras-cnn-models/</link>
+      <pubDate>Fri, 01 May 2026 12:07:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/keras-cnn-models/</guid>
+      <description>Keras公式GitHubからコードを拝借。一部コメントや不必要な箇所を絞って、各CNNモデルの特徴がわかるように再構成してまとめる。 以下関連記事。 【pytorch】torchvisionのCNNモデルの内部構造から仕組みを知る pytorch の nn.moduleを継承して自作AIモデルを作り、CNNモデルの歴史を辿る VGG VGG は3x3畳み込みをひたすら積み重ねるシンプルモデル。 とりわけ今回はVGG16(畳み込み層+</description>
+    </item>
+  </channel>
+</rss>

@@ -1,24 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Selenium on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/selenium/</link>
+    <link>http://localhost:43210/tags/selenium/</link>
     <description>Recent content in Selenium on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 29 Mar 2021 08:37:13 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/selenium/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 19 Apr 2025 08:17:38 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/selenium/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Seleniumの基本操作のまとめ</title>
+      <link>http://localhost:43210/post/selenium-basic-control/</link>
+      <pubDate>Sat, 19 Apr 2025 08:17:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-basic-control/</guid>
+      <description>Seleniumは同じような処理が続くため、基本操作をまとめた。 ただ、forループとtry 文が続く冗長構成のため、後に修正する予定。 ソースコード from selenium import webdriver from selenium.webdriver.support.ui import WebDriverWait, Select from selenium.webdriver.support import expected_conditions from selenium.webdriver.common.by import By from selenium.common.exceptions import TimeoutException driver = webdriver.Firefox() wait = WebDriverWait(driver, 10) retry = 10 # 要素が見えているか def xpath_visible(xpath: str): return wait.until(excepted_conditions.visibility_of_element_located((By.XPATH, xpath))) def xpath_click(xpath: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.click() except: continue else: return raise TimeoutException(f&amp;#34;クリックできませんでした: {xpath}&amp;#34;) def xpath_send_keys(xpath: str, keys: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.send_keys(keys) except: continue else: return raise TimeoutE</description>
+    </item>
+    <item>
+      <title>【Selenium】webdriver-managerを使ってPythonコードからChromeドライバーをインストールする</title>
+      <link>http://localhost:43210/post/selenium-webdriver-install-chrome/</link>
+      <pubDate>Tue, 27 Dec 2022 12:06:19 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-webdriver-install-chrome/</guid>
+      <description>前もってwebdriver-managerをインストールしておく。 pip install webdriver-manager 下記コードでChromeドライバーが簡単にインストールできる。 from selenium import webdriver from selenium.webdriver.chrome.service import Service from webdriver_manager.chrome import ChromeDriverManager driver = webdriver.Chrome(service=Service(ChromeDriverManager().install())) driver.get(&amp;#34;https://www.google.com/&amp;#34;) どうやらvirtualenvではなくOSに直インストールされるようだ。</description>
+    </item>
+    <item>
+      <title>【Selenium X Python】フォーム入力やクリックをする時は明示的な待機をする【Webdriverwait】</title>
+      <link>http://localhost:43210/post/selenium-webdriverwait-click/</link>
+      <pubDate>Wed, 30 Nov 2022 15:08:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-webdriverwait-click/</guid>
+      <description>Seleniumでブラウザ操作の自動化をする時、クリックやフォーム入力などは頻繁に行われる。 だが、それがもしtimeモジュールを使用した暗黙的待機の場合、動作に再現性はなく、たびたび不具合に見舞われるだろう。 本記事では、再現性を高めるため、明示的な待機を行うWebdriverwaitを使用したクリックとフォーム入力を行う。 前提 使用しているPythonとライブラリのバージョン、ブラウザなどをまとめる</description>
+    </item>
+    <item>
+      <title>Ubuntu、WindowsにSeleniumで使用するFirefox用のgeckodriverをインストールする【Python】</title>
+      <link>http://localhost:43210/post/ubuntu-geckodriver-install/</link>
+      <pubDate>Thu, 13 Oct 2022 10:11:45 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-geckodriver-install/</guid>
+      <description>Seleniumとは？ Seleniumとは、ウェブブラウザの操作を自動化するツールのひとつ。 とりわけ、Pythonライブラリとしても提供されている。(JavaやRuby用のライブラリもある。) つまり、Seleniumを使えば、Pythonでブラウザの操作を自動化できる。 必要な物は？ Seleniumを使ったブラウザの自動化に必要な物は以下の4つ Pythonのコード SeleniumのPythonライブ</description>
+    </item>
     <item>
       <title>SeleniumでFirefoxブラウザのプロファイルを読み込む【Recaptcha突破、Cookie&#43;アドオン読み込み】</title>
-      <link>https://noauto-nolife.com/post/selenium-read-profile/</link>
+      <link>http://localhost:43210/post/selenium-read-profile/</link>
       <pubDate>Mon, 29 Mar 2021 08:37:13 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/selenium-read-profile/</guid>
+      <guid>http://localhost:43210/post/selenium-read-profile/</guid>
       <description>めったに使うことのないSeleniumではあるが、いざ使おうとするとかなり手間取る。 特にログイン。Django等の管理サイトでログインする際にはパスとIDを控えておけば良いが、GoogleのRecaptchaとかボット対策をしていると当然突破できない。そこで予めブラウザでログインをしておいて、そのプロファイルを読み込めば良い。 プロファイルを読み込みするコード 下記コードをコピペすれば良いだけである。</description>
     </item>
-    
   </channel>
 </rss>

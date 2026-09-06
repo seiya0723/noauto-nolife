@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Serializers.py on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/serializers.py/</link>
+    <description>Recent content in Serializers.py on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 23 Dec 2024 13:03:03 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/serializers.py/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DateTimeFieldで、フォーマットを指定したserializers.pyを作る</title>
+      <link>http://localhost:43210/post/drf-datetime-serializers/</link>
+      <pubDate>Mon, 23 Dec 2024 13:03:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-datetime-serializers/</guid>
+      <description>DateTimeFieldを含むモデルで、シリアライザをこう作ると from rest_framework import serializers from .models import Category,Todo class CategorySerializer(serializers.ModelSerializer): class Meta: model = Category fields = (&amp;#34;id&amp;#34;, &amp;#34;created_at&amp;#34;, &amp;#34;name&amp;#34;, &amp;#34;color&amp;#34;) class TodoSerializer(serializers.ModelSerializer): category = CategorySerializer() class Meta: model = Todo fields = (&amp;#34;id&amp;#34;, &amp;#34;category&amp;#34;, &amp;#34;created_at&amp;#34;, &amp;#34;content&amp;#34;, &amp;#34;deadline&amp;#34;, &amp;#34;is_done&amp;#34;) このようにタイムゾーン表記になってしまう。 作成日: 2024-12-25T12:00:00+09:00 締切: 2024-12-25T12:00:00+09:00 年月日表記に修正をするには、serializers.pyでフォーマットを指定する。 from rest_framework import serializers from .models import Category,Todo class CategorySerializer(serializers.ModelSerializer): created_at = serializers.DateTimeField(format=&amp;#34;%Y年%m月%</description>
+    </item>
+    <item>
+      <title>1対多のモデル構造で、ネストしたserializers.pyを作る</title>
+      <link>http://localhost:43210/post/drf-foreignkey-serializers/</link>
+      <pubDate>Mon, 23 Dec 2024 11:09:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/drf-foreignkey-serializers/</guid>
+      <description>通常、 class Category(models.Model): name = models.CharField(max_length=100) class Todo(models.Model): title = models.CharField(max_length=200) category = models.ForeignKey(Category, on_delete=models.CASCADE) このモデル構造の場合、シリアライザはこうなる。 from rest_framework import serializers from .models import Todo, Category class CategorySerializer(serializers.ModelSerializer): class Meta: model = Category fields = [&amp;#39;id&amp;#39;, &amp;#39;name&amp;#39;] class TodoSerializer(serializers.ModelSerializer): class Meta: model = Todo fields = [&amp;#39;id&amp;#39;, &amp;#39;title&amp;#39;, &amp;#39;category&amp;#39;] ただこれだと、フロントサイドで得られる、JSONは、 [ { &amp;#34;id&amp;#34;: 1, &amp;#34;title&amp;#34;: &amp;#34;Todo 1&amp;#34;, &amp;#34;category&amp;#34;: 1 }, { &amp;#34;id&amp;#34;: 2, &amp;#34;title&amp;#34;: &amp;#34;Todo 2&amp;#34;, &amp;#34;category&amp;#34;: 2 } ] このように、categoryのidのみであり、カテゴリ名を表示することはできない。 ネストしたSerializerを指定する。 そこで、このように、TodoSerial</description>
+    </item>
+  </channel>
+</rss>

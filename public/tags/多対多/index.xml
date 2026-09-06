@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>多対多 on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/%E5%A4%9A%E5%AF%BE%E5%A4%9A/</link>
+    <description>Recent content in 多対多 on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 20 Sep 2023 16:37:06 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E5%A4%9A%E5%AF%BE%E5%A4%9A/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DjangoでManyToManyFieldを使い、中間テーブルのモデルを取得する【多対多のthrough】</title>
+      <link>http://localhost:43210/post/django-m2m-field-take-through/</link>
+      <pubDate>Wed, 20 Sep 2023 16:37:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-m2m-field-take-through/</guid>
+      <description>例えば、こういうモデル構造の場合、 from django.db import models class Person(models.Model): name = models.CharField(max_length=128) def __str__(self): return self.name class Group(models.Model): name = models.CharField(max_length=128) members = models.ManyToManyField(Person, through=&amp;#39;Membership&amp;#39;) def __str__(self): return self.name class Membership(models.Model): person = models.ForeignKey(Person, on_delete=models.CASCADE) group = models.ForeignKey(Group, on_delete=models.CASCADE) date_joined = models.DateField() invite_reason = models.CharField(max_length=64) 通常、Groupモデルの、membersフィールドで呼び出せるのは、紐付いているPersonモデルのオブジェクトである。 中間テーブルのモデルであるMembershipではない。 もし、membersフィールドからMembershipモデルのオブジェクトを取り出したい場合は、 group = Group.objects.all().first() memberships =</description>
+    </item>
+  </channel>
+</rss>

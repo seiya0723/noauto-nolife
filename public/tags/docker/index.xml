@@ -1,42 +1,54 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/docker/</link>
+    <link>http://localhost:43210/tags/docker/</link>
     <description>Recent content in Docker on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 13 Feb 2022 16:54:44 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 27 Apr 2025 14:20:24 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える</title>
+      <link>http://localhost:43210/post/docker-oracle-silver-env/</link>
+      <pubDate>Sun, 27 Apr 2025 14:20:24 +0900</pubDate>
+      <guid>http://localhost:43210/post/docker-oracle-silver-env/</guid>
+      <description>至急、Oracle DB SQL Silverの試験を受ける必要が出てきた。 そこで、すでにあるUbuntuのdockerで、OracleDBの環境を整えていく。 前提 dockerのバージョンは以下の通り、 Docker version 26.1.3, build 26.1.3-0ubuntu1~22.04.1 Oracle公式が提供しているdockerのイメージは下記。 https://hub.docker.com/r/gvenzl/oracle-xe Oracle社のエンジニア、G. Venzl 氏から提供されている。 dockerのイメージをPullする 現時点での最新版は、21.3.0 なので、以下の</description>
+    </item>
+    <item>
+      <title>【データベース】基本的なSQL文の一覧【SELECT, INSERT INTO, DELETE, UPDATE, UNION, JOIN】</title>
+      <link>http://localhost:43210/post/database-sql-basic/</link>
+      <pubDate>Sun, 20 Apr 2025 11:05:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/database-sql-basic/</guid>
+      <description>【導入】dockerでDatabaseを用意する。 Oracle DBを用意する UbuntuのDockerでOracle DB SQL Silverの試験勉強の環境を整える ただし、この記事ではPostgreSQLでの使用を想定しているため、SQLが若干違う点に注意。 テーブルをつくるCREATE TABLE文 CREATE TABLE テーブル名 ( カラム名1 データ型 [制約], カラム名2 データ型 [制約], ... ); この書き方に倣って、 CREATE TABLE categories ( id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT</description>
+    </item>
+    <item>
+      <title>【所要時間3分未満】dockerでWordpressの環境を構築する【docker-compose.ymlを書いて実行するだけ】</title>
+      <link>http://localhost:43210/post/docker-wordpress-create/</link>
+      <pubDate>Thu, 29 Dec 2022 22:53:36 +0900</pubDate>
+      <guid>http://localhost:43210/post/docker-wordpress-create/</guid>
+      <description>以前、UbuntuにWordpressをインストールする手順を解説した。 UbuntuにWordpressをインストールする【MariaDB+Apache】 しかし、このやり方はもう古いというか遅すぎるらしい。 なぜなら今はdockerが開発の主流だから。 わざわざMariaDBをインストールして、Apacheをインストールして..とやっているようでは環境構築だけで1日が終わる。 dockerであれば3分以</description>
+    </item>
+    <item>
+      <title>【Docker】公式チュートリアルを起動して使い方を学ぶ【docker run --name tutorial -d -p 80:80 docker/getting-started】</title>
+      <link>http://localhost:43210/post/docker-tutorial-learn/</link>
+      <pubDate>Tue, 27 Dec 2022 16:18:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/docker-tutorial-learn/</guid>
+      <description>dockerをインストールしたものの、使う機会に恵まれない、そもそも運用難易度高すぎで未だにVirtualBoxを使っている。 そういう状況なので、docker公式のチュートリアルを動かすことにした。 公式のチュートリアルを起動する 以下コマンドでOK docker run --name tutorial -d -p 80:80 docker/getting-started コマンドの意味は以下の通り docker [作成+実行] [コンテナ名はtutorialとする] [バックエンドで起動] [ポートは80番(PC側で80番へア</description>
+    </item>
     <item>
       <title>dockerのイメージファイルを出力し(docker save)、出力されたファイルを読み込む(docker load)</title>
-      <link>https://noauto-nolife.com/post/docker-image-file-share/</link>
+      <link>http://localhost:43210/post/docker-image-file-share/</link>
       <pubDate>Sun, 13 Feb 2022 16:54:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/docker-image-file-share/</guid>
+      <guid>http://localhost:43210/post/docker-image-file-share/</guid>
       <description>dockerコンテナをイメージ化した後、配布する場合、dockerHubを使う方法の他に直接ファイルをやり取りする方法もある。 下記コマンドでOK sudo docker save [イメージファイルのリポジトリ名] -o [出力したいファイル名].tar この出力されたファイルを別PCから読み込む sudo docker load -i [さっき出力したファイル名].tar 読み込みした後のイメージファイルのリポジトリ名は、もともとのリポジトリ名を引き継ぐ。 結論 ちなみに</description>
     </item>
-    
-    <item>
-      <title>docker上のCentOS(NginxとPostgreSQL)にDjangoをデプロイさせる</title>
-      <link>https://noauto-nolife.com/post/django-deploy-docker-centos/</link>
-      <pubDate>Thu, 03 Feb 2022 15:11:00 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-deploy-docker-centos/</guid>
-      <description>docker上のCentOSにDjangoをデプロイする方法をここに記す。 前提知識 dockerの基本的な使い方に関しては、下記を参照。 UbuntuでUbuntuのdockerイメージを作るまで Djangoのデプロイに関しては下記を参照。 DjangoをAWSのEC2(Ubuntu)にデプロイする DjangoをLinux(Ubuntu)サーバーにデプロイする方法【Nginx+PostgreSQL】 Ce</description>
-    </item>
-    
     <item>
       <title>UbuntuでUbuntuのdockerイメージを作るまで</title>
-      <link>https://noauto-nolife.com/post/startup-ubuntu-docker/</link>
+      <link>http://localhost:43210/post/startup-ubuntu-docker/</link>
       <pubDate>Thu, 03 Feb 2022 11:22:31 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-ubuntu-docker/</guid>
+      <guid>http://localhost:43210/post/startup-ubuntu-docker/</guid>
       <description>インストール sudo apt install docker.io これでインストールできる。 用語解説 イメージ イメージとは、OSのとある状態をセーブした物。実機にOSをインストールする時、必要になるイメージディスクと思えば話が早い。 例えば、Ubuntuをインストールした直後の状態を再現したい場合、UbuntuのイメージをdockerHubのUbuntuリポジトリからDLしてコンテナを作る。 コンテナ コンテナとは、イメージを元に作った仮想環境。複数</description>
     </item>
-    
   </channel>
 </rss>

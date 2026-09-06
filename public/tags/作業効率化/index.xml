@@ -1,24 +1,103 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>作業効率化 on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96/</link>
+    <link>http://localhost:43210/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96/</link>
     <description>Recent content in 作業効率化 on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 12 Jan 2019 14:57:56 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 19 Apr 2025 08:17:38 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Seleniumの基本操作のまとめ</title>
+      <link>http://localhost:43210/post/selenium-basic-control/</link>
+      <pubDate>Sat, 19 Apr 2025 08:17:38 +0900</pubDate>
+      <guid>http://localhost:43210/post/selenium-basic-control/</guid>
+      <description>Seleniumは同じような処理が続くため、基本操作をまとめた。 ただ、forループとtry 文が続く冗長構成のため、後に修正する予定。 ソースコード from selenium import webdriver from selenium.webdriver.support.ui import WebDriverWait, Select from selenium.webdriver.support import expected_conditions from selenium.webdriver.common.by import By from selenium.common.exceptions import TimeoutException driver = webdriver.Firefox() wait = WebDriverWait(driver, 10) retry = 10 # 要素が見えているか def xpath_visible(xpath: str): return wait.until(excepted_conditions.visibility_of_element_located((By.XPATH, xpath))) def xpath_click(xpath: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.click() except: continue else: return raise TimeoutException(f&amp;#34;クリックできませんでした: {xpath}&amp;#34;) def xpath_send_keys(xpath: str, keys: str): for _ in range(retry): try: elem = xpath_visible(xpath) elem.send_keys(keys) except: continue else: return raise TimeoutE</description>
+    </item>
+    <item>
+      <title>複数のPDFファイルを1つのPDFファイルにまとめる</title>
+      <link>http://localhost:43210/post/python-pdf-merge/</link>
+      <pubDate>Mon, 05 Feb 2024 10:12:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-pdf-merge/</guid>
+      <description>書類(PDF)を1つにまとめる必要が出てきたので。 複数のPDFを1つにまとめるPythonコードを作ることにした。 前提 pip install PyPDF2==3.0.1 ソースコード PyPDF2 をインストールしておく。 PyPDF2 では PdfFileMerger は削除されたため、 PdfMerger を使う。 import glob import datetime from PyPDF2 import PdfMerger now = datetime.datetime.now() now_str = now.strftime(&amp;#34;%Y-%m-%d_%H:%M:%S&amp;#34;) # TIPS: 既存のPDFファイル名を指定した場合、上書きではなく、追記されるので注意。 def merge_pdfs(output_filename=f&amp;#34;{now_str}.pdf&amp;#34;): # すべてのPDFファイルを取得。 # ファイル名順に並び替える。 pdfs = sorted( glob.glob(f&amp;#34;./*.pdf&amp;#34;) ) #print(pdfs) if not pdfs: print(&amp;</description>
+    </item>
+    <item>
+      <title>【シェルスクリプト】git clone した後、クローンしたディレクトリへ移動する</title>
+      <link>http://localhost:43210/post/git-clone-cd-directory/</link>
+      <pubDate>Sat, 23 Dec 2023 15:23:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/git-clone-cd-directory/</guid>
+      <description>git cloneコマンドを実行してクローンした後、cdコマンドでディレクトリ移動するのがめんどくさい。 そこで、git clone とcd コマンドを1つにまとめたシェルスクリプトを用意した。 #! /bin/bash # $1 https://github.com/seiya0723/django-auth/tree/main/accounts echo $1 # ここでtree以降は切り捨てる。 repo=$(echo &amp;#34;$1&amp;#34; | sed s/tree.*//g) # 移動対象のディレクトリを取り出す。 destination=$(echo ./&amp;#34;$1&amp;#34; | sed &amp;#34;s/tree\/[[:alnum:]_-]*\///g&amp;#34; | sed &amp;#34;s/https:\/\/github.com\/[[:alnum:]_-]*\///g&amp;#34;) git clone $repo cd $destination 例えば、特定のディレクトリ(tree/main/accounts)を指定している場合、そのディレクトリへ移動</description>
+    </item>
+    <item>
+      <title>【Django】views.pyからurls.pyを自動的に作る【コマンド1発で生成】</title>
+      <link>http://localhost:43210/post/django-auto-create-urls/</link>
+      <pubDate>Sat, 09 Dec 2023 18:01:14 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-auto-create-urls/</guid>
+      <description>views.pyからurls.pyを作る。 URL引数(パスコンバーター)にも対応させる。 これまでと同様、コードは追記する形式ではあるが、実行は自己責任で。 【Django】models.pyとforms.pyからviews.pyを自動的に作る【コマンド1発で生成】 【Django】models.pyからforms.py及びadmin.pyを自動的に作る【コマンド1発で生成】 注意 Viewを継承したビュー</description>
+    </item>
+    <item>
+      <title>【Django】models.pyとforms.pyからviews.pyを自動的に作る【コマンド1発で生成】</title>
+      <link>http://localhost:43210/post/django-auto-create-views/</link>
+      <pubDate>Sat, 09 Dec 2023 14:51:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-auto-create-views/</guid>
+      <description>以前の自動生成ツール 【Django】models.pyからforms.py及びadmin.pyを自動的に作る【コマンド1発で生成】 この続き。今回はviews.pyを自動的に作る。 いつも同じようなものをimportして、ビュークラスを作り、DB操作とレンダリングしているだけなので。 内容は以前のコードをviews.py仕様にしただけで、特別なものは使っていない。 ソースコード import glob, re, sys ## 引数の指定がある場</description>
+    </item>
+    <item>
+      <title>【Django】カスタムテンプレートタグを実装させずにページネーションと検索を両立させる【Paginator】</title>
+      <link>http://localhost:43210/post/django-do-not-use-customtemplatetags/</link>
+      <pubDate>Fri, 08 Dec 2023 17:13:10 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-do-not-use-customtemplatetags/</guid>
+      <description>以前のページネーションを実装する方法(他パラメータとの両立)は、実装に手間がかかる。 views.pyでPaginatorのオブジェクトを作り bbs/templatetags/param_change.py を作り ↑をsettings.pyに登録 ↑をテンプレートで呼び出し、カスタムテンプレートタグを実行 たかが、検索とページネーションを両立させるためだけに、3工程も4工程もかかってしまう。 もっとシンプルにできないかと模索し、カスタムテンプレートタグの処理をビューで</description>
+    </item>
+    <item>
+      <title>【Django】各アプリのトップページとアプリ名をまとめてレンダリングする【apps.pyとurls.pyを操作】</title>
+      <link>http://localhost:43210/post/django-auto-create-all-apps-link/</link>
+      <pubDate>Thu, 07 Dec 2023 10:32:45 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-auto-create-all-apps-link/</guid>
+      <description>1つのDjangoプロジェクトに複数のアプリを作り、各アプリのリンクをまとめて表示する。 新しいアプリが追加されるたび、そのリンクをテンプレートにて手動で追記しているようではとても手間だ。整合性も取れなくなるだろう。 だから、全てのアプリのトップページのリンクと、アプリ名をまとめて生成。contextに入れ、レンダリングする。 そういう処理を作る。 前提 このコードを実装する前に、以下前提を守る必要がある。</description>
+    </item>
+    <item>
+      <title>【Django】models.pyからforms.py及びadmin.pyを自動的に作る【コマンド1発で生成】</title>
+      <link>http://localhost:43210/post/django-auto-create-models-forms-admin/</link>
+      <pubDate>Sat, 11 Nov 2023 16:46:34 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-auto-create-models-forms-admin/</guid>
+      <description>Djangoプロジェクトを何度も何度も作っていてふと思う。 models.pyからforms.py、admin.pyを作る時がすごいめんどくさいと。 どれも似たようなコードになるので、これは自動生成してしまったほうが容易いなと。 故に、本記事ではmodels.pyからforms.py及びadmin.pyを自動生成するPythonコードをまとめる。 ※ファイルを読み込んで追記する仕様上、実行は自己責任でお願</description>
+    </item>
+    <item>
+      <title>【Vimでスニペット】snipmateプラグイン</title>
+      <link>http://localhost:43210/post/vim-snipmate-plugin/</link>
+      <pubDate>Thu, 09 Mar 2023 13:33:55 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-snipmate-plugin/</guid>
+      <description>vim-snipmateはVimのスニペットプラグイン。スニペットとは、コードの断片のこと。このプラグインは、スニペットを即時呼び出して貼り付けできる。 同じようなコードを何度も何度も書くのは大変。だからスニペットプラグインを使用して爆速コーディングを実現させる。 環境はUbuntu22.04より インストール方法 snipmateはtlibとvim-addon-mw-utilsに依存しているので、まとめ</description>
+    </item>
+    <item>
+      <title>【Linux】grepとsedとxargsで複数のファイルに点在する誤字を一括修正(置換)する</title>
+      <link>http://localhost:43210/post/grep-sed-xargs-all-file-replace/</link>
+      <pubDate>Wed, 02 Nov 2022 09:13:31 +0900</pubDate>
+      <guid>http://localhost:43210/post/grep-sed-xargs-all-file-replace/</guid>
+      <description>開発をしていて、複数の誤字が見つかった。 しかもその誤字は複数のファイルに点在している。 そんな時、ファイルを開いて1つずつ置換して修正しているようでは時間がかかりすぎる。 そこで、コマンド一発で複数のファイルに点在する誤字を一括修正する。 コマンド 置換対象のファイルのバックアップを取るならこっち grep -rl &amp;quot;誤字&amp;quot; ./* | xargs sed -i &amp;quot;.bak&amp;quot; &#39;s/誤字/修正文/g&#39; バックアップを取らないならこっち grep -rl &amp;qu</description>
+    </item>
+    <item>
+      <title>【保存版】追加しておくべきvimrcの設定【検索ハイライト、タブはスペース4つ、拡張子ごとの初期データ】</title>
+      <link>http://localhost:43210/post/vimrc-setting/</link>
+      <pubDate>Thu, 10 Oct 2019 18:21:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/vimrc-setting/</guid>
+      <description>とりあえず、結論から。Ubuntuの場合、usr/share/vim/vimrcの末尾に下記を追加する。 &amp;quot;行番号表示 set number &amp;quot;タイトルの表示 set title &amp;quot;検索時にハイライト表示 set hlsearch &amp;quot;マークダウンを書くときに斜体を禁止する autocmd! FileType markdown hi! def link markdownItalic Nomal &amp;quot;全角記号の重なりの修正 set ambiwidth=double autocmd BufNewFile *.py 0r $HOME/.vim/template/python3.txt autocmd BufNewFile *.html 0r $HOME/.vim/template/html.txt autocmd BufNewFile *.css 0r $HOME/.vim/template/css.txt autocmd BufNewFile *.js 0r $HOME/.vim/template/javascript.txt autocmd BufNewFile *.c 0r $HOME/.vim/template/c.txt autocmd BufNewFile *.java 0r $HOME/.vim/template/java.txt set tabstop=4 set softtabstop=4 set shiftwidth=4 set expandtab set autoindent set smartindent 特にautoc</description>
+    </item>
     <item>
       <title>【保存版】Ubuntu18.04をインストールした後に真っ先にやる16の設定</title>
-      <link>https://noauto-nolife.com/post/ubuntu1804-settings/</link>
+      <link>http://localhost:43210/post/ubuntu1804-settings/</link>
       <pubDate>Sat, 12 Jan 2019 14:57:56 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/ubuntu1804-settings/</guid>
+      <guid>http://localhost:43210/post/ubuntu1804-settings/</guid>
       <description>ほとんど自分用の備忘録です。あまり役に立たないかもしれませんが、トップバーとdockの合成はやっておくと一気に便利になるでしょう。 その1:bashの履歴の上限を開放して、日時を表示させる その2:日本語のディレクトリ名を英語に変更させる その3:各種パッケージをインストールする その4:vimのプラグインをインストールする その5:vimのデフォルトの設定を変更させる その6:UbuntuのトップバーとDo</description>
     </item>
-    
+    <item>
+      <title>vimプラグインのemmetとsurroundのインストール方法と使い方【NeoBundleは不要】</title>
+      <link>http://localhost:43210/post/vim-plugin/</link>
+      <pubDate>Fri, 11 Jan 2019 19:19:12 +0900</pubDate>
+      <guid>http://localhost:43210/post/vim-plugin/</guid>
+      <description>vimを使用して本格的にHTMLのコーディングをしたいと思ったので、有名なemmet.vimとsurround.vimをインストールすることにしました。忘れてはいけないので備忘録として使い方や活用例なども含めて書き残します。 巷では、プラグイン管理ツールであるNeoBundleをインストールする必要があると言われていますが、無くても問題なくできました。むしろNeoBundleはすでに開発が止まってい</description>
+    </item>
   </channel>
 </rss>

@@ -1,24 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>正規表現 on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/</link>
+    <link>http://localhost:43210/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/</link>
     <description>Recent content in 正規表現 on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 26 Jan 2021 16:40:18 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 18 Oct 2022 18:26:02 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Python】正規表現モジュールreでパターンに一致した文字列を全て取り出す・全て置換する</title>
+      <link>http://localhost:43210/post/python-regex-findall/</link>
+      <pubDate>Tue, 18 Oct 2022 18:26:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-regex-findall/</guid>
+      <description>正規表現は普段から使っていないと、いざという時にどうなってたっけってなる。 だから備忘録としてまとめておく。 とりわけ、Pythonの正規表現モジュールreのメソッドはいろいろあるので、実用的な物に絞っておく。 全て取り出す 返り値はリスト型で出る。 import re target = &amp;quot;n1o2a3u4t5o-6n7o8li9f0e9.com&amp;quot; #数値を取り出す result = re.findall(r&#39;\d&#39;, target) if result: print(result) #取り出した数値を連結する。 print(&amp;quot;&amp;quot;.join(result)) else: print(&amp;quot;マッチなし&amp;quot;) 全て置換する import re target = &amp;quot;n1o2a3u4t5o-6n7o8li9f0e9.com&amp;quot; print(target) #数値を置換す</description>
+    </item>
     <item>
       <title>【Django】モデルフィールドに正規表現によるバリデーションを指定する【カラーコード・電話番号に有効】</title>
-      <link>https://noauto-nolife.com/post/django-models-regex-validate/</link>
+      <link>http://localhost:43210/post/django-models-regex-validate/</link>
       <pubDate>Tue, 26 Jan 2021 16:40:18 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/django-models-regex-validate/</guid>
+      <guid>http://localhost:43210/post/django-models-regex-validate/</guid>
       <description>例えば、Djangoで電話番号や16進数カラーコード、郵便番号や金融機関コードなどの、桁数と使用文字の種類が決まったデータをモデルフィールドに挿入する時、どうしていますか？ CharFieldやIntegerFieldにそのまま入れる？フロント側で対策しているから大丈夫？そんなわけない。不適切なデータがDBに入った時点で、システムは破綻する。それは世の常。 そこで、本記事ではモデルに正規表現のバリデー</description>
     </item>
-    
   </channel>
 </rss>

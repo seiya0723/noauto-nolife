@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LLM on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/llm/</link>
+    <description>Recent content in LLM on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 28 Jun 2026 14:50:32 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた</title>
+      <link>http://localhost:43210/post/javascript-self-chunks/</link>
+      <pubDate>Sun, 28 Jun 2026 14:50:32 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-self-chunks/</guid>
+      <description>RAG開発時、チャンクを自動的に行っているようではセマンティックな埋め込みベクトル検索などは厳しい。 そこで、チャンクサイズを手動で設定できる余地を作る。 今回はそのたたき台となるJSとHTMLを用意した。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Chunk Editor Sample&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; body{ font-family:sans-serif; margin:30px; } #editor{ border:1px solid #999; padding:15px; min-height:180px; white-space:pre-wrap; user-select:text; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h2&amp;gt;チャンクエディタ試作&amp;lt;/h2&amp;gt; &amp;lt;div id=&amp;#34;editor&amp;#34;&amp;gt; 今日は良い天気です。 明日は雨です。 明後日は晴れです。 &amp;lt;/div&amp;gt; &amp;lt;br&amp;gt; &amp;lt;button id=&amp;#34;c</description>
+    </item>
+    <item>
+      <title>OllamaでRAGを実現する。</title>
+      <link>http://localhost:43210/post/python-local-llm-rag/</link>
+      <pubDate>Sun, 31 May 2026 14:41:24 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-local-llm-rag/</guid>
+      <description>すでにollamaとgemma:2bをインストール済みとする。 参照: UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama) RAGの実装とソースコード pip install faiss-cpu sentence-transformers numpy import faiss import numpy as np from sentence_transformers import SentenceTransformer import subprocess # ========================= # 1. ドキュメント準備 # ========================= documents = [ &amp;#34;RAGとは、検索と生成を組み合わせたAI手法です。&amp;#34;, &amp;#34;FAISSはベクトル検索ライブラリです。&amp;#34;, &amp;#34;Oll</description>
+    </item>
+    <item>
+      <title>UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</title>
+      <link>http://localhost:43210/post/local-llm-install/</link>
+      <pubDate>Sun, 24 May 2026 14:44:41 +0900</pubDate>
+      <guid>http://localhost:43210/post/local-llm-install/</guid>
+      <description>Ollama Ollama はGoogle DeepMind によって開発されたローカルで利用できるLLM。 入力した情報を外部に公開したり curl -fsSL https://ollama.com/install.sh | sh 仮想環境下で以下を実行する。 pip install ollama ollamaコマンドでgemma:2b をインストールしておく。 ollama run gemma:2b 以下コードを実行する。 import ollama # 1. システムプロンプト（末尾のカンマを削除し、内容を強化） system_prompt = { &amp;#39;role&amp;#39;: &amp;#39;system&amp;#39;, &amp;#39;content&amp;#39;: ( &amp;#34;【絶対ルール】必ず日本語だけで回答してください。英語は一切使用禁止です。&amp;#34; )</description>
+    </item>
+  </channel>
+</rss>

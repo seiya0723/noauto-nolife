@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RAG on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/rag/</link>
+    <description>Recent content in RAG on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 28 Jun 2026 14:50:32 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/rag/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた</title>
+      <link>http://localhost:43210/post/javascript-self-chunks/</link>
+      <pubDate>Sun, 28 Jun 2026 14:50:32 +0900</pubDate>
+      <guid>http://localhost:43210/post/javascript-self-chunks/</guid>
+      <description>RAG開発時、チャンクを自動的に行っているようではセマンティックな埋め込みベクトル検索などは厳しい。 そこで、チャンクサイズを手動で設定できる余地を作る。 今回はそのたたき台となるJSとHTMLを用意した。 HTML &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;#34;ja&amp;#34;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;#34;UTF-8&amp;#34;&amp;gt; &amp;lt;title&amp;gt;Chunk Editor Sample&amp;lt;/title&amp;gt; &amp;lt;style&amp;gt; body{ font-family:sans-serif; margin:30px; } #editor{ border:1px solid #999; padding:15px; min-height:180px; white-space:pre-wrap; user-select:text; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h2&amp;gt;チャンクエディタ試作&amp;lt;/h2&amp;gt; &amp;lt;div id=&amp;#34;editor&amp;#34;&amp;gt; 今日は良い天気です。 明日は雨です。 明後日は晴れです。 &amp;lt;/div&amp;gt; &amp;lt;br&amp;gt; &amp;lt;button id=&amp;#34;c</description>
+    </item>
+    <item>
+      <title>RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</title>
+      <link>http://localhost:43210/post/qdrant-rag-system/</link>
+      <pubDate>Mon, 01 Jun 2026 18:27:07 +0900</pubDate>
+      <guid>http://localhost:43210/post/qdrant-rag-system/</guid>
+      <description>前提 GPU: RTX A2000 12GB LLM: Ollama(Gemma-7B 4bit量子化仕様) RAG: Qdrant 上記環境下で、指定のディレクトリ内のテキストファイルをすべて読み込み、RAGを実現させる。 qdrantの立ち上げとOllama と Gemma 7B のインストール Gemma 7Bのインストール。 ollama pull gemma:7b すでにOllamaでは4bit量子化仕様を配布しているので、あえて指定をする必要はない。上記コマンドで4bit量子化仕様が手に入る。 続いてqdrantはdockerで起動させる #! /bin/bash docker run -d</description>
+    </item>
+    <item>
+      <title>OllamaでRAGを実現する。</title>
+      <link>http://localhost:43210/post/python-local-llm-rag/</link>
+      <pubDate>Sun, 31 May 2026 14:41:24 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-local-llm-rag/</guid>
+      <description>すでにollamaとgemma:2bをインストール済みとする。 参照: UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama) RAGの実装とソースコード pip install faiss-cpu sentence-transformers numpy import faiss import numpy as np from sentence_transformers import SentenceTransformer import subprocess # ========================= # 1. ドキュメント準備 # ========================= documents = [ &amp;#34;RAGとは、検索と生成を組み合わせたAI手法です。&amp;#34;, &amp;#34;FAISSはベクトル検索ライブラリです。&amp;#34;, &amp;#34;Oll</description>
+    </item>
+  </channel>
+</rss>

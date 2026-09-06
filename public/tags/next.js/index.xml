@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Next.js on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/next.js/</link>
+    <description>Recent content in Next.js on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 29 Aug 2026 08:48:08 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/next.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る</title>
+      <link>http://localhost:43210/post/fastapi-nextjs-crud/</link>
+      <pubDate>Sat, 29 Aug 2026 08:48:08 +0900</pubDate>
+      <guid>http://localhost:43210/post/fastapi-nextjs-crud/</guid>
+      <description>FastAPIとNext.jsの経験がない中で、チュートリアル的な意味で作った。 【フェーズ1】FastAPIでStreamResponseをするローカルLLM(Ollama) 構成は以下の通り . ├── main.py ├── routers │ └── chat.py ├── crud.py ├── models.py ├── schemas.py ├── database.py ├── chat.db └── requirements.txt 全体像はこうなる。 以下、ファイルごとの役割 ファイル・フォルダ 役割 main.py サーバー起動用 routers エンドポイントフォルダ chat.py チャットGPT風アプリのエン</description>
+    </item>
+    <item>
+      <title>Next.jsとTypeScriptで簡易掲示板をつくる</title>
+      <link>http://localhost:43210/post/startup-nextjs-typescript/</link>
+      <pubDate>Fri, 04 Apr 2025 09:03:11 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-nextjs-typescript/</guid>
+      <description>Next.js を使えば、フロントからサーバーサイドまで一貫してJavaScript(TypeScript)でウェブアプリをつくる。 npx create-next-app startup-bbs このようにプロジェクトを作った。 cd startup-bbs npm run dev これでサーバーが起動すればプロジェクト作成はOK。 プロジェクトのディレクトリ構成 startup-bbs の中は以下のようになっている。 $ ls -al 合計 264 drwxrwxr-x 7 akagi akagi 4096 4月 4 10:40 . drwxrwxr-x 3 akagi akagi 4096 4月 4 10:39 .. drwxrwxr-x 8 akagi akagi 4096 4月 4 10:39 .git -rw-rw-r-- 1 akagi akagi 480 4月 4 10:39 .gitignore drwxrwxr-x 7 akagi akagi 4096 4月 4 10:40 .next -rw-rw-r-- 1 akagi akagi 1450</description>
+    </item>
+    <item>
+      <title>Next.jsのインストール方法とプロジェクトの作成</title>
+      <link>http://localhost:43210/post/startup-nextjs/</link>
+      <pubDate>Thu, 09 Feb 2023 21:48:32 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-nextjs/</guid>
+      <description>本記事ではUbuntu22.04にインストールする。 インストール パッケージの更新 sudo apt update &amp;amp;&amp;amp; sudo apt -y upgrade &amp;amp;&amp;amp; sudo apt -y autoremove build-essentialのインストール sudo apt install build-essential nodeのインストール curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash – sudo apt install nodejs 参照元: Ubuntu18.04にnode.jsとnpm、vue-cliをインストールする プロジェクト作成 プロジェクトの作成 npx create-next-app next-project プロジェクトのディレクトリに移動 cd next-project サーバーを起動する。 npm run dev 結論 n</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Qt on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/qt/</link>
+    <description>Recent content in Qt on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 14 Jun 2025 16:01:43 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/qt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PySide6のQtを使ってGUIアプリを作る</title>
+      <link>http://localhost:43210/post/python-pyside6-qt/</link>
+      <pubDate>Sat, 14 Jun 2025 16:01:43 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-pyside6-qt/</guid>
+      <description>PythonでもGUIアプリは作れる。 標準モジュールのtkinterと違い、より高度なものを作れる。 【関数】クリックで1ずつ増える 基本のボタン押下で1ずつ増えるコード from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton app = QApplication([]) counter = 0 def click_counter(): global counter counter += 1 button.setText(f&amp;#34;{counter} 回押しました。&amp;#34;) print(counter) window = QMainWindow() window.setWindowTitle(&amp;#34;テストウィンドウ&amp;#34;) button = QPushButton(f&amp;#34;{counter} 回押しました。&amp;#34;) button.clicked.connect(click_counter) window.setCentralWidget(button) window.resize(300, 200) window.show() app.exec() このコードではクラスを使わず、関数</description>
+    </item>
+  </channel>
+</rss>

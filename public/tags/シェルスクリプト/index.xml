@@ -1,51 +1,68 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>シェルスクリプト on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88/</link>
+    <link>http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88/</link>
     <description>Recent content in シェルスクリプト on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 28 Sep 2021 10:20:02 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 23 Nov 2025 06:53:31 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Node.jsでCRUD簡易掲示板を作る【RestfulAPI&#43;SQLite】</title>
+      <link>http://localhost:43210/post/startup-nodejs/</link>
+      <pubDate>Sun, 23 Nov 2025 06:53:31 +0900</pubDate>
+      <guid>http://localhost:43210/post/startup-nodejs/</guid>
+      <description>Node.jsはサーバーサイドで動作するJavaScriptの実行環境である。 Node.jsの強みは非同期処理。DBやファイルIO、リクエスト・レスポンスなどで発生するIOバウンドの処理を高速化できる。 本記事では、APIサーバーとして動作できるよう、基本のCRUDを解説する。 環境構築 mkdir startup_bbs &amp;amp;&amp;amp; cd startup_bbs npm init npm install express npm install sqlite3 基本のHelloworld index.js // API const express = require(&amp;#34;express&amp;#34;); const app = express(); app.get(&amp;#34;/&amp;#34;, (req, res) =&amp;gt; { const messages = [ {&amp;#34;message&amp;#34;:&amp;#34;helloworld&amp;#34;} ] res.json(messages); }); // サーバー起動 app.listen(3000,</description>
+    </item>
+    <item>
+      <title>ffmpeg で すべてのmp4ファイルをまとめて加工するシェルスクリプト</title>
+      <link>http://localhost:43210/post/clip-ffmpeg/</link>
+      <pubDate>Sat, 12 Apr 2025 21:28:06 +0900</pubDate>
+      <guid>http://localhost:43210/post/clip-ffmpeg/</guid>
+      <description>冒頭に広告や前置きなどがある動画を、まとめて加工したい場合。 高速で切り取りしたい場合 #! /bin/bash for file in *.mp4; do ffmpeg -i &amp;#34;$file&amp;#34; -ss 100 -c copy &amp;#34;${file}_output.mp4&amp;#34; done たまに、冒頭数秒が空白になってしまうようだ。 品質も維持したい場合 #! /bin/bash for file in *.mp4; do ffmpeg -i &amp;#34;$file&amp;#34; -ss 100 -c:v libx264 -c:a aac -strict experimental &amp;#34;${file}_output.mp4&amp;#34; done こちらはエンコードまでするため、冒頭の空白が除去できる。 解説 -i input.mp4 : 編集対象のファイルを指定する -ss 100 : 動画の開始時間を100秒とする -c copy : エンコードなしでコピーする(品質よりも高速化</description>
+    </item>
+    <item>
+      <title>【シェルスクリプト】git clone した後、クローンしたディレクトリへ移動する</title>
+      <link>http://localhost:43210/post/git-clone-cd-directory/</link>
+      <pubDate>Sat, 23 Dec 2023 15:23:05 +0900</pubDate>
+      <guid>http://localhost:43210/post/git-clone-cd-directory/</guid>
+      <description>git cloneコマンドを実行してクローンした後、cdコマンドでディレクトリ移動するのがめんどくさい。 そこで、git clone とcd コマンドを1つにまとめたシェルスクリプトを用意した。 #! /bin/bash # $1 https://github.com/seiya0723/django-auth/tree/main/accounts echo $1 # ここでtree以降は切り捨てる。 repo=$(echo &amp;#34;$1&amp;#34; | sed s/tree.*//g) # 移動対象のディレクトリを取り出す。 destination=$(echo ./&amp;#34;$1&amp;#34; | sed &amp;#34;s/tree\/[[:alnum:]_-]*\///g&amp;#34; | sed &amp;#34;s/https:\/\/github.com\/[[:alnum:]_-]*\///g&amp;#34;) git clone $repo cd $destination 例えば、特定のディレクトリ(tree/main/accounts)を指定している場合、そのディレクトリへ移動</description>
+    </item>
+    <item>
+      <title>【Bash】mkdirコマンドで作ったディレクトリに即移動(cd)するコマンドを作る【mkcdをaliasに登録】</title>
+      <link>http://localhost:43210/post/bash-mkdir-add-cd-command/</link>
+      <pubDate>Thu, 11 Aug 2022 09:34:47 +0900</pubDate>
+      <guid>http://localhost:43210/post/bash-mkdir-add-cd-command/</guid>
+      <description>mkdirコマンドで作ったディレクトリに即移動したい場合。 まず、このシェルスクリプトを作る。 #! /bin/bash mkdir -p $1 cd $1 そして、aliasを追加する。sourceコマンドを使って実行させる。 alias mkcd=&amp;#34;source ~/develop_tools/mkcd.sh&amp;#34; すると、mkcd コマンドを実行すると、作ったディレクトリに即移動できる。 -p オプションもついているので、2階層以上のディレクトリも一気に作れる。 参照元:https://qiita.com/akokubu/items/d5</description>
+    </item>
     <item>
       <title>Raspberry Pi Zeroに搭載したNginxの限界を試す【curlコマンド】</title>
-      <link>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</link>
+      <link>http://localhost:43210/post/raspberypi-zero-limit-access/</link>
       <pubDate>Tue, 28 Sep 2021 10:20:02 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/raspberypi-zero-limit-access/</guid>
+      <guid>http://localhost:43210/post/raspberypi-zero-limit-access/</guid>
       <description>Raspberry Pi Zeroの性能は無料プランのEC2やHerokuとほぼ同じ。Raspberry Pi Zeroの限界を知れば、ある程度EC2やHerokuの限界が予測できる。今回はウェブサーバーとして仕立てたRaspberry Pi Zeroにcurlコマンドでリクエストを大量送信し、サーバーダウンするまでのデータをここに記す。 なお、この行為は自分が管理していないサーバーで行うと、普通にDos攻撃になってしまうので、宛先</description>
     </item>
-    
     <item>
       <title>Nginxのログをawkコマンドを使用して調べる【crontabで特定の条件下のログを管理者へ報告】</title>
-      <link>https://noauto-nolife.com/post/nginx-log-check-by-awk/</link>
+      <link>http://localhost:43210/post/nginx-log-check-by-awk/</link>
       <pubDate>Thu, 23 Sep 2021 13:51:44 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/nginx-log-check-by-awk/</guid>
+      <guid>http://localhost:43210/post/nginx-log-check-by-awk/</guid>
       <description>Nginxのログはスペース区切りで送信元IPアドレス、アクセス対象のURLなどが書かれてある。これはスペース区切りで文字を扱うことができるawkコマンドと相性が良い。 本記事では、awkコマンドを使用して、特定の条件下のログを報告したり、ログの情報を見やすくさせる方法を記す。 awkコマンドを使用して、表示する情報を絞る 基本。 cat access.log | awk &#39;{print $1}&#39; これで送信元IPアドレス(スペース区切りで1番目のデータ)が表示</description>
     </item>
-    
     <item>
       <title>シェルスクリプトでウェブサーバーの応答不能・ステータスコードをチェックして記録・通知する【pingとcurl、即メール送信にも有効】</title>
-      <link>https://noauto-nolife.com/post/shellscript-server-checker/</link>
+      <link>http://localhost:43210/post/shellscript-server-checker/</link>
       <pubDate>Sun, 19 Sep 2021 08:51:18 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/shellscript-server-checker/</guid>
+      <guid>http://localhost:43210/post/shellscript-server-checker/</guid>
       <description>サーバーが応答不能になった時、すぐに対処できるよう、通知機能が欲しい。そういうときのシェルスクリプト。 pingで応答不能をチェックする #! /bin/bash while true ; do ping -c 1 192.168.11.99 rc=$? if [[ $rc -eq 0 ]] ; then echo &amp;quot;正常です&amp;quot; else echo &amp;quot;失敗しました&amp;quot; fi sleep 1 done 後は『正常です』『失敗しました』のいずれかに任意の処理を書き込む。 curlで応答不能をチェックする curlはHTTPのステータスコードも手に入るの</description>
     </item>
-    
     <item>
       <title>HUGOにシェルスクリプトとJavaScriptの記事検索機能を実装させる</title>
-      <link>https://noauto-nolife.com/post/hugo-js-search-system/</link>
+      <link>http://localhost:43210/post/hugo-js-search-system/</link>
       <pubDate>Tue, 13 Apr 2021 08:18:45 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/hugo-js-search-system/</guid>
+      <guid>http://localhost:43210/post/hugo-js-search-system/</guid>
       <description>タイトルの通り。 静的サイトジェネレーターのHUGOはサーバーサイドのスクリプトが存在しない(全てフロント言語)。そのため、検索機能を実装させるとなると、検索対象と検索機能の全てをフロントに記述する必要がある。フロントで完結する検索機能に必要になるのが、JavaScript。 それから、検索対象である記事の文字列をJSが読み取れる形式でジェネレートしてあげる必要もある。その際にコマンド一発でジェネレー</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/redis/</link>
+    <description>Recent content in Redis on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 16 Mar 2025 21:15:46 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DjangoのセッションをRedisで管理する</title>
+      <link>http://localhost:43210/post/django-session-with-redis/</link>
+      <pubDate>Sun, 16 Mar 2025 21:15:46 +0900</pubDate>
+      <guid>http://localhost:43210/post/django-session-with-redis/</guid>
+      <description>DjangoのセッションをRedisで管理するメリット DB(ディスク)ではなくRedis(RAM)になるので、セッション管理が高速化される 複数のアプリでセッション情報を共有できる マルチノード構成を使って、負荷分散・可用性を高めることができる TTLでセッションの削除を自動化できる。(DBの場合、能動的に削除しない限りセッション情報がそのまま残る) Django-Channelsなどの非同期セッションと</description>
+    </item>
+    <item>
+      <title>UbuntuへRedisをインストールし、Django上でキャッシュサーバーとして扱う</title>
+      <link>http://localhost:43210/post/ubuntu-redis-install-use-django/</link>
+      <pubDate>Thu, 13 Mar 2025 09:54:37 +0900</pubDate>
+      <guid>http://localhost:43210/post/ubuntu-redis-install-use-django/</guid>
+      <description>UbuntuへRedisをインストール sudo apt install redis でインストール完了。 redis-cli でRedisのCLIを起動する。 SETコマンド、GETコマンドでキーの追加・取得ができる。 127.0.0.1:6379&amp;gt; SET mykey &amp;#34;Hello, Redis!&amp;#34; OK 127.0.0.1:6379&amp;gt; GET mykey &amp;#34;Hello, Redis!&amp;#34; 127.0.0.1:6379&amp;gt; 削除をしたいときは、DELコマンド 127.0.0.1:6379&amp;gt; GET mykey &amp;#34;Hello, Redis!&amp;#34; 127.0.0.1:6379&amp;gt; DEL mykey (integer) 1 127.0.0.1:6379&amp;gt; GET mykey (nil) 127.0.0.1:6379&amp;gt; 動作確認をするには、systemctl コマンド sudo systemctl status redis 動いていればこんな表示になる。 ● redis-server.service - Advanced key-value store Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled) Active: active (running) since Thu 2025-03-13 09:50:21 JST; 12min ago Docs: http://redis.io/documentation, man:redis-server(1) Main PID: 52676 (redis-server) Status: &amp;#34;Ready to accept connections&amp;#34;</description>
+    </item>
+  </channel>
+</rss>

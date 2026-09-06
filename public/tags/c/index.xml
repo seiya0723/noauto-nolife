@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>C＃ on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/c/</link>
+    <description>Recent content in C＃ on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sat, 19 Apr 2025 17:43:59 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【C＃】LINQのメソッドのまとめ</title>
+      <link>http://localhost:43210/post/csharp-linq-method/</link>
+      <pubDate>Sat, 19 Apr 2025 17:43:59 +0900</pubDate>
+      <guid>http://localhost:43210/post/csharp-linq-method/</guid>
+      <description>LINQ の概要と前提情報 LINQ はコレクションに対して宣言的にクエリを書くためのしくみである。 コレクションとはイテラブルな要素のことであり、配列や辞書、リストが当てはまる。 C#の配列は固定長であり、リストは可変長。リストの方には別途メソッドが豊富に用意されている。配列は固定長なので、Pythonのタプルに近いだろう。 辞書はキーを指定して値を取り出す。 基本のWhereとToList class Student { public string Name; public int Age; public int Grade; } var students</description>
+    </item>
+    <item>
+      <title>ASP .NET Coreで簡易掲示板をつくる</title>
+      <link>http://localhost:43210/post/dotnet-webapp-startup-bbs/</link>
+      <pubDate>Sat, 22 Mar 2025 17:17:28 +0900</pubDate>
+      <guid>http://localhost:43210/post/dotnet-webapp-startup-bbs/</guid>
+      <description>.NETを急いで覚える必要があるため、まずは簡易掲示板をつくる。 プロジェクトをつくる まず、.NETには、プロジェクトの構成として、MVC と Razor Pagesの2パターンがある。 PazorPagesは基本的なウェブページのみで構成されたシンプルなウェブアプリ。 一方、MVCはモデル・ビュー・コントローラがすべて揃った状態で作られる本格的なウェブアプリ。 今回は後者でつくる。 new mvc コマンドでプロジェクトをつくる。</description>
+    </item>
+    <item>
+      <title>UbuntuでC#の開発環境を整え、C#の基本構文をまとめる</title>
+      <link>http://localhost:43210/post/csharp-environment/</link>
+      <pubDate>Wed, 19 Mar 2025 09:22:48 +0900</pubDate>
+      <guid>http://localhost:43210/post/csharp-environment/</guid>
+      <description>C#と.NET SDK のインストール MSの公式リポジトリを追加しておく sudo apt update sudo apt install -y wget apt-transport-https wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb sudo dpkg -i packages-microsoft-prod.deb rm packages-microsoft-prod.deb .NET SDKをインストールする sudo apt update sudo apt install -y dotnet-sdk-8.0 プロジェクトの作成 .NET ではCLIアプリの開発、WEBアプリの開発、ネイティブアプリの開発がすべてdotnet new コマンドで実現できるようになっている。 CLIアプリの開発 dotnet new console -o MyApp cd MyApp dotnet run HelloWorldが表示される。 WEBアプリの開発 dotnet new webapp -o MyApp cd MyApp dotnet run 開発</description>
+    </item>
+  </channel>
+</rss>

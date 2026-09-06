@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>備忘録 on 自動化無しに生活無し</title>
+    <link>http://localhost:43210/tags/%E5%82%99%E5%BF%98%E9%8C%B2/</link>
+    <description>Recent content in 備忘録 on 自動化無しに生活無し</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Wed, 11 Dec 2024 11:14:02 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/%E5%82%99%E5%BF%98%E9%8C%B2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ReactでFullcalendar.jsを使う</title>
+      <link>http://localhost:43210/post/react-fullcalendar/</link>
+      <pubDate>Wed, 11 Dec 2024 11:14:02 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-fullcalendar/</guid>
+      <description>インストール npm install @fullcalendar/react @fullcalendar/daygrid ソースコード import FullCalendar from &amp;#39;@fullcalendar/react&amp;#39;; import dayGridPlugin from &amp;#39;@fullcalendar/daygrid&amp;#39;; import { useState, useEffect } from &amp;#39;react&amp;#39;; const App = () =&amp;gt; { const [events, setEvents] = useState([]); useEffect( () =&amp;gt; { setEvents([ { title: &amp;#39;event 1&amp;#39;, date: &amp;#39;2024-12-01&amp;#39; }, { title: &amp;#39;event 2&amp;#39;, date: &amp;#39;2024-12-02&amp;#39; } ]); }, []); // FullCalendarに events 引数を与える。Stateで管理する。 return ( &amp;lt;main&amp;gt; &amp;lt;div className=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;FullCalendar plugins={[ dayGridPlugin ]} initialView=&amp;#34;dayGridMonth&amp;#34; locale=&amp;#34;local&amp;#34; events={events} /&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/main&amp;gt; ) } export default App; 考察 今回は、useEffectでイベントを取得したが、実践ではfullcalendar.jsのeventSourceを使うほうが良いだろう。 なぜなら、useEffec</description>
+    </item>
+    <item>
+      <title>よく出るReactのエラー一覧</title>
+      <link>http://localhost:43210/post/react-errors/</link>
+      <pubDate>Mon, 01 Apr 2024 11:12:58 +0900</pubDate>
+      <guid>http://localhost:43210/post/react-errors/</guid>
+      <description>textarea要素には、valueプロパティを使って値を与える 普通のHTMLでは、textareaに最初から値を入れておきたい場合、子要素に直接文字を書くと良い。 しかし、Reactで同じことをやるとエラーになる。 &amp;lt;textarea className=&amp;#34;form-control&amp;#34; name=&amp;#34;comment&amp;#34; onChange={this.handleChange}&amp;gt;{this.state.activeItem.comment}&amp;lt;/textarea&amp;gt; そこで、valueプロパティを使う。 &amp;lt;textarea className=&amp;#34;form-control&amp;#34; name=&amp;#34;comment&amp;#34; onChange={this.handleChange} value={this.state.activeItem.comment}&amp;gt;&amp;lt;/textarea&amp;gt; これで、 Use the `defaultValue` or `value` props instead of setting children on &amp;lt;textarea&amp;gt;. というエラーは解決される。 リスト内の要素を識別できるよう、keyプロパティを与える Each child in a list should have a unique</description>
+    </item>
+  </channel>
+</rss>

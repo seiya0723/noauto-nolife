@@ -1,24 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pandas on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/pandas/</link>
+    <link>http://localhost:43210/tags/pandas/</link>
     <description>Recent content in Pandas on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 14 Oct 2021 12:47:15 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/pandas/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 08 Jun 2025 16:49:40 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/pandas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Pandas】read_sql で生のSQL(SELECT文)を実行、DBから直接DataFrameを作る</title>
+      <link>http://localhost:43210/post/pandas-read-sql/</link>
+      <pubDate>Sun, 08 Jun 2025 16:49:40 +0900</pubDate>
+      <guid>http://localhost:43210/post/pandas-read-sql/</guid>
+      <description>分析するデータは常にCSVにあるわけではない。DBから取り出す必要もある。 そこで、Pandasからread_sql メソッドを使ってDBから直接DataFrameを作る。 pandasで.read_sql() を使うサンプルコード pip install pandas pip install sqlalchemy 事前にpandas とsqlalchemy をインストールしておく。 import pandas as pd from sqlalchemy import create_engine # 例: PostgreSQL に接続する場合（DB種類・ホスト・ポート・ユーザー・パスワードを変更） engine = create_engine(&amp;#39;postgresql://username:password@localhost:5432/mydb&amp;#39;)</description>
+    </item>
+    <item>
+      <title>【教師なし学習】k-means(k平均法)により似たデータをクラスタリング(グループ化)する</title>
+      <link>http://localhost:43210/post/python-k-means-clustering/</link>
+      <pubDate>Sat, 24 May 2025 11:34:57 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-k-means-clustering/</guid>
+      <description>前提知識 教師なし学習とは？ 教師なし学習とは、ラベル(正解)のない学習のことである。 例えば、犬猫の画像を用意して、それぞれ個々の画像に犬と猫のラベル(正解)を与えた上で学習させる方法を教師あり学習という。 一方で、教師なし学習の場合、犬と猫の画像をまとめて与えるだけで、犬や猫のラベル(正解)は学習に含ませない。 この教師なし学習のメリットは、事前にラベルを用意する必要がないということ。 例えば、ラベリング</description>
+    </item>
+    <item>
+      <title>【Pandas】DataFrameをループして取り出す【列ごと、行ごとに取り出すにはdf.items()とdf.itertuples()でOK】</title>
+      <link>http://localhost:43210/post/pandas-for-loop/</link>
+      <pubDate>Thu, 27 Oct 2022 09:29:04 +0900</pubDate>
+      <guid>http://localhost:43210/post/pandas-for-loop/</guid>
+      <description>よくあるpandasの行ごと、列ごとにデータを取り出す方法。 環境 Python 3.8.10 numpy==1.23.4 pandas==1.5.1 python-dateutil==2.8.2 pytz==2022.5 six==1.16.0 列ごとにループして取り出す .iteritems()は後のバージョンで廃止される可能性があるので、列ごとのループには.items()を使う import pandas as pd data = {} data[&amp;quot;month&amp;quot;] = [ str(i)+&amp;quot;月&amp;quot; for i in range(1,13) ] data[&amp;quot;page_view&amp;quot;] = [ i*1000 for i in range(12) ] data[&amp;quot;earnings&amp;quot;] = [ i*100 for i in range(12) ] index = [ str(i) for i in range(12) ] df = pd.DataFrame( data, index=index ) ## 列ごとにループする for column_name, item in df.items(): print(column_name) print(item) print(item[&amp;quot;0&amp;quot;]) print(item[&amp;quot;1&amp;quot;]) print(item[&amp;quot;2&amp;quot;]) index</description>
+    </item>
     <item>
       <title>【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</title>
-      <link>https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/</link>
+      <link>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</link>
       <pubDate>Thu, 14 Oct 2021 12:47:15 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/</guid>
+      <guid>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</guid>
       <description>pandasでファイルの読み込み、演算、グラフ描画、ファイル書き込みの基本操作関係を記す。 前提 data.xlsx及びdata.csvの内容を下記とする。これをPythonのファイルと同じディレクトリに格納する。 ライブラリインストールのコマンドは下記。 pip install openpyxl pandas matplotlib pandasの使い方 CSVやエクセルのファイルをそのまま読み込んで分析できる。 ファイルの読み込み .read_csv()メソッドでCSVを読み</description>
     </item>
-    
   </channel>
 </rss>

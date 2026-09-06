@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=43210&amp;path=livereload" data-no-instant defer></script>
+
+        
+        <meta charset="utf-8">
+<meta name="pinterest" content="nopin">
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+<link rel="canonical" href="http://localhost:43210/post/dotnet-webapp-startup-bbs/">
+
+
+        <link href="http://localhost:43210/img/favicon.ico" rel="icon">
+
+        <link rel="stylesheet" href="http://localhost:43210/css/bootstrap-grid.css"> 
+
+        <script src="http://localhost:43210/data/search.js"></script>
+        <script src="http://localhost:43210/js/script.js"></script>
+
+        <title>ASP .NET Coreで簡易掲示板をつくる - 自動化無しに生活無し</title>
+        
+
+<meta property="og:title" content="ASP .NET Coreで簡易掲示板をつくる - 自動化無しに生活無し">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://localhost:43210/post/dotnet-webapp-startup-bbs/">
+<meta property="og:image" content="http://localhost:43210/images/csharp.jpg">
+<meta property="og:site_name" content="自動化無しに生活無し">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="自動化無しに生活無し">
+<meta name="twitter:url" content="http://localhost:43210/post/dotnet-webapp-startup-bbs/">
+<meta name="twitter:title" content="ASP .NET Coreで簡易掲示板をつくる - 自動化無しに生活無し">
+<meta name="twitter:image" content="http://localhost:43210/images/csharp.jpg">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id":"http:\/\/localhost:43210\/"
+    },
+    "headline": "ASP .NET Coreで簡易掲示板をつくる - 自動化無しに生活無し",
+    "image": {
+      "@type": "ImageObject",
+      "url": "http:\/\/localhost:43210\/images\/csharp.jpg",
+      "height": 800,
+      "width": 800
+    },
+    "datePublished": "2025-03-22T17:17:28JST",
+    "dateModified": "2025-03-22T17:17:28JST",
+    "author": {
+      "@type": "Person",
+      "name": "自動化無しに生活無し"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "自動化無しに生活無し",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "http:\/\/localhost:43210\/images/logo.png",
+        "width": 600,
+        "height": 60
+      }
+    }
+  }
+</script>
+
+
+        <link href="http://localhost:43210/css/style.css" rel="stylesheet">
+        
+
+        
+        
+
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HDX0LW64ZT"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-HDX0LW64ZT');
+        </script>
+        
+
+
+        
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142" crossorigin="anonymous"></script>
+        
+        
+
+    </head>
+
+    <body>
+        
+        
+
+        <header class="header_area">
+            <h1 class="header_title"><a href="http://localhost:43210/">自動化無しに生活無し</a></h1>
+            <p class="header_description">WEB開発関係を中心に備忘録をまとめています</p>
+        </header>
+
+        <main class="main_area">
+            
+<div class="row">
+    <div class="col-md-8">
+        
+        
+        
+        <nav class="crumb_area">
+            <ol class="crumb_list">
+                <li><a href="http://localhost:43210/">HOME</a></li>
+                
+                <li><a href="http://localhost:43210/post/">post</a></li>
+                
+                <li class="active">ASP .NET Coreで簡易掲示板をつくる</li>
+            </ol>
+        </nav>
+        
+        <article class="single">
+    <h1 class="article_title">ASP .NET Coreで簡易掲示板をつくる</h1>
+        
+    <div class="article_spacer">
+
+    <ul class="article_status">
+
+        
+
+        <li>作成日時：<time datetime="2025-03-22T17:17:28JST">2025年3月22日 17時17分</time></li>
+        <li>最終更新日時：<time datetime="2025-03-22T17:17:28JST">2025年3月22日 17時17分</time></li>
+
+        
+        
+        
+        
+        <li class="taxonomies_area">Categories：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89/">サーバーサイド</a>
+            
+        </li>
+        
+        
+        
+        <li class="taxonomies_area">Tags：
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/c/">C＃</a>
+            
+            <a class="taxonomies_link" href="http://localhost:43210/tags/.net/">.NET</a>
+            
+        </li>
+        
+        
+    </ul>
+
+
+    
+    
+    
+
+
+
+
+    <div class="img-center"><img src="http://localhost:43210/images/csharp.jpg" alt="thumbnail"></div>
+
+	<div class="article_body"><p>.NETを急いで覚える必要があるため、まずは簡易掲示板をつくる。</p>
+<h2 id="プロジェクトをつくる">プロジェクトをつくる</h2>
+<p>まず、.NETには、プロジェクトの構成として、MVC と Razor Pagesの2パターンがある。</p>
+<p>PazorPagesは基本的なウェブページのみで構成されたシンプルなウェブアプリ。</p>
+<p>一方、MVCはモデル・ビュー・コントローラがすべて揃った状態で作られる本格的なウェブアプリ。</p>
+<p>今回は後者でつくる。</p>
+<p>new mvc コマンドでプロジェクトをつくる。</p>
+<pre tabindex="0"><code>dotnet new mvc -o StartupBBS
+</code></pre><pre tabindex="0"><code>drwxrwxr-x 2 akagi akagi 4096  3月 26 13:22 Controllers
+drwxrwxr-x 2 akagi akagi 4096  3月 26 13:22 Models
+-rw-rw-r-- 1 akagi akagi  670  3月 26 13:22 Program.cs
+drwxrwxr-x 2 akagi akagi 4096  3月 26 13:22 Properties
+-rw-rw-r-- 1 akagi akagi  219  3月 26 13:22 StartupBBS.csproj
+drwxrwxr-x 4 akagi akagi 4096  3月 26 13:22 Views
+-rw-rw-r-- 1 akagi akagi  127  3月 26 13:22 appsettings.Development.json
+-rw-rw-r-- 1 akagi akagi  151  3月 26 13:22 appsettings.json
+drwxrwxr-x 2 akagi akagi 4096  3月 26 13:22 obj
+drwxrwxr-x 5 akagi akagi 4096  3月 26 13:22 wwwroot
+</code></pre><p>ちなみにプロジェクトの構成を役割に応じてまとめると以下のようになる。</p>
+<pre tabindex="0"><code>StartupBBS/
+│
+├── Controllers/         # コントローラ (MVCの「C」部分)
+│   └── HomeController.cs
+│
+├── Models/              # モデル (MVCの「M」部分)
+│   └── ErrorViewModel.cs
+│
+├── Views/               # ビュー (MVCの「V」部分)
+│   ├── Home/
+│   │   └── Index.cshtml
+│   └── Shared/
+│       └── _Layout.cshtml
+│
+├── wwwroot/             # 静的ファイル（CSS, JavaScript, 画像など）
+│   ├── css/
+│   ├── js/
+│   └── images/
+│
+├── appsettings.json     # アプリケーションの設定ファイル
+├── Program.cs           # エントリーポイント (アプリケーションの開始処理)
+└── StartupBBS.csproj    # プロジェクトファイル
+</code></pre><p>djangoのようにアプリの概念はなく、プロジェクト直下にモデルやコントローラ、ビューやルーティング設定が含まれる。</p>
+<p>どちらかと言うとLaravelに近い。</p>
+<h3 id="razorpages">RazorPages</h3>
+<p>もしウェブページだけのウェブアプリを作りたい場合はこうする。</p>
+<pre tabindex="0"><code>dotnet new webapp -o StartupBBS
+</code></pre><pre tabindex="0"><code>drwxrwxr-x 3 akagi akagi 4096  3月 22 16:46 Pages
+-rw-rw-r-- 1 akagi akagi  573  3月 22 16:46 Program.cs
+drwxrwxr-x 2 akagi akagi 4096  3月 22 16:46 Properties
+-rw-rw-r-- 1 akagi akagi  154  3月 22 16:46 appsettings.Development.json
+-rw-rw-r-- 1 akagi akagi  151  3月 22 16:46 appsettings.json
+drwxrwxr-x 3 akagi akagi 4096  3月 22 16:46 bin
+drwxrwxr-x 3 akagi akagi 4096  3月 22 16:46 obj
+-rw-rw-r-- 1 akagi akagi  219  3月 22 16:46 StartupBBS.csproj
+drwxrwxr-x 5 akagi akagi 4096  3月 22 16:46 wwwroot
+</code></pre><h2 id="programcs-でsqlite-を使うように設定する">Program.cs でSQLite を使うように設定する</h2>
+<pre tabindex="0"><code>using Microsoft.EntityFrameworkCore;
+using StartupBBS.Data;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// DbContext の登録
+builder.Services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
+    options.UseSqlite(&#34;Data Source=app.db&#34;)); // SQLite での例
+
+var app = builder.Build();
+
+// その他の設定...
+
+app.Run();
+</code></pre><h2 id="モデル">モデル</h2>
+<p>モデル作成 (Models/Comment.cs)</p>
+<pre tabindex="0"><code>using System;
+
+namespace StartupBBS.Models
+{
+    public class Comment
+    {
+        public int Id { get; set; }  // プライマリキー
+        public required string UserName { get; set; }  // 投稿者の名前
+        public required string Content { get; set; }  // コメント内容
+        public DateTime PostedAt { get; set; }  // 投稿日時
+    }
+}
+</code></pre><h3 id="補足名前空間-startupbbs">【補足】名前空間 StartupBBS</h3>
+<p>名前空間とは、ファイルを論理的にグループ化させるためのもの。</p>
+<p>一般的に.NETでは プロジェクト名と同じ名前空間を指定する。ただし、プロジェクト名とは違う名前空間でも問題はない。</p>
+<p>例えば、以下の名前空間でもエラーは出ない。</p>
+<pre tabindex="0"><code>namespace StartupBBS.Models
+</code></pre><p>また、プロジェクト名自体はただのディレクトリ名であり内部的に紐付いているわけではない。</p>
+<p>よって、今回プロジェクト名をStartupBBSとしたが、これは後から変更することもできる。</p>
+<h3 id="補足モデルクラスのプロパティにはnullが許容されるか入力必須とするかを明示的にしておく">【補足】モデルクラスのプロパティには、nullが許容されるか、入力必須とするかを明示的にしておく</h3>
+<p>今回、</p>
+<pre tabindex="0"><code>using System;
+
+namespace StartupBBS.Models
+{
+    public class Comment
+    {
+        public int Id { get; set; }  // プライマリキー
+        public required string UserName { get; set; }  // 投稿者の名前
+        public required string Content { get; set; }  // コメント内容
+        public DateTime PostedAt { get; set; }  // 投稿日時
+    }
+}
+</code></pre><p>このようにしたが、</p>
+<pre tabindex="0"><code>using System;
+
+namespace StartupBBS.Models
+{
+    public class Comment
+    {
+        public int Id { get; set; }  // プライマリキー
+        public string UserName { get; set; }  // 投稿者の名前
+        public string Content { get; set; }  // コメント内容
+        public DateTime PostedAt { get; set; }  // 投稿日時
+    }
+}
+</code></pre><p>これでは警告が出てしまう。</p>
+<pre tabindex="0"><code>/home/akagi/Documents/programming/csharp/StartupBBS/Models/Comment.cs(8,23): warning CS8618: null 非許容の プロパティ &#39;UserName&#39; には、コンストラクターの終了時に null 以外の値が入っていなければなりません。&#39;required&#39; 修飾子を追加するか、プロパティ を Null 許容として宣言することを検討してください。 [/home/akagi/Documents/programming/csharp/StartupBBS/StartupBBS.csproj]
+/home/akagi/Documents/programming/csharp/StartupBBS/Models/Comment.cs(9,23): warning CS8618: null 非許容の プロパティ &#39;Content&#39; には、コンストラクターの終了時に null 以外の値が入っていなければなりません。&#39;required&#39; 修飾子を追加するか、プロパティ を Null 許容として宣言することを検討してください。 [/home/akagi/Documents/programming/csharp/StartupBBS/StartupBBS.csproj]
+</code></pre><p>なぜ</p>
+<pre tabindex="0"><code>        public string UserName { get; set; }  // 投稿者の名前
+        public string Content { get; set; }  // コメント内容
+</code></pre><p>これではいけないかというと、null 禁止であることを明示的に指定していないから。</p>
+<p>コンストラクタの終了時になにか値を入れるか、もしくはrequiredを追加するか string? として未入力OKとしなければならない。</p>
+<h3 id="補足--get-set--とは">【補足】 { get; set; } とは？</h3>
+<p>その名の通り、データの取得と設定を許可するという意味。アクセサメソッドという。</p>
+<p>get で読み取りをする。setで新しい値を代入する。</p>
+<h2 id="マイグレーション">マイグレーション</h2>
+<p>DbContext の作成 (Data/ApplicationDbContext.cs)</p>
+<pre tabindex="0"><code>using Microsoft.EntityFrameworkCore;
+using StartupBBS.Models;
+
+
+namespace StartupBBS.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions&lt;ApplicationDbContext&gt; options)
+            : base(options)
+        { }
+
+        // デザイン時に使用する接続設定を追加
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite(&#34;Data Source=app.db&#34;); // SQLiteの接続設定（デザイン時）
+            }
+        }
+
+        public DbSet&lt;Comment&gt; Comments { get; set; }
+    }
+}
+</code></pre><p>このDbContextを元にマイグレーションファイルをつくる。</p>
+<pre tabindex="0"><code>dotnet ef migrations add InitialCreate
+</code></pre><p>これによりInitialCreateという名前のマイグレーションファイルが作られる。未適応DbContextがすべてこのマイグレーションファイルで作られる。</p>
+<p>続いて、マイグレーションファイルをDBに反映させる。</p>
+<pre tabindex="0"><code>dotnet ef database update
+</code></pre><h3 id="補足dbcontextとmodelの関係は">【補足】DbContextとModelの関係は？</h3>
+<p>DbContext(データベースコンテキスト)は、DBの操作をするためのもの。</p>
+<p>Modelはデータの読み書きをするためのもの。</p>
+<p>このデータベースコンテキストを元に、<code>dotnet ef migrations add InitialCreate</code>でマイグレーションファイルを作り、<code>dotnet ef database update </code>とすることでマイグレーション(DBに更新)とする。</p>
+<h3 id="マイグレーションのコマンドでエラーが出る場合は">マイグレーションのコマンドでエラーが出る場合は？</h3>
+<pre tabindex="0"><code>$ dotnet ef migrations add InitialCreate
+
+
+指定されたコマンドまたはファイルが見つからなかったため、実行できませんでした。
+これには、次のような理由が考えられます: 
+ * 組み込みの dotnet コマンドのスペルが間違っています。
+ * .NET プログラムを実行しようとしましたが、dotnet-ef が存在しません。
+ * グローバル ツールを実行しようとしましたが、この名前の dotnet プレフィックス付き実行可能ファイルが PATH に見つかりませんでした。
+</code></pre><p>と出てくる場合、dotnet-ef がインストールされていない可能性がある。</p>
+<pre tabindex="0"><code>dotnet tool install --global dotnet-ef
+
+
+dotnet new tool-manifest
+dotnet tool install dotnet-ef
+</code></pre><h3 id="エラーの内容を出力するには">エラーの内容を出力するには？</h3>
+<pre tabindex="0"><code>dotnet build 
+</code></pre><p>でビルドする。</p>
+<pre tabindex="0"><code>$ dotnet build
+  復元対象のプロジェクトを決定しています...
+  復元対象のすべてのプロジェクトは最新です。
+/home/akagi/Documents/programming/csharp/StartupBBS/Data/ApplicationDbContext.cs(1,17): error CS0234: 型または名前空間の名前 &#39;EntityFrameworkCore&#39; が名前空間 &#39;Microsoft&#39; に存在しません (アセンブリ参照があることを確認してください) [/home/akagi/Documents/programming/csharp/StartupBBS/StartupBBS.csproj]
+/home/akagi/Documents/programming/csharp/StartupBBS/Data/ApplicationDbContext.cs(6,41): error CS0246: 型または名前空間の名前 &#39;DbContext&#39; が見つかりませんでした (using ディレクティブまたはアセンブリ参照が指定されていることを確認してください) [/home/akagi/Documents/programming/csharp/StartupBBS/StartupBBS.csproj]
+/home/akagi/Documents/programming/csharp/StartupBBS/Data/ApplicationDbContext.cs(8,37): error CS0246: 型または名前空間の名前 &#39;DbContextOptions&lt;&gt;&#39; が見つかりませんでした (using ディレクティブまたはアセンブリ参照が指定されていることを確認してください) [/home/akagi/Documents/programming/csharp/StartupBBS/StartupBBS.csproj]
+/home/akagi/Documents/programming/csharp/StartupBBS/Data/ApplicationDbContext.cs(10,16): error CS0246: 型または名前空間の名前 &#39;DbSet&lt;&gt;&#39; が見つかりませんでした (using ディレクティブまたはアセンブリ参照が指定されていることを確認してください) [/home/akagi/Documents/programming/csharp/StartupBBS/StartupBBS.csproj]
+
+ビルドに失敗しました。
+</code></pre><p>このようなエラーが出る。</p>
+<pre tabindex="0"><code>dotnet add package Microsoft.EntityFrameworkCore
+</code></pre><pre tabindex="0"><code>dotnet add package Microsoft.EntityFrameworkCore.Design
+</code></pre><p>SQLiteを使う場合このコマンドを実行しておく。</p>
+<pre tabindex="0"><code>dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+</code></pre><h2 id="コントローラ">コントローラ</h2>
+<p>コントローラ作成 (Controllers/HomeController.cs)</p>
+<pre tabindex="0"><code>using Microsoft.AspNetCore.Mvc;
+using StartupBBS.Data;
+using StartupBBS.Models;
+using System.Linq;
+
+namespace StartupBBS.Controllers
+{
+    public class HomeController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: コメント一覧の表示
+        public IActionResult Index()
+        {
+            var comments = _context.Comments.ToList();  // コメント一覧を取得
+            return View(comments);
+        }
+
+        // POST: コメントの投稿
+        [HttpPost]
+        public IActionResult PostComment(string userName, string content)
+        {
+            var comment = new Comment
+            {
+                UserName = userName,
+                Content = content,
+                PostedAt = DateTime.Now
+            };
+
+            _context.Comments.Add(comment);  // コメントをDBに追加
+            _context.SaveChanges();  // 変更を保存
+
+            return RedirectToAction(&#34;Index&#34;);  // コメント投稿後にトップページへリダイレクト
+        }
+    }
+}
+</code></pre><p>コンストラクタHomeController でレンダリング時に引き渡すcontextを生成している。</p>
+<p>IActionResult は アクションメソッドの戻り値のデータ型である。戻り値である View() や RedirectToAction() も IActionResult 型である。これでコントローラのアクションをつくることができる。</p>
+<p>POSTメソッドでCommentが使えるのは、冒頭で</p>
+<pre tabindex="0"><code>using StartupBBS.Models;
+</code></pre><p>としているから。</p>
+<h3 id="補足-httppost-とは何か">【補足】 [HttpPost] とは何か？</h3>
+<p>これはHTTP POSTメソッドに対応したアクションメソッドであることを示す、アトリビュートである。</p>
+<p>この指定により、POSTリクエストを受け取ったときに実行されるようになる。</p>
+<p>ちなみに、DELETE、PUT、PATCHなどのメソッドを受け取ることもできる。</p>
+<pre tabindex="0"><code>[HttpDelete]
+
+[HttpPut]
+
+[HttpPatch]
+</code></pre><p>ただし、通常のformタグではGETとPOSTしかサポートしていないため、DELETE、PUT、PATCHメソッドを送信したい場合はJavaScriptのFetchAPIなどを使う。</p>
+<p>ちなみに、GETメソッドの場合、アクションメソッドのアトリビュート<code>[HttpGet]</code>は省略しても良い。</p>
+<p>今回のIndexアクションメソッドは一般的にGETメソッドであると決まっているので、省略することが多い。</p>
+<p>可読性を高めるため、あえて<code>[HttpGet]</code>と書くこともある。</p>
+<h3 id="補足このコントローラではバリデーションはしていない">【補足】このコントローラではバリデーションはしていない</h3>
+<p>このコントローラはバリデーションはしていない。</p>
+<p>もしバリデーションをするのであれば、モデルバインディングを使ってこうする。</p>
+<pre tabindex="0"><code>// POST: コメントの投稿
+[HttpPost]
+public IActionResult PostComment(Comment, comment)
+{
+
+    if(ModelState.IsValid){
+        _context.Comments.Add(comment);
+        _context.SaveChanges();
+    }
+
+    return RedirectToAction(&#34;Index&#34;);
+}
+</code></pre><p>このModelStateはアクションメソッド内で使用することができる。だから、あえて<code>using</code>する必要はない。</p>
+<h3 id="補足モデル名の複数形はどういう理屈で変換されているのか">【補足】モデル名の複数形はどういう理屈で変換されているのか？</h3>
+<p>C# の Entity Framework Core (EF Core) により変換されている。</p>
+<p>一般的な英語の複数形のルールに従っている。</p>
+<p>例えば、 City はCitys ではなく Citiesと変換される。 CategoryもCategories になる。</p>
+<p>ただし、特殊な単語や辞書に載っていない単語は、単純にsがつくか、何もつかないかのどちらかになる。</p>
+<p>確認をするには以下のコードを使うとよいだろう。</p>
+<pre tabindex="0"><code>using System;
+using System.Data.Entity.Design.PluralizationServices;
+using System.Globalization;
+
+class Program
+{
+    static void Main()
+    {
+        // PluralizationService のインスタンスを作成
+        var pluralizationService = PluralizationService.CreateService(new CultureInfo(&#34;en-US&#34;));
+
+        // 調べたい単語のリスト
+        string[] words = { &#34;City&#34;, &#34;User&#34;, &#34;Category&#34;, &#34;Status&#34;, &#34;Metadata&#34;, &#34;Pokemon&#34;, &#34;MyCustomWord&#34; };
+
+        // 結果を表示
+        foreach (var word in words)
+        {
+            string plural = pluralizationService.Pluralize(word);
+            Console.WriteLine($&#34;{word} → {plural}&#34;);
+        }
+    }
+}
+</code></pre><h3 id="netのormはどう使う">.NETのORMはどう使う？</h3>
+<p>この.NETのORMは、LINQという。厳密にはORMではない。C#によるものである。</p>
+<p>データベースだけでなく、配列やリストに対しても有効。そのため、これさえ覚えておけば、C#の別フレームワークなどでも通用する。</p>
+<h4 id="全データの取り出し-tolist">全データの取り出し .ToList()</h4>
+<pre tabindex="0"><code>var comments = _context.Comments.ToList();
+</code></pre><h4 id="絞り込み-where">絞り込み .Where()</h4>
+<pre tabindex="0"><code>var comments = _context.Comments.Where(c =&gt; c.UserName == &#34;Alice&#34;).ToList();
+</code></pre><p>.Where() メソッド内でアローを使い、アトリビュートを指定して絞り込み。</p>
+<h4 id="並び替え-昇順-orderby-降順-orderbydescending">並び替え 昇順: .OrderBy() 降順: .OrderByDescending()</h4>
+<pre tabindex="0"><code>var comments = _context.Comments.OrderBy(c =&gt; c.PostedAt).ToList();
+
+var comments = _context.Comments.OrderByDescending(c =&gt; c.PostedAt).ToList();
+</code></pre><h4 id="絞り込んで並び替えるにはチェーンにすれば良い">絞り込んで並び替えるには、チェーンにすれば良い</h4>
+<pre tabindex="0"><code>var comments = _context.Comments
+    .Where(c =&gt; c.UserName == &#34;Alice&#34;)
+    .OrderByDescending(c =&gt; c.PostedAt)
+    .ToList();
+</code></pre><h4 id="1件だけ取り出す">1件だけ取り出す</h4>
+<pre tabindex="0"><code>var comment = _context.Comments.Where(c =&gt; c.UserName == &#34;Alice&#34;).FirstOrDefault();
+</code></pre><p>.First() もあるが、こちらはデータがない場合はエラーになる。</p>
+<h4 id="カウントするには">カウントするには</h4>
+<pre tabindex="0"><code>int count = _context.Comments.Where(c =&gt; c.UserName == &#34;Alice&#34;).Count();
+</code></pre><h3 id="補足このコントローラはどのビューにレンダリングされるのか">【補足】このコントローラはどのビューにレンダリングされるのか？</h3>
+<p>今回、コントローラは <code>Controllers/HomeController.cs</code> このように作られているため、レンダリングされるビューは <code>Views/Home/Index.cshtml</code> になる。</p>
+<p>レンダリングをするビューの場所を書き換えるには</p>
+<pre tabindex="0"><code>    return View(&#34;~/Views/Shared/Index.cshtml&#34;);
+</code></pre><p>とする。 パスの中の <code>~</code> というのは、通常Linuxなどにおけるホームディレクトリを意味するが、ASP.NETではプロジェクトディレクトリまでのパスを意味している。</p>
+<h3 id="補足コンテキストが複数ある場合どのような引数をreturn-すれば良いのか">【補足】コンテキストが複数ある場合、どのような引数をreturn すれば良いのか？</h3>
+<p>例えば、CommentだけでなくCategory など複数のモデルオブジェクトを返したい場合がある。</p>
+<p><code>ViewModels/CommentCategoryViewModel.cs</code> ここでビューモデルを作り、</p>
+<pre tabindex="0"><code>namespace StartupBBS.ViewModels
+{
+    public class CommentCategoryViewModel
+    {
+        public IEnumerable&lt;Comment&gt; Comments { get; set; } = new List&lt;Comment&gt;();
+        public IEnumerable&lt;Category&gt; Categories { get; set; } = new List&lt;Category&gt;();
+    }
+}
+</code></pre><p>コントローラでビューモデルを渡す。</p>
+<pre tabindex="0"><code>public IActionResult Index()
+{
+    var comments = _context.Comments.ToList();
+    var categories = _context.Categories.ToList();
+
+    var viewModel = new CommentCategoryViewModel
+    {
+        Comments = comments,
+        Categories = categories
+    };
+
+    return View(viewModel);
+}
+</code></pre><p>ビューでViewModelを受取する。</p>
+<pre tabindex="0"><code>@model StartupBBS.ViewModels.CommentCategoryViewModel
+
+&lt;h1&gt;コメント掲示板&lt;/h1&gt;
+
+&lt;!-- コメント一覧の表示 --&gt;
+@foreach (var comment in Model.Comments)
+{
+    &lt;div&gt;
+        &lt;strong&gt;@comment.UserName&lt;/strong&gt; (@comment.PostedAt)
+        &lt;p&gt;@comment.Content&lt;/p&gt;
+    &lt;/div&gt;
+}
+
+&lt;h2&gt;カテゴリ一覧&lt;/h2&gt;
+@foreach (var category in Model.Categories)
+{
+    &lt;div&gt;
+        &lt;p&gt;@category.Name&lt;/p&gt;
+    &lt;/div&gt;
+}
+</code></pre><p>なんでこんな回りくどい仕様になっているかというと、.NET は本来複数のモデルオブジェクトをコンテキストとして与える仕様になっていないためである。</p>
+<p>どうやら.NET は djangoのコンテキストとは違い、辞書型でまとめて一気にコンテキストを送るということはできないようだ。</p>
+<h2 id="ビュー">ビュー</h2>
+<p>Views/Home/Index.cshtml</p>
+<pre tabindex="0"><code>@model IEnumerable&lt;StartupBBS.Models.Comment&gt;
+
+&lt;h1&gt;コメント掲示板&lt;/h1&gt;
+
+&lt;!-- コメント一覧の表示 --&gt;
+&lt;div&gt;
+    @foreach (var comment in Model)
+    {
+        &lt;div&gt;
+            &lt;strong&gt;@comment.UserName&lt;/strong&gt; (@comment.PostedAt)
+            &lt;p&gt;@comment.Content&lt;/p&gt;
+        &lt;/div&gt;
+    }
+&lt;/div&gt;
+
+&lt;!-- コメント投稿フォーム --&gt;
+&lt;h2&gt;コメントを投稿&lt;/h2&gt;
+&lt;form method=&#34;post&#34; action=&#34;/Home/PostComment&#34;&gt;
+    &lt;div&gt;
+        &lt;label for=&#34;userName&#34;&gt;名前：&lt;/label&gt;
+        &lt;input type=&#34;text&#34; id=&#34;userName&#34; name=&#34;userName&#34; required /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label for=&#34;content&#34;&gt;コメント：&lt;/label&gt;
+        &lt;textarea id=&#34;content&#34; name=&#34;content&#34; required&gt;&lt;/textarea&gt;
+    &lt;/div&gt;
+    &lt;button type=&#34;submit&#34;&gt;投稿&lt;/button&gt;
+&lt;/form&gt;
+</code></pre><h3 id="補足冒頭の-とは">【補足】冒頭の@ とは？</h3>
+<pre tabindex="0"><code>@model IEnumerable&lt;StartupBBS.Models.Comment&gt;
+</code></pre><p>これはRazor構文である。ビューに渡すモデルのデータ型を指定するためのディレクティブである。</p>
+<p>Index.cshtml のビューに <code>IEnumerable&lt;Comment&gt;</code> 型のモデルが渡される ことを示しています。</p>
+<p>アイイニューマレーターと読む。これによりModelを使って1件ずつデータを取り出せる。</p>
+<pre tabindex="0"><code>    @foreach (var comment in Model)
+    {
+        &lt;div&gt;
+            &lt;strong&gt;@comment.UserName&lt;/strong&gt; (@comment.PostedAt)
+            &lt;p&gt;@comment.Content&lt;/p&gt;
+        &lt;/div&gt;
+    }
+</code></pre><h3 id="補足htmlのname属性はスネークケースでは">【補足】HTMLのname属性はスネークケースでは？</h3>
+<p>コントローラのアクションメソッドの引数で</p>
+<pre tabindex="0"><code>        [HttpPost]
+        public IActionResult PostComment(string userName, string content)
+        {
+            var comment = new Comment
+            {
+                UserName = userName,
+                Content = content,
+                PostedAt = DateTime.Now
+            };
+
+            _context.Comments.Add(comment);  // コメントをDBに追加
+            _context.SaveChanges();  // 変更を保存
+
+            return RedirectToAction(&#34;Index&#34;);  // コメント投稿後にトップページへリダイレクト
+        }
+</code></pre><p>userName , content としたため同じname属性にした。</p>
+<p>モデルバインディングを使用している場合も、モデルのアトリビュートに対応させる必要がある。</p>
+<p>.NETでは基本キャメルケースが使われるため、HTMLもそれに合わせる形になる。</p>
+<h3 id="補足テンプレート言語-razorでコメントアウトするには">【補足】テンプレート言語 Razorでコメントアウトするには？</h3>
+<pre tabindex="0"><code>@* この部分はコメントアウトされる *@
+</code></pre><p>こうする。HTMLコメントでもよいが、ページソースから丸見え。</p>
+<h3 id="補足action属性のルーティング逆引き">【補足】action属性のルーティング逆引き</h3>
+<p>もし直にURLを書きたくない場合はこうする。</p>
+<pre tabindex="0"><code>&lt;form method=&#34;post&#34; action=&#34;@Url.Action(&#34;PostComment&#34;, &#34;Home&#34;)&#34;&gt;
+
+以下略
+</code></pre><p>つまり</p>
+<pre tabindex="0"><code>@Url.Action(&#34;アクションメソッド名&#34;, &#34;コントローラ名&#34;)
+</code></pre><p>このように表記することで逆引きできる。</p>
+<h2 id="ルーティング">ルーティング</h2>
+<p>ルーティング設定 (Program.cs)</p>
+<pre tabindex="0"><code>using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using StartupBBS.Data;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// サービスの登録
+builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext&lt;ApplicationDbContext&gt;(options =&gt;
+    options.UseSqlite(builder.Configuration.GetConnectionString(&#34;DefaultConnection&#34;)));  // SQLiteの接続文字列
+
+var app = builder.Build();
+
+// ミドルウェア設定
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    app.UseExceptionHandler(&#34;/Home/Error&#34;);
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.MapControllerRoute(
+    name: &#34;default&#34;,
+    pattern: &#34;{controller=Home}/{action=Index}/{id?}&#34;);  // ルーティング設定
+
+app.Run();
+</code></pre><p>この内、ルーティング設定に関わっているのは。</p>
+<pre tabindex="0"><code>app.UseRouting();
+
+app.MapControllerRoute(
+    name: &#34;default&#34;,
+    pattern: &#34;{controller=Home}/{action=Index}/{id?}&#34;);  // ルーティング設定
+
+app.Run();
+</code></pre><p>このコードで、このコードだけで以下のルーティング設定ができる。</p>
+<ul>
+<li><code>Home/Index/</code> : HomeControllerのIndexアクション(明示的に指定)</li>
+<li><code>Home/PostComment/</code> : HomeControllerのPostCommentアクション(HomeControllerの指定で自動的にルーティング設定)</li>
+<li><code>/</code> : HomeControllerのIndexアクション(デフォルト)</li>
+<li><code>Home/Index/1/</code> : HomeControllerのIndexアクションにidが1で実行</li>
+</ul>
+<h3 id="なぜこのルーティング設定でindexやpostcomment-のアクションが登録されるのか">なぜこのルーティング設定でIndexやPostComment のアクションが登録されるのか？</h3>
+<p>Indexは明示的に設定されているからわかるが、PostCommentはなぜこれで成立するのかというと、controller引数にHomeControllerが与えられているから。</p>
+<p>これによりHomeController 内にあるすべてのアクションがURL登録される。</p>
+<h2 id="サーバーを起動する">サーバーを起動する</h2>
+<pre tabindex="0"><code>dotnet run
+</code></pre><p>でサーバーが起動する。 http://localhost:5043/ サーバーは</p>
+<p>ただしファイルを途中で編集した場合、再度コマンドを実行して、サーバーを起動し直さないといけない。</p>
+<p>そこで、ファイルの編集を監視する以下のコマンドをおすすめする。</p>
+<pre tabindex="0"><code>dotnet watch run
+</code></pre><h3 id="補足ターミナルのログには何が表示されている">【補足】ターミナルのログには何が表示されている？</h3>
+<p>このサーバーを起動した状態で、ターミナルを確認すると</p>
+<pre tabindex="0"><code>info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (4ms) [Parameters=[], CommandType=&#39;Text&#39;, CommandTimeout=&#39;30&#39;]
+      SELECT &#34;c&#34;.&#34;Id&#34;, &#34;c&#34;.&#34;Content&#34;, &#34;c&#34;.&#34;PostedAt&#34;, &#34;c&#34;.&#34;UserName&#34;
+      FROM &#34;Comments&#34; AS &#34;c&#34;
+</code></pre><p>これは、Entity Framework Coreがデータベースとやり取りを行う際に、デフォルトでSQLクエリをログに出力する設定がされているから。</p>
+<h2 id="動かすとこうなる">動かすとこうなる</h2>
+<div class="img-center"><img src="/images/Screenshot from 2025-03-27 10-11-02.png" alt=""></div>
+<h2 id="結論">結論</h2>
+<p>ウェブアプリケーションフレームワークなので覚える点が多い。</p>
+<p>とはいえ.NETは他FWと同じような仕組みになっており、LINQはC#でも使えるため無駄は少ないと思われる。</p>
+<p>次はWindowsのネイティブアプリをつくる。</p>
+<h2 id="ソースコード">ソースコード</h2>
+<p><a href="https://github.com/seiya0723/dotnet-startup-bbs">https://github.com/seiya0723/dotnet-startup-bbs</a></p>
+</div>
+
+
+	<footer class="article_footer">
+		<header><div class="panel_title">スポンサーリンク</div></header>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="7671918021"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+	</footer>
+
+    
+
+
+	</div>
+
+	<footer class="article_footer">
+        
+        
+        
+        
+        <h2 class="relate_content_title">関連記事</h2>
+        
+        
+        <a class="relate_link" href="http://localhost:43210/post/csharp-linq-method/">【C＃】LINQのメソッドのまとめ<time class="relate_time">2025年4月19日 17時43分</time></a>
+        
+        <a class="relate_link" href="http://localhost:43210/post/csharp-environment/">UbuntuでC#の開発環境を整え、C#の基本構文をまとめる<time class="relate_time">2025年3月19日 09時22分</time></a>
+        
+        
+    </footer>
+
+</article>
+
+
+
+<nav>
+    <ul class="paginator">
+        <li class="pg_prev_area">
+            
+            <a class="pg_prev" href="/post/anywhere-ubuntu/">次の投稿<br><span class="summary_pg">【USBブート】NVMe SSD とUSB3.2 Gen.2 の変換器でどこでもUbuntu</span></a>
+            
+        </li>
+        <li class="pg_next_area">
+            
+            <a class="pg_next" href="/post/python-servo-asyncio-init/">前の投稿<br><span class="summary_pg">【Python】サーボモーターを非同期で動かし、初期化する</span></a>
+            
+        </li>
+    </ul>
+</nav>
+
+        
+        
+    </div>
+
+    <div class="col-md-4">
+        <aside class="sidebar">
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Author</div>
+        
+        <div class="img-center"><a class="author_img_area" href="http://localhost:43210/information/introduction/"><img class="author_img" src="http://localhost:43210/img/nautilus.jpg" alt="logo"></a></div>
+        <p>名前: S.Asahina</p>
+        <p>一言: NaN</p>
+    </section>
+
+    
+
+    <section>
+        <div class="sidebar_panel_title">Search</div>
+        <input id="search" class="ui10-text_square_dark" type="text" placeholder="ここにキーワードを入力する">
+        <div id="search_notice" class="search_notice"></div>
+        <div id="search_result" class="search_result"></div>
+    </section>
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Ad</div>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6442436013540142"
+             crossorigin="anonymous"></script>
+        
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6442436013540142"
+             data-ad-slot="3590820755"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </section>
+
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Category</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89">サーバーサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/others">others</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/web%E5%85%A8%E8%88%AC">web全般</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%95%E3%83%AB%E3%82%B9%E3%82%BF%E3%83%83%E3%82%AF">フルスタック</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ </a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E3%83%AD%E3%83%9C%E3%83%83%E3%83%88%E9%96%8B%E7%99%BA">ロボット開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/categories/%E6%98%A0%E5%83%8F%E5%87%A6%E7%90%86">映像処理</a>
+        </span>
+        
+    </section>
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Tag</div>
+        
+
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/django">django</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tips">tips</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript">javascript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%9D%E5%BF%83%E8%80%85%E5%90%91%E3%81%91">初心者向け</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ubuntu">ubuntu</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python">python</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">ウェブデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/laravel">laravel</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E7%AE%A1%E7%90%86">システム管理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/react">react</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3">セキュリティ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E9%96%8B%E7%99%BA">ai開発</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%BF%BD%E8%A8%98%E4%BA%88%E5%AE%9A">追記予定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jquery">jquery</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%BF%E3%83%BC%E3%83%88%E3%82%A2%E3%83%83%E3%83%97%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA">スタートアップシリーズ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4">デプロイ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ajax">ajax</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css3">css3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linux">linux</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/heroku">heroku</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3">アンチパターン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/python%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">pythonライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html5">html5</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0">スクレイピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E4%BD%9C%E6%A5%AD%E5%8A%B9%E7%8E%87%E5%8C%96">作業効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bash">bash</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/drf">drf</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9">データベース</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/allauth">allauth</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%AA%8D%E8%A8%BC">認証</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nginx">nginx</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/javascript%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA">javascriptライブラリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/php">php</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/git">git</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/postgresql">postgresql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/restful">restful</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88">シェルスクリプト</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ec2">ec2</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fastapi">fastapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/leaflet.js">leaflet.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pytorch">pytorch</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sql">sql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vim">vim</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/beautifulsoup">beautifulsoup</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/docker">docker</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/github">github</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/html">html</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/hugo">hugo</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/keras">keras</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/lpic">lpic</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/npm">npm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/websocket">websocket</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%82%BF%E3%82%B0">カスタムテンプレートタグ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/aws">aws</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/chart.js">chart.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/selenium">selenium</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sendgrid">sendgrid</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF">ネットワーク</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0">マッピング</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloudinary">cloudinary</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pandas">pandas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ssh">ssh</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/wordpress">wordpress</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%82%B9%E3%83%88%E5%89%8A%E6%B8%9B">コスト削減</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A2%E3%83%87%E3%83%AB">モデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83">開発環境</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC">静的サイトジェネレーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ai%E5%AE%9F%E8%A3%85%E6%A4%9C%E5%AE%9A">ai実装検定</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/crontab">crontab</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/css">css</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/c">c＃</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/llm">llm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/matplotlib">matplotlib</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/next.js">next.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/oracle">oracle</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rag">rag</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/spa">spa</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlite">sqlite</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vue.js">vue.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9">インフラ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC">ウェブサーバー</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%A1%E3%83%A2">メモ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%ABllm">ローカルllm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">環境構築</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/.net">.net</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/canvas">canvas</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cnn">cnn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cookie">cookie</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/db">db</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ffmpeg">ffmpeg</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fontawesome">fontawesome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/json">json</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nlp">nlp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/node.js">node.js</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/openpyxl">openpyxl</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qdrant">qdrant</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/raspberry-pi">raspberry pi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/redis">redis</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/s3">s3</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/serializers.py">serializers.py</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/stripe">stripe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/typescript">typescript</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/virtualbox">virtualbox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/windows">windows</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF">エディタ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%83%A2%E3%83%87%E3%83%AB">カスタムユーザーモデル</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B2%E3%83%BC%E3%83%A0">ゲーム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89">コマンド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B3%E3%83%A9%E3%83%A0">コラム</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%9E%E3%83%BC%E3%82%AF%E3%83%80%E3%82%A6%E3%83%B3">マークダウン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%82%99%E5%BF%98%E9%8C%B2">備忘録</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE">正規表現</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%87%AA%E5%8B%95%E5%8C%96">自動化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E8%B3%87%E6%A0%BC%E8%A9%A6%E9%A8%93">資格試験</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%96%8B%E7%99%BA%E5%8A%B9%E7%8E%87%E5%8C%96">開発効率化</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/api">api</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/awk">awk</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/blob">blob</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/bootstrap">bootstrap</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/cloud9">cloud9</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/csv">csv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fetchapi">fetchapi</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/firefox">firefox</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/fullcalendar">fullcalendar</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gnome">gnome</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/gui">gui</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/java">java</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/juman">juman</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/jwt">jwt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/latex">latex</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/linq">linq</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/microsoftaccess">microsoftaccess</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/models">models</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/modprobe">modprobe</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/mysql">mysql</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nano">nano</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/netlify">netlify</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/nodejs">nodejs</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ocr">ocr</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ogp">ogp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/ollama">ollama</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/opencv">opencv</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pillow">pillow</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/pycharm">pycharm</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/qt">qt</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rds">rds</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/reactnative">reactnative</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/render.com">render.com</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/rtmp">rtmp</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/scikit-learn">scikit-learn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seaborn">seaborn</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/seo%E5%AF%BE%E7%AD%96">seo対策</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sqlalchemy">sqlalchemy</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/sse">sse</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/systemd">systemd</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/tempermonkey">tempermonkey</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vba">vba</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/vscode">vscode</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3">webデザイン</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/xss">xss</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%A2%E3%83%8B%E3%83%A1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アニメーション</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89">クラウド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B5%E3%83%BC%E3%83%9C%E3%83%A2%E3%83%BC%E3%82%BF%E3%83%BC">サーボモーター</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B7%E3%82%A7%E3%83%AB%E8%8A%B8">シェル芸</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%82%B9%E3%83%9E%E3%83%9B%E3%82%A2%E3%83%97%E3%83%AA">スマホアプリ</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89">フロントサイド</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E3%83%99%E3%82%AF%E3%83%88%E3%83%ABdb">ベクトルdb</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%88%86%E9%A1%9E%E5%95%8F%E9%A1%8C">分類問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%9E%E5%B8%B0%E5%95%8F%E9%A1%8C">回帰問題</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%9B%B2%E7%A2%81">囲碁</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E5%A4%9A%E5%AF%BE%E5%A4%9A">多対多</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%82%E3%82%8A%E5%AD%A6%E7%BF%92">教師あり学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E6%95%99%E5%B8%AB%E3%81%AA%E3%81%97%E5%AD%A6%E7%BF%92">教師なし学習</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%84%A1%E7%B7%9Alan">無線lan</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E5%8A%A0%E5%B7%A5">画像加工</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98">画像認識</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E7%A7%81%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">私について</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E5%87%A6%E7%90%86">非同期処理</a>
+        </span>
+        
+        <span class="taxonomies_area sidebar_taxonomies">
+            <a class="taxonomies_link sidebar_taxonomies_link" href="http://localhost:43210/tags/%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%80%9A%E4%BF%A1">非同期通信</a>
+        </span>
+        
+    </section>
+    
+
+    
+    
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">News</div>
+        
+        <a class="news_link" href="http://localhost:43210/post/fastapi-nextjs-crud/">FastAPI&#43;Next.js&#43;Ollama(Gemma3:12B)でChatGPT風アプリを作る</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-fastapi/">FastAPIのプロジェクト構成、ルーティング、モデル、DB使用方法について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/startup-qdrant/">QdrantのCRUD、コレクションとポイント、ハイブリッド検索について</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/javascript-self-chunks/">RAG用の手動チャンクUIのたたき台をJavaScriptで作ってみた</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/qdrant-rag-system/">RTX A2000 12GBでOllama(Gemma:7B)&#43;QdrantでテキストファイルのRAGを実現</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/python-local-llm-rag/">OllamaでRAGを実現する。</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/local-llm-install/">UbuntuにローカルLLMをインストールし、Python上で動作させる(Ollama)</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-jisso-kentei-s-grade/">AI実装検定S級合格体験記</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-question/">AI実装検定S級の疑問点【KerasとPytorchの入出力テンソル、凍結など】</a>
+        
+        <a class="news_link" href="http://localhost:43210/post/ai-exam-rank-s-mock/">AI実装検定S級の模擬試験</a>
+        
+    </section>
+
+    
+
+    <section class="sidebar_panel">
+        <div class="sidebar_panel_title">Books</div>
+
+        <div class="row">
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/481561072X/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/I/51Y0-P+m94L.jpg" alt="">
+                    </div>
+                    <div>モダンJavaScriptの基本から始める　React実践の教科書　（最新ReactHooks対応）</div>
+                </a>
+            </div>
+            <div class="col-6">
+                <a href="https://www.amazon.co.jp/dp/B09K235CTP/?tag=m68371ti-22">
+                    <div>
+                        <img src="https://m.media-amazon.com/images/P/B09K235CTP.jpg" alt="">
+                    </div>
+                    <div>現場で使える Django の教科書《基礎編》［3.2 LTS 対応版］</div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+</aside>
+
+    </div>
+</div>
+
+        </main>
+
+        <footer class="footer_area">
+            <p>&copy; 自動化無しに生活無し</p>
+            <p>当サイトのコンテンツの無断転載等を禁じます。</p>
+        </footer>
+    </body>
+</html>
+

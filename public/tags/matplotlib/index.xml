@@ -1,24 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Matplotlib on 自動化無しに生活無し</title>
-    <link>https://noauto-nolife.com/tags/matplotlib/</link>
+    <link>http://localhost:43210/tags/matplotlib/</link>
     <description>Recent content in Matplotlib on 自動化無しに生活無し</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 14 Oct 2021 12:47:15 +0900</lastBuildDate>
-    
-	<atom:link href="https://noauto-nolife.com/tags/matplotlib/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 31 May 2025 14:30:03 +0900</lastBuildDate>
+    <atom:link href="http://localhost:43210/tags/matplotlib/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【Pythonでグラフ描画】matplotlibとseabornのAPIのまとめ</title>
+      <link>http://localhost:43210/post/python-matplotlib-seaborn-api/</link>
+      <pubDate>Sat, 31 May 2025 14:30:03 +0900</pubDate>
+      <guid>http://localhost:43210/post/python-matplotlib-seaborn-api/</guid>
+      <description>matplotlib matplotlibは配列データを元に、グラフを描画することができる。 代表的な 棒グラフ、折れ線グラフ、散布図の3つを以下コードで描画している。 import numpy as np import matplotlib.pyplot as plt # データ準備 categories = [&amp;#39;A&amp;#39;, &amp;#39;B&amp;#39;, &amp;#39;C&amp;#39;, &amp;#39;D&amp;#39;, &amp;#39;E&amp;#39;] values = [5, 7, 3, 8, 4] # 棒グラフ用 x = np.arange(0, 10, 1) # 折れ線グラフ・散布図用 y_line = np.sin(x) # 折れ線グラフ用 y_scatter = y_line + np.random.normal(0, 0.2, size=x.shape) # 散布図用（ノイズを加える） # --- 1. 棒グラフ --- plt.figure(figsize=(6, 4)) plt.bar(categories, values, color=&amp;#39;skyblue&amp;#39;) plt.title(&amp;#34;Bar Graph&amp;#34;) plt.xlabel(&amp;#34;Category&amp;#34;) plt.ylabel(&amp;#34;Value&amp;#34;) plt.grid(axis=&amp;#39;y&amp;#39;) plt.tight_layout() plt.show() # --- 2. 折れ線グラフ --- plt.figure(figsize=(6, 4)) plt.plot(x, y_line, marker=&amp;#39;o&amp;#39;, linestyle=&amp;#39;-&amp;#39;, color=&amp;#39;green&amp;#39;) plt.title(&amp;#34;Line Graph&amp;#34;) plt.xlabel(&amp;#34;X&amp;#34;) plt.ylabel(&amp;#34;Y&amp;#34;) plt.grid(True) plt.tight_layout() plt.show() #</description>
+    </item>
+    <item>
+      <title>【matplotlib】フォントファイルを用意して日本語の豆腐化を修正する</title>
+      <link>http://localhost:43210/post/matplotlib-font-easy-settings/</link>
+      <pubDate>Thu, 27 Oct 2022 19:13:17 +0900</pubDate>
+      <guid>http://localhost:43210/post/matplotlib-font-easy-settings/</guid>
+      <description>カレントディレクトリにNotoSansJP-Light.otfを配置する。 import matplotlib.font_manager as fm import numpy as np import matplotlib.pyplot as plt fprop = fm.FontProperties(fname=&#39;NotoSansJP-Light.otf&#39;) x = np.linspace(0, 1, 100) y = x ** 2 plt.plot(x, y) plt.title(&amp;quot;タイトル&amp;quot; ,fontproperties=fprop, fontsize=40) plt.show() これで豆腐化の修正ができる</description>
+    </item>
     <item>
       <title>【データ分析】pandasの基本的な使い方、グラフ描画、ファイル読み書き、計算等【バックエンドにopenpyxlとmatplotlibを使う】</title>
-      <link>https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/</link>
+      <link>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</link>
       <pubDate>Thu, 14 Oct 2021 12:47:15 +0900</pubDate>
-      
-      <guid>https://noauto-nolife.com/post/startup-pandas-openpyxl-matplotlib/</guid>
+      <guid>http://localhost:43210/post/startup-pandas-openpyxl-matplotlib/</guid>
       <description>pandasでファイルの読み込み、演算、グラフ描画、ファイル書き込みの基本操作関係を記す。 前提 data.xlsx及びdata.csvの内容を下記とする。これをPythonのファイルと同じディレクトリに格納する。 ライブラリインストールのコマンドは下記。 pip install openpyxl pandas matplotlib pandasの使い方 CSVやエクセルのファイルをそのまま読み込んで分析できる。 ファイルの読み込み .read_csv()メソッドでCSVを読み</description>
     </item>
-    
   </channel>
 </rss>

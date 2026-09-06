@@ -6,6 +6,27 @@ window.addEventListener("load" , function (){
     if (search_elem.value){ search(search_elem.value); }
     search_elem.addEventListener("input", function(){ search(this.value); });
 
+
+
+
+    // コードのクリップコピー機能の実装
+    const pre_elems     = document.querySelectorAll("pre");
+    for (let pre_elem of pre_elems ){
+        pre_elem.innerHTML += '<span class="copy_button">Copy</span>';
+    }
+
+    const copy_buttons  = document.querySelectorAll(".copy_button");
+    for (let copy_button of copy_buttons){
+        copy_button.addEventListener("click" , (event) => {
+            const code  = event.currentTarget.closest("pre").querySelector("code");
+
+            if (navigator.clipboard && code){
+                navigator.clipboard.writeText( code.textContent );
+            }
+        });
+    }
+
+
 });
 
 function search(words){
